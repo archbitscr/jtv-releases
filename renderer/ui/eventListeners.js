@@ -1445,6 +1445,73 @@ export function setupEventListeners() {
         }
     }, true);
 
+    function handleHotkeyAction(key) {
+        if (key === '+' || key === '=' || key === 'Add') {
+            adjustVolume(1);
+            return true;
+        } else if (key === '-' || key === 'Subtract') {
+            adjustVolume(-1);
+            return true;
+        } else if (key === '*' || key === 'Multiply') {
+            toggleMute();
+            return true;
+        }
+
+        if (key === 'Escape') {
+            const detailsModal = document.getElementById('details-modal');
+            if (detailsModal && !detailsModal.classList.contains('hidden')) {
+                detailsModal.classList.add('hidden');
+                return true;
+            }
+            const settingsScreen = document.getElementById('settings-screen');
+            if (settingsScreen && !settingsScreen.classList.contains('hidden')) {
+                showModule('home');
+                return true;
+            }
+            if (state.currentModule === 'live' && state.activeChannelId && !state.isVodPlaying) {
+                showLiveLanding();
+                return true;
+            }
+            if (state.currentModule === 'series' || state.currentModule === 'movies' || state.currentModule === 'settings') {
+                showModule('home');
+                return true;
+            }
+            return true;
+        }
+
+        const isSettingsOpen = !document.getElementById('settings-screen').classList.contains('hidden');
+        const isOnboardingOpen = !document.getElementById('onboarding-modal').classList.contains('hidden');
+        const isDetailsOpen = !document.getElementById('details-modal').classList.contains('hidden');
+        const isParentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
+
+        if (!state.isHomeActive && state.activeChannelId && !isSettingsOpen && !isOnboardingOpen && !isDetailsOpen && !isParentalOpen) {
+            if (key === 'ArrowUp') {
+                zapChannel('up');
+                return true;
+            } else if (key === 'ArrowDown') {
+                zapChannel('down');
+                return true;
+            } else if (key === 'ArrowLeft') {
+                const sources = Array.from(document.querySelectorAll('.source-btn')).map(b => b.dataset.source);
+                const currentIdx = sources.indexOf(state.playerSource);
+                if (currentIdx !== -1) {
+                    const prevIdx = (currentIdx - 1 + sources.length) % sources.length;
+                    document.querySelector(`.source-btn[data-source="${sources[prevIdx]}"]`)?.click();
+                }
+                return true;
+            } else if (key === 'ArrowRight') {
+                const sources = Array.from(document.querySelectorAll('.source-btn')).map(b => b.dataset.source);
+                const currentIdx = sources.indexOf(state.playerSource);
+                if (currentIdx !== -1) {
+                    const nextIdx = (currentIdx + 1) % sources.length;
+                    document.querySelector(`.source-btn[data-source="${sources[nextIdx]}"]`)?.click();
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
     document.addEventListener('keydown', async (e) => {
         // Ctrl+F shortcut when sidebar is open to focus search (Tarea UI/UX)
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'f') {
@@ -1463,71 +1530,21 @@ export function setupEventListeners() {
             }
         }
 
-        if (e.key === '+' || e.key === '=' || e.key === 'Add') {
-            adjustVolume(1);
-            return;
-        } else if (e.key === '-' || e.key === 'Subtract') {
-            adjustVolume(-1);
-            return;
-        } else if (e.key === '*' || e.key === 'Multiply') {
-            toggleMute();
-            return;
-        }
-
-        if (e.key === 'Escape') {
-            const detailsModal = document.getElementById('details-modal');
-            if (detailsModal && !detailsModal.classList.contains('hidden')) {
-                detailsModal.classList.add('hidden');
-                return;
-            }
-            const settingsScreen = document.getElementById('settings-screen');
-            if (settingsScreen && !settingsScreen.classList.contains('hidden')) {
-                showModule('home');
-                return;
-            }
-            if (state.currentModule === 'live' && state.activeChannelId && !state.isVodPlaying) {
-                showLiveLanding();
-                return;
-            }
-            if (state.currentModule === 'series' || state.currentModule === 'movies' || state.currentModule === 'settings') {
-                showModule('home');
-                return;
-            }
-            return;
-        }
-
-        
-        const isSettingsOpen = !document.getElementById('settings-screen').classList.contains('hidden');
-        const isOnboardingOpen = !document.getElementById('onboarding-modal').classList.contains('hidden');
-        const isDetailsOpen = !document.getElementById('details-modal').classList.contains('hidden');
-        const isParentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
-
-        if (!state.isHomeActive && state.activeChannelId && !isSettingsOpen && !isOnboardingOpen && !isDetailsOpen && !isParentalOpen) {
-            if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                zapChannel('up');
-            } else if (e.key === 'ArrowDown') {
-                e.preventDefault();
-                zapChannel('down');
-            } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                const sources = Array.from(document.querySelectorAll('.source-btn')).map(b => b.dataset.source);
-                const currentIdx = sources.indexOf(state.playerSource);
-                if (currentIdx !== -1) {
-                    const prevIdx = (currentIdx - 1 + sources.length) % sources.length;
-                    document.querySelector(`.source-btn[data-source="${sources[prevIdx]}"]`)?.click();
-                }
-            } else if (e.key === 'ArrowRight') {
-                e.preventDefault();
-                const sources = Array.from(document.querySelectorAll('.source-btn')).map(b => b.dataset.source);
-                const currentIdx = sources.indexOf(state.playerSource);
-                if (currentIdx !== -1) {
-                    const nextIdx = (currentIdx + 1) % sources.length;
-                    document.querySelector(`.source-btn[data-source="${sources[nextIdx]}"]`)?.click();
-                }
-            }
+        const handled = handleHotkeyAction(e.key);
+        if (handled) {
+            e.preventDefault();
         }
     });
+
+    if (nativeApi && nativeApi.onAppHotkey) {
+        nativeApi.onAppHotkey((payload) => {
+            if (payload && payload.key) {
+                handleHotkeyAction(payload.key);
+            }
+        });
+    }
+
+
 
     // Tuner Zapper Buttons Listeners
     tunerUpBtn.onclick = (e) => {
