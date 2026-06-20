@@ -578,7 +578,7 @@ export function setupEventListeners() {
             state.dashboardNavMode = 'all';
             dbNavAll.classList.add('active');
             if (dbNavFavs) dbNavFavs.classList.remove('active');
-            favPage = 0;
+            state.favPage = 0;
             renderFavoritesGrid();
         };
     }
@@ -588,14 +588,14 @@ export function setupEventListeners() {
             state.dashboardNavMode = 'favorites';
             dbNavFavs.classList.add('active');
             if (dbNavAll) dbNavAll.classList.remove('active');
-            favPage = 0;
+            state.favPage = 0;
             renderFavoritesGrid();
         };
     }
 
-    if (dashFilterLanguage) dashFilterLanguage.onchange = () => { favPage = 0; renderFavoritesGrid(); };
-    if (dashFilterGenre) dashFilterGenre.onchange = () => { favPage = 0; renderFavoritesGrid(); };
-    if (dashFilterEvent) dashFilterEvent.onchange = () => { favPage = 0; renderFavoritesGrid(); };
+    if (dashFilterLanguage) dashFilterLanguage.onchange = () => { state.favPage = 0; renderFavoritesGrid(); };
+    if (dashFilterGenre) dashFilterGenre.onchange = () => { state.favPage = 0; renderFavoritesGrid(); };
+    if (dashFilterEvent) dashFilterEvent.onchange = () => { state.favPage = 0; renderFavoritesGrid(); };
 
     const fullscreenToggleBtn = document.getElementById('fullscreen-toggle');
     if (fullscreenToggleBtn) {
@@ -831,8 +831,8 @@ export function setupEventListeners() {
     if (gridPrevBtn) {
         gridPrevBtn.onclick = async () => {
             if (state.activeDashTab === "live") {
-                if (favPage > 0) {
-                    favPage--;
+                if (state.favPage > 0) {
+                    state.favPage--;
                     renderFavoritesGrid();
                 }
                 return;
@@ -857,9 +857,9 @@ export function setupEventListeners() {
                 const allFavs = state.channels
                     .filter(c => c.favorite)
                     .filter(c => state.dashboardCategory === "All" || (c.categories && c.categories.includes(state.dashboardCategory)));
-                const totalPages = Math.ceil(allFavs.length / FAVS_PER_PAGE);
-                if (favPage < totalPages - 1) {
-                    favPage++;
+                const totalPages = Math.ceil(allFavs.length / state.FAVS_PER_PAGE);
+                if (state.favPage < totalPages - 1) {
+                    state.favPage++;
                     renderFavoritesGrid();
                 }
                 return;
@@ -1018,7 +1018,7 @@ export function setupEventListeners() {
             if (clearLiveLandingSearch) {
                 clearLiveLandingSearch.classList.toggle('hidden', liveLandingSearch.value.trim() === "");
             }
-            favPage = 0;
+            state.favPage = 0;
             renderFavoritesGrid();
         };
     }
@@ -1027,7 +1027,7 @@ export function setupEventListeners() {
         clearLiveLandingSearch.onclick = () => {
             liveLandingSearch.value = "";
             clearLiveLandingSearch.classList.add('hidden');
-            favPage = 0;
+            state.favPage = 0;
             renderFavoritesGrid();
             liveLandingSearch.focus();
         };
@@ -1254,13 +1254,13 @@ export function setupEventListeners() {
             if (totalPages <= 1) return;
 
             if (e.deltaY > 0) {
-                if (favPage < totalPages - 1) {
-                    favPage++;
+                if (state.favPage < totalPages - 1) {
+                    state.favPage++;
                     renderFavoritesGrid();
                 }
             } else {
-                if (favPage > 0) {
-                    favPage--;
+                if (state.favPage > 0) {
+                    state.favPage--;
                     renderFavoritesGrid();
                 }
             }
