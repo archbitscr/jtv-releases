@@ -26,7 +26,7 @@ import { syncChannels, updateSchedule } from './renderer/services/channelSync.js
 import { checkValidity, updateEditLogo } from './renderer/ui/editPane.js';
 import { adjustVolume, toggleMute, updateVolumeUI } from './renderer/ui/volumeController.js';
 import { setSettingsFilterTab, setConnectivityTab, setChannelsTab } from './renderer/settings/settingsTabs.js';
-import { ensurePlayerCurtain, showPlayerCurtain, hidePlayerCurtain, updateWebviewPointerEvents } from './renderer/ui/playerUI.js';
+import { ensurePlayerCurtain, showPlayerCurtain, hidePlayerCurtain, updateWebviewPointerEvents, updateHudChannelFilters } from './renderer/ui/playerUI.js';
 import { syncCenterNavWidth, checkResolution, updateFullscreenButton, toggleAppFullscreen, handleResizeDimensions, updateVodGridDimensions } from './renderer/ui/layout.js';
 import { updateSensorsUI } from './renderer/ui/sensors.js';
 import { updateTriggersVisibility } from './renderer/ui/triggersVisibility.js';
@@ -148,7 +148,8 @@ async function init() {
         switchTab,
         updateTriggersVisibility,
         getFilteredChannelsList,
-        updateWebviewPointerEvents
+        updateWebviewPointerEvents,
+        updateHudChannelFilters
     });
 
     // Initialize UI navigation dependencies
@@ -256,6 +257,8 @@ async function init() {
     window.syncCustomSelect = syncCustomSelect;
     window.initDashCustomSelects = initDashCustomSelects;
     window.initCustomTooltips = initCustomTooltips;
+    window.updateHudChannelFilters = updateHudChannelFilters;
+    window.selectChannel = selectChannel;
     
     // Legacy Window API
     window.getChannels = () => state.channels;
