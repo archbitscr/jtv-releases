@@ -44,8 +44,8 @@ export function renderList(container, list, highlightTerm = "") {
         const epgText = epg ? (epg.time ? `${epg.time} - ${epg.event}` : epg.event) : "Transmisión en vivo";
 
         const formattedId = isNaN(channel.id) ? channel.id : String(channel.id).padStart(4, '0');
-        const combinedName = `${formattedId} - ${channel.name}`;
-        const highlightedCombined = highlightText(combinedName, highlightTerm);
+        const highlightedName = highlightText(channel.name, highlightTerm);
+        const highlightedId = highlightText(formattedId, highlightTerm);
 
         const logoHtml = getSafeLogoHtml(channel.name, channel.logo);
 
@@ -53,9 +53,12 @@ export function renderList(container, list, highlightTerm = "") {
             <div class="channel-logo">${logoHtml}</div>
             <div class="channel-info">
                 <div class="channel-name-row">
-                    <h4>${highlightedCombined}</h4>
+                    <h4>${highlightedName}</h4>
                 </div>
-                <p class="epg-text">${epgText}</p>
+                <div class="channel-meta-row">
+                    <p class="epg-text">${epgText}</p>
+                    <span class="hud-filter-badge">${highlightedId}</span>
+                </div>
             </div>
             <div class="channel-actions">
                 <button class="action-btn favorite ${channel.favorite ? 'active' : ''}" title="Favorito">
