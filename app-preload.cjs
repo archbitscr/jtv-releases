@@ -1,0 +1,81 @@
+const { contextBridge, ipcRenderer } = require('electron');
+const IPC = {
+    SAVE_USER_DATA: 'save-user-data',
+    LOAD_USER_DATA: 'load-user-data',
+    OPEN_EXTERNAL: 'open-external',
+    TYPING_STATE: 'typing-state',
+    TOGGLE_FULLSCREEN: 'toggle-fullscreen',
+    GET_FULLSCREEN_STATE: 'get-fullscreen-state',
+    FULLSCREEN_STATE_CHANGED: 'fullscreen-state-changed',
+    APP_HOTKEY: 'app-hotkey',
+    GET_CURRENT_VOLUME: 'get-current-volume',
+    GET_AUDIO_LEVELER: 'get-audio-leveler',
+    BROADCAST_VOLUME: 'broadcast-volume',
+    BROADCAST_AUDIO_LEVELER: 'broadcast-audio-leveler',
+    FETCH_SFLIX_PAGE: 'fetch-sflix-page',
+    FETCH_TMDB_METADATA: 'fetch-tmdb-metadata',
+    FETCH_OMDB_RATINGS: 'fetch-omdb-ratings',
+    LOG_RENDERER: 'log-renderer',
+    LOG_DIAGNOSTIC: 'log-diagnostic',
+    GET_AUDIO_STATE: 'get-audio-state',
+    SET_AUDIO_MUTED: 'set-audio-muted',
+    IS_AUDIO_MUTED: 'is-audio-muted',
+    FETCH_CHANNELS: 'fetch-channels',
+    FETCH_SCHEDULE: 'fetch-schedule',
+    CHECK_DOMAIN: 'check-domain',
+    GET_APP_FLAGS: 'get-app-flags',
+    GET_DEVELOPER_STATE: 'get-developer-state',
+    SET_DEVELOPER_MODE: 'set-developer-mode',
+    GET_DIAGNOSTICS_ENABLED: 'get-diagnostics-enabled',
+    SET_DIAGNOSTICS_ENABLED: 'set-diagnostics-enabled',
+    OPEN_DEVTOOLS: 'open-devtools',
+    RELOAD_WINDOW: 'reload-window'
+};
+
+function subscribe(channel, callback) {
+    if (typeof callback !== 'function') return () => {};
+    const wrapped = (_event, payload) => callback(payload);
+    ipcRenderer.on(channel, wrapped);
+    return () => ipcRenderer.removeListener(channel, wrapped);
+}
+
+contextBridge.exposeInMainWorld('jtvAPI', {
+    toggleFullscreen: () => ipcRenderer.invoke(IPC.TOGGLE_FULLSCREEN),
+    getFullscreenState: () => ipcRenderer.invoke(IPC.GET_FULLSCREEN_STATE),
+    onFullscreenStateChanged: (callback) => subscribe(IPC.FULLSCREEN_STATE_CHANGED, callback),
+    onAppHotkey: (callback) => subscribe(IPC.APP_HOTKEY, callback),
+    saveUserData: (data) => ipcRenderer.invoke(IPC.SAVE_USER_DATA, data),
+    loadUserData: () => ipcRenderer.invoke(IPC.LOAD_USER_DATA),
+    openExternal: (url) => ipcRenderer.invoke(IPC.OPEN_EXTERNAL, url),
+    typingState: (isTyping) => ipcRenderer.send(IPC.TYPING_STATE, isTyping),
+    getCurrentVolume: () => ipcRenderer.invoke(IPC.GET_CURRENT_VOLUME),
+    getAudioLeveler: () => ipcRenderer.invoke(IPC.GET_AUDIO_LEVELER),
+    broadcastVolume: (level) => ipcRenderer.send(IPC.BROADCAST_VOLUME, level),
+    broadcastAudioLeveler: (enabled) => ipcRenderer.send(IPC.BROADCAST_AUDIO_LEVELER, enabled),
+    getAudioState: () => ipcRenderer.invoke(IPC.GET_AUDIO_STATE),
+    setAudioMuted: (muted) => ipcRenderer.invoke(IPC.SET_AUDIO_MUTED, muted),
+    isAudioMuted: () => ipcRenderer.invoke(IPC.IS_AUDIO_MUTED),
+    fetchSflixPage: (url) => ipcRenderer.invoke(IPC.FETCH_SFLIX_PAGE, url),
+    fetchTmdbMetadata: (payload) => ipcRenderer.invoke(IPC.FETCH_TMDB_METADATA, payload),
+    fetchOmdbRatings: (payload) => ipcRenderer.invoke(IPC.FETCH_OMDB_RATINGS, payload),
+    fetchChannels: (domain) => ipcRenderer.invoke(IPC.FETCH_CHANNELS, domain),
+    fetchSchedule: (domain) => ipcRenderer.invoke(IPC.FETCH_SCHEDULE, domain),
+    checkDomain: () => ipcRenderer.invoke(IPC.CHECK_DOMAIN),
+    logRenderer: (message) => ipcRenderer.invoke(IPC.LOG_RENDERER, message),
+    logDiagnostic: (message) => ipcRenderer.invoke(IPC.LOG_DIAGNOSTIC, message),
+    getAppFlags: () => ipcRenderer.invoke(IPC.GET_APP_FLAGS),
+    getDeveloperState: () => ipcRenderer.invoke(IPC.GET_DEVELOPER_STATE),
+    setDeveloperMode: (enabled) => ipcRenderer.invoke(IPC.SET_DEVELOPER_MODE, enabled),
+    getDiagnosticsEnabled: () => ipcRenderer.invoke(IPC.GET_DIAGNOSTICS_ENABLED),
+    setDiagnosticsEnabled: (enabled) => ipcRenderer.invoke(IPC.SET_DIAGNOSTICS_ENABLED, enabled),
+    openDevtools: () => ipcRenderer.invoke(IPC.OPEN_DEVTOOLS),
+    reloadWindow: () => ipcRenderer.invoke(IPC.RELOAD_WINDOW),
+    relaunch: () => ipcRenderer.invoke('relaunch'),
+    googleLogin: () => ipcRenderer.invoke('google-login'),
+    getNetworkDate: (streamUrl) => ipcRenderer.invoke('get-network-date', streamUrl),
+    openLogoScraper: (channelName) => ipcRenderer.invoke('open-logo-scraper', channelName),
+    onLogoScraperResult: (callback) => subscribe('logo-scraper-result', callback),
+    checkChannelStatus: (url) => ipcRenderer.invoke('check-channel-status', url),
+    onWebviewHttpError: (callback) => subscribe('webview-http-error', callback),
+    onWebviewLoadFailed: (callback) => subscribe('webview-load-failed', callback)
+});

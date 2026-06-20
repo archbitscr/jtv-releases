@@ -1,0 +1,54 @@
+{
+  "name": "jtv",
+  "version": "2.3.7",
+  "main": "main.js",
+  "type": "module",
+  "description": "JTV - Personal Stream Dashboard",
+  "author": "JHGARQ",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && electron-builder",
+    "preview": "vite preview",
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3",
+    "vite": "^5.0.0"
+  },
+  "build": {
+    "appId": "com.jtv.app",
+    "productName": "JTV",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "app-preload.cjs",
+      "guest-preload.cjs",
+      "package.json",
+      "assets/**/*",
+      "main/**/*",
+      "shared/**/*",
+      "build/icon.ico"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "include": "build/installer.nsh",
+      "deleteAppDataOnUninstall": true
+    }
+  },
+  "dependencies": {
+    "pngjs": "^7.0.0"
+  }
+}

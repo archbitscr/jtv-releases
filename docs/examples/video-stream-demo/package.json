@@ -1,0 +1,10 @@
+{
+  "name": "video-stream-demo",
+  "version": "1.0.0",
+  "description": "Premium Sports Streaming Demo Website",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "dependencies": {}
+}

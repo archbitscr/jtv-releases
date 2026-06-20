@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+release/
+out/
+
+# Logs
+*.log
+run-dev.log
+run-electron.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Tooling / AI workspace
+.trae/
+
+# Temp & scratch
+scratch/
+temp/
+
+# Local runtime / dev artifacts
+automation-result.json
+.cls
+npm
