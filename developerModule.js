@@ -1122,7 +1122,7 @@ async function runSignalCheck(url, videoDot, videoText, audioDot, audioText) {
     }
 }
 
-function updateDeveloperUI() {
+export function updateDeveloperUI() {
     const devToggle = document.getElementById('developer-mode-toggle');
     const diagToggle = document.getElementById('diagnostics-toggle');
     const clickDiagToggle = document.getElementById('diagnostic-clicks-toggle');

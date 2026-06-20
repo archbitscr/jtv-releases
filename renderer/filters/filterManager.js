@@ -439,6 +439,22 @@ export function renderChannelFiltersManager(channel) {
     }
 }
 
+export function bindAddFilterToChannel({ getChannels, getCurrentEditingChannelId, renderAll }) {
+    const addFilterToChannel = document.getElementById('add-filter-to-channel');
+    if (!addFilterToChannel) return;
+    addFilterToChannel.onchange = (e) => {
+        const catName = e.target.value;
+        if (!catName) return;
+        const channel = getChannels().find(c => String(c.id) === String(getCurrentEditingChannelId()));
+        if (channel && !channel.categories.includes(catName)) {
+            channel.categories.push(catName);
+            renderChannelFiltersManager(channel);
+            renderAll();
+            e.target.value = "";
+        }
+    };
+}
+
 export function removeFilterFromChannel(catName) {
     const channels = state.channels;
     const channel = channels.find(c => String(c.id) === String(state.currentEditingChannelId));

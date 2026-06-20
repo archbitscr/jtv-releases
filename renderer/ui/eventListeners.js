@@ -1,10 +1,11 @@
+/* global lucide */
 import { state } from '../state/appState.js';
 import { selectChannel, zapChannel, mountRemotePlayer, playVod, updatePlayerActiveState } from '../player/playerController.js';
 import { showModule, switchTab, showLiveLanding, hideMenu, hideEditPane } from '../ui/navigation.js';
 import { startInactivityTimers, clearInactivityTimers } from '../ui/inactivity.js';
 import { refreshVodContent, showVodDetails } from '../vod/vodContent.js';
 import { warmupVodCache } from '../vod/vodCache.js';
-import { hashPIN, verifyPIN, promptParentalPIN, isParentalTimeLocked } from '../settings/parental.js';
+import { hashPIN, verifyPIN, promptParentalPIN, isParentalTimeLocked, getCurrentPinCallback } from '../settings/parental.js';
 import { applyWallpaper } from '../settings/wallpaper.js';
 import { syncFilterList, populateDropdowns, removeSettingsFilter, removeFilter, updateEventIconSelectBtnColor } from '../filters/filterManager.js';
 import { syncCustomSelect, initDashCustomSelects } from '../utils/customSelect.js';
@@ -20,12 +21,21 @@ import { checkValidity, updateEditLogo } from '../ui/editPane.js';
 import { setSettingsFilterTab, setConnectivityTab, setChannelsTab } from '../settings/settingsTabs.js';
 import { renderAll, renderSettingsFilters } from '../render/renderAll.js';
 import { processLogo } from '../utils/domHelpers.js';
-import { renderChannelFiltersManager, removeFilterFromChannel } from '../filters/filterManager.js';
+import { renderChannelFiltersManager, removeFilterFromChannel, bindAddFilterToChannel } from '../filters/filterManager.js';
 import { selectAssignerChannelMultiple, renderAssignerChannelsList, renderAssignerEvents, initEventAssigner } from '../filters/filterAssigner.js';
 import { showNoSignalOverlay, triggerFailover } from '../player/failover.js';
+import { updateSourceSwitcherUI } from '../player/sourceSwitcher.js';
 import { renderVodControls, renderFavoritesGrid, toggleVodFavorite, getCurrentVodPageIndex, setCurrentVodPageIndex, getVodYear, getVodRatingNumber } from '../render/favoritesGrid.js';
+import { updateDeveloperUI } from '../../developerModule.js';
 
 export function setupEventListeners() {
+    // Local handle to the preload-exposed jtvAPI (preload injects window.jtvAPI)
+    const nativeApi = window.jtvAPI;
+
+    // Buffer local mutable que reusa el array de state; permite reasignar
+    // sin tocar el estado global (p.ej. channels = channels.filter(...)).
+    let channels = state.channels;
+
     // DOM Element Declarations to avoid ReferenceErrors in ES Modules
     const triggerLeft = document.getElementById('trigger-left');
     const triggerBottom = document.getElementById('trigger-bottom');
@@ -112,7 +122,7 @@ export function setupEventListeners() {
                 if (window.updateDeveloperUI) window.updateDeveloperUI();
             }
             
-            dropdownsPopulated = false;
+            state.dropdownsPopulated = false;
             populateDropdowns();
             renderAll();
         };
@@ -622,7 +632,6 @@ export function setupEventListeners() {
 
         mainMenu.classList.remove('hidden');
         startInactivityTimers();
-        syncMenuScroll();
     };
 
     if (triggerBottom) {
@@ -885,7 +894,7 @@ export function setupEventListeners() {
                 if (state.selectedVodYear !== "all") {
                     items = items.filter(it => getVodYear(it) === state.selectedVodYear);
                 }
-                totalPages = Math.ceil(items.length / VOD_ITEMS_PER_PAGE);
+                totalPages = Math.ceil(items.length / state.VOD_ITEMS_PER_PAGE);
             } else {
                 totalPages = state.vodTotalPages;
             }
@@ -1238,17 +1247,11 @@ export function setupEventListeners() {
     setupAddFilterInput('add-series-input', 'clear-series-input', 'add-series-btn', 'series');
     setupAddFilterInput('add-movies-input', 'clear-movies-input', 'add-movies-btn', 'movies');
 
-    addFilterToChannel.onchange = (e) => {
-        const catName = e.target.value;
-        if (!catName) return;
-        const channel = channels.find(c => c.id === state.currentEditingChannelId);
-        if (channel && !channel.categories.includes(catName)) {
-            channel.categories.push(catName);
-            renderChannelFiltersManager(channel);
-            renderAll();
-            e.target.value = "";
-        }
-    };
+    bindAddFilterToChannel({
+        getChannels: () => channels,
+        getCurrentEditingChannelId: () => state.currentEditingChannelId,
+        renderAll
+    });
 
     // Scroll Wheel Support for Favorites Grid
     const handleWheel = async (e) => {
@@ -1285,7 +1288,7 @@ export function setupEventListeners() {
                 if (state.selectedVodYear !== "all") {
                     items = items.filter(it => getVodYear(it) === state.selectedVodYear);
                 }
-                totalPages = Math.ceil(items.length / VOD_ITEMS_PER_PAGE);
+                totalPages = Math.ceil(items.length / state.VOD_ITEMS_PER_PAGE);
             } else {
                 totalPages = state.vodTotalPages;
             }
