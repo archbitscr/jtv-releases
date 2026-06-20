@@ -1437,20 +1437,6 @@ export function setupEventListeners() {
         if (channel) { channel.favorite = !channel.favorite; editFavToggle.classList.toggle('active', channel.favorite); renderAll(); }
     };
 
-    const handleAddNewChannel = () => {
-        const newId = Date.now().toString();
-        const newChan = { id: newId, name: "", logo: "", path: `watch.php?id=${newId}`, favorite: false, watchTime: 0, categories: ["All"] };
-        channels.push(newChan);
-        renderAll();
-        window.showEditPane(newChan);
-    };
-
-    const addChannelBtn = document.getElementById('add-channel-btn');
-    if (addChannelBtn) addChannelBtn.onclick = handleAddNewChannel;
-
-    const menuAddChannelBtn = document.getElementById('menu-add-channel-btn');
-    if (menuAddChannelBtn) menuAddChannelBtn.onclick = handleAddNewChannel;
-
     // Anti-Hotkeys Global Capturer (Tarea 32)
     document.addEventListener('keydown', (e) => {
         const active = document.activeElement;
