@@ -1442,7 +1442,7 @@ export function setupEventListeners() {
         const newChan = { id: newId, name: "", logo: "", path: `watch.php?id=${newId}`, favorite: false, watchTime: 0, categories: ["All"] };
         channels.push(newChan);
         renderAll();
-        showEditPane(newChan);
+        window.showEditPane(newChan);
     };
 
     const addChannelBtn = document.getElementById('add-channel-btn');
@@ -1671,7 +1671,7 @@ export function setupEventListeners() {
             if (clearVodSearch) {
                 clearVodSearch.classList.toggle('hidden', e.target.value.trim() === "");
             }
-            timeouts.set('vodSearchDebounce', async () => {
+            window.timeouts.set('vodSearchDebounce', async () => {
                 state.vodSearchTerm = e.target.value.trim();
                 state.vodPage = 0;
                 await refreshVodContent();
