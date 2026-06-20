@@ -74,10 +74,10 @@ export function updateHudChannelFilters(channel) {
     const categories = channel.categories || [];
     categories.forEach(cat => {
         if (cat.toLowerCase() === 'all') return;
-        const chip = document.createElement('span');
-        chip.className = 'hud-filter-chip';
-        chip.textContent = cat;
-        container.appendChild(chip);
+        const badge = document.createElement('span');
+        badge.className = 'hud-filter-badge';
+        badge.textContent = cat;
+        container.appendChild(badge);
     });
 }
 

@@ -1951,8 +1951,8 @@ body.hide-cursor * {
     width: 100%;
 }
 
-/* HUD Channel Filter Chips */
-.hud-filter-chip {
+/* HUD Channel Filter Badges */
+.hud-filter-badge {
     display: inline-flex;
     align-items: center;
     padding: 2px 6px;
