@@ -18,6 +18,12 @@ import { saveAppState } from '../services/stateManager.js';
 import { syncChannels } from '../services/channelSync.js';
 import { checkValidity, updateEditLogo } from '../ui/editPane.js';
 import { setSettingsFilterTab, setConnectivityTab, setChannelsTab } from '../settings/settingsTabs.js';
+import { renderAll, renderSettingsFilters } from '../render/renderAll.js';
+import { processLogo } from '../utils/domHelpers.js';
+import { renderChannelFiltersManager, removeFilterFromChannel } from '../filters/filterManager.js';
+import { selectAssignerChannelMultiple, renderAssignerChannelsList, renderAssignerEvents, initEventAssigner } from '../filters/filterAssigner.js';
+import { showNoSignalOverlay, triggerFailover } from '../player/failover.js';
+import { renderVodControls, renderFavoritesGrid, toggleVodFavorite } from '../render/favoritesGrid.js';
 
 export function setupEventListeners() {
     // DOM Element Declarations to avoid ReferenceErrors in ES Modules
