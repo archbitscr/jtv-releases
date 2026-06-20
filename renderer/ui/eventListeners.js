@@ -23,7 +23,7 @@ import { processLogo } from '../utils/domHelpers.js';
 import { renderChannelFiltersManager, removeFilterFromChannel } from '../filters/filterManager.js';
 import { selectAssignerChannelMultiple, renderAssignerChannelsList, renderAssignerEvents, initEventAssigner } from '../filters/filterAssigner.js';
 import { showNoSignalOverlay, triggerFailover } from '../player/failover.js';
-import { renderVodControls, renderFavoritesGrid, toggleVodFavorite } from '../render/favoritesGrid.js';
+import { renderVodControls, renderFavoritesGrid, toggleVodFavorite, getCurrentVodPageIndex, setCurrentVodPageIndex, getVodYear, getVodRatingNumber } from '../render/favoritesGrid.js';
 
 export function setupEventListeners() {
     // DOM Element Declarations to avoid ReferenceErrors in ES Modules

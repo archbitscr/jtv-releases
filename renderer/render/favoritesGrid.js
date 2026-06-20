@@ -8,11 +8,11 @@ export function initFavoritesGrid(dependencies) {
     ext = dependencies;
 }
 
-function getCurrentVodPageIndex() {
+export function getCurrentVodPageIndex() {
     return state.vodFilterMode === "favorites" ? state.vodFavPage : state.vodPage;
 }
 
-function setCurrentVodPageIndex(next) {
+export function setCurrentVodPageIndex(next) {
     if (state.vodFilterMode === "favorites") {
         state.vodFavPage = next;
     } else {
@@ -20,13 +20,13 @@ function setCurrentVodPageIndex(next) {
     }
 }
 
-function getVodYear(item) {
+export function getVodYear(item) {
     const m = String(item.extraInfo || "").match(/\b(19|20)\d{2}\b/);
     if (m) return m[0];
     return null;
 }
 
-function getVodRatingNumber(item) {
+export function getVodRatingNumber(item) {
     const r = parseFloat(String(item.rating || "").replace(/[^\d.]/g, ""));
     return Number.isFinite(r) ? r : null;
 }
