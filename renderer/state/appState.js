@@ -123,6 +123,7 @@ export const state = {
     guideSearchTerm: "",
     guideFilter: "all",
     dashboardCategory: "All",
+    dashboardNavMode: "all",
     isHomeActive: true,
     favPage: 0,
     FAVS_PER_PAGE: 10,

@@ -575,7 +575,7 @@ export function setupEventListeners() {
 
     if (dbNavAll) {
         dbNavAll.onclick = () => {
-            dashboardNavMode = 'all';
+            state.dashboardNavMode = 'all';
             dbNavAll.classList.add('active');
             if (dbNavFavs) dbNavFavs.classList.remove('active');
             favPage = 0;
@@ -585,7 +585,7 @@ export function setupEventListeners() {
 
     if (dbNavFavs) {
         dbNavFavs.onclick = () => {
-            dashboardNavMode = 'favorites';
+            state.dashboardNavMode = 'favorites';
             dbNavFavs.classList.add('active');
             if (dbNavAll) dbNavAll.classList.remove('active');
             favPage = 0;
@@ -606,8 +606,8 @@ export function setupEventListeners() {
     }
 
     triggerLeft.onmouseenter = () => {
-        if (currentModule !== 'live' && (!activeChannelId || isVodPlaying)) return;
-        const tunedChannel = channels.find(c => c.id === activeChannelId);
+        if (state.currentModule !== 'live' && (!state.activeChannelId || state.isVodPlaying)) return;
+        const tunedChannel = state.channels.find(c => c.id === state.activeChannelId);
         if (tunedChannel && tunedChannel.favorite) {
             switchTab('favorites');
         } else {
@@ -621,7 +621,7 @@ export function setupEventListeners() {
 
     if (triggerBottom) {
         triggerBottom.onmouseenter = () => {
-            if (currentModule !== 'live' && (!activeChannelId || isVodPlaying)) return;
+            if (state.currentModule !== 'live' && (!state.activeChannelId || state.isVodPlaying)) return;
             if (!state.isHomeActive) {
                 sourceSwitcher.classList.remove('hidden');
                 startInactivityTimers();
@@ -631,7 +631,7 @@ export function setupEventListeners() {
 
     if (triggerRight) {
         triggerRight.onmouseenter = () => {
-            if (currentModule !== 'live' && (!activeChannelId || isVodPlaying)) return;
+            if (state.currentModule !== 'live' && (!state.activeChannelId || state.isVodPlaying)) return;
             if (!state.isHomeActive) {
                 sourceSwitcher.classList.remove('hidden');
                 startInactivityTimers();
@@ -699,8 +699,8 @@ export function setupEventListeners() {
             e.stopPropagation();
             const dest = btn.dataset.nav;
             if (dest) {
-                if (dest === 'live' && currentModule === 'live') {
-                    if (activeChannelId && !isVodPlaying) {
+                if (dest === 'live' && state.currentModule === 'live') {
+                    if (state.activeChannelId && !state.isVodPlaying) {
                         showLiveLanding();
                     } else {
                         showModule('live');
@@ -799,7 +799,7 @@ export function setupEventListeners() {
     const closeSettingsBtn = document.getElementById('close-settings');
     if (closeSettingsBtn) {
         closeSettingsBtn.onclick = () => {
-            showModule(previousModule || 'home');
+            showModule(state.previousModule || 'home');
         };
     }
 
@@ -808,7 +808,7 @@ export function setupEventListeners() {
     if (closeHomeBtn) {
         closeHomeBtn.onclick = (e) => {
             e.stopPropagation();
-            if (activeChannelId && !isVodPlaying) {
+            if (state.activeChannelId && !state.isVodPlaying) {
                 document.getElementById('home-dashboard').classList.add('hidden');
                 state.isHomeActive = false;
                 sourceSwitcher.classList.remove('hidden');
@@ -830,7 +830,7 @@ export function setupEventListeners() {
 
     if (gridPrevBtn) {
         gridPrevBtn.onclick = async () => {
-            if (activeDashTab === "live") {
+            if (state.activeDashTab === "live") {
                 if (favPage > 0) {
                     favPage--;
                     renderFavoritesGrid();
@@ -853,10 +853,10 @@ export function setupEventListeners() {
 
     if (gridNextBtn) {
         gridNextBtn.onclick = async () => {
-            if (activeDashTab === "live") {
-                const allFavs = channels
+            if (state.activeDashTab === "live") {
+                const allFavs = state.channels
                     .filter(c => c.favorite)
-                    .filter(c => dashboardCategory === "All" || (c.categories && c.categories.includes(dashboardCategory)));
+                    .filter(c => state.dashboardCategory === "All" || (c.categories && c.categories.includes(state.dashboardCategory)));
                 const totalPages = Math.ceil(allFavs.length / FAVS_PER_PAGE);
                 if (favPage < totalPages - 1) {
                     favPage++;
@@ -903,13 +903,13 @@ export function setupEventListeners() {
     const clearChannelSearch = document.getElementById('clear-channel-search');
     const clearFavSearch = document.getElementById('clear-fav-search');
 
-    channelSearchInput.oninput = (e) => { 
-        searchTerm = e.target.value; 
+    channelSearchInput.oninput = (e) => {
+        state.searchTerm = e.target.value;
         if (clearChannelSearch) {
-            clearChannelSearch.classList.toggle('hidden', searchTerm === "");
+            clearChannelSearch.classList.toggle('hidden', state.searchTerm === "");
         }
-        renderAll(); 
-        if (/^\d+$/.test(searchTerm.trim())) {
+        renderAll();
+        if (/^\d+$/.test(state.searchTerm.trim())) {
             const scrollArea = allChannelsList ? allChannelsList.closest('.scroll-area') : null;
             if (scrollArea) scrollArea.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -918,20 +918,20 @@ export function setupEventListeners() {
     if (clearChannelSearch) {
         clearChannelSearch.onclick = () => {
             channelSearchInput.value = "";
-            searchTerm = "";
+            state.searchTerm = "";
             clearChannelSearch.classList.add('hidden');
             renderAll();
         };
     }
 
     if (favChannelSearchInput) {
-        favChannelSearchInput.oninput = (e) => { 
-            favSearchTerm = e.target.value; 
+        favChannelSearchInput.oninput = (e) => {
+            state.favSearchTerm = e.target.value;
             if (clearFavSearch) {
-                clearFavSearch.classList.toggle('hidden', favSearchTerm === "");
+                clearFavSearch.classList.toggle('hidden', state.favSearchTerm === "");
             }
-            renderAll(); 
-            if (/^\d+$/.test(favSearchTerm.trim())) {
+            renderAll();
+            if (/^\d+$/.test(state.favSearchTerm.trim())) {
                 const scrollArea = favoritesList ? favoritesList.closest('.scroll-area') : null;
                 if (scrollArea) scrollArea.scrollTo({ top: 0, behavior: 'smooth' });
             }
@@ -941,7 +941,7 @@ export function setupEventListeners() {
     if (clearFavSearch) {
         clearFavSearch.onclick = () => {
             favChannelSearchInput.value = "";
-            favSearchTerm = "";
+            state.favSearchTerm = "";
             clearFavSearch.classList.add('hidden');
             renderAll();
         };
@@ -1034,14 +1034,14 @@ export function setupEventListeners() {
     }
 
     if (guideSearchInput) {
-        guideSearchInput.oninput = (e) => { guideSearchTerm = e.target.value; renderAll(); };
+        guideSearchInput.oninput = (e) => { state.guideSearchTerm = e.target.value; renderAll(); };
     }
     if (guideFiltersChips) {
         guideFiltersChips.forEach(chip => {
             chip.onclick = () => {
                 guideFiltersChips.forEach(c => c.classList.remove('active'));
                 chip.classList.add('active');
-                guideFilter = chip.dataset.filter;
+                state.guideFilter = chip.dataset.filter;
                 renderAll();
             };
         });
@@ -1054,7 +1054,7 @@ export function setupEventListeners() {
             if (icon) {
                 eventPicker.querySelectorAll('.picker-icon').forEach(i => i.classList.remove('active'));
                 icon.classList.add('active');
-                selectedEventFilterIcon = icon.dataset.icon || icon.getAttribute('data-icon') || 'flag';
+                state.selectedEventFilterIcon = icon.dataset.icon || icon.getAttribute('data-icon') || 'flag';
             }
         };
     }
@@ -1063,28 +1063,28 @@ export function setupEventListeners() {
         const input = document.getElementById(inputId);
         const clearBtn = document.getElementById(clearId);
         const addBtn = document.getElementById(btnId);
-        
+
         if (!input) return;
-        
+
         input.oninput = () => {
             if (clearBtn) {
                 clearBtn.classList.toggle('hidden', input.value.trim() === "");
             }
         };
-        
+
         if (clearBtn) {
             clearBtn.onclick = () => {
                 input.value = "";
                 clearBtn.classList.add('hidden');
-                
-                if (editingFilter && editingFilter.inputId === inputId) {
-                    editingFilter = null;
+
+                if (state.editingFilter && state.editingFilter.inputId === inputId) {
+                    state.editingFilter = null;
                     if (addBtn) {
                         addBtn.innerHTML = `<i data-lucide="plus"></i>`;
                         addBtn.setAttribute('title', 'Agregar Filtro');
                         addBtn.setAttribute('data-tooltip', 'Agregar Filtro');
                     }
-                    
+
                     let defaultIcon = 'tag';
                     let selectBtnId = null;
                     if (type === 'language') defaultIcon = 'globe';
@@ -1092,7 +1092,7 @@ export function setupEventListeners() {
                     else if (type === 'event') { defaultIcon = '🏁'; selectBtnId = 'event-icon-select-btn'; }
                     else if (type === 'series') { defaultIcon = 'tag'; selectBtnId = 'series-icon-select-btn'; }
                     else if (type === 'movies') { defaultIcon = 'tag'; selectBtnId = 'movies-icon-select-btn'; }
-                    
+
                     if (selectBtnId) {
                         const selectBtn = document.getElementById(selectBtnId);
                         if (selectBtn) {
@@ -1105,11 +1105,11 @@ export function setupEventListeners() {
                     }
                     lucide.createIcons();
                 }
-                
+
                 input.focus();
             };
         }
-        
+
         const submitAdd = () => {
             const name = input.value.trim();
             if (!name) {
@@ -1117,28 +1117,28 @@ export function setupEventListeners() {
                 setTimeout(() => input.classList.remove('input-error'), 1000);
                 return;
             }
-            
+
             let listToCheck;
             let defaultIcon = 'tag';
             let selectBtnId = null;
-            
+
             if (type === 'language') {
-                listToCheck = filterLanguages;
+                listToCheck = state.filterLanguages;
                 defaultIcon = 'globe';
             } else if (type === 'genre') {
-                listToCheck = filterGenres;
+                listToCheck = state.filterGenres;
                 defaultIcon = 'tag';
                 selectBtnId = 'genre-icon-select-btn';
             } else if (type === 'event') {
-                listToCheck = filterEvents;
+                listToCheck = state.filterEvents;
                 defaultIcon = '🏁';
                 selectBtnId = 'event-icon-select-btn';
             } else if (type === 'series') {
-                listToCheck = seriesGenres;
+                listToCheck = state.seriesGenres;
                 defaultIcon = 'tag';
                 selectBtnId = 'series-icon-select-btn';
             } else if (type === 'movies') {
-                listToCheck = moviesGenres;
+                listToCheck = state.moviesGenres;
                 defaultIcon = 'tag';
                 selectBtnId = 'movies-icon-select-btn';
             }
@@ -1151,11 +1151,11 @@ export function setupEventListeners() {
                 }
             }
             
-            if (editingFilter && editingFilter.inputId === inputId) {
-                const oldName = editingFilter.originalName;
+            if (state.editingFilter && state.editingFilter.inputId === inputId) {
+                const oldName = state.editingFilter.originalName;
                 const newName = name;
-                
-                if (oldName.toLowerCase() !== newName.toLowerCase() && 
+
+                if (oldName.toLowerCase() !== newName.toLowerCase() &&
                     listToCheck.some(f => f.name.toLowerCase() === newName.toLowerCase())) {
                     alert(`El filtro "${newName}" ya existe en este grupo.`);
                     return;
@@ -1180,7 +1180,7 @@ export function setupEventListeners() {
                     });
                 }
                 
-                editingFilter = null;
+                state.editingFilter = null;
                 addBtn.innerHTML = `<i data-lucide="plus"></i>`;
                 addBtn.setAttribute('title', 'Agregar Filtro');
                 addBtn.setAttribute('data-tooltip', 'Agregar Filtro');
@@ -1248,9 +1248,9 @@ export function setupEventListeners() {
     const handleWheel = async (e) => {
         if (!state.isHomeActive) return;
 
-        if (activeDashTab === "live") {
-            const allFavs = channels.filter(c => c.favorite).filter(c => dashboardCategory === "All" || (c.categories && c.categories.includes(dashboardCategory)));
-            const totalPages = Math.ceil(allFavs.length / FAVS_PER_PAGE);
+        if (state.activeDashTab === "live") {
+            const allFavs = state.channels.filter(c => c.favorite).filter(c => state.dashboardCategory === "All" || (c.categories && c.categories.includes(state.dashboardCategory)));
+            const totalPages = Math.ceil(allFavs.length / state.FAVS_PER_PAGE);
             if (totalPages <= 1) return;
 
             if (e.deltaY > 0) {
@@ -1490,11 +1490,11 @@ export function setupEventListeners() {
                 showModule('home');
                 return;
             }
-            if (currentModule === 'live' && activeChannelId && !isVodPlaying) {
+            if (state.currentModule === 'live' && state.activeChannelId && !state.isVodPlaying) {
                 showLiveLanding();
                 return;
             }
-            if (currentModule === 'series' || currentModule === 'movies' || currentModule === 'settings') {
+            if (state.currentModule === 'series' || state.currentModule === 'movies' || state.currentModule === 'settings') {
                 showModule('home');
                 return;
             }
@@ -1507,7 +1507,7 @@ export function setupEventListeners() {
         const isDetailsOpen = !document.getElementById('details-modal').classList.contains('hidden');
         const isParentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
 
-        if (!state.isHomeActive && activeChannelId && !isSettingsOpen && !isOnboardingOpen && !isDetailsOpen && !isParentalOpen) {
+        if (!state.isHomeActive && state.activeChannelId && !isSettingsOpen && !isOnboardingOpen && !isDetailsOpen && !isParentalOpen) {
             if (e.key === 'ArrowUp') {
                 e.preventDefault();
                 zapChannel('up');
@@ -1549,7 +1549,7 @@ export function setupEventListeners() {
     if (hudFavBtn) {
         hudFavBtn.onclick = (e) => {
             e.stopPropagation();
-            const channel = channels.find(c => String(c.id) === String(activeChannelId));
+            const channel = channels.find(c => String(c.id) === String(state.activeChannelId));
             if (channel) {
                 channel.favorite = !channel.favorite;
                 hudFavBtn.classList.toggle('active', channel.favorite);
@@ -1572,21 +1572,21 @@ export function setupEventListeners() {
     if (hudSettingsBtn) {
         hudSettingsBtn.onclick = (e) => {
             e.stopPropagation();
-            const channelIdx = channels.findIndex(c => String(c.id) === String(activeChannelId));
+            const channelIdx = channels.findIndex(c => String(c.id) === String(state.activeChannelId));
             if (channelIdx !== -1) {
                 showModule('settings');
                 const filtersTabBtn = document.getElementById('settings-tab-filters');
                 if (filtersTabBtn) {
                     filtersTabBtn.click();
                 }
-                
+
                 if (window.assignerSelectedFilters) {
                     window.assignerSelectedFilters.clear();
                 }
-                
+
                 state.assignerSelectedChannelIndices = [channelIdx];
                 state.lastSelectedIdx = channelIdx;
-                
+
                 renderAssignerChannelsList();
                 selectAssignerChannelMultiple();
             }
@@ -1628,7 +1628,7 @@ export function setupEventListeners() {
 
             state.playerSource = btn.dataset.source;
             updateSourceSwitcherUI(state.playerSource);
-            const channel = channels.find(c => String(c.id) === String(activeChannelId));
+            const channel = channels.find(c => String(c.id) === String(state.activeChannelId));
             if (channel) selectChannel(channel, false);
             saveAppState();
         };
