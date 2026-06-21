@@ -618,10 +618,20 @@ body.player-active .edge-mask {
     font-style: italic;
 }
 
+/* Search & Chips */
 .search-box {
-    margin-bottom: 0;
+    margin-bottom: 15px;
     flex-shrink: 0;
     padding-right: 5px;
+    transition: margin-bottom 0.3s ease-out;
+}
+
+.search-box:has(.category-filters.collapsed) {
+    margin-bottom: 6px !important;
+}
+
+.search-box:has(.category-filters:not(.collapsed)) {
+    margin-bottom: 0px !important;
 }
 
 /* Search input + filter toggle button row */
@@ -770,7 +780,7 @@ body.player-active .edge-mask {
 .category-filters {
     display: flex;
     gap: 8px;
-    margin-top: 0;
+    margin-top: 10px;
     margin-bottom: 10px !important;
     justify-content: center !important;
     flex-wrap: wrap;
@@ -1361,7 +1371,6 @@ body.player-active .edge-mask {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 0;
     margin-bottom: 10px !important;
     justify-content: center !important;
     padding: 0;
