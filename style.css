@@ -618,16 +618,10 @@ body.player-active .edge-mask {
     font-style: italic;
 }
 
-/* Search & Chips */
 .search-box {
-    margin-bottom: 15px;
+    margin-bottom: 0;
     flex-shrink: 0;
     padding-right: 5px;
-    transition: margin-bottom 0.3s ease-out;
-}
-
-.search-box.collapsed {
-    margin-bottom: 6px;
 }
 
 /* Search input + filter toggle button row */
@@ -776,7 +770,7 @@ body.player-active .edge-mask {
 .category-filters {
     display: flex;
     gap: 8px;
-    margin-top: 10px;
+    margin-top: 0;
     margin-bottom: 10px !important;
     justify-content: center !important;
     flex-wrap: wrap;
@@ -1367,6 +1361,7 @@ body.player-active .edge-mask {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+    margin-top: 0;
     margin-bottom: 10px !important;
     justify-content: center !important;
     padding: 0;

@@ -966,9 +966,9 @@ export function setupEventListeners() {
         toggleFiltersBtn.onclick = () => {
             const isCollapsed = categoryFiltersContainer.classList.toggle('collapsed');
             toggleFiltersBtn.classList.toggle('active', !isCollapsed);
-            localStorage.setItem('jtv_filters_collapsed', isCollapsed);
+            sessionStorage.setItem('jtv_filters_collapsed', isCollapsed);
         };
-        const storedCollapsed = localStorage.getItem('jtv_filters_collapsed');
+        const storedCollapsed = sessionStorage.getItem('jtv_filters_collapsed');
         if (storedCollapsed === 'false') {
             categoryFiltersContainer.classList.remove('collapsed');
             toggleFiltersBtn.classList.add('active');
@@ -998,9 +998,9 @@ export function setupEventListeners() {
         favToggleFiltersBtn.onclick = () => {
             const isCollapsed = favCategoryFiltersContainer.classList.toggle('collapsed');
             favToggleFiltersBtn.classList.toggle('active', !isCollapsed);
-            localStorage.setItem('jtv_fav_filters_collapsed', isCollapsed);
+            sessionStorage.setItem('jtv_fav_filters_collapsed', isCollapsed);
         };
-        const storedFavCollapsed = localStorage.getItem('jtv_fav_filters_collapsed');
+        const storedFavCollapsed = sessionStorage.getItem('jtv_fav_filters_collapsed');
         if (storedFavCollapsed === 'false') {
             favCategoryFiltersContainer.classList.remove('collapsed');
             favToggleFiltersBtn.classList.add('active');
