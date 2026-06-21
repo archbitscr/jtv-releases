@@ -104,8 +104,13 @@ export function syncMenuScroll(channelId) {
     const mainMenu = document.getElementById('main-menu');
     if (!mainMenu || mainMenu.classList.contains('hidden')) return;
 
+    mainMenu.querySelectorAll('.channel-item').forEach(item => {
+        item.classList.remove('active');
+    });
+
     const items = document.querySelectorAll(`.channel-item[data-id="${id}"]`);
     items.forEach(item => {
+        item.classList.add('active');
         const pane = item.closest('.tab-pane');
         if (pane && pane.classList.contains('active')) {
             item.scrollIntoView({ block: 'center', behavior: 'smooth' });
