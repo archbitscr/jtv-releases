@@ -83,6 +83,7 @@ export function showLiveLanding() {
     const homeDashboard = document.getElementById('home-dashboard');
     if (homeDashboard) homeDashboard.classList.remove('hidden');
     
+    if (ext.syncGridPageToActiveChannel) ext.syncGridPageToActiveChannel();
     if (ext.renderFavoritesGrid) ext.renderFavoritesGrid();
     
     if (sourceSwitcher) sourceSwitcher.classList.add('hidden');
@@ -201,6 +202,7 @@ export function showModule(moduleName) {
             state.isHomeActive = true;
             const liveSearchInput = document.getElementById('live-landing-search');
             if (liveSearchInput) liveSearchInput.value = "";
+            if (ext.syncGridPageToActiveChannel) ext.syncGridPageToActiveChannel();
             if (ext.renderFavoritesGrid) ext.renderFavoritesGrid();
             document.title = "JTV - En Vivo";
         }

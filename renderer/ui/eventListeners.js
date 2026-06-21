@@ -26,7 +26,7 @@ import { renderChannelFiltersManager, removeFilterFromChannel, bindAddFilterToCh
 import { selectAssignerChannelMultiple, renderAssignerChannelsList, renderAssignerEvents, initEventAssigner } from '../filters/filterAssigner.js';
 import { showNoSignalOverlay, triggerFailover } from '../player/failover.js';
 import { updateSourceSwitcherUI } from '../player/sourceSwitcher.js';
-import { renderVodControls, renderFavoritesGrid, toggleVodFavorite, getCurrentVodPageIndex, setCurrentVodPageIndex, getVodYear, getVodRatingNumber } from '../render/favoritesGrid.js';
+import { renderVodControls, renderFavoritesGrid, toggleVodFavorite, getCurrentVodPageIndex, setCurrentVodPageIndex, getVodYear, getVodRatingNumber, getFilteredLiveChannels } from '../render/favoritesGrid.js';
 import { updateDeveloperUI } from '../../developerModule.js';
 
 export function setupEventListeners() {
@@ -866,9 +866,7 @@ export function setupEventListeners() {
     if (gridNextBtn) {
         gridNextBtn.onclick = async () => {
             if (state.activeDashTab === "live") {
-                const allFavs = state.channels
-                    .filter(c => c.favorite)
-                    .filter(c => state.dashboardCategory === "All" || (c.categories && c.categories.includes(state.dashboardCategory)));
+                const allFavs = getFilteredLiveChannels();
                 const totalPages = Math.ceil(allFavs.length / state.FAVS_PER_PAGE);
                 if (state.favPage < totalPages - 1) {
                     state.favPage++;

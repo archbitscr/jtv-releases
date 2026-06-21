@@ -166,7 +166,8 @@ async function init() {
         updateTriggersVisibility,
         updateWebviewPointerEvents,
         startInactivityTimers,
-        syncMenuScroll
+        syncMenuScroll,
+        syncGridPageToActiveChannel
     });
 
     // Initialize inactivity timers dependencies
