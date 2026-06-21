@@ -186,7 +186,7 @@ export function mountRemotePlayer(url) {
     }, 2500);
 }
 
-export async function selectChannel(channel, resetSource = true) {
+export async function selectChannel(channel, resetSource = true, sourceTab = null) {
     const nativeApi = window.jtvAPI;
     const playerContainer = document.getElementById('player-container');
     const sourceSwitcher = document.getElementById('source-switcher');
@@ -213,6 +213,12 @@ export async function selectChannel(channel, resetSource = true) {
     showNoSignalOverlay(false);
 
     const wasHomeActive = state.isHomeActive;
+    if (sourceTab) {
+        state.zapSourceTab = sourceTab;
+    } else if (wasHomeActive) {
+        state.zapSourceTab = channel.favorite ? 'favorites' : 'channels';
+    }
+
     if (ext.applyWallpaper) ext.applyWallpaper('none');
     if (ext.showPlayerCurtain) ext.showPlayerCurtain();
     stopWatchTimer();
@@ -289,7 +295,7 @@ export async function selectChannel(channel, resetSource = true) {
     if (ext.startInactivityTimers) ext.startInactivityTimers();
 
     if (wasHomeActive) {
-        if (ext.switchTab) ext.switchTab(channel.favorite ? 'favorites' : 'channels');
+        if (ext.switchTab) ext.switchTab(state.zapSourceTab);
     }
 
     // Use current source folder for path
@@ -347,8 +353,8 @@ export async function updateHudAutotuneIndicators(path) {
 export function zapChannel(direction) {
     if (state.channels.length === 0) return;
 
-    // Determine active list based on sidebar tabs (Tarea 17)
-    const isFavsTabActive = document.querySelector('.tab-btn[data-tab="favorites"]')?.classList.contains('active');
+    // Determine active list based on explicit zapping source tab
+    const isFavsTabActive = state.zapSourceTab === 'favorites';
     const list = isFavsTabActive
         ? (ext.getFilteredChannelsList ? ext.getFilteredChannelsList('favorites') : [])
         : (ext.getFilteredChannelsList ? ext.getFilteredChannelsList('channels') : []);

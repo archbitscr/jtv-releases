@@ -31,6 +31,7 @@ export const state = {
     currentlyWatchingId: null,
     lastTunedChannel: null,
     shouldRestoreTunedChannel: false,
+    zapSourceTab: "channels",
 
     // Settings & API Configuration
     globalDomain: "https://dlhd.pk/",

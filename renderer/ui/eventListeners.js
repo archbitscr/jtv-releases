@@ -624,12 +624,7 @@ export function setupEventListeners() {
 
     triggerLeft.onmouseenter = () => {
         if (state.currentModule !== 'live' && (!state.activeChannelId || state.isVodPlaying)) return;
-        const tunedChannel = state.channels.find(c => c.id === state.activeChannelId);
-        if (tunedChannel && tunedChannel.favorite) {
-            switchTab('favorites');
-        } else {
-            switchTab('channels');
-        }
+        switchTab(state.zapSourceTab || 'channels');
 
         mainMenu.classList.remove('hidden');
         startInactivityTimers();

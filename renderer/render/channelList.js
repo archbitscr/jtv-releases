@@ -73,7 +73,8 @@ export function renderList(container, list, highlightTerm = "") {
 
         item.onclick = (e) => {
             if (e.target.closest('.action-btn')) return;
-            if (ext.selectChannel) ext.selectChannel(channel);
+            const clickedTab = container.id === 'favorites-list' ? 'favorites' : 'channels';
+            if (ext.selectChannel) ext.selectChannel(channel, true, clickedTab);
         };
 
         item.querySelector('.favorite').onclick = (e) => {

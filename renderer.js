@@ -261,6 +261,9 @@ async function init() {
     window.initCustomTooltips = initCustomTooltips;
     window.updateHudChannelFilters = updateHudChannelFilters;
     window.selectChannel = selectChannel;
+    window.state = state;
+    window.saveAppState = saveAppState;
+    window.hideMenu = hideMenu;
     
     // Legacy Window API
     window.getChannels = () => state.channels;
