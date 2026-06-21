@@ -129,6 +129,13 @@ export function renderFavoritesGrid() {
     const favoritesGrid = document.getElementById('favorites-grid');
     if (!homeDashboard || !favoritesGrid) return;
 
+    const dbNavAll = document.getElementById('dashboard-nav-all');
+    const dbNavFavs = document.getElementById('dashboard-nav-favorites');
+    if (dbNavAll && dbNavFavs) {
+        dbNavAll.classList.toggle('active', state.zapSourceTab === 'channels');
+        dbNavFavs.classList.toggle('active', state.zapSourceTab === 'favorites');
+    }
+
     const isDashboardVisible = state.isHomeActive && (state.currentModule === 'live' || state.currentModule === 'series' || state.currentModule === 'movies');
     if (!isDashboardVisible) {
         homeDashboard.classList.add('hidden');
@@ -164,7 +171,7 @@ export function renderFavoritesGrid() {
                 return true;
             })
             .filter(c => {
-                if (state.dashboardNavMode === 'favorites') return c.favorite;
+                if (state.zapSourceTab === 'favorites') return c.favorite;
                 return true;
             })
             .filter(c => {
@@ -183,7 +190,7 @@ export function renderFavoritesGrid() {
                 return true;
             });
 
-        if (state.dashboardNavMode === 'favorites') {
+        if (state.zapSourceTab === 'favorites') {
             allFavs.sort((a, b) => (b.watchTime || 0) - (a.watchTime || 0));
         } else if (/^\d+$/.test(searchVal)) {
             allFavs.sort((a, b) => parseInt(a.id) - parseInt(b.id));

@@ -150,7 +150,8 @@ async function init() {
         getFilteredChannelsList,
         updateWebviewPointerEvents,
         updateHudChannelFilters,
-        syncMenuScroll
+        syncMenuScroll,
+        saveAppState
     });
 
     // Initialize UI navigation dependencies
@@ -438,6 +439,9 @@ async function init() {
         state.minimizeToTray = savedData.minimizeToTray !== undefined ? savedData.minimizeToTray : false;
         state.preventSleep = savedData.preventSleep !== undefined ? savedData.preventSleep : false;
         state.cloudflareProtectionEnabled = savedData.cloudflareProtectionEnabled !== undefined ? savedData.cloudflareProtectionEnabled : false;
+        if (savedData.zapSourceTab !== undefined) {
+            state.zapSourceTab = savedData.zapSourceTab;
+        }
         if (savedData.currentVolumeLevel !== undefined) {
             state.currentVolumeLevel = savedData.currentVolumeLevel;
         }

@@ -592,21 +592,19 @@ export function setupEventListeners() {
 
     if (dbNavAll) {
         dbNavAll.onclick = () => {
-            state.dashboardNavMode = 'all';
-            dbNavAll.classList.add('active');
-            if (dbNavFavs) dbNavFavs.classList.remove('active');
+            state.zapSourceTab = 'channels';
             state.favPage = 0;
             renderFavoritesGrid();
+            saveAppState();
         };
     }
 
     if (dbNavFavs) {
         dbNavFavs.onclick = () => {
-            state.dashboardNavMode = 'favorites';
-            dbNavFavs.classList.add('active');
-            if (dbNavAll) dbNavAll.classList.remove('active');
+            state.zapSourceTab = 'favorites';
             state.favPage = 0;
             renderFavoritesGrid();
+            saveAppState();
         };
     }
 
@@ -912,7 +910,14 @@ export function setupEventListeners() {
 
     backToListBtn.onclick = () => hideEditPane();
     const tabBtns = document.querySelectorAll('.tab-btn');
-    tabBtns.forEach(btn => btn.onclick = () => switchTab(btn.dataset.tab));
+    tabBtns.forEach(btn => btn.onclick = () => {
+        const tab = btn.dataset.tab;
+        if (tab === 'channels' || tab === 'favorites') {
+            state.zapSourceTab = tab;
+            saveAppState();
+        }
+        switchTab(tab);
+    });
 
     const clearChannelSearch = document.getElementById('clear-channel-search');
     const clearFavSearch = document.getElementById('clear-fav-search');

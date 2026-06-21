@@ -34,6 +34,7 @@ export async function actualSaveAppState() {
         globalDomain: state.globalDomain, 
         apiKey: state.apiKey, 
         apiEndpoint: state.apiEndpoint, 
+        zapSourceTab: state.zapSourceTab, 
         tmdbKey: state.tmdbKey, 
         omdbKey: state.omdbKey, 
         autoUpdateDomain: state.autoUpdateDomain, 

@@ -305,6 +305,8 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
 
     // Update the autotune indicators in the Zapping HUD
     updateHudAutotuneIndicators(channel.path);
+
+    if (ext.saveAppState) ext.saveAppState();
 }
 
 export async function updateHudAutotuneIndicators(path) {
