@@ -2,7 +2,7 @@ import { state } from '../state/appState.js';
 import { sanitizeRemoteUrl } from '../utils/sanitize.js';
 import { getSafeLogoHtml } from '../utils/domHelpers.js';
 import { stopWatchTimer } from './watchTimer.js';
-import { triggerFailover, showNoSignalOverlay } from './failover.js';
+import { triggerFailover, showNoSignalOverlay, resetFailoverState } from './failover.js';
 
 let ext = {};
 
@@ -211,6 +211,9 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     if (state.failoverTimeoutId) clearTimeout(state.failoverTimeoutId);
     state.failoverInProgress = false;
     showNoSignalOverlay(false);
+    if (resetSource) {
+        resetFailoverState();
+    }
 
     const wasHomeActive = state.isHomeActive;
     if (sourceTab) {

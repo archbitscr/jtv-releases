@@ -10,6 +10,12 @@ export function initFailover({ selectChannel, mountRemotePlayer, updateSourceSwi
     updateSourceSwitcherUIFn = updateSourceSwitcherUI;
 }
 
+let streamRetried = false;
+
+export function resetFailoverState() {
+    streamRetried = false;
+}
+
 export function showNoSignalOverlay(show, message = "") {
     const overlay = document.getElementById('no-signal-overlay');
     const msgEl = document.getElementById('no-signal-message');
@@ -57,25 +63,31 @@ export async function triggerFailover(delayMs = null) {
         return;
     }
 
-    const sources = ['stream', 'cast', 'watch', 'plus', 'casting', 'player'];
+    const sources = ['stream', 'watch', 'player', 'plus', 'cast', 'casting'];
     const currentIdx = sources.indexOf(state.playerSource);
-    const nextIdx = currentIdx + 1;
     
-    if (nextIdx < sources.length) {
-        const nextSource = sources[nextIdx];
+    let nextSource;
+    if (state.playerSource === 'stream' && !streamRetried) {
+        streamRetried = true;
+        nextSource = 'stream';
+    } else {
+        nextSource = sources[currentIdx + 1];
+    }
+    
+    if (nextSource) {
         const cfg = window.timeoutsConfig || {};
         let waitTime = 3000;
         if (delayMs !== null) {
             waitTime = delayMs;
         } else {
-            if (state.playerSource === 'stream') {
+            if (nextSource === 'stream') {
                 waitTime = cfg.failoverMainEnabled ? cfg.failoverMain : 0;
             } else {
                 waitTime = cfg.failoverAltEnabled ? cfg.failoverAlt : 0;
             }
         }
         
-        nativeApi.logRenderer(`Watchdog: Switching source from "${state.playerSource}" to "${nextSource}" in ${waitTime}ms`);
+        nativeApi.logRenderer(`Watchdog: Switching source from "${state.playerSource}" to "${nextSource}" in ${waitTime}ms${nextSource === 'stream' ? ' (Retry)' : ''}`);
         showNoSignalOverlay(false);
         
         if (state.failoverTimeoutId) clearTimeout(state.failoverTimeoutId);
@@ -92,6 +104,7 @@ export async function triggerFailover(delayMs = null) {
     } else {
         nativeApi.logRenderer("Failover: Exhausted all sources. Returning to stream and showing Sin Señal.");
         state.playerSource = "stream";
+        streamRetried = false;
         updateSourceSwitcherUIFn("stream");
         const channel = state.channels.find(c => c.id === state.activeChannelId);
         if (channel) {
