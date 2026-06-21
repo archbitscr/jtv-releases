@@ -1,4 +1,5 @@
 import { state } from '../state/appState.js';
+import { resetAntiBlackScreen } from '../player/playerController.js';
 
 let ext = {};
 
@@ -133,6 +134,7 @@ export function showModule(moduleName) {
             state.shouldRestoreTunedChannel = true;
         }
         if (playerContainer) playerContainer.innerHTML = '';
+        resetAntiBlackScreen();
         state.activeChannelId = null;
         if (sourceSwitcher) sourceSwitcher.classList.add('hidden');
         if (ext.applyWallpaper) ext.applyWallpaper(state.selectedWallpaper);

@@ -3,6 +3,13 @@ import IPC from '../../shared/ipcChannels.json' with { type: 'json' };
 export function registerAudioIpc({ ipcMain, context }) {
   ipcMain.handle(IPC.GET_CURRENT_VOLUME, () => context.services.audioState.getVolumeLevel());
   ipcMain.handle(IPC.GET_AUDIO_LEVELER, () => context.services.audioState.getAudioLevelerEnabled());
+  ipcMain.handle(IPC.IS_CURRENTLY_AUDIBLE, (event) => {
+    try {
+      return event.sender.isCurrentlyAudible();
+    } catch (e) {
+      return false;
+    }
+  });
 
   ipcMain.on(IPC.BROADCAST_VOLUME, (_event, level) => {
     context.services.audioState.setVolumeLevel(level);

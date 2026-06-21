@@ -6,6 +6,24 @@ import { triggerFailover, showNoSignalOverlay, resetFailoverState } from './fail
 
 let ext = {};
 
+let hasStartedPlaying = false;
+let silenceCheckInterval = null;
+let consecutiveSilenceStart = 0;
+let freezeGraceTimeout = null;
+
+export function resetAntiBlackScreen() {
+    hasStartedPlaying = false;
+    if (silenceCheckInterval) {
+        clearInterval(silenceCheckInterval);
+        silenceCheckInterval = null;
+    }
+    if (freezeGraceTimeout) {
+        clearTimeout(freezeGraceTimeout);
+        freezeGraceTimeout = null;
+    }
+    consecutiveSilenceStart = 0;
+}
+
 export function initPlayerController(dependencies) {
     ext = dependencies;
 }
@@ -26,6 +44,8 @@ export function mountRemotePlayer(url) {
     const nativeApi = window.jtvAPI;
     const safeUrl = sanitizeRemoteUrl(url);
     playerContainer.innerHTML = '';
+    
+    resetAntiBlackScreen();
 
     const webview = document.createElement('webview');
     webview.id = 'player-webview';
@@ -56,9 +76,60 @@ export function mountRemotePlayer(url) {
 
     webview.addEventListener('ipc-message', (event) => {
         if (event.channel === 'guest-frozen') {
-            nativeApi.logRenderer(`[Player Watchdog] guest-frozen signal received! Triggering failover.`);
-            triggerFailover();
+            nativeApi.logRenderer(`[Player Watchdog] guest-frozen signal received!`);
+            if (!hasStartedPlaying) {
+                if (!state.failoverInProgress) triggerFailover();
+            } else {
+                if (freezeGraceTimeout) clearTimeout(freezeGraceTimeout);
+                freezeGraceTimeout = setTimeout(async () => {
+                    freezeGraceTimeout = null;
+                    if (state.failoverInProgress) return;
+                    
+                    const isAudible = await nativeApi.isCurrentlyAudible();
+                    if (isAudible) {
+                        nativeApi.logRenderer(`[Player Watchdog] guest-frozen ignored: Audio is still playing (false positive).`);
+                    } else {
+                        nativeApi.logRenderer(`[Player Watchdog] guest-frozen confirmed: No audio detected. Triggering failover.`);
+                        if (!state.failoverInProgress) triggerFailover();
+                    }
+                }, 4000);
+            }
         } else if (event.channel === 'guest-playing') {
+            if (freezeGraceTimeout) {
+                clearTimeout(freezeGraceTimeout);
+                freezeGraceTimeout = null;
+                nativeApi.logRenderer(`[Player Watchdog] guest-playing received. Freeze grace period cancelled.`);
+            }
+
+            if (!hasStartedPlaying) {
+                hasStartedPlaying = true;
+                nativeApi.logRenderer(`[Player Watchdog] Source started playing. Activating Anti-Black-Screen monitors.`);
+                
+                if (silenceCheckInterval) clearInterval(silenceCheckInterval);
+                consecutiveSilenceStart = 0;
+                silenceCheckInterval = setInterval(async () => {
+                    if (state.failoverInProgress) return;
+                    
+                    const isAudible = await nativeApi.isCurrentlyAudible();
+                    const isMuted = await nativeApi.isAudioMuted();
+                    
+                    if (isAudible || isMuted) {
+                        consecutiveSilenceStart = 0;
+                    } else {
+                        if (consecutiveSilenceStart === 0) {
+                            consecutiveSilenceStart = Date.now();
+                        } else {
+                            const silenceDuration = Date.now() - consecutiveSilenceStart;
+                            if (silenceDuration >= 10000) {
+                                nativeApi.logRenderer(`[Player Watchdog] 10s of sustained silence detected. Triggering failover.`);
+                                resetAntiBlackScreen();
+                                if (!state.failoverInProgress) triggerFailover();
+                            }
+                        }
+                    }
+                }, 2000);
+            }
+
             if (state.failoverInProgress || state.failoverTimeoutId) {
                 nativeApi.logRenderer(`[Player Watchdog] guest-playing signal received. Cancelling pending failover.`);
                 if (state.failoverTimeoutId) {
@@ -197,6 +268,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     const check = await nativeApi.getNetworkDate(channel.path).catch(() => ({ expired: false }));
     if (check && check.expired) {
         playerContainer.innerHTML = '';
+        resetAntiBlackScreen();
         state.activeChannelId = null;
         sourceSwitcher.classList.add('hidden');
         if (ext.applyWallpaper) ext.applyWallpaper(state.selectedWallpaper);

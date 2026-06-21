@@ -25,6 +25,7 @@
   "GET_AUDIO_STATE": "get-audio-state",
   "SET_AUDIO_MUTED": "set-audio-muted",
   "IS_AUDIO_MUTED": "is-audio-muted",
+  "IS_CURRENTLY_AUDIBLE": "is-currently-audible",
   "REPORT_SPEAKER_COORDS": "report-speaker-coords",
   "SPEAKER_COORDS_DETECTED": "speaker-coords-detected",
   "SIMULATE_SWEEP": "simulate-sweep",
