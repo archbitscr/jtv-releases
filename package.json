@@ -28,7 +28,6 @@
       "app-preload.cjs",
       "guest-preload.cjs",
       "package.json",
-      "assets/**/*",
       "main/**/*",
       "shared/**/*",
       "build/icon.ico"

@@ -2761,20 +2761,20 @@ body.hide-cursor * {
 }
 
 #card-live-tv {
-    background-image: url("assets/cards/Live TV 1.jpg");
+    background-image: url("/assets/cards/Live TV 1.jpg");
 }
 
 #card-series {
-    background-image: url("assets/cards/Series 1 .jpg");
+    background-image: url("/assets/cards/Series 1 .jpg");
 }
 
 #card-movies {
-    background-image: url("assets/cards/Movies 1 .png");
+    background-image: url("/assets/cards/Movies 1 .png");
     background-size: 118% 118%;
 }
 
 #card-settings {
-    background-image: url("assets/cards/Settings 1 .jpg");
+    background-image: url("/assets/cards/Settings 1 .jpg");
 }
 
 .card-icon-wrapper {
