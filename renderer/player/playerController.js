@@ -290,6 +290,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     document.getElementById('settings-screen').classList.add('hidden');
     state.isHomeActive = false;
 
+    if (ext.syncGridPageToActiveChannel) ext.syncGridPageToActiveChannel(channel.id);
     if (ext.renderAll) ext.renderAll();
     if (ext.syncMenuScroll) ext.syncMenuScroll();
     if (ext.startInactivityTimers) ext.startInactivityTimers();

@@ -6,7 +6,7 @@ import { initNavigation, showModule, showLiveLanding, switchTab, hideMenu } from
 import { initInactivity, startInactivityTimers } from './renderer/ui/inactivity.js';
 import { initChannelList, renderList, syncMenuScroll } from './renderer/render/channelList.js';
 import { initGuide, renderGuide } from './renderer/render/guide.js';
-import { initFavoritesGrid, renderFavoritesGrid } from './renderer/render/favoritesGrid.js';
+import { initFavoritesGrid, renderFavoritesGrid, syncGridPageToActiveChannel } from './renderer/render/favoritesGrid.js';
 import { initRenderAll, renderAll } from './renderer/render/renderAll.js';
 import { eventIconsList, getActiveVodGenres, mapIconToEmoji } from './renderer/filters/filterState.js';
 import { initFilterManager, populateDropdowns, matchesOnboardingLanguages, getFilteredChannelsList, syncFilterList, removeFilterFromChannel, startEditingFilter, removeSettingsFilter, cleanChannelMetadata, autoCategorizeChannels } from './renderer/filters/filterManager.js';
@@ -151,7 +151,8 @@ async function init() {
         updateWebviewPointerEvents,
         updateHudChannelFilters,
         syncMenuScroll,
-        saveAppState
+        saveAppState,
+        syncGridPageToActiveChannel
     });
 
     // Initialize UI navigation dependencies
@@ -513,6 +514,7 @@ async function init() {
     }
 
     document.title = "JTV";
+    syncGridPageToActiveChannel();
     renderAll();
     setupEventListeners();
     state.isAppFullscreen = await nativeApi.getFullscreenState();

@@ -990,6 +990,12 @@ body.player-active .edge-mask {
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
+.grid-item.active {
+    background: rgba(0, 255, 204, 0.08) !important;
+    border-color: rgba(0, 255, 204, 0.25) !important;
+    box-shadow: inset 3px 0 0 var(--accent) !important;
+}
+
 .grid-item .grid-logo {
     width: 50px;
     height: 50px;

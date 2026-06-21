@@ -73,6 +73,7 @@ export function showLiveLanding() {
 
     state.activeDashTab = "live";
     state.isHomeActive = true;
+    state.currentModule = "live";
     
     if (sectionTitle) {
         sectionTitle.textContent = "En Vivo";

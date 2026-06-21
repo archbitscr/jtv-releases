@@ -206,9 +206,11 @@ export function renderFavoritesGrid() {
         for (let i = 0; i < state.FAVS_PER_PAGE; i++) {
             const channel = pageFavs[i];
             const gridItem = document.createElement('div');
-            gridItem.className = 'grid-item stagger-reveal';
+            const isActive = channel && String(state.activeChannelId) === String(channel.id);
+            gridItem.className = `grid-item stagger-reveal ${isActive ? 'active' : ''}`;
             gridItem.style.animationDelay = `${(i % 5) * 0.04}s`;
             if (channel) {
+                gridItem.setAttribute('data-id', channel.id);
                 const epg = ext.getActiveEpg ? ext.getActiveEpg(channel.id) : null;
                 const epgText = epg ? epg.event : "Transmisión en vivo";
 
@@ -386,5 +388,62 @@ export function renderGridDots(totalPages) {
         dot.style.fontSize = '0.6rem';
         dot.style.color = 'rgba(255,255,255,0.4)';
         gridDots.appendChild(dot);
+    }
+}
+
+export function syncGridPageToActiveChannel(channelId) {
+    const id = channelId || state.activeChannelId;
+    if (!id) return;
+
+    if (state.activeDashTab !== "live") return;
+
+    const liveSearchInput = document.getElementById('live-landing-search');
+    const searchVal = liveSearchInput ? liveSearchInput.value.toLowerCase().trim() : "";
+
+    const selLanguage = document.getElementById('dash-filter-language')?.value || 'all';
+    const selGenre = document.getElementById('dash-filter-genre')?.value || 'all';
+    const selEvent = document.getElementById('dash-filter-event')?.value || 'all';
+
+    const allFavs = state.channels
+        .filter(c => ext.matchesOnboardingLanguages ? ext.matchesOnboardingLanguages(c) : true)
+        .filter(c => {
+            if (ext.isParentalTimeLocked && ext.isParentalTimeLocked()) {
+                const cats = (c.categories || []).map(cat => cat.toLowerCase());
+                return cats.includes('kids') || cats.includes('niños');
+            }
+            return true;
+        })
+        .filter(c => {
+            if (state.zapSourceTab === 'favorites') return c.favorite;
+            return true;
+        })
+        .filter(c => {
+            if (!searchVal) return true;
+            const nameLower = (c.name || "").toLowerCase();
+            const idStr = (c.id || "").toString().toLowerCase();
+            const epg = ext.getActiveEpg ? ext.getActiveEpg(c.id) : null;
+            const epgEvent = epg ? epg.event.toLowerCase() : "";
+            return nameLower.includes(searchVal) || idStr.includes(searchVal) || epgEvent.includes(searchVal);
+        })
+        .filter(c => {
+            const cats = c.categories || [];
+            if (selLanguage !== 'all' && !cats.includes(selLanguage)) return false;
+            if (selGenre !== 'all' && !cats.includes(selGenre)) return false;
+            if (selEvent !== 'all' && !cats.includes(selEvent)) return false;
+            return true;
+        });
+
+    if (state.zapSourceTab === 'favorites') {
+        allFavs.sort((a, b) => (b.watchTime || 0) - (a.watchTime || 0));
+    } else if (/^\d+$/.test(searchVal)) {
+        allFavs.sort((a, b) => parseInt(a.id) - parseInt(b.id));
+    }
+
+    const index = allFavs.findIndex(c => String(c.id) === String(id));
+    if (index !== -1) {
+        const targetPage = Math.floor(index / state.FAVS_PER_PAGE);
+        if (state.favPage !== targetPage) {
+            state.favPage = targetPage;
+        }
     }
 }
