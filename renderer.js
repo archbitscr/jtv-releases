@@ -4,7 +4,7 @@ import { initFailover } from './renderer/player/failover.js';
 import { initPlayerController, selectChannel, zapChannel, mountRemotePlayer, playVod, updatePlayerActiveState } from './renderer/player/playerController.js';
 import { initNavigation, showModule, showLiveLanding, switchTab, hideMenu } from './renderer/ui/navigation.js';
 import { initInactivity, startInactivityTimers } from './renderer/ui/inactivity.js';
-import { initChannelList, renderList } from './renderer/render/channelList.js';
+import { initChannelList, renderList, syncMenuScroll } from './renderer/render/channelList.js';
 import { initGuide, renderGuide } from './renderer/render/guide.js';
 import { initFavoritesGrid, renderFavoritesGrid } from './renderer/render/favoritesGrid.js';
 import { initRenderAll, renderAll } from './renderer/render/renderAll.js';
@@ -149,7 +149,8 @@ async function init() {
         updateTriggersVisibility,
         getFilteredChannelsList,
         updateWebviewPointerEvents,
-        updateHudChannelFilters
+        updateHudChannelFilters,
+        syncMenuScroll
     });
 
     // Initialize UI navigation dependencies
@@ -162,7 +163,8 @@ async function init() {
         refreshVodContent,
         updateTriggersVisibility,
         updateWebviewPointerEvents,
-        startInactivityTimers
+        startInactivityTimers,
+        syncMenuScroll
     });
 
     // Initialize inactivity timers dependencies

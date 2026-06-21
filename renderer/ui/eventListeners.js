@@ -2,6 +2,7 @@
 import { state } from '../state/appState.js';
 import { selectChannel, zapChannel, mountRemotePlayer, playVod, updatePlayerActiveState } from '../player/playerController.js';
 import { showModule, switchTab, showLiveLanding, hideMenu, hideEditPane } from '../ui/navigation.js';
+import { syncMenuScroll } from '../render/channelList.js';
 import { startInactivityTimers, clearInactivityTimers } from '../ui/inactivity.js';
 import { refreshVodContent, showVodDetails } from '../vod/vodContent.js';
 import { warmupVodCache } from '../vod/vodCache.js';
@@ -632,6 +633,9 @@ export function setupEventListeners() {
 
         mainMenu.classList.remove('hidden');
         startInactivityTimers();
+        setTimeout(() => {
+            syncMenuScroll(state.activeChannelId);
+        }, 50);
     };
 
     if (triggerBottom) {

@@ -39,6 +39,7 @@ export function renderList(container, list, highlightTerm = "") {
         const item = document.createElement('div');
         item.className = `channel-item stagger-reveal ${String(state.activeChannelId) === String(channel.id) ? 'active' : ''}`;
         item.style.animationDelay = `${Math.min(index * 0.015, 0.3)}s`;
+        item.setAttribute('data-id', channel.id);
 
         const epg = ext.getActiveEpg ? ext.getActiveEpg(channel.id) : null;
         const epgText = epg ? (epg.time ? `${epg.time} - ${epg.event}` : epg.event) : "Transmisión en vivo";
@@ -94,3 +95,20 @@ export function renderList(container, list, highlightTerm = "") {
         window.lucide.createIcons({ nodes: [container] });
     }
 }
+
+export function syncMenuScroll(channelId) {
+    const id = channelId || state.activeChannelId;
+    if (!id) return;
+    
+    const mainMenu = document.getElementById('main-menu');
+    if (!mainMenu || mainMenu.classList.contains('hidden')) return;
+
+    const items = document.querySelectorAll(`.channel-item[data-id="${id}"]`);
+    items.forEach(item => {
+        const pane = item.closest('.tab-pane');
+        if (pane && pane.classList.contains('active')) {
+            item.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }
+    });
+}
+
