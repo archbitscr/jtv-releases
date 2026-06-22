@@ -72,8 +72,8 @@ export function signalRestored() {
 
 function scheduleNextCycle(channelId) {
     let delayMs;
-    if (retryCount === 0) delayMs = 60000;
-    else if (retryCount < 5) delayMs = 180000;
+    if (retryCount < 3) delayMs = 60000;
+    else if (retryCount < 7) delayMs = 180000;
     else delayMs = 300000;
 
     const minutes = Math.round(delayMs / 60000);
