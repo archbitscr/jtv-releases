@@ -11,9 +11,44 @@ export function initFailover({ selectChannel, mountRemotePlayer, updateSourceSwi
 }
 
 let streamRetried = false;
+let retryTimeoutId = null;
+let retryCount = 0;
 
 export function resetFailoverState() {
     streamRetried = false;
+}
+
+export function startNoSignalRetryLoop(channelId) {
+    stopNoSignalRetryLoop();
+    retryCount = 0;
+    scheduleNextRetry(channelId);
+}
+
+export function stopNoSignalRetryLoop() {
+    if (retryTimeoutId) { clearTimeout(retryTimeoutId); retryTimeoutId = null; }
+    retryCount = 0;
+}
+
+function scheduleNextRetry(channelId) {
+    let delayMs;
+    if (retryCount === 0) delayMs = 60000;
+    else if (retryCount < 5) delayMs = 180000;
+    else delayMs = 300000;
+
+    const minutes = Math.round(delayMs / 60000);
+    const statusEl = document.getElementById('no-signal-retry-status');
+    if (statusEl) statusEl.textContent = `Reintentando en ${minutes} minuto${minutes > 1 ? 's' : ''}...`;
+
+    retryTimeoutId = setTimeout(() => {
+        retryTimeoutId = null;
+        retryCount++;
+        const channel = state.channels?.find(c => c.id === channelId);
+        if (!channel) return;
+        const statusEl2 = document.getElementById('no-signal-retry-status');
+        if (statusEl2) statusEl2.textContent = 'Verificando señal...';
+        showNoSignalOverlay(false);
+        triggerFailover(0);
+    }, delayMs);
 }
 
 export function showNoSignalOverlay(show, message = "") {
@@ -119,6 +154,7 @@ export async function triggerFailover(delayMs = null) {
             if (playerContainer) playerContainer.innerHTML = '';
             
             showNoSignalOverlay(true, "No se pudo sintonizar el canal en ninguna fuente disponible.");
+            startNoSignalRetryLoop(state.activeChannelId);
         } finally {
             clearTimeout(safetyReset);
             state.failoverInProgress = false;

@@ -24,7 +24,7 @@ import { renderAll, renderSettingsFilters } from '../render/renderAll.js';
 import { processLogo } from '../utils/domHelpers.js';
 import { renderChannelFiltersManager, removeFilterFromChannel, bindAddFilterToChannel } from '../filters/filterManager.js';
 import { selectAssignerChannelMultiple, renderAssignerChannelsList, renderAssignerEvents, initEventAssigner } from '../filters/filterAssigner.js';
-import { showNoSignalOverlay, triggerFailover } from '../player/failover.js';
+import { showNoSignalOverlay, triggerFailover, stopNoSignalRetryLoop } from '../player/failover.js';
 import { updateSourceSwitcherUI } from '../player/sourceSwitcher.js';
 import { renderVodControls, renderFavoritesGrid, toggleVodFavorite, getCurrentVodPageIndex, setCurrentVodPageIndex, getVodYear, getVodRatingNumber, getFilteredLiveChannels } from '../render/favoritesGrid.js';
 import { updateDeveloperUI } from '../../developerModule.js';
@@ -1638,6 +1638,7 @@ export function setupEventListeners() {
         btn.onclick = () => {
             if (state.failoverTimeoutId) clearTimeout(state.failoverTimeoutId);
             state.failoverInProgress = false;
+            stopNoSignalRetryLoop();
             showNoSignalOverlay(false);
 
             state.playerSource = btn.dataset.source;

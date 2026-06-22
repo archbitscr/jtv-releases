@@ -2,7 +2,7 @@ import { state } from '../state/appState.js';
 import { sanitizeRemoteUrl } from '../utils/sanitize.js';
 import { getSafeLogoHtml } from '../utils/domHelpers.js';
 import { stopWatchTimer } from './watchTimer.js';
-import { triggerFailover, showNoSignalOverlay, resetFailoverState } from './failover.js';
+import { triggerFailover, showNoSignalOverlay, resetFailoverState, stopNoSignalRetryLoop } from './failover.js';
 
 let ext = {};
 
@@ -175,6 +175,7 @@ export function mountRemotePlayer(url) {
                     state.failoverTimeoutId = null;
                 }
                 state.failoverInProgress = false;
+                stopNoSignalRetryLoop();
                 showNoSignalOverlay(false);
             }
         }
@@ -320,6 +321,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     // Reset failover state
     if (state.failoverTimeoutId) clearTimeout(state.failoverTimeoutId);
     state.failoverInProgress = false;
+    stopNoSignalRetryLoop();
     showNoSignalOverlay(false);
     if (resetSource) {
         resetFailoverState();
