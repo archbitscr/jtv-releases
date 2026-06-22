@@ -44,6 +44,24 @@
         <main id="tv-screen">
             <div id="video-container">
                 <div id="player-container"></div>
+                
+                <!-- No Signal Screen -->
+                <div id="no-signal-overlay" class="resolution-blocker hidden" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 500; background: rgba(0,0,0,0.85);">
+                    <div class="blocker-content glass-card" style="border: 1px solid rgba(255, 74, 74, 0.3); text-align: center;">
+                        <i data-lucide="tv-2" style="width: 64px; height: 64px; color: #ff4a4a; margin: 0 auto 20px auto; display: block;"></i>
+                        <h2>Sin Señal</h2>
+                        <p id="no-signal-message">No se pudo sintonizar el canal en ninguna fuente disponible.</p>
+                        <div id="no-signal-retry-status" style="margin-top: 16px; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <p id="no-signal-retry-text" style="font-size: 0.85em; opacity: 0.5;">Esperando a que la señal se restablezca...</p>
+                            <div style="display: flex; gap: 6px; align-items: center;">
+                                <span class="retry-dot"></span>
+                                <span class="retry-dot"></span>
+                                <span class="retry-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Black masks to hide border artifacts/symbols from webview -->
                 <div class="edge-mask left"></div>
                 <div class="edge-mask right"></div>
@@ -1115,23 +1133,6 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                 <p>Su período de prueba de 3 días para JTV ha terminado.</p>
                 <p>Por favor, adquiera una licencia o inicie sesión para continuar utilizando la aplicación.</p>
                 <button id="trial-close-app-btn" class="primary-btn" style="margin: 20px auto 0 auto; display: block;">Cerrar Aplicación</button>
-            </div>
-        </div>
-
-        <!-- No Signal Screen -->
-        <div id="no-signal-overlay" class="resolution-blocker hidden" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: rgba(0,0,0,0.85); pointer-events: none;">
-            <div class="blocker-content glass-card" style="border: 1px solid rgba(255, 74, 74, 0.3); text-align: center; pointer-events: auto;">
-                <i data-lucide="tv-2" style="width: 64px; height: 64px; color: #ff4a4a; margin: 0 auto 20px auto; display: block;"></i>
-                <h2>Sin Señal</h2>
-                <p id="no-signal-message">No se pudo sintonizar el canal en ninguna fuente disponible.</p>
-                <div id="no-signal-retry-status" style="margin-top: 16px; display: flex; flex-direction: column; align-items: center; gap: 10px;">
-                    <p id="no-signal-retry-text" style="font-size: 0.85em; opacity: 0.5;">Esperando a que la señal se restablezca...</p>
-                    <div style="display: flex; gap: 6px; align-items: center;">
-                        <span class="retry-dot"></span>
-                        <span class="retry-dot"></span>
-                        <span class="retry-dot"></span>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
