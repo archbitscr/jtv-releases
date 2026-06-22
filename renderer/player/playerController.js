@@ -309,12 +309,12 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
         return;
     }
 
-    // Reset failover state
-    if (state.failoverTimeoutId) clearTimeout(state.failoverTimeoutId);
-    state.failoverInProgress = false;
-    stopNoSignalRetryLoop();
-    if (!state.failoverInProgress) showNoSignalOverlay(false);
+    // Reset failover state only on manual channel changes (not during failover cycle)
     if (resetSource) {
+        if (state.failoverTimeoutId) clearTimeout(state.failoverTimeoutId);
+        state.failoverInProgress = false;
+        stopNoSignalRetryLoop();
+        showNoSignalOverlay(false);
         resetFailoverState();
     }
 
