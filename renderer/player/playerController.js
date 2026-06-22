@@ -74,6 +74,23 @@ export function mountRemotePlayer(url) {
         triggerFailover(0);
     });
 
+    // HTTP error detected by main process (e.g. 404 page served successfully by server)
+    if (nativeApi.onWebviewHttpError) {
+        nativeApi.onWebviewHttpError(({ statusCode, url }) => {
+            nativeApi.logRenderer(`[Player Watchdog] HTTP ${statusCode} detected in webview: ${url}. Triggering failover.`);
+            if (!state.failoverInProgress) triggerFailover(0);
+        });
+    }
+
+    // Network-level load failure detected by main process
+    if (nativeApi.onWebviewLoadFailed) {
+        nativeApi.onWebviewLoadFailed(({ errorCode, errorDescription, url }) => {
+            if (errorCode === -3) return;
+            nativeApi.logRenderer(`[Player Watchdog] Load failed (${errorCode}: ${errorDescription}) in: ${url}. Triggering failover.`);
+            if (!state.failoverInProgress) triggerFailover(0);
+        });
+    }
+
     webview.addEventListener('ipc-message', (event) => {
         if (event.channel === 'guest-frozen') {
             nativeApi.logRenderer(`[Player Watchdog] guest-frozen signal received!`);
