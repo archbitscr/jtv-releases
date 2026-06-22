@@ -113,10 +113,11 @@ export async function triggerFailover(delayMs = null) {
             state.playerSource = "stream";
             streamRetried = false;
             updateSourceSwitcherUIFn("stream");
-            const channel = state.channels.find(c => c.id === state.activeChannelId);
-            if (channel) {
-                selectChannelFn(channel, false);
-            }
+            
+            // Destruir la webview activa limpiando el contenedor del player
+            const playerContainer = document.getElementById('player-container');
+            if (playerContainer) playerContainer.innerHTML = '';
+            
             showNoSignalOverlay(true, "No se pudo sintonizar el canal en ninguna fuente disponible.");
         } finally {
             clearTimeout(safetyReset);
