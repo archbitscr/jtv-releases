@@ -48,7 +48,14 @@
                 <!-- No Signal Screen -->
                 <div id="no-signal-overlay" class="resolution-blocker hidden" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 500; background: rgba(0,0,0,0.85);">
                     <div class="blocker-content glass-card" style="border: 1px solid rgba(255, 74, 74, 0.3); text-align: center;">
-                        <i data-lucide="tv-2" style="width: 64px; height: 64px; color: #ff4a4a; margin: 0 auto 20px auto; display: block;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="width:64px;height:64px;margin:0 auto 20px auto;display:block;" fill="#ff4a4a">
+                          <path d="M50 65 a6 6 0 1 0 0.001 0Z"/>
+                          <path d="M27 47 a32 32 0 0 1 46 0" stroke="#ff4a4a" stroke-width="7" fill="none" stroke-linecap="round"/>
+                          <path d="M37 57 a18 18 0 0 1 26 0" stroke="#ff4a4a" stroke-width="7" fill="none" stroke-linecap="round"/>
+                          <line x1="50" y1="20" x2="50" y2="45" stroke="#ff4a4a" stroke-width="7" stroke-linecap="round"/>
+                          <line x1="50" y1="50" x2="50" y2="52" stroke="#ff4a4a" stroke-width="7" stroke-linecap="round"/>
+                          <line x1="15" y1="15" x2="85" y2="85" stroke="#ff4a4a" stroke-width="7" stroke-linecap="round"/>
+                        </svg>
                         <h2>Sin Señal</h2>
                         <p id="no-signal-message">No se pudo sintonizar el canal en ninguna fuente disponible.</p>
                         <div id="no-signal-retry-status" style="margin-top: 16px; display: flex; flex-direction: column; align-items: center; gap: 10px;">

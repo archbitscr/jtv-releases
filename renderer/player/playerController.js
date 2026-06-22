@@ -59,7 +59,7 @@ export function mountRemotePlayer(url) {
         initialLoadTimeout = null;
         if (!hasStartedPlaying && !state.failoverInProgress) {
             nativeApi.logRenderer('[Player Watchdog] Initial load timeout: no playback detected. Triggering failover.');
-            triggerFailover(0);
+            triggerFailover();
         }
     }, 15000);
 
@@ -87,7 +87,7 @@ export function mountRemotePlayer(url) {
     webview.addEventListener('did-fail-load', (e) => {
         if (e.errorCode === -3) return; // ignore aborts
         nativeApi.logRenderer(`Webview load failed: ${e.errorDescription} (${e.errorCode}). Triggering instant failover.`);
-        triggerFailover(0);
+        triggerFailover();
     });
 
     if (unsubscribeHttpError) { unsubscribeHttpError(); unsubscribeHttpError = null; }
@@ -97,7 +97,7 @@ export function mountRemotePlayer(url) {
     if (nativeApi.onWebviewHttpError) {
         unsubscribeHttpError = nativeApi.onWebviewHttpError(({ statusCode, url }) => {
             nativeApi.logRenderer(`[Player Watchdog] HTTP ${statusCode} detected in webview: ${url}. Triggering failover.`);
-            if (!state.failoverInProgress) triggerFailover(0);
+            if (!state.failoverInProgress) triggerFailover();
         });
     }
 
@@ -106,7 +106,7 @@ export function mountRemotePlayer(url) {
         unsubscribeLoadFailed = nativeApi.onWebviewLoadFailed(({ errorCode, errorDescription, url }) => {
             if (errorCode === -3) return;
             nativeApi.logRenderer(`[Player Watchdog] Load failed (${errorCode}: ${errorDescription}) in: ${url}. Triggering failover.`);
-            if (!state.failoverInProgress) triggerFailover(0);
+            if (!state.failoverInProgress) triggerFailover();
         });
     }
 
@@ -168,16 +168,13 @@ export function mountRemotePlayer(url) {
                 }, 2000);
             }
 
-            if (state.failoverInProgress || state.failoverTimeoutId) {
-                nativeApi.logRenderer(`[Player Watchdog] guest-playing signal received. Cancelling pending failover.`);
-                if (state.failoverTimeoutId) {
-                    clearTimeout(state.failoverTimeoutId);
-                    state.failoverTimeoutId = null;
-                }
-                state.failoverInProgress = false;
-                stopNoSignalRetryLoop();
-                showNoSignalOverlay(false);
+            if (state.failoverTimeoutId) {
+                clearTimeout(state.failoverTimeoutId);
+                state.failoverTimeoutId = null;
             }
+            state.failoverInProgress = false;
+            stopNoSignalRetryLoop();
+            showNoSignalOverlay(false);
         }
     });
 

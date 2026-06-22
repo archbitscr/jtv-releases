@@ -10,46 +10,18 @@ export function initFailover({ selectChannel, mountRemotePlayer, updateSourceSwi
     updateSourceSwitcherUIFn = updateSourceSwitcherUI;
 }
 
-let streamRetried = false;
+// --- State ---
 let retryTimeoutId = null;
-let retryCount = 0;
+let retryCount = 0;         // number of full source cycles completed
+let cycleInProgress = false; // true while iterating sources
 
 export function resetFailoverState() {
-    streamRetried = false;
-}
-
-export function startNoSignalRetryLoop(channelId) {
+    // called on manual channel change — resets everything
+    cycleInProgress = false;
     stopNoSignalRetryLoop();
-    retryCount = 0;
-    scheduleNextRetry(channelId);
 }
 
-export function stopNoSignalRetryLoop() {
-    if (retryTimeoutId) { clearTimeout(retryTimeoutId); retryTimeoutId = null; }
-    retryCount = 0;
-}
-
-function scheduleNextRetry(channelId) {
-    let delayMs;
-    if (retryCount === 0) delayMs = 60000;
-    else if (retryCount < 5) delayMs = 180000;
-    else delayMs = 300000;
-
-    const minutes = Math.round(delayMs / 60000);
-    const statusEl = document.getElementById('no-signal-retry-text');
-    if (statusEl) statusEl.textContent = `Reintentando en ${minutes} minuto${minutes > 1 ? 's' : ''}...`;
-
-    retryTimeoutId = setTimeout(() => {
-        retryTimeoutId = null;
-        retryCount++;
-        const channel = state.channels?.find(c => c.id === channelId);
-        if (!channel) return;
-        const statusEl2 = document.getElementById('no-signal-retry-text');
-        if (statusEl2) statusEl2.textContent = 'Verificando señal...';
-        triggerFailover(0);
-    }, delayMs);
-}
-
+// --- Overlay UI ---
 export function showNoSignalOverlay(show, message = "") {
     const overlay = document.getElementById('no-signal-overlay');
     const msgEl = document.getElementById('no-signal-message');
@@ -57,16 +29,15 @@ export function showNoSignalOverlay(show, message = "") {
     if (show) {
         overlay.classList.remove('hidden');
         if (msgEl && message) msgEl.textContent = message;
-        
-        // Force indicators to inactive when signal is lost
         const audioIndicator = document.getElementById('hud-indicator-audio');
         const videoIndicator = document.getElementById('hud-indicator-video');
-        if (audioIndicator && videoIndicator) {
+        if (audioIndicator) {
             audioIndicator.style.color = 'rgba(255,255,255,0.25)';
             audioIndicator.classList.remove('active');
             audioIndicator.classList.add('inactive');
             audioIndicator.setAttribute('title', 'Autotune Audio: Inactivo');
-
+        }
+        if (videoIndicator) {
             videoIndicator.style.color = 'rgba(255,255,255,0.25)';
             videoIndicator.classList.remove('active');
             videoIndicator.classList.add('inactive');
@@ -77,85 +48,119 @@ export function showNoSignalOverlay(show, message = "") {
     }
 }
 
-function resumeFailoverOnce() {
-    window.removeEventListener('online', resumeFailoverOnce);
-    showNoSignalOverlay(false);
-    triggerFailover();
+function setRetryText(text) {
+    const el = document.getElementById('no-signal-retry-text');
+    if (el) el.textContent = text;
 }
 
-export async function triggerFailover(delayMs = null) {
-    if (state.failoverInProgress) return;
+// --- Retry loop (called after each exhausted cycle) ---
+export function stopNoSignalRetryLoop() {
+    if (retryTimeoutId) { clearTimeout(retryTimeoutId); retryTimeoutId = null; }
+    retryCount = 0;
+}
+
+function scheduleNextCycle(channelId) {
+    let delayMs;
+    if (retryCount === 0) delayMs = 60000;
+    else if (retryCount < 5) delayMs = 180000;
+    else delayMs = 300000;
+
+    const minutes = Math.round(delayMs / 60000);
+    setRetryText(`Reintentando en ${minutes} minuto${minutes > 1 ? 's' : ''}...`);
+
+    retryTimeoutId = setTimeout(() => {
+        retryTimeoutId = null;
+        retryCount++;
+        const channel = state.channels?.find(c => c.id === channelId);
+        if (!channel) return;
+        setRetryText('Buscando fuentes alternas...');
+        runFailoverCycle(channelId);
+    }, delayMs);
+}
+
+// --- Core cycle: iterate all 6 sources sequentially ---
+const SOURCES = ['stream', 'watch', 'player', 'plus', 'cast', 'casting'];
+
+function runFailoverCycle(channelId) {
+    if (cycleInProgress) return;
+    cycleInProgress = true;
     state.failoverInProgress = true;
-    const safetyReset = setTimeout(() => { state.failoverInProgress = false; }, 30000);
+
+    // Show overlay immediately on first cycle
+    showNoSignalOverlay(true, 'Sin señal');
+    setRetryText('Buscando fuentes alternas...');
+
+    const cfg = window.timeoutsConfig || {};
+    const nativeApi = window.jtvAPI;
+
+    let sourceIndex = 0;
+
+    function tryNextSource() {
+        if (sourceIndex >= SOURCES.length) {
+            // All sources exhausted
+            cycleInProgress = false;
+            state.failoverInProgress = false;
+            state.playerSource = 'stream';
+            updateSourceSwitcherUIFn('stream');
+            const playerContainer = document.getElementById('player-container');
+            if (playerContainer) playerContainer.innerHTML = '';
+            nativeApi.logRenderer('Failover: all sources exhausted.');
+            scheduleNextCycle(channelId);
+            return;
+        }
+
+        const source = SOURCES[sourceIndex];
+        sourceIndex++;
+
+        const waitTime = source === 'stream'
+            ? (cfg.failoverMainEnabled ? cfg.failoverMain : 4000)
+            : (cfg.failoverAltEnabled ? cfg.failoverAlt : 3000);
+
+        nativeApi.logRenderer(`Failover: trying source "${source}" in ${waitTime}ms`);
+
+        state.playerSource = source;
+        updateSourceSwitcherUIFn(source);
+
+        const channel = state.channels?.find(c => c.id === channelId);
+        if (!channel) {
+            cycleInProgress = false;
+            state.failoverInProgress = false;
+            return;
+        }
+
+        selectChannelFn(channel, false);
+
+        // Wait for this source to either play or timeout, then try next
+        state.failoverTimeoutId = setTimeout(() => {
+            state.failoverTimeoutId = null;
+            // If still in cycle (no guest-playing received), try next source
+            if (cycleInProgress) tryNextSource();
+        }, waitTime + 15000); // waitTime to load + 15s for initial load timeout
+    }
+
+    tryNextSource();
+}
+
+// --- Public entry point (called by watchdog triggers) ---
+export function triggerFailover() {
+    if (cycleInProgress || retryTimeoutId) return;
 
     const nativeApi = window.jtvAPI;
 
     if (!navigator.onLine) {
-        nativeApi.logRenderer("Failover paused: No internet connection");
-        showNoSignalOverlay(true, "Sin conexión a Internet. Conéctate para continuar.");
-        clearTimeout(safetyReset);
-        state.failoverInProgress = false;
+        nativeApi.logRenderer('Failover paused: No internet connection');
+        showNoSignalOverlay(true, 'Sin conexión a Internet. Conéctate para continuar.');
+        setRetryText('');
         window.addEventListener('online', resumeFailoverOnce);
         return;
     }
 
-    const sources = ['stream', 'watch', 'player', 'plus', 'cast', 'casting'];
-    const currentIdx = sources.indexOf(state.playerSource);
-    
-    let nextSource;
-    if (state.playerSource === 'stream' && !streamRetried) {
-        streamRetried = true;
-        nextSource = 'stream';
-    } else {
-        nextSource = sources[currentIdx + 1];
-    }
-    
-    if (nextSource) {
-        const cfg = window.timeoutsConfig || {};
-        let waitTime = 3000;
-        if (delayMs !== null) {
-            waitTime = delayMs;
-        } else {
-            if (nextSource === 'stream') {
-                waitTime = cfg.failoverMainEnabled ? cfg.failoverMain : 0;
-            } else {
-                waitTime = cfg.failoverAltEnabled ? cfg.failoverAlt : 0;
-            }
-        }
-        
-        nativeApi.logRenderer(`Watchdog: Switching source from "${state.playerSource}" to "${nextSource}" in ${waitTime}ms${nextSource === 'stream' ? ' (Retry)' : ''}`);
-        
-        if (state.failoverTimeoutId) clearTimeout(state.failoverTimeoutId);
-        
-        state.failoverTimeoutId = setTimeout(() => {
-            try {
-                state.playerSource = nextSource;
-                updateSourceSwitcherUIFn(state.playerSource);
-                const channel = state.channels.find(c => c.id === state.activeChannelId);
-                if (channel) {
-                    selectChannelFn(channel, false);
-                }
-            } finally {
-                clearTimeout(safetyReset);
-                state.failoverInProgress = false;
-            }
-        }, waitTime);
-    } else {
-        try {
-            nativeApi.logRenderer("Failover: Exhausted all sources. Returning to stream and showing Sin Señal.");
-            state.playerSource = "stream";
-            streamRetried = false;
-            updateSourceSwitcherUIFn("stream");
-            
-            // Destruir la webview activa limpiando el contenedor del player
-            const playerContainer = document.getElementById('player-container');
-            if (playerContainer) playerContainer.innerHTML = '';
-            
-            showNoSignalOverlay(true, "No se pudo sintonizar el canal en ninguna fuente disponible.");
-            startNoSignalRetryLoop(state.activeChannelId);
-        } finally {
-            clearTimeout(safetyReset);
-            state.failoverInProgress = false;
-        }
-    }
+    const channelId = state.activeChannelId;
+    runFailoverCycle(channelId);
+}
+
+function resumeFailoverOnce() {
+    window.removeEventListener('online', resumeFailoverOnce);
+    showNoSignalOverlay(false);
+    triggerFailover();
 }
