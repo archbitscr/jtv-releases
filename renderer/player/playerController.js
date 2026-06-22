@@ -10,6 +10,8 @@ let hasStartedPlaying = false;
 let silenceCheckInterval = null;
 let consecutiveSilenceStart = 0;
 let freezeGraceTimeout = null;
+let unsubscribeHttpError = null;
+let unsubscribeLoadFailed = null;
 
 export function resetAntiBlackScreen() {
     hasStartedPlaying = false;
@@ -74,9 +76,12 @@ export function mountRemotePlayer(url) {
         triggerFailover(0);
     });
 
+    if (unsubscribeHttpError) { unsubscribeHttpError(); unsubscribeHttpError = null; }
+    if (unsubscribeLoadFailed) { unsubscribeLoadFailed(); unsubscribeLoadFailed = null; }
+
     // HTTP error detected by main process (e.g. 404 page served successfully by server)
     if (nativeApi.onWebviewHttpError) {
-        nativeApi.onWebviewHttpError(({ statusCode, url }) => {
+        unsubscribeHttpError = nativeApi.onWebviewHttpError(({ statusCode, url }) => {
             nativeApi.logRenderer(`[Player Watchdog] HTTP ${statusCode} detected in webview: ${url}. Triggering failover.`);
             if (!state.failoverInProgress) triggerFailover(0);
         });
@@ -84,7 +89,7 @@ export function mountRemotePlayer(url) {
 
     // Network-level load failure detected by main process
     if (nativeApi.onWebviewLoadFailed) {
-        nativeApi.onWebviewLoadFailed(({ errorCode, errorDescription, url }) => {
+        unsubscribeLoadFailed = nativeApi.onWebviewLoadFailed(({ errorCode, errorDescription, url }) => {
             if (errorCode === -3) return;
             nativeApi.logRenderer(`[Player Watchdog] Load failed (${errorCode}: ${errorDescription}) in: ${url}. Triggering failover.`);
             if (!state.failoverInProgress) triggerFailover(0);
