@@ -3,6 +3,8 @@ import { escapeHtml } from '../utils/sanitize.js';
 import { highlightText } from '../utils/domHelpers.js';
 import { sanitizeIconName } from '../utils/sanitize.js';
 import { sortCategories } from './filterManager.js';
+import { saveChannelsAndFilters } from '../services/stateManager.js';
+import { renderSettingsFilters } from '../render/renderAll.js';
 
 window.assignerActiveTab = 'events';
 window.assignerSelectedFilters = new Set();
@@ -134,8 +136,8 @@ export function initEventAssigner() {
             if (window.setChannels) {
                 window.setChannels(channels);
             }
-            await window.saveAppState();
-            window.renderAll();
+            await saveChannelsAndFilters();
+            renderSettingsFilters();
             
             // Refresh selection view
             selectAssignerChannelMultiple();
@@ -413,8 +415,8 @@ export function renderAssignerEvents() {
                 if (window.setChannels) {
                     window.setChannels(channels);
                 }
-                await window.saveAppState();
-                window.renderAll();
+                await saveChannelsAndFilters();
+                renderSettingsFilters();
 
                 selectAssignerChannelMultiple();
             }
