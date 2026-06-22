@@ -59,6 +59,17 @@ export function stopNoSignalRetryLoop() {
     retryCount = 0;
 }
 
+export function signalRestored() {
+    cycleInProgress = false;
+    stopNoSignalRetryLoop();
+    if (state.failoverTimeoutId) {
+        clearTimeout(state.failoverTimeoutId);
+        state.failoverTimeoutId = null;
+    }
+    state.failoverInProgress = false;
+    showNoSignalOverlay(false);
+}
+
 function scheduleNextCycle(channelId) {
     let delayMs;
     if (retryCount === 0) delayMs = 60000;

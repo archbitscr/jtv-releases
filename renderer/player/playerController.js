@@ -2,7 +2,7 @@ import { state } from '../state/appState.js';
 import { sanitizeRemoteUrl } from '../utils/sanitize.js';
 import { getSafeLogoHtml } from '../utils/domHelpers.js';
 import { stopWatchTimer } from './watchTimer.js';
-import { triggerFailover, showNoSignalOverlay, resetFailoverState, stopNoSignalRetryLoop } from './failover.js';
+import { triggerFailover, showNoSignalOverlay, resetFailoverState, stopNoSignalRetryLoop, signalRestored } from './failover.js';
 
 let ext = {};
 
@@ -168,13 +168,7 @@ export function mountRemotePlayer(url) {
                 }, 2000);
             }
 
-            if (state.failoverTimeoutId) {
-                clearTimeout(state.failoverTimeoutId);
-                state.failoverTimeoutId = null;
-            }
-            state.failoverInProgress = false;
-            stopNoSignalRetryLoop();
-            showNoSignalOverlay(false);
+            signalRestored();
         }
     });
 
