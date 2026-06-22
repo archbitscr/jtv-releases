@@ -5307,7 +5307,7 @@ body:has(#resolution-blocker:not(.hidden)) #player-container {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: rgba(255, 74, 74, 0.6);
+    background: rgba(255, 255, 255, 0.6);
     animation: retryPulse 1.2s ease-in-out infinite;
 }
 .retry-dot:nth-child(2) { animation-delay: 0.2s; }
