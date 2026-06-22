@@ -178,7 +178,7 @@ body.player-active .edge-mask {
 /* Menu Hover Triggers */
 .hover-trigger {
     position: absolute;
-    z-index: 101;
+    z-index: 600;
     background: transparent;
 }
 
