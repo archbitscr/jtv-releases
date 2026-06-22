@@ -22,9 +22,13 @@ export function resetFailoverState() {
 }
 
 // --- Overlay UI ---
-export function showNoSignalOverlay(show) {
+export function showNoSignalOverlay(show, type = 'signal') {
     const overlay = document.getElementById('no-signal-overlay');
     if (!overlay) return;
+    const icon = document.getElementById('no-signal-icon');
+    if (icon) {
+        icon.src = type === 'internet' ? './assets/no-internet.png' : './assets/no-signal.png';
+    }
     if (show) {
         overlay.classList.remove('hidden');
         const audioIndicator = document.getElementById('hud-indicator-audio');
@@ -159,8 +163,8 @@ export function triggerFailover() {
 
     if (!navigator.onLine) {
         nativeApi.logRenderer('Failover paused: No internet connection');
-        showNoSignalOverlay(true);
-        setRetryText('');
+        showNoSignalOverlay(true, 'internet');
+        setRetryText('Sin conexión a Internet. Conéctate para continuar.');
         window.addEventListener('online', resumeFailoverOnce);
         return;
     }
