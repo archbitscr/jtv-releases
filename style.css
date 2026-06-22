@@ -5302,3 +5302,17 @@ body:has(#resolution-blocker:not(.hidden)) #player-container {
 .filter-icon-dropdown:hover::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.25) !important;
 }
+
+.retry-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 74, 74, 0.6);
+    animation: retryPulse 1.2s ease-in-out infinite;
+}
+.retry-dot:nth-child(2) { animation-delay: 0.2s; }
+.retry-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes retryPulse {
+    0%, 80%, 100% { transform: scale(0.7); opacity: 0.4; }
+    40% { transform: scale(1); opacity: 1; }
+}

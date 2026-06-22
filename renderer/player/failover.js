@@ -36,7 +36,7 @@ function scheduleNextRetry(channelId) {
     else delayMs = 300000;
 
     const minutes = Math.round(delayMs / 60000);
-    const statusEl = document.getElementById('no-signal-retry-status');
+    const statusEl = document.getElementById('no-signal-retry-text');
     if (statusEl) statusEl.textContent = `Reintentando en ${minutes} minuto${minutes > 1 ? 's' : ''}...`;
 
     retryTimeoutId = setTimeout(() => {
@@ -44,9 +44,8 @@ function scheduleNextRetry(channelId) {
         retryCount++;
         const channel = state.channels?.find(c => c.id === channelId);
         if (!channel) return;
-        const statusEl2 = document.getElementById('no-signal-retry-status');
+        const statusEl2 = document.getElementById('no-signal-retry-text');
         if (statusEl2) statusEl2.textContent = 'Verificando señal...';
-        showNoSignalOverlay(false);
         triggerFailover(0);
     }, delayMs);
 }
@@ -125,7 +124,6 @@ export async function triggerFailover(delayMs = null) {
         }
         
         nativeApi.logRenderer(`Watchdog: Switching source from "${state.playerSource}" to "${nextSource}" in ${waitTime}ms${nextSource === 'stream' ? ' (Retry)' : ''}`);
-        showNoSignalOverlay(false);
         
         if (state.failoverTimeoutId) clearTimeout(state.failoverTimeoutId);
         
