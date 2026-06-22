@@ -81,6 +81,7 @@ export function mountRemotePlayer(url) {
                 if (!state.failoverInProgress) triggerFailover();
             } else {
                 if (freezeGraceTimeout) clearTimeout(freezeGraceTimeout);
+                const freezeDelay = (window.timeoutsConfig?.watchdogFreezeEnabled !== false) ? (window.timeoutsConfig?.watchdogFreeze ?? 4000) : 4000;
                 freezeGraceTimeout = setTimeout(async () => {
                     freezeGraceTimeout = null;
                     if (state.failoverInProgress) return;
@@ -92,7 +93,7 @@ export function mountRemotePlayer(url) {
                         nativeApi.logRenderer(`[Player Watchdog] guest-frozen confirmed: No audio detected. Triggering failover.`);
                         if (!state.failoverInProgress) triggerFailover();
                     }
-                }, 4000);
+                }, freezeDelay);
             }
         } else if (event.channel === 'guest-playing') {
             if (freezeGraceTimeout) {
@@ -108,6 +109,7 @@ export function mountRemotePlayer(url) {
                 if (silenceCheckInterval) clearInterval(silenceCheckInterval);
                 consecutiveSilenceStart = 0;
                 silenceCheckInterval = setInterval(async () => {
+                    const silenceThreshold = window.timeoutsConfig?.watchdogSilence ?? 10000;
                     if (state.failoverInProgress) return;
                     
                     const isAudible = await nativeApi.isCurrentlyAudible();
@@ -120,8 +122,8 @@ export function mountRemotePlayer(url) {
                             consecutiveSilenceStart = Date.now();
                         } else {
                             const silenceDuration = Date.now() - consecutiveSilenceStart;
-                            if (silenceDuration >= 10000) {
-                                nativeApi.logRenderer(`[Player Watchdog] 10s of sustained silence detected. Triggering failover.`);
+                            if (silenceDuration >= silenceThreshold) {
+                                nativeApi.logRenderer(`[Player Watchdog] ${(silenceThreshold / 1000).toFixed(0)}s of sustained silence detected. Triggering failover.`);
                                 resetAntiBlackScreen();
                                 if (!state.failoverInProgress) triggerFailover();
                             }
