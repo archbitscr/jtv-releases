@@ -12,6 +12,7 @@ let consecutiveSilenceStart = 0;
 let freezeGraceTimeout = null;
 let unsubscribeHttpError = null;
 let unsubscribeLoadFailed = null;
+let initialLoadTimeout = null;
 
 export function resetAntiBlackScreen() {
     hasStartedPlaying = false;
@@ -22,6 +23,10 @@ export function resetAntiBlackScreen() {
     if (freezeGraceTimeout) {
         clearTimeout(freezeGraceTimeout);
         freezeGraceTimeout = null;
+    }
+    if (initialLoadTimeout) {
+        clearTimeout(initialLoadTimeout);
+        initialLoadTimeout = null;
     }
     consecutiveSilenceStart = 0;
 }
@@ -48,6 +53,15 @@ export function mountRemotePlayer(url) {
     playerContainer.innerHTML = '';
     
     resetAntiBlackScreen();
+
+    if (initialLoadTimeout) clearTimeout(initialLoadTimeout);
+    initialLoadTimeout = setTimeout(() => {
+        initialLoadTimeout = null;
+        if (!hasStartedPlaying && !state.failoverInProgress) {
+            nativeApi.logRenderer('[Player Watchdog] Initial load timeout: no playback detected. Triggering failover.');
+            triggerFailover(0);
+        }
+    }, 15000);
 
     const webview = document.createElement('webview');
     webview.id = 'player-webview';
