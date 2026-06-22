@@ -86,7 +86,9 @@ export function startInactivityTimers() {
     // 5. Hide Cursor
     const cursorEnabled = hasChannel ? cfg.cursorActiveEnabled : cfg.cursorInactiveEnabled;
     if (cursorEnabled) {
-        const cursorDelay = hasChannel ? cfg.cursorActive : cfg.cursorInactive;
+        const rawCursorDelay = hasChannel ? cfg.cursorActive : cfg.cursorInactive;
+        const zappingDelay = (cfg.zappingHUDEnabled && sourceSwitcher && !sourceSwitcher.classList.contains('hidden')) ? (cfg.zappingHUD || 0) : 0;
+        const cursorDelay = Math.max(rawCursorDelay, zappingDelay + 100);
         timeouts.set('cursor', () => {
             if (!state.isHomeActive && mainMenu && mainMenu.classList.contains('hidden') && (!sourceSwitcher || sourceSwitcher.classList.contains('hidden'))) {
                 document.body.classList.add('hide-cursor');
