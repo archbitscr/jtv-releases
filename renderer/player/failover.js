@@ -52,12 +52,14 @@ function resumeFailoverOnce() {
 export async function triggerFailover(delayMs = null) {
     if (state.failoverInProgress) return;
     state.failoverInProgress = true;
+    const safetyReset = setTimeout(() => { state.failoverInProgress = false; }, 30000);
 
     const nativeApi = window.jtvAPI;
 
     if (!navigator.onLine) {
         nativeApi.logRenderer("Failover paused: No internet connection");
         showNoSignalOverlay(true, "Sin conexión a Internet. Conéctate para continuar.");
+        clearTimeout(safetyReset);
         state.failoverInProgress = false;
         window.addEventListener('online', resumeFailoverOnce);
         return;
@@ -93,24 +95,32 @@ export async function triggerFailover(delayMs = null) {
         if (state.failoverTimeoutId) clearTimeout(state.failoverTimeoutId);
         
         state.failoverTimeoutId = setTimeout(() => {
-            state.playerSource = nextSource;
-            updateSourceSwitcherUIFn(state.playerSource);
+            try {
+                state.playerSource = nextSource;
+                updateSourceSwitcherUIFn(state.playerSource);
+                const channel = state.channels.find(c => c.id === state.activeChannelId);
+                if (channel) {
+                    selectChannelFn(channel, false);
+                }
+            } finally {
+                clearTimeout(safetyReset);
+                state.failoverInProgress = false;
+            }
+        }, waitTime);
+    } else {
+        try {
+            nativeApi.logRenderer("Failover: Exhausted all sources. Returning to stream and showing Sin Señal.");
+            state.playerSource = "stream";
+            streamRetried = false;
+            updateSourceSwitcherUIFn("stream");
             const channel = state.channels.find(c => c.id === state.activeChannelId);
             if (channel) {
                 selectChannelFn(channel, false);
             }
+            showNoSignalOverlay(true, "No se pudo sintonizar el canal en ninguna fuente disponible.");
+        } finally {
+            clearTimeout(safetyReset);
             state.failoverInProgress = false;
-        }, waitTime);
-    } else {
-        nativeApi.logRenderer("Failover: Exhausted all sources. Returning to stream and showing Sin Señal.");
-        state.playerSource = "stream";
-        streamRetried = false;
-        updateSourceSwitcherUIFn("stream");
-        const channel = state.channels.find(c => c.id === state.activeChannelId);
-        if (channel) {
-            selectChannelFn(channel, false);
         }
-        showNoSignalOverlay(true, "No se pudo sintonizar el canal en ninguna fuente disponible.");
-        state.failoverInProgress = false;
     }
 }
