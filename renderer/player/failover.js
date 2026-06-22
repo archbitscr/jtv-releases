@@ -22,13 +22,11 @@ export function resetFailoverState() {
 }
 
 // --- Overlay UI ---
-export function showNoSignalOverlay(show, message = "") {
+export function showNoSignalOverlay(show) {
     const overlay = document.getElementById('no-signal-overlay');
-    const msgEl = document.getElementById('no-signal-message');
     if (!overlay) return;
     if (show) {
         overlay.classList.remove('hidden');
-        if (msgEl && message) msgEl.textContent = message;
         const audioIndicator = document.getElementById('hud-indicator-audio');
         const videoIndicator = document.getElementById('hud-indicator-video');
         if (audioIndicator) {
@@ -79,9 +77,10 @@ function scheduleNextCycle(channelId) {
     const minutes = Math.round(delayMs / 60000);
     setRetryText(`Reintentando en ${minutes} minuto${minutes > 1 ? 's' : ''}...`);
 
+    retryCount++;
+
     retryTimeoutId = setTimeout(() => {
         retryTimeoutId = null;
-        retryCount++;
         const channel = state.channels?.find(c => c.id === channelId);
         if (!channel) return;
         setRetryText('Buscando fuentes alternas...');
@@ -90,7 +89,7 @@ function scheduleNextCycle(channelId) {
 }
 
 // --- Core cycle: iterate all 6 sources sequentially ---
-const SOURCES = ['stream', 'watch', 'player', 'plus', 'cast', 'casting'];
+const SOURCES = ['stream', 'player', 'casting', 'plus', 'watch', 'cast'];
 
 function runFailoverCycle(channelId) {
     if (cycleInProgress) return;
@@ -98,7 +97,7 @@ function runFailoverCycle(channelId) {
     state.failoverInProgress = true;
 
     // Show overlay immediately on first cycle
-    showNoSignalOverlay(true, 'Sin señal');
+    showNoSignalOverlay(true);
     setRetryText('Buscando fuentes alternas...');
 
     const cfg = window.timeoutsConfig || {};
@@ -160,7 +159,7 @@ export function triggerFailover() {
 
     if (!navigator.onLine) {
         nativeApi.logRenderer('Failover paused: No internet connection');
-        showNoSignalOverlay(true, 'Sin conexión a Internet. Conéctate para continuar.');
+        showNoSignalOverlay(true);
         setRetryText('');
         window.addEventListener('online', resumeFailoverOnce);
         return;
