@@ -380,8 +380,10 @@ function reportAndControlVideo() {
             } else if (video._jtvLastTime !== time) {
                 video._jtvLastTime = time;
                 video._jtvLastTimeCheckedAt = now;
-                // Notify host that playback is progressing (allows cancelling pending failover)
-                ipcRenderer.sendToHost('guest-playing');
+                // Only signal genuine playback if video has real dimensions
+                if (video.videoWidth > 0 && video.videoHeight > 0) {
+                    ipcRenderer.sendToHost('guest-playing');
+                }
             } else {
                 const durationFrozen = now - video._jtvLastTimeCheckedAt;
                 const limit = (time === 0) ? 8000 : watchdogTimeoutLimit;
