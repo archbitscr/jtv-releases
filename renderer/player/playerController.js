@@ -319,7 +319,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     if (state.failoverTimeoutId) clearTimeout(state.failoverTimeoutId);
     state.failoverInProgress = false;
     stopNoSignalRetryLoop();
-    showNoSignalOverlay(false);
+    if (!state.failoverInProgress) showNoSignalOverlay(false);
     if (resetSource) {
         resetFailoverState();
     }
