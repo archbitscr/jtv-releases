@@ -25,11 +25,9 @@ export function resetFailoverState() {
 export function showNoSignalOverlay(show, type = 'signal') {
     const overlay = document.getElementById('no-signal-overlay');
     if (!overlay) return;
-    const icon = document.getElementById('no-signal-icon');
-    if (icon) {
-        icon.src = type === 'internet' ? './assets/no-internet.png' : './assets/no-signal.png';
-    }
     if (show) {
+        const icon = document.getElementById('no-signal-icon');
+        if (icon) icon.src = type === 'internet' ? './assets/no-internet.png' : './assets/no-signal.png';
         overlay.classList.remove('hidden');
         const audioIndicator = document.getElementById('hud-indicator-audio');
         const videoIndicator = document.getElementById('hud-indicator-video');
