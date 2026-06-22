@@ -154,6 +154,12 @@ export function getFilteredChannelsList(mode = 'channels') {
 
     if (/^\d+$/.test(term)) {
         list.sort((a, b) => parseInt(a.id) - parseInt(b.id));
+    } else if (isFavoritesMode) {
+        list.sort((a, b) => {
+            const diff = (b.watchTime || 0) - (a.watchTime || 0);
+            if (diff !== 0) return diff;
+            return (a.name || "").localeCompare(b.name || "", undefined, { sensitivity: 'base', numeric: true });
+        });
     } else {
         list.sort((a, b) => (a.name || "").localeCompare(b.name || "", undefined, { sensitivity: 'base', numeric: true }));
     }
