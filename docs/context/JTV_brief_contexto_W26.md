@@ -108,6 +108,7 @@
 20. ✅ Filtros de Eventos Arrastrables: Implementación de Drag & Drop (HTML5) para ordenar visualmente los eventos en Ajustes, sincronizando en tiempo real con persistencia en `jtv_data.json` y actualizando el orden de los dropdowns en la barra lateral y landing.
 21. ✅ Hotkey de Barra Espaciadora: Permite mostrar el HUD del selector de fuentes de forma rápida.
 22. ✅ Mejoras visuales de Glassmorphism: Ajustes de opacidad en tarjetas de canales y menús de navegación, más estilo hover pulido para `hud-action-btn`.
+23. ✅ Semántica HTML y minimalismo en controles de volumen: Reemplazo de etiquetas `<span>` por `<button>` con `tabindex` y `aria-label` en index.html, y reseteo de estilos nativos de botón en style.css.
 
 ## Pendientes
 - Migración a Cursor IDE para workflow más cómodo
