@@ -48,6 +48,7 @@
     }
   },
   "dependencies": {
-    "pngjs": "^7.0.0"
+    "pngjs": "^7.0.0",
+    "sortablejs": "^1.15.7"
   }
 }

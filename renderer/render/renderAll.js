@@ -2,6 +2,7 @@ import { state } from '../state/appState.js';
 import { sanitizeIconName, escapeHtml } from '../utils/sanitize.js';
 import { syncFilterList } from '../filters/filterManager.js';
 import { saveChannelsAndFilters } from '../services/stateManager.js';
+import Sortable from 'sortablejs';
 
 let ext = {};
 
@@ -17,9 +18,6 @@ let lastStateCache = {
     guideSearchTerm: null,
     guideFilter: null
 };
-
-let _dndMouseMove = null;
-let _dndMouseUp = null;
 
 export function renderFilters() {
     const clearFiltersBtn = document.getElementById('clear-filters-btn');
@@ -220,132 +218,28 @@ export function initEventsDragAndDrop() {
     const container = document.getElementById('list-filter-events');
     if (!container) return;
 
-    // Limpiar listeners anteriores si existen
-    if (_dndMouseMove) document.removeEventListener('mousemove', _dndMouseMove);
-    if (_dndMouseUp) document.removeEventListener('mouseup', _dndMouseUp);
-    _dndMouseMove = null;
-    _dndMouseUp = null;
-
-    let dragState = null;
-    let ghost = null;
-    let placeholder = null;
-    let rafId = null;
-
-    function getItems() {
-        return Array.from(container.querySelectorAll('.filter-list-item'));
+    // Destruir instancia anterior si existe
+    if (container._sortable) {
+        container._sortable.destroy();
+        container._sortable = null;
     }
 
-    function cleanup() {
-        if (ghost) { ghost.remove(); ghost = null; }
-        if (placeholder) { placeholder.remove(); placeholder = null; }
-        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-        if (dragState && dragState.el) dragState.el.style.display = '';
-        dragState = null;
-    }
-
-    function getDropTarget(y) {
-        const items = getItems().filter(el => el !== dragState?.el && el !== placeholder);
-        for (const item of items) {
-            const rect = item.getBoundingClientRect();
-            if (y < rect.bottom) {
-                return { el: item, before: y < rect.top + rect.height / 2 };
-            }
-        }
-        const last = items[items.length - 1];
-        return last ? { el: last, before: false } : null;
-    }
-
-    container.addEventListener('mousedown', (e) => {
-        const handle = e.target.closest('.filter-list-item');
-        if (!handle || e.target.closest('button, input, select, a')) return;
-        e.preventDefault();
-
-        const rect = handle.getBoundingClientRect();
-        const offsetX = e.clientX - rect.left;
-        const offsetY = e.clientY - rect.top;
-
-        ghost = handle.cloneNode(true);
-        ghost.style.cssText = `
-            position: fixed;
-            left: ${rect.left}px;
-            top: ${rect.top}px;
-            width: ${rect.width}px;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.95;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-            border: 1px solid rgba(0,255,204,0.5) !important;
-            border-radius: 8px;
-        `;
-        document.body.appendChild(ghost);
-
-        placeholder = document.createElement('div');
-        placeholder.style.cssText = `
-            height: ${handle.offsetHeight}px;
-            background: rgba(0,255,204,0.08);
-            border: 2px dashed rgba(0,255,204,0.4);
-            border-radius: 8px;
-            margin: 2px 0;
-            pointer-events: none;
-            box-sizing: border-box;
-        `;
-        handle.parentNode.insertBefore(placeholder, handle);
-        handle.style.display = 'none';
-
-        dragState = { el: handle, offsetX, offsetY };
-
-        document.addEventListener('mousemove', _dndMouseMove = onMouseMove);
-        document.addEventListener('mouseup', _dndMouseUp = onMouseUp);
-    });
-
-    function onMouseMove(e) {
-        if (!dragState || !ghost) return;
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(() => {
-            ghost.style.left = (e.clientX - dragState.offsetX) + 'px';
-            ghost.style.top = (e.clientY - dragState.offsetY) + 'px';
-            const target = getDropTarget(e.clientY);
-            if (target) {
-                if (target.before) {
-                    target.el.parentNode.insertBefore(placeholder, target.el);
-                } else {
-                    target.el.parentNode.insertBefore(placeholder, target.el.nextSibling);
-                }
-            }
-        });
-    }
-
-    async function onMouseUp() {
-        if (!dragState) return;
-
-        document.removeEventListener('mousemove', _dndMouseMove);
-        document.removeEventListener('mouseup', _dndMouseUp);
-        _dndMouseMove = null;
-        _dndMouseUp = null;
-
-        if (placeholder && placeholder.parentNode) {
-            placeholder.parentNode.insertBefore(dragState.el, placeholder);
-        }
-        dragState.el.style.display = '';
-
-        if (ghost) { ghost.remove(); ghost = null; }
-        if (placeholder) { placeholder.remove(); placeholder = null; }
-        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-
-        const newOrder = getItems().map(el => el.dataset.filterName);
-        const reordered = newOrder
-            .map(name => state.filterEvents.find(f => f.name === name))
-            .filter(Boolean);
-
-        const prevState = dragState;
-        dragState = null;
-
-        if (reordered.length === state.filterEvents.length) {
+    container._sortable = new Sortable(container, {
+        animation: 150,
+        ghostClass: 'sortable-ghost',
+        chosenClass: 'sortable-chosen',
+        dragClass: 'sortable-drag',
+        handle: '.filter-list-item',
+        onEnd: async (evt) => {
+            if (evt.oldIndex === evt.newIndex) return;
+            const reordered = [...state.filterEvents];
+            const [moved] = reordered.splice(evt.oldIndex, 1);
+            reordered.splice(evt.newIndex, 0, moved);
             state.filterEvents = reordered;
             syncFilterList();
             await saveChannelsAndFilters();
             renderSettingsFilters();
             if (ext.populateDropdowns) ext.populateDropdowns();
         }
-    }
+    });
 }
