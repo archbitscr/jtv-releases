@@ -515,12 +515,95 @@
                         
                         <!-- Sub-navigation for Channels Tab -->
                         <nav class="channels-subnav" aria-label="Opciones de canales">
-                            <button class="channels-subnav-btn active" data-channels-tab="crud"><i data-lucide="edit"></i> Editor CRUD</button>
-                            <button class="channels-subnav-btn" data-channels-tab="settings"><i data-lucide="settings"></i> Ajustes</button>
+                            <button class="channels-subnav-btn active" data-channels-tab="asignacion"><i data-lucide="tag"></i> Asignación</button>
+                            <button class="channels-subnav-btn" data-channels-tab="crud"><i data-lucide="edit"></i> Editor CRUD</button>
+                            <button class="channels-subnav-btn" data-channels-tab="settings"><i data-lucide="tv"></i> Únicamente en vivo</button>
                         </nav>
                         
+                        <!-- Sub-pane: Asignación -->
+                        <div id="channels-subsect-asignacion" class="channels-subsect-pane active">
+                            <!-- Seccion Asignacion de Filtros (Solo desarrollador) -->
+                            <div id="filters-assigner-section">
+                                <h4 style="font-size: 14px; color: #00ffcc; margin-top: 15px; margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Asignación de Filtros</h4>
+                                <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 12px;">Asigna o desvincula filtros de idiomas, géneros y eventos de los canales en tiempo real.</p>
+
+                                <div class="event-assigner-container" style="display: flex; gap: 15px; height: 380px; align-items: stretch; margin-bottom: 15px;">
+                                    <!-- Columna 1: Copia de la lista CRUD de canales -->
+                                    <div class="filter-group-card assigner-col-channels" style="flex: 1; display: flex; flex-direction: column; min-height: 0; height: 100%;">
+                                        <div class="filter-group-header">
+                                            <h4>Canales</h4>
+                                        </div>
+                                        <div class="filter-group-add-form" style="margin-top: 6px;">
+                                            <div class="filter-input-wrapper">
+                                                <input type="search" id="assigner-search" class="settings-filter-input" placeholder="Filtrar..." style="padding-right: 8px !important;">
+                                            </div>
+                                            <button id="assigner-bulk-select" class="bulk-select-btn" type="button" title="Selección masiva" style="display: none; flex-shrink: 0; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; align-items: center; justify-content: center; width: 28px; height: 28px; cursor: pointer; color: rgba(255,255,255,0.6); transition: all 0.2s; padding: 0; margin: 0;">
+                                                <i data-lucide="square" style="width: 14px; height: 14px;"></i>
+                                            </button>
+                                        </div>
+                                        <div id="assigner-channels-list" class="filter-group-list scroll-panel" style="flex: 1;">
+                                            <!-- Poblado dinámicamente -->
+                                        </div>
+                                    </div>
+
+                                    <!-- Columna 2: Checkboxes de asignación -->
+                                    <div class="filter-group-card assigner-col-events" style="flex: 1; display: flex; flex-direction: column; min-height: 0; height: 100%;">
+                                        <div class="filter-group-header">
+                                            <h4>Asignar Filtros</h4>
+                                            <nav id="assigner-tabs-nav" style="display: flex; width: 100%; gap: 4px; background: rgba(0, 0, 0, 0.2); padding: 3px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: 4px;">
+                                                <button id="assigner-tab-languages" class="assigner-tab-btn" data-assigner-tab="languages" style="flex: 1; text-align: center; padding: 4px 6px; font-size: 11px; font-weight: 600; border: none; border-radius: 4px; background: none; color: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.2s;">Idiomas</button>
+                                                <button id="assigner-tab-genres" class="assigner-tab-btn" data-assigner-tab="genres" style="flex: 1; text-align: center; padding: 4px 6px; font-size: 11px; font-weight: 600; border: none; border-radius: 4px; background: none; color: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.2s;">Género</button>
+                                                <button id="assigner-tab-events" class="assigner-tab-btn active" data-assigner-tab="events" style="flex: 1; text-align: center; padding: 4px 6px; font-size: 11px; font-weight: 600; border: none; border-radius: 4px; background: var(--accent); color: #000; cursor: pointer; transition: all 0.2s;">Eventos</button>
+                                            </nav>
+                                        </div>
+                                        <div id="assigner-events-list" class="filter-group-list scroll-panel" style="margin-top: 8px; flex: 1;">
+                                            <!-- Poblado dinámicamente -->
+                                        </div>
+                                    </div>
+
+                                    <!-- Columna 3: Información y estado del canal -->
+                                    <div class="filter-group-card assigner-col-metadata" style="flex: 1.5; display: flex; flex-direction: column; min-height: 0; height: 100%;">
+                                        <div class="filter-group-header">
+                                            <h4>Detalles del Canal</h4>
+                                        </div>
+                                        <div id="assigner-metadata-empty" style="color: rgba(255,255,255,0.4); text-align: center; margin-top: 60px; font-size: 12px;">
+                                            Selecciona uno o más canales para asignar o desvincular filtros.
+                                        </div>
+                                        <div id="assigner-metadata-content" class="hidden" style="display: flex; flex-direction: column; gap: 12px; height: 100%; overflow-y: auto; padding-right: 5px; margin-top: 8px;">
+                                            <!-- Encabezado del canal (logo y nombre) -->
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <div id="assigner-meta-logo-container" style="width: 50px; height: 50px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
+                                                    <img id="assigner-meta-logo" style="max-width: 100%; max-height: 100%; object-fit: contain; display: none;">
+                                                </div>
+                                                <div style="display: flex; flex-direction: column; justify-content: center;">
+                                                    <span id="assigner-meta-name" style="font-weight: 600; font-size: 14px; color: #fff; word-break: break-word; white-space: normal;">Canal</span>
+                                                    <span id="assigner-meta-id" style="font-size: 12px; color: rgba(255,255,255,0.5);">Num: -</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Categorías actuales -->
+                                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                                <span style="font-size: 11px; color: rgba(255,255,255,0.5);">Categorías y Eventos actuales:</span>
+                                                <div id="assigner-meta-categories" style="display: flex; flex-wrap: wrap; gap: 6px;">
+                                                    <!-- Chips de categorías -->
+                                                </div>
+                                            </div>
+
+                                            <!-- Botones para guardar / confirmar -->
+                                            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06);">
+                                                <span style="font-size: 11px; color: rgba(255,255,255,0.4);">Los cambios en los checkboxes de la columna 2 se aplican dinámicamente al canal.</span>
+                                                <button id="assigner-apply-btn" class="primary-btn" style="width: 100%; padding: 8px 12px; font-size: 12px; font-weight: 600; margin: 0; display: flex; align-items: center; justify-content: center; gap: 6px; border: none; border-radius: 999px; background: var(--accent); color: black;">
+                                                    <i data-lucide="save" style="width: 14px; height: 14px;"></i> Guardar cambios
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Sub-pane: Editor CRUD -->
-                        <div id="channels-subsect-crud" class="channels-subsect-pane active">
+                        <div id="channels-subsect-crud" class="channels-subsect-pane">
                             <!-- Contenedor para el CRUD del Desarrollador (inyectado dinámicamente) -->
                             <div id="developer-channels-crud-container" style="display: none;"></div>
                         </div>
@@ -686,89 +769,6 @@
                                     </div>
                                     <div class="filter-group-list scroll-panel" id="list-filter-events">
                                         <!-- Populated dynamically -->
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Seccion Asignacion de Filtros (Solo desarrollador) -->
-                            <div id="filters-assigner-section">
-                                <!-- Separador Horizontal -->
-                                <div class="setting-divider" style="margin: 20px 0; height: 1px; background: rgba(255,255,255,0.08);"></div>
-                                
-                                <!-- Asignación Rápida de Eventos (3 Columnas) -->
-                                <h4 style="font-size: 14px; color: #00ffcc; margin-top: 15px; margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Asignación de Filtros</h4>
-                                <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 12px;">Asigna o desvincula filtros de idiomas, géneros y eventos de los canales en tiempo real.</p>
-                                
-                                <div class="event-assigner-container" style="display: flex; gap: 15px; height: 380px; align-items: stretch; margin-bottom: 15px;">
-                                    <!-- Columna 1: Copia de la lista CRUD de canales -->
-                                    <div class="filter-group-card assigner-col-channels" style="flex: 1; display: flex; flex-direction: column; min-height: 0; height: 100%;">
-                                        <div class="filter-group-header">
-                                            <h4>Canales</h4>
-                                        </div>
-                                        <div class="filter-group-add-form" style="margin-top: 6px;">
-                                            <div class="filter-input-wrapper">
-                                                <input type="search" id="assigner-search" class="settings-filter-input" placeholder="Filtrar..." style="padding-right: 8px !important;">
-                                            </div>
-                                            <button id="assigner-bulk-select" class="bulk-select-btn" type="button" title="Selección masiva" style="display: none; flex-shrink: 0; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; align-items: center; justify-content: center; width: 28px; height: 28px; cursor: pointer; color: rgba(255,255,255,0.6); transition: all 0.2s; padding: 0; margin: 0;">
-                                                <i data-lucide="square" style="width: 14px; height: 14px;"></i>
-                                            </button>
-                                        </div>
-                                        <div id="assigner-channels-list" class="filter-group-list scroll-panel" style="flex: 1;">
-                                            <!-- Poblado dinámicamente -->
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Columna 2: Checkboxes de asignación -->
-                                    <div class="filter-group-card assigner-col-events" style="flex: 1; display: flex; flex-direction: column; min-height: 0; height: 100%;">
-                                        <div class="filter-group-header">
-                                            <h4>Asignar Filtros</h4>
-                                            <nav id="assigner-tabs-nav" style="display: flex; width: 100%; gap: 4px; background: rgba(0, 0, 0, 0.2); padding: 3px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: 4px;">
-                                                <button id="assigner-tab-languages" class="assigner-tab-btn" data-assigner-tab="languages" style="flex: 1; text-align: center; padding: 4px 6px; font-size: 11px; font-weight: 600; border: none; border-radius: 4px; background: none; color: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.2s;">Idiomas</button>
-                                                <button id="assigner-tab-genres" class="assigner-tab-btn" data-assigner-tab="genres" style="flex: 1; text-align: center; padding: 4px 6px; font-size: 11px; font-weight: 600; border: none; border-radius: 4px; background: none; color: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.2s;">Género</button>
-                                                <button id="assigner-tab-events" class="assigner-tab-btn active" data-assigner-tab="events" style="flex: 1; text-align: center; padding: 4px 6px; font-size: 11px; font-weight: 600; border: none; border-radius: 4px; background: var(--accent); color: #000; cursor: pointer; transition: all 0.2s;">Eventos</button>
-                                            </nav>
-                                        </div>
-                                        <div id="assigner-events-list" class="filter-group-list scroll-panel" style="margin-top: 8px; flex: 1;">
-                                            <!-- Poblado dinámicamente -->
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Columna 3: Información y estado del canal -->
-                                    <div class="filter-group-card assigner-col-metadata" style="flex: 1.5; display: flex; flex-direction: column; min-height: 0; height: 100%;">
-                                        <div class="filter-group-header">
-                                            <h4>Detalles del Canal</h4>
-                                        </div>
-                                        <div id="assigner-metadata-empty" style="color: rgba(255,255,255,0.4); text-align: center; margin-top: 60px; font-size: 12px;">
-                                            Selecciona uno o más canales para asignar o desvincular filtros.
-                                        </div>
-                                        <div id="assigner-metadata-content" class="hidden" style="display: flex; flex-direction: column; gap: 12px; height: 100%; overflow-y: auto; padding-right: 5px; margin-top: 8px;">
-                                            <!-- Encabezado del canal (logo y nombre) -->
-                                            <div style="display: flex; align-items: center; gap: 10px;">
-                                                <div id="assigner-meta-logo-container" style="width: 50px; height: 50px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
-                                                    <img id="assigner-meta-logo" style="max-width: 100%; max-height: 100%; object-fit: contain; display: none;">
-                                                </div>
-                                                <div style="display: flex; flex-direction: column; justify-content: center;">
-                                                    <span id="assigner-meta-name" style="font-weight: 600; font-size: 14px; color: #fff; word-break: break-word; white-space: normal;">Canal</span>
-                                                    <span id="assigner-meta-id" style="font-size: 12px; color: rgba(255,255,255,0.5);">Num: -</span>
-                                                </div>
-                                            </div>
-                                            
-                                            <!-- Categorías actuales -->
-                                            <div style="display: flex; flex-direction: column; gap: 6px;">
-                                                <span style="font-size: 11px; color: rgba(255,255,255,0.5);">Categorías y Eventos actuales:</span>
-                                                <div id="assigner-meta-categories" style="display: flex; flex-wrap: wrap; gap: 6px;">
-                                                    <!-- Chips de categorías -->
-                                                </div>
-                                            </div>
-                                            
-                                            <!-- Botones para guardar / confirmar -->
-                                            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06);">
-                                                <span style="font-size: 11px; color: rgba(255,255,255,0.4);">Los cambios en los checkboxes de la columna 2 se aplican dinámicamente al canal.</span>
-                                                <button id="assigner-apply-btn" class="primary-btn" style="width: 100%; padding: 8px 12px; font-size: 12px; font-weight: 600; margin: 0; display: flex; align-items: center; justify-content: center; gap: 6px; border: none; border-radius: 999px; background: var(--accent); color: black;">
-                                                    <i data-lucide="save" style="width: 14px; height: 14px;"></i> Guardar cambios
-                                                </button>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
