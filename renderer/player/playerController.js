@@ -406,7 +406,9 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     }
 
     // Use current source folder for path
-    const playerPath = `${state.globalDomain}${state.playerSource}/stream-${channel.id}.php`;
+    const playerPath = channel.customUrl
+        ? channel.customUrl
+        : `${state.globalDomain}${state.playerSource}/stream-${channel.id}.php`;
     mountRemotePlayer(playerPath);
     if (ext.updateTriggersVisibility) ext.updateTriggersVisibility();
 
