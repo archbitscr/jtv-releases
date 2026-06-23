@@ -16,16 +16,12 @@ export function initDashCustomSelects() {
                 item.dataset.value = opt.value;
                 if (select.value === opt.value) {
                     item.classList.add('selected');
-                    const labelSpan = btn.querySelector('.dash-custom-select-label');
-                    if (labelSpan) labelSpan.textContent = opt.textContent;
                     btn.classList.toggle('has-value', opt.value !== 'all');
                 }
                 item.addEventListener('click', (e) => {
                     e.stopPropagation();
                     select.value = opt.value;
-                    // Update button label using the span
-                    const labelSpan = btn.querySelector('.dash-custom-select-label');
-                    if (labelSpan) labelSpan.textContent = opt.textContent;
+                    // No actualizar el label — mantiene el título fijo de categoría
                     // Update active style on btn
                     btn.classList.toggle('has-value', opt.value !== 'all');
                     // Update selected highlight in menu
@@ -135,7 +131,8 @@ export function syncCustomSelect(select) {
         optionDiv.className = 'custom-select-option';
         if (select.value === opt.value) {
             optionDiv.classList.add('selected');
-            trigger.innerHTML = `<span>${opt.textContent}</span><i data-lucide="chevron-down" class="chevron-icon"></i>`;
+            const fixedLabel = select.dataset.label || select.getAttribute('placeholder') || select.options[0]?.textContent || '';
+            trigger.innerHTML = `<span>${fixedLabel}</span><i data-lucide="chevron-down" class="chevron-icon"></i>`;
             if (window.lucide) window.lucide.createIcons();
         }
         optionDiv.textContent = opt.textContent;
@@ -144,7 +141,6 @@ export function syncCustomSelect(select) {
         optionDiv.addEventListener('click', (e) => {
             e.stopPropagation();
             select.value = opt.value;
-            trigger.innerHTML = `<span>${opt.textContent}</span><i data-lucide="chevron-down" class="chevron-icon"></i>`;
             if (window.lucide) window.lucide.createIcons();
             
             optionsContainer.querySelectorAll('.custom-select-option').forEach(el => el.classList.remove('selected'));
