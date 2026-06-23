@@ -112,6 +112,7 @@
 24. ✅ Flexibilización del Guardián de Resolución: Modificación de `checkResolution()` para verificar el viewport lógico (innerWidth/innerHeight) en vez de la pantalla física total, reducción del límite a 1024x720, eliminación de la cuenta regresiva de auto-cierre, y adición del botón de omisión (Bypass).
 25. ✅ Consistencia de Volumen y Comportamientos de Silenciador (Mute): Verificado que el zapping preserve el volumen/mute, que bajar a 0 active Mute, que desmutar desde 0 suba a 10 (100%), y que subir volumen desde 0 incremente de forma natural a 1 (10%) según el comportamiento deseado.
 26. ✅ Sincronización de Transiciones y Colisiones: Reducción de la duración de transiciones en `.glass-menu` y `.glass-menu.left` a 150ms (0.15s) para lograr una responsividad inmediata y evitar clics perdidos en coordenadas fuera de pantalla durante la animación.
+27. ✅ Timeout de la Landing con Canal Reproduciéndose: Implementado el auto-ocultamiento de home-dashboard (cerrando también los ajustes) tras 5 segundos de inactividad (configurable desde Ajustes de Timeouts) cuando hay reproducción de fondo y no hay hover.
 
 ## Pendientes
 - Migración a Cursor IDE para workflow más cómodo
