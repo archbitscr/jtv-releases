@@ -352,7 +352,7 @@ export function removeSettingsFilter(type, filterName) {
     
     syncFilterList();
     if (ext.renderAll) ext.renderAll();
-    if (ext.saveAppState) ext.saveAppState();
+    if (ext.saveAppState) ext.saveAppState(true);
 }
 
 export function removeFilter(filterName) {
@@ -362,7 +362,7 @@ export function removeFilter(filterName) {
         state.moviesGenres = state.moviesGenres.filter(g => g.name !== filterName);
     }
     if (ext.renderAll) ext.renderAll();
-    if (ext.saveAppState) ext.saveAppState();
+    if (ext.saveAppState) ext.saveAppState(true);
 }
 
 export function updateEventIconSelectBtnColor(btn, iconName) {

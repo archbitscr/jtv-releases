@@ -368,10 +368,10 @@ async function init() {
         state.omdbKey = savedData.omdbKey || "";
         state.autoUpdateDomain = savedData.autoUpdateDomain !== undefined ? savedData.autoUpdateDomain : true;
 
-        if (savedData.filterLanguages && savedData.filterLanguages.length > 0) {
+        if (savedData.filterLanguages) {
             state.filterLanguages = savedData.filterLanguages;
         }
-        if (savedData.filterGenres && savedData.filterGenres.length > 0) {
+        if (savedData.filterGenres) {
             state.filterGenres = savedData.filterGenres;
         }
 
@@ -391,20 +391,12 @@ async function init() {
             { name: "Teatro", icon: "🎭" }
         ];
 
-        if (savedData.filterEvents && savedData.filterEvents.length > 0) {
-            const mergedEvents = [...savedData.filterEvents];
-            mergedEvents.forEach(e => {
+        if (savedData.filterEvents) {
+            const loadedEvents = [...savedData.filterEvents];
+            loadedEvents.forEach(e => {
                 e.icon = mapIconToEmoji(e.icon || e.name);
             });
-            defaultEvents.forEach(defEv => {
-                const existing = mergedEvents.find(e => e.name.toLowerCase() === defEv.name.toLowerCase());
-                if (existing) {
-                    existing.icon = defEv.icon;
-                } else {
-                    mergedEvents.push(defEv);
-                }
-            });
-            state.filterEvents = mergedEvents;
+            state.filterEvents = loadedEvents;
         } else {
             state.filterEvents = defaultEvents;
         }
