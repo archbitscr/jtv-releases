@@ -3627,6 +3627,10 @@ body.hide-cursor * {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
 }
 
 .vol-icon svg {

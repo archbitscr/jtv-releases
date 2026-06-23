@@ -1,4 +1,4 @@
-﻿# JTV.app — Brief de Contexto v2 (Junio 2026)
+# JTV.app — Brief de Contexto v2 (Junio 2026)
 
 ## Stack
 - Electron + Vite, Windows desktop
@@ -76,6 +76,15 @@
 - signalRestored() = función única que limpia todo el estado de failover
 - try/finally en ramas de failover garantizan liberación de flags
 
+## Filtros de Eventos Arrastrables (NUEVO ESTA SESIÓN)
+
+### Mecanismo de Drag & Drop para Eventos:
+- **Habilitación de arrastre**: En `renderSettingsFilters()` en [renderAll.js](file:///d:/Projects/JTV.app/renderer/render/renderAll.js), los elementos `.filter-list-item` correspondientes a eventos reciben el atributo `draggable="true"` y `data-filter-name`.
+- **Manejo del ciclo de arrastre**: `initEventsDragAndDrop()` en [renderAll.js](file:///d:/Projects/JTV.app/renderer/render/renderAll.js) adjunta listeners de eventos HTML5 (`dragstart`, `dragover`, `dragend`, `drop`) en `#list-filter-events`.
+- **Reordenación dinámica**: Durante `dragover`, la posición vertical del cursor determina si el elemento arrastrado se posiciona antes o después del elemento sobre el que está flotando, usando `container.insertBefore()` para dar retroalimentación visual en tiempo real.
+- **Guardado y Persistencia**: Al soltar el elemento (`drop`), se lee el nuevo orden del DOM, se actualiza `state.filterEvents` con esta secuencia, se guardan los cambios mediante `saveChannelsAndFilters()`, y se invoca `renderAll(true)` para refrescar los dropdowns del sistema.
+- **Sincronización en Dropdowns**: En `populateDropdowns()` de [filterManager.js](file:///d:/Projects/JTV.app/renderer/filters/filterManager.js), se omite la ordenación alfabética para los eventos (`isEvent`), respetando el orden manual establecido.
+
 ## Fixes aplicados esta sesión
 1. ✅ Sidebar favoritos ordenado por watchTime desc (filterManager.js)
 2. ✅ Cursor se oculta al reproducir — delay dinámico sobre zappingHUD (inactivity.js)
@@ -96,6 +105,9 @@
 17. ✅ window.timeoutsConfig incluye watchdogSilence: 10000
 18. ✅ H2 dinámico "Sin Señal"/"Sin Internet" según tipo en showNoSignalOverlay (failover.js)
 19. ✅ HUD source buttons reordenados para coincidir con orden interno del autotuner (index.html)
+20. ✅ Filtros de Eventos Arrastrables: Implementación de Drag & Drop (HTML5) para ordenar visualmente los eventos en Ajustes, sincronizando en tiempo real con persistencia en `jtv_data.json` y actualizando el orden de los dropdowns en la barra lateral y landing.
+21. ✅ Hotkey de Barra Espaciadora: Permite mostrar el HUD del selector de fuentes de forma rápida.
+22. ✅ Mejoras visuales de Glassmorphism: Ajustes de opacidad en tarjetas de canales y menús de navegación, más estilo hover pulido para `hud-action-btn`.
 
 ## Pendientes
 - Migración a Cursor IDE para workflow más cómodo
