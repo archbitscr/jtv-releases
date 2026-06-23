@@ -44,7 +44,15 @@ export async function syncChannels(silent = false) {
                 nc.categories.push('all');
             }
         });
-        state.channels = newChannels;
+        const existingIds = new Set(state.channels.map(c => String(c.id)));
+        newChannels.forEach(nc => {
+            const idx = state.channels.findIndex(c => String(c.id) === String(nc.id));
+            if (idx >= 0) {
+                state.channels[idx] = nc;
+            } else {
+                state.channels.push(nc);
+            }
+        });
         state.dropdownsPopulated = false;
         autoCategorizeChannels();
         cleanChannelMetadata();
