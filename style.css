@@ -2990,7 +2990,7 @@ body.hide-cursor * {
 
 .settings-sidebar::-webkit-scrollbar,
 .settings-main-content::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
 }
 
 .settings-sidebar::-webkit-scrollbar-thumb,
