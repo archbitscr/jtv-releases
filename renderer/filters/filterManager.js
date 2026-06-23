@@ -16,9 +16,6 @@ export function syncFilterList() {
     if (Array.isArray(state.filterGenres)) {
         state.filterGenres.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'es', { sensitivity: 'base' }));
     }
-    if (Array.isArray(state.filterEvents)) {
-        state.filterEvents.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'es', { sensitivity: 'base' }));
-    }
     if (Array.isArray(state.seriesGenres)) {
         state.seriesGenres.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'es', { sensitivity: 'base' }));
     }

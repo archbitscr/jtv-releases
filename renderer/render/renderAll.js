@@ -1,5 +1,7 @@
 import { state } from '../state/appState.js';
 import { sanitizeIconName, escapeHtml } from '../utils/sanitize.js';
+import { syncFilterList } from '../filters/filterManager.js';
+import { saveChannelsAndFilters } from '../services/stateManager.js';
 
 let ext = {};
 
@@ -80,6 +82,10 @@ export function renderSettingsFilters() {
             const item = document.createElement('div');
             item.className = 'filter-list-item';
             item.style.cursor = 'pointer';
+            if (type === 'event') {
+                item.setAttribute('draggable', 'true');
+                item.setAttribute('data-filter-name', filter.name);
+            }
             const iconColor = type === 'event' ? (ext.getEventIconColor ? ext.getEventIconColor(filter.icon) : '#3b82f6') : '#3b82f6';
             const isEmoji = (filter.icon && /[^\x00-\x7F]/.test(filter.icon)) || (filter.icon && filter.icon.length <= 2);
             item.innerHTML = `
@@ -116,6 +122,9 @@ export function renderSettingsFilters() {
     if (window.lucide && settingsScreen) {
         window.lucide.createIcons({ nodes: [settingsScreen] });
     }
+
+    // Initialize Event Drag & Drop
+    initEventsDragAndDrop();
 
     // Update Assigner Events and Channels lists
     if (ext.initEventAssigner && ext.renderAssignerEvents && ext.renderAssignerChannelsList) {
@@ -183,4 +192,55 @@ export function renderAll(force = false) {
     lastStateCache.scheduleLength = state.scheduleData.length;
     lastStateCache.guideSearchTerm = state.guideSearchTerm;
     lastStateCache.guideFilter = state.guideFilter;
+}
+
+export function initEventsDragAndDrop() {
+    const container = document.getElementById('list-filter-events');
+    if (!container) return;
+
+    const items = Array.from(container.querySelectorAll('.filter-list-item[draggable="true"]'));
+    let dragSrcIndex = null;
+
+    items.forEach((item, index) => {
+        item.addEventListener('dragstart', (e) => {
+            dragSrcIndex = index;
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', index);
+            item.style.opacity = '0.5';
+        });
+
+        item.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            item.style.borderTop = '2px solid #00ffcc';
+        });
+
+        item.addEventListener('dragleave', () => {
+            item.style.borderTop = '';
+        });
+
+        item.addEventListener('dragend', () => {
+            items.forEach(el => {
+                el.style.borderTop = '';
+                el.style.opacity = '';
+            });
+        });
+
+        item.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            const srcIdx = parseInt(e.dataTransfer.getData('text/plain'), 10);
+            const targetIdx = index;
+
+            if (srcIdx !== targetIdx && !isNaN(srcIdx)) {
+                const reordered = [...state.filterEvents];
+                const [movedItem] = reordered.splice(srcIdx, 1);
+                reordered.splice(targetIdx, 0, movedItem);
+                state.filterEvents = reordered;
+
+                syncFilterList();
+                await saveChannelsAndFilters();
+                renderSettingsFilters();
+            }
+        });
+    });
 }
