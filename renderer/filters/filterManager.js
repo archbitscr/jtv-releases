@@ -91,7 +91,15 @@ export function matchesOnboardingLanguages(channel) {
     if (selectedLangs.length === 0) return true;
 
     const categories = (channel.categories || []).map(c => c.toLowerCase());
-    
+
+    const hasLanguageCategory = categories.some(cat =>
+        cat.includes('español') || cat.includes('spanish') || cat.includes('latino') || cat.includes('mexico') || cat.includes('spain') ||
+        cat.includes('inglés') || cat.includes('english') || cat.includes('usa') || cat.includes('uk') ||
+        cat.includes('europeo') || cat.includes('european') ||
+        cat.includes('middle east')
+    );
+    if (!hasLanguageCategory) return true;
+
     return categories.some(cat => {
         if (selectedLangs.includes('es') && (cat.includes('español') || cat.includes('spanish') || cat.includes('latino') || cat.includes('mexico') || cat.includes('spain'))) return true;
         if (selectedLangs.includes('en') && (cat.includes('inglés') || cat.includes('english') || cat.includes('usa') || cat.includes('uk'))) return true;
