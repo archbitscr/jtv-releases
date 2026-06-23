@@ -359,29 +359,6 @@ async function init() {
                 delete c.category;
             }
         });
-
-        const ppvDefaults = [
-            { id: 5061, name: "PPV 61", customUrl: "https://dlhd.pk/watch.php?id=5061", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5062, name: "PPV 62", customUrl: "https://dlhd.pk/watch.php?id=5062", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5063, name: "PPV 63", customUrl: "https://dlhd.pk/watch.php?id=5063", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5064, name: "PPV 64", customUrl: "https://dlhd.pk/watch.php?id=5064", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5065, name: "PPV 65", customUrl: "https://dlhd.pk/watch.php?id=5065", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5066, name: "PPV 66", customUrl: "https://dlhd.pk/watch.php?id=5066", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5067, name: "PPV 67", customUrl: "https://dlhd.pk/watch.php?id=5067", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5068, name: "PPV 68", customUrl: "https://dlhd.pk/watch.php?id=5068", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5069, name: "PPV 69", customUrl: "https://dlhd.pk/watch.php?id=5069", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5070, name: "PPV 70", customUrl: "https://dlhd.pk/watch.php?id=5070", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5005, name: "PPV 5 (TSN 4K)", customUrl: "https://dlhd.pk/watch.php?id=5005", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5012, name: "PPV 12 (FOX 4K)", customUrl: "https://dlhd.pk/watch.php?id=5012", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5013, name: "PPV 13 (Bein Arabic 4K)", customUrl: "https://dlhd.pk/watch.php?id=5013", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5014, name: "PPV 14 (BBC 4K)", customUrl: "https://dlhd.pk/watch.php?id=5014", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-            { id: 5015, name: "PPV 15 (Fussball 4K)", customUrl: "https://dlhd.pk/watch.php?id=5015", logo: "", favorite: false, watchTime: 0, categories: ["all"], path: "" },
-        ];
-        const existingIds = new Set(state.channels.map(c => c.id));
-        ppvDefaults.forEach(ppv => {
-            if (!existingIds.has(ppv.id)) state.channels.push(ppv);
-        });
-
         state.globalDomain = savedData.globalDomain || state.globalDomain;
         window.globalDomain = state.globalDomain;
         state.apiKey = savedData.apiKey || "";
