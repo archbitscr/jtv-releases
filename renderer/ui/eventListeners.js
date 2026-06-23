@@ -1511,6 +1511,18 @@ export function setupEventListeners() {
                 return true;
             }
         }
+
+        if (key === ' ' || key === 'Spacebar') {
+            if (!state.isHomeActive && state.activeChannelId && !state.isVodPlaying) {
+                const sourceSwitcherEl = document.getElementById('source-switcher');
+                if (sourceSwitcherEl) {
+                    sourceSwitcherEl.classList.remove('hidden');
+                    startInactivityTimers();
+                }
+                return true;
+            }
+            return false;
+        }
         return false;
     }
 
