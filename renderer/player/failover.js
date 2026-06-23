@@ -28,6 +28,8 @@ export function showNoSignalOverlay(show, type = 'signal') {
     if (show) {
         const icon = document.getElementById('no-signal-icon');
         if (icon) icon.src = type === 'internet' ? './assets/no-internet.png' : './assets/no-signal.png';
+        const titleEl = document.querySelector('#no-signal-overlay h2');
+        if (titleEl) titleEl.textContent = type === 'internet' ? 'Sin Internet' : 'Sin Señal';
         overlay.classList.remove('hidden');
         const audioIndicator = document.getElementById('hud-indicator-audio');
         const videoIndicator = document.getElementById('hud-indicator-video');
