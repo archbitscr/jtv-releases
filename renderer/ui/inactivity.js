@@ -95,4 +95,15 @@ export function startInactivityTimers() {
             }
         }, cursorDelay);
     }
+
+    // 6. Home-dashboard inactivity timeout when channel is playing
+    const homeDashboard = document.getElementById('home-dashboard');
+    if (homeDashboard && !homeDashboard.classList.contains('hidden') && hasChannel) {
+        const homeDelay = cfg.settingsActive || 5000;
+        timeouts.set('home', () => {
+            if (!homeDashboard.matches(':hover') && (!settingsScreen || !settingsScreen.matches(':hover'))) {
+                if (ext.showModule) ext.showModule('live');
+            }
+        }, homeDelay);
+    }
 }
