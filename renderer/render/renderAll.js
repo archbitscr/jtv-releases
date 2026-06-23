@@ -18,6 +18,9 @@ let lastStateCache = {
     guideFilter: null
 };
 
+let _dndMouseMove = null;
+let _dndMouseUp = null;
+
 export function renderFilters() {
     const clearFiltersBtn = document.getElementById('clear-filters-btn');
     if (!clearFiltersBtn) return;
@@ -217,10 +220,11 @@ export function initEventsDragAndDrop() {
     const container = document.getElementById('list-filter-events');
     if (!container) return;
 
-    // Remover draggable de items existentes (ya no se usa HTML5 drag)
-    container.querySelectorAll('.filter-list-item[draggable]').forEach(el => {
-        el.removeAttribute('draggable');
-    });
+    // Limpiar listeners anteriores si existen
+    if (_dndMouseMove) document.removeEventListener('mousemove', _dndMouseMove);
+    if (_dndMouseUp) document.removeEventListener('mouseup', _dndMouseUp);
+    _dndMouseMove = null;
+    _dndMouseUp = null;
 
     let dragState = null;
     let ghost = null;
@@ -231,9 +235,36 @@ export function initEventsDragAndDrop() {
         return Array.from(container.querySelectorAll('.filter-list-item'));
     }
 
-    function createGhost(el, x, y) {
-        const rect = el.getBoundingClientRect();
-        ghost = el.cloneNode(true);
+    function cleanup() {
+        if (ghost) { ghost.remove(); ghost = null; }
+        if (placeholder) { placeholder.remove(); placeholder = null; }
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        if (dragState && dragState.el) dragState.el.style.display = '';
+        dragState = null;
+    }
+
+    function getDropTarget(y) {
+        const items = getItems().filter(el => el !== dragState?.el && el !== placeholder);
+        for (const item of items) {
+            const rect = item.getBoundingClientRect();
+            if (y < rect.bottom) {
+                return { el: item, before: y < rect.top + rect.height / 2 };
+            }
+        }
+        const last = items[items.length - 1];
+        return last ? { el: last, before: false } : null;
+    }
+
+    container.addEventListener('mousedown', (e) => {
+        const handle = e.target.closest('.filter-list-item');
+        if (!handle || e.target.closest('button, input, select, a')) return;
+        e.preventDefault();
+
+        const rect = handle.getBoundingClientRect();
+        const offsetX = e.clientX - rect.left;
+        const offsetY = e.clientY - rect.top;
+
+        ghost = handle.cloneNode(true);
         ghost.style.cssText = `
             position: fixed;
             left: ${rect.left}px;
@@ -245,64 +276,36 @@ export function initEventsDragAndDrop() {
             box-shadow: 0 8px 32px rgba(0,0,0,0.5);
             border: 1px solid rgba(0,255,204,0.5) !important;
             border-radius: 8px;
-            transition: none;
         `;
         document.body.appendChild(ghost);
-        return { offsetX: x - rect.left, offsetY: y - rect.top };
-    }
 
-    function createPlaceholder(el) {
         placeholder = document.createElement('div');
         placeholder.style.cssText = `
-            height: ${el.offsetHeight}px;
+            height: ${handle.offsetHeight}px;
             background: rgba(0,255,204,0.08);
             border: 2px dashed rgba(0,255,204,0.4);
             border-radius: 8px;
             margin: 2px 0;
             pointer-events: none;
+            box-sizing: border-box;
         `;
-        return placeholder;
-    }
-
-    function getDropTarget(y) {
-        const items = getItems().filter(el => el !== dragState.el && el !== placeholder);
-        for (const item of items) {
-            const rect = item.getBoundingClientRect();
-            if (y < rect.bottom) {
-                const mid = rect.top + rect.height / 2;
-                return { el: item, before: y < mid };
-            }
-        }
-        return { el: items[items.length - 1], before: false };
-    }
-
-    container.addEventListener('mousedown', (e) => {
-        const handle = e.target.closest('.filter-list-item');
-        if (!handle) return;
-        // Solo iniciar si click no es en botón interno
-        if (e.target.closest('button, input, select, a')) return;
-
-        e.preventDefault();
-        const items = getItems();
-        const srcIndex = items.indexOf(handle);
-
-        const { offsetX, offsetY } = createGhost(handle, e.clientX, e.clientY);
-        createPlaceholder(handle);
         handle.parentNode.insertBefore(placeholder, handle);
         handle.style.display = 'none';
 
-        dragState = { el: handle, srcIndex, offsetX, offsetY };
+        dragState = { el: handle, offsetX, offsetY };
+
+        document.addEventListener('mousemove', _dndMouseMove = onMouseMove);
+        document.addEventListener('mouseup', _dndMouseUp = onMouseUp);
     });
 
-    document.addEventListener('mousemove', (e) => {
+    function onMouseMove(e) {
         if (!dragState || !ghost) return;
         if (rafId) cancelAnimationFrame(rafId);
         rafId = requestAnimationFrame(() => {
             ghost.style.left = (e.clientX - dragState.offsetX) + 'px';
             ghost.style.top = (e.clientY - dragState.offsetY) + 'px';
-
             const target = getDropTarget(e.clientY);
-            if (target.el) {
+            if (target) {
                 if (target.before) {
                     target.el.parentNode.insertBefore(placeholder, target.el);
                 } else {
@@ -310,27 +313,32 @@ export function initEventsDragAndDrop() {
                 }
             }
         });
-    });
+    }
 
-    document.addEventListener('mouseup', async (e) => {
+    async function onMouseUp() {
         if (!dragState) return;
 
-        // Insertar elemento en la posición del placeholder
-        placeholder.parentNode.insertBefore(dragState.el, placeholder);
+        document.removeEventListener('mousemove', _dndMouseMove);
+        document.removeEventListener('mouseup', _dndMouseUp);
+        _dndMouseMove = null;
+        _dndMouseUp = null;
+
+        if (placeholder && placeholder.parentNode) {
+            placeholder.parentNode.insertBefore(dragState.el, placeholder);
+        }
         dragState.el.style.display = '';
 
-        // Limpiar
-        if (ghost) ghost.remove();
-        if (placeholder) placeholder.remove();
-        ghost = null;
-        placeholder = null;
-        if (rafId) cancelAnimationFrame(rafId);
+        if (ghost) { ghost.remove(); ghost = null; }
+        if (placeholder) { placeholder.remove(); placeholder = null; }
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
 
-        // Leer nuevo orden del DOM
         const newOrder = getItems().map(el => el.dataset.filterName);
         const reordered = newOrder
             .map(name => state.filterEvents.find(f => f.name === name))
             .filter(Boolean);
+
+        const prevState = dragState;
+        dragState = null;
 
         if (reordered.length === state.filterEvents.length) {
             state.filterEvents = reordered;
@@ -339,6 +347,5 @@ export function initEventsDragAndDrop() {
             renderSettingsFilters();
             if (ext.populateDropdowns) ext.populateDropdowns();
         }
-        dragState = null;
-    });
+    }
 }
