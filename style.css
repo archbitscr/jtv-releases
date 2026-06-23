@@ -208,9 +208,10 @@ body.player-active .edge-mask {
     left: 0;
     width: 380px;
     height: 100vh;
-    background: rgba(19, 19, 19, 0.20);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
     z-index: 2000;
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
     display: flex;
@@ -1509,14 +1510,14 @@ body.player-active .edge-mask {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .channel-item:hover {
-    border-color: rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.11);
     transform: translateX(4px);
 }
 
@@ -1875,9 +1876,9 @@ body.hide-cursor * {
     padding: 14px 24px;
     gap: 20px;
     
-    background: rgba(19, 19, 19, 0.15);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border-radius: 24px 24px 0 0 !important;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: none !important;
@@ -2062,8 +2063,8 @@ body.hide-cursor * {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     display: flex;
@@ -2091,9 +2092,9 @@ body.hide-cursor * {
 }
 
 .hud-action-btn:hover {
-    color: #ffffff;
-    background: rgba(255,255,255,0.08);
-    border-color: rgba(255,255,255,0.15);
+    background: #ffffff !important;
+    color: #131313 !important;
+    border-color: #ffffff !important;
     transform: scale(1.1);
 }
 
@@ -3691,9 +3692,9 @@ body.hide-cursor * {
     padding: 14px 24px;
     gap: 20px;
     
-    background: rgba(19, 19, 19, 0.15);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border-radius: 0 0 24px 24px !important; /* Top corners square, bottom corners rounded */
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-top: none !important; /* Touch top border */
@@ -4033,9 +4034,9 @@ body.hide-cursor * {
     opacity: 1 !important;
     pointer-events: auto !important;
     z-index: 3000 !important;
-    background: rgba(19, 19, 19, 0.35) !important;
-    backdrop-filter: blur(24px) !important;
-    -webkit-backdrop-filter: blur(24px) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
     border-radius: 0 0 24px 24px !important; /* Top corners square, bottom corners rounded */
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-top: none !important; /* Touch top border */
