@@ -1509,8 +1509,8 @@ body.player-active .edge-mask {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
