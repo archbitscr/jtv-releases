@@ -619,14 +619,14 @@
                         
                         <!-- Sub-navigation for Filters Tab (Canales Envivo, Series, Peliculas) -->
                         <nav class="settings-subnav" aria-label="Filtros por sección">
-                            <button class="settings-subnav-btn active" data-filter-type="tv"><i data-lucide="tv"></i> Canales Envivo</button>
+                            <button class="settings-subnav-btn active" data-filter-type="asignacion"><i data-lucide="tag"></i> Asignación</button>
+                            <button class="settings-subnav-btn" data-filter-type="tv"><i data-lucide="tv"></i> Canales Envivo</button>
                             <button class="settings-subnav-btn" data-filter-type="series"><i data-lucide="clapperboard"></i> Series</button>
                             <button class="settings-subnav-btn" data-filter-type="movies"><i data-lucide="film"></i> Películas</button>
-                            <button class="settings-subnav-btn" data-filter-type="asignacion"><i data-lucide="tag"></i> Asignación</button>
                         </nav>
                         
                         <!-- Subtab Content: Live TV (Canales Envivo) -->
-                        <div id="filters-content-tv" class="filters-subsect-pane active">
+                        <div id="filters-content-tv" class="filters-subsect-pane">
                             <h4 class="settings-page-subtitle" id="filters-groups-title" style="font-size: 14px; color: #00ffcc; margin-top: 15px; margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Grupos de Filtros</h4>
                             <div class="filters-groups-container">
                                 <!-- Grupo 1: Idioma -->
@@ -745,7 +745,7 @@
                         </div>
 
                         <!-- Subtab Content: Asignación -->
-                        <div id="filters-content-asignacion" class="filters-subsect-pane">
+                        <div id="filters-content-asignacion" class="filters-subsect-pane active">
                             <div id="filters-assigner-section">
                                 <h4 style="font-size: 14px; color: #00ffcc; margin-top: 15px; margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Asignación de Filtros</h4>
                                 <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 12px;">Asigna o desvincula filtros de idiomas, géneros y eventos de los canales en tiempo real.</p>
