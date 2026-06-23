@@ -31,8 +31,8 @@ body, html {
 
 /* Minimalist auto-hide scrollbars */
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
     background: transparent;
 }
 ::-webkit-scrollbar-track {
@@ -1058,8 +1058,8 @@ body.player-active .edge-mask {
 }
 
 .scroll-area::-webkit-scrollbar,
-.menu-content::-webkit-scrollbar { 
-    width: 6px; 
+.menu-content::-webkit-scrollbar {
+    width: 4px;
 }
 
 .scroll-area::-webkit-scrollbar-thumb,
