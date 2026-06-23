@@ -199,48 +199,50 @@ export function initEventsDragAndDrop() {
     if (!container) return;
 
     const items = Array.from(container.querySelectorAll('.filter-list-item[draggable="true"]'));
-    let dragSrcIndex = null;
+    let draggedItem = null;
 
-    items.forEach((item, index) => {
+    items.forEach((item) => {
         item.addEventListener('dragstart', (e) => {
-            dragSrcIndex = index;
+            draggedItem = item;
             e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('text/plain', index);
+            e.dataTransfer.setData('text/plain', item.getAttribute('data-filter-name'));
             item.style.opacity = '0.5';
         });
 
         item.addEventListener('dragover', (e) => {
             e.preventDefault();
             e.dataTransfer.dropEffect = 'move';
-            item.style.borderTop = '2px solid #00ffcc';
-        });
-
-        item.addEventListener('dragleave', () => {
-            item.style.borderTop = '';
+            
+            if (draggedItem && item !== draggedItem) {
+                const rect = item.getBoundingClientRect();
+                const next = (e.clientY - rect.top) / (rect.bottom - rect.top) > 0.5;
+                container.insertBefore(draggedItem, next ? item.nextSibling : item);
+            }
         });
 
         item.addEventListener('dragend', () => {
-            items.forEach(el => {
-                el.style.borderTop = '';
-                el.style.opacity = '';
-            });
+            item.style.opacity = '';
         });
 
         item.addEventListener('drop', async (e) => {
             e.preventDefault();
-            const srcIdx = parseInt(e.dataTransfer.getData('text/plain'), 10);
-            const targetIdx = index;
+            
+            // Reconstruct state.filterEvents based on the current DOM order
+            const domItems = Array.from(container.querySelectorAll('.filter-list-item[draggable="true"]'));
+            const newNamesOrder = domItems.map(el => el.getAttribute('data-filter-name'));
+            
+            const reordered = [];
+            newNamesOrder.forEach(name => {
+                const found = state.filterEvents.find(f => f.name === name);
+                if (found) reordered.push(found);
+            });
+            
+            state.filterEvents = reordered;
 
-            if (srcIdx !== targetIdx && !isNaN(srcIdx)) {
-                const reordered = [...state.filterEvents];
-                const [movedItem] = reordered.splice(srcIdx, 1);
-                reordered.splice(targetIdx, 0, movedItem);
-                state.filterEvents = reordered;
-
-                syncFilterList();
-                await saveChannelsAndFilters();
-                renderSettingsFilters();
-            }
+            syncFilterList();
+            await saveChannelsAndFilters();
+            renderSettingsFilters();
+            renderAll(true); // Re-render everything to update all dropdowns in sidebar/landing
         });
     });
 }

@@ -54,7 +54,8 @@ export function populateDropdowns() {
             if (!select) return;
             const currentVal = select.value;
             select.innerHTML = `<option value="all">${defaultText}</option>`;
-            Array.from(set).sort().forEach(val => {
+            const sortedArray = isEvent ? Array.from(set) : Array.from(set).sort();
+            sortedArray.forEach(val => {
                 const opt = document.createElement('option');
                 opt.value = val;
                 
