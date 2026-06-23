@@ -110,6 +110,7 @@
 22. ✅ Mejoras visuales de Glassmorphism: Ajustes de opacidad en tarjetas de canales y menús de navegación, más estilo hover pulido para `hud-action-btn`.
 23. ✅ Semántica HTML y minimalismo en controles de volumen: Reemplazo de etiquetas `<span>` por `<button>` con `tabindex` y `aria-label` en index.html, y reseteo de estilos nativos de botón en style.css.
 24. ✅ Flexibilización del Guardián de Resolución: Modificación de `checkResolution()` para verificar el viewport lógico (innerWidth/innerHeight) en vez de la pantalla física total, reducción del límite a 1024x720, eliminación de la cuenta regresiva de auto-cierre, y adición del botón de omisión (Bypass).
+25. ✅ Consistencia de Volumen y Comportamientos de Silenciador (Mute): Verificado que el zapping preserve el volumen/mute, que bajar a 0 active Mute, que desmutar desde 0 suba a 10 (100%), y que subir volumen desde 0 incremente de forma natural a 1 (10%) según el comportamiento deseado.
 
 ## Pendientes
 - Migración a Cursor IDE para workflow más cómodo
