@@ -291,6 +291,7 @@ export function initEventsDragAndDrop() {
 
         syncFilterList();
         await saveChannelsAndFilters();
-        renderAll(true);
+        renderSettingsFilters();
+        if (ext.populateDropdowns) ext.populateDropdowns();
     });
 }
