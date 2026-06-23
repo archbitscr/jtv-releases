@@ -218,51 +218,79 @@ export function initEventsDragAndDrop() {
     const container = document.getElementById('list-filter-events');
     if (!container) return;
 
-    const items = Array.from(container.querySelectorAll('.filter-list-item[draggable="true"]'));
-    let draggedItem = null;
+    let dragSrcIndex = null;
+    let dragSrcEl = null;
 
-    items.forEach((item) => {
-        item.addEventListener('dragstart', (e) => {
-            draggedItem = item;
-            e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('text/plain', item.getAttribute('data-filter-name'));
-            item.style.opacity = '0.5';
+    function getItems() {
+        return Array.from(container.querySelectorAll('.filter-list-item[draggable="true"]'));
+    }
+
+    function clearIndicators() {
+        getItems().forEach(el => {
+            el.style.borderTop = '';
+            el.style.borderBottom = '';
+            el.style.opacity = '';
         });
+    }
 
-        item.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'move';
-            
-            if (draggedItem && item !== draggedItem) {
-                const rect = item.getBoundingClientRect();
-                const next = (e.clientY - rect.top) / (rect.bottom - rect.top) > 0.5;
-                container.insertBefore(draggedItem, next ? item.nextSibling : item);
-            }
-        });
+    container.addEventListener('dragstart', (e) => {
+        const item = e.target.closest('.filter-list-item[draggable="true"]');
+        if (!item) return;
+        dragSrcEl = item;
+        dragSrcIndex = getItems().indexOf(item);
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', dragSrcIndex);
+        setTimeout(() => { item.style.opacity = '0.4'; }, 0);
+    });
 
-        item.addEventListener('dragend', () => {
-            item.style.opacity = '';
-        });
+    container.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        const item = e.target.closest('.filter-list-item[draggable="true"]');
+        if (!item || item === dragSrcEl) return;
+        clearIndicators();
+        dragSrcEl.style.opacity = '0.4';
+        const rect = item.getBoundingClientRect();
+        const mid = rect.top + rect.height / 2;
+        if (e.clientY < mid) {
+            item.style.borderTop = '2px solid #00ffcc';
+        } else {
+            item.style.borderBottom = '2px solid #00ffcc';
+        }
+    });
 
-        item.addEventListener('drop', async (e) => {
-            e.preventDefault();
-            
-            // Reconstruct state.filterEvents based on the current DOM order
-            const domItems = Array.from(container.querySelectorAll('.filter-list-item[draggable="true"]'));
-            const newNamesOrder = domItems.map(el => el.getAttribute('data-filter-name'));
-            
-            const reordered = [];
-            newNamesOrder.forEach(name => {
-                const found = state.filterEvents.find(f => f.name === name);
-                if (found) reordered.push(found);
-            });
-            
-            state.filterEvents = reordered;
+    container.addEventListener('dragleave', (e) => {
+        if (!container.contains(e.relatedTarget)) clearIndicators();
+    });
 
-            syncFilterList();
-            await saveChannelsAndFilters();
-            renderSettingsFilters();
-            renderAll(true); // Re-render everything to update all dropdowns in sidebar/landing
-        });
+    container.addEventListener('dragend', () => {
+        clearIndicators();
+        dragSrcEl = null;
+        dragSrcIndex = null;
+    });
+
+    container.addEventListener('drop', async (e) => {
+        e.preventDefault();
+        const item = e.target.closest('.filter-list-item[draggable="true"]');
+        if (!item || item === dragSrcEl) { clearIndicators(); return; }
+
+        const items = getItems();
+        const targetIndex = items.indexOf(item);
+        const rect = item.getBoundingClientRect();
+        const mid = rect.top + rect.height / 2;
+        const insertAfter = e.clientY >= mid;
+
+        clearIndicators();
+
+        const reordered = [...state.filterEvents];
+        const [movedItem] = reordered.splice(dragSrcIndex, 1);
+        const finalIndex = dragSrcIndex < targetIndex
+            ? (insertAfter ? targetIndex : targetIndex - 1)
+            : (insertAfter ? targetIndex + 1 : targetIndex);
+        reordered.splice(finalIndex, 0, movedItem);
+        state.filterEvents = reordered;
+
+        syncFilterList();
+        await saveChannelsAndFilters();
+        renderAll(true);
     });
 }

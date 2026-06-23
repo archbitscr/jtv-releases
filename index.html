@@ -986,6 +986,19 @@
                                 <label class="parental-time-label">Hasta <input type="time" id="parental-end-time" class="dark-input parental-time-field" value="20:00"></label>
                             </div>
                         </div>
+                        <div class="setting-divider"></div>
+                        <div class="setting-item" style="flex-direction: column; align-items: stretch; gap: 15px;">
+                            <div class="setting-item-info" style="margin-bottom: 5px;">
+                                <span class="setting-title">Canales Adicionales Permitidos</span>
+                                <span class="setting-desc">Selecciona canales que no sean del género "Kids" o "Niños" pero que quieres permitir en el Modo Niños.</span>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <input type="text" id="parental-channels-search" class="dark-input" placeholder="Buscar canal..." style="width: 100%; max-width: 320px; font-size: 13px; padding: 8px 12px; margin: 0;">
+                                <div id="parental-allowed-channels-list" style="max-height: 250px; overflow-y: auto; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+                                    <!-- Se poblará dinámicamente -->
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                     

@@ -764,6 +764,7 @@ export function setupEventListeners() {
                 
                 if (targetTab === 'parental') {
                     if (typeof updateParentalPinUI === 'function') updateParentalPinUI();
+                    if (typeof window.renderParentalChannelsList === 'function') window.renderParentalChannelsList();
                 }
                 
                 if (targetTab === 'sensors') {
@@ -1791,6 +1792,91 @@ export function setupEventListeners() {
             saveAppState();
         };
     });
+
+    const renderParentalChannelsList = (searchTerm = "") => {
+        const listContainer = document.getElementById('parental-allowed-channels-list');
+        if (!listContainer) return;
+
+        listContainer.innerHTML = '';
+        const term = searchTerm.toLowerCase().trim();
+
+        const filtered = state.channels.filter(c => {
+            if (!term) return true;
+            const nameLower = (c.name || '').toLowerCase();
+            const idStr = (c.id || '').toString().toLowerCase();
+            return nameLower.includes(term) || idStr.includes(term);
+        });
+
+        if (filtered.length === 0) {
+            listContainer.innerHTML = `<div style="text-align: center; color: rgba(255, 255, 255, 0.3); font-size: 12px; padding: 20px 0;">No se encontraron canales.</div>`;
+            return;
+        }
+
+        filtered.forEach(c => {
+            const cats = (c.categories || []).map(cat => cat.toLowerCase());
+            const isNativeKids = cats.includes('kids') || cats.includes('niños');
+            const isChecked = isNativeKids || c.kidsAllowed === true;
+
+            const item = document.createElement('label');
+            item.className = 'parental-channel-item';
+            item.style.cssText = 'display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 8px; cursor: pointer; transition: all 0.2s ease;';
+            
+            const infoDiv = document.createElement('div');
+            infoDiv.style.cssText = 'display: flex; align-items: center; gap: 10px;';
+            
+            const numSpan = document.createElement('span');
+            numSpan.style.cssText = 'font-size: 11px; color: rgba(255, 255, 255, 0.4); font-weight: 600; min-width: 24px;';
+            numSpan.textContent = `#${c.id}`;
+            infoDiv.appendChild(numSpan);
+            
+            const nameSpan = document.createElement('span');
+            nameSpan.style.cssText = 'font-size: 13px; color: #fff; font-weight: 500;';
+            nameSpan.textContent = c.name;
+            infoDiv.appendChild(nameSpan);
+
+            if (isNativeKids) {
+                const badge = document.createElement('span');
+                badge.style.cssText = 'font-size: 10px; color: #00ffcc; background: rgba(0, 255, 204, 0.1); padding: 2px 6px; border-radius: 4px; font-weight: 600; text-transform: uppercase;';
+                badge.textContent = 'Kids (Auto)';
+                infoDiv.appendChild(badge);
+            } else if (c.categories && c.categories.length > 1) {
+                const displayCat = c.categories.find(cat => cat.toLowerCase() !== 'all');
+                if (displayCat) {
+                    const badge = document.createElement('span');
+                    badge.style.cssText = 'font-size: 10px; color: rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.05); padding: 2px 6px; border-radius: 4px; font-weight: 500;';
+                    badge.textContent = displayCat;
+                    infoDiv.appendChild(badge);
+                }
+            }
+            
+            item.appendChild(infoDiv);
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = isChecked;
+            checkbox.disabled = isNativeKids;
+            checkbox.style.cssText = 'cursor: pointer; width: 16px; height: 16px; accent-color: #00ffcc;';
+            
+            if (!isNativeKids) {
+                checkbox.onchange = (e) => {
+                    c.kidsAllowed = e.target.checked;
+                    saveAppState();
+                    renderAll();
+                };
+            }
+
+            item.appendChild(checkbox);
+            listContainer.appendChild(item);
+        });
+    };
+    window.renderParentalChannelsList = renderParentalChannelsList;
+
+    const parentalChannelsSearch = document.getElementById('parental-channels-search');
+    if (parentalChannelsSearch) {
+        parentalChannelsSearch.oninput = (e) => {
+            renderParentalChannelsList(e.target.value);
+        };
+    }
 }
 
 // VOD Scraping, Detail and Cache functions have been moved to vodContent.js and vodCache.js

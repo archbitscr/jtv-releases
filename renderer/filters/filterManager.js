@@ -129,7 +129,7 @@ export function getFilteredChannelsList(mode = 'channels') {
         if (ext.isParentalTimeLocked && ext.isParentalTimeLocked()) {
             const cats = (channel.categories || []).map(c => c.toLowerCase());
             const isKids = cats.includes('kids') || cats.includes('niños');
-            if (!isKids) return false;
+            if (!isKids && !channel.kidsAllowed) return false;
         }
 
         // Search engine multicriterio (Tarea 16, EPG / ID / Name)
