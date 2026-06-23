@@ -1516,8 +1516,12 @@ export function setupEventListeners() {
             if (!state.isHomeActive && state.activeChannelId && !state.isVodPlaying) {
                 const sourceSwitcherEl = document.getElementById('source-switcher');
                 if (sourceSwitcherEl) {
-                    sourceSwitcherEl.classList.remove('hidden');
-                    startInactivityTimers();
+                    if (sourceSwitcherEl.classList.contains('hidden')) {
+                        sourceSwitcherEl.classList.remove('hidden');
+                        startInactivityTimers();
+                    } else {
+                        sourceSwitcherEl.classList.add('hidden');
+                    }
                 }
                 return true;
             }
