@@ -109,6 +109,7 @@
 21. ✅ Hotkey de Barra Espaciadora: Permite alternar (Toggle) la visibilidad del HUD del selector de fuentes de forma rápida (mostrar si está oculto / ocultar si está visible), manteniendo el auto-ocultamiento por inactividad.
 22. ✅ Mejoras visuales de Glassmorphism: Ajustes de opacidad en tarjetas de canales y menús de navegación, más estilo hover pulido para `hud-action-btn`.
 23. ✅ Semántica HTML y minimalismo en controles de volumen: Reemplazo de etiquetas `<span>` por `<button>` con `tabindex` y `aria-label` en index.html, y reseteo de estilos nativos de botón en style.css.
+24. ✅ Flexibilización del Guardián de Resolución: Modificación de `checkResolution()` para verificar el viewport lógico (innerWidth/innerHeight) en vez de la pantalla física total, reducción del límite a 1024x720, eliminación de la cuenta regresiva de auto-cierre, y adición del botón de omisión (Bypass).
 
 ## Pendientes
 - Migración a Cursor IDE para workflow más cómodo
