@@ -86,67 +86,40 @@ export async function handleResizeDimensions() {
     }
 }
 
-let countdownInterval = null;
+let resolutionBypassed = false;
 
 export function checkResolution() {
+    if (resolutionBypassed) return;
     const devState = window.getDeveloperState ? window.getDeveloperState() : null;
     if (devState && devState.diagnosticsEnabled) {
         const blocker = document.getElementById('resolution-blocker');
         if (blocker) blocker.classList.add('hidden');
-        if (window.timeouts) {
-            window.timeouts.clear('resolution');
-        }
-        if (countdownInterval) {
-            clearInterval(countdownInterval);
-            countdownInterval = null;
-        }
         return;
     }
-    const screenWidth = window.screen.width;
-    const screenHeight = window.screen.height;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     const blocker = document.getElementById('resolution-blocker');
     
-    if (screenWidth < 1220 || screenHeight < 1080) {
+    if (width < 1024 || height < 720) {
         const resVal = document.getElementById('current-res-val');
         if (blocker) {
             blocker.classList.remove('hidden');
         }
         if (resVal) {
-            resVal.textContent = `${screenWidth} x ${screenHeight}`;
+            resVal.textContent = `${width} x ${height}`;
         }
         
-        // Start auto-close countdown if not already running
-        if (window.timeouts && !window.timeouts.has('resolution')) {
-            let secondsLeft = 5;
-            const btn = document.getElementById('close-app-btn');
-            if (btn) btn.innerText = `Cerrar Aplicación (${secondsLeft}s)`;
-            
-            countdownInterval = setInterval(() => {
-                secondsLeft--;
-                if (btn) btn.innerText = `Cerrar Aplicación (${secondsLeft}s)`;
-                if (secondsLeft <= 0) {
-                    clearInterval(countdownInterval);
-                    window.close();
-                }
-            }, 1000);
-            
-            window.timeouts.set('resolution', () => {
-                window.close();
-            }, 5000);
+        // Bind bypass button
+        const bypassBtn = document.getElementById('bypass-res-btn');
+        if (bypassBtn) {
+            bypassBtn.onclick = () => {
+                resolutionBypassed = true;
+                if (blocker) blocker.classList.add('hidden');
+            };
         }
     } else {
         if (blocker) {
             blocker.classList.add('hidden');
         }
-        // Cancel countdown if resolution is restored
-        if (window.timeouts) {
-            window.timeouts.clear('resolution');
-        }
-        if (countdownInterval) {
-            clearInterval(countdownInterval);
-            countdownInterval = null;
-        }
-        const btn = document.getElementById('close-app-btn');
-        if (btn) btn.innerText = `Cerrar Aplicación`;
     }
 }

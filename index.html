@@ -1072,9 +1072,12 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
             <div class="blocker-content glass-card">
                 <i data-lucide="monitor-off"></i>
                 <h2>Resolución no compatible</h2>
-                <p>JTV requiere una resolución de pantalla de al menos <strong>1220 x 1080</strong> píxeles para funcionar correctamente.</p>
-                <p>Su resolución actual es: <span id="current-res-val" class="highlight-val">---</span></p>
-                <button id="close-app-btn" class="primary-btn">Cerrar Aplicación</button>
+                <p>JTV requiere una ventana de al menos <strong>1024 x 720</strong> píxeles para funcionar correctamente.</p>
+                <p>Su tamaño actual es: <span id="current-res-val" class="highlight-val">---</span></p>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px; width: 100%;">
+                    <button id="close-app-btn" class="primary-btn secondary" style="margin: 0; width: 50%;">Cerrar Aplicación</button>
+                    <button id="bypass-res-btn" class="primary-btn" style="margin: 0; width: 50%;">Continuar de todos modos</button>
+                </div>
             </div>
         </div>
 
