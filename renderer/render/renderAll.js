@@ -88,6 +88,17 @@ export function renderSettingsFilters() {
             }
             const iconColor = type === 'event' ? (ext.getEventIconColor ? ext.getEventIconColor(filter.icon) : '#3b82f6') : '#3b82f6';
             const isEmoji = (filter.icon && /[^\x00-\x7F]/.test(filter.icon)) || (filter.icon && filter.icon.length <= 2);
+
+            const devState = window.getDeveloperState ? window.getDeveloperState() : null;
+            const isDevMode = devState ? !!devState.developerModeEnabled : false;
+
+            const systemLanguages = ["Español / Latino", "English", "European", "Middle East"];
+            const systemGenres = ["Movies", "Sports", "Comedy", "Reality", "Food", "News", "Documentary", "Kids", "Others"];
+            const isSystem = (type === 'language' && systemLanguages.includes(filter.name)) ||
+                             ((type === 'genre' || type === 'series' || type === 'movies') && systemGenres.includes(filter.name));
+
+            const showControls = isDevMode || !isSystem;
+
             item.innerHTML = `
                 <div class="item-details" style="flex: 1; display: flex; align-items: center; gap: 6px;">
                     ${isEmoji 
@@ -95,17 +106,26 @@ export function renderSettingsFilters() {
                         : `<i data-lucide="${sanitizeIconName(filter.icon)}" style="color: ${iconColor} !important;"></i>`}
                     <span>${escapeHtml(filter.name)}</span>
                 </div>
+                ${showControls ? `
                 <div style="display: flex; gap: 4px; align-items: center;" onclick="event.stopPropagation();">
                     <button class="remove-btn" type="button" title="Eliminar"><i data-lucide="x"></i></button>
                 </div>
+                ` : ''}
             `;
-            item.onclick = () => {
-                if (ext.startEditingFilter) ext.startEditingFilter(type, filter);
-            };
-            item.querySelector('.remove-btn').onclick = (e) => {
-                e.stopPropagation();
-                if (ext.removeSettingsFilter) ext.removeSettingsFilter(type, filter.name);
-            };
+            if (showControls) {
+                item.onclick = () => {
+                    if (ext.startEditingFilter) ext.startEditingFilter(type, filter);
+                };
+                const removeBtn = item.querySelector('.remove-btn');
+                if (removeBtn) {
+                    removeBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        if (ext.removeSettingsFilter) ext.removeSettingsFilter(type, filter.name);
+                    };
+                }
+            } else {
+                item.style.cursor = 'default';
+            }
             container.appendChild(item);
         });
     };

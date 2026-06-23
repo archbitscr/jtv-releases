@@ -315,6 +315,19 @@ export function sortCategories(cats) {
 }
 
 export function removeSettingsFilter(type, filterName) {
+    const systemLanguages = ["Español / Latino", "English", "European", "Middle East"];
+    const systemGenres = ["Movies", "Sports", "Comedy", "Reality", "Food", "News", "Documentary", "Kids", "Others"];
+    const isSystem = (type === 'language' && systemLanguages.includes(filterName)) ||
+                     ((type === 'genre' || type === 'series' || type === 'movies') && systemGenres.includes(filterName));
+
+    const devState = window.getDeveloperState ? window.getDeveloperState() : null;
+    const isDevMode = devState ? !!devState.developerModeEnabled : false;
+
+    if (isSystem && !isDevMode) {
+        console.warn(`[FilterManager] Intento de eliminar filtro del sistema bloqueado: ${filterName} (${type})`);
+        return;
+    }
+
     if (type === 'language') {
         state.filterLanguages = state.filterLanguages.filter(f => f.name !== filterName);
     } else if (type === 'genre') {
