@@ -87,7 +87,7 @@ export const state = {
         { name: "Sports", icon: "trophy" },
         { name: "News", icon: "newspaper" },
         { name: "Movies", icon: "film" },
-        { name: "Entertainment", icon: "tv" },
+        { name: "Entertainment", icon: "tv-2" },
         { name: "Kids", icon: "smile" },
         { name: "Music", icon: "music" },
         { name: "Documentary", icon: "camera" },
