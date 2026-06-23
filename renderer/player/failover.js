@@ -176,3 +176,18 @@ function resumeFailoverOnce() {
     showNoSignalOverlay(false);
     triggerFailover();
 }
+
+window.addEventListener('offline', () => {
+    if (cycleInProgress) {
+        cycleInProgress = false;
+        state.failoverInProgress = false;
+        if (state.failoverTimeoutId) {
+            clearTimeout(state.failoverTimeoutId);
+            state.failoverTimeoutId = null;
+        }
+        stopNoSignalRetryLoop();
+    }
+    showNoSignalOverlay(true, 'internet');
+    setRetryText('Sin conexión a Internet. Conéctate para continuar.');
+    window.addEventListener('online', resumeFailoverOnce);
+});
