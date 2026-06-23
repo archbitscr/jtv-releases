@@ -1522,8 +1522,8 @@ body.player-active .edge-mask {
 }
 
 .channel-item.active {
-    background: rgba(0, 255, 204, 0.08) !important;
-    border-color: rgba(0, 255, 204, 0.25) !important;
+    background: rgba(0, 255, 204, 0.13) !important;
+    border-color: rgba(0, 255, 204, 0.35) !important;
     box-shadow: inset 3px 0 0 var(--accent) !important;
 }
 
