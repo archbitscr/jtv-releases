@@ -23,7 +23,7 @@ export function getFilteredLiveChannels() {
         .filter(c => {
             if (ext.isParentalTimeLocked && ext.isParentalTimeLocked()) {
                 const cats = (c.categories || []).map(cat => cat.toLowerCase());
-                return cats.includes('kids') || cats.includes('niños');
+                return cats.includes('kids') || cats.includes('niños') || c.kidsAllowed === true;
             }
             return true;
         })

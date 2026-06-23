@@ -115,6 +115,7 @@
 27. ✅ Timeout de la Landing con Canal Reproduciéndose: Implementado el auto-ocultamiento de home-dashboard (cerrando también los ajustes) tras 5 segundos de inactividad (configurable desde Ajustes de Timeouts) cuando hay reproducción de fondo y no hay hover.
 28. ✅ Control Parental - PIN Maestro: Implementada la clave maestra de recuperación "314159" (primeros 6 decimales de Pi) como bypass para desbloquear el panel de control parental en caso de olvido del PIN.
 29. ✅ Protección de Filtros de Sistema: Bloqueo de la edición y eliminación de filtros de sistema (idiomas y géneros nativos) tanto en la interfaz visual como en el backend del gestor de filtros a menos que el Modo Desarrollador esté activo.
+30. ✅ Canales Permitidos en Kids Mode: Agregado un buscador y lista con checkboxes en la pestaña de Control Parental que permite seleccionar canales individuales no infantiles para ser permitidos en el Modo Niños (persiste en kidsAllowed) tanto en barra lateral como en la grilla principal de canales.
 
 ## Pendientes
 - Migración a Cursor IDE para workflow más cómodo
