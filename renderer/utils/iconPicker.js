@@ -4,7 +4,7 @@ import { updateEventIconSelectBtnColor } from '../filters/filterManager.js';
 export function initIconPickers() {
     const iconsList = [
         'tag', 'flame', 'trophy', 'medal', 'award', 'flag', 'car', 'bike', 'utensils', 'pizza', 'coffee', 'dumbbell', 
-        'swords', 'target', 'activity', 'film', 'clapperboard', 'globe', 'tv', 'monitor', 'radio', 'mic', 'gamepad-2', 
+        'swords', 'target', 'activity', 'film', 'clapperboard', 'globe', 'tv-2', 'radio', 'mic', 'gamepad-2', 
         'star', 'compass', 'smile', 'newspaper', 'music', 'zap', 'camera', 'heart', 'shield', 'shopping-bag', 
         'book-open', 'stethoscope', 'cloud', 'leaf', 'briefcase', 'ghost', 'users', 'theater'
     ];
