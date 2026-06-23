@@ -208,7 +208,7 @@ body.player-active .edge-mask {
     left: 0;
     width: 380px;
     height: 100vh;
-    background: rgba(19, 19, 19, 0.35);
+    background: rgba(19, 19, 19, 0.20);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     z-index: 2000;
@@ -1875,7 +1875,7 @@ body.hide-cursor * {
     padding: 14px 24px;
     gap: 20px;
     
-    background: rgba(19, 19, 19, 0.35);
+    background: rgba(19, 19, 19, 0.15);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-radius: 24px 24px 0 0 !important;
@@ -3691,7 +3691,7 @@ body.hide-cursor * {
     padding: 14px 24px;
     gap: 20px;
     
-    background: rgba(19, 19, 19, 0.35);
+    background: rgba(19, 19, 19, 0.15);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-radius: 0 0 24px 24px !important; /* Top corners square, bottom corners rounded */
