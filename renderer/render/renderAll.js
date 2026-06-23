@@ -83,7 +83,6 @@ export function renderSettingsFilters() {
             item.className = 'filter-list-item';
             item.style.cursor = 'pointer';
             if (type === 'event') {
-                item.setAttribute('draggable', 'true');
                 item.setAttribute('data-filter-name', filter.name);
             }
             const iconColor = type === 'event' ? (ext.getEventIconColor ? ext.getEventIconColor(filter.icon) : '#3b82f6') : '#3b82f6';
@@ -218,80 +217,128 @@ export function initEventsDragAndDrop() {
     const container = document.getElementById('list-filter-events');
     if (!container) return;
 
-    let dragSrcIndex = null;
-    let dragSrcEl = null;
+    // Remover draggable de items existentes (ya no se usa HTML5 drag)
+    container.querySelectorAll('.filter-list-item[draggable]').forEach(el => {
+        el.removeAttribute('draggable');
+    });
+
+    let dragState = null;
+    let ghost = null;
+    let placeholder = null;
+    let rafId = null;
 
     function getItems() {
-        return Array.from(container.querySelectorAll('.filter-list-item[draggable="true"]'));
+        return Array.from(container.querySelectorAll('.filter-list-item'));
     }
 
-    function clearIndicators() {
-        getItems().forEach(el => {
-            el.style.borderTop = '';
-            el.style.borderBottom = '';
-            el.style.opacity = '';
-        });
+    function createGhost(el, x, y) {
+        const rect = el.getBoundingClientRect();
+        ghost = el.cloneNode(true);
+        ghost.style.cssText = `
+            position: fixed;
+            left: ${rect.left}px;
+            top: ${rect.top}px;
+            width: ${rect.width}px;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.95;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            border: 1px solid rgba(0,255,204,0.5) !important;
+            border-radius: 8px;
+            transition: none;
+        `;
+        document.body.appendChild(ghost);
+        return { offsetX: x - rect.left, offsetY: y - rect.top };
     }
 
-    container.addEventListener('dragstart', (e) => {
-        const item = e.target.closest('.filter-list-item[draggable="true"]');
-        if (!item) return;
-        dragSrcEl = item;
-        dragSrcIndex = getItems().indexOf(item);
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/plain', dragSrcIndex);
-        setTimeout(() => { item.style.opacity = '0.4'; }, 0);
-    });
+    function createPlaceholder(el) {
+        placeholder = document.createElement('div');
+        placeholder.style.cssText = `
+            height: ${el.offsetHeight}px;
+            background: rgba(0,255,204,0.08);
+            border: 2px dashed rgba(0,255,204,0.4);
+            border-radius: 8px;
+            margin: 2px 0;
+            pointer-events: none;
+        `;
+        return placeholder;
+    }
 
-    container.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        const item = e.target.closest('.filter-list-item[draggable="true"]');
-        if (!item || item === dragSrcEl) return;
-        clearIndicators();
-        dragSrcEl.style.opacity = '0.4';
-        const rect = item.getBoundingClientRect();
-        const mid = rect.top + rect.height / 2;
-        if (e.clientY < mid) {
-            item.style.borderTop = '2px solid #00ffcc';
-        } else {
-            item.style.borderBottom = '2px solid #00ffcc';
+    function getDropTarget(y) {
+        const items = getItems().filter(el => el !== dragState.el && el !== placeholder);
+        for (const item of items) {
+            const rect = item.getBoundingClientRect();
+            if (y < rect.bottom) {
+                const mid = rect.top + rect.height / 2;
+                return { el: item, before: y < mid };
+            }
         }
-    });
+        return { el: items[items.length - 1], before: false };
+    }
 
-    container.addEventListener('dragleave', (e) => {
-        if (!container.contains(e.relatedTarget)) clearIndicators();
-    });
+    container.addEventListener('mousedown', (e) => {
+        const handle = e.target.closest('.filter-list-item');
+        if (!handle) return;
+        // Solo iniciar si click no es en botón interno
+        if (e.target.closest('button, input, select, a')) return;
 
-    container.addEventListener('dragend', () => {
-        clearIndicators();
-        dragSrcEl = null;
-        dragSrcIndex = null;
-    });
-
-    container.addEventListener('drop', async (e) => {
         e.preventDefault();
-        const item = e.target.closest('.filter-list-item[draggable="true"]');
-        if (!item || item === dragSrcEl) { clearIndicators(); return; }
-
         const items = getItems();
-        const targetIndex = items.indexOf(item);
-        const rect = item.getBoundingClientRect();
-        const mid = rect.top + rect.height / 2;
-        const insertAfter = e.clientY >= mid;
+        const srcIndex = items.indexOf(handle);
 
-        clearIndicators();
+        const { offsetX, offsetY } = createGhost(handle, e.clientX, e.clientY);
+        createPlaceholder(handle);
+        handle.parentNode.insertBefore(placeholder, handle);
+        handle.style.display = 'none';
 
-        const reordered = [...state.filterEvents];
-        const [movedItem] = reordered.splice(dragSrcIndex, 1);
-        const finalIndex = dragSrcIndex < targetIndex
-            ? (insertAfter ? targetIndex : targetIndex - 1)
-            : (insertAfter ? targetIndex + 1 : targetIndex);
-        reordered.splice(finalIndex, 0, movedItem);
-        state.filterEvents = reordered;
+        dragState = { el: handle, srcIndex, offsetX, offsetY };
+    });
 
-        syncFilterList();
-        await saveChannelsAndFilters();
-        renderSettingsFilters();
-        if (ext.populateDropdowns) ext.populateDropdowns();
+    document.addEventListener('mousemove', (e) => {
+        if (!dragState || !ghost) return;
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+            ghost.style.left = (e.clientX - dragState.offsetX) + 'px';
+            ghost.style.top = (e.clientY - dragState.offsetY) + 'px';
+
+            const target = getDropTarget(e.clientY);
+            if (target.el) {
+                if (target.before) {
+                    target.el.parentNode.insertBefore(placeholder, target.el);
+                } else {
+                    target.el.parentNode.insertBefore(placeholder, target.el.nextSibling);
+                }
+            }
+        });
+    });
+
+    document.addEventListener('mouseup', async (e) => {
+        if (!dragState) return;
+
+        // Insertar elemento en la posición del placeholder
+        placeholder.parentNode.insertBefore(dragState.el, placeholder);
+        dragState.el.style.display = '';
+
+        // Limpiar
+        if (ghost) ghost.remove();
+        if (placeholder) placeholder.remove();
+        ghost = null;
+        placeholder = null;
+        if (rafId) cancelAnimationFrame(rafId);
+
+        // Leer nuevo orden del DOM
+        const newOrder = getItems().map(el => el.dataset.filterName);
+        const reordered = newOrder
+            .map(name => state.filterEvents.find(f => f.name === name))
+            .filter(Boolean);
+
+        if (reordered.length === state.filterEvents.length) {
+            state.filterEvents = reordered;
+            syncFilterList();
+            await saveChannelsAndFilters();
+            renderSettingsFilters();
+            if (ext.populateDropdowns) ext.populateDropdowns();
+        }
+        dragState = null;
     });
 }
