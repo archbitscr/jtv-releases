@@ -409,14 +409,14 @@ body.player-active .edge-mask {
     object-fit: contain;
 }
 
-.channel-info { flex: 1; }
+.channel-info { flex: 1; min-width: 0; overflow: hidden; }
 .channel-name-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 8px;
 }
-.channel-info h4 { font-size: 0.95rem; font-weight: 500; color: #fff; margin: 0; }
+.channel-info h4 { font-size: 0.95rem; font-weight: 500; color: #fff; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .channel-id-tag {
     font-size: 0.75rem;
     color: rgba(255, 255, 255, 0.58);
@@ -1527,7 +1527,7 @@ body.player-active .edge-mask {
     box-shadow: inset 3px 0 0 var(--accent) !important;
 }
 
-.channel-info h4 { font-size: 0.92rem; font-weight: 500; margin-bottom: 2px; }
+.channel-info h4 { font-size: 0.92rem; font-weight: 500; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .channel-info .channel-meta-row {
     display: flex;
     align-items: center;
