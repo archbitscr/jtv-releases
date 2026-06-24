@@ -4578,10 +4578,9 @@ body.hide-cursor * {
     flex-direction: column;
 }
 
-.danger-btn {
+.danger-btn,
+#parental-pin-submit-btn {
     background: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 74, 74, 0.3) !important;
-    color: #ff4a4a !important;
     font-size: 0.8125rem;
     font-weight: 500;
     letter-spacing: -0.01em;
@@ -4590,6 +4589,25 @@ body.hide-cursor * {
     cursor: pointer;
     white-space: nowrap;
     transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.danger-btn {
+    border: 1px solid rgba(255, 74, 74, 0.3) !important;
+    color: #ff4a4a !important;
+}
+
+#parental-pin-submit-btn {
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    color: #00ffcc;
+}
+
+#parental-pin-submit-btn:hover {
+    background: rgba(0, 255, 204, 0.1);
+    border-color: rgba(0, 255, 204, 0.5);
+}
+
+#parental-pin-submit-btn:active {
+    background: rgba(0, 255, 204, 0.05);
 }
 
 .danger-btn:hover {
