@@ -390,11 +390,13 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     // Force show HUD elements immediately
     sourceSwitcher.classList.remove('hidden');
     
-    // Hide landing overlay and home screens if showing on top of a channel
-    document.getElementById('home-dashboard').classList.add('hidden');
-    document.getElementById('app-home-screen').classList.add('hidden');
-    document.getElementById('settings-screen').classList.add('hidden');
-    state.isHomeActive = false;
+    // Hide landing overlay and home screens only on manual channel change
+    if (resetSource) {
+        document.getElementById('home-dashboard').classList.add('hidden');
+        document.getElementById('app-home-screen').classList.add('hidden');
+        document.getElementById('settings-screen').classList.add('hidden');
+        state.isHomeActive = false;
+    }
 
     if (ext.syncGridPageToActiveChannel) ext.syncGridPageToActiveChannel(channel.id);
     if (ext.renderAll) ext.renderAll();
