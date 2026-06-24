@@ -158,48 +158,52 @@ export function initCustomTooltips() {
         document.body.appendChild(tooltipEl);
     }
 
+    let tooltipTimer = null;
+
     document.addEventListener('mouseover', (e) => {
         const target = e.target.closest('button, input, select, textarea, a, .nav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .vol-icon, .settings-switch, .settings-switch-slider, [title], [data-tooltip], [onclick], [role="button"]');
         if (!target) return;
 
-        // Disable tooltips for top nav menu buttons when in the live module ("En vivo" section)
         if (state.currentModule === 'live' && target.closest('#top-nav-menu')) return;
-
-        // Disable tooltips for filter buttons in the live section landing
         if (state.currentModule === 'live' && target.closest('.dashboard-landing-nav')) return;
 
         const text = getOrGenerateTooltip(target);
         if (!text || text.trim() === '') return;
 
-        tooltipEl.textContent = text;
-        tooltipEl.classList.add('show');
+        clearTimeout(tooltipTimer);
+        tooltipTimer = setTimeout(() => {
+            tooltipEl.textContent = text;
 
-        const rect = target.getBoundingClientRect();
-        const tooltipRect = tooltipEl.getBoundingClientRect();
-        
-        let left = rect.left + (rect.width - tooltipRect.width) / 2;
-        let top = rect.top - tooltipRect.height - 6;
+            const rect = target.getBoundingClientRect();
+            tooltipEl.classList.add('show');
+            const tooltipRect = tooltipEl.getBoundingClientRect();
 
-        if (left < 5) left = 5;
-        if (left + tooltipRect.width > window.innerWidth - 5) {
-            left = window.innerWidth - tooltipRect.width - 5;
-        }
-        if (top < 5) {
-            top = rect.bottom + 6;
-        }
+            let left = rect.left + (rect.width - tooltipRect.width) / 2;
+            let top = rect.top - tooltipRect.height - 6;
 
-        tooltipEl.style.left = `${left}px`;
-        tooltipEl.style.top = `${top}px`;
+            if (left < 5) left = 5;
+            if (left + tooltipRect.width > window.innerWidth - 5) {
+                left = window.innerWidth - tooltipRect.width - 5;
+            }
+            if (top < 5) {
+                top = rect.bottom + 6;
+            }
+
+            tooltipEl.style.left = `${left}px`;
+            tooltipEl.style.top = `${top}px`;
+        }, 1200);
     });
 
     document.addEventListener('mouseout', (e) => {
         const target = e.target.closest('button, input, select, textarea, a, .nav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .vol-icon, .settings-switch, .settings-switch-slider, [data-tooltip]');
         if (target) {
+            clearTimeout(tooltipTimer);
             tooltipEl.classList.remove('show');
         }
     });
 
     document.addEventListener('click', () => {
+        clearTimeout(tooltipTimer);
         tooltipEl.classList.remove('show');
     });
 }
