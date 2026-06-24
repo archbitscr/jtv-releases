@@ -431,6 +431,14 @@ export function renderAssignerEvents() {
                 await saveChannelsAndFilters();
                 renderSettingsFilters();
 
+                const activeId = state.activeChannelId;
+                if (activeId) {
+                    const activeCh = channels.find(c => String(c.id) === String(activeId));
+                    if (activeCh && state.assignerSelectedChannelIndices.includes(channels.indexOf(activeCh))) {
+                        if (window.updateHudChannelFilters) window.updateHudChannelFilters(activeCh);
+                    }
+                }
+
                 selectAssignerChannelMultiple();
             }
         };
