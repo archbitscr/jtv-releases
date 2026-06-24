@@ -396,8 +396,6 @@ export async function initDeveloperFeatures() {
     const devChannelsPane = document.getElementById('developer-channels-crud-container');
     if (devChannelsPane) {
         devChannelsPane.innerHTML = `
-            <h4 class="crud-section-title" style="font-size: 1.1rem; color: #ffffff; margin-top: 5px; margin-bottom: 2px; font-weight: 600;">Editor de canales CRUD</h4>
-            <p class="crud-section-subtitle" style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.45); margin-top: 0; margin-bottom: 15px; font-weight: 500;">Create, Rename, Update, Delete</p>
             <div class="channels-crud-container" style="display: flex; gap: 20px; flex: 1; min-height: 0; overflow: hidden; align-items: stretch;">
                 <!-- Left: list of channels -->
                 <div class="crud-list-panel" style="flex: 1; border-right: 1px solid rgba(255,255,255,0.08); padding-right: 15px; display: flex; flex-direction: column; min-height: 0; height: 100%;">
