@@ -17,12 +17,18 @@ export function initDashCustomSelects() {
                 if (select.value === opt.value) {
                     item.classList.add('selected');
                     btn.classList.toggle('has-value', opt.value !== 'all');
+                    const label = btn.querySelector('.dash-custom-select-label');
+                    if (label) {
+                        label.textContent = opt.value !== 'all' ? opt.textContent : (select.dataset.label || select.getAttribute('aria-label') || 'Filtro');
+                    }
                 }
                 item.addEventListener('click', (e) => {
                     e.stopPropagation();
                     select.value = opt.value;
-                    // No actualizar el label — mantiene el título fijo de categoría
-                    // Update active style on btn
+                    const label = btn.querySelector('.dash-custom-select-label');
+                    if (label) {
+                        label.textContent = opt.value !== 'all' ? opt.textContent : (select.dataset.label || select.getAttribute('aria-label') || 'Filtro');
+                    }
                     btn.classList.toggle('has-value', opt.value !== 'all');
                     // Update selected highlight in menu
                     menu.querySelectorAll('.dash-custom-select-option').forEach(el => el.classList.remove('selected'));
