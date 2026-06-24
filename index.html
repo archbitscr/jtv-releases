@@ -826,25 +826,15 @@
                     <!-- Section: Control Parental -->
                     <div id="settings-sect-parental" class="settings-sect-pane">
                         <h3 class="settings-page-title">Control Parental</h3>
-                        <div class="setting-item">
-                            <div class="setting-item-info">
-                                <span class="setting-title">Kids Mode (Modo Niños)</span>
-                                <span class="setting-desc">Filtra automáticamente los canales para mostrar solo contenido familiar (Género Kids).</span>
-                            </div>
-                            <label class="settings-switch">
-                                <input type="checkbox" id="parental-kids-toggle">
-                                <span class="settings-switch-slider"></span>
-                            </label>
-                        </div>
-                        <div id="parental-dependent-options" class="disabled-setting-row">
-                        <div class="setting-divider"></div>
+                        <!-- 1. PIN -->
                         <div class="setting-item">
                             <div class="setting-item-info">
                                 <span class="setting-title">PIN de 6 dígitos</span>
-                                <span class="setting-desc">Requerido para desactivar el Kids Mode, reproducir canales protegidos o editar ajustes.</span>
+                                <span class="setting-desc">Requerido para gestionar el control parental y desbloquear contenido restringido.</span>
                             </div>
-                            <div class="setting-item-actions">
-                                <button id="parental-change-pin-btn" class="settings-action-btn">Cambiar PIN</button>
+                            <div class="setting-item-actions" style="display: flex; gap: 8px;">
+                                <button id="parental-change-pin-btn" class="settings-action-btn">Crear PIN</button>
+                                <button id="parental-delete-pin-btn" class="settings-action-btn danger-btn hidden">Borrar PIN</button>
                             </div>
                         </div>
                         <div id="parental-pin-creation-wrapper" class="hidden" style="margin-top: 15px; padding: 20px; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; transition: all 0.3s ease;">
@@ -910,6 +900,32 @@
                             <p id="parental-pin-success-msg" style="margin: 0; font-size: 12px; color: rgba(255, 255, 255, 0.7); line-height: 1.4;">El PIN de Control Parental ha sido actualizado con éxito.</p>
                         </div>
                         <div class="setting-divider"></div>
+                        <!-- 2. Canales para Adultos -->
+                        <div class="setting-item" id="parental-adult-section">
+                            <div class="setting-item-info">
+                                <span class="setting-title">Canales para Adultos</span>
+                                <span class="setting-desc">Muestra la selección de Canales de Contenido Explícito.</span>
+                            </div>
+                            <label class="settings-switch">
+                                <input type="checkbox" id="parental-adult-toggle" disabled>
+                                <span class="settings-switch-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-divider"></div>
+                        <!-- 3. Kids Mode -->
+                        <div class="setting-item">
+                            <div class="setting-item-info">
+                                <span class="setting-title">Kids Mode (Modo Niños)</span>
+                                <span class="setting-desc">Filtra automáticamente los canales para mostrar solo contenido familiar (Género Kids).</span>
+                            </div>
+                            <label class="settings-switch">
+                                <input type="checkbox" id="parental-kids-toggle">
+                                <span class="settings-switch-slider"></span>
+                            </label>
+                        </div>
+                        <div id="parental-dependent-options" class="disabled-setting-row">
+                        <div class="setting-divider"></div>
+                        <!-- 4. Programación Horaria -->
                         <div class="setting-item">
                             <div class="setting-item-info">
                                 <span class="setting-title">Programación Horaria</span>
@@ -921,6 +937,7 @@
                             </label>
                         </div>
                         <div class="setting-divider"></div>
+                        <!-- 5. Rango -->
                         <div class="setting-item" id="parental-time-settings-row">
                             <div class="setting-item-info">
                                 <span class="setting-title">Rango Horario de Bloqueo</span>
@@ -932,6 +949,7 @@
                             </div>
                         </div>
                         <div class="setting-divider"></div>
+                        <!-- 6. Canales Permitidos -->
                         <div class="setting-item" style="flex-direction: column; align-items: stretch; gap: 15px;">
                             <div class="setting-item-info" style="margin-bottom: 5px;">
                                 <span class="setting-title">Canales Adicionales Permitidos</span>

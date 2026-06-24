@@ -394,10 +394,23 @@ export function setupEventListeners() {
         setRequirementStatus('pin-req-match', false);
     };
 
+    const parentalDeletePinBtn = document.getElementById('parental-delete-pin-btn');
+    const parentalAdultToggle = document.getElementById('parental-adult-toggle');
+
     const updateParentalPinUI = () => {
         const storedHash = localStorage.getItem('jtv_parental_pin');
         if (parentalChangePinBtn) {
             parentalChangePinBtn.textContent = storedHash ? "Cambiar PIN" : "Crear PIN";
+        }
+        if (parentalDeletePinBtn) {
+            parentalDeletePinBtn.classList.toggle('hidden', !storedHash);
+        }
+        if (parentalAdultToggle) {
+            parentalAdultToggle.disabled = !storedHash;
+            const adultSection = document.getElementById('parental-adult-section');
+            if (adultSection) {
+                adultSection.classList.toggle('disabled-setting-row', !storedHash);
+            }
         }
     };
 
@@ -423,6 +436,51 @@ export function setupEventListeners() {
                     if (parentalNewPin1) parentalNewPin1.focus();
                 }
             }
+        };
+    }
+
+    // Delete PIN button
+    if (parentalDeletePinBtn) {
+        parentalDeletePinBtn.onclick = () => {
+            promptParentalPIN((confirmed) => {
+                if (confirmed) {
+                    localStorage.removeItem('jtv_parental_pin');
+                    localStorage.removeItem('jtv_parental_kids_mode');
+                    localStorage.removeItem('jtv_parental_schedule_enabled');
+                    localStorage.removeItem('jtv_parental_start_time');
+                    localStorage.removeItem('jtv_parental_end_time');
+                    localStorage.removeItem('jtv_parental_adult_content');
+                    if (parentalKidsToggle) parentalKidsToggle.checked = false;
+                    if (parentalScheduleToggle) parentalScheduleToggle.checked = false;
+                    if (parentalAdultToggle) parentalAdultToggle.checked = false;
+                    if (parentalStartTime) parentalStartTime.value = '08:00';
+                    if (parentalEndTime) parentalEndTime.value = '20:00';
+                    const depOpts = document.getElementById('parental-dependent-options');
+                    if (depOpts) depOpts.classList.add('disabled-setting-row');
+                    updateParentalTimeFields(false);
+                    updateParentalPinUI();
+                    renderAll();
+                }
+            }, "Introduce tu PIN para eliminarlo y restablecer el Control Parental:");
+        };
+    }
+
+    // Adult content toggle
+    if (parentalAdultToggle) {
+        parentalAdultToggle.checked = localStorage.getItem('jtv_parental_adult_content') === 'true';
+
+        parentalAdultToggle.onchange = (e) => {
+            const shouldEnable = e.target.checked;
+            promptParentalPIN((confirmed) => {
+                if (confirmed) {
+                    localStorage.setItem('jtv_parental_adult_content', shouldEnable ? 'true' : 'false');
+                    renderAll();
+                } else {
+                    parentalAdultToggle.checked = !shouldEnable;
+                }
+            }, shouldEnable
+                ? "Introduce tu PIN para desbloquear contenido para adultos:"
+                : "Introduce tu PIN para ocultar contenido para adultos:");
         };
     }
 

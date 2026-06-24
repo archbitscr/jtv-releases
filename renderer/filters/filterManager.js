@@ -113,6 +113,12 @@ export function getFilteredChannelsList(mode = 'channels', opts = {}) {
         // Onboarding languages check (Tarea 18, 21)
         if (!matchesOnboardingLanguages(channel)) return false;
 
+        // Block XXX channels unless explicitly unlocked
+        if (localStorage.getItem('jtv_parental_adult_content') !== 'true') {
+            const cats = (channel.categories || []).map(c => c.toLowerCase());
+            if (cats.includes('xxx')) return false;
+        }
+
         // Parental Lock automatic check (Tarea 19, 25)
         if (ext.isParentalTimeLocked && ext.isParentalTimeLocked()) {
             const cats = (channel.categories || []).map(c => c.toLowerCase());
