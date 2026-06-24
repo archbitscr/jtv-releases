@@ -1348,7 +1348,19 @@ export function setupEventListeners() {
     editUploadBtn.onclick = () => logoUploadInput.click();
     editFavToggle.onclick = () => {
         const channel = channels.find(c => String(c.id) === String(state.currentEditingChannelId));
-        if (channel) { channel.favorite = !channel.favorite; editFavToggle.classList.toggle('active', channel.favorite); renderAll(); }
+        if (!channel) return;
+        channel.favorite = !channel.favorite;
+        editFavToggle.classList.toggle('active', channel.favorite);
+        if (String(state.activeChannelId) === String(channel.id)) {
+            const hudFavBtn = document.getElementById('hud-fav-btn');
+            if (hudFavBtn) hudFavBtn.classList.toggle('active', channel.favorite);
+            if (tunerFavHeart) {
+                tunerFavHeart.style.fill = channel.favorite ? '#ff4b4b' : 'transparent';
+                tunerFavHeart.style.color = channel.favorite ? '#ff4b4b' : 'currentColor';
+            }
+        }
+        renderAll();
+        saveAppState();
     };
 
     // Anti-Hotkeys Global Capturer (Tarea 32)

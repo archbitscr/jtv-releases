@@ -82,6 +82,15 @@ export function renderList(container, list, highlightTerm = "") {
                 icon.style.color = channel.favorite ? '#ff4b4b' : 'currentColor';
             }
             btn.classList.toggle('active', channel.favorite);
+            if (String(state.activeChannelId) === String(channel.id)) {
+                const hudFavBtn = document.getElementById('hud-fav-btn');
+                if (hudFavBtn) hudFavBtn.classList.toggle('active', channel.favorite);
+                const tunerHeart = document.getElementById('tuner-fav-heart');
+                if (tunerHeart) {
+                    tunerHeart.style.fill = channel.favorite ? '#ff4b4b' : 'transparent';
+                    tunerHeart.style.color = channel.favorite ? '#ff4b4b' : 'currentColor';
+                }
+            }
             if (ext.renderAll) ext.renderAll();
             if (ext.saveAppState) ext.saveAppState();
         };
