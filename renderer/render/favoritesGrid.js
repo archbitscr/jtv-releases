@@ -17,12 +17,7 @@ export function getFilteredLiveChannels() {
     const mode = state.zapSourceTab === 'favorites' ? 'favorites' : 'channels';
 
     return ext.getFilteredChannelsList
-        ? ext.getFilteredChannelsList(mode, {
-            searchTerm: searchVal,
-            languageId: 'dash-filter-language',
-            genreId: 'dash-filter-genre',
-            eventId: 'dash-filter-event',
-        })
+        ? ext.getFilteredChannelsList(mode, { searchTerm: searchVal })
         : [];
 }
 

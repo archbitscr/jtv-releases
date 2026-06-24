@@ -37,8 +37,6 @@ export function populateDropdowns() {
     const genres = new Set((state.filterGenres || []).map(f => f.name));
     const events = new Set((state.filterEvents || []).map(f => f.name));
 
-    const DASH_FILTER_IDS = new Set(['dash-filter-language', 'dash-filter-genre', 'dash-filter-event']);
-
     const getEventIconHtml = (eventName) => {
         const found = (state.filterEvents || []).find(f => f.name.toLowerCase() === eventName.toLowerCase());
         if (found && found.icon) {
@@ -58,7 +56,7 @@ export function populateDropdowns() {
             sortedArray.forEach(val => {
                 const opt = document.createElement('option');
                 opt.value = val;
-                
+
                 let displayText = val;
                 if (isEvent) {
                     const emoji = getEventIconHtml(val);
@@ -72,16 +70,13 @@ export function populateDropdowns() {
             } else {
                 select.value = 'all';
             }
-            // dash filters use their own custom dropdown system
-            if (!DASH_FILTER_IDS.has(id)) {
-                if (ext.syncCustomSelect) ext.syncCustomSelect(select);
-            }
+            if (ext.syncCustomSelect) ext.syncCustomSelect(select);
         });
     };
 
-    updateSelect(['filter-select-language', 'fav-filter-select-language', 'dash-filter-language'], languages, 'Todos');
-    updateSelect(['filter-select-genre', 'fav-filter-select-genre', 'dash-filter-genre'], genres, 'Todos');
-    updateSelect(['filter-select-event', 'fav-filter-select-event', 'dash-filter-event'], events, 'Todos', true);
+    updateSelect(['filter-select-language', 'dash-filter-language'], languages, 'Todos');
+    updateSelect(['filter-select-genre', 'dash-filter-genre'], genres, 'Todos');
+    updateSelect(['filter-select-event', 'dash-filter-event'], events, 'Todos', true);
     state.dropdownsPopulated = true;
     if (ext.initDashCustomSelects) ext.initDashCustomSelects();
 }
@@ -109,13 +104,9 @@ export function getFilteredChannelsList(mode = 'channels', opts = {}) {
         ? opts.searchTerm.toLowerCase().trim()
         : (isFavoritesMode ? state.favSearchTerm : state.searchTerm).toLowerCase().trim();
 
-    const langId = opts.languageId || (isFavoritesMode ? 'fav-filter-select-language' : 'filter-select-language');
-    const genreId = opts.genreId || (isFavoritesMode ? 'fav-filter-select-genre' : 'filter-select-genre');
-    const eventId = opts.eventId || (isFavoritesMode ? 'fav-filter-select-event' : 'filter-select-event');
-
-    const selLanguage = document.getElementById(langId)?.value || 'all';
-    const selGenre = document.getElementById(genreId)?.value || 'all';
-    const selEvent = document.getElementById(eventId)?.value || 'all';
+    const selLanguage = document.getElementById('filter-select-language')?.value || 'all';
+    const selGenre = document.getElementById('filter-select-genre')?.value || 'all';
+    const selEvent = document.getElementById('filter-select-event')?.value || 'all';
 
     let list = state.channels.filter(channel => {
         if (isFavoritesMode && !channel.favorite) return false;

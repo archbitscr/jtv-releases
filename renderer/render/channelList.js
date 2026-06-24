@@ -13,15 +13,10 @@ export function renderList(container, list, highlightTerm = "") {
     
     if (list.length === 0) {
         const isFavorites = container.id === 'favorites-list';
-        const hasActiveFiltersOrSearch = highlightTerm.trim() !== "" || 
-            (isFavorites ? 
-                (document.getElementById('fav-filter-select-language')?.value !== 'all' || 
-                 document.getElementById('fav-filter-select-genre')?.value !== 'all' || 
-                 document.getElementById('fav-filter-select-event')?.value !== 'all') :
-                (document.getElementById('filter-select-language')?.value !== 'all' || 
-                 document.getElementById('filter-select-genre')?.value !== 'all' || 
-                 document.getElementById('filter-select-event')?.value !== 'all')
-            );
+        const hasActiveFiltersOrSearch = highlightTerm.trim() !== "" ||
+            document.getElementById('filter-select-language')?.value !== 'all' ||
+            document.getElementById('filter-select-genre')?.value !== 'all' ||
+            document.getElementById('filter-select-event')?.value !== 'all';
         if (hasActiveFiltersOrSearch) {
             const emptyItem = document.createElement('div');
             emptyItem.className = 'no-results-message';

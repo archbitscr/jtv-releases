@@ -50,16 +50,8 @@ export function setupEventListeners() {
     const gridDots = document.getElementById('grid-dots');
     const favoritesGrid = document.getElementById('favorites-grid');
     const backToListBtn = document.getElementById('back-to-list-btn');
-    const channelSearchInput = document.getElementById('channel-search');
     const allChannelsList = document.getElementById('all-channels-list');
-    const favChannelSearchInput = document.getElementById('fav-channel-search');
     const favoritesList = document.getElementById('favorites-list');
-    const toggleFiltersBtn = document.getElementById('toggle-filters-btn');
-    const categoryFiltersContainer = document.getElementById('category-filters');
-    const clearFiltersBtn = document.getElementById('clear-filters-btn');
-    const favToggleFiltersBtn = document.getElementById('fav-toggle-filters-btn');
-    const favCategoryFiltersContainer = document.getElementById('fav-category-filters');
-    const favClearFiltersBtn = document.getElementById('fav-clear-filters-btn');
     const guideSearchInput = document.getElementById('guide-search-input');
     const guideFiltersChips = document.querySelectorAll('.guide-filter-chip');
     const logoUploadInput = document.getElementById('logo-upload-input');
@@ -575,26 +567,34 @@ export function setupEventListeners() {
         };
     }
 
-    // 6. Sidebar selects onchange events
-    const filterSelectIds = [
-        'filter-select-language', 'fav-filter-select-language',
-        'filter-select-genre', 'fav-filter-select-genre',
-        'filter-select-event', 'fav-filter-select-event'
+    // 6. Synchronized sidebar & landing filter dropdowns
+    const filterPairs = [
+        ['filter-select-language', 'dash-filter-language'],
+        ['filter-select-genre', 'dash-filter-genre'],
+        ['filter-select-event', 'dash-filter-event']
     ];
-    filterSelectIds.forEach(id => {
-        const select = document.getElementById(id);
-        if (select) {
-            select.onchange = () => renderAll();
+    filterPairs.forEach(([sidebarId, dashId]) => {
+        const sidebar = document.getElementById(sidebarId);
+        const dash = document.getElementById(dashId);
+        if (sidebar) {
+            sidebar.onchange = () => {
+                if (dash) dash.value = sidebar.value;
+                state.favPage = 0;
+                renderAll();
+            };
+        }
+        if (dash) {
+            dash.onchange = () => {
+                if (sidebar) { sidebar.value = dash.value; syncCustomSelect(sidebar); }
+                state.favPage = 0;
+                renderAll();
+            };
         }
     });
 
-    // 7. Dashboard landing selects & navigation
+    // 7. Dashboard landing navigation
     const dbNavAll = document.getElementById('dashboard-nav-all');
     const dbNavFavs = document.getElementById('dashboard-nav-favorites');
-    const dbDropdownsRow = document.getElementById('dashboard-dropdowns-row');
-    const dashFilterLanguage = document.getElementById('dash-filter-language');
-    const dashFilterGenre = document.getElementById('dash-filter-genre');
-    const dashFilterEvent = document.getElementById('dash-filter-event');
 
     if (dbNavAll) {
         dbNavAll.onclick = () => {
@@ -613,10 +613,6 @@ export function setupEventListeners() {
             saveAppState();
         };
     }
-
-    if (dashFilterLanguage) dashFilterLanguage.onchange = () => { state.favPage = 0; renderFavoritesGrid(); };
-    if (dashFilterGenre) dashFilterGenre.onchange = () => { state.favPage = 0; renderFavoritesGrid(); };
-    if (dashFilterEvent) dashFilterEvent.onchange = () => { state.favPage = 0; renderFavoritesGrid(); };
 
     const fullscreenToggleBtn = document.getElementById('fullscreen-toggle');
     if (fullscreenToggleBtn) {
@@ -924,117 +920,6 @@ export function setupEventListeners() {
         switchTab(tab);
     });
 
-    const clearChannelSearch = document.getElementById('clear-channel-search');
-    const clearFavSearch = document.getElementById('clear-fav-search');
-
-    channelSearchInput.oninput = (e) => {
-        state.searchTerm = e.target.value;
-        if (clearChannelSearch) {
-            clearChannelSearch.classList.toggle('hidden', state.searchTerm === "");
-        }
-        renderAll();
-        if (/^\d+$/.test(state.searchTerm.trim())) {
-            const scrollArea = allChannelsList ? allChannelsList.closest('.scroll-area') : null;
-            if (scrollArea) scrollArea.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    };
-
-    if (clearChannelSearch) {
-        clearChannelSearch.onclick = () => {
-            channelSearchInput.value = "";
-            state.searchTerm = "";
-            clearChannelSearch.classList.add('hidden');
-            renderAll();
-        };
-    }
-
-    if (favChannelSearchInput) {
-        favChannelSearchInput.oninput = (e) => {
-            state.favSearchTerm = e.target.value;
-            if (clearFavSearch) {
-                clearFavSearch.classList.toggle('hidden', state.favSearchTerm === "");
-            }
-            renderAll();
-            if (/^\d+$/.test(state.favSearchTerm.trim())) {
-                const scrollArea = favoritesList ? favoritesList.closest('.scroll-area') : null;
-                if (scrollArea) scrollArea.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        };
-    }
-
-    if (clearFavSearch) {
-        clearFavSearch.onclick = () => {
-            favChannelSearchInput.value = "";
-            state.favSearchTerm = "";
-            clearFavSearch.classList.add('hidden');
-            renderAll();
-        };
-    }
-
-    if (toggleFiltersBtn) {
-        toggleFiltersBtn.onclick = () => {
-            const isCollapsed = categoryFiltersContainer.classList.toggle('collapsed');
-            toggleFiltersBtn.classList.toggle('active', !isCollapsed);
-            sessionStorage.setItem('jtv_filters_collapsed', isCollapsed);
-        };
-        const storedCollapsed = sessionStorage.getItem('jtv_filters_collapsed');
-        if (storedCollapsed === 'false') {
-            categoryFiltersContainer.classList.remove('collapsed');
-            toggleFiltersBtn.classList.add('active');
-        } else {
-            categoryFiltersContainer.classList.add('collapsed');
-            toggleFiltersBtn.classList.remove('active');
-        }
-    }
-
-    if (clearFiltersBtn) {
-        clearFiltersBtn.onclick = (e) => {
-            e.stopPropagation();
-            const selLanguage = document.getElementById('filter-select-language');
-            const selGenre = document.getElementById('filter-select-genre');
-            const selEvent = document.getElementById('filter-select-event');
-            if (selLanguage) selLanguage.value = 'all';
-            if (selGenre) selGenre.value = 'all';
-            if (selEvent) selEvent.value = 'all';
-            if (selLanguage) syncCustomSelect(selLanguage);
-            if (selGenre) syncCustomSelect(selGenre);
-            if (selEvent) syncCustomSelect(selEvent);
-            renderAll();
-        };
-    }
-
-    if (favToggleFiltersBtn) {
-        favToggleFiltersBtn.onclick = () => {
-            const isCollapsed = favCategoryFiltersContainer.classList.toggle('collapsed');
-            favToggleFiltersBtn.classList.toggle('active', !isCollapsed);
-            sessionStorage.setItem('jtv_fav_filters_collapsed', isCollapsed);
-        };
-        const storedFavCollapsed = sessionStorage.getItem('jtv_fav_filters_collapsed');
-        if (storedFavCollapsed === 'false') {
-            favCategoryFiltersContainer.classList.remove('collapsed');
-            favToggleFiltersBtn.classList.add('active');
-        } else {
-            favCategoryFiltersContainer.classList.add('collapsed');
-            favToggleFiltersBtn.classList.remove('active');
-        }
-    }
-
-    if (favClearFiltersBtn) {
-        favClearFiltersBtn.onclick = (e) => {
-            e.stopPropagation();
-            const selLanguage = document.getElementById('fav-filter-select-language');
-            const selGenre = document.getElementById('fav-filter-select-genre');
-            const selEvent = document.getElementById('fav-filter-select-event');
-            if (selLanguage) selLanguage.value = 'all';
-            if (selGenre) selGenre.value = 'all';
-            if (selEvent) selEvent.value = 'all';
-            if (selLanguage) syncCustomSelect(selLanguage);
-            if (selGenre) syncCustomSelect(selGenre);
-            if (selEvent) syncCustomSelect(selEvent);
-            renderAll();
-        };
-    }
-
     const liveLandingSearch = document.getElementById('live-landing-search');
     const clearLiveLandingSearch = document.getElementById('clear-live-landing-search');
     if (liveLandingSearch) {
@@ -1042,8 +927,10 @@ export function setupEventListeners() {
             if (clearLiveLandingSearch) {
                 clearLiveLandingSearch.classList.toggle('hidden', liveLandingSearch.value.trim() === "");
             }
+            state.searchTerm = liveLandingSearch.value;
+            state.favSearchTerm = liveLandingSearch.value;
             state.favPage = 0;
-            renderFavoritesGrid();
+            renderAll();
         };
     }
 
@@ -1051,8 +938,10 @@ export function setupEventListeners() {
         clearLiveLandingSearch.onclick = () => {
             liveLandingSearch.value = "";
             clearLiveLandingSearch.classList.add('hidden');
+            state.searchTerm = "";
+            state.favSearchTerm = "";
             state.favPage = 0;
-            renderFavoritesGrid();
+            renderAll();
             liveLandingSearch.focus();
         };
     }

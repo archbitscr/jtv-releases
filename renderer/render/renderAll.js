@@ -19,49 +19,9 @@ let lastStateCache = {
     guideFilter: null
 };
 
-export function renderFilters() {
-    const clearFiltersBtn = document.getElementById('clear-filters-btn');
-    if (!clearFiltersBtn) return;
-    const selLanguage = document.getElementById('filter-select-language')?.value || 'all';
-    const selGenre = document.getElementById('filter-select-genre')?.value || 'all';
-    const selEvent = document.getElementById('filter-select-event')?.value || 'all';
-    
-    let activeCount = 0;
-    if (selLanguage !== 'all') activeCount++;
-    if (selGenre !== 'all') activeCount++;
-    if (selEvent !== 'all') activeCount++;
-    
-    const hasActiveFilters = activeCount > 0;
-    clearFiltersBtn.classList.toggle('hidden', !hasActiveFilters);
-    
-    const badge = document.getElementById('filters-badge');
-    if (badge) {
-        badge.textContent = activeCount;
-        badge.classList.toggle('hidden', !hasActiveFilters);
-    }
-}
+export function renderFilters() {}
 
-export function renderFavFilters() {
-    const favClearFiltersBtn = document.getElementById('fav-clear-filters-btn');
-    if (!favClearFiltersBtn) return;
-    const selLanguage = document.getElementById('fav-filter-select-language')?.value || 'all';
-    const selGenre = document.getElementById('fav-filter-select-genre')?.value || 'all';
-    const selEvent = document.getElementById('fav-filter-select-event')?.value || 'all';
-    
-    let activeCount = 0;
-    if (selLanguage !== 'all') activeCount++;
-    if (selGenre !== 'all') activeCount++;
-    if (selEvent !== 'all') activeCount++;
-    
-    const hasActiveFilters = activeCount > 0;
-    favClearFiltersBtn.classList.toggle('hidden', !hasActiveFilters);
-    
-    const badge = document.getElementById('fav-filters-badge');
-    if (badge) {
-        badge.textContent = activeCount;
-        badge.classList.toggle('hidden', !hasActiveFilters);
-    }
-}
+export function renderFavFilters() {}
 
 export function renderDashboardFilters() {}
 

@@ -277,19 +277,7 @@
                 <!-- Channels Tab -->
                 <div id="tab-channels" class="tab-pane active">
                     <div class="search-box">
-                        <div class="search-row-container">
-                            <div class="search-container" style="margin-bottom: 0; flex: 1;">
-                                <i data-lucide="search" style="margin-right: 8px; color: rgba(255,255,255,0.4); flex-shrink: 0;"></i>
-                                <input type="text" id="channel-search" placeholder="Buscar canal por nombre o número..." style="flex: 1; min-width: 0; background: transparent; border: none; color: white; outline: none;">
-                                <button id="clear-channel-search" class="clear-search-btn hidden" title="Limpiar" style="margin-right: 8px;"><i data-lucide="x"></i></button>
-                            </div>
-                            <button class="sidebar-filter-toggle-btn" id="toggle-filters-btn" title="Mostrar/Ocultar filtros">
-                                <i data-lucide="sliders" style="width: 16px; height: 16px;"></i>
-                                <span id="filters-badge" class="filters-badge hidden">0</span>
-                            </button>
-                        </div>
-                        <span id="clear-filters-btn" class="clear-filters-link hidden">Limpiar</span>
-                        <div id="category-filters" class="category-filters collapsed">
+                        <div id="category-filters" class="category-filters">
                             <select id="filter-select-language" class="dark-input filter-dropdown" data-label="Idioma">
                                 <option value="all">Todos</option>
                             </select>
@@ -308,31 +296,6 @@
 
                 <!-- Favorites Tab -->
                 <div id="tab-favorites" class="tab-pane">
-                    <div class="search-box">
-                        <div class="search-row-container">
-                            <div class="search-container" style="margin-bottom: 0; flex: 1;">
-                                <i data-lucide="search" style="margin-right: 8px; color: rgba(255,255,255,0.4); flex-shrink: 0;"></i>
-                                <input type="text" id="fav-channel-search" placeholder="Buscar favoritos por nombre o número..." style="flex: 1; min-width: 0; background: transparent; border: none; color: white; outline: none;">
-                                <button id="clear-fav-search" class="clear-search-btn hidden" title="Limpiar" style="margin-right: 8px;"><i data-lucide="x"></i></button>
-                            </div>
-                            <button class="sidebar-filter-toggle-btn" id="fav-toggle-filters-btn" title="Mostrar/Ocultar filtros">
-                                <i data-lucide="sliders" style="width: 16px; height: 16px;"></i>
-                                <span id="fav-filters-badge" class="filters-badge hidden">0</span>
-                            </button>
-                        </div>
-                        <span id="fav-clear-filters-btn" class="clear-filters-link hidden">Limpiar</span>
-                        <div id="fav-category-filters" class="category-filters collapsed">
-                            <select id="fav-filter-select-language" class="dark-input filter-dropdown" data-label="Idioma">
-                                <option value="all">Todos</option>
-                            </select>
-                            <select id="fav-filter-select-genre" class="dark-input filter-dropdown" data-label="Género">
-                                <option value="all">Todos</option>
-                            </select>
-                            <select id="fav-filter-select-event" class="dark-input filter-dropdown" data-label="Evento">
-                                <option value="all">Todos</option>
-                            </select>
-                        </div>
-                    </div>
                     <div class="scroll-area">
                         <div id="favorites-list" class="carousel"></div>
                     </div>
