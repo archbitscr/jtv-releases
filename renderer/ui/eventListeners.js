@@ -1297,7 +1297,9 @@ export function setupEventListeners() {
     document.addEventListener('keydown', (e) => {
         const active = document.activeElement;
         if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable)) {
-            e.stopPropagation();
+            if (e.key !== 'Enter' && e.key !== 'Escape') {
+                e.stopPropagation();
+            }
         }
     }, true);
 
