@@ -159,6 +159,7 @@ export function initCustomTooltips() {
     }
 
     let tooltipTimer = null;
+    let hideTimer = null;
 
     document.addEventListener('mouseover', (e) => {
         const target = e.target.closest('button, input, select, textarea, a, .nav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .vol-icon, .settings-switch, .settings-switch-slider, [title], [data-tooltip], [onclick], [role="button"]');
@@ -171,6 +172,7 @@ export function initCustomTooltips() {
         if (!text || text.trim() === '') return;
 
         clearTimeout(tooltipTimer);
+        clearTimeout(hideTimer);
         tooltipTimer = setTimeout(() => {
             tooltipEl.textContent = text;
 
@@ -224,6 +226,10 @@ export function initCustomTooltips() {
 
             tooltipEl.style.left = `${left}px`;
             tooltipEl.style.top = `${top}px`;
+
+            hideTimer = setTimeout(() => {
+                tooltipEl.classList.remove('show');
+            }, 2000);
         }, 1200);
     });
 
@@ -231,12 +237,14 @@ export function initCustomTooltips() {
         const target = e.target.closest('button, input, select, textarea, a, .nav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .vol-icon, .settings-switch, .settings-switch-slider, [data-tooltip]');
         if (target) {
             clearTimeout(tooltipTimer);
+            clearTimeout(hideTimer);
             tooltipEl.classList.remove('show');
         }
     });
 
     document.addEventListener('click', () => {
         clearTimeout(tooltipTimer);
+        clearTimeout(hideTimer);
         tooltipEl.classList.remove('show');
     });
 }
