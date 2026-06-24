@@ -927,30 +927,34 @@ function renderCrudChannelsList() {
     listContainer.innerHTML = '';
     
     const filterVal = (document.getElementById('crud-search')?.value || '').toLowerCase();
-    const chList = window.getChannels ? window.getChannels() : [];
-    
+    const rawList = window.getChannels ? window.getChannels() : [];
+    const chList = [...rawList].sort((a, b) =>
+        (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base', numeric: true })
+    );
+
     chList.forEach((c, index) => {
-        const num = c.id || (index + 1);
+        const originalIndex = rawList.indexOf(c);
+        const num = c.id || (originalIndex + 1);
         const name = c.name || '';
         if (filterVal && !name.toLowerCase().includes(filterVal) && !String(num).includes(filterVal)) {
             return;
         }
-        
+
         const formattedNum = isNaN(num) ? num : String(num).padStart(4, '0');
         const displayNum = highlightText(formattedNum, filterVal);
         const displayName = highlightText(name, filterVal);
-        
+
         const item = document.createElement('div');
         item.className = 'crud-channel-item';
-        item.dataset.channelIndex = String(index);
-        if (index === activeCrudChannelIndex) {
+        item.dataset.channelIndex = String(originalIndex);
+        if (originalIndex === activeCrudChannelIndex) {
             item.classList.add('active');
         }
         item.innerHTML = `
             <span class="crud-channel-label"><span class="crud-channel-number">${displayNum}</span><span class="crud-channel-name">${displayName}</span></span>
         `;
-        
-        item.onclick = () => selectCrudChannel(index);
+
+        item.onclick = () => selectCrudChannel(originalIndex);
         listContainer.appendChild(item);
     });
     
