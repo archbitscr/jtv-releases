@@ -33,7 +33,7 @@ export function syncFilterList() {
 }
 
 export function populateDropdowns() {
-    const languages = new Set((state.filterLanguages || []).map(f => f.name));
+    const languages = new Set((state.filterLanguages || []).filter(f => f.enabled !== false).map(f => f.name));
     const genres = new Set((state.filterGenres || []).map(f => f.name));
     const events = new Set((state.filterEvents || []).map(f => f.name));
 

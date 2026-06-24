@@ -99,6 +99,7 @@ export function renderSettingsFilters() {
                     const langInState = state.filterLanguages.find(f => f.name === filter.name);
                     if (langInState) langInState.enabled = e.target.checked;
                     await saveChannelsAndFilters();
+                    state.dropdownsPopulated = false;
                     renderAll();
                 });
                 item.insertBefore(enabledCheckbox, item.firstChild);
