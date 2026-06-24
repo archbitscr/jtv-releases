@@ -450,6 +450,7 @@ export function renderAssignerMetaChips(channel) {
     const sortedCats = sortCategories(cats);
 
     sortedCats.forEach(c => {
+        if (c.toLowerCase() === 'all') return;
         const chip = document.createElement('span');
         chip.style.display = 'inline-block';
         chip.style.padding = '3px 8px';
@@ -490,6 +491,7 @@ export function renderAssignerMetaChipsMultiple() {
     const N = state.assignerSelectedChannelIndices.length;
 
     sortedCats.forEach(c => {
+        if (c.toLowerCase() === 'all') return;
         const count = catCounts[c];
         const chip = document.createElement('span');
         chip.style.display = 'inline-block';
