@@ -588,7 +588,10 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Español"
+      "Español",
+      "Fútbol",
+      "Sports",
+      "News"
     ]
   },
   {
@@ -1276,8 +1279,9 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Español",
-      "Sports"
+      "Sports",
+      "Hebrew",
+      "Fútbol"
     ]
   },
   {
@@ -1494,16 +1498,16 @@
   },
   {
     "id": "245",
-    "name": "PPV Caracol",
+    "name": "Caracol COL",
     "path": "watch.php?id=245",
     "favorite": true,
     "watchTime": 253.804,
     "categories": [
       "all",
-      "Español",
       "Sports",
       "News",
-      "FIFA 2026"
+      "FIFA 2026",
+      "Español"
     ]
   },
   {
@@ -1692,9 +1696,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Español",
-      "English",
-      "Sports"
+      "Sports",
+      "Turkish"
     ]
   },
   {
@@ -1705,9 +1708,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Español",
-      "English",
-      "Sports"
+      "Sports",
+      "Turkish"
     ]
   },
   {
@@ -1890,8 +1892,9 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Español",
-      "English"
+      "English",
+      "Cricket",
+      "Sports"
     ]
   },
   {
@@ -3129,7 +3132,7 @@
   },
   {
     "id": "392",
-    "name": "Win Sports+ Columbia",
+    "name": "Win Sports+ COL",
     "path": "watch.php?id=392",
     "favorite": false,
     "watchTime": 0,
@@ -3409,9 +3412,10 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "English",
-      "Español",
-      "Sports"
+      "Sports",
+      "Fútbol",
+      "FIFA 2026",
+      "English"
     ]
   },
   {
@@ -3648,7 +3652,10 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Español"
+      "Español",
+      "Sports",
+      "News",
+      "Fútbol"
     ]
   },
   {
@@ -3659,7 +3666,9 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Español"
+      "Español",
+      "Sports",
+      "News"
     ]
   },
   {
@@ -4745,7 +4754,10 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Español"
+      "Español",
+      "Sports",
+      "News",
+      "Golf"
     ]
   },
   {
@@ -4756,7 +4768,10 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Español"
+      "Español",
+      "Sports",
+      "News",
+      "Motorsport"
     ]
   },
   {
@@ -4789,7 +4804,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Español"
+      "Español",
+      "Movies"
     ]
   },
   {
@@ -4800,7 +4816,10 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Español"
+      "Español",
+      "Sports",
+      "News",
+      "FIFA 2026"
     ]
   },
   {
@@ -4857,7 +4876,10 @@
     "watchTime": 132.394,
     "categories": [
       "all",
-      "Español"
+      "Español",
+      "Sports",
+      "FIFA 2026",
+      "News"
     ]
   },
   {
@@ -6671,15 +6693,16 @@
   },
   {
     "id": "692",
-    "name": "HBO Latino USA",
+    "name": "Thmanyah TV",
     "path": "watch.php?id=692",
     "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
-      "English",
-      "Español",
-      "Movies"
+      "Arabic",
+      "Sports",
+      "News",
+      "Fútbol"
     ]
   },
   {
@@ -7293,7 +7316,9 @@
     "categories": [
       "all",
       "Español",
-      "Sports"
+      "Sports",
+      "News",
+      "FIFA 2026"
     ]
   },
   {
@@ -8433,12 +8458,14 @@
     "id": "845",
     "name": "NBC Universo",
     "path": "watch.php?id=845",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
-      "English",
-      "Español"
+      "Español",
+      "FIFA 2026",
+      "Sports",
+      "News"
     ]
   },
   {
@@ -9281,7 +9308,8 @@
       "all",
       "Español",
       "Sports",
-      "News"
+      "News",
+      "FIFA 2026"
     ]
   },
   {
@@ -10262,7 +10290,7 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Español"
+      "Turkish"
     ]
   },
   {

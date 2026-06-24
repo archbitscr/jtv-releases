@@ -126,6 +126,8 @@ export const state = {
         { name: "UFC", icon: "🤼" },
         { name: "MLB", icon: "⚾" },
         { name: "Cricket", icon: "🏏" },
+        { name: "Motorsport", icon: "🏎️" },
+        { name: "Golf", icon: "⛳" },
         { name: "Conciertos", icon: "🎤" },
         { name: "Premios", icon: "🏆" },
         { name: "Teatro", icon: "🎭" }
