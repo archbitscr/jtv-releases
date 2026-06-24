@@ -349,11 +349,6 @@ async function init() {
     // Core Data Loading and sflix / Domain setups
     const savedData = await nativeApi.loadUserData();
     if (savedData) {
-        if (savedData.onboarded) localStorage.setItem('jtv_onboarded', 'true');
-        if (savedData.selectedLanguages) {
-            localStorage.setItem('jtv_selected_languages', JSON.stringify(savedData.selectedLanguages));
-        }
-
         state.channels = (savedData.channels || []).filter(c => c.name && (c.path || c.customUrl));
         state.channels.forEach(c => {
             if (!c.categories) {
@@ -370,9 +365,10 @@ async function init() {
         state.autoUpdateDomain = savedData.autoUpdateDomain !== undefined ? savedData.autoUpdateDomain : true;
 
         if (savedData.filterLanguages) {
+            const defaultEnabled = new Set(['English', 'Español']);
             state.filterLanguages = savedData.filterLanguages.map(f => ({
                 ...f,
-                enabled: f.enabled !== undefined ? f.enabled : true
+                enabled: f.enabled !== undefined ? f.enabled : defaultEnabled.has(f.name)
             }));
         }
         if (savedData.filterGenres) {
@@ -536,15 +532,6 @@ async function init() {
             }, 600);
         }
         
-        // Onboarding Check
-        const onboarded = localStorage.getItem('jtv_onboarded');
-        if (!onboarded) {
-            const onboardingModal = document.getElementById('onboarding-modal');
-            if (onboardingModal) {
-                onboardingModal.classList.remove('hidden');
-                if (window.updateDeveloperUI) window.updateDeveloperUI();
-            }
-        }
     }, 2000);
 
     showModule('home');

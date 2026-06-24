@@ -5261,8 +5261,6 @@ body.hide-cursor * {
 /* Disable webview pointer events when settings or modal overlays are active */
 body:has(#settings-screen:not(.hidden)) webview,
 body:has(#settings-screen:not(.hidden)) #player-container,
-body:has(#onboarding-modal:not(.hidden)) webview,
-body:has(#onboarding-modal:not(.hidden)) #player-container,
 body:has(#parental-pin-modal:not(.hidden)) webview,
 body:has(#parental-pin-modal:not(.hidden)) #player-container,
 body:has(#details-modal:not(.hidden)) webview,

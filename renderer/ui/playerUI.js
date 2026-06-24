@@ -28,13 +28,12 @@ export function updateWebviewPointerEvents() {
     if (!webview) return;
 
     const settingsOpen = !document.getElementById('settings-screen').classList.contains('hidden');
-    const onboardingOpen = !document.getElementById('onboarding-modal').classList.contains('hidden');
     const parentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
     const detailsOpen = !document.getElementById('details-modal').classList.contains('hidden');
     const resolutionOpen = !document.getElementById('resolution-blocker').classList.contains('hidden');
     const trialExpiredOpen = !document.getElementById('trial-expired-blocker').classList.contains('hidden');
 
-    if (settingsOpen || onboardingOpen || parentalOpen || detailsOpen || resolutionOpen || trialExpiredOpen) {
+    if (settingsOpen || parentalOpen || detailsOpen || resolutionOpen || trialExpiredOpen) {
         webview.style.pointerEvents = 'none';
     } else {
         webview.style.pointerEvents = 'auto';
@@ -44,7 +43,6 @@ export function updateWebviewPointerEvents() {
 export function initWebviewPointerEventsObserver() {
     const targets = [
         'settings-screen',
-        'onboarding-modal',
         'parental-pin-modal',
         'details-modal',
         'resolution-blocker',

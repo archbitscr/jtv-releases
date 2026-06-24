@@ -93,35 +93,7 @@ export function setupEventListeners() {
     document.addEventListener('focusout', () => setTimeout(syncTypingState, 0), true);
     syncTypingState();
 
-    // 1. Onboarding
-    const onboardingSubmitBtn = document.getElementById('onboarding-submit-btn');
-    if (onboardingSubmitBtn) {
-        onboardingSubmitBtn.onclick = () => {
-            const selectedLangs = [];
-            if (document.getElementById('ob-lang-es')?.checked) selectedLangs.push('es');
-            if (document.getElementById('ob-lang-en')?.checked) selectedLangs.push('en');
-            if (document.getElementById('ob-lang-eu')?.checked) selectedLangs.push('eu');
-            if (document.getElementById('ob-lang-me')?.checked) selectedLangs.push('me');
-            
-            localStorage.setItem('jtv_selected_languages', JSON.stringify(selectedLangs));
-            localStorage.setItem('jtv_onboarded', 'true');
-            
-            // Persist onboarding preferences immediately to central settings store
-            saveAppState();
-            
-            const onboardingModal = document.getElementById('onboarding-modal');
-            if (onboardingModal) {
-                onboardingModal.classList.add('hidden');
-                if (window.updateDeveloperUI) window.updateDeveloperUI();
-            }
-            
-            state.dropdownsPopulated = false;
-            populateDropdowns();
-            renderAll();
-        };
-    }
-
-    // 2. Google Login mock bypass
+    // 1. Google Login mock bypass
     const handleGoogleLogin = async () => {
         try {
             await nativeApi.googleLogin();
@@ -1364,11 +1336,10 @@ export function setupEventListeners() {
         }
 
         const isSettingsOpen = !document.getElementById('settings-screen').classList.contains('hidden');
-        const isOnboardingOpen = !document.getElementById('onboarding-modal').classList.contains('hidden');
         const isDetailsOpen = !document.getElementById('details-modal').classList.contains('hidden');
         const isParentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
 
-        if (!state.isHomeActive && state.activeChannelId && !isSettingsOpen && !isOnboardingOpen && !isDetailsOpen && !isParentalOpen) {
+        if (!state.isHomeActive && state.activeChannelId && !isSettingsOpen && !isDetailsOpen && !isParentalOpen) {
             if (key === 'ArrowUp') {
                 zapChannel('up');
                 return true;

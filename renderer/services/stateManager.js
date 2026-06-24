@@ -56,9 +56,7 @@ export async function actualSaveAppState() {
         diagnosticsEnabled: devState.diagnosticsEnabled,
         showDiagnosticClicks: devState.showDiagnosticClicks,
         hudDevControlsEnabled: devState.hudDevControlsEnabled,
-        timeoutsConfig: window.timeoutsConfig,
-        onboarded: localStorage.getItem('jtv_onboarded') === 'true',
-        selectedLanguages: JSON.parse(localStorage.getItem('jtv_selected_languages') || '[]')
+        timeoutsConfig: window.timeoutsConfig
     };
     if (window.jtvAPI) {
         await window.jtvAPI.saveUserData(dataToSave);
@@ -101,9 +99,7 @@ export async function saveChannelsAndFilters() {
         diagnosticsEnabled: devState.diagnosticsEnabled,
         showDiagnosticClicks: devState.showDiagnosticClicks,
         hudDevControlsEnabled: devState.hudDevControlsEnabled,
-        timeoutsConfig: window.timeoutsConfig,
-        onboarded: localStorage.getItem('jtv_onboarded') === 'true',
-        selectedLanguages: JSON.parse(localStorage.getItem('jtv_selected_languages') || '[]')
+        timeoutsConfig: window.timeoutsConfig
     };
     if (window.jtvAPI) {
         await window.jtvAPI.saveUserData(dataToSave);
