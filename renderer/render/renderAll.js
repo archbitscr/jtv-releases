@@ -126,10 +126,27 @@ export function renderSettingsFilters() {
             } else {
                 item.style.cursor = 'default';
             }
+            if (type === 'language') {
+                const enabledCheckbox = document.createElement('input');
+                enabledCheckbox.type = 'checkbox';
+                enabledCheckbox.className = 'filter-lang-enabled';
+                enabledCheckbox.checked = filter.enabled !== false;
+                enabledCheckbox.title = 'Activar/desactivar idioma';
+                enabledCheckbox.style.cssText = 'margin-right:8px;cursor:pointer;accent-color:#00ffcc;width:14px;height:14px;flex-shrink:0;';
+                enabledCheckbox.addEventListener('change', async (e) => {
+                    e.stopPropagation();
+                    filter.enabled = e.target.checked;
+                    const langInState = state.filterLanguages.find(f => f.name === filter.name);
+                    if (langInState) langInState.enabled = e.target.checked;
+                    await saveChannelsAndFilters();
+                    renderAll();
+                });
+                item.insertBefore(enabledCheckbox, item.firstChild);
+            }
             container.appendChild(item);
         });
     };
-    
+
     renderFilterGroupList(langContainer, state.filterLanguages, 'language');
     renderFilterGroupList(genreContainer, state.filterGenres, 'genre');
     renderFilterGroupList(eventContainer, state.filterEvents, 'event');

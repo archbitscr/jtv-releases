@@ -368,7 +368,10 @@ async function init() {
         state.autoUpdateDomain = savedData.autoUpdateDomain !== undefined ? savedData.autoUpdateDomain : true;
 
         if (savedData.filterLanguages) {
-            state.filterLanguages = savedData.filterLanguages;
+            state.filterLanguages = savedData.filterLanguages.map(f => ({
+                ...f,
+                enabled: f.enabled !== undefined ? f.enabled : true
+            }));
         }
         if (savedData.filterGenres) {
             state.filterGenres = savedData.filterGenres;

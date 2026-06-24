@@ -87,26 +87,19 @@ export function populateDropdowns() {
 }
 
 export function matchesOnboardingLanguages(channel) {
-    const selectedLangs = JSON.parse(localStorage.getItem('jtv_selected_languages') || '[]');
-    if (selectedLangs.length === 0) return true;
+    const enabledLanguages = (state.filterLanguages || []).filter(f => f.enabled !== false);
 
-    const categories = (channel.categories || []).map(c => c.toLowerCase());
+    if (enabledLanguages.length === 0) return true;
 
-    const hasLanguageCategory = categories.some(cat =>
-        cat.includes('español') || cat.includes('spanish') || cat.includes('latino') || cat.includes('mexico') || cat.includes('spain') ||
-        cat.includes('inglés') || cat.includes('english') || cat.includes('usa') || cat.includes('uk') ||
-        cat.includes('europeo') || cat.includes('european') ||
-        cat.includes('middle east')
+    const cats = (channel.categories || []).map(c => c.toLowerCase());
+    const langNames = (state.filterLanguages || []).map(f => f.name.toLowerCase());
+    const channelLangCats = cats.filter(cat => langNames.some(lang => cat.includes(lang.toLowerCase())));
+
+    if (channelLangCats.length === 0) return true;
+
+    return enabledLanguages.some(lang =>
+        channelLangCats.some(cat => cat.includes(lang.name.toLowerCase()))
     );
-    if (!hasLanguageCategory) return true;
-
-    return categories.some(cat => {
-        if (selectedLangs.includes('es') && (cat.includes('español') || cat.includes('spanish') || cat.includes('latino') || cat.includes('mexico') || cat.includes('spain'))) return true;
-        if (selectedLangs.includes('en') && (cat.includes('inglés') || cat.includes('english') || cat.includes('usa') || cat.includes('uk'))) return true;
-        if (selectedLangs.includes('eu') && (cat.includes('europeo') || cat.includes('european'))) return true;
-        if (selectedLangs.includes('me') && cat.includes('middle east')) return true;
-        return false;
-    });
 }
 
 export function getFilteredChannelsList(mode = 'channels') {

@@ -75,13 +75,13 @@ export const state = {
 
     // Live Filters State
     filterLanguages: [
-        { name: "English", icon: "globe" },
-        { name: "Español", icon: "globe" },
-        { name: "Français", icon: "globe" },
-        { name: "Português", icon: "globe" },
-        { name: "Arabic", icon: "globe" },
-        { name: "Italiano", icon: "globe" },
-        { name: "Deutsch", icon: "globe" }
+        { name: "English", icon: "globe", enabled: true },
+        { name: "Español", icon: "globe", enabled: true },
+        { name: "Français", icon: "globe", enabled: false },
+        { name: "Português", icon: "globe", enabled: false },
+        { name: "Arabic", icon: "globe", enabled: false },
+        { name: "Italiano", icon: "globe", enabled: false },
+        { name: "Deutsch", icon: "globe", enabled: false }
     ],
     filterGenres: [
         { name: "Sports", icon: "trophy" },
