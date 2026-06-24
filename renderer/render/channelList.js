@@ -63,7 +63,7 @@ export function renderList(container, list, highlightTerm = "") {
             </div>
             <div class="channel-actions">
                 <button class="action-btn favorite ${channel.favorite ? 'active' : ''}" title="Favorito">
-                    <i data-lucide="heart"></i>
+                    <i data-lucide="heart" style="${channel.favorite ? 'fill:#ff4b4b;color:#ff4b4b;' : 'fill:transparent;color:currentColor;'}"></i>
                 </button>
                 <button class="action-btn edit-btn" title="Editar" data-id="${channel.id}">
                     <i data-lucide="sliders"></i>
@@ -80,13 +80,37 @@ export function renderList(container, list, highlightTerm = "") {
         item.querySelector('.favorite').onclick = (e) => {
             e.stopPropagation();
             channel.favorite = !channel.favorite;
+            const heartIcon = e.currentTarget.querySelector('i');
+            if (heartIcon) {
+                heartIcon.style.fill = channel.favorite ? '#ff4b4b' : 'transparent';
+                heartIcon.style.color = channel.favorite ? '#ff4b4b' : 'currentColor';
+            }
+            e.currentTarget.classList.toggle('active', channel.favorite);
             if (ext.renderAll) ext.renderAll();
             if (ext.saveAppState) ext.saveAppState();
         };
 
         item.querySelector('.edit-btn').onclick = (e) => {
             e.stopPropagation();
-            if (ext.showEditPane) ext.showEditPane(channel);
+            const channels = ext.getChannels ? ext.getChannels() : [];
+            const channelIdx = channels.findIndex(c => String(c.id) === String(channel.id));
+            if (ext.showModule) ext.showModule('settings');
+            const filtersTabBtn = document.getElementById('settings-tab-filters');
+            if (filtersTabBtn) filtersTabBtn.click();
+            setTimeout(() => {
+                const asignacionBtn = document.querySelector('.settings-subnav-btn[data-filters-tab="asignacion"]');
+                if (asignacionBtn) asignacionBtn.click();
+                if (channelIdx !== -1) {
+                    if (window.assignerSelectedFilters) window.assignerSelectedFilters.clear();
+                    const state = ext.getState ? ext.getState() : window.state;
+                    if (state) {
+                        state.assignerSelectedChannelIndices = [channelIdx];
+                        state.lastSelectedIdx = channelIdx;
+                    }
+                    if (ext.renderAssignerChannelsList) ext.renderAssignerChannelsList();
+                    if (ext.selectAssignerChannelMultiple) ext.selectAssignerChannelMultiple();
+                }
+            }, 100);
         };
 
         container.appendChild(item);

@@ -1617,6 +1617,11 @@ export function setupEventListeners() {
                     filtersTabBtn.click();
                 }
 
+                setTimeout(() => {
+                    const asignacionBtn = document.querySelector('.settings-subnav-btn[data-filters-tab="asignacion"]');
+                    if (asignacionBtn) asignacionBtn.click();
+                }, 100);
+
                 if (window.assignerSelectedFilters) {
                     window.assignerSelectedFilters.clear();
                 }
