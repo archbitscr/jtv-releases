@@ -567,25 +567,11 @@ export function setupEventListeners() {
         };
     }
 
-    // 6. Synchronized sidebar & landing filter dropdowns
-    const filterPairs = [
-        ['filter-select-language', 'dash-filter-language'],
-        ['filter-select-genre', 'dash-filter-genre'],
-        ['filter-select-event', 'dash-filter-event']
-    ];
-    filterPairs.forEach(([sidebarId, dashId]) => {
-        const sidebar = document.getElementById(sidebarId);
-        const dash = document.getElementById(dashId);
-        if (sidebar) {
-            sidebar.onchange = () => {
-                if (dash) dash.value = sidebar.value;
-                state.favPage = 0;
-                renderAll();
-            };
-        }
-        if (dash) {
-            dash.onchange = () => {
-                if (sidebar) { sidebar.value = dash.value; syncCustomSelect(sidebar); }
+    // 6. Unified filter dropdowns (single set shared by sidebar and landing)
+    ['filter-select-language', 'filter-select-genre', 'filter-select-event'].forEach(id => {
+        const select = document.getElementById(id);
+        if (select) {
+            select.onchange = () => {
                 state.favPage = 0;
                 renderAll();
             };

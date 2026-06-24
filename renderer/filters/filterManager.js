@@ -70,13 +70,12 @@ export function populateDropdowns() {
             } else {
                 select.value = 'all';
             }
-            if (ext.syncCustomSelect) ext.syncCustomSelect(select);
         });
     };
 
-    updateSelect(['filter-select-language', 'dash-filter-language'], languages, 'Todos');
-    updateSelect(['filter-select-genre', 'dash-filter-genre'], genres, 'Todos');
-    updateSelect(['filter-select-event', 'dash-filter-event'], events, 'Todos', true);
+    updateSelect(['filter-select-language'], languages, 'Todos');
+    updateSelect(['filter-select-genre'], genres, 'Todos');
+    updateSelect(['filter-select-event'], events, 'Todos', true);
     state.dropdownsPopulated = true;
     if (ext.initDashCustomSelects) ext.initDashCustomSelects();
 }

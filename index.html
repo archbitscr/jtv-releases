@@ -208,23 +208,23 @@
                             <button id="dashboard-nav-all" class="vod-filter-btn">Todos</button>
                             <button id="dashboard-nav-favorites" class="vod-filter-btn">Favoritos</button>
 
-                            <!-- Custom button-style dropdowns (hidden selects nested inside for data binding) -->
-                            <div class="dash-custom-select" data-for="dash-filter-language">
-                                <select id="dash-filter-language" aria-label="Idioma" style="display:none;">
+                            <!-- Unified filter dropdowns (shared by sidebar and landing) -->
+                            <div class="dash-custom-select" data-for="filter-select-language">
+                                <select id="filter-select-language" aria-label="Idioma" data-label="Idioma" style="display:none;">
                                     <option value="all">Todos</option>
                                 </select>
                                 <button class="vod-filter-btn dash-custom-select-btn" type="button"><span class="dash-custom-select-label">Idioma</span> <i data-lucide="chevron-down" class="dash-chevron"></i></button>
                                 <div class="dash-custom-select-menu hidden"></div>
                             </div>
-                            <div class="dash-custom-select" data-for="dash-filter-genre">
-                                <select id="dash-filter-genre" aria-label="Género" style="display:none;">
+                            <div class="dash-custom-select" data-for="filter-select-genre">
+                                <select id="filter-select-genre" aria-label="Género" data-label="Género" style="display:none;">
                                     <option value="all">Todos</option>
                                 </select>
                                 <button class="vod-filter-btn dash-custom-select-btn" type="button"><span class="dash-custom-select-label">Género</span> <i data-lucide="chevron-down" class="dash-chevron"></i></button>
                                 <div class="dash-custom-select-menu hidden"></div>
                             </div>
-                            <div class="dash-custom-select" data-for="dash-filter-event">
-                                <select id="dash-filter-event" aria-label="Evento" style="display:none;">
+                            <div class="dash-custom-select" data-for="filter-select-event">
+                                <select id="filter-select-event" aria-label="Evento" data-label="Evento" style="display:none;">
                                     <option value="all">Todos</option>
                                 </select>
                                 <button class="vod-filter-btn dash-custom-select-btn" type="button"><span class="dash-custom-select-label">Evento</span> <i data-lucide="chevron-down" class="dash-chevron"></i></button>
@@ -276,19 +276,6 @@
             <div class="menu-content">
                 <!-- Channels Tab -->
                 <div id="tab-channels" class="tab-pane active">
-                    <div class="search-box">
-                        <div id="category-filters" class="category-filters">
-                            <select id="filter-select-language" class="dark-input filter-dropdown" data-label="Idioma">
-                                <option value="all">Todos</option>
-                            </select>
-                            <select id="filter-select-genre" class="dark-input filter-dropdown" data-label="Género">
-                                <option value="all">Todos</option>
-                            </select>
-                            <select id="filter-select-event" class="dark-input filter-dropdown" data-label="Evento">
-                                <option value="all">Todos</option>
-                            </select>
-                        </div>
-                    </div>
                     <div class="scroll-area">
                         <div id="all-channels-list" class="carousel"></div>
                     </div>
