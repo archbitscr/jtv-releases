@@ -140,6 +140,17 @@ export async function initDeveloperFeatures() {
         <h3 class="settings-page-title">Developer Mode</h3>
         <div class="setting-item">
             <div class="setting-item-info">
+                <span class="setting-title">Glass Tuner</span>
+                <span class="setting-desc">Herramienta visual para ajustar el glassmorphism del HUD, Sidebar y Top Nav en tiempo real.</span>
+            </div>
+            <label class="settings-switch">
+                <input type="checkbox" id="glass-tuner-toggle">
+                <span class="settings-switch-slider"></span>
+            </label>
+        </div>
+        <div class="setting-divider"></div>
+        <div class="setting-item">
+            <div class="setting-item-info">
                 <span class="setting-title">Controles de Señal y Fuentes</span>
                 <span class="setting-desc">Mostrar autotuner e interruptor de fuentes de canales en el menú inferior.</span>
             </div>

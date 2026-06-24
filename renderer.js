@@ -458,6 +458,8 @@ async function init() {
                 window.setDeveloperState(savedData);
             }
             await devModule.initDeveloperFeatures();
+            const { initGlassTuner } = await import('./renderer/utils/glassTuner.js');
+            initGlassTuner();
         } catch (err) {
             console.error('Failed to load developer module:', err);
         }
