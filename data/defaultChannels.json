@@ -1494,13 +1494,13 @@
   },
   {
     "id": "245",
-    "name": "PPV 245",
+    "name": "PPV Caracol",
     "path": "watch.php?id=245",
-    "favorite": false,
-    "watchTime": 12.669999999999998,
+    "favorite": true,
+    "watchTime": 253.804,
     "categories": [
       "all",
-      "English",
+      "Español",
       "Sports",
       "News",
       "FIFA 2026"
