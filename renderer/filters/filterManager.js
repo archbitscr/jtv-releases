@@ -153,45 +153,6 @@ export function getFilteredChannelsList(mode = 'channels', opts = {}) {
     return list;
 }
 
-export function cleanChannelMetadata() {
-    const filterMap = new Map();
-    const allFilters = [...(state.filterLanguages || []), ...(state.filterGenres || []), ...(state.filterEvents || [])];
-    allFilters.forEach(f => {
-        if (f && f.name) {
-            filterMap.set(f.name.toLowerCase().trim(), f.name.trim());
-        }
-    });
-
-    state.channels.forEach(c => {
-        if (!c.categories) {
-            c.categories = ["all"];
-            return;
-        }
-
-        const cleaned = [];
-        let hasAll = false;
-
-        c.categories.forEach(cat => {
-            if (typeof cat !== 'string') return;
-            const norm = cat.trim().toLowerCase();
-            if (norm === 'all') {
-                hasAll = true;
-            } else if (filterMap.has(norm)) {
-                const exactName = filterMap.get(norm);
-                if (!cleaned.includes(exactName)) {
-                    cleaned.push(exactName);
-                }
-            }
-        });
-
-        if (!cleaned.includes('all')) {
-            cleaned.push('all');
-        }
-
-        c.categories = cleaned;
-    });
-}
-
 export function autoCategorizeChannels() {
     const filterMap = new Map();
     const allFilters = [...(state.filterLanguages || []), ...(state.filterGenres || []), ...(state.filterEvents || [])];

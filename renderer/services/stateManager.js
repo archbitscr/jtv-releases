@@ -1,5 +1,4 @@
 import { state } from '../state/appState.js';
-import { cleanChannelMetadata } from '../filters/filterManager.js';
 
 let saveTimeout = null;
 
@@ -21,7 +20,7 @@ export async function saveAppState(force = false) {
 }
 
 export async function actualSaveAppState() {
-    cleanChannelMetadata();
+
     const validChannels = state.channels.filter(c => c.name && c.path);
     const devState = window.getDeveloperState ? window.getDeveloperState() : {
         developerModeEnabled: false,
@@ -67,7 +66,7 @@ export async function actualSaveAppState() {
 }
 
 export async function saveChannelsAndFilters() {
-    cleanChannelMetadata();
+
     const validChannels = state.channels.filter(c => c && c.id);
     const devState = window.getDeveloperState ? window.getDeveloperState() : {
         developerModeEnabled: false,

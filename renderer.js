@@ -10,7 +10,7 @@ import { initGuide, renderGuide } from './renderer/render/guide.js';
 import { initFavoritesGrid, renderFavoritesGrid, syncGridPageToActiveChannel } from './renderer/render/favoritesGrid.js';
 import { initRenderAll, renderAll } from './renderer/render/renderAll.js';
 import { eventIconsList, getActiveVodGenres, mapIconToEmoji } from './renderer/filters/filterState.js';
-import { initFilterManager, populateDropdowns, matchesOnboardingLanguages, getFilteredChannelsList, syncFilterList, removeFilterFromChannel, startEditingFilter, removeSettingsFilter, cleanChannelMetadata, autoCategorizeChannels } from './renderer/filters/filterManager.js';
+import { initFilterManager, populateDropdowns, matchesOnboardingLanguages, getFilteredChannelsList, syncFilterList, removeFilterFromChannel, startEditingFilter, removeSettingsFilter, autoCategorizeChannels } from './renderer/filters/filterManager.js';
 import { initVodContent, refreshVodContent, showVodDetails } from './renderer/vod/vodContent.js';
 import { initVodCache, warmupVodCache, scheduleVodCacheUpdate } from './renderer/vod/vodCache.js';
 import { hashPIN, verifyPIN, promptParentalPIN, isParentalTimeLocked } from './renderer/settings/parental.js';
@@ -409,7 +409,7 @@ async function init() {
         }
 
         syncFilterList();
-        cleanChannelMetadata();
+
         saveAppState();
 
         if (savedData.seriesGenres && savedData.seriesGenres.length > 0) {
@@ -501,12 +501,12 @@ async function init() {
     if (state.channels.length === 0) {
         state.channels = defaultChannels.map(c => ({ ...c }));
         syncFilterList();
-        cleanChannelMetadata();
+
         saveAppState();
         syncChannels(true);
     } else {
         autoCategorizeChannels();
-        cleanChannelMetadata();
+
         saveAppState();
     }
 

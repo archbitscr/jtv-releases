@@ -1,5 +1,5 @@
 import { state } from '../state/appState.js';
-import { autoCategorizeChannels, cleanChannelMetadata } from '../filters/filterManager.js';
+import { autoCategorizeChannels } from '../filters/filterManager.js';
 import { renderAll } from '../render/renderAll.js';
 import { saveAppState } from './stateManager.js';
 
@@ -39,7 +39,6 @@ export async function syncChannels(silent = false) {
                 nc.watchTime = 0;
                 nc.categories = ["all"];
             }
-            nc.categories = nc.categories.map(cat => cat.toLowerCase());
             if (!nc.categories.includes('all')) {
                 nc.categories.push('all');
             }
@@ -55,7 +54,6 @@ export async function syncChannels(silent = false) {
         });
         state.dropdownsPopulated = false;
         autoCategorizeChannels();
-        cleanChannelMetadata();
         renderAll();
         saveAppState();
     }
