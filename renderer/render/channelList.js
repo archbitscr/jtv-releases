@@ -91,7 +91,7 @@ export function renderList(container, list, highlightTerm = "") {
                     tunerHeart.style.color = channel.favorite ? '#ff4b4b' : 'currentColor';
                 }
             }
-            if (ext.renderAll) ext.renderAll();
+            if (ext.renderAll) ext.renderAll(true);
             if (ext.saveAppState) ext.saveAppState();
         };
 

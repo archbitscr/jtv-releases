@@ -1359,7 +1359,7 @@ export function setupEventListeners() {
                 tunerFavHeart.style.color = channel.favorite ? '#ff4b4b' : 'currentColor';
             }
         }
-        renderAll();
+        renderAll(true);
         saveAppState();
     };
 
@@ -1517,7 +1517,7 @@ export function setupEventListeners() {
                         tunerFavHeart.style.color = 'currentColor';
                     }
                 }
-                renderAll();
+                renderAll(true);
                 saveAppState();
             }
         };
