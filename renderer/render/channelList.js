@@ -97,9 +97,9 @@ export function renderList(container, list, highlightTerm = "") {
 
         item.querySelector('.edit-btn').onclick = (e) => {
             e.stopPropagation();
-            const channels = ext.getChannels ? ext.getChannels() : [];
-            const channelIdx = channels.findIndex(c => String(c.id) === String(channel.id));
-            if (ext.showModule) ext.showModule('settings');
+            const allChannels = window.getChannels ? window.getChannels() : [];
+            const channelIdx = allChannels.findIndex(c => String(c.id) === String(channel.id));
+            if (window.showModule) window.showModule('settings');
             const filtersTabBtn = document.getElementById('settings-tab-filters');
             if (filtersTabBtn) filtersTabBtn.click();
             setTimeout(() => {
@@ -107,13 +107,12 @@ export function renderList(container, list, highlightTerm = "") {
                 if (asignacionBtn) asignacionBtn.click();
                 if (channelIdx !== -1) {
                     if (window.assignerSelectedFilters) window.assignerSelectedFilters.clear();
-                    const state = ext.getState ? ext.getState() : window.state;
-                    if (state) {
-                        state.assignerSelectedChannelIndices = [channelIdx];
-                        state.lastSelectedIdx = channelIdx;
+                    if (window.state) {
+                        window.state.assignerSelectedChannelIndices = [channelIdx];
+                        window.state.lastSelectedIdx = channelIdx;
                     }
-                    if (ext.renderAssignerChannelsList) ext.renderAssignerChannelsList();
-                    if (ext.selectAssignerChannelMultiple) ext.selectAssignerChannelMultiple();
+                    if (window.renderAssignerChannelsList) window.renderAssignerChannelsList();
+                    if (window.selectAssignerChannelMultiple) window.selectAssignerChannelMultiple();
                 }
             }, 100);
         };

@@ -480,8 +480,8 @@ body.player-active .edge-mask {
 }
 
 .action-btn.edit-btn:hover {
-    color: #6366f1 !important;
-    transform: scale(1.2) rotate(15deg);
+    color: #ffffff !important;
+    transform: scale(1.1);
 }
 
 .action-btn:hover {

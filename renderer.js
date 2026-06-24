@@ -14,7 +14,7 @@ import { initFilterManager, populateDropdowns, matchesOnboardingLanguages, getFi
 import { initVodContent, refreshVodContent, showVodDetails } from './renderer/vod/vodContent.js';
 import { initVodCache, warmupVodCache, scheduleVodCacheUpdate } from './renderer/vod/vodCache.js';
 import { hashPIN, verifyPIN, promptParentalPIN, isParentalTimeLocked } from './renderer/settings/parental.js';
-import { initEventAssigner, renderAssignerChannelsList, renderAssignerEvents, selectAssignerChannel } from './renderer/filters/filterAssigner.js';
+import { initEventAssigner, renderAssignerChannelsList, renderAssignerEvents, selectAssignerChannel, selectAssignerChannelMultiple } from './renderer/filters/filterAssigner.js';
 import { initIconPickers } from './renderer/utils/iconPicker.js';
 import { initDashCustomSelects, syncCustomSelect } from './renderer/utils/customSelect.js';
 import { initCustomTooltips } from './renderer/utils/tooltips.js';
@@ -261,6 +261,8 @@ async function init() {
     window.renderAssignerEvents = renderAssignerEvents;
     window.renderAssignerChannelsList = renderAssignerChannelsList;
     window.selectAssignerChannel = selectAssignerChannel;
+    window.selectAssignerChannelMultiple = selectAssignerChannelMultiple;
+    window.showModule = showModule;
     window.initIconPickers = initIconPickers;
     window.syncCustomSelect = syncCustomSelect;
     window.initDashCustomSelects = initDashCustomSelects;
