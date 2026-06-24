@@ -11183,6 +11183,28 @@
     ]
   },
   {
+    "id": "5010",
+    "name": "PPV 5010",
+    "path": "watch.php?id=5010",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "5011",
+    "name": "PPV 5011",
+    "path": "watch.php?id=5011",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
     "id": "5012",
     "name": "PPV 5012",
     "path": "watch.php?id=5012",
@@ -11249,6 +11271,28 @@
     ]
   },
   {
+    "id": "5020",
+    "name": "PPV 5020",
+    "path": "watch.php?id=5020",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "5021",
+    "name": "PPV 5021",
+    "path": "watch.php?id=5021",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
     "id": "5038",
     "name": "PPV 5038",
     "path": "watch.php?id=5038",
@@ -11274,6 +11318,17 @@
       "Sports",
       "News",
       "FIFA 2026"
+    ]
+  },
+  {
+    "id": "5060",
+    "name": "PPV 5060",
+    "path": "watch.php?id=5060",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
     ]
   },
   {
