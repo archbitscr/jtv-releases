@@ -208,7 +208,7 @@ body.player-active .edge-mask {
     left: 0;
     width: 380px;
     height: 100vh;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-right: 1px solid rgba(255, 255, 255, 0.08);
@@ -1868,15 +1868,15 @@ body.hide-cursor * {
     transform: translate(-50%, 0);
     z-index: 1000;
     width: 580px;
-    
+
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     padding: 14px 24px;
     gap: 20px;
-    
-    background: rgba(255, 255, 255, 0.02);
+
+    background: rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 24px 24px 0 0 !important;
@@ -3689,19 +3689,19 @@ body.hide-cursor * {
 /* Top Navigation HUD */
 .top-nav-menu {
     position: fixed;
-    top: 0 !important; /* Touch top window border */
+    top: 0 !important;
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 1000;
-    
+
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     padding: 14px 24px;
     gap: 20px;
-    
-    background: rgba(255, 255, 255, 0.02);
+
+    background: rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 0 0 24px 24px !important; /* Top corners square, bottom corners rounded */
