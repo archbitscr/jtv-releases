@@ -23,32 +23,25 @@ const PARAMS = [
     { key: 'insetA', label: 'Inset Glow', min: 0, max: 0.5, step: 0.01, unit: '' },
 ];
 
-function parseCurrentValues(el) {
-    const cs = getComputedStyle(el);
-    const bg = cs.backgroundColor || 'rgba(0,0,0,0.05)';
-    const bgMatch = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
-    const blur = (cs.backdropFilter || cs.webkitBackdropFilter || '').match(/blur\(([\d.]+)px\)/);
-    const border = cs.borderColor || 'rgba(255,255,255,0.08)';
-    const borderMatch = border.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
-    const shadow = cs.boxShadow || '';
-    const shadowParts = shadow.match(/([\d.]+)px\s+([\d.]+)px\s+([\d.]+)px\s+([\d.]+)px\s+rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)/);
-    const insetMatch = shadow.match(/inset\s+[\d.]+px\s+[\d.]+px\s+[\d.]+px\s+rgba\(\d+,\s*\d+,\s*\d+,\s*([\d.]+)\)/);
+const DEFAULTS = {
+    hud:     { bgR: 0, bgG: 0, bgB: 0, bgA: 0.3, blur: 6, borderR: 255, borderG: 255, borderB: 255, borderA: 0.1, shadowBlur: 15, shadowSpread: 15, shadowA: 0.2, insetA: 0.15 },
+    sidebar: { bgR: 0, bgG: 0, bgB: 0, bgA: 0.3, blur: 8, borderR: 255, borderG: 255, borderB: 255, borderA: 0.1, shadowBlur: 20, shadowSpread: 8,  shadowA: 0.5, insetA: 0.15 },
+    topnav:  { bgR: 0, bgG: 0, bgB: 0, bgA: 0.3, blur: 6, borderR: 255, borderG: 255, borderB: 255, borderA: 0.1, shadowBlur: 20, shadowSpread: 5,  shadowA: 0.25, insetA: 0.15 },
+};
 
-    return {
-        bgR: bgMatch ? parseInt(bgMatch[1]) : 0,
-        bgG: bgMatch ? parseInt(bgMatch[2]) : 0,
-        bgB: bgMatch ? parseInt(bgMatch[3]) : 0,
-        bgA: bgMatch && bgMatch[4] !== undefined ? parseFloat(bgMatch[4]) : 1,
-        blur: blur ? parseFloat(blur[1]) : 4,
-        borderR: borderMatch ? parseInt(borderMatch[1]) : 255,
-        borderG: borderMatch ? parseInt(borderMatch[2]) : 255,
-        borderB: borderMatch ? parseInt(borderMatch[3]) : 255,
-        borderA: borderMatch && borderMatch[4] !== undefined ? parseFloat(borderMatch[4]) : 0.08,
-        shadowBlur: shadowParts ? parseFloat(shadowParts[3]) : 45,
-        shadowSpread: shadowParts ? parseFloat(shadowParts[4]) : 0,
-        shadowA: shadowParts ? parseFloat(shadowParts[8]) : 0.8,
-        insetA: insetMatch ? parseFloat(insetMatch[1]) : 0.1,
-    };
+function getDefaults(key) {
+    return { ...DEFAULTS[key] };
+}
+
+function copyToClipboard(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
 }
 
 function applyValues(el, values) {
@@ -103,8 +96,7 @@ function buildModal() {
 
     const state = {};
     TARGETS.forEach(t => {
-        const el = document.querySelector(t.selector);
-        state[t.key] = el ? parseCurrentValues(el) : { bgR: 0, bgG: 0, bgB: 0, bgA: 0.05, blur: 4, borderR: 255, borderG: 255, borderB: 255, borderA: 0.08, shadowBlur: 45, shadowSpread: 0, shadowA: 0.8, insetA: 0.1 };
+        state[t.key] = getDefaults(t.key);
     });
 
     function syncUI() {
@@ -157,10 +149,10 @@ function buildModal() {
     // Reset
     document.getElementById('glass-tuner-reset').addEventListener('click', () => {
         TARGETS.forEach(t => {
+            state[t.key] = getDefaults(t.key);
             const el = document.querySelector(t.selector);
             if (el) {
                 clearInlineStyles(el);
-                state[t.key] = parseCurrentValues(el);
             }
         });
         syncUI();
@@ -180,12 +172,11 @@ function buildModal() {
             css += `    box-shadow: 0 20px ${v.shadowBlur}px ${v.shadowSpread}px rgba(0, 0, 0, ${v.shadowA}), inset 0 1px 1px rgba(255, 255, 255, ${v.insetA});\n`;
             css += `}\n\n`;
         });
-        navigator.clipboard.writeText(css).then(() => {
-            const btn = document.getElementById('glass-tuner-copy');
-            const original = btn.textContent;
-            btn.textContent = '¡Copiado!';
-            setTimeout(() => btn.textContent = original, 1500);
-        });
+        copyToClipboard(css);
+        const btn = document.getElementById('glass-tuner-copy');
+        const original = btn.textContent;
+        btn.textContent = '¡Copiado!';
+        setTimeout(() => btn.textContent = original, 1500);
     });
 
     return modal;

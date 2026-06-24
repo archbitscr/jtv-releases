@@ -208,16 +208,16 @@ body.player-active .edge-mask {
     left: 0;
     width: 380px;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 2000;
     transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s;
     display: flex;
     flex-direction: column;
     padding: 12px 16px 16px 16px;
-    box-shadow: 20px 0 60px rgba(0,0,0,0.8);
+    box-shadow: 0 20px 20px 8px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
     overflow: hidden;
 }
 
@@ -1876,13 +1876,13 @@ body.hide-cursor * {
     padding: 14px 24px;
     gap: 20px;
 
-    background: rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     border-radius: 24px 24px 0 0 !important;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: none !important;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 15px 15px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.15);
     
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     opacity: 1;
@@ -3701,13 +3701,13 @@ body.hide-cursor * {
     padding: 14px 24px;
     gap: 20px;
 
-    background: rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border-radius: 0 0 24px 24px !important; /* Top corners square, bottom corners rounded */
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-top: none !important; /* Touch top border */
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 0 0 24px 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none !important;
+    box-shadow: 0 20px 20px 5px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
     
     transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     opacity: 1;
