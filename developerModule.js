@@ -708,6 +708,10 @@ export async function initDeveloperFeatures() {
             await window.saveAppState();
             window.renderAll();
 
+            if (String(newCh.id) === String(window.state?.activeChannelId)) {
+                if (window.updateHudChannelFilters) window.updateHudChannelFilters(newCh);
+            }
+
             renderCrudChannelsList();
             selectCrudChannel(index >= 0 ? index : channels.length - 1);
         };

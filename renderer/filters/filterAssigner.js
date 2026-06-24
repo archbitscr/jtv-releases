@@ -138,7 +138,16 @@ export function initEventAssigner() {
             }
             await saveChannelsAndFilters();
             renderSettingsFilters();
-            
+
+            // Update HUD chips if the active channel was modified
+            const activeId = state.activeChannelId;
+            if (activeId) {
+                const activeChannel = channels.find(c => String(c.id) === String(activeId));
+                if (activeChannel && state.assignerSelectedChannelIndices.includes(channels.indexOf(activeChannel))) {
+                    if (window.updateHudChannelFilters) window.updateHudChannelFilters(activeChannel);
+                }
+            }
+
             // Refresh selection view
             selectAssignerChannelMultiple();
         };
