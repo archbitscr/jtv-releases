@@ -202,7 +202,8 @@ async function init() {
         showVodDetails,
         refreshVodContent,
         getActiveVodGenres,
-        syncCustomSelect
+        syncCustomSelect,
+        getFilteredChannelsList
     });
 
     initRenderAll({

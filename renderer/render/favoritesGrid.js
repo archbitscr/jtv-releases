@@ -12,50 +12,18 @@ export function getFilteredLiveChannels() {
     if (state.activeDashTab !== "live") return [];
 
     const liveSearchInput = document.getElementById('live-landing-search');
-    const searchVal = liveSearchInput ? liveSearchInput.value.toLowerCase().trim() : "";
+    const searchVal = liveSearchInput ? liveSearchInput.value.trim() : "";
 
-    const selLanguage = document.getElementById('dash-filter-language')?.value || 'all';
-    const selGenre = document.getElementById('dash-filter-genre')?.value || 'all';
-    const selEvent = document.getElementById('dash-filter-event')?.value || 'all';
+    const mode = state.zapSourceTab === 'favorites' ? 'favorites' : 'channels';
 
-    const allFavs = state.channels
-        .filter(c => ext.matchesOnboardingLanguages ? ext.matchesOnboardingLanguages(c) : true)
-        .filter(c => {
-            if (ext.isParentalTimeLocked && ext.isParentalTimeLocked()) {
-                const cats = (c.categories || []).map(cat => cat.toLowerCase());
-                return cats.includes('kids') || cats.includes('niños') || c.kidsAllowed === true;
-            }
-            return true;
+    return ext.getFilteredChannelsList
+        ? ext.getFilteredChannelsList(mode, {
+            searchTerm: searchVal,
+            languageId: 'dash-filter-language',
+            genreId: 'dash-filter-genre',
+            eventId: 'dash-filter-event',
         })
-        .filter(c => {
-            if (state.zapSourceTab === 'favorites') return c.favorite;
-            return true;
-        })
-        .filter(c => {
-            if (!searchVal) return true;
-            const nameLower = (c.name || "").toLowerCase();
-            const idStr = (c.id || "").toString().toLowerCase();
-            const epg = ext.getActiveEpg ? ext.getActiveEpg(c.id) : null;
-            const epgEvent = epg ? epg.event.toLowerCase() : "";
-            return nameLower.includes(searchVal) || idStr.includes(searchVal) || epgEvent.includes(searchVal);
-        })
-        .filter(c => {
-            const cats = c.categories || [];
-            if (selLanguage !== 'all' && !cats.includes(selLanguage)) return false;
-            if (selGenre !== 'all' && !cats.includes(selGenre)) return false;
-            if (selEvent !== 'all' && !cats.includes(selEvent)) return false;
-            return true;
-        });
-
-    if (state.zapSourceTab === 'favorites') {
-        allFavs.sort((a, b) => (b.watchTime || 0) - (a.watchTime || 0));
-    } else if (/^\d+$/.test(searchVal)) {
-        allFavs.sort((a, b) => parseInt(a.id) - parseInt(b.id));
-    } else {
-        allFavs.sort((a, b) => (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base', numeric: true }));
-    }
-
-    return allFavs;
+        : [];
 }
 
 export function getCurrentVodPageIndex() {

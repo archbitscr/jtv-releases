@@ -102,23 +102,20 @@ export function matchesOnboardingLanguages(channel) {
     );
 }
 
-export function getFilteredChannelsList(mode = 'channels') {
+export function getFilteredChannelsList(mode = 'channels', opts = {}) {
     const isFavoritesMode = mode === 'favorites';
-    const term = (isFavoritesMode ? state.favSearchTerm : state.searchTerm).toLowerCase().trim();
 
-    let selLanguage = 'all';
-    let selGenre = 'all';
-    let selEvent = 'all';
+    const term = opts.searchTerm !== undefined
+        ? opts.searchTerm.toLowerCase().trim()
+        : (isFavoritesMode ? state.favSearchTerm : state.searchTerm).toLowerCase().trim();
 
-    if (isFavoritesMode) {
-        selLanguage = document.getElementById('fav-filter-select-language')?.value || 'all';
-        selGenre = document.getElementById('fav-filter-select-genre')?.value || 'all';
-        selEvent = document.getElementById('fav-filter-select-event')?.value || 'all';
-    } else {
-        selLanguage = document.getElementById('filter-select-language')?.value || 'all';
-        selGenre = document.getElementById('filter-select-genre')?.value || 'all';
-        selEvent = document.getElementById('filter-select-event')?.value || 'all';
-    }
+    const langId = opts.languageId || (isFavoritesMode ? 'fav-filter-select-language' : 'filter-select-language');
+    const genreId = opts.genreId || (isFavoritesMode ? 'fav-filter-select-genre' : 'filter-select-genre');
+    const eventId = opts.eventId || (isFavoritesMode ? 'fav-filter-select-event' : 'filter-select-event');
+
+    const selLanguage = document.getElementById(langId)?.value || 'all';
+    const selGenre = document.getElementById(genreId)?.value || 'all';
+    const selEvent = document.getElementById(eventId)?.value || 'all';
 
     let list = state.channels.filter(channel => {
         if (isFavoritesMode && !channel.favorite) return false;
