@@ -1,0 +1,9616 @@
+[
+  {
+    "id": "31",
+    "name": "TNT Sports 1 UK",
+    "path": "watch.php?id=31",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "32",
+    "name": "TNT Sports 2 UK",
+    "path": "watch.php?id=32",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "33",
+    "name": "TNT Sports 3 UK",
+    "path": "watch.php?id=33",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "34",
+    "name": "TNT Sports 4 UK",
+    "path": "watch.php?id=34",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "35",
+    "name": "Sky Sports Football UK",
+    "path": "watch.php?id=35",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "36",
+    "name": "Sky Sports+ Plus",
+    "path": "watch.php?id=36",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "37",
+    "name": "Sky Sports Action UK",
+    "path": "watch.php?id=37",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "38",
+    "name": "Sky Sports Main Event",
+    "path": "watch.php?id=38",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "39",
+    "name": "Fox Sports 1 USA",
+    "path": "watch.php?id=39",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "40",
+    "name": "Tennis Channel",
+    "path": "watch.php?id=40",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "41",
+    "name": "EuroSport 1 Greece",
+    "path": "watch.php?id=41",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "42",
+    "name": "EuroSport 2 Greece",
+    "path": "watch.php?id=42",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "43",
+    "name": "PDC TV",
+    "path": "watch.php?id=43",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "44",
+    "name": "ESPN USA",
+    "path": "watch.php?id=44",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "45",
+    "name": "ESPN2 USA",
+    "path": "watch.php?id=45",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "46",
+    "name": "Sky Sports Tennis UK",
+    "path": "watch.php?id=46",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "47",
+    "name": "Polsat Sport Poland",
+    "path": "watch.php?id=47",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "48",
+    "name": "Canal+ Sport Poland",
+    "path": "watch.php?id=48",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "49",
+    "name": "Sport TV1 Portugal",
+    "path": "watch.php?id=49",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "50",
+    "name": "Polsat Sport 2 Poland",
+    "path": "watch.php?id=50",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "51",
+    "name": "ABC USA",
+    "path": "watch.php?id=51",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "52",
+    "name": "CBS USA",
+    "path": "watch.php?id=52",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "53",
+    "name": "NBC USA",
+    "path": "watch.php?id=53",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "54",
+    "name": "FOX USA",
+    "path": "watch.php?id=54",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "56",
+    "name": "Supersport Football",
+    "path": "watch.php?id=56",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "57",
+    "name": "EuroSport 1 Poland",
+    "path": "watch.php?id=57",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "58",
+    "name": "EuroSport 2 Poland",
+    "path": "watch.php?id=58",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "60",
+    "name": "Sky Sports F1 UK",
+    "path": "watch.php?id=60",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "61",
+    "name": "beIN Sports MENA English 1",
+    "path": "watch.php?id=61",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "62",
+    "name": "beIN SPORTS 1 Turkey",
+    "path": "watch.php?id=62",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "63",
+    "name": "beIN SPORTS 2 Turkey",
+    "path": "watch.php?id=63",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "64",
+    "name": "beIN SPORTS 3 Turkey",
+    "path": "watch.php?id=64",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "65",
+    "name": "Sky Sports Cricket",
+    "path": "watch.php?id=65",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "66",
+    "name": "TUDN USA",
+    "path": "watch.php?id=66",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "67",
+    "name": "beIN SPORTS 4 Turkey",
+    "path": "watch.php?id=67",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "70",
+    "name": "Sky Sports Golf UK",
+    "path": "watch.php?id=70",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "71",
+    "name": "Eleven Sports 1 Poland",
+    "path": "watch.php?id=71",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "72",
+    "name": "Eleven Sports 2 Poland",
+    "path": "watch.php?id=72",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "73",
+    "name": "Canal+ Sport 2 Poland",
+    "path": "watch.php?id=73",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "74",
+    "name": "Sport TV2 Portugal",
+    "path": "watch.php?id=74",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "75",
+    "name": "Canal+ Sport 5 Poland",
+    "path": "watch.php?id=75",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "78",
+    "name": "SporTV Brasil",
+    "path": "watch.php?id=78",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "79",
+    "name": "SporTV2 Brasil",
+    "path": "watch.php?id=79",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "80",
+    "name": "SporTV3 Brasil",
+    "path": "watch.php?id=80",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "81",
+    "name": "ESPN Brasil",
+    "path": "watch.php?id=81",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "82",
+    "name": "ESPN2 Brasil",
+    "path": "watch.php?id=82",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "83",
+    "name": "ESPN3 Brasil",
+    "path": "watch.php?id=83",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "84",
+    "name": "Movistar Laliga",
+    "path": "watch.php?id=84",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "85",
+    "name": "ESPN4 Brasil",
+    "path": "watch.php?id=85",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "87",
+    "name": "TNT Brasil",
+    "path": "watch.php?id=87",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "88",
+    "name": "Premier Brasil",
+    "path": "watch.php?id=88",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "89",
+    "name": "Combate Brasil",
+    "path": "watch.php?id=89",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "90",
+    "name": "beIN Sports MENA English 2",
+    "path": "watch.php?id=90",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "91",
+    "name": "beIN Sports 1 Arabic",
+    "path": "watch.php?id=91",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "92",
+    "name": "beIN Sports 2 Arabic",
+    "path": "watch.php?id=92",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "93",
+    "name": "beIN Sports 3 Arabic",
+    "path": "watch.php?id=93",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "94",
+    "name": "beIN Sports 4 Arabic",
+    "path": "watch.php?id=94",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "95",
+    "name": "beIN Sports 5 Arabic",
+    "path": "watch.php?id=95",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "96",
+    "name": "beIN Sports 6 Arabic",
+    "path": "watch.php?id=96",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "97",
+    "name": "beIN Sports 7 Arabic",
+    "path": "watch.php?id=97",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "98",
+    "name": "beIN Sports 8 Arabic",
+    "path": "watch.php?id=98",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "99",
+    "name": "beIN Sports 9 Arabic",
+    "path": "watch.php?id=99",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "100",
+    "name": "beIN SPORTS XTRA 1",
+    "path": "watch.php?id=100",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "101",
+    "name": "Sport Klub 1 Croatia",
+    "path": "watch.php?id=101",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "102",
+    "name": "Sport Klub 2 Croatia",
+    "path": "watch.php?id=102",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "103",
+    "name": "Sport Klub 3 Croatia",
+    "path": "watch.php?id=103",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "104",
+    "name": "Sport Klub 4 Croatia",
+    "path": "watch.php?id=104",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "111",
+    "name": "TSN1",
+    "path": "watch.php?id=111",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "112",
+    "name": "TSN2",
+    "path": "watch.php?id=112",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "113",
+    "name": "TSN3",
+    "path": "watch.php?id=113",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "114",
+    "name": "TSN4",
+    "path": "watch.php?id=114",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "115",
+    "name": "TSN5",
+    "path": "watch.php?id=115",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "116",
+    "name": "beIN SPORTS 1 France",
+    "path": "watch.php?id=116",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "117",
+    "name": "beIN SPORTS 2 France",
+    "path": "watch.php?id=117",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "118",
+    "name": "beIN SPORTS 3 France",
+    "path": "watch.php?id=118",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "119",
+    "name": "RMC Sport 1 France",
+    "path": "watch.php?id=119",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "120",
+    "name": "RMC Sport 2 France",
+    "path": "watch.php?id=120",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "121",
+    "name": "Canal+ France",
+    "path": "watch.php?id=121",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "122",
+    "name": "Canal+ Sport France",
+    "path": "watch.php?id=122",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "123",
+    "name": "Astro SuperSport 1",
+    "path": "watch.php?id=123",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "124",
+    "name": "Astro SuperSport 2",
+    "path": "watch.php?id=124",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "125",
+    "name": "Astro SuperSport 3",
+    "path": "watch.php?id=125",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "126",
+    "name": "Astro SuperSport 4",
+    "path": "watch.php?id=126",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "127",
+    "name": "Match TV Russia",
+    "path": "watch.php?id=127",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "128",
+    "name": "TVP Sport Poland",
+    "path": "watch.php?id=128",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "129",
+    "name": "Polsat Sport 3 Poland",
+    "path": "watch.php?id=129",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "130",
+    "name": "Sky sports Premier League",
+    "path": "watch.php?id=130",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "131",
+    "name": "Telemundo",
+    "path": "watch.php?id=131",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "132",
+    "name": "Univision",
+    "path": "watch.php?id=132",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "133",
+    "name": "Unimas",
+    "path": "watch.php?id=133",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "134",
+    "name": "Arena Sport 1 Premium",
+    "path": "watch.php?id=134",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "135",
+    "name": "Arena Sport 2 Premium",
+    "path": "watch.php?id=135",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "136",
+    "name": "Match Football 1 Russia",
+    "path": "watch.php?id=136",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "137",
+    "name": "Match Football 2 Russia",
+    "path": "watch.php?id=137",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "138",
+    "name": "Match Football 3 Russia",
+    "path": "watch.php?id=138",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "139",
+    "name": "Arena Sport 3 Premium",
+    "path": "watch.php?id=139",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "140",
+    "name": "Sport 1 Israel",
+    "path": "watch.php?id=140",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "141",
+    "name": "Sport 2 Israel",
+    "path": "watch.php?id=141",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "142",
+    "name": "Sport 3 Israel",
+    "path": "watch.php?id=142",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "143",
+    "name": "Sport 4 Israel",
+    "path": "watch.php?id=143",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "144",
+    "name": "Sport 5 Israel",
+    "path": "watch.php?id=144",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "145",
+    "name": "Sport 5 PLUS Israel",
+    "path": "watch.php?id=145",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "146",
+    "name": "Sport 5 Live Israel",
+    "path": "watch.php?id=146",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "147",
+    "name": "Sport 5 Star Israel",
+    "path": "watch.php?id=147",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "148",
+    "name": "Sport 5 Gold Israel",
+    "path": "watch.php?id=148",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "149",
+    "name": "ESPN Argentina",
+    "path": "watch.php?id=149",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "150",
+    "name": "ESPN2 Argentina",
+    "path": "watch.php?id=150",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "206",
+    "name": "AHC (American Heroes Channel)",
+    "path": "watch.php?id=206",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "210",
+    "name": "PBS USA",
+    "path": "watch.php?id=210",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "223",
+    "name": "TV3 Max Denmark",
+    "path": "watch.php?id=223",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "230",
+    "name": "DAZN 1 UK",
+    "path": "watch.php?id=230",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "231",
+    "name": "Eurosport 1 SW",
+    "path": "watch.php?id=231",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "232",
+    "name": "Eurosport 2 SW",
+    "path": "watch.php?id=232",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "233",
+    "name": "Eurosport 1 NL",
+    "path": "watch.php?id=233",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "234",
+    "name": "Eurosport 2 NL",
+    "path": "watch.php?id=234",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "240",
+    "name": "Sky Sports 1 DE",
+    "path": "watch.php?id=240",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "241",
+    "name": "Sky Sports 2 DE",
+    "path": "watch.php?id=241",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "259",
+    "name": "Canal+ Sport 3 Poland",
+    "path": "watch.php?id=259",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "260",
+    "name": "Vodafone Sport",
+    "path": "watch.php?id=260",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "265",
+    "name": "M4 Sports Hungary",
+    "path": "watch.php?id=265",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "267",
+    "name": "Star Sports 1 IN",
+    "path": "watch.php?id=267",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "268",
+    "name": "Star Sports Hindi IN",
+    "path": "watch.php?id=268",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "269",
+    "name": "A Sport PK",
+    "path": "watch.php?id=269",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "270",
+    "name": "T Sports BD",
+    "path": "watch.php?id=270",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "271",
+    "name": "Canal+ MotoGP France",
+    "path": "watch.php?id=271",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "272",
+    "name": "V Sport Motor Sweden",
+    "path": "watch.php?id=272",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "273",
+    "name": "Canal+ Formula 1",
+    "path": "watch.php?id=273",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "274",
+    "name": "Sky Sports F1 DE",
+    "path": "watch.php?id=274",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "275",
+    "name": "Bandsports Brasil",
+    "path": "watch.php?id=275",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "276",
+    "name": "LaLigaTV UK",
+    "path": "watch.php?id=276",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "277",
+    "name": "NBC10 Philadelphia",
+    "path": "watch.php?id=277",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "278",
+    "name": "Law & Crime Network",
+    "path": "watch.php?id=278",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "279",
+    "name": "FUSE TV USA",
+    "path": "watch.php?id=279",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "280",
+    "name": "CW PIX 11 USA",
+    "path": "watch.php?id=280",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "281",
+    "name": "Court TV USA",
+    "path": "watch.php?id=281",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "282",
+    "name": "Heroes & Icons (H&I) USA",
+    "path": "watch.php?id=282",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "283",
+    "name": "Antenna TV USA",
+    "path": "watch.php?id=283",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "284",
+    "name": "StarzPlay CricLife 1 HD",
+    "path": "watch.php?id=284",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "285",
+    "name": "Discovery Velocity CA",
+    "path": "watch.php?id=285",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "286",
+    "name": "YTV CA",
+    "path": "watch.php?id=286",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "287",
+    "name": "Pac-12 Network USA",
+    "path": "watch.php?id=287",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "288",
+    "name": "ESPNews",
+    "path": "watch.php?id=288",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "289",
+    "name": "Sport TV4 Portugal",
+    "path": "watch.php?id=289",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "290",
+    "name": "Sport TV5 Portugal",
+    "path": "watch.php?id=290",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "291",
+    "name": "Sport TV6 Portugal",
+    "path": "watch.php?id=291",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "292",
+    "name": "NewsNation USA",
+    "path": "watch.php?id=292",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "293",
+    "name": "Reelz Channel",
+    "path": "watch.php?id=293",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "294",
+    "name": "Science Channel",
+    "path": "watch.php?id=294",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "295",
+    "name": "Adult Swim",
+    "path": "watch.php?id=295",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "XXX"
+    ]
+  },
+  {
+    "id": "296",
+    "name": "Hallmark Movies & Mysterie",
+    "path": "watch.php?id=296",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "297",
+    "name": "Fox Business",
+    "path": "watch.php?id=297",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "298",
+    "name": "FXX USA",
+    "path": "watch.php?id=298",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "299",
+    "name": "Magnolia Network",
+    "path": "watch.php?id=299",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "300",
+    "name": "CW USA",
+    "path": "watch.php?id=300",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "301",
+    "name": "Freeform",
+    "path": "watch.php?id=301",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "302",
+    "name": "A&E USA",
+    "path": "watch.php?id=302",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "303",
+    "name": "AMC USA",
+    "path": "watch.php?id=303",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "304",
+    "name": "Animal Planet",
+    "path": "watch.php?id=304",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "305",
+    "name": "BBC America (BBCA)",
+    "path": "watch.php?id=305",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "306",
+    "name": "BET USA",
+    "path": "watch.php?id=306",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "307",
+    "name": "Bravo USA",
+    "path": "watch.php?id=307",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "308",
+    "name": "CBS Sports Network (CBSSN)",
+    "path": "watch.php?id=308",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "309",
+    "name": "CNBC USA",
+    "path": "watch.php?id=309",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "310",
+    "name": "Comedy Central",
+    "path": "watch.php?id=310",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "311",
+    "name": "Discovery Life Channel",
+    "path": "watch.php?id=311",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "312",
+    "name": "Disney Channel",
+    "path": "watch.php?id=312",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "313",
+    "name": "Discovery Channel",
+    "path": "watch.php?id=313",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "314",
+    "name": "Disney XD",
+    "path": "watch.php?id=314",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "315",
+    "name": "E! Entertainment Television",
+    "path": "watch.php?id=315",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "316",
+    "name": "ESPNU USA",
+    "path": "watch.php?id=316",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "317",
+    "name": "FX USA",
+    "path": "watch.php?id=317",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "318",
+    "name": "GOLF Channel USA",
+    "path": "watch.php?id=318",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "319",
+    "name": "Game Show Network",
+    "path": "watch.php?id=319",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "320",
+    "name": "The Hallmark Channel",
+    "path": "watch.php?id=320",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "321",
+    "name": "HBO USA",
+    "path": "watch.php?id=321",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "322",
+    "name": "History USA",
+    "path": "watch.php?id=322",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "323",
+    "name": "Headline News",
+    "path": "watch.php?id=323",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "324",
+    "name": "Investigation Discovery (ID USA)",
+    "path": "watch.php?id=324",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "325",
+    "name": "ION USA",
+    "path": "watch.php?id=325",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "326",
+    "name": "Lifetime Network",
+    "path": "watch.php?id=326",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "327",
+    "name": "MSNBC",
+    "path": "watch.php?id=327",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "328",
+    "name": "National Geographic (NGC)",
+    "path": "watch.php?id=328",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "329",
+    "name": "NICK JR",
+    "path": "watch.php?id=329",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "330",
+    "name": "NICK",
+    "path": "watch.php?id=330",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "331",
+    "name": "Oprah Winfrey Network (OWN)",
+    "path": "watch.php?id=331",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "332",
+    "name": "Oxygen True Crime",
+    "path": "watch.php?id=332",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "333",
+    "name": "Showtime USA",
+    "path": "watch.php?id=333",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "334",
+    "name": "Paramount Network",
+    "path": "watch.php?id=334",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "335",
+    "name": "Starz",
+    "path": "watch.php?id=335",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "336",
+    "name": "TBS USA",
+    "path": "watch.php?id=336",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "337",
+    "name": "TLC",
+    "path": "watch.php?id=337",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "338",
+    "name": "TNT USA",
+    "path": "watch.php?id=338",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "339",
+    "name": "Cartoon Network",
+    "path": "watch.php?id=339",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "340",
+    "name": "Travel Channel",
+    "path": "watch.php?id=340",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "341",
+    "name": "TruTV USA",
+    "path": "watch.php?id=341",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "342",
+    "name": "TVLAND",
+    "path": "watch.php?id=342",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "343",
+    "name": "USA Network",
+    "path": "watch.php?id=343",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "344",
+    "name": "VH1 USA",
+    "path": "watch.php?id=344",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "345",
+    "name": "CNN USA",
+    "path": "watch.php?id=345",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "346",
+    "name": "Willow Cricket",
+    "path": "watch.php?id=346",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "347",
+    "name": "Fox News",
+    "path": "watch.php?id=347",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "348",
+    "name": "Dave",
+    "path": "watch.php?id=348",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "349",
+    "name": "BBC News Channel HD",
+    "path": "watch.php?id=349",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "350",
+    "name": "ITV 1 UK",
+    "path": "watch.php?id=350",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "351",
+    "name": "ITV 2 UK",
+    "path": "watch.php?id=351",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "352",
+    "name": "ITV 3 UK",
+    "path": "watch.php?id=352",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "353",
+    "name": "ITV 4 UK",
+    "path": "watch.php?id=353",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "354",
+    "name": "Channel 4 UK",
+    "path": "watch.php?id=354",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "355",
+    "name": "Channel 5 UK",
+    "path": "watch.php?id=355",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "356",
+    "name": "BBC One UK",
+    "path": "watch.php?id=356",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "357",
+    "name": "BBC Two UK",
+    "path": "watch.php?id=357",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "358",
+    "name": "BBC Three UK",
+    "path": "watch.php?id=358",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "359",
+    "name": "BBC Four UK",
+    "path": "watch.php?id=359",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "360",
+    "name": "5 USA",
+    "path": "watch.php?id=360",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "361",
+    "name": "Sky Witness HD",
+    "path": "watch.php?id=361",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "362",
+    "name": "Sky Atlantic",
+    "path": "watch.php?id=362",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "363",
+    "name": "E4 Channel",
+    "path": "watch.php?id=363",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "364",
+    "name": "RTE 1",
+    "path": "watch.php?id=364",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "365",
+    "name": "RTE 2",
+    "path": "watch.php?id=365",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "366",
+    "name": "Sky Sports News UK",
+    "path": "watch.php?id=366",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "367",
+    "name": "MTV UK",
+    "path": "watch.php?id=367",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "368",
+    "name": "SuperSport Cricket",
+    "path": "watch.php?id=368",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "369",
+    "name": "Fox Cricket",
+    "path": "watch.php?id=369",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "370",
+    "name": "Astro Cricket",
+    "path": "watch.php?id=370",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "371",
+    "name": "MTV USA",
+    "path": "watch.php?id=371",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "372",
+    "name": "beIN SPORTS en Espa単ol",
+    "path": "watch.php?id=372",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "373",
+    "name": "SYFY USA",
+    "path": "watch.php?id=373",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "374",
+    "name": "Cinemax USA",
+    "path": "watch.php?id=374",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "375",
+    "name": "ESPN Deportes",
+    "path": "watch.php?id=375",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "376",
+    "name": "WWE Network",
+    "path": "watch.php?id=376",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "377",
+    "name": "MUTV UK",
+    "path": "watch.php?id=377",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "378",
+    "name": "Veronica NL Netherland",
+    "path": "watch.php?id=378",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "379",
+    "name": "ESPN 1 NL",
+    "path": "watch.php?id=379",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "380",
+    "name": "Benfica TV PT",
+    "path": "watch.php?id=380",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "381",
+    "name": "FX Movie Channel",
+    "path": "watch.php?id=381",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "382",
+    "name": "HGTV",
+    "path": "watch.php?id=382",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "383",
+    "name": "Ziggo Sport 5 NL",
+    "path": "watch.php?id=383",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "384",
+    "name": "The Food Network",
+    "path": "watch.php?id=384",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "385",
+    "name": "SEC Network USA",
+    "path": "watch.php?id=385",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "386",
+    "name": "ESPN 2 NL",
+    "path": "watch.php?id=386",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "387",
+    "name": "ESPN Premium Argentina",
+    "path": "watch.php?id=387",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "388",
+    "name": "TNT Sports Argentina",
+    "path": "watch.php?id=388",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "389",
+    "name": "Lifetime Movies Network",
+    "path": "watch.php?id=389",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "390",
+    "name": "RTL7 Netherland",
+    "path": "watch.php?id=390",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "391",
+    "name": "VTV+ Uruguay",
+    "path": "watch.php?id=391",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "392",
+    "name": "Win Sports+ Columbia",
+    "path": "watch.php?id=392",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "393",
+    "name": "Ziggo Sport NL",
+    "path": "watch.php?id=393",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "394",
+    "name": "The Weather Channel",
+    "path": "watch.php?id=394",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "395",
+    "name": "МАТЧ! БОЕЦ Russia",
+    "path": "watch.php?id=395",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "396",
+    "name": "Ziggo Sport 4 NL",
+    "path": "watch.php?id=396",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "397",
+    "name": "BIG TEN Network (BTN USA)",
+    "path": "watch.php?id=397",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "398",
+    "name": "Ziggo Sport 2 NL",
+    "path": "watch.php?id=398",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "399",
+    "name": "MLB Network USA",
+    "path": "watch.php?id=399",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "400",
+    "name": "Digi Sport 1 Romania",
+    "path": "watch.php?id=400",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "401",
+    "name": "Digi Sport 2 Romania",
+    "path": "watch.php?id=401",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "402",
+    "name": "Digi Sport 3 Romania",
+    "path": "watch.php?id=402",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "403",
+    "name": "Digi Sport 4 Romania",
+    "path": "watch.php?id=403",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "404",
+    "name": "NBA TV USA",
+    "path": "watch.php?id=404",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "405",
+    "name": "NFL Network",
+    "path": "watch.php?id=405",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "406",
+    "name": "Sportsnet Ontario",
+    "path": "watch.php?id=406",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "407",
+    "name": "Sportsnet West",
+    "path": "watch.php?id=407",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "408",
+    "name": "Sportsnet East",
+    "path": "watch.php?id=408",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "409",
+    "name": "Sportsnet 360",
+    "path": "watch.php?id=409",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "410",
+    "name": "Sportsnet World",
+    "path": "watch.php?id=410",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "411",
+    "name": "Sportsnet One",
+    "path": "watch.php?id=411",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "412",
+    "name": "SuperSport Grandstand",
+    "path": "watch.php?id=412",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "413",
+    "name": "SuperSport PSL",
+    "path": "watch.php?id=413",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "414",
+    "name": "SuperSport Premier league",
+    "path": "watch.php?id=414",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "415",
+    "name": "SuperSport LaLiga",
+    "path": "watch.php?id=415",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "416",
+    "name": "SuperSport Variety 1",
+    "path": "watch.php?id=416",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "417",
+    "name": "SuperSport Variety 2",
+    "path": "watch.php?id=417",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "418",
+    "name": "SuperSport Variety 3",
+    "path": "watch.php?id=418",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "419",
+    "name": "SuperSport Variety 4",
+    "path": "watch.php?id=419",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "420",
+    "name": "SuperSport Action",
+    "path": "watch.php?id=420",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "421",
+    "name": "SuperSport Rugby",
+    "path": "watch.php?id=421",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "422",
+    "name": "SuperSport Golf",
+    "path": "watch.php?id=422",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "423",
+    "name": "SuperSport Tennis",
+    "path": "watch.php?id=423",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "424",
+    "name": "SuperSport Motorsport",
+    "path": "watch.php?id=424",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "425",
+    "name": "BeIN SPORTS USA",
+    "path": "watch.php?id=425",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "426",
+    "name": "DAZN 1 Bar DE",
+    "path": "watch.php?id=426",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "427",
+    "name": "DAZN 2 Bar DE",
+    "path": "watch.php?id=427",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "428",
+    "name": "Eleven Sports 3 Poland",
+    "path": "watch.php?id=428",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "429",
+    "name": "Arena Sport 1 Serbia",
+    "path": "watch.php?id=429",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "430",
+    "name": "Arena Sport 2 Serbia",
+    "path": "watch.php?id=430",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "431",
+    "name": "Arena Sport 3 Serbia",
+    "path": "watch.php?id=431",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "432",
+    "name": "Arena Sport 1 Croatia",
+    "path": "watch.php?id=432",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "433",
+    "name": "Arena Sport 2 Croatia",
+    "path": "watch.php?id=433",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "434",
+    "name": "Arena Sport 3 Croatia",
+    "path": "watch.php?id=434",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "435",
+    "name": "Movistar Liga de Campeones",
+    "path": "watch.php?id=435",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "436",
+    "name": "Movistar Deportes Spain",
+    "path": "watch.php?id=436",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "437",
+    "name": "Movistar Supercopa de España",
+    "path": "watch.php?id=437",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "438",
+    "name": "Movistar Deportes 2 Spain",
+    "path": "watch.php?id=438",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "439",
+    "name": "Orange Sport 1 Romania",
+    "path": "watch.php?id=439",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "440",
+    "name": "Orange Sport 2 Romania",
+    "path": "watch.php?id=440",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "441",
+    "name": "Orange Sport 3 Romania",
+    "path": "watch.php?id=441",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "442",
+    "name": "Orange Sport 4 Romania",
+    "path": "watch.php?id=442",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "443",
+    "name": "Polsat News Poland",
+    "path": "watch.php?id=443",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "444",
+    "name": "TVN24 Poland",
+    "path": "watch.php?id=444",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "445",
+    "name": "DAZN 1 Spain",
+    "path": "watch.php?id=445",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "446",
+    "name": "DAZN 2 Spain",
+    "path": "watch.php?id=446",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "447",
+    "name": "DAZN 3 Spain",
+    "path": "watch.php?id=447",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "448",
+    "name": "DAZN 4 Spain",
+    "path": "watch.php?id=448",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "449",
+    "name": "Sky Sports MIX UK",
+    "path": "watch.php?id=449",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "450",
+    "name": "PTV Sports",
+    "path": "watch.php?id=450",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "451",
+    "name": "Viaplay Sports 1 UK",
+    "path": "watch.php?id=451",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "452",
+    "name": "TVP INFO",
+    "path": "watch.php?id=452",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "453",
+    "name": "Sport Klub HD Croatia",
+    "path": "watch.php?id=453",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "454",
+    "name": "Sport TV3 Portugal",
+    "path": "watch.php?id=454",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "455",
+    "name": "Eleven Sports 1 Portugal",
+    "path": "watch.php?id=455",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "456",
+    "name": "Eleven Sports 2 Portugal",
+    "path": "watch.php?id=456",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "457",
+    "name": "Eleven Sports 3 Portugal",
+    "path": "watch.php?id=457",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "458",
+    "name": "Eleven Sports 4 Portugal",
+    "path": "watch.php?id=458",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "459",
+    "name": "Eleven Sports 5 Portugal",
+    "path": "watch.php?id=459",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "460",
+    "name": "Sky Sport MAX Italy",
+    "path": "watch.php?id=460",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "461",
+    "name": "Sky Sport UNO Italy",
+    "path": "watch.php?id=461",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "462",
+    "name": "Sky Sport Arena Italy",
+    "path": "watch.php?id=462",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "463",
+    "name": "Canal+ Foot France",
+    "path": "watch.php?id=463",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "464",
+    "name": "Canal+ Sport360",
+    "path": "watch.php?id=464",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "465",
+    "name": "Diema Sport Bulgaria",
+    "path": "watch.php?id=465",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "466",
+    "name": "Diema Sport 2 Bulgaria",
+    "path": "watch.php?id=466",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "467",
+    "name": "Diema Sport 3 Bulgaria",
+    "path": "watch.php?id=467",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "468",
+    "name": "Nova Sport Bulgaria",
+    "path": "watch.php?id=468",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "469",
+    "name": "TF1 France",
+    "path": "watch.php?id=469",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "470",
+    "name": "M6 France",
+    "path": "watch.php?id=470",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "471",
+    "name": "Ring Bulgaria",
+    "path": "watch.php?id=471",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "472",
+    "name": "Max Sport 1 Bulgaria",
+    "path": "watch.php?id=472",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "473",
+    "name": "Max Sport 2 Bulgaria",
+    "path": "watch.php?id=473",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "474",
+    "name": "Max Sport 3 Bulgaria",
+    "path": "watch.php?id=474",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "475",
+    "name": "Max Sport 4 Bulgaria",
+    "path": "watch.php?id=475",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "476",
+    "name": "BNT 1 Bulgaria",
+    "path": "watch.php?id=476",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "477",
+    "name": "BNT 2 Bulgaria",
+    "path": "watch.php?id=477",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "478",
+    "name": "BNT 3 Bulgaria",
+    "path": "watch.php?id=478",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "479",
+    "name": "bTV Bulgaria",
+    "path": "watch.php?id=479",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "480",
+    "name": "Nova TV Bulgaria",
+    "path": "watch.php?id=480",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "481",
+    "name": "bTV Action Bulgaria",
+    "path": "watch.php?id=481",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "482",
+    "name": "Diema Bulgaria",
+    "path": "watch.php?id=482",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "483",
+    "name": "FOX HD Bulgaria",
+    "path": "watch.php?id=483",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "484",
+    "name": "bTV Lady Bulgaria",
+    "path": "watch.php?id=484",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "485",
+    "name": "Diema Family Bulgaria",
+    "path": "watch.php?id=485",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "486",
+    "name": "Canal+ Sport 1 Afrique",
+    "path": "watch.php?id=486",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "487",
+    "name": "Canal+ Sport 2 Afrique",
+    "path": "watch.php?id=487",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "488",
+    "name": "Canal+ Sport 3 Afrique",
+    "path": "watch.php?id=488",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "489",
+    "name": "Canal+ Sport 4 Afrique",
+    "path": "watch.php?id=489",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "490",
+    "name": "Canal+ Sport 5 Afrique",
+    "path": "watch.php?id=490",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "491",
+    "name": "beIN SPORTS Australia 1",
+    "path": "watch.php?id=491",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "492",
+    "name": "beIN SPORTS Australia 2",
+    "path": "watch.php?id=492",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "493",
+    "name": "beIN SPORTS Australia 3",
+    "path": "watch.php?id=493",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "494",
+    "name": "beIN Sports MAX 4 France",
+    "path": "watch.php?id=494",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "495",
+    "name": "beIN Sports MAX 5 France",
+    "path": "watch.php?id=495",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "496",
+    "name": "beIN Sports MAX 6 France",
+    "path": "watch.php?id=496",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "497",
+    "name": "beIN Sports MAX 7 France",
+    "path": "watch.php?id=497",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "498",
+    "name": "beIN Sports MAX 8 France",
+    "path": "watch.php?id=498",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "499",
+    "name": "beIN Sports MAX 9 France",
+    "path": "watch.php?id=499",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "500",
+    "name": "beIN Sports MAX 10 France",
+    "path": "watch.php?id=500",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "501",
+    "name": "18+ (Player-01)",
+    "path": "watch.php?id=501",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "502",
+    "name": "18+ (Player-02)",
+    "path": "watch.php?id=502",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "503",
+    "name": "18+ (Player-03)",
+    "path": "watch.php?id=503",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "504",
+    "name": "18+ (Player-04)",
+    "path": "watch.php?id=504",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "505",
+    "name": "18+ (Player-05)",
+    "path": "watch.php?id=505",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "506",
+    "name": "18+ (Player-06)",
+    "path": "watch.php?id=506",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "507",
+    "name": "18+ (Player-07)",
+    "path": "watch.php?id=507",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "508",
+    "name": "18+ (Player-08)",
+    "path": "watch.php?id=508",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "509",
+    "name": "18+ (Player-09)",
+    "path": "watch.php?id=509",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "510",
+    "name": "18+ (Player-10)",
+    "path": "watch.php?id=510",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "511",
+    "name": "18+ (Player-11)",
+    "path": "watch.php?id=511",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "512",
+    "name": "18+ (Player-12)",
+    "path": "watch.php?id=512",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "513",
+    "name": "18+ (Player-13)",
+    "path": "watch.php?id=513",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "514",
+    "name": "18+ (Player-14)",
+    "path": "watch.php?id=514",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "515",
+    "name": "18+ (Player-15)",
+    "path": "watch.php?id=515",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "516",
+    "name": "18+ (Player-16)",
+    "path": "watch.php?id=516",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "517",
+    "name": "18+ (Player-17)",
+    "path": "watch.php?id=517",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "518",
+    "name": "18+ (Player-18)",
+    "path": "watch.php?id=518",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "519",
+    "name": "18+ (Player-19)",
+    "path": "watch.php?id=519",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "520",
+    "name": "18+ (Player-20)",
+    "path": "watch.php?id=520",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "XXX"
+    ]
+  },
+  {
+    "id": "521",
+    "name": "#Vamos Spain",
+    "path": "watch.php?id=521",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "522",
+    "name": "Barca TV Spain",
+    "path": "watch.php?id=522",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "523",
+    "name": "Real Madrid TV Spain",
+    "path": "watch.php?id=523",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "524",
+    "name": "EuroSport 1 Spain",
+    "path": "watch.php?id=524",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "525",
+    "name": "EuroSport 2 Spain",
+    "path": "watch.php?id=525",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "526",
+    "name": "Movistar Deportes 3 Spain",
+    "path": "watch.php?id=526",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "527",
+    "name": "Movistar Deportes 4 Spain",
+    "path": "watch.php?id=527",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "528",
+    "name": "Movistar Golf Spain",
+    "path": "watch.php?id=528",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "529",
+    "name": "Teledeporte Spain (TDP)",
+    "path": "watch.php?id=529",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "530",
+    "name": "GOL PLAY Spain",
+    "path": "watch.php?id=530",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "531",
+    "name": "Antena 3 Spain",
+    "path": "watch.php?id=531",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "532",
+    "name": "Telecinco Spain",
+    "path": "watch.php?id=532",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "533",
+    "name": "TVE La 1 Spain",
+    "path": "watch.php?id=533",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "534",
+    "name": "La Sexta Spain",
+    "path": "watch.php?id=534",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "535",
+    "name": "Cuatro Spain",
+    "path": "watch.php?id=535",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "536",
+    "name": "TVE La 2 Spain",
+    "path": "watch.php?id=536",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "537",
+    "name": "DAZN F1 ES",
+    "path": "watch.php?id=537",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "538",
+    "name": "DAZN LaLiga",
+    "path": "watch.php?id=538",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "539",
+    "name": "LaLiga SmartBank TV",
+    "path": "watch.php?id=539",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "540",
+    "name": "Canal 11 Portugal",
+    "path": "watch.php?id=540",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "541",
+    "name": "ONE 1 HD Israel",
+    "path": "watch.php?id=541",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "542",
+    "name": "ONE 2 HD Israel",
+    "path": "watch.php?id=542",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "543",
+    "name": "Yes Movies Action Israel",
+    "path": "watch.php?id=543",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "544",
+    "name": "Yes Movies Kids Israel",
+    "path": "watch.php?id=544",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "545",
+    "name": "Yes Movies Comedy Israel",
+    "path": "watch.php?id=545",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "546",
+    "name": "Channel 9 Israel",
+    "path": "watch.php?id=546",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "547",
+    "name": "Channel 10 Israe",
+    "path": "watch.php?id=547",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "548",
+    "name": "Channel 11 Israel",
+    "path": "watch.php?id=548",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "549",
+    "name": "Channel 12 Israel",
+    "path": "watch.php?id=549",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "550",
+    "name": "Viaplay Sports 2 UK",
+    "path": "watch.php?id=550",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "551",
+    "name": "Channel 13 Israel",
+    "path": "watch.php?id=551",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "552",
+    "name": "Channel 14 Israel",
+    "path": "watch.php?id=552",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "553",
+    "name": "HOT3 Israel",
+    "path": "watch.php?id=553",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "554",
+    "name": "Sky Sports Racing UK",
+    "path": "watch.php?id=554",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "555",
+    "name": "Racing Tv UK",
+    "path": "watch.php?id=555",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "556",
+    "name": "Sky Sport Top Event DE",
+    "path": "watch.php?id=556",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "557",
+    "name": "Sky Sport Mix DE",
+    "path": "watch.php?id=557",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "558",
+    "name": "Sky Sport Bundesliga 1 HD",
+    "path": "watch.php?id=558",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "559",
+    "name": "Sky Sport Austria 1 HD",
+    "path": "watch.php?id=559",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "560",
+    "name": "TVP1 Poland",
+    "path": "watch.php?id=560",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "561",
+    "name": "TVP2 Poland",
+    "path": "watch.php?id=561",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "562",
+    "name": "Polsat Poland",
+    "path": "watch.php?id=562",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "563",
+    "name": "Motowizja Poland",
+    "path": "watch.php?id=563",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "564",
+    "name": "Polsat Film Poland",
+    "path": "watch.php?id=564",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "565",
+    "name": "TVN HD Poland",
+    "path": "watch.php?id=565",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "566",
+    "name": "Canal+ Premium Poland",
+    "path": "watch.php?id=566",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "567",
+    "name": "Canal+ Family Poland",
+    "path": "watch.php?id=567",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "568",
+    "name": "FilmBox Premium Poland",
+    "path": "watch.php?id=568",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "569",
+    "name": "HBO Poland",
+    "path": "watch.php?id=569",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "570",
+    "name": "Canal+ Seriale Poland",
+    "path": "watch.php?id=570",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "571",
+    "name": "SportDigital Fussball",
+    "path": "watch.php?id=571",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "572",
+    "name": "SuperSport MaXimo 1",
+    "path": "watch.php?id=572",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "573",
+    "name": "Match Premier Russia",
+    "path": "watch.php?id=573",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "574",
+    "name": "Sky Sports Golf Italy",
+    "path": "watch.php?id=574",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "575",
+    "name": "Sky Sport MotoGP Italy",
+    "path": "watch.php?id=575",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "576",
+    "name": "Sky Sport Tennis Italy",
+    "path": "watch.php?id=576",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "577",
+    "name": "Sky Sport F1 Italy",
+    "path": "watch.php?id=577",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "578",
+    "name": "BeIN Sports HD Qatar",
+    "path": "watch.php?id=578",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "579",
+    "name": "Arena Sport 1 BiH",
+    "path": "watch.php?id=579",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "580",
+    "name": "Arena Sport 4 Croatia",
+    "path": "watch.php?id=580",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "581",
+    "name": "Arena Sport 4 Serbia",
+    "path": "watch.php?id=581",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "582",
+    "name": "Nova Sport Serbia",
+    "path": "watch.php?id=582",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "583",
+    "name": "Prima Sport 1",
+    "path": "watch.php?id=583",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "584",
+    "name": "Prima Sport 2",
+    "path": "watch.php?id=584",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "585",
+    "name": "Prima Sport 3",
+    "path": "watch.php?id=585",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "586",
+    "name": "Prima Sport 4",
+    "path": "watch.php?id=586",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "587",
+    "name": "Sky Sport Select NZ",
+    "path": "watch.php?id=587",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "588",
+    "name": "Sky Sport 1 NZ",
+    "path": "watch.php?id=588",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "589",
+    "name": "Sky Sport 2 NZ",
+    "path": "watch.php?id=589",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "590",
+    "name": "Sky Sport 3 NZ",
+    "path": "watch.php?id=590",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "591",
+    "name": "Sky Sport 4 NZ",
+    "path": "watch.php?id=591",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "592",
+    "name": "Sky Sport 5 NZ",
+    "path": "watch.php?id=592",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "593",
+    "name": "Sky Sport 6 NZ",
+    "path": "watch.php?id=593",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "594",
+    "name": "Sky Sport 7 NZ",
+    "path": "watch.php?id=594",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "595",
+    "name": "Sky Sport 8 NZ",
+    "path": "watch.php?id=595",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "596",
+    "name": "Sky Sport 9 NZ",
+    "path": "watch.php?id=596",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "597",
+    "name": "beIN SPORTS MAX AR",
+    "path": "watch.php?id=597",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "598",
+    "name": "Willow 2 Cricket",
+    "path": "watch.php?id=598",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "599",
+    "name": "Nova Sports Premier League Greece",
+    "path": "watch.php?id=599",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "600",
+    "name": "Abu Dhabi Sports 1 UAE",
+    "path": "watch.php?id=600",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "601",
+    "name": "Abu Dhabi Sports 2 UAE",
+    "path": "watch.php?id=601",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "602",
+    "name": "CTV Canada",
+    "path": "watch.php?id=602",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "603",
+    "name": "Smithsonian Channel",
+    "path": "watch.php?id=603",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "604",
+    "name": "Dubai Sports 1 UAE",
+    "path": "watch.php?id=604",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "605",
+    "name": "Dubai Sports 2 UAE",
+    "path": "watch.php?id=605",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "606",
+    "name": "Dubai Sports 3 UAE",
+    "path": "watch.php?id=606",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "607",
+    "name": "Rally Tv",
+    "path": "watch.php?id=607",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "608",
+    "name": "Dubai Racing 2 UAE",
+    "path": "watch.php?id=608",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "609",
+    "name": "Abu Dhabi Sports 1 Premium",
+    "path": "watch.php?id=609",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "610",
+    "name": "Abu Dhabi Sports 2 Premium",
+    "path": "watch.php?id=610",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "611",
+    "name": "OnTime Sports",
+    "path": "watch.php?id=611",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "612",
+    "name": "Arena Sports Tenis Serbia",
+    "path": "watch.php?id=612",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "613",
+    "name": "Newsmax USA",
+    "path": "watch.php?id=613",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "614",
+    "name": "SSC Sport 1",
+    "path": "watch.php?id=614",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "615",
+    "name": "SSC Sport 2",
+    "path": "watch.php?id=615",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "616",
+    "name": "SSC Sport 3",
+    "path": "watch.php?id=616",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "617",
+    "name": "SSC Sport 4",
+    "path": "watch.php?id=617",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "618",
+    "name": "SSC Sport 5",
+    "path": "watch.php?id=618",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "619",
+    "name": "SSC Sport Extra 1",
+    "path": "watch.php?id=619",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "620",
+    "name": "SSC Sport Extra 2",
+    "path": "watch.php?id=620",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "621",
+    "name": "SSC Sport Extra 3",
+    "path": "watch.php?id=621",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "622",
+    "name": "Cosmote Sport 1 HD",
+    "path": "watch.php?id=622",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "623",
+    "name": "Cosmote Sport 2 HD",
+    "path": "watch.php?id=623",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "624",
+    "name": "Cosmote Sport 3 HD",
+    "path": "watch.php?id=624",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "625",
+    "name": "Cosmote Sport 4 HD",
+    "path": "watch.php?id=625",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "626",
+    "name": "Cosmote Sport 5 HD",
+    "path": "watch.php?id=626",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "627",
+    "name": "Cosmote Sport 6 HD",
+    "path": "watch.php?id=627",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "628",
+    "name": "Cosmote Sport 7 HD",
+    "path": "watch.php?id=628",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "629",
+    "name": "Cosmote Sport 8 HD",
+    "path": "watch.php?id=629",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "630",
+    "name": "Cosmote Sport 9 HD",
+    "path": "watch.php?id=630",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "631",
+    "name": "Nova Sports 1 Greece",
+    "path": "watch.php?id=631",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "632",
+    "name": "Nova Sports 2 Greece",
+    "path": "watch.php?id=632",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "633",
+    "name": "Nova Sports 3 Greece",
+    "path": "watch.php?id=633",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "634",
+    "name": "Nova Sports 4 Greece",
+    "path": "watch.php?id=634",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "635",
+    "name": "Nova Sports 5 Greece",
+    "path": "watch.php?id=635",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "636",
+    "name": "Nova Sports 6 Greece",
+    "path": "watch.php?id=636",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "637",
+    "name": "Nova Sports Start Greece",
+    "path": "watch.php?id=637",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "638",
+    "name": "Nova Sports Prime Greece",
+    "path": "watch.php?id=638",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "639",
+    "name": "Nova Sports News Greece",
+    "path": "watch.php?id=639",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "640",
+    "name": "Sportdigital1+ Germany",
+    "path": "watch.php?id=640",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "641",
+    "name": "Sport1 Germany",
+    "path": "watch.php?id=641",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "642",
+    "name": "TNT Sports HD Chile",
+    "path": "watch.php?id=642",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "643",
+    "name": "FOX Deportes USA",
+    "path": "watch.php?id=643",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "644",
+    "name": "TCM USA",
+    "path": "watch.php?id=644",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "645",
+    "name": "L'Equipe France",
+    "path": "watch.php?id=645",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "646",
+    "name": "Racer TV USA",
+    "path": "watch.php?id=646",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "647",
+    "name": "CMT USA",
+    "path": "watch.php?id=647",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "648",
+    "name": "Boomerang",
+    "path": "watch.php?id=648",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "649",
+    "name": "Nicktoons",
+    "path": "watch.php?id=649",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "650",
+    "name": "TeenNick",
+    "path": "watch.php?id=650",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "651",
+    "name": "Destination America",
+    "path": "watch.php?id=651",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "652",
+    "name": "Disney JR",
+    "path": "watch.php?id=652",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "653",
+    "name": "POP TV USA",
+    "path": "watch.php?id=653",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "654",
+    "name": "MY9TV USA",
+    "path": "watch.php?id=654",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "655",
+    "name": "WETV USA",
+    "path": "watch.php?id=655",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "656",
+    "name": "IFC TV USA",
+    "path": "watch.php?id=656",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "657",
+    "name": "Discovery Family",
+    "path": "watch.php?id=657",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "658",
+    "name": "Sundance TV",
+    "path": "watch.php?id=658",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "659",
+    "name": "VICE TV",
+    "path": "watch.php?id=659",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "660",
+    "name": "TV ONE USA",
+    "path": "watch.php?id=660",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "661",
+    "name": "Discovery Turbo",
+    "path": "watch.php?id=661",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "662",
+    "name": "METV USA",
+    "path": "watch.php?id=662",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "663",
+    "name": "NHL Network USA",
+    "path": "watch.php?id=663",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "664",
+    "name": "ACC Network USA",
+    "path": "watch.php?id=664",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "665",
+    "name": "FYI",
+    "path": "watch.php?id=665",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "666",
+    "name": "Nick Music",
+    "path": "watch.php?id=666",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "667",
+    "name": "NFL RedZone",
+    "path": "watch.php?id=667",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "668",
+    "name": "Universal Kids USA",
+    "path": "watch.php?id=668",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "669",
+    "name": "Crime+ Investigation USA",
+    "path": "watch.php?id=669",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "670",
+    "name": "S4C UK",
+    "path": "watch.php?id=670",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "671",
+    "name": "Sky Cinema Premiere UK",
+    "path": "watch.php?id=671",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "672",
+    "name": "Sky Cinema Select UK",
+    "path": "watch.php?id=672",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "673",
+    "name": "Sky Cinema Hits UK",
+    "path": "watch.php?id=673",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "674",
+    "name": "Sky Cinema Greats UK",
+    "path": "watch.php?id=674",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "675",
+    "name": "Sky Cinema Animation UK",
+    "path": "watch.php?id=675",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "676",
+    "name": "Sky Cinema Family UK",
+    "path": "watch.php?id=676",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "677",
+    "name": "Sky Cinema Action UK",
+    "path": "watch.php?id=677",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "678",
+    "name": "Sky Cinema Comedy UK",
+    "path": "watch.php?id=678",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "679",
+    "name": "Sky Cinema Thriller UK",
+    "path": "watch.php?id=679",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "680",
+    "name": "Sky Cinema Drama UK",
+    "path": "watch.php?id=680",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "681",
+    "name": "Sky Cinema Sci-Fi Horror UK",
+    "path": "watch.php?id=681",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "682",
+    "name": "Sky Showcase UK",
+    "path": "watch.php?id=682",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "683",
+    "name": "Sky Arts UK",
+    "path": "watch.php?id=683",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "684",
+    "name": "Sky Comedy UK",
+    "path": "watch.php?id=684",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "685",
+    "name": "Sky Crime",
+    "path": "watch.php?id=685",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "686",
+    "name": "Sky History",
+    "path": "watch.php?id=686",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "687",
+    "name": "Gold UK",
+    "path": "watch.php?id=687",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "688",
+    "name": "Film4 UK",
+    "path": "watch.php?id=688",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "689",
+    "name": "HBO2 USA",
+    "path": "watch.php?id=689",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "690",
+    "name": "HBO Comedy USA",
+    "path": "watch.php?id=690",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "691",
+    "name": "HBO Family USA",
+    "path": "watch.php?id=691",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "692",
+    "name": "HBO Latino USA",
+    "path": "watch.php?id=692",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "693",
+    "name": "HBO Signature USA",
+    "path": "watch.php?id=693",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "694",
+    "name": "HBO Zone USA",
+    "path": "watch.php?id=694",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "695",
+    "name": "Showtime SHOxBET USA",
+    "path": "watch.php?id=695",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "696",
+    "name": "Comet USA",
+    "path": "watch.php?id=696",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "697",
+    "name": "Cooking Channel USA",
+    "path": "watch.php?id=697",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "698",
+    "name": "TMC Channel USA",
+    "path": "watch.php?id=698",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "699",
+    "name": "Great American Family Channel (GAC)",
+    "path": "watch.php?id=699",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "700",
+    "name": "TV4 Hockey",
+    "path": "watch.php?id=700",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "701",
+    "name": "TV4 Tennis",
+    "path": "watch.php?id=701",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "702",
+    "name": "TV4 Motor",
+    "path": "watch.php?id=702",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "703",
+    "name": "TV4 Sport Live 1",
+    "path": "watch.php?id=703",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "704",
+    "name": "TV4 Sport Live 2",
+    "path": "watch.php?id=704",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "705",
+    "name": "TV4 Sport Live 3",
+    "path": "watch.php?id=705",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "706",
+    "name": "TV4 Sport Live 4",
+    "path": "watch.php?id=706",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "707",
+    "name": "TV4 Sportkanalen",
+    "path": "watch.php?id=707",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "708",
+    "name": "Sky MAX UK",
+    "path": "watch.php?id=708",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "709",
+    "name": "Tennis+ 10",
+    "path": "watch.php?id=709",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "710",
+    "name": "Sport KLUB Golf Croatia",
+    "path": "watch.php?id=710",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "711",
+    "name": "Tennis+ 12",
+    "path": "watch.php?id=711",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "712",
+    "name": "beIN Sports 1 Malaysia",
+    "path": "watch.php?id=712",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "713",
+    "name": "beIN Sports 2 Malaysia",
+    "path": "watch.php?id=713",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "714",
+    "name": "beIN Sports 3 Malaysia",
+    "path": "watch.php?id=714",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "715",
+    "name": "Cleo TV",
+    "path": "watch.php?id=715",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "716",
+    "name": "Sporting TV Portugal",
+    "path": "watch.php?id=716",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "717",
+    "name": "AXN Movies Portugal",
+    "path": "watch.php?id=717",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "718",
+    "name": "Porto Canal Portugal",
+    "path": "watch.php?id=718",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "719",
+    "name": "RTP 1 Portugal",
+    "path": "watch.php?id=719",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "720",
+    "name": "RTP 2 Portugal",
+    "path": "watch.php?id=720",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "721",
+    "name": "RTP 3 Portugal",
+    "path": "watch.php?id=721",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "722",
+    "name": "SIC Portugal",
+    "path": "watch.php?id=722",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "723",
+    "name": "TVI Portugal",
+    "path": "watch.php?id=723",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "724",
+    "name": "TVI Reality Portugal",
+    "path": "watch.php?id=724",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "725",
+    "name": "Arte DE",
+    "path": "watch.php?id=725",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "726",
+    "name": "3sat DE",
+    "path": "watch.php?id=726",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "727",
+    "name": "ZDF DE",
+    "path": "watch.php?id=727",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "728",
+    "name": "ZDF Info DE",
+    "path": "watch.php?id=728",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "729",
+    "name": "SAT.1 DE",
+    "path": "watch.php?id=729",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "730",
+    "name": "ProSieben (PRO7) DE",
+    "path": "watch.php?id=730",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "731",
+    "name": "Kabel Eins (Kabel 1) DE",
+    "path": "watch.php?id=731",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "732",
+    "name": "Sixx DE",
+    "path": "watch.php?id=732",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "733",
+    "name": "MDR DE",
+    "path": "watch.php?id=733",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "734",
+    "name": "WDR DE",
+    "path": "watch.php?id=734",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "735",
+    "name": "SWR DE",
+    "path": "watch.php?id=735",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "736",
+    "name": "NDR DE",
+    "path": "watch.php?id=736",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "737",
+    "name": "BR Fernsehen DE",
+    "path": "watch.php?id=737",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "738",
+    "name": "SUPER RTL DE",
+    "path": "watch.php?id=738",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "739",
+    "name": "SR Fernsehen DE",
+    "path": "watch.php?id=739",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "740",
+    "name": "RTL DE",
+    "path": "watch.php?id=740",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "741",
+    "name": "Ten Sports PK",
+    "path": "watch.php?id=741",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "742",
+    "name": "AXS TV USA",
+    "path": "watch.php?id=742",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "743",
+    "name": "Galavisi贸n USA",
+    "path": "watch.php?id=743",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "744",
+    "name": "Fashion TV",
+    "path": "watch.php?id=744",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "745",
+    "name": "Nat Geo Wild USA",
+    "path": "watch.php?id=745",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "746",
+    "name": "TYC Sports Argentina",
+    "path": "watch.php?id=746",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "747",
+    "name": "TV4 Football Sweden",
+    "path": "watch.php?id=747",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "748",
+    "name": "COZI TV USA",
+    "path": "watch.php?id=748",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "749",
+    "name": "Mundotoro TV Spain",
+    "path": "watch.php?id=749",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "750",
+    "name": "C SPAN 1",
+    "path": "watch.php?id=750",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "751",
+    "name": "FETV - Family Entertainment Television",
+    "path": "watch.php?id=751",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "752",
+    "name": "Grit Channel",
+    "path": "watch.php?id=752",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "753",
+    "name": "NBC Sports Bay Area",
+    "path": "watch.php?id=753",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "754",
+    "name": "NBC Sports Boston",
+    "path": "watch.php?id=754",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "755",
+    "name": "NBC Sports California",
+    "path": "watch.php?id=755",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "756",
+    "name": "FOX Soccer Plus",
+    "path": "watch.php?id=756",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "757",
+    "name": "Fight Network",
+    "path": "watch.php?id=757",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "758",
+    "name": "Fox Sports 2 USA",
+    "path": "watch.php?id=758",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "759",
+    "name": "SportsNet New York (SNY)",
+    "path": "watch.php?id=759",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "760",
+    "name": "Globo SP",
+    "path": "watch.php?id=760",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "761",
+    "name": "Globo RIO",
+    "path": "watch.php?id=761",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "762",
+    "name": "NESN USA",
+    "path": "watch.php?id=762",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "763",
+    "name": "YES Network USA",
+    "path": "watch.php?id=763",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "764",
+    "name": "Spectrum Sportsnet LA",
+    "path": "watch.php?id=764",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "765",
+    "name": "MSG USA",
+    "path": "watch.php?id=765",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "766",
+    "name": "ABC NY USA",
+    "path": "watch.php?id=766",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "767",
+    "name": "CBSNY USA",
+    "path": "watch.php?id=767",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "768",
+    "name": "FOXNY USA",
+    "path": "watch.php?id=768",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "769",
+    "name": "NBCNY USA",
+    "path": "watch.php?id=769",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "770",
+    "name": "Marquee Sports Network",
+    "path": "watch.php?id=770",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "771",
+    "name": "Premier Sports Ireland 1",
+    "path": "watch.php?id=771",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "772",
+    "name": "Eurosport 1 France",
+    "path": "watch.php?id=772",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "773",
+    "name": "Eurosport 2 France",
+    "path": "watch.php?id=773",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "774",
+    "name": "ERT 1 Greece",
+    "path": "watch.php?id=774",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "775",
+    "name": "Fox Weather Channel",
+    "path": "watch.php?id=775",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "776",
+    "name": "Chicago Sports Network",
+    "path": "watch.php?id=776",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "777",
+    "name": "NBC Sports Philadelphia",
+    "path": "watch.php?id=777",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "778",
+    "name": "Monumental Sports Network",
+    "path": "watch.php?id=778",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "779",
+    "name": "Max Sport 1 Croatia",
+    "path": "watch.php?id=779",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "780",
+    "name": "Max Sport 2 Croatia",
+    "path": "watch.php?id=780",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "781",
+    "name": "Alkass One",
+    "path": "watch.php?id=781",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "782",
+    "name": "Alkass Two",
+    "path": "watch.php?id=782",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "783",
+    "name": "Alkass Three",
+    "path": "watch.php?id=783",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "784",
+    "name": "Alkass Four",
+    "path": "watch.php?id=784",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Arabic"
+    ]
+  },
+  {
+    "id": "785",
+    "name": "Sky Sports Golf DE",
+    "path": "watch.php?id=785",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "786",
+    "name": "DSTV Mzansi Magic",
+    "path": "watch.php?id=786",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "787",
+    "name": "Fox Sports Argentina",
+    "path": "watch.php?id=787",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "788",
+    "name": "Fox Sports 2 Argentina",
+    "path": "watch.php?id=788",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "789",
+    "name": "Fox Sports 3 Argentina",
+    "path": "watch.php?id=789",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "790",
+    "name": "CMTV Portugal",
+    "path": "watch.php?id=790",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Português"
+    ]
+  },
+  {
+    "id": "791",
+    "name": "MGM+ USA / Epix",
+    "path": "watch.php?id=791",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "792",
+    "name": "Showtime 2 USA (SHO2) USA",
+    "path": "watch.php?id=792",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "793",
+    "name": "Showtime Showcase USA",
+    "path": "watch.php?id=793",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "794",
+    "name": "Showtime Extreme USA",
+    "path": "watch.php?id=794",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "795",
+    "name": "Showtime Family Zone (SHO Family Zone) USA",
+    "path": "watch.php?id=795",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "796",
+    "name": "Showtime Next (SHO Next) USA",
+    "path": "watch.php?id=796",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "797",
+    "name": "Showtime Women USA",
+    "path": "watch.php?id=797",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "798",
+    "name": "ESPN3 Argentina",
+    "path": "watch.php?id=798",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "799",
+    "name": "Premier Sports Ireland 2",
+    "path": "watch.php?id=799",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "800",
+    "name": "6'eren Denmark",
+    "path": "watch.php?id=800",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "801",
+    "name": "DR1 Denmark",
+    "path": "watch.php?id=801",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "802",
+    "name": "DR2 Denmark",
+    "path": "watch.php?id=802",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "803",
+    "name": "Kanal 4 Denmark",
+    "path": "watch.php?id=803",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "804",
+    "name": "Kanal 5 Denmark",
+    "path": "watch.php?id=804",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "805",
+    "name": "CANAL 9 Denmark",
+    "path": "watch.php?id=805",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "806",
+    "name": "MTV Denmark",
+    "path": "watch.php?id=806",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "807",
+    "name": "TV2 Bornholm Denmark",
+    "path": "watch.php?id=807",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "808",
+    "name": "TV2 Sport X Denmark",
+    "path": "watch.php?id=808",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "809",
+    "name": "TV3 Sport Denmark",
+    "path": "watch.php?id=809",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "810",
+    "name": "TV2 Sport Denmark",
+    "path": "watch.php?id=810",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "811",
+    "name": "SEE Denmark",
+    "path": "watch.php?id=811",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "811",
+    "name": "SEE Denmark",
+    "path": "watch.php?id=811",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "812",
+    "name": "C More First Sweden",
+    "path": "watch.php?id=812",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "813",
+    "name": "C More Hits Sweden",
+    "path": "watch.php?id=813",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "814",
+    "name": "C More Series Sweden",
+    "path": "watch.php?id=814",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "815",
+    "name": "V Film Premiere",
+    "path": "watch.php?id=815",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "816",
+    "name": "V Film Family",
+    "path": "watch.php?id=816",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "817",
+    "name": "TV2 Denmark",
+    "path": "watch.php?id=817",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "818",
+    "name": "TV2 Zulu",
+    "path": "watch.php?id=818",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "819",
+    "name": "TV3+ Denmark",
+    "path": "watch.php?id=819",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "820",
+    "name": "FOX Sports 502 AU",
+    "path": "watch.php?id=820",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "821",
+    "name": "FOX Sports 503 AU",
+    "path": "watch.php?id=821",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "822",
+    "name": "FOX Sports 504 AU",
+    "path": "watch.php?id=822",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "823",
+    "name": "FOX Sports 505 AU",
+    "path": "watch.php?id=823",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "824",
+    "name": "FOX Sports 506 AU",
+    "path": "watch.php?id=824",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "825",
+    "name": "FOX Sports 507 AU",
+    "path": "watch.php?id=825",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "826",
+    "name": "Liverpool TV (LFC TV)",
+    "path": "watch.php?id=826",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "827",
+    "name": "DSTV M-Net",
+    "path": "watch.php?id=827",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "828",
+    "name": "DSTV kykNET & kie",
+    "path": "watch.php?id=828",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "829",
+    "name": "MASN USA",
+    "path": "watch.php?id=829",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "830",
+    "name": "Fox Sports Premium MX",
+    "path": "watch.php?id=830",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "831",
+    "name": "Citytv",
+    "path": "watch.php?id=831",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "832",
+    "name": "CBC CA",
+    "path": "watch.php?id=832",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "833",
+    "name": "TVA Sports",
+    "path": "watch.php?id=833",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "834",
+    "name": "TVA Sports 2",
+    "path": "watch.php?id=834",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "835",
+    "name": "Noovo CA",
+    "path": "watch.php?id=835",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Français"
+    ]
+  },
+  {
+    "id": "836",
+    "name": "Global CA",
+    "path": "watch.php?id=836",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "837",
+    "name": "Yes TV CA",
+    "path": "watch.php?id=837",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "838",
+    "name": "CTV 2 Canada",
+    "path": "watch.php?id=838",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "839",
+    "name": "RDS CA",
+    "path": "watch.php?id=839",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Français"
+    ]
+  },
+  {
+    "id": "840",
+    "name": "RDS 2 CA",
+    "path": "watch.php?id=840",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Français"
+    ]
+  },
+  {
+    "id": "841",
+    "name": "RDS Info CA",
+    "path": "watch.php?id=841",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Français"
+    ]
+  },
+  {
+    "id": "842",
+    "name": "TVO CA",
+    "path": "watch.php?id=842",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "843",
+    "name": "Prima TV RO",
+    "path": "watch.php?id=843",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "844",
+    "name": "Azteca 7 MX",
+    "path": "watch.php?id=844",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "845",
+    "name": "NBC Universo",
+    "path": "watch.php?id=845",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "846",
+    "name": "Happy TV Serbia",
+    "path": "watch.php?id=846",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "847",
+    "name": "Nova S Serbia",
+    "path": "watch.php?id=847",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "848",
+    "name": "Outdoor Channel USA",
+    "path": "watch.php?id=848",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "849",
+    "name": "Logo TV USA",
+    "path": "watch.php?id=849",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "850",
+    "name": "Rai 1 Italy",
+    "path": "watch.php?id=850",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "851",
+    "name": "Rai 2 Italy",
+    "path": "watch.php?id=851",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "852",
+    "name": "Rai 3 Italy",
+    "path": "watch.php?id=852",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "853",
+    "name": "Rai 4 Italy",
+    "path": "watch.php?id=853",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "854",
+    "name": "Italia 1 Italy",
+    "path": "watch.php?id=854",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "855",
+    "name": "La7 Italy",
+    "path": "watch.php?id=855",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "856",
+    "name": "LA7d HD+ Italy",
+    "path": "watch.php?id=856",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "857",
+    "name": "20 Mediaset Italy",
+    "path": "watch.php?id=857",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "858",
+    "name": "Rai Premium Italy",
+    "path": "watch.php?id=858",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "859",
+    "name": "Sky Cinema Collection Italy",
+    "path": "watch.php?id=859",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "860",
+    "name": "Sky Cinema Uno Italy",
+    "path": "watch.php?id=860",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "861",
+    "name": "Sky Cinema Action Italy",
+    "path": "watch.php?id=861",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "862",
+    "name": "Sky Cinema Comedy Italy",
+    "path": "watch.php?id=862",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "863",
+    "name": "Sky Cinema Uno +24 Italy",
+    "path": "watch.php?id=863",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "864",
+    "name": "Sky Cinema Romance Italy",
+    "path": "watch.php?id=864",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "865",
+    "name": "Sky Cinema Family Italy",
+    "path": "watch.php?id=865",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "866",
+    "name": "CW Philly",
+    "path": "watch.php?id=866",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "867",
+    "name": "Sky Cinema Drama Italy",
+    "path": "watch.php?id=867",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "868",
+    "name": "8Sky Cinema Suspense Italy",
+    "path": "watch.php?id=868",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "869",
+    "name": "Sky Sport 24 Italy",
+    "path": "watch.php?id=869",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "870",
+    "name": "Sky Sport Calcio Italy",
+    "path": "watch.php?id=870",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "871",
+    "name": "Sky Calcio 1 (251) Italy",
+    "path": "watch.php?id=871",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "872",
+    "name": "Sky Calcio 2 (252) Italy",
+    "path": "watch.php?id=872",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "873",
+    "name": "Sky Calcio 3 (253) Italy",
+    "path": "watch.php?id=873",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "874",
+    "name": "Sky Calcio 4 (254) Italy",
+    "path": "watch.php?id=874",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "875",
+    "name": "Sky Sport Basket Italy",
+    "path": "watch.php?id=875",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "876",
+    "name": "ITV Quiz",
+    "path": "watch.php?id=876",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "877",
+    "name": "DAZN ZONA Italy",
+    "path": "watch.php?id=877",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "878",
+    "name": "EuroSport 1 Italy",
+    "path": "watch.php?id=878",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "879",
+    "name": "EuroSport 2 Italy",
+    "path": "watch.php?id=879",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "880",
+    "name": "Sky Serie Italy",
+    "path": "watch.php?id=880",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "881",
+    "name": "Sky UNO Italy",
+    "path": "watch.php?id=881",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "882",
+    "name": "Rai Sport Italy",
+    "path": "watch.php?id=882",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Italiano"
+    ]
+  },
+  {
+    "id": "883",
+    "name": "SBS6 NL",
+    "path": "watch.php?id=883",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "884",
+    "name": "Sky Sports Tennis DE",
+    "path": "watch.php?id=884",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "885",
+    "name": "SONY TEN 1",
+    "path": "watch.php?id=885",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "886",
+    "name": "SONY TEN 2",
+    "path": "watch.php?id=886",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "887",
+    "name": "SONY TEN 3",
+    "path": "watch.php?id=887",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "888",
+    "name": "ESPN 3 NL",
+    "path": "watch.php?id=888",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "889",
+    "name": "TRT Spor TR",
+    "path": "watch.php?id=889",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "890",
+    "name": "FanDuel Sports Network Arizona",
+    "path": "watch.php?id=890",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "891",
+    "name": "FanDuel Sports Network Detroit",
+    "path": "watch.php?id=891",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "892",
+    "name": "FanDuel Sports Network Florida",
+    "path": "watch.php?id=892",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "893",
+    "name": "FanDuel Sports Network Great Lakes",
+    "path": "watch.php?id=893",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "894",
+    "name": "FanDuel Sports Network Indiana",
+    "path": "watch.php?id=894",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "895",
+    "name": "FanDuel Sports Network Kansas City",
+    "path": "watch.php?id=895",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "896",
+    "name": "FanDuel Sports Network Midwest",
+    "path": "watch.php?id=896",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "897",
+    "name": "FanDuel Sports Network New Orleans",
+    "path": "watch.php?id=897",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "898",
+    "name": "FanDuel Sports Network North",
+    "path": "watch.php?id=898",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "899",
+    "name": "FanDuel Sports Network Ohio",
+    "path": "watch.php?id=899",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "900",
+    "name": "FanDuel Sports Network Oklahoma",
+    "path": "watch.php?id=900",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "901",
+    "name": "Ziggo Sport 6 NL",
+    "path": "watch.php?id=901",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "902",
+    "name": "FanDuel Sports Network SoCal",
+    "path": "watch.php?id=902",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "903",
+    "name": "FanDuel Sports Network South",
+    "path": "watch.php?id=903",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "904",
+    "name": "FanDuel Sports Network Southeast",
+    "path": "watch.php?id=904",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "905",
+    "name": "FanDuel Sports Network Sun",
+    "path": "watch.php?id=905",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "906",
+    "name": "FanDuel Sports Network West",
+    "path": "watch.php?id=906",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "907",
+    "name": "FanDuel Sports Network Wisconsin",
+    "path": "watch.php?id=907",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "910",
+    "name": "CBS Sports Golazo",
+    "path": "watch.php?id=910",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "911",
+    "name": "Cytavision Sports 1 Cyprus",
+    "path": "watch.php?id=911",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "912",
+    "name": "Cytavision Sports 2 Cyprus",
+    "path": "watch.php?id=912",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "913",
+    "name": "Cytavision Sports 3 Cyprus",
+    "path": "watch.php?id=913",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "914",
+    "name": "Cytavision Sports 4 Cyprus",
+    "path": "watch.php?id=914",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "915",
+    "name": "Cytavision Sports 5 Cyprus",
+    "path": "watch.php?id=915",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "916",
+    "name": "Cytavision Sports 6 Cyprus",
+    "path": "watch.php?id=916",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "917",
+    "name": "Cytavision Sports 7 Cyprus",
+    "path": "watch.php?id=917",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "918",
+    "name": "DAZN Portugal FIFA Mundial de Clubes",
+    "path": "watch.php?id=918",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español",
+      "Português",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "919",
+    "name": "Ziggo Sport 3 NL",
+    "path": "watch.php?id=919",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "920",
+    "name": "Root Sports Northwest",
+    "path": "watch.php?id=920",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "921",
+    "name": "Space City Home Network",
+    "path": "watch.php?id=921",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "922",
+    "name": "SportsNet Pittsburgh",
+    "path": "watch.php?id=922",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "923",
+    "name": "Altitude Sports",
+    "path": "watch.php?id=923",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "924",
+    "name": "Las Estrellas",
+    "path": "watch.php?id=924",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "925",
+    "name": "ESPN 1 MX",
+    "path": "watch.php?id=925",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "926",
+    "name": "ESPN 2 MX",
+    "path": "watch.php?id=926",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "927",
+    "name": "ESPN 3 MX",
+    "path": "watch.php?id=927",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "928",
+    "name": "ESPN 4 MX",
+    "path": "watch.php?id=928",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "929",
+    "name": "Fox Sports 1 MX",
+    "path": "watch.php?id=929",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "930",
+    "name": "Fox Sports 2 MX",
+    "path": "watch.php?id=930",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "931",
+    "name": "Fox Sports 3 MX",
+    "path": "watch.php?id=931",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English",
+      "Español"
+    ]
+  },
+  {
+    "id": "932",
+    "name": "TVC Deportes MX",
+    "path": "watch.php?id=932",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "933",
+    "name": "Claro Sports MX",
+    "path": "watch.php?id=933",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "934",
+    "name": "Azteca Uno MX",
+    "path": "watch.php?id=934",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "935",
+    "name": "TUDN MX",
+    "path": "watch.php?id=935",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "936",
+    "name": "Canal5 MX",
+    "path": "watch.php?id=936",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Español"
+    ]
+  },
+  {
+    "id": "940",
+    "name": "Arena Sport 5 Serbia",
+    "path": "watch.php?id=940",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "941",
+    "name": "Arena Sport 6 Serbia",
+    "path": "watch.php?id=941",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "942",
+    "name": "Arena Sport 7 Serbia",
+    "path": "watch.php?id=942",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "943",
+    "name": "Arena Sport 8 Serbia",
+    "path": "watch.php?id=943",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "944",
+    "name": "Arena Sport 9 Serbia",
+    "path": "watch.php?id=944",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "945",
+    "name": "Arena Sport 10 Serbia",
+    "path": "watch.php?id=945",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "946",
+    "name": "Sky Sport Bundesliga 2",
+    "path": "watch.php?id=946",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "947",
+    "name": "Sky Sport Bundesliga 3",
+    "path": "watch.php?id=947",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "948",
+    "name": "Sky Sport Bundesliga 4",
+    "path": "watch.php?id=948",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "949",
+    "name": "Sky Sport Bundesliga 5",
+    "path": "watch.php?id=949",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Deutsch"
+    ]
+  },
+  {
+    "id": "950",
+    "name": "France 2",
+    "path": "watch.php?id=950",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "951",
+    "name": "France 3",
+    "path": "watch.php?id=951",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "952",
+    "name": "France 4",
+    "path": "watch.php?id=952",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "953",
+    "name": "France 5",
+    "path": "watch.php?id=953",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "954",
+    "name": "RMC Story France",
+    "path": "watch.php?id=954",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "955",
+    "name": "TMC France",
+    "path": "watch.php?id=955",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "956",
+    "name": "C8 France",
+    "path": "watch.php?id=956",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "957",
+    "name": "BFM TV France",
+    "path": "watch.php?id=957",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "958",
+    "name": "Arte France",
+    "path": "watch.php?id=958",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "959",
+    "name": "W9 France",
+    "path": "watch.php?id=959",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "960",
+    "name": "DAZN Ligue 1 France",
+    "path": "watch.php?id=960",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "961",
+    "name": "Automoto La chaîne",
+    "path": "watch.php?id=961",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "962",
+    "name": "LCI France",
+    "path": "watch.php?id=962",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "963",
+    "name": "6ter France",
+    "path": "watch.php?id=963",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "964",
+    "name": "CNews France",
+    "path": "watch.php?id=964",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "965",
+    "name": "Sport en France",
+    "path": "watch.php?id=965",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  },
+  {
+    "id": "970",
+    "name": "Starz Cinema",
+    "path": "watch.php?id=970",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "971",
+    "name": "Starz Comedy",
+    "path": "watch.php?id=971",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "972",
+    "name": "Starz Edge",
+    "path": "watch.php?id=972",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "973",
+    "name": "Starz In Black",
+    "path": "watch.php?id=973",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "974",
+    "name": "Starz Kids & Family",
+    "path": "watch.php?id=974",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "975",
+    "name": "Starz Encore",
+    "path": "watch.php?id=975",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "976",
+    "name": "Starz Encore Action",
+    "path": "watch.php?id=976",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "977",
+    "name": "Starz Encore Black",
+    "path": "watch.php?id=977",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "978",
+    "name": "Starz Encore Classic",
+    "path": "watch.php?id=978",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "979",
+    "name": "Starz Encore Family",
+    "path": "watch.php?id=979",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "980",
+    "name": "Starz Encore Suspense",
+    "path": "watch.php?id=980",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "981",
+    "name": "Starz Encore Westerns",
+    "path": "watch.php?id=981",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "982",
+    "name": "Spectrum SportsNet USA",
+    "path": "watch.php?id=982",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "983",
+    "name": "Canal+ Extra 1 Poland",
+    "path": "watch.php?id=983",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "984",
+    "name": "Canal+ Extra 2 Poland",
+    "path": "watch.php?id=984",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "985",
+    "name": "Canal+ Extra 3 Poland",
+    "path": "watch.php?id=985",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "986",
+    "name": "Canal+ Extra 4 Poland",
+    "path": "watch.php?id=986",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "987",
+    "name": "Canal+ Extra 5 Poland",
+    "path": "watch.php?id=987",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "988",
+    "name": "Canal+ Extra 6 Poland",
+    "path": "watch.php?id=988",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "989",
+    "name": "Canal+ Extra 7 Poland",
+    "path": "watch.php?id=989",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "990",
+    "name": "MTV Poland",
+    "path": "watch.php?id=990",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "991",
+    "name": "Polsat Sport Premium 1 Super HD PL",
+    "path": "watch.php?id=991",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "992",
+    "name": "Polsat Sport Premium 2 Super HD PL",
+    "path": "watch.php?id=992",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "993",
+    "name": "Polsat Sport Extra 1 HD Poland",
+    "path": "watch.php?id=993",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "994",
+    "name": "Polsat Sport Extra 2 HD Poland",
+    "path": "watch.php?id=994",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "995",
+    "name": "Polsat Sport Extra 3 HD Poland",
+    "path": "watch.php?id=995",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "996",
+    "name": "Polsat Sport Extra 4 HD Poland",
+    "path": "watch.php?id=996",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "997",
+    "name": "Polsat Sport Fight HD Poland",
+    "path": "watch.php?id=997",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "998",
+    "name": "Polsat Sport NEWS HD Poland",
+    "path": "watch.php?id=998",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "999",
+    "name": "Eleven Sports 4 Poland",
+    "path": "watch.php?id=999",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1000",
+    "name": "ATV Turkey",
+    "path": "watch.php?id=1000",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1001",
+    "name": "Kanal D Turkey",
+    "path": "watch.php?id=1001",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1002",
+    "name": "Show TV Turkey",
+    "path": "watch.php?id=1002",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1003",
+    "name": "NOW TV Turkey",
+    "path": "watch.php?id=1003",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1004",
+    "name": "Star TV Turkey",
+    "path": "watch.php?id=1004",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1005",
+    "name": "TV8 Turkey",
+    "path": "watch.php?id=1005",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1010",
+    "name": "bein Sports 5 Turkey",
+    "path": "watch.php?id=1010",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1011",
+    "name": "A Spor Turkey",
+    "path": "watch.php?id=1011",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1020",
+    "name": "Canal+ Sport CZ",
+    "path": "watch.php?id=1020",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1021",
+    "name": "Nova Sport 1 CZ",
+    "path": "watch.php?id=1021",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1022",
+    "name": "Nova Sport 2 CZ",
+    "path": "watch.php?id=1022",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1023",
+    "name": "Nova Sport 3 CZ",
+    "path": "watch.php?id=1023",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1024",
+    "name": "Nova Sport 4 CZ",
+    "path": "watch.php?id=1024",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1025",
+    "name": "Nova Sport 5 CZ",
+    "path": "watch.php?id=1025",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1026",
+    "name": "Nova Sport 6 CZ",
+    "path": "watch.php?id=1026",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1027",
+    "name": "Oneplay Sport 1 CZ",
+    "path": "watch.php?id=1027",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1028",
+    "name": "Oneplay Sport 2 CZ",
+    "path": "watch.php?id=1028",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1029",
+    "name": "Oneplay Sport 3 CZ",
+    "path": "watch.php?id=1029",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1030",
+    "name": "Premier Sport 1 CZ",
+    "path": "watch.php?id=1030",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1031",
+    "name": "Premier Sport 2 CZ",
+    "path": "watch.php?id=1031",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1032",
+    "name": "Premier Sport 3 CZ",
+    "path": "watch.php?id=1032",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1033",
+    "name": "CT Sport CZ",
+    "path": "watch.php?id=1033",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1034",
+    "name": "Nova HD CZ",
+    "path": "watch.php?id=1034",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1035",
+    "name": "CT1 HD CZ",
+    "path": "watch.php?id=1035",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1036",
+    "name": "CT2 HD CZ",
+    "path": "watch.php?id=1036",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1037",
+    "name": "TN Live CZ",
+    "path": "watch.php?id=1037",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1038",
+    "name": "OnePlay Sport 4 CZ",
+    "path": "watch.php?id=1038",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1039",
+    "name": "OnePlay MD2 CZ",
+    "path": "watch.php?id=1039",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1040",
+    "name": "OnePlay MD3 CZ",
+    "path": "watch.php?id=1040",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1041",
+    "name": "OnePlay MD4 CZ",
+    "path": "watch.php?id=1041",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1042",
+    "name": "Sport 1 CZ",
+    "path": "watch.php?id=1042",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1043",
+    "name": "Canal+ Sport 2 CZ",
+    "path": "watch.php?id=1043",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1044",
+    "name": "Canal+ Sport 3 CZ",
+    "path": "watch.php?id=1044",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1045",
+    "name": "Canal+ Sport 4 CZ",
+    "path": "watch.php?id=1045",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1046",
+    "name": "Canal+ Sport 5 CZ",
+    "path": "watch.php?id=1046",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1047",
+    "name": "Canal+ Sport 6 CZ",
+    "path": "watch.php?id=1047",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1048",
+    "name": "Canal+ Sport 7 CZ",
+    "path": "watch.php?id=1048",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1049",
+    "name": "Canal+ Sport 8 CZ",
+    "path": "watch.php?id=1049",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1050",
+    "name": "JOJ SK",
+    "path": "watch.php?id=1050",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1051",
+    "name": "Dajto SK",
+    "path": "watch.php?id=1051",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1052",
+    "name": "JOJ Šport SK",
+    "path": "watch.php?id=1052",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1053",
+    "name": "Voyo Special 1 SK",
+    "path": "watch.php?id=1053",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1054",
+    "name": "Voyo Special 2 SK",
+    "path": "watch.php?id=1054",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1055",
+    "name": "Voyo Special 3 SK",
+    "path": "watch.php?id=1055",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1056",
+    "name": "Voyo Special 4 SK",
+    "path": "watch.php?id=1056",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1057",
+    "name": "Voyo Special 7 SK",
+    "path": "watch.php?id=1057",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1058",
+    "name": "Voyo Special 8 SK",
+    "path": "watch.php?id=1058",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1059",
+    "name": "Voyo Special 9 SK",
+    "path": "watch.php?id=1059",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1060",
+    "name": "Nova Sport 3 SK",
+    "path": "watch.php?id=1060",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1061",
+    "name": "Nova Sport 4 SK",
+    "path": "watch.php?id=1061",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1062",
+    "name": "Nova Sport 5 SK",
+    "path": "watch.php?id=1062",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1063",
+    "name": "Canal+ Sport SK",
+    "path": "watch.php?id=1063",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1064",
+    "name": "Canal+ Sport 2 SK",
+    "path": "watch.php?id=1064",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1065",
+    "name": "Canal+ Sport 3 SK",
+    "path": "watch.php?id=1065",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1066",
+    "name": "Canal+ Sport 4 SK",
+    "path": "watch.php?id=1066",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "Français"
+    ]
+  }
+]

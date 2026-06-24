@@ -93,7 +93,8 @@ export const state = {
         { name: "Documentary", icon: "camera" },
         { name: "Lifestyle", icon: "heart" },
         { name: "Science", icon: "zap" },
-        { name: "Regional", icon: "globe" }
+        { name: "Regional", icon: "globe" },
+        { name: "XXX", icon: "ban" }
     ],
     filterEvents: [
         { name: "Formula 1", icon: "🏁" },

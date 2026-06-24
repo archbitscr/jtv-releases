@@ -1,4 +1,5 @@
 import { state } from './renderer/state/appState.js';
+import defaultChannels from './data/defaultChannels.json';
 import { initWatchTimer } from './renderer/player/watchTimer.js';
 import { initFailover } from './renderer/player/failover.js';
 import { initPlayerController, selectChannel, zapChannel, mountRemotePlayer, playVod, updatePlayerActiveState } from './renderer/player/playerController.js';
@@ -375,6 +376,9 @@ async function init() {
         }
         if (savedData.filterGenres) {
             state.filterGenres = savedData.filterGenres;
+            if (!state.filterGenres.some(f => f.name === 'XXX')) {
+                state.filterGenres.push({ name: 'XXX', icon: 'ban' });
+            }
         }
 
         const defaultEvents = [
@@ -494,7 +498,11 @@ async function init() {
     if (cloudflareProtectionToggle) cloudflareProtectionToggle.checked = !!state.cloudflareProtectionEnabled;
 
     if (state.channels.length === 0) {
-        await syncChannels(true);
+        state.channels = defaultChannels.map(c => ({ ...c }));
+        syncFilterList();
+        cleanChannelMetadata();
+        saveAppState();
+        syncChannels(true);
     } else {
         autoCategorizeChannels();
         cleanChannelMetadata();
