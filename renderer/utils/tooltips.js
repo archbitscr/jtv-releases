@@ -175,19 +175,52 @@ export function initCustomTooltips() {
             tooltipEl.textContent = text;
 
             const rect = target.getBoundingClientRect();
+            tooltipEl.style.left = '-9999px';
+            tooltipEl.style.top = '-9999px';
             tooltipEl.classList.add('show');
             const tooltipRect = tooltipEl.getBoundingClientRect();
+            const tw = tooltipRect.width;
+            const th = tooltipRect.height;
+            const gap = 8;
+            const margin = 5;
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
 
-            let left = rect.left + (rect.width - tooltipRect.width) / 2;
-            let top = rect.top - tooltipRect.height - 6;
+            const spaceAbove = rect.top;
+            const spaceBelow = vh - rect.bottom;
+            const spaceLeft = rect.left;
+            const spaceRight = vw - rect.right;
 
-            if (left < 5) left = 5;
-            if (left + tooltipRect.width > window.innerWidth - 5) {
-                left = window.innerWidth - tooltipRect.width - 5;
+            let top, left;
+
+            // Vertical vs horizontal placement: prefer top/bottom, fall back to sides
+            if (spaceAbove >= th + gap + margin || spaceBelow >= th + gap + margin) {
+                // Place above or below
+                if (spaceAbove >= th + gap + margin) {
+                    top = rect.top - th - gap;
+                } else {
+                    top = rect.bottom + gap;
+                }
+                left = rect.left + (rect.width - tw) / 2;
+            } else if (spaceRight >= tw + gap + margin || spaceLeft >= tw + gap + margin) {
+                // Place to the side
+                if (spaceRight >= tw + gap + margin) {
+                    left = rect.right + gap;
+                } else {
+                    left = rect.left - tw - gap;
+                }
+                top = rect.top + (rect.height - th) / 2;
+            } else {
+                // Fallback: below
+                top = rect.bottom + gap;
+                left = rect.left + (rect.width - tw) / 2;
             }
-            if (top < 5) {
-                top = rect.bottom + 6;
-            }
+
+            // Shift to keep within viewport
+            if (left < margin) left = margin;
+            if (left + tw > vw - margin) left = vw - tw - margin;
+            if (top < margin) top = margin;
+            if (top + th > vh - margin) top = vh - th - margin;
 
             tooltipEl.style.left = `${left}px`;
             tooltipEl.style.top = `${top}px`;
