@@ -16,8 +16,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -27,8 +28,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -38,8 +40,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -49,8 +52,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -60,8 +64,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -71,6 +76,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -81,8 +87,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -92,6 +99,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -102,8 +110,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -124,6 +133,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -134,6 +144,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -155,8 +166,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "Español",
+      "all"
     ]
   },
   {
@@ -166,8 +179,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "Español",
+      "all"
     ]
   },
   {
@@ -177,8 +192,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -188,6 +204,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -198,6 +215,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -208,6 +226,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -219,6 +238,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -227,10 +247,10 @@
     "name": "ABC USA",
     "path": "watch.php?id=51",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 55.278,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -240,8 +260,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -251,8 +271,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -262,8 +282,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -273,6 +293,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -284,6 +305,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -294,6 +316,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -304,8 +327,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -315,8 +339,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
+      "Sports",
       "English",
+      "all",
       "Arabic"
     ]
   },
@@ -327,6 +352,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -337,6 +363,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -347,6 +374,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -357,6 +385,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -367,8 +396,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
+      "Sports",
       "English",
+      "all",
       "Español"
     ]
   },
@@ -379,6 +409,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -389,8 +420,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -400,6 +432,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -410,6 +443,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -420,6 +454,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -430,6 +465,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -441,6 +477,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -452,6 +489,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -463,6 +501,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -474,6 +513,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -485,6 +525,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all",
       "Português"
     ]
@@ -496,6 +538,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all",
       "Português"
     ]
@@ -507,6 +551,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all",
       "Português"
     ]
@@ -518,8 +564,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Español",
+      "all"
     ]
   },
   {
@@ -529,6 +575,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all",
       "Português"
     ]
@@ -573,8 +621,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
+      "Sports",
       "English",
+      "all",
       "Arabic"
     ]
   },
@@ -585,6 +634,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -596,6 +646,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -607,6 +658,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -618,6 +670,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -629,6 +682,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -640,6 +694,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -651,6 +706,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -662,6 +718,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -673,6 +730,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -684,6 +742,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -695,6 +754,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -705,6 +765,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -715,6 +776,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -725,6 +787,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -790,6 +853,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -801,6 +865,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -812,6 +877,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -823,6 +889,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -834,6 +901,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -856,6 +924,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -867,6 +936,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -878,6 +948,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -889,6 +960,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -900,6 +972,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -921,6 +994,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -931,6 +1005,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -941,6 +1016,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -948,11 +1024,15 @@
     "id": "131",
     "name": "Telemundo",
     "path": "watch.php?id=131",
-    "favorite": false,
-    "watchTime": 0,
+    "favorite": true,
+    "watchTime": 2297.62,
     "categories": [
-      "all",
-      "Español"
+      "Español",
+      "Entertainment",
+      "News",
+      "Sports",
+      "FIFA 2026",
+      "all"
     ]
   },
   {
@@ -984,6 +1064,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -994,6 +1075,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1034,6 +1116,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1044,6 +1127,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1054,6 +1138,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1064,6 +1149,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1074,6 +1160,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1084,6 +1171,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1094,6 +1182,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1104,6 +1193,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1114,6 +1204,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all"
     ]
   },
@@ -1124,6 +1216,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1134,8 +1227,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Sports",
+      "Español",
+      "all"
     ]
   },
   {
@@ -1145,8 +1239,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Sports",
+      "Español",
+      "all"
     ]
   },
   {
@@ -1176,8 +1271,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1197,8 +1292,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1208,6 +1303,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1218,6 +1314,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1228,6 +1325,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1238,6 +1336,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1248,6 +1347,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -1259,6 +1359,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -1290,6 +1391,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1300,6 +1402,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1320,6 +1423,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1330,6 +1434,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all",
       "English"
     ]
@@ -1341,6 +1447,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all",
       "English"
     ]
@@ -1352,6 +1460,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1362,6 +1471,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1383,6 +1493,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -1404,6 +1515,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -1415,6 +1527,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -1426,8 +1539,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1442,7 +1555,7 @@
   },
   {
     "id": "278",
-    "name": "Law & Crime Network",
+    "name": "Law &amp; Crime Network",
     "path": "watch.php?id=278",
     "favorite": false,
     "watchTime": 0,
@@ -1458,8 +1571,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1469,8 +1582,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1480,19 +1593,19 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
     "id": "282",
-    "name": "Heroes & Icons (H&I) USA",
+    "name": "Heroes &amp; Icons (H&amp;I) USA",
     "path": "watch.php?id=282",
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1502,8 +1615,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1513,6 +1626,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Español",
       "all",
       "English"
     ]
@@ -1546,8 +1660,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1557,6 +1671,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "News",
+      "Español",
       "all",
       "English"
     ]
@@ -1568,6 +1685,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -1579,6 +1697,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -1590,6 +1709,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -1601,8 +1721,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "News",
+      "English",
+      "all"
     ]
   },
   {
@@ -1640,11 +1761,12 @@
   },
   {
     "id": "296",
-    "name": "Hallmark Movies & Mysterie",
+    "name": "Hallmark Movies &amp; Mysterie",
     "path": "watch.php?id=296",
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
       "all",
       "English"
     ]
@@ -1667,8 +1789,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1688,8 +1810,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1705,13 +1827,13 @@
   },
   {
     "id": "302",
-    "name": "A&E USA",
+    "name": "A&amp;E USA",
     "path": "watch.php?id=302",
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1721,8 +1843,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1743,6 +1865,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "News",
       "all",
       "English"
     ]
@@ -1754,8 +1877,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1765,8 +1888,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1776,6 +1899,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -1787,8 +1911,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1820,6 +1944,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Kids",
       "all",
       "English"
     ]
@@ -1842,6 +1967,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Kids",
       "all",
       "English"
     ]
@@ -1864,8 +1990,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "Español",
+      "all"
     ]
   },
   {
@@ -1875,8 +2003,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1886,8 +2014,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1918,8 +2046,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "English",
+      "all"
     ]
   },
   {
@@ -1929,8 +2058,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1940,6 +2069,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "News",
       "all"
     ]
   },
@@ -1950,8 +2080,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -1961,8 +2091,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2005,6 +2135,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Kids",
       "all",
       "English"
     ]
@@ -2016,6 +2147,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Kids",
       "all",
       "English"
     ]
@@ -2048,8 +2180,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2070,6 +2202,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Español",
       "all",
       "English"
     ]
@@ -2081,8 +2214,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2102,8 +2235,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2113,6 +2246,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Kids",
       "all",
       "English"
     ]
@@ -2135,8 +2269,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2156,8 +2290,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2167,8 +2301,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Music",
+      "English",
+      "all"
     ]
   },
   {
@@ -2178,8 +2313,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "News",
+      "English",
+      "all"
     ]
   },
   {
@@ -2200,6 +2336,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "News",
       "all",
       "English"
     ]
@@ -2221,6 +2358,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "News",
       "all",
       "English"
     ]
@@ -2232,8 +2370,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2243,8 +2381,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2254,8 +2392,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2265,8 +2403,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2276,8 +2414,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2287,8 +2425,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2298,8 +2436,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "News",
+      "English",
+      "all"
     ]
   },
   {
@@ -2309,8 +2448,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "News",
+      "English",
+      "all"
     ]
   },
   {
@@ -2320,8 +2460,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "News",
+      "English",
+      "all"
     ]
   },
   {
@@ -2331,8 +2472,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "News",
+      "English",
+      "all"
     ]
   },
   {
@@ -2342,8 +2484,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2353,6 +2495,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2364,6 +2507,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2407,8 +2551,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "News",
+      "English",
+      "all"
     ]
   },
   {
@@ -2418,8 +2564,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Music",
+      "English",
+      "all"
     ]
   },
   {
@@ -2429,6 +2576,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2462,8 +2610,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Music",
+      "English",
+      "all"
     ]
   },
   {
@@ -2473,6 +2622,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Español"
     ]
@@ -2484,8 +2634,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2495,8 +2645,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "English",
+      "all"
     ]
   },
   {
@@ -2506,8 +2657,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Sports",
+      "Español",
+      "all"
     ]
   },
   {
@@ -2528,8 +2680,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2549,6 +2701,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all",
       "English"
     ]
@@ -2571,6 +2725,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
       "all",
       "English"
     ]
@@ -2593,6 +2748,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -2614,8 +2770,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2625,6 +2781,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all",
       "English"
     ]
@@ -2636,8 +2794,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Sports",
+      "Español",
+      "all"
     ]
   },
   {
@@ -2647,6 +2806,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Español"
     ]
@@ -2658,6 +2818,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
       "all",
       "English"
     ]
@@ -2690,6 +2851,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Español"
     ]
@@ -2701,6 +2863,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -2731,6 +2894,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -2741,8 +2905,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2752,6 +2916,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -2762,8 +2927,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2773,6 +2938,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -2783,6 +2949,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -2793,6 +2960,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -2803,6 +2971,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -2813,8 +2982,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -2835,6 +3004,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2846,6 +3016,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2857,6 +3028,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2868,6 +3040,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2879,6 +3052,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2890,6 +3064,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2901,6 +3076,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2912,6 +3088,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2923,6 +3100,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2934,6 +3112,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English",
       "Español"
@@ -2946,6 +3125,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2957,6 +3137,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2968,6 +3149,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2979,6 +3161,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -2990,6 +3173,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -3001,6 +3185,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -3012,6 +3197,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -3023,6 +3209,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -3034,6 +3221,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -3045,8 +3233,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -3078,6 +3267,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3088,6 +3278,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3098,6 +3289,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3108,6 +3300,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3118,6 +3311,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3128,6 +3322,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3138,6 +3333,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3148,8 +3344,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Español",
+      "all"
     ]
   },
   {
@@ -3159,8 +3355,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Español",
+      "all"
     ]
   },
   {
@@ -3170,8 +3366,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Español",
+      "all"
     ]
   },
   {
@@ -3181,8 +3377,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Español",
+      "all"
     ]
   },
   {
@@ -3192,6 +3388,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3202,6 +3399,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3212,6 +3410,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3222,6 +3421,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3232,6 +3432,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "News",
       "all"
     ]
   },
@@ -3296,8 +3497,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -3307,6 +3509,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3317,8 +3520,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -3338,6 +3542,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3348,6 +3553,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -3359,6 +3565,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -3370,6 +3577,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -3381,6 +3589,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -3392,6 +3601,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -3403,6 +3613,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -3414,6 +3625,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -3425,6 +3637,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -3436,6 +3649,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -3458,6 +3672,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -3469,6 +3684,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3479,6 +3695,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3489,6 +3706,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3499,6 +3717,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3541,6 +3760,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3551,6 +3771,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3561,6 +3782,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3571,6 +3793,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -3682,6 +3905,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -3693,6 +3917,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -3704,6 +3929,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -3715,6 +3941,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -3726,6 +3953,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -3737,6 +3965,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -3748,6 +3977,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -3759,6 +3989,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -3770,6 +4001,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -3781,6 +4013,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -3792,6 +4025,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -3803,6 +4037,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -3814,6 +4049,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -3825,6 +4061,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -3836,6 +4073,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -4100,6 +4338,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Español"
     ]
@@ -4111,6 +4350,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Español"
     ]
@@ -4122,8 +4362,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Español",
+      "all"
     ]
   },
   {
@@ -4133,8 +4373,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Español",
+      "all"
     ]
   },
   {
@@ -4144,8 +4384,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Español",
+      "all"
     ]
   },
   {
@@ -4307,6 +4547,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
       "all"
     ]
   },
@@ -4317,6 +4558,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
+      "Kids",
       "all"
     ]
   },
@@ -4327,6 +4570,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
       "all"
     ]
   },
@@ -4377,8 +4621,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -4418,8 +4663,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -4429,8 +4675,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -4440,6 +4686,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -4451,6 +4698,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -4462,6 +4710,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -4473,6 +4722,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -4574,6 +4824,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
       "all"
     ]
   },
@@ -4594,6 +4845,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -4605,6 +4857,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -4626,6 +4879,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -4637,6 +4891,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -4648,6 +4903,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -4659,6 +4915,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -4670,6 +4927,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -4681,6 +4939,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -4691,6 +4950,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -4701,6 +4961,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -4711,6 +4972,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -4721,6 +4983,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -4731,6 +4994,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -4741,6 +5005,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -4751,6 +5016,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -4761,6 +5027,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -4772,6 +5039,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -4783,6 +5051,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -4794,6 +5063,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -4805,6 +5075,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -4816,6 +5087,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -4827,6 +5099,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -4838,6 +5111,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -4849,6 +5123,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -4860,6 +5135,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -4871,6 +5147,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -4893,6 +5170,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -4903,6 +5181,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -4914,6 +5193,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -4947,6 +5227,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -4958,6 +5239,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -4969,6 +5251,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -5001,6 +5284,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -5012,6 +5296,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -5023,6 +5308,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -5034,6 +5320,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5044,8 +5331,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "News",
+      "English",
+      "all"
     ]
   },
   {
@@ -5055,6 +5343,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -5066,6 +5355,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -5077,6 +5367,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -5088,6 +5379,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -5099,6 +5391,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -5110,6 +5403,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -5121,6 +5415,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -5132,6 +5427,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -5143,6 +5439,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5153,6 +5450,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5163,6 +5461,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5173,6 +5472,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5183,6 +5483,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5193,6 +5494,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5203,6 +5505,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5213,6 +5516,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5223,6 +5527,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5233,6 +5538,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5243,6 +5549,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5253,6 +5560,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5263,6 +5571,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5273,6 +5582,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5283,6 +5593,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5293,6 +5604,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all"
     ]
   },
@@ -5303,6 +5616,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -5313,6 +5627,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "News",
       "all"
     ]
   },
@@ -5323,6 +5639,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -5334,6 +5651,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -5345,6 +5663,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Español"
     ]
@@ -5356,8 +5675,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
       "English",
+      "all",
       "Español"
     ]
   },
@@ -5368,13 +5687,13 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
     "id": "645",
-    "name": "L'Equipe France",
+    "name": "L&#039;Equipe France",
     "path": "watch.php?id=645",
     "favorite": false,
     "watchTime": 0,
@@ -5390,8 +5709,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5401,8 +5720,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5423,6 +5742,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Kids",
       "all",
       "English"
     ]
@@ -5434,6 +5754,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Kids",
       "all"
     ]
   },
@@ -5454,6 +5775,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Kids",
       "all",
       "English"
     ]
@@ -5465,8 +5787,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5476,8 +5798,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5487,8 +5809,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5498,8 +5820,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5541,8 +5863,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5563,8 +5885,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5574,8 +5896,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5585,8 +5907,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5606,6 +5928,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Kids",
+      "Music",
       "all",
       "English"
     ]
@@ -5628,8 +5952,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Kids",
+      "English",
+      "all"
     ]
   },
   {
@@ -5639,8 +5964,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5650,8 +5975,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5661,8 +5986,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5672,8 +5999,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5683,8 +6012,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5694,8 +6025,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5705,8 +6038,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5716,8 +6051,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5727,8 +6064,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5738,8 +6077,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5749,8 +6090,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5760,8 +6103,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5771,8 +6116,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5782,8 +6129,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5793,8 +6141,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5804,8 +6153,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -5815,6 +6165,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -5826,6 +6177,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -5837,8 +6189,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5848,8 +6200,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5859,8 +6211,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "English",
+      "all"
     ]
   },
   {
@@ -5870,8 +6223,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "English",
+      "all"
     ]
   },
   {
@@ -5881,8 +6235,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "English",
+      "all"
     ]
   },
   {
@@ -5892,9 +6247,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
+      "Movies",
       "English",
-      "Español"
+      "Español",
+      "all"
     ]
   },
   {
@@ -5904,8 +6260,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "English",
+      "all"
     ]
   },
   {
@@ -5915,8 +6272,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Movies",
+      "English",
+      "all"
     ]
   },
   {
@@ -5926,8 +6284,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5937,8 +6295,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5948,8 +6306,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -5959,8 +6317,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6010,6 +6368,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -6020,6 +6379,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -6030,6 +6390,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -6040,6 +6401,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -6050,6 +6412,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -6060,8 +6423,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -6081,6 +6445,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -6101,6 +6466,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -6112,6 +6478,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -6123,6 +6490,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Arabic"
     ]
@@ -6144,6 +6512,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Português"
     ]
@@ -6155,6 +6524,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
       "all",
       "Português"
     ]
@@ -6419,6 +6789,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -6429,8 +6800,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6440,8 +6811,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
       "English",
+      "all",
       "Español"
     ]
   },
@@ -6463,8 +6834,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6474,6 +6845,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Español"
     ]
@@ -6495,8 +6867,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6548,6 +6920,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -6559,6 +6932,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -6570,6 +6944,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -6603,8 +6978,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -6614,6 +6990,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -6647,8 +7024,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6658,8 +7035,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6669,6 +7046,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -6680,8 +7058,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6691,8 +7069,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6702,8 +7080,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6713,8 +7091,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6724,8 +7102,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6735,6 +7113,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -6745,6 +7124,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -6756,6 +7136,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -6767,6 +7148,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -6799,6 +7181,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -6809,6 +7192,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -6820,6 +7204,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -6830,6 +7215,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -6840,6 +7226,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -6894,6 +7281,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -6915,6 +7303,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English",
       "Español"
@@ -6927,6 +7316,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English",
       "Español"
@@ -6939,6 +7329,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English",
       "Español"
@@ -6951,6 +7342,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Music",
       "all",
       "Português"
     ]
@@ -6962,8 +7354,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6973,8 +7365,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6984,8 +7376,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -6995,8 +7387,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -7006,8 +7398,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -7017,8 +7409,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -7028,8 +7420,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -7039,8 +7431,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Sports",
+      "Español",
+      "all"
     ]
   },
   {
@@ -7050,13 +7443,14 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
   },
   {
     "id": "800",
-    "name": "6'eren Denmark",
+    "name": "6&#039;eren Denmark",
     "path": "watch.php?id=800",
     "favorite": false,
     "watchTime": 0,
@@ -7121,6 +7515,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Music",
       "all"
     ]
   },
@@ -7141,6 +7536,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -7151,6 +7547,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -7161,16 +7558,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all"
-    ]
-  },
-  {
-    "id": "811",
-    "name": "SEE Denmark",
-    "path": "watch.php?id=811",
-    "favorite": false,
-    "watchTime": 0,
-    "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -7271,6 +7659,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -7282,6 +7671,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -7293,6 +7683,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -7304,6 +7695,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -7315,6 +7707,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -7326,6 +7719,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -7353,7 +7747,7 @@
   },
   {
     "id": "828",
-    "name": "DSTV kykNET & kie",
+    "name": "DSTV kykNET &amp; kie",
     "path": "watch.php?id=828",
     "favorite": false,
     "watchTime": 0,
@@ -7368,8 +7762,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -7379,9 +7773,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all",
-      "English",
-      "Español"
+      "English"
     ]
   },
   {
@@ -7412,6 +7807,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -7423,6 +7819,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -7536,8 +7933,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Español",
+      "all"
     ]
   },
   {
@@ -7579,8 +7976,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -7590,8 +7987,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "English",
+      "all"
     ]
   },
   {
@@ -7700,6 +8097,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7711,6 +8110,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7722,6 +8123,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7733,6 +8136,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7744,6 +8149,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7755,6 +8162,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7766,6 +8175,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7787,6 +8198,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7798,6 +8211,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7809,6 +8224,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7820,6 +8236,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7831,6 +8248,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7842,6 +8260,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7853,6 +8272,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7864,6 +8284,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7875,6 +8296,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7907,6 +8329,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7918,6 +8341,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7929,6 +8353,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7940,6 +8365,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7951,6 +8377,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Italiano"
     ]
@@ -7972,6 +8399,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -8016,6 +8444,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all",
       "English"
     ]
@@ -8037,6 +8467,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8048,6 +8479,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8059,6 +8491,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8070,6 +8503,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8081,6 +8515,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8092,6 +8527,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8103,6 +8539,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8114,6 +8551,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8125,6 +8563,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8136,6 +8575,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8147,6 +8587,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8158,6 +8599,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8168,6 +8610,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8179,6 +8622,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8190,6 +8634,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8201,6 +8646,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8212,6 +8658,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8223,6 +8670,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8234,6 +8682,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English",
       "Español"
@@ -8246,6 +8695,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8256,6 +8706,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8266,6 +8717,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8276,6 +8728,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8286,6 +8739,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8296,6 +8750,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8306,6 +8761,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8329,6 +8785,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8339,6 +8796,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8359,6 +8817,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "English"
     ]
@@ -8370,6 +8829,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8391,8 +8851,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Sports",
+      "Español",
+      "all"
     ]
   },
   {
@@ -8402,8 +8863,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Sports",
+      "Español",
+      "all"
     ]
   },
   {
@@ -8413,8 +8875,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Sports",
+      "Español",
+      "all"
     ]
   },
   {
@@ -8424,8 +8887,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Sports",
+      "Español",
+      "all"
     ]
   },
   {
@@ -8435,9 +8899,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all",
-      "English",
-      "Español"
+      "English"
     ]
   },
   {
@@ -8447,9 +8912,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all",
-      "English",
-      "Español"
+      "English"
     ]
   },
   {
@@ -8459,9 +8925,10 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "Español",
       "all",
-      "English",
-      "Español"
+      "English"
     ]
   },
   {
@@ -8471,8 +8938,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Español",
+      "all"
     ]
   },
   {
@@ -8482,8 +8949,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Sports",
+      "Español",
+      "all"
     ]
   },
   {
@@ -8493,8 +8961,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Español",
+      "all"
     ]
   },
   {
@@ -8504,8 +8972,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Sports",
+      "Español",
+      "all"
     ]
   },
   {
@@ -8515,8 +8984,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "Español"
+      "Español",
+      "all"
     ]
   },
   {
@@ -8526,6 +8995,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8536,6 +9006,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8546,6 +9017,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8556,6 +9028,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8566,6 +9039,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8576,6 +9050,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -8586,6 +9061,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -8597,6 +9073,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -8608,6 +9085,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -8619,6 +9097,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Deutsch"
     ]
@@ -8784,6 +9263,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "News",
       "all",
       "Français"
     ]
@@ -8795,6 +9275,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
@@ -8826,6 +9307,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Movies",
+      "Español",
       "all",
       "English"
     ]
@@ -8837,6 +9320,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Español",
       "all",
       "English"
     ]
@@ -8848,6 +9332,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Español",
       "all",
       "English"
     ]
@@ -8859,17 +9344,20 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Español",
       "all",
       "English"
     ]
   },
   {
     "id": "974",
-    "name": "Starz Kids & Family",
+    "name": "Starz Kids &amp; Family",
     "path": "watch.php?id=974",
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Kids",
+      "Español",
       "all",
       "English"
     ]
@@ -8881,6 +9369,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Español",
       "all",
       "English"
     ]
@@ -8892,6 +9381,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Español",
       "all",
       "English"
     ]
@@ -8903,6 +9393,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Español",
       "all",
       "English"
     ]
@@ -8914,6 +9405,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Español",
       "all",
       "English"
     ]
@@ -8925,6 +9417,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Español",
       "all",
       "English"
     ]
@@ -8936,6 +9429,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Español",
       "all",
       "English"
     ]
@@ -8947,6 +9441,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Español",
       "all",
       "English"
     ]
@@ -8958,8 +9453,9 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
-      "all",
-      "English"
+      "Sports",
+      "English",
+      "all"
     ]
   },
   {
@@ -9039,6 +9535,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Music",
       "all"
     ]
   },
@@ -9049,6 +9546,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9059,6 +9557,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9069,6 +9568,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9079,6 +9579,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9089,6 +9590,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9099,6 +9601,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9109,6 +9612,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9119,6 +9623,8 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
+      "News",
       "all"
     ]
   },
@@ -9129,6 +9635,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9179,6 +9686,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Español",
       "all"
     ]
   },
@@ -9199,6 +9707,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9229,6 +9738,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9239,6 +9749,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9249,6 +9760,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9259,6 +9771,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9269,6 +9782,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9279,6 +9793,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9289,6 +9804,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9299,6 +9815,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9309,6 +9826,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9319,6 +9837,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9329,6 +9848,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9339,6 +9859,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9349,6 +9870,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9359,6 +9881,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9409,6 +9932,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9449,6 +9973,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9459,6 +9984,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9469,6 +9995,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9479,6 +10006,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9489,6 +10017,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9499,6 +10028,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9509,6 +10039,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9519,6 +10050,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9629,6 +10161,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9639,6 +10172,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9649,6 +10183,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9659,6 +10194,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9669,6 +10205,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9679,6 +10216,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all"
     ]
   },
@@ -9689,6 +10227,7 @@
     "favorite": false,
     "watchTime": 0,
     "categories": [
+      "Sports",
       "all",
       "Français"
     ]
