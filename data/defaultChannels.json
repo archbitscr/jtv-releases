@@ -1,5 +1,15 @@
 [
   {
+    "id": "20",
+    "name": "PPV 20",
+    "path": "watch.php?id=20",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
     "id": "31",
     "name": "TNT Sports 1 UK",
     "path": "watch.php?id=31",
@@ -1140,6 +1150,16 @@
     ]
   },
   {
+    "id": "204",
+    "name": "PPV 204",
+    "path": "watch.php?id=204",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
     "id": "206",
     "name": "AHC (American Heroes Channel)",
     "path": "watch.php?id=206",
@@ -1244,6 +1264,26 @@
     ]
   },
   {
+    "id": "244",
+    "name": "PPV 244",
+    "path": "watch.php?id=244",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "245",
+    "name": "PPV 245",
+    "path": "watch.php?id=245",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
     "id": "259",
     "name": "Canal+ Sport 3 Poland",
     "path": "watch.php?id=259",
@@ -1257,6 +1297,16 @@
     "id": "260",
     "name": "Vodafone Sport",
     "path": "watch.php?id=260",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "262",
+    "name": "PPV 262",
+    "path": "watch.php?id=262",
     "favorite": false,
     "watchTime": 0,
     "categories": [
@@ -8750,6 +8800,26 @@
     ]
   },
   {
+    "id": "967",
+    "name": "PPV 967",
+    "path": "watch.php?id=967",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "969",
+    "name": "PPV 969",
+    "path": "watch.php?id=969",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
     "id": "970",
     "name": "Starz Cinema",
     "path": "watch.php?id=970",
@@ -9136,6 +9206,16 @@
     "id": "1011",
     "name": "A Spor Turkey",
     "path": "watch.php?id=1011",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "1012",
+    "name": "PPV 1012",
+    "path": "watch.php?id=1012",
     "favorite": false,
     "watchTime": 0,
     "categories": [
@@ -9611,6 +9691,286 @@
     "categories": [
       "all",
       "Français"
+    ]
+  },
+  {
+    "id": "3001",
+    "name": "PPV 3001",
+    "path": "watch.php?id=3001",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "3011",
+    "name": "PPV 3011",
+    "path": "watch.php?id=3011",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "3031",
+    "name": "PPV 3031",
+    "path": "watch.php?id=3031",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "3060",
+    "name": "PPV 3060",
+    "path": "watch.php?id=3060",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "3070",
+    "name": "PPV 3070",
+    "path": "watch.php?id=3070",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "3074",
+    "name": "PPV 3074",
+    "path": "watch.php?id=3074",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "4000",
+    "name": "PPV 4000",
+    "path": "watch.php?id=4000",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5001",
+    "name": "PPV 5001",
+    "path": "watch.php?id=5001",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5002",
+    "name": "PPV 5002",
+    "path": "watch.php?id=5002",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5003",
+    "name": "PPV 5003",
+    "path": "watch.php?id=5003",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5004",
+    "name": "PPV 5004",
+    "path": "watch.php?id=5004",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5005",
+    "name": "PPV 5005",
+    "path": "watch.php?id=5005",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5012",
+    "name": "PPV 5012",
+    "path": "watch.php?id=5012",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5013",
+    "name": "PPV 5013",
+    "path": "watch.php?id=5013",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5014",
+    "name": "PPV 5014",
+    "path": "watch.php?id=5014",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5015",
+    "name": "PPV 5015",
+    "path": "watch.php?id=5015",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5016",
+    "name": "PPV 5016",
+    "path": "watch.php?id=5016",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5017",
+    "name": "PPV 5017",
+    "path": "watch.php?id=5017",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5061",
+    "name": "PPV 5061",
+    "path": "watch.php?id=5061",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5062",
+    "name": "PPV 5062",
+    "path": "watch.php?id=5062",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5063",
+    "name": "PPV 5063",
+    "path": "watch.php?id=5063",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5064",
+    "name": "PPV 5064",
+    "path": "watch.php?id=5064",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5065",
+    "name": "PPV 5065",
+    "path": "watch.php?id=5065",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5066",
+    "name": "PPV 5066",
+    "path": "watch.php?id=5066",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5067",
+    "name": "PPV 5067",
+    "path": "watch.php?id=5067",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5068",
+    "name": "PPV 5068",
+    "path": "watch.php?id=5068",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5069",
+    "name": "PPV 5069",
+    "path": "watch.php?id=5069",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
+    ]
+  },
+  {
+    "id": "5070",
+    "name": "PPV 5070",
+    "path": "watch.php?id=5070",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all"
     ]
   }
 ]
