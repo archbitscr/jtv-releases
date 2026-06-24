@@ -151,10 +151,14 @@ export function renderAssignerChannelsList() {
     listContainer.innerHTML = '';
 
     const filterVal = (document.getElementById('assigner-search')?.value || '').toLowerCase();
-    const chList = window.getChannels ? window.getChannels() : [];
+    const rawList = window.getChannels ? window.getChannels() : [];
+    const chList = [...rawList].sort((a, b) =>
+        (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base', numeric: true })
+    );
 
     chList.forEach((c, index) => {
-        const num = c.id || (index + 1);
+        const originalIndex = rawList.indexOf(c);
+        const num = c.id || (originalIndex + 1);
         const name = c.name || '';
         if (filterVal && !name.toLowerCase().includes(filterVal) && !String(num).includes(filterVal)) {
             return;
@@ -166,8 +170,8 @@ export function renderAssignerChannelsList() {
 
         const item = document.createElement('div');
         item.className = 'crud-channel-item';
-        item.dataset.channelIndex = String(index);
-        const isSelected = state.assignerSelectedChannelIndices.includes(index);
+        item.dataset.channelIndex = String(originalIndex);
+        const isSelected = state.assignerSelectedChannelIndices.includes(originalIndex);
         if (isSelected) {
             item.classList.add('active');
         }
@@ -179,14 +183,14 @@ export function renderAssignerChannelsList() {
         `;
 
         item.onclick = (e) => {
-            handleAssignerChannelClick(index, e);
+            handleAssignerChannelClick(originalIndex, e);
         };
 
         const checkmark = item.querySelector('.assigner-channel-checkmark');
         if (checkmark) {
             checkmark.onclick = (e) => {
                 e.stopPropagation();
-                handleAssignerChannelClick(index, e, true);
+                handleAssignerChannelClick(originalIndex, e, true);
             };
         }
         listContainer.appendChild(item);

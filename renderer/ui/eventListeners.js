@@ -1810,7 +1810,7 @@ export function setupEventListeners() {
             const nameLower = (c.name || '').toLowerCase();
             const idStr = (c.id || '').toString().toLowerCase();
             return nameLower.includes(term) || idStr.includes(term);
-        });
+        }).sort((a, b) => (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base', numeric: true }));
 
         if (filtered.length === 0) {
             listContainer.innerHTML = `<div style="text-align: center; color: rgba(255, 255, 255, 0.3); font-size: 12px; padding: 20px 0;">No se encontraron canales.</div>`;

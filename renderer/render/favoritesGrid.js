@@ -48,9 +48,15 @@ export function getFilteredLiveChannels() {
         });
 
     if (state.zapSourceTab === 'favorites') {
-        allFavs.sort((a, b) => (b.watchTime || 0) - (a.watchTime || 0));
+        allFavs.sort((a, b) => {
+            const diff = (b.watchTime || 0) - (a.watchTime || 0);
+            if (diff !== 0) return diff;
+            return (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base', numeric: true });
+        });
     } else if (/^\d+$/.test(searchVal)) {
         allFavs.sort((a, b) => parseInt(a.id) - parseInt(b.id));
+    } else {
+        allFavs.sort((a, b) => (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base', numeric: true }));
     }
 
     return allFavs;
