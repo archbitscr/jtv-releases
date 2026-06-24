@@ -4,7 +4,7 @@
     "name": "PPV 20",
     "path": "watch.php?id=20",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 123.03399999999999,
     "categories": [
       "all",
       "English",
@@ -114,7 +114,7 @@
     "name": "Fox Sports 1 USA",
     "path": "watch.php?id=39",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 20.57,
     "categories": [
       "all",
       "English",
@@ -260,7 +260,7 @@
     "name": "ABC USA",
     "path": "watch.php?id=51",
     "favorite": false,
-    "watchTime": 55.278,
+    "watchTime": 99.904,
     "categories": [
       "all",
       "English"
@@ -560,11 +560,12 @@
     "name": "ESPN2 Brasil",
     "path": "watch.php?id=82",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 60.24,
     "categories": [
       "all",
       "Português",
-      "Sports"
+      "Sports",
+      "News"
     ]
   },
   {
@@ -572,7 +573,7 @@
     "name": "ESPN3 Brasil",
     "path": "watch.php?id=83",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 39.812,
     "categories": [
       "all",
       "Português",
@@ -821,7 +822,7 @@
     "name": "TSN1",
     "path": "watch.php?id=111",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 26.151,
     "categories": [
       "all",
       "English",
@@ -846,7 +847,7 @@
     "name": "TSN3",
     "path": "watch.php?id=113",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 29.751,
     "categories": [
       "all",
       "English",
@@ -860,7 +861,7 @@
     "name": "TSN4",
     "path": "watch.php?id=114",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 4.286,
     "categories": [
       "all",
       "English",
@@ -874,7 +875,7 @@
     "name": "TSN5",
     "path": "watch.php?id=115",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 4.118,
     "categories": [
       "all",
       "English",
@@ -1073,11 +1074,11 @@
     "name": "Telemundo",
     "path": "watch.php?id=131",
     "favorite": true,
-    "watchTime": 2297.62,
+    "watchTime": 2997.471,
     "categories": [
       "all",
       "Español",
-      "Entertainment",
+      "Series",
       "News",
       "Sports",
       "FIFA 2026"
@@ -1110,13 +1111,13 @@
     "name": "Arena Sport 1 Premium",
     "path": "watch.php?id=134",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 53.689,
     "categories": [
       "all",
-      "English",
       "Sports",
       "News",
-      "FIFA 2026"
+      "FIFA 2026",
+      "Russian"
     ]
   },
   {
@@ -1124,7 +1125,7 @@
     "name": "Arena Sport 2 Premium",
     "path": "watch.php?id=135",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 477.861,
     "categories": [
       "all",
       "English",
@@ -1172,7 +1173,7 @@
     "name": "Arena Sport 3 Premium",
     "path": "watch.php?id=139",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 10.903,
     "categories": [
       "all",
       "English",
@@ -1320,7 +1321,7 @@
     "name": "PPV 204",
     "path": "watch.php?id=204",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 18.772,
     "categories": [
       "all",
       "English",
@@ -1334,7 +1335,7 @@
     "name": "AHC (American Heroes Channel)",
     "path": "watch.php?id=206",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 11.919,
     "categories": [
       "all",
       "English"
@@ -1426,7 +1427,7 @@
     "name": "PPV 237",
     "path": "watch.php?id=237",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 52.091,
     "categories": [
       "all",
       "English",
@@ -1468,7 +1469,7 @@
     "name": "PPV 243",
     "path": "watch.php?id=243",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 14.799,
     "categories": [
       "all",
       "English",
@@ -1482,7 +1483,7 @@
     "name": "PPV 244",
     "path": "watch.php?id=244",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 14.358,
     "categories": [
       "all",
       "English",
@@ -1496,7 +1497,7 @@
     "name": "PPV 245",
     "path": "watch.php?id=245",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 12.669999999999998,
     "categories": [
       "all",
       "English",
@@ -1510,7 +1511,7 @@
     "name": "PPV 247",
     "path": "watch.php?id=247",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 22.56,
     "categories": [
       "all",
       "English",
@@ -1524,7 +1525,7 @@
     "name": "PPV 251",
     "path": "watch.php?id=251",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 50.339999999999996,
     "categories": [
       "all",
       "English",
@@ -1538,7 +1539,7 @@
     "name": "PPV 253",
     "path": "watch.php?id=253",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 36.561,
     "categories": [
       "all",
       "English",
@@ -1552,7 +1553,7 @@
     "name": "PPV 256",
     "path": "watch.php?id=256",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 11.29,
     "categories": [
       "all",
       "English",
@@ -1566,7 +1567,7 @@
     "name": "PPV 257",
     "path": "watch.php?id=257",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 13.731,
     "categories": [
       "all",
       "English",
@@ -1580,7 +1581,7 @@
     "name": "PPV 258",
     "path": "watch.php?id=258",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 14.398,
     "categories": [
       "all",
       "English",
@@ -1618,7 +1619,7 @@
     "name": "PPV 261",
     "path": "watch.php?id=261",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 41.108,
     "categories": [
       "all",
       "English",
@@ -1632,7 +1633,7 @@
     "name": "PPV 262",
     "path": "watch.php?id=262",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 36.229,
     "categories": [
       "all",
       "English",
@@ -1646,7 +1647,7 @@
     "name": "PPV 263",
     "path": "watch.php?id=263",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 13.615,
     "categories": [
       "all",
       "English",
@@ -1660,7 +1661,7 @@
     "name": "PPV 264",
     "path": "watch.php?id=264",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 11.622,
     "categories": [
       "all",
       "English",
@@ -1714,7 +1715,7 @@
     "name": "A Sport PK",
     "path": "watch.php?id=269",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 44.041000000000004,
     "categories": [
       "all",
       "English",
@@ -1726,7 +1727,7 @@
     "name": "T Sports BD",
     "path": "watch.php?id=270",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 22.056,
     "categories": [
       "all",
       "English",
@@ -1853,7 +1854,7 @@
     "name": "Court TV USA",
     "path": "watch.php?id=281",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 9.049,
     "categories": [
       "all",
       "English"
@@ -1875,7 +1876,7 @@
     "name": "Antenna TV USA",
     "path": "watch.php?id=283",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 13.176,
     "categories": [
       "all",
       "English"
@@ -1909,7 +1910,7 @@
     "name": "YTV CA",
     "path": "watch.php?id=286",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 64.14,
     "categories": [
       "all",
       "English"
@@ -2096,7 +2097,7 @@
     "name": "A&E USA",
     "path": "watch.php?id=302",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 41.524,
     "categories": [
       "all",
       "English"
@@ -2107,7 +2108,7 @@
     "name": "AMC USA",
     "path": "watch.php?id=303",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 77.453,
     "categories": [
       "all",
       "English"
@@ -2118,7 +2119,7 @@
     "name": "Animal Planet",
     "path": "watch.php?id=304",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 68.197,
     "categories": [
       "all",
       "English"
@@ -2129,7 +2130,7 @@
     "name": "BBC America (BBCA)",
     "path": "watch.php?id=305",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 15.423,
     "categories": [
       "all",
       "English",
@@ -2208,7 +2209,7 @@
     "name": "Disney Channel",
     "path": "watch.php?id=312",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 29.601,
     "categories": [
       "all",
       "English",
@@ -2231,7 +2232,7 @@
     "name": "Disney XD",
     "path": "watch.php?id=314",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 4.356,
     "categories": [
       "all",
       "English",
@@ -2401,7 +2402,7 @@
     "name": "NICK JR",
     "path": "watch.php?id=329",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 5.008,
     "categories": [
       "all",
       "English",
@@ -2413,7 +2414,7 @@
     "name": "NICK",
     "path": "watch.php?id=330",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 5.378,
     "categories": [
       "all",
       "English",
@@ -2514,11 +2515,12 @@
     "name": "Cartoon Network",
     "path": "watch.php?id=339",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 1495.225,
     "categories": [
       "all",
       "English",
-      "Kids"
+      "Kids",
+      "Animation"
     ]
   },
   {
@@ -2628,7 +2630,7 @@
     "name": "BBC News Channel HD",
     "path": "watch.php?id=349",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 14.135,
     "categories": [
       "all",
       "English",
@@ -2640,7 +2642,7 @@
     "name": "ITV 1 UK",
     "path": "watch.php?id=350",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 29.924,
     "categories": [
       "all",
       "English",
@@ -2709,7 +2711,7 @@
     "name": "BBC One UK",
     "path": "watch.php?id=356",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 80.752,
     "categories": [
       "all",
       "English",
@@ -2721,7 +2723,7 @@
     "name": "BBC Two UK",
     "path": "watch.php?id=357",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 11.667,
     "categories": [
       "all",
       "English",
@@ -2733,7 +2735,7 @@
     "name": "BBC Three UK",
     "path": "watch.php?id=358",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 14.354999999999999,
     "categories": [
       "all",
       "English",
@@ -2745,7 +2747,7 @@
     "name": "BBC Four UK",
     "path": "watch.php?id=359",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 14.93,
     "categories": [
       "all",
       "English",
@@ -2757,7 +2759,7 @@
     "name": "5 USA",
     "path": "watch.php?id=360",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 24.866,
     "categories": [
       "all",
       "English"
@@ -2814,7 +2816,7 @@
     "name": "RTE 2",
     "path": "watch.php?id=365",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 52.407,
     "categories": [
       "all",
       "English",
@@ -2876,7 +2878,7 @@
     "name": "Astro Cricket",
     "path": "watch.php?id=370",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 5.585,
     "categories": [
       "all",
       "English"
@@ -2899,7 +2901,7 @@
     "name": "beIN SPORTS en Español",
     "path": "watch.php?id=372",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 10.524,
     "categories": [
       "all",
       "Español",
@@ -2922,7 +2924,7 @@
     "name": "Cinemax USA",
     "path": "watch.php?id=374",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 35.94,
     "categories": [
       "all",
       "English",
@@ -2979,12 +2981,12 @@
     "name": "ESPN 1 NL",
     "path": "watch.php?id=379",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 63.702,
     "categories": [
       "all",
-      "Español",
-      "English",
-      "Sports"
+      "Sports",
+      "Dutch",
+      "News"
     ]
   },
   {
@@ -3063,8 +3065,7 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Español",
-      "English",
+      "Dutch",
       "Sports"
     ]
   },
@@ -3365,13 +3366,13 @@
     "name": "SuperSport Grandstand",
     "path": "watch.php?id=412",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 28.58,
     "categories": [
       "all",
       "English",
       "Sports",
       "News",
-      "FIFA 2026"
+      "Cricket"
     ]
   },
   {
@@ -3379,7 +3380,7 @@
     "name": "SuperSport PSL",
     "path": "watch.php?id=413",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 17.835,
     "categories": [
       "all",
       "English",
@@ -3759,7 +3760,7 @@
     "name": "DAZN 1 Spain",
     "path": "watch.php?id=445",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 8.734,
     "categories": [
       "all",
       "Español"
@@ -3770,7 +3771,7 @@
     "name": "DAZN 2 Spain",
     "path": "watch.php?id=446",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 8.07,
     "categories": [
       "all",
       "Español"
@@ -3781,7 +3782,7 @@
     "name": "DAZN 3 Spain",
     "path": "watch.php?id=447",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 9.943,
     "categories": [
       "all",
       "Español"
@@ -3792,7 +3793,7 @@
     "name": "DAZN 4 Spain",
     "path": "watch.php?id=448",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 7.781,
     "categories": [
       "all",
       "Español"
@@ -3815,13 +3816,13 @@
     "name": "PTV Sports",
     "path": "watch.php?id=450",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 190.951,
     "categories": [
       "all",
       "English",
       "Sports",
       "News",
-      "FIFA 2026"
+      "Cricket"
     ]
   },
   {
@@ -4300,7 +4301,7 @@
     "name": "beIN SPORTS Australia 1",
     "path": "watch.php?id=491",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 8.108,
     "categories": [
       "all",
       "English",
@@ -4312,7 +4313,7 @@
     "name": "beIN SPORTS Australia 2",
     "path": "watch.php?id=492",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 12.639000000000001,
     "categories": [
       "all",
       "English",
@@ -4324,7 +4325,7 @@
     "name": "beIN SPORTS Australia 3",
     "path": "watch.php?id=493",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 1.507,
     "categories": [
       "all",
       "English",
@@ -4420,7 +4421,7 @@
     "name": "18+ (Player-01)",
     "path": "watch.php?id=501",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 29.718,
     "categories": [
       "all",
       "English",
@@ -4432,7 +4433,7 @@
     "name": "18+ (Player-02)",
     "path": "watch.php?id=502",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 8.137,
     "categories": [
       "all",
       "English",
@@ -4444,7 +4445,7 @@
     "name": "18+ (Player-03)",
     "path": "watch.php?id=503",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 11.457,
     "categories": [
       "all",
       "English",
@@ -4456,7 +4457,7 @@
     "name": "18+ (Player-04)",
     "path": "watch.php?id=504",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 107.72999999999999,
     "categories": [
       "all",
       "English",
@@ -4468,7 +4469,7 @@
     "name": "18+ (Player-05)",
     "path": "watch.php?id=505",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 120.96300000000001,
     "categories": [
       "all",
       "English",
@@ -4480,7 +4481,7 @@
     "name": "18+ (Player-06)",
     "path": "watch.php?id=506",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 40.166,
     "categories": [
       "all",
       "English",
@@ -4492,7 +4493,7 @@
     "name": "18+ (Player-07)",
     "path": "watch.php?id=507",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 36.361,
     "categories": [
       "all",
       "English",
@@ -4504,7 +4505,7 @@
     "name": "18+ (Player-08)",
     "path": "watch.php?id=508",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.215,
     "categories": [
       "all",
       "English",
@@ -4516,7 +4517,7 @@
     "name": "18+ (Player-09)",
     "path": "watch.php?id=509",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 27.146,
     "categories": [
       "all",
       "English",
@@ -4528,7 +4529,7 @@
     "name": "18+ (Player-10)",
     "path": "watch.php?id=510",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 4.72,
     "categories": [
       "all",
       "English",
@@ -4540,7 +4541,7 @@
     "name": "18+ (Player-11)",
     "path": "watch.php?id=511",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 71.695,
     "categories": [
       "all",
       "English",
@@ -4552,7 +4553,7 @@
     "name": "18+ (Player-12)",
     "path": "watch.php?id=512",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 215.333,
     "categories": [
       "all",
       "English",
@@ -4660,10 +4661,12 @@
     "name": "#Vamos Spain",
     "path": "watch.php?id=521",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 322.25200000000007,
     "categories": [
       "all",
-      "Español"
+      "Español",
+      "Sports",
+      "News"
     ]
   },
   {
@@ -4671,7 +4674,7 @@
     "name": "Barca TV Spain",
     "path": "watch.php?id=522",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 67.586,
     "categories": [
       "all",
       "Español"
@@ -4772,7 +4775,7 @@
     "name": "Antena 3 Spain",
     "path": "watch.php?id=531",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 148.567,
     "categories": [
       "all",
       "Español"
@@ -4816,7 +4819,7 @@
     "name": "Cuatro Spain",
     "path": "watch.php?id=535",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 6.889,
     "categories": [
       "all",
       "Español"
@@ -4837,11 +4840,13 @@
     "id": "537",
     "name": "DAZN F1 ES",
     "path": "watch.php?id=537",
-    "favorite": false,
-    "watchTime": 0,
+    "favorite": true,
+    "watchTime": 132.071,
     "categories": [
       "all",
-      "Español"
+      "Español",
+      "Sports",
+      "Formula 1"
     ]
   },
   {
@@ -4849,7 +4854,7 @@
     "name": "DAZN LaLiga",
     "path": "watch.php?id=538",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 132.394,
     "categories": [
       "all",
       "Español"
@@ -5422,7 +5427,7 @@
     "name": "Sky Sport Select NZ",
     "path": "watch.php?id=587",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 10.434,
     "categories": [
       "all",
       "English",
@@ -5534,6 +5539,7 @@
     "categories": [
       "all",
       "English",
+      "News",
       "Sports"
     ]
   },
@@ -5839,7 +5845,7 @@
     "name": "Cosmote Sport 1 HD",
     "path": "watch.php?id=622",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 42.315,
     "categories": [
       "all",
       "English",
@@ -5851,7 +5857,7 @@
     "name": "Cosmote Sport 2 HD",
     "path": "watch.php?id=623",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 25.921,
     "categories": [
       "all",
       "English",
@@ -5863,7 +5869,7 @@
     "name": "Cosmote Sport 3 HD",
     "path": "watch.php?id=624",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 19.867,
     "categories": [
       "all",
       "English",
@@ -6194,7 +6200,7 @@
     "name": "Disney JR",
     "path": "watch.php?id=652",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 4.398,
     "categories": [
       "all",
       "English",
@@ -6327,7 +6333,7 @@
     "name": "ACC Network USA",
     "path": "watch.php?id=664",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 32.506,
     "categories": [
       "all",
       "English"
@@ -6349,7 +6355,7 @@
     "name": "Nick Music",
     "path": "watch.php?id=666",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 49.951,
     "categories": [
       "all",
       "English",
@@ -6935,7 +6941,7 @@
     "name": "Cleo TV",
     "path": "watch.php?id=715",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 563.875,
     "categories": [
       "all",
       "English"
@@ -7058,7 +7064,7 @@
     "name": "3sat DE",
     "path": "watch.php?id=726",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 22.269,
     "categories": [
       "all",
       "Deutsch"
@@ -7510,7 +7516,7 @@
     "name": "ABC NY USA",
     "path": "watch.php?id=766",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 10.012,
     "categories": [
       "all",
       "English"
@@ -7805,10 +7811,11 @@
     "name": "MGM+ USA / Epix",
     "path": "watch.php?id=791",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 89.398,
     "categories": [
       "all",
-      "English"
+      "English",
+      "Series"
     ]
   },
   {
@@ -8352,7 +8359,7 @@
     "name": "RDS CA",
     "path": "watch.php?id=839",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 52.291,
     "categories": [
       "all",
       "English",
@@ -8413,7 +8420,7 @@
     "name": "Azteca 7 MX",
     "path": "watch.php?id=844",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 635.482,
     "categories": [
       "all",
       "Español",
@@ -8932,12 +8939,12 @@
     "name": "ESPN 3 NL",
     "path": "watch.php?id=888",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 74.922,
     "categories": [
       "all",
-      "Español",
-      "English",
-      "Sports"
+      "Sports",
+      "Dutch",
+      "News"
     ]
   },
   {
@@ -9172,7 +9179,7 @@
     "name": "CBS Sports Golazo",
     "path": "watch.php?id=910",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.273,
     "categories": [
       "all",
       "English",
@@ -9266,18 +9273,15 @@
   },
   {
     "id": "918",
-    "name": "DAZN Portugal FIFA Mundial de Clubes",
+    "name": "DAZN Mundial de Clubes",
     "path": "watch.php?id=918",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 141.472,
     "categories": [
       "all",
       "Español",
-      "Português",
-      "Deutsch",
       "Sports",
-      "News",
-      "FIFA 2026"
+      "News"
     ]
   },
   {
@@ -9332,7 +9336,7 @@
     "name": "Altitude Sports",
     "path": "watch.php?id=923",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 301.28499999999997,
     "categories": [
       "all",
       "English",
@@ -9355,7 +9359,7 @@
     "name": "ESPN 1 MX",
     "path": "watch.php?id=925",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 9.062,
     "categories": [
       "all",
       "Español",
@@ -9453,7 +9457,7 @@
     "name": "Claro Sports MX",
     "path": "watch.php?id=933",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 37.921,
     "categories": [
       "all",
       "Español",
@@ -9465,7 +9469,7 @@
     "name": "Azteca Uno MX",
     "path": "watch.php?id=934",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.561,
     "categories": [
       "all",
       "Español"
@@ -9476,7 +9480,7 @@
     "name": "TUDN MX",
     "path": "watch.php?id=935",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 14.576,
     "categories": [
       "all",
       "Español",
@@ -9490,7 +9494,7 @@
     "name": "Canal5 MX",
     "path": "watch.php?id=936",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 705.5350000000001,
     "categories": [
       "all",
       "Español",
@@ -9504,7 +9508,7 @@
     "name": "PPV 938",
     "path": "watch.php?id=938",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 11.704,
     "categories": [
       "all",
       "English",
@@ -9518,7 +9522,7 @@
     "name": "PPV 939",
     "path": "watch.php?id=939",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 12.719999999999999,
     "categories": [
       "all",
       "English",
@@ -9830,7 +9834,7 @@
     "name": "PPV 967",
     "path": "watch.php?id=967",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 7.987,
     "categories": [
       "all",
       "English",
@@ -10300,7 +10304,7 @@
     "name": "PPV 1012",
     "path": "watch.php?id=1012",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 11.15,
     "categories": [
       "all",
       "English",
@@ -10861,7 +10865,7 @@
     "name": "PPV 2002",
     "path": "watch.php?id=2002",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.176,
     "categories": [
       "all",
       "English",
@@ -10875,7 +10879,7 @@
     "name": "PPV 3001",
     "path": "watch.php?id=3001",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.159,
     "categories": [
       "all",
       "English",
@@ -10889,7 +10893,7 @@
     "name": "PPV 3011",
     "path": "watch.php?id=3011",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.142,
     "categories": [
       "all",
       "English",
@@ -10903,7 +10907,7 @@
     "name": "PPV 3021",
     "path": "watch.php?id=3021",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.214,
     "categories": [
       "all",
       "English",
@@ -10917,7 +10921,7 @@
     "name": "PPV 3031",
     "path": "watch.php?id=3031",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.917,
     "categories": [
       "all",
       "English",
@@ -10931,7 +10935,7 @@
     "name": "PPV 3047",
     "path": "watch.php?id=3047",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.498,
     "categories": [
       "all",
       "English",
@@ -10945,7 +10949,7 @@
     "name": "PPV 3056",
     "path": "watch.php?id=3056",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.172,
     "categories": [
       "all",
       "English",
@@ -10959,7 +10963,7 @@
     "name": "PPV 3060",
     "path": "watch.php?id=3060",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.794,
     "categories": [
       "all",
       "English",
@@ -10973,7 +10977,7 @@
     "name": "PPV 3070",
     "path": "watch.php?id=3070",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.151,
     "categories": [
       "all",
       "English",
@@ -10987,7 +10991,7 @@
     "name": "PPV 3074",
     "path": "watch.php?id=3074",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.242,
     "categories": [
       "all",
       "English",
@@ -11001,7 +11005,7 @@
     "name": "PPV 4000",
     "path": "watch.php?id=4000",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 18.769,
     "categories": [
       "all",
       "English",
@@ -11015,7 +11019,7 @@
     "name": "PPV 4001",
     "path": "watch.php?id=4001",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 22.647,
     "categories": [
       "all",
       "English",
@@ -11029,7 +11033,7 @@
     "name": "PPV 4002",
     "path": "watch.php?id=4002",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 5.316,
     "categories": [
       "all",
       "English",
@@ -11043,7 +11047,7 @@
     "name": "PPV 4003",
     "path": "watch.php?id=4003",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 31.636,
     "categories": [
       "all",
       "English",
@@ -11057,7 +11061,7 @@
     "name": "PPV 5001",
     "path": "watch.php?id=5001",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.314999999999998,
     "categories": [
       "all",
       "English",
@@ -11071,7 +11075,7 @@
     "name": "PPV 5002",
     "path": "watch.php?id=5002",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.146,
     "categories": [
       "all",
       "English",
@@ -11085,7 +11089,7 @@
     "name": "PPV 5003",
     "path": "watch.php?id=5003",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.207,
     "categories": [
       "all",
       "English",
@@ -11099,7 +11103,7 @@
     "name": "PPV 5004",
     "path": "watch.php?id=5004",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.543,
     "categories": [
       "all",
       "English",
@@ -11113,7 +11117,7 @@
     "name": "PPV 5005",
     "path": "watch.php?id=5005",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.134,
     "categories": [
       "all",
       "English",
@@ -11127,7 +11131,7 @@
     "name": "PPV 5006",
     "path": "watch.php?id=5006",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.162,
     "categories": [
       "all",
       "English",
@@ -11141,7 +11145,7 @@
     "name": "PPV 5007",
     "path": "watch.php?id=5007",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.144,
     "categories": [
       "all",
       "English",
@@ -11155,7 +11159,7 @@
     "name": "PPV 5008",
     "path": "watch.php?id=5008",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.137,
     "categories": [
       "all",
       "English",
@@ -11169,7 +11173,7 @@
     "name": "PPV 5009",
     "path": "watch.php?id=5009",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 16.235,
     "categories": [
       "all",
       "English",
@@ -11249,7 +11253,7 @@
     "name": "PPV 5038",
     "path": "watch.php?id=5038",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 17.387,
     "categories": [
       "all",
       "English",
@@ -11263,7 +11267,7 @@
     "name": "PPV 5039",
     "path": "watch.php?id=5039",
     "favorite": false,
-    "watchTime": 0,
+    "watchTime": 24.455,
     "categories": [
       "all",
       "English",
