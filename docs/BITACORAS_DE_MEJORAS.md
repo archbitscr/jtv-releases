@@ -69,9 +69,30 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ---
 
-## II. Plan de Tareas y Mejoras Pendientes (Hoja de Ruta)
+## II. Tareas Completadas (Post-Junio 2026)
 
-### ⏳ Prioridad 1: Usabilidad, UI y Optimización Básica
+*   ✅ **Tarea 2:** Mejora del Trigger del Menú Lateral — hitbox ampliado.
+*   ✅ **Tarea 6:** Control del Indicador Visual de Clics — switch `showDiagnosticClicks` independiente.
+*   ✅ **Tarea 7:** Estabilización de Wallpapers — `Planet.jpg` como default, nombres corregidos.
+*   ✅ **Tarea 10:** Eliminación de Cargador Artificial — cortina negra lisa sin animaciones.
+*   ✅ **Tarea 12:** Barras de Búsqueda Anti-Hotkeys — `stopPropagation` en inputs (Enter y Escape permitidos).
+*   ✅ **Tarea 13:** Minimizar a Tray Icon — toggle en Ajustes Generales.
+*   ✅ **Tarea 14:** Prevención del Modo Suspensión — `powerSaveBlocker` con toggle.
+*   ✅ **Tarea 16:** Centralización del Gestor de Canales — CRUD split 50/50, mini-app de logos, restricción de pestañas dev-only.
+*   ✅ **Tarea 17 / Item 13:** Autotuner de Canales — barrido asíncrono con indicadores visuales.
+*   ✅ **Tarea 18:** Selección Inicial de Idioma — onboarding eliminado; defaults English/Español con filtro por `enabled`.
+*   ✅ **Tarea 20:** Buscador Multicriterio — indexa nombre, ID y EPG en paralelo.
+*   ✅ **Tarea 21:** Factory Reset y Relaunch — Danger Zone implementada.
+*   ✅ **Tarea 22:** Rediseño Visual de Iconos de Categoría — SVG neón monocromático con animaciones.
+*   ✅ **Tarea 27:** Reglas de Zapping por Modos — todos vs favoritos con listas filtradas independientes.
+*   ✅ **Tarea 28 / Item 14:** Estabilización de Landing Page — parpadeo eliminado, submenús organizados.
+*   ✅ **Tarea 29 / Item 15:** Reestructuración de Filtros — 3 dropdowns unificados compartidos por sidebar y landing.
+
+---
+
+## III. Plan de Tareas Pendientes (Hoja de Ruta)
+
+### ⏳ Prioridad 1: Usabilidad y Optimización
 
 #### 1. Tarea 3 / Item 10: Optimización del Caché VOD y Paginación
 *   **Componente:** `refreshVodContent()` e interacciones de redimensionado de ventana.
@@ -81,39 +102,11 @@ Este documento unifica de forma cronológica todas las mejoras, características
     2.  Si los datos ya existen (caché caliente), la paginación y el ajuste de grilla al redimensionar deben hacerse de forma local (offline DOM manipulation).
     3.  Disparar peticiones HTTP *únicamente* en búsquedas nuevas o en la carga inicial.
 
-#### 2. Tarea 2: Mejora del Trigger del Menú Lateral (Sidebar)
-*   **Componente:** Zona interactiva `#trigger-left`.
-*   **Problema:** El área de activación del menú al pasar el ratón es demasiado estrecha (apenas unos píxeles), provocando fallos al intentar abrir la lista de canales.
-*   **Acción Requerida:**
-    1.  Aumentar el área interactiva (hitbox) del trigger izquierdo a un mínimo de `15px` - `20px`.
-    2.  *Alternativa:* Evaluar la inclusión de un botón flotante permanente (ícono de menú hamburguesa) transparente que el usuario pueda presionar intencionalmente.
-
-#### 3. Tarea 6: Control del Indicador Visual de Clics (Punto Rojo)
-*   **Componente:** Lógica de visualización de clics (Feedback visual de diagnóstico).
-*   **Problema:** El indicador visual "botón rojo" que aparece al hacer clic está permanentemente activado cuando se habilitan los diagnósticos, siendo molesto para el uso normal.
-*   **Acción Requerida:**
-    1.  Vincular la aparición del indicador visual a un ajuste específico (ej. `showDiagnosticClicks`) dentro de las opciones de desarrollador/diagnósticos.
-    2.  Crear un botón o "switch" en la interfaz de ajustes para habilitar o apagar explícitamente esta función.
-
-#### 4. Tarea 7: Estabilización del Fondo de Pantalla (Wallpapers)
-*   **Componente:** Lógica de asignación de wallpapers en `renderer.js` e `index.html`.
-*   **Problema:** Las opciones en el selector de fondo no coinciden con los archivos físicos y seleccionar "Por Defecto" dejaba la pantalla en negro en lugar de mostrar `Planet.jpg`.
-*   **Acción Requerida:**
-    1.  Forzar `Planet.jpg` como el fondo predeterminado absoluto en el ciclo de vida del renderer si no hay configuración o si está seteada en `"none"`.
-    2.  Actualizar la lista en `index.html` para usar los nombres de archivo correctos y asociar "Por Defecto" directamente con la ruta a `Planet.jpg`.
-
-#### 5. Tarea 10: Eliminación de Cargador Artificial
-*   **Componente:** `ensurePlayerCurtain()` en `renderer.js` y clases en `style.css`.
-*   **Problema:** Se implementó una pantalla de carga artificial con textos e iconos giratorios redundante sobre la carga del reproductor.
-*   **Acción Requerida:**
-    1.  Remover el contenido del cargador en `ensurePlayerCurtain()` dejando el elemento `.player-loading-curtain` como una simple cortina negra lisa para tapar los destellos iniciales de Chromium.
-    2.  Limpiar el CSS de animación y contenido del cargador en `style.css`.
-
 ---
 
 ### ⏳ Prioridad 2: Configuración de Lanzador, Compilación y Seguridad de Producción
 
-#### 6. Tarea 11 / Item 11: Pantalla de Carga y Flujo de Expiración/Login
+#### 2. Tarea 11 / Item 11: Pantalla de Carga y Flujo de Expiración/Login
 *   **Componente:** Pantalla de carga inicial (`index.html`/`renderer.js`), proceso de inicio de Electron (`main.js`) y sección de Ajustes.
 *   **Acción Requerida:**
     1.  **Redimensión Dinámica:** Al iniciar, establecer alto mínimo de `720px` (resolución base `1280x720`) y redimensionar la ventana para ocupar como máximo el `80%` del monitor del usuario.
@@ -121,97 +114,15 @@ Este documento unifica de forma cronológica todas las mejoras, características
     3.  **Pestaña "Mi cuenta" en Ajustes:** Crear una pestaña llamada "Mi cuenta" debajo de "General" con botón de login con Google (diseño premium y borde animado estilo arcoíris) e indicar: *"Período de Prueba por 3 días. Inicia sesión para desbloquear la aplicación una vez concluido este período"*.
     4.  **Bloqueo y Expiración:** Al iniciar la app empaquetada (Production `.exe`), si expira el trial de 3 días, detener la carga, mostrar un mensaje de expiración y botones para Iniciar Sesión (Google Login realiza bypass para desbloquear en esta fase) o Desinstalar. El modo de desarrollo evade este bloqueo por defecto.
 
-#### 7. Tarea 12: Barras de Búsqueda Anti-Hotkeys
-*   **Componente:** Inputs de texto (`#vod-search-input`, `#channel-search`, etc.).
-*   **Acción Requerida:**
-    1.  Capturar eventos de teclado (`keydown`, `keypress`, `keyup`) en todas las barras de búsqueda.
-    2.  Implementar `event.stopPropagation()` para evitar que las pulsaciones disparen atajos globales (como pausar o zappear).
-
-#### 8. Tarea 13: Cerrar/Minimizar a Tray Icon (Bandeja del Sistema)
-*   **Componente:** Proceso principal en `main.js` y panel de Ajustes Generales.
-*   **Acción Requerida:**
-    1.  Inicializar un elemento `Tray` en `main.js` con un menú contextual básico (Mostrar, Salir).
-    2.  Agregar un switch/toggle de control en la interfaz de Ajustes Generales para habilitar/deshabilitar la acción.
-    3.  Si está activo, capturar eventos de cierre/minimizar de la ventana principal y ejecutar `mainWindow.hide()`.
-
-#### 9. Tarea 14: Prevención del Modo Suspensión (Prevent Sleep Block)
-*   **Componente:** Proceso principal y Ajustes Generales.
-*   **Acción Requerida:**
-    1.  Utilizar `powerSaveBlocker` de Electron para bloquear la suspensión de la pantalla y del sistema operativo durante la sintonización/reproducción prolongada.
-    2.  Diseñar un toggle en la sección de Ajustes Generales para activar o desactivar este comportamiento de manera dinámica.
-
-#### 10. Tarea 23 / Item 12: Configuración de Compilación (Tree Shaking de Módulos Dev)
+#### 3. Tarea 23 / Item 12: Configuración de Compilación (Tree Shaking de Módulos Dev)
 *   **Componente:** `vite.config.js`, scripts en `package.json` y directivas en código JS.
 *   **Acción Requerida:**
     1.  Modularizar y proteger herramientas dev (CRUD, autotuner, diagnóstico de clicks, bypass de trial) bajo condicionales de entorno (`if (!import.meta.env.PROD)`).
     2.  Configurar Vite/Rollup para eliminar todo código muerto dev-only en las compilaciones de producción.
 
-#### 11. Tarea 24: Protección en Compilado de Producción (Trial Lock y HTTP Server Time)
+#### 4. Tarea 24: Protección en Compilado de Producción (Trial Lock y HTTP Server Time)
 *   **Componente:** `main.js`, interceptores del webview y Registro de Windows.
 *   **Acción Requerida:**
-    1.  **Inicio del Períero de Prueba:** El trial de 31 días se activa únicamente en la primera sintonía de un canal. El proceso principal obtiene la fecha UTC real de la cabecera HTTP `Date` de red (inmune a cambios de reloj local).
+    1.  **Inicio del Período de Prueba:** El trial de 31 días se activa únicamente en la primera sintonía de un canal. El proceso principal obtiene la fecha UTC real de la cabecera HTTP `Date` de red (inmune a cambios de reloj local).
     2.  **Cifrado y Persistencia:** Guardar la fecha encriptada con AES-256 en el Registro de Windows (`HKEY_CURRENT_USER\Software\prnt` bajo el valor `driver_config`).
     3.  **Validación:** Comprobar la diferencia de fecha contra la cabecera HTTP de red en cada inicio/sintonía. Si expira o se altera/elimina la clave del registro, bloquear el acceso.
-
----
-
-### ⏳ Prioridad 3: Gestión Avanzada de Canales (Modo Desarrollador Only)
-
-#### 12. Tarea 16: Centralización del Gestor de Canales en Ajustes y Mini-App de Logos
-*   **Componente:** Panel de Ajustes, menú de la barra lateral, Electron main process.
-*   **Acción Requerida:**
-    1.  **Pestaña Canales (CRUD Split 50/50):** Crear pestaña "Canales" (solo dev) con interfaz dividida. Lado derecho: Lista vertical scrollable con `[Número] - [Nombre]`. Lado izquierdo: Formulario CRUD completo.
-    2.  **Sidebar Cleanup:** Ocultar el botón `.edit-btn` del menú lateral para usuarios comunes (mostrar solo en modo dev).
-    3.  **Mini-App de Logos:** Crear herramienta externa independiente para buscar, estandarizar a 300x300px e inyectar logos locales en la base de datos de JTV mediante IPC/API. Añadir un botón en la pestaña de gestión de canales para abrir esta ventana externa.
-    4.  **Restricción de Pestañas Avanzadas:** Ocultar por defecto las pestañas "Servidores", "APIs" y "Sensores", mostrándolas en Ajustes únicamente en Modo Desarrollador.
-
-#### 13. Tarea 17 / Item 13: Autotuner de Canales (Signal Status Checker)
-*   **Componente:** Panel de canales CRUD en modo desarrollo.
-*   **Acción Requerida:**
-    1.  Implementar un barrido asíncrono en segundo plano que realice peticiones HTTP rápidas (HEAD/GET ligeras) para comprobar el estado de conexión de los streams de la base de datos.
-    2.  Mostrar círculos de estado visuales (verde/rojo) en el listado del gestor de canales.
-
-#### 14. Tarea 18 (Restante): Selección Inicial de Idioma en Bienvenida
-*   **Componente:** Modal de bienvenida interactiva.
-*   **Acción Requerida:**
-    1.  En el primer inicio o post-reset, inyectar una modal que obligue al usuario a seleccionar los idiomas de los canales que desea ver (pre-seleccionados English y Español por defecto).
-    2.  La creación/edición de nuevos filtros de idiomas y reasignación de canales queda reservada al panel de desarrollo.
-
-#### 15. Tarea 20: Buscador de Canales Avanzado (Multicriterio)
-*   **Componente:** Barra de búsqueda superior.
-*   **Acción Requerida:**
-    1.  Refactorizar el motor de búsqueda para indexar en paralelo: número de canal, nombre del canal y sinopsis/detalles del EPG activo.
-
-#### 16. Tarea 21: Zona de Peligro - Restablecimiento Total de Fábrica y Relaunch
-*   **Componente:** Pestaña "Mi cuenta" de Ajustes, main process.
-*   **Acción Requerida:**
-    1.  Mover el botón "Restablecer de Fábrica" al final de la pestaña "Mi cuenta" (Danger Zone).
-    2.  Al activarse, limpiar de forma absoluta credenciales, `localStorage`, base de datos de canales y archivos de configuración en AppData.
-    3.  Lanzar una instrucción IPC al proceso principal para ejecutar `app.relaunch()` y `app.exit(0)`.
-
-#### 17. Tarea 27: Reglas de Zapping por Modos (Todos vs. Favoritos)
-*   **Componente:** `zapChannel` en `renderer.js`.
-*   **Acción Requerida:**
-    1.  Si el usuario está sintonizando desde la pestaña general, el zapping con las flechas debe recorrer la lista general de canales.
-    2.  Si la pestaña activa es Favoritos, las flechas de zapping deben ciclar *exclusivamente* entre los canales marcados como favoritos, omitiendo el resto.
-
-#### 18. Tarea 29 / Item 15: Reestructuración de Filtros mediante Dropdowns
-*   **Componente:** Sidebar lateral y Home Dashboard.
-*   **Acción Requerida:**
-    1.  Reemplazar el listado de chips del sidebar por **3 dropdowns alineados horizontalmente en un solo renglón**:
-        *   **Lenguaje:** English, Hispanic, European, MiddleEast, Others.
-        *   **Género:** Movies, Sports, Comedy, Reality, Food, News, Documentary, Kids, Others.
-        *   **Evento:** Mundial, F1, MMA, Boxing, Soccer, Basketball, NFL, Baseball, Tennis, Others.
-    2.  En la Landing, reducir la navegación a: **Todos**, **Favoritos** y **Filtros** (que expande los 3 dropdowns).
-
-#### 19. Tarea 28 / Item 14: Estabilización de Landing Page y Categorías
-*   **Componente:** Home Dashboard y transiciones CSS.
-*   **Acción Requerida:**
-    1.  **Eliminar Parpadeo:** Asegurar un color de fondo uniforme en las tarjetas del dashboard (`.grid-item`, `.home-card`) desde su inserción en el DOM, evitando transiciones bruscas de opacidad o color al cambiar de módulo.
-    2.  **Organizar Menú:** Estructurar la landing en dos submenús claros: **Galería** (Todos, Favoritos, Género, Idioma) y **Guía TV** (EPG schedule, Upcoming Events, WhatsOnToday).
-
-#### 20. Tarea 22: Rediseño Visual de Iconos de Categoría (Filtros Premium)
-*   **Componente:** Grilla de filtros en la barra lateral.
-*   **Acción Requerida:**
-    1.  Reemplazar iconos de categorías de filtros con recursos SVG estilizados en color **blanco eléctrico y neón monocromático** (sin múltiples colores).
-    2.  Inyectar animaciones de resplandor neón (`drop-shadow` glow) y escalado/rebote al pasar el mouse por encima.
