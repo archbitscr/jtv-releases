@@ -69,6 +69,34 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ---
 
+### [2026-06-24] - Unificación de Filtros, Sincronización de UI y Limpieza General
+
+*   **Unificación de Filtros Sidebar/Landing**: Eliminada la pipeline duplicada `getFilteredLiveChannels()`. Ahora delega a `getFilteredChannelsList()` que es el motor central de filtrado. Se añadió soporte de parámetros opcionales (`searchTerm`, dropdown IDs) para reutilización.
+*   **Consolidación a 3 Dropdowns Únicos**: Eliminados los dropdowns duplicados (`dash-filter-*`, `fav-filter-select-*`). Los `filter-select-*` viven en el landing nav con estilo `dash-custom-select` y son la única fuente de verdad para sidebar y landing.
+*   **Eliminación de Search Bars y Toggle de Sidebar**: Removidos los campos de búsqueda, botones toggle de filtros, badges de conteo y botones "Limpiar" de ambas pestañas del sidebar. La búsqueda del landing (`#live-landing-search`) ahora sincroniza `state.searchTerm`/`state.favSearchTerm`.
+*   **Labels Dinámicos en Dropdowns**: Al seleccionar un filtro (ej. "FIFA 2026"), el título del botón dropdown se actualiza para reflejar el valor activo. Al volver a "Todos", restaura el nombre de categoría original.
+*   **Dropdown de Idioma Filtra por Habilitados**: `populateDropdowns()` ahora solo incluye idiomas con `enabled !== false`, reflejando en tiempo real los cambios de la sección de ajustes.
+*   **Orden Alfabético en Listas de Canales**: Las listas de "Todos" en sidebar, landing grid, assigner de filtros, control parental y CRUD ordenan canales alfabéticamente por nombre. Favoritos mantiene orden por `watchTime`.
+*   **Eliminación del Modal de Onboarding**: Removidos el HTML, handlers JS, referencias de save/restore (`jtv_onboarded`, `selectedLanguages`) y reglas CSS del onboarding. La app arranca con English y Español habilitados por defecto.
+*   **Fix de Default de Idiomas para Datos Legacy**: La restauración de `filterLanguages` guardados sin propiedad `enabled` ahora defaultea a `false` (excepto English/Español), corrigiendo el bug donde todos los idiomas aparecían activos.
+*   **Tooltip Global con Delay de 1.2s**: Los tooltips esperan 1200ms antes de aparecer. Salir del elemento o hacer clic cancela el timer. Posicionamiento adaptativo con flip y shift para evitar desborde de ventana.
+*   **Auto-ocultamiento de Tooltips**: Tooltips se ocultan automáticamente tras 2 segundos de estar visibles.
+*   **Fix de Tecla Enter en Inputs**: El listener de captura global que hacía `stopPropagation` en inputs ahora permite Enter y Escape, corrigiendo el PIN parental y otros formularios.
+*   **Sincronización de Favoritos entre UI**: El toggle de favorito en sidebar, HUD y editor actualiza instantáneamente todos los indicadores visibles del mismo canal. Se usa `renderAll(true)` para forzar re-render completo.
+*   **Force Re-render en Cambios de Filtro**: Los dropdowns de filtro y los botones Todos/Favoritos ahora pasan `force=true` a `renderAll()`, corrigiendo el dirty-checking que impedía la actualización de sidebar.
+*   **Actualización Inmediata de Chips HUD**: Modificar categorías en el assigner de filtros (bulk o individual) o en el CRUD actualiza los badges de metadatos del HUD en tiempo real si el canal activo fue afectado.
+*   **Fix del Botón Edit en Sidebar**: Corregidas las dependencias faltantes (`showModule`, `selectAssignerChannelMultiple`) exponiéndolas en `window`. El botón ahora abre correctamente Ajustes > Filtros > Asignación con el canal preseleccionado.
+*   **Hover Consistente en Botón Edit**: Reemplazada la animación de `rotate(15deg)` con `scale(1.1)` y color blanco, consistente con el estilo del HUD.
+*   **Truncamiento de Texto en Sidebar**: Agregados `min-width: 0`, `overflow: hidden` y `text-overflow: ellipsis` a `.channel-info` y `h4` para evitar que nombres largos o texto EPG expandan el sidebar.
+*   **Overlay Sin Señal Debajo de UI**: Z-index del `#no-signal-overlay` reducido de 500 a 5, quedando por debajo del landing (10), HUD (1000), top nav (1000) y sidebar (2000). El autotuner no cierra el landing al cambiar fuentes.
+*   **Botón Confirmar del PIN Parental**: Reemplazado `primary-btn` (ancho completo) por `settings-action-btn` con borde acento, consistente con el botón Cancelar.
+*   **Eliminación de PIN Parental y Bloqueo XXX**: Implementada funcionalidad para eliminar PIN existente y bloqueo automático de canales XXX por defecto.
+*   **Glass Tuner**: Herramienta de desarrollo para ajustar valores de glassmorphism en tiempo real. Aplicados valores finales de tinte oscuro al 5% en HUD, sidebar y top nav.
+*   **Correcciones de Datos**: Nuevos géneros y evento Cricket agregados. Fix de nombre de ESPN NL. Corrección de 10 nombres de canales con entidades HTML. Agregados 36 canales PPV y 15 idiomas nuevos.
+*   **Preservar AppData en Desinstalación**: Configurado el instalador para no eliminar datos del usuario al desinstalar.
+
+---
+
 ## II. Tareas Completadas (Post-Junio 2026)
 
 *   ✅ **Tarea 2:** Mejora del Trigger del Menú Lateral — hitbox ampliado.
