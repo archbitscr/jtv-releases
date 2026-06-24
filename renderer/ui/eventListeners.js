@@ -603,7 +603,7 @@ export function setupEventListeners() {
         if (select) {
             select.onchange = () => {
                 state.favPage = 0;
-                renderAll();
+                renderAll(true);
             };
         }
     });
@@ -616,7 +616,7 @@ export function setupEventListeners() {
         dbNavAll.onclick = () => {
             state.zapSourceTab = 'channels';
             state.favPage = 0;
-            renderFavoritesGrid();
+            renderAll(true);
             saveAppState();
         };
     }
@@ -625,7 +625,7 @@ export function setupEventListeners() {
         dbNavFavs.onclick = () => {
             state.zapSourceTab = 'favorites';
             state.favPage = 0;
-            renderFavoritesGrid();
+            renderAll(true);
             saveAppState();
         };
     }
