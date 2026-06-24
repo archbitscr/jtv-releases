@@ -44,7 +44,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "include": "build/installer.nsh",
-      "deleteAppDataOnUninstall": true
+      "deleteAppDataOnUninstall": false
     }
   },
   "dependencies": {

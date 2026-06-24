@@ -80,12 +80,13 @@ export function renderList(container, list, highlightTerm = "") {
         item.querySelector('.favorite').onclick = (e) => {
             e.stopPropagation();
             channel.favorite = !channel.favorite;
-            const heartIcon = e.currentTarget.querySelector('i');
-            if (heartIcon) {
-                heartIcon.style.fill = channel.favorite ? '#ff4b4b' : 'transparent';
-                heartIcon.style.color = channel.favorite ? '#ff4b4b' : 'currentColor';
+            const btn = e.currentTarget;
+            const icon = btn.querySelector('i, svg');
+            if (icon) {
+                icon.style.fill = channel.favorite ? '#ff4b4b' : 'transparent';
+                icon.style.color = channel.favorite ? '#ff4b4b' : 'currentColor';
             }
-            e.currentTarget.classList.toggle('active', channel.favorite);
+            btn.classList.toggle('active', channel.favorite);
             if (ext.renderAll) ext.renderAll();
             if (ext.saveAppState) ext.saveAppState();
         };
