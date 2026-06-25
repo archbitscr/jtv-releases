@@ -14,7 +14,7 @@ export const eventIconsList = [
     { name: '🏑', color: '#15803d', label: 'Field Hockey' },
     { name: '🏏', color: '#b45309', label: 'Cricket' },
     { name: '🎳', color: '#ec4899', label: 'Bowling' },
-    { name: '🎱', color: '#020617', label: 'Billar / Pool' },
+    { name: '🎱', color: '#020617', label: 'Billiards / Pool' },
     { name: '🎮', color: '#6366f1', label: 'Videojuegos' },
     { name: '🕹️', color: '#f43f5e', label: 'Arcade / Retro' },
     { name: '🏎️', color: '#ef4444', label: 'Formula 1' },
@@ -38,7 +38,7 @@ export const eventIconsList = [
     { name: '🎯', color: '#ef4444', label: 'Tiro al Blanco / Dardos' },
     { name: '🏹', color: '#f97316', label: 'Tiro con Arco' },
     { name: '⛳', color: '#22c55e', label: 'Golf' },
-    { name: '🤺', color: '#cbd5e1', label: 'Esgrima' },
+    { name: '🤺', color: '#cbd5e1', label: 'Fencing' },
     { name: '🤼', color: '#a855f7', label: 'Lucha Libre' },
     { name: '⛸️', color: '#38bdf8', label: 'Patinaje sobre Hielo' },
     { name: '🛼', color: '#ec4899', label: 'Patinaje sobre Ruedas' },
@@ -55,11 +55,11 @@ export const eventIconsList = [
     { name: '🎟️', color: '#ec4899', label: 'Entradas' },
     { name: '🎫', color: '#eab308', label: 'Ticket / Boleto' },
     { name: '🏁', color: '#ffffff', label: 'Bandera de Meta / F1' },
-    { name: '🚩', color: '#ef4444', label: 'Bandera Roja' },
+    { name: '🚩', color: '#ef4444', label: 'Red Flag' },
     { name: '🎌', color: '#f43f5e', label: 'Banderas Cruzadas' },
-    { name: '🏳️', color: '#ffffff', label: 'Bandera Blanca' },
+    { name: '🏳️', color: '#ffffff', label: 'White Flag' },
     { name: '🏴', color: '#475569', label: 'Bandera Negra' },
-    { name: '🎭', color: '#a855f7', label: 'Teatro / Ópera' },
+    { name: '🎭', color: '#a855f7', label: 'Theater / Opera' },
     { name: '🎨', color: '#ec4899', label: 'Arte / Pintura' },
     { name: '🎬', color: '#1e293b', label: 'Cine / Rodaje' },
     { name: '🎞️', color: '#475569', label: 'Movie' },
@@ -83,7 +83,7 @@ export const eventIconsList = [
     { name: '🍻', color: '#f59e0b', label: 'Cervezas' },
     { name: '🍷', color: '#ef4444', label: 'Vinos' },
     { name: '🍕', color: '#f97316', label: 'Pizza' },
-    { name: '🍿', color: '#eab308', label: 'Popcorn / Cine' },
+    { name: '🍿', color: '#eab308', label: 'Popcorn / Cinema' },
     { name: '🍔', color: '#b45309', label: 'Hamburguesas' },
     { name: '🌭', color: '#f97316', label: 'Hot Dogs' },
     { name: '🎪', color: '#ef4444', label: 'Circo' },
@@ -101,9 +101,9 @@ export const eventIconsList = [
     { name: '📣', color: '#f59e0b', label: 'Announcer / Megaphone' },
     { name: '🔔', color: '#eab308', label: 'Campana' },
     { name: '📅', color: '#3b82f6', label: 'Calendario' },
-    { name: '🛡️', color: '#64748b', label: 'Escudo' },
+    { name: '🛡️', color: '#64748b', label: 'Shield' },
     { name: '⚔️', color: '#cbd5e1', label: 'Espadas Cruzadas' },
-    { name: '🗡️', color: '#475569', label: 'Daga' },
+    { name: '🗡️', color: '#475569', label: 'Dagger' },
     { name: '💪', color: '#f59e0b', label: 'Strength / Biceps' },
     { name: '✊', color: '#f59e0b', label: 'Raised Fist' },
     { name: '👊', color: '#f59e0b', label: 'Fist' },
@@ -130,9 +130,9 @@ export function mapIconToEmoji(iconOrName) {
     if (norm === 'dumbbell' || norm === 'gimnasio') return '🏋️';
     if (norm === 'activity' || norm === 'deportes') return '🏃';
     if (norm === 'zap' || norm === 'fast') return '⚡';
-    if (norm === 'star' || norm === 'estrella') return '⭐';
+    if (norm === 'star' || norm === 'star-icon') return '⭐';
     if (norm === 'heart' || norm === 'heart') return '❤️';
-    if (norm === 'shield' || norm === 'defensa') return '🛡️';
+    if (norm === 'shield' || norm === 'defense') return '🛡️';
     
     // Check if it's already an emoji (contains non-ASCII or is short length)
     const isEmoji = /[^\x00-\x7F]/.test(iconOrName) || iconOrName.length <= 2;
@@ -147,7 +147,7 @@ export function mapIconToEmoji(iconOrName) {
     if (norm.includes('carreras') || norm.includes('formula') || norm.includes('f1')) return '🏁';
     if (norm.includes('concert') || norm.includes('music')) return '🎤';
     if (norm.includes('premio') || norm.includes('award') || norm.includes('oscar')) return '🏆';
-    if (norm.includes('teatro') || norm.includes('drama') || norm.includes('obra')) return '🎭';
+    if (norm.includes('theater') || norm.includes('drama') || norm.includes('play')) return '🎭';
 
     return '🏁';
 }

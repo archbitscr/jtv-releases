@@ -60,7 +60,7 @@ export function promptParentalPIN(callback, customMessage = "") {
     if (customMessage && msgEl) {
         msgEl.textContent = customMessage;
     } else if (msgEl) {
-        msgEl.textContent = "Introduce tu PIN de 6 dígitos para continuar:";
+        msgEl.textContent = "Enter your 6-digit PIN to continue:";
     }
     
     input.value = '';

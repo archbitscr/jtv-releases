@@ -233,7 +233,7 @@ export function setupEventListeners() {
                     } else {
                         parentalScheduleToggle.checked = !active;
                     }
-                }, `Introduce tu PIN para ${active ? 'activar' : 'desactivar'} la programación horaria:`);
+                }, `Enter your PIN to ${active ? 'enable' : 'disable'} the time schedule:`);
             } else {
                 applyScheduleChange(active);
             }
@@ -266,7 +266,7 @@ export function setupEventListeners() {
                             parentalKidsToggle.checked = false;
                             syncParentalDependentOptions();
                         }
-                    }, "Crea tu PIN de Control Parental de 6 dígitos para activar Kids Mode:");
+                    }, "Create a 6-digit Parental Controls PIN to enable Kids Mode:");
                 } else {
                     localStorage.setItem('jtv_parental_kids_mode', 'true');
                     syncParentalDependentOptions();
@@ -555,8 +555,8 @@ export function setupEventListeners() {
         if (successCard) {
             if (successMsg) {
                 successMsg.textContent = storedHashBefore
-                    ? "El PIN de Control Parental ha sido actualizado con éxito."
-                    : "El PIN de Control Parental ha sido creado con éxito.";
+                    ? "The Parental Controls PIN has been updated successfully."
+                    : "The Parental Controls PIN has been created successfully.";
             }
             successCard.classList.remove('hidden');
             setTimeout(() => {
@@ -1324,7 +1324,7 @@ export function setupEventListeners() {
             if (!state.currentEditingChannelId) return;
             const channel = channels.find(c => String(c.id) === String(state.currentEditingChannelId));
             const channelName = channel ? channel.name || `ID #${channel.id}` : `ID #${state.currentEditingChannelId}`;
-            if (confirm(`¿Seguro que quieres eliminar "${channelName}"?`)) {
+            if (confirm(`Are you sure you want to delete "${channelName}"?`)) {
                 channels = channels.filter(c => String(c.id) !== String(state.currentEditingChannelId));
                 state.currentEditingChannelId = null;
                 hideEditPane(false);
@@ -1737,7 +1737,7 @@ export function setupEventListeners() {
 
         filtered.forEach(c => {
             const cats = (c.categories || []).map(cat => cat.toLowerCase());
-            const isNativeKids = cats.includes('kids') || cats.includes('niños');
+            const isNativeKids = cats.includes('kids') || cats.includes('children');
             const isChecked = isNativeKids || c.kidsAllowed === true;
 
             const item = document.createElement('label');

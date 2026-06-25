@@ -175,7 +175,7 @@ function buildModal() {
         copyToClipboard(css);
         const btn = document.getElementById('glass-tuner-copy');
         const original = btn.textContent;
-        btn.textContent = '¡Copiado!';
+        btn.textContent = 'Copied!';
         setTimeout(() => btn.textContent = original, 1500);
     });
 

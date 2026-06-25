@@ -157,7 +157,7 @@ export function showModule(moduleName) {
             sectionTitle.textContent = "Series";
             sectionTitle.classList.remove('hidden');
         } else if (moduleName === 'movies') {
-            sectionTitle.textContent = "Películas";
+            sectionTitle.textContent = "Movies";
             sectionTitle.classList.remove('hidden');
         } else {
             sectionTitle.classList.add('hidden');
@@ -255,7 +255,7 @@ export function showModule(moduleName) {
         
         if (ext.renderFavoritesGrid) ext.renderFavoritesGrid();
         if (ext.refreshVodContent) ext.refreshVodContent();
-        document.title = "JTV - Películas";
+        document.title = "JTV - Movies";
     } else if (moduleName === 'settings') {
         document.getElementById('settings-screen').classList.remove('hidden');
         document.querySelector('.header-nav-btn[data-nav="settings"]')?.classList.add('active');

@@ -384,16 +384,16 @@ async function init() {
             { name: "Formula 1", icon: "🏁" },
             { name: "MotoGP", icon: "🏍️" },
             { name: "Rally", icon: "🏎️" },
-            { name: "Fútbol", icon: "⚽" },
+            { name: "Soccer", icon: "⚽" },
             { name: "Mundial", icon: "🏆" },
             { name: "NBA", icon: "🏀" },
             { name: "NFL", icon: "🏈" },
-            { name: "Boxeo", icon: "🥊" },
+            { name: "Boxing", icon: "🥊" },
             { name: "UFC", icon: "🤼" },
             { name: "MLB", icon: "⚾" },
-            { name: "Conciertos", icon: "🎤" },
-            { name: "Premios", icon: "🏆" },
-            { name: "Teatro", icon: "🎭" }
+            { name: "Concerts", icon: "🎤" },
+            { name: "Awards", icon: "🏆" },
+            { name: "Theater", icon: "🎭" }
         ];
 
         if (savedData.filterEvents) {
