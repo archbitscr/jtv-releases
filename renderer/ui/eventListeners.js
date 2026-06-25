@@ -337,15 +337,15 @@ export function setupEventListeners() {
         const val1 = parentalNewPin1 ? parentalNewPin1.value : '';
         const val2 = parentalNewPin2 ? parentalNewPin2.value : '';
 
-        // Requirement 1: Exactamente 6 dígitos
+        // Requirement 1: Exactly 6 digits
         const isLengthValid = val1.length === 6;
         setRequirementStatus('pin-req-length', isLengthValid);
 
-        // Requirement 2: Solo números (0-9)
+        // Requirement 2: Numbers only (0-9)
         const isDigitsValid = val1.length > 0 && /^\d+$/.test(val1);
         setRequirementStatus('pin-req-digits', isDigitsValid);
 
-        // Requirement 3: Los códigos coinciden
+        // Requirement 3: Codes match
         const isMatchValid = val1 === val2 && val1.length > 0;
         setRequirementStatus('pin-req-match', isMatchValid);
 

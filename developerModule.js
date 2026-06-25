@@ -426,13 +426,13 @@ export async function initDeveloperFeatures() {
                     <div id="crud-channel-form" class="hidden" style="display: flex; flex-direction: column; gap: 14px; padding-bottom: 20px;">
                         <input type="hidden" id="crud-channel-index">
                         
-                        <!-- 1. Nombre -->
+                        <!-- 1. Name -->
                         <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
                             <label style="font-size:12px; color:rgba(255,255,255,0.6)">Channel Name</label>
                             <input type="text" id="crud-name-input" class="dark-input" placeholder="Ej. HBO USA" style="margin:0;">
                         </div>
                         
-                        <!-- 2. Número ID -->
+                        <!-- 2. Number ID -->
                         <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
                             <label style="font-size:12px; color:rgba(255,255,255,0.6)">Number / ID</label>
                             <input type="text" id="crud-id-input" class="dark-input" placeholder="Ej. 101" style="margin:0;">
@@ -444,7 +444,7 @@ export async function initDeveloperFeatures() {
                             <input type="text" id="crud-stream-input" class="dark-input" placeholder="Main URL" style="margin:0;">
                         </div>
                         
-                        <!-- 4. Señal -->
+                        <!-- 4. Signal -->
                         <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
                             <label style="font-size:12px; color:rgba(255,255,255,0.6)">Signal</label>
                             <div style="display: flex; align-items: center; gap: 15px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 6px 12px; height: 36px; align-self: flex-start;">
@@ -462,13 +462,13 @@ export async function initDeveloperFeatures() {
                             </div>
                         </div>
                         
-                        <!-- 5. Filtros / Categorías -->
+                        <!-- 5. Filters / Categories -->
                         <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
                             <label style="font-size:12px; color:rgba(255,255,255,0.6)">Categories (comma-separated)</label>
                             <input type="text" id="crud-categories-input" class="dark-input" placeholder="Ej. sports, live, all" style="margin:0;">
                         </div>
                         
-                        <!-- 6. Channel Logo (Tamaño de 80px, sin placeholder cuando está vacío) -->
+                        <!-- 6. Channel Logo (80px size, no placeholder when empty) -->
                         <div class="edit-group" style="display:flex; flex-direction:column; gap:8px;">
                             <label style="font-size:12px; color:rgba(255,255,255,0.6)">Channel Logo</label>
                             <div style="display: flex; gap: 12px; align-items: center;">
@@ -498,7 +498,7 @@ export async function initDeveloperFeatures() {
                             </button>
                         </div>
                         
-                        <!-- 8. Botones Guardar / Eliminar -->
+                        <!-- 8. Save / Delete Buttons -->
                         <div style="display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 15px;">
                             <button type="button" id="crud-save-btn" class="settings-action-btn" style="flex: 1; padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600;">
                                 <i data-lucide="save" style="width: 16px; height: 16px;"></i> Save Channel
@@ -1246,7 +1246,7 @@ export function updateDeveloperUI() {
         assignerSection.style.display = developerModeEnabled ? 'block' : 'none';
     }
 
-    // Show/hide VOD settings subtabs (Series and Películas)
+    // Show/hide VOD settings subtabs (Series and Movies)
     const seriesSubnavBtn = document.querySelector('.settings-subnav-btn[data-filter-type="series"]');
     const moviesSubnavBtn = document.querySelector('.settings-subnav-btn[data-filter-type="movies"]');
     if (seriesSubnavBtn) seriesSubnavBtn.style.display = developerModeEnabled ? 'flex' : 'none';
@@ -1260,7 +1260,7 @@ export function updateDeveloperUI() {
         }
     }
 
-    // Show/hide Event Assigner developer-only subtabs (Idiomas, Género)
+    // Show/hide Event Assigner developer-only subtabs (Languages, Genre)
     const tabLanguages = document.getElementById('assigner-tab-languages');
     const tabGenres = document.getElementById('assigner-tab-genres');
     if (tabLanguages) tabLanguages.style.display = developerModeEnabled ? 'block' : 'none';

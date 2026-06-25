@@ -122,7 +122,7 @@ export function getFilteredChannelsList(mode = 'channels', opts = {}) {
         // Parental Lock automatic check (Tarea 19, 25)
         if (ext.isParentalTimeLocked && ext.isParentalTimeLocked()) {
             const cats = (channel.categories || []).map(c => c.toLowerCase());
-            const isKids = cats.includes('kids') || cats.includes('niños');
+            const isKids = cats.includes('kids') || cats.includes('children');
             if (!isKids && !channel.kidsAllowed) return false;
         }
 
@@ -295,7 +295,7 @@ export function removeSettingsFilter(type, filterName) {
         state.moviesGenres = state.moviesGenres.filter(f => f.name !== filterName);
     }
     
-    // Limpieza profunda de categorías en canales locales
+    // Deep cleanup of categories in local channels
     state.channels.forEach(channel => {
         if (channel.categories) {
             channel.categories = channel.categories.filter(c => c.toLowerCase() !== filterName.toLowerCase());

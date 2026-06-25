@@ -129,9 +129,9 @@ export function mapIconToEmoji(iconOrName) {
     if (norm === 'medal' || norm === 'medalla') return '🥇';
     if (norm === 'dumbbell' || norm === 'gimnasio') return '🏋️';
     if (norm === 'activity' || norm === 'deportes') return '🏃';
-    if (norm === 'zap' || norm === 'rápido') return '⚡';
+    if (norm === 'zap' || norm === 'fast') return '⚡';
     if (norm === 'star' || norm === 'estrella') return '⭐';
-    if (norm === 'heart' || norm === 'corazón') return '❤️';
+    if (norm === 'heart' || norm === 'heart') return '❤️';
     if (norm === 'shield' || norm === 'defensa') return '🛡️';
     
     // Check if it's already an emoji (contains non-ASCII or is short length)
@@ -139,13 +139,13 @@ export function mapIconToEmoji(iconOrName) {
     if (isEmoji) return iconOrName;
     
     // Check matching against some known sport names
-    if (norm.includes('fútbol') || norm.includes('futbol') || norm.includes('soccer')) return '⚽';
+    if (norm.includes('football') || norm.includes('soccer')) return '⚽';
     if (norm.includes('basquet') || norm.includes('baloncesto') || norm.includes('nba')) return '🏀';
     if (norm.includes('football') || norm.includes('nfl')) return '🏈';
     if (norm.includes('tenis') || norm.includes('tennis')) return '🎾';
     if (norm.includes('boxeo') || norm.includes('boxing') || norm.includes('box')) return '🥊';
     if (norm.includes('carreras') || norm.includes('formula') || norm.includes('f1')) return '🏁';
-    if (norm.includes('concierto') || norm.includes('musica') || norm.includes('música')) return '🎤';
+    if (norm.includes('concert') || norm.includes('music')) return '🎤';
     if (norm.includes('premio') || norm.includes('award') || norm.includes('oscar')) return '🏆';
     if (norm.includes('teatro') || norm.includes('drama') || norm.includes('obra')) return '🎭';
 
@@ -154,12 +154,12 @@ export function mapIconToEmoji(iconOrName) {
 
 export function getGenreIcon(name) {
     const norm = name.toLowerCase().trim();
-    if (norm.includes("movie") || norm.includes("película") || norm.includes("cine")) return "film";
-    if (norm.includes("sport") || norm.includes("deporte") || norm.includes("futbol") || norm.includes("soccer") || norm.includes("sports")) return "trophy";
+    if (norm.includes("movie") || norm.includes("film") || norm.includes("cinema")) return "film";
+    if (norm.includes("sport") || norm.includes("sport") || norm.includes("soccer") || norm.includes("sports")) return "trophy";
     if (norm.includes("news") || norm.includes("noticias")) return "newspaper";
-    if (norm.includes("kid") || norm.includes("niño") || norm.includes("infantil") || norm.includes("smile")) return "smile";
-    if (norm.includes("music") || norm.includes("música")) return "music";
-    if (norm.includes("action") || norm.includes("acción")) return "zap";
+    if (norm.includes("kid") || norm.includes("child") || norm.includes("children") || norm.includes("smile")) return "smile";
+    if (norm.includes("music") || norm.includes("musical")) return "music";
+    if (norm.includes("action") || norm.includes("action-genre")) return "zap";
     if (norm.includes("comedy") || norm.includes("comedia")) return "laugh";
     if (norm.includes("horror") || norm.includes("terror") || norm.includes("miedo")) return "ghost";
     if (norm.includes("drama")) return "heart";

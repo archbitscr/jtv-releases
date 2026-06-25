@@ -568,7 +568,7 @@ export function selectAssignerChannelMultiple() {
             renderAssignerMetaChips(channel);
         }
     } else {
-        nameText.textContent = "Selección Múltiple";
+        nameText.textContent = "Multiple Selection";
         idText.textContent = `${state.assignerSelectedChannelIndices.length} channels selected`;
         
         logoContainer.innerHTML = `<i data-lucide="layers" style="width: 28px; height: 28px; color: #00ffcc;"></i>`;

@@ -12,7 +12,7 @@ export function updateSourceSwitcherUI(source) {
     });
 }
 
-// Compatibilidad con código legacy que aún consume window.updateSourceSwitcherUI.
+// Compatibility with legacy code that still consumes window.updateSourceSwitcherUI.
 if (typeof window !== 'undefined') {
     window.updateSourceSwitcherUI = updateSourceSwitcherUI;
 }
