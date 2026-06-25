@@ -77,7 +77,7 @@ export function showLiveLanding() {
     state.currentModule = "live";
     
     if (sectionTitle) {
-        sectionTitle.textContent = "En Vivo";
+        sectionTitle.textContent = "Live TV";
         sectionTitle.classList.remove('hidden');
     }
 
@@ -151,7 +151,7 @@ export function showModule(moduleName) {
     const sectionTitle = document.getElementById('section-title');
     if (sectionTitle) {
         if (moduleName === 'live') {
-            sectionTitle.textContent = "En Vivo";
+            sectionTitle.textContent = "Live TV";
             sectionTitle.classList.remove('hidden');
         } else if (moduleName === 'series') {
             sectionTitle.textContent = "Series";
@@ -206,7 +206,7 @@ export function showModule(moduleName) {
             if (liveSearchInput) liveSearchInput.value = "";
             if (ext.syncGridPageToActiveChannel) ext.syncGridPageToActiveChannel();
             if (ext.renderFavoritesGrid) ext.renderFavoritesGrid();
-            document.title = "JTV - En Vivo";
+            document.title = "JTV - Live TV";
         }
     } else if (moduleName === 'series') {
         document.getElementById('home-dashboard').classList.remove('hidden');
@@ -214,7 +214,7 @@ export function showModule(moduleName) {
         document.querySelector('.header-nav-btn[data-nav="series"]')?.classList.add('active');
         hideMenu();
         const vodSI = document.getElementById('vod-search-input');
-        if (vodSI) vodSI.placeholder = "Buscar series...";
+        if (vodSI) vodSI.placeholder = "Search series...";
         state.vodFilterMode = "all";
         state.selectedVodRating = "all";
         state.selectedVodYear = "all";
@@ -238,7 +238,7 @@ export function showModule(moduleName) {
         document.querySelector('.header-nav-btn[data-nav="movies"]')?.classList.add('active');
         hideMenu();
         const vodSI2 = document.getElementById('vod-search-input');
-        if (vodSI2) vodSI2.placeholder = "Buscar películas...";
+        if (vodSI2) vodSI2.placeholder = "Search movies...";
         state.vodFilterMode = "all";
         state.selectedVodRating = "all";
         state.selectedVodYear = "all";
@@ -268,7 +268,7 @@ export function showModule(moduleName) {
             pane.classList.toggle('active', pane.id === 'settings-sect-account');
         });
         
-        document.title = "JTV - Ajustes";
+        document.title = "JTV - Settings";
     }
     if (ext.updateTriggersVisibility) ext.updateTriggersVisibility();
     if (ext.updateWebviewPointerEvents) ext.updateWebviewPointerEvents();

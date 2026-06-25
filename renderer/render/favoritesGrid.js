@@ -81,7 +81,7 @@ export function renderVodControls() {
     }
 
     if (genreSelect && ext.getActiveVodGenres) {
-        genreSelect.innerHTML = `<option value="All">Género</option>` + ext.getActiveVodGenres()
+        genreSelect.innerHTML = `<option value="All">Genre</option>` + ext.getActiveVodGenres()
             .filter(g => g.name !== "All")
             .map(g => `<option value="${escapeHtml(g.name)}">${escapeHtml(g.name)}</option>`)
             .join('');
@@ -90,7 +90,7 @@ export function renderVodControls() {
 
     if (ratingSelect) {
         ratingSelect.innerHTML = `
-            <option value="all">Calificación</option>
+            <option value="all">Rating</option>
             <option value="8">⭐ 8+</option>
             <option value="7">⭐ 7+</option>
             <option value="6">⭐ 6+</option>
@@ -131,7 +131,7 @@ export function updateVodYearOptions(items) {
 
     const years = Array.from(new Set([...baseYears, ...extraYears])).sort((a, b) => parseInt(b) - parseInt(a));
 
-    yearSelect.innerHTML = `<option value="all">Año</option>` + years.map(y => `<option value="${y}">${y}</option>`).join('');
+    yearSelect.innerHTML = `<option value="all">Year</option>` + years.map(y => `<option value="${y}">${y}</option>`).join('');
     if (!years.includes(state.selectedVodYear)) state.selectedVodYear = 'all';
     yearSelect.value = state.selectedVodYear;
     if (ext.syncCustomSelect) ext.syncCustomSelect(yearSelect);
@@ -185,7 +185,7 @@ export function renderFavoritesGrid() {
             if (channel) {
                 gridItem.setAttribute('data-id', channel.id);
                 const epg = ext.getActiveEpg ? ext.getActiveEpg(channel.id) : null;
-                const epgText = epg ? epg.event : "Transmisión en vivo";
+                const epgText = epg ? epg.event : "Live broadcast";
 
                 const logoHtml = getSafeLogoHtml(channel.name, channel.logo);
                 const badgeIndex = state.favPage * state.FAVS_PER_PAGE + i + 1;
@@ -251,7 +251,7 @@ export function renderFavoritesGrid() {
         if (items.length === 0) {
             favoritesGrid.innerHTML = `
                 <div style="grid-column: 1 / span 5; display: flex; align-items: center; justify-content: center; height: 300px; color: var(--text-dim);">
-                    ${state.vodFilterMode === "favorites" ? "No hay favoritos para mostrar." : "No se encontraron títulos. Prueba con otra búsqueda o filtros."}
+                    ${state.vodFilterMode === "favorites" ? "No favorites to show." : "No titles found. Try a different search or filters."}
                 </div>
             `;
             renderGridDots(0);

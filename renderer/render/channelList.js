@@ -22,7 +22,7 @@ export function renderList(container, list, highlightTerm = "") {
             emptyItem.className = 'no-results-message';
             emptyItem.innerHTML = `
                 <i data-lucide="search"></i>
-                <span>No se encontraron canales</span>
+                <span>No channels found</span>
             `;
             container.appendChild(emptyItem);
             if (window.lucide) window.lucide.createIcons({ nodes: [container] });
@@ -37,7 +37,7 @@ export function renderList(container, list, highlightTerm = "") {
         item.setAttribute('data-id', channel.id);
 
         const epg = ext.getActiveEpg ? ext.getActiveEpg(channel.id) : null;
-        const epgText = epg ? (epg.time ? `${epg.time} - ${epg.event}` : epg.event) : "Transmisión en vivo";
+        const epgText = epg ? (epg.time ? `${epg.time} - ${epg.event}` : epg.event) : "Live broadcast";
 
         const formattedId = isNaN(channel.id) ? channel.id : String(channel.id).padStart(4, '0');
         const highlightedName = highlightText(channel.name, highlightTerm);
@@ -57,10 +57,10 @@ export function renderList(container, list, highlightTerm = "") {
                 </div>
             </div>
             <div class="channel-actions">
-                <button class="action-btn favorite ${channel.favorite ? 'active' : ''}" title="Favorito">
+                <button class="action-btn favorite ${channel.favorite ? 'active' : ''}" title="Favorite">
                     <i data-lucide="heart" style="${channel.favorite ? 'fill:#ff4b4b;color:#ff4b4b;' : 'fill:transparent;color:currentColor;'}"></i>
                 </button>
-                <button class="action-btn edit-btn" title="Editar" data-id="${channel.id}">
+                <button class="action-btn edit-btn" title="Edit" data-id="${channel.id}">
                     <i data-lucide="sliders"></i>
                 </button>
             </div>

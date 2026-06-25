@@ -211,7 +211,7 @@ export function registerDeveloperIpc({ ipcMain, context }) {
                         resultsContainer.appendChild(item);
                     }
                     if (displayCount === 0 && uniqueUrls.length === 0) {
-                        statusDiv.innerText = 'No se encontraron logos.';
+                        statusDiv.innerText = 'No logos found.';
                     }
                 } catch(e) {
                     statusDiv.innerText = 'Error de búsqueda: ' + e.message;

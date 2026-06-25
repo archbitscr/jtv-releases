@@ -29,7 +29,7 @@ export function showNoSignalOverlay(show, type = 'signal') {
         const icon = document.getElementById('no-signal-icon');
         if (icon) icon.src = type === 'internet' ? './assets/no-internet.png' : './assets/no-signal.png';
         const titleEl = document.querySelector('#no-signal-overlay h2');
-        if (titleEl) titleEl.textContent = type === 'internet' ? 'Sin Internet' : 'Sin Señal';
+        if (titleEl) titleEl.textContent = type === 'internet' ? 'No Internet' : 'No Signal';
         overlay.classList.remove('hidden');
         const audioIndicator = document.getElementById('hud-indicator-audio');
         const videoIndicator = document.getElementById('hud-indicator-video');
@@ -164,7 +164,7 @@ export function triggerFailover() {
     if (!navigator.onLine) {
         nativeApi.logRenderer('Failover paused: No internet connection');
         showNoSignalOverlay(true, 'internet');
-        setRetryText('Sin conexión a Internet. Conéctate para continuar.');
+        setRetryText('No internet connection. Connect to continue.');
         window.addEventListener('online', resumeFailoverOnce);
         return;
     }
@@ -190,6 +190,6 @@ window.addEventListener('offline', () => {
         stopNoSignalRetryLoop();
     }
     showNoSignalOverlay(true, 'internet');
-    setRetryText('Sin conexión a Internet. Conéctate para continuar.');
+    setRetryText('No internet connection. Connect to continue.');
     window.addEventListener('online', resumeFailoverOnce);
 });

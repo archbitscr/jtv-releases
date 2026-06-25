@@ -97,11 +97,11 @@ export function setupEventListeners() {
     const handleGoogleLogin = async () => {
         try {
             await nativeApi.googleLogin();
-            alert("Sesión iniciada con Google. La aplicación se reiniciará para aplicar los cambios.");
+            alert("Signed in with Google. The app will restart to apply changes.");
             await nativeApi.relaunch();
         } catch (e) {
             console.error("Google Login failed:", e);
-            alert("Error al iniciar sesión con Google.");
+            alert("Failed to sign in with Google.");
         }
     };
     const loaderLoginBtn = document.getElementById('loader-login-btn');
@@ -113,7 +113,7 @@ export function setupEventListeners() {
     const factoryResetBtn = document.getElementById('factory-reset-btn');
     if (factoryResetBtn) {
         factoryResetBtn.onclick = async () => {
-            if (confirm("¿Estás seguro de que deseas restablecer la aplicación de fábrica? Se perderán todos los datos locales y canales personalizados.")) {
+            if (confirm("Are you sure you want to factory reset the app? All local data and custom channels will be lost.")) {
                 localStorage.clear();
                 await nativeApi.saveUserData({});
                 await nativeApi.relaunch();
@@ -139,7 +139,7 @@ export function setupEventListeners() {
 
         if (inputVal.length !== 6 || isNaN(inputVal)) {
             if (errorEl) {
-                errorEl.textContent = "El PIN debe tener 6 dígitos numéricos.";
+                errorEl.textContent = "PIN must be 6 numeric digits.";
                 errorEl.classList.remove('hidden');
             }
             parentalPinInput.value = '';
@@ -165,7 +165,7 @@ export function setupEventListeners() {
                 if (cb) cb(true);
             } else {
                 if (errorEl) {
-                    errorEl.textContent = "PIN incorrecto. Reintente.";
+                    errorEl.textContent = "Incorrect PIN. Try again.";
                     errorEl.classList.remove('hidden');
                 }
                 parentalPinInput.value = '';
@@ -352,7 +352,7 @@ export function setupEventListeners() {
         // Dynamic warning if there is mismatch
         if (val1 && val2 && val1 !== val2 && val2.length >= val1.length) {
             if (parentalCreationError) {
-                parentalCreationError.textContent = "Los códigos PIN introducidos no coinciden.";
+                parentalCreationError.textContent = "The PIN codes entered do not match.";
                 parentalCreationError.classList.remove('hidden');
             }
         } else {
@@ -522,7 +522,7 @@ export function setupEventListeners() {
 
         if (pin1.length !== 6 || isNaN(pin1)) {
             if (parentalCreationError) {
-                parentalCreationError.textContent = "El PIN debe tener exactamente 6 dígitos numéricos.";
+                parentalCreationError.textContent = "PIN must be exactly 6 numeric digits.";
                 parentalCreationError.classList.remove('hidden');
             }
             if (parentalNewPin1) {
@@ -533,7 +533,7 @@ export function setupEventListeners() {
 
         if (pin1 !== pin2) {
             if (parentalCreationError) {
-                parentalCreationError.textContent = "Los códigos PIN introducidos no coinciden.";
+                parentalCreationError.textContent = "The PIN codes entered do not match.";
                 parentalCreationError.classList.remove('hidden');
             }
             if (parentalNewPin2) {
@@ -1010,8 +1010,8 @@ export function setupEventListeners() {
                     state.editingFilter = null;
                     if (addBtn) {
                         addBtn.innerHTML = `<i data-lucide="plus"></i>`;
-                        addBtn.setAttribute('title', 'Agregar Filtro');
-                        addBtn.setAttribute('data-tooltip', 'Agregar Filtro');
+                        addBtn.setAttribute('title', 'Add Filter');
+                        addBtn.setAttribute('data-tooltip', 'Add Filter');
                     }
 
                     let defaultIcon = 'tag';
@@ -1086,7 +1086,7 @@ export function setupEventListeners() {
 
                 if (oldName.toLowerCase() !== newName.toLowerCase() &&
                     listToCheck.some(f => f.name.toLowerCase() === newName.toLowerCase())) {
-                    alert(`El filtro "${newName}" ya existe en este grupo.`);
+                    alert(`The filter "${newName}" already exists in this group.`);
                     return;
                 }
                 
@@ -1115,7 +1115,7 @@ export function setupEventListeners() {
                 addBtn.setAttribute('data-tooltip', 'Agregar Filtro');
             } else {
                 if (listToCheck.some(f => f.name.toLowerCase() === name.toLowerCase())) {
-                    alert(`El filtro "${name}" ya existe en este grupo.`);
+                    alert(`The filter "${name}" already exists in this group.`);
                     return;
                 }
                 listToCheck.push({ name, icon });
@@ -1243,7 +1243,7 @@ export function setupEventListeners() {
         state.omdbKey = document.getElementById('omdb-key-input').value.trim();
         if (!state.globalDomain.endsWith('/')) state.globalDomain += '/';
         window.globalDomain = state.globalDomain;
-        saveAppState(); syncChannels(); alert('Ajustes guardados. Sincronizando...');
+        saveAppState(); syncChannels(); alert('Settings saved. Syncing...');
     };
 
     autoDomainToggle.onchange = (e) => { state.autoUpdateDomain = e.target.checked; saveAppState(); };
@@ -1260,7 +1260,7 @@ export function setupEventListeners() {
         hwAccelToggle.onchange = async (e) => {
             state.hwAccelEnabled = e.target.checked;
             await saveAppState();
-            if (confirm("Para aplicar los cambios de aceleración por hardware, la aplicación debe reiniciarse ahora. ¿Deseas reiniciar?")) {
+            if (confirm("To apply hardware acceleration changes, the app must restart now. Do you want to restart?")) {
                 await nativeApi.relaunch();
             }
         };
@@ -1731,7 +1731,7 @@ export function setupEventListeners() {
         }).sort((a, b) => (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base', numeric: true }));
 
         if (filtered.length === 0) {
-            listContainer.innerHTML = `<div style="text-align: center; color: rgba(255, 255, 255, 0.3); font-size: 12px; padding: 20px 0;">No se encontraron canales.</div>`;
+            listContainer.innerHTML = `<div style="text-align: center; color: rgba(255, 255, 255, 0.3); font-size: 12px; padding: 20px 0;">No channels found.</div>`;
             return;
         }
 

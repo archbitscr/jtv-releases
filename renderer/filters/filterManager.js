@@ -73,9 +73,9 @@ export function populateDropdowns() {
         });
     };
 
-    updateSelect(['filter-select-language'], languages, 'Todos');
-    updateSelect(['filter-select-genre'], genres, 'Todos');
-    updateSelect(['filter-select-event'], events, 'Todos', true);
+    updateSelect(['filter-select-language'], languages, 'All');
+    updateSelect(['filter-select-genre'], genres, 'All');
+    updateSelect(['filter-select-event'], events, 'All', true);
     state.dropdownsPopulated = true;
     if (ext.initDashCustomSelects) ext.initDashCustomSelects();
 }
@@ -370,7 +370,7 @@ export function renderChannelFiltersManager(channel) {
     
     // Agrupar las opciones disponibles por tipo usando optgroups premium
     const langGroup = document.createElement('optgroup');
-    langGroup.label = "Idiomas";
+    langGroup.label = "Languages";
     state.filterLanguages.forEach(f => {
         if (!channel.categories.map(c => c.toLowerCase()).includes(f.name.toLowerCase())) {
             const opt = document.createElement('option');
@@ -382,7 +382,7 @@ export function renderChannelFiltersManager(channel) {
     if (langGroup.children.length > 0) addFilterToChannel.appendChild(langGroup);
 
     const genreGroup = document.createElement('optgroup');
-    genreGroup.label = "Géneros";
+    genreGroup.label = "Genres";
     state.filterGenres.forEach(f => {
         if (!channel.categories.map(c => c.toLowerCase()).includes(f.name.toLowerCase())) {
             const opt = document.createElement('option');
@@ -394,7 +394,7 @@ export function renderChannelFiltersManager(channel) {
     if (genreGroup.children.length > 0) addFilterToChannel.appendChild(genreGroup);
 
     const eventGroup = document.createElement('optgroup');
-    eventGroup.label = "Eventos";
+    eventGroup.label = "Events";
     state.filterEvents.forEach(f => {
         if (!channel.categories.map(c => c.toLowerCase()).includes(f.name.toLowerCase())) {
             const opt = document.createElement('option');
@@ -432,7 +432,7 @@ export function removeFilterFromChannel(catName) {
     const channel = channels.find(c => String(c.id) === String(state.currentEditingChannelId));
     if (channel) {
         if (catName.toLowerCase() === 'all') {
-            alert('El filtro "All" es obligatorio para todos los canales y no puede ser removido.');
+            alert('The "All" filter is required for all channels and cannot be removed.');
             return;
         }
         channel.categories = channel.categories.filter(c => c !== catName);
@@ -493,8 +493,8 @@ export function startEditingFilter(type, filter) {
     }
 
     addBtn.innerHTML = `<i data-lucide="check"></i>`;
-    addBtn.setAttribute('title', 'Guardar filtro');
-    addBtn.setAttribute('data-tooltip', 'Guardar filtro');
+    addBtn.setAttribute('title', 'Save filter');
+    addBtn.setAttribute('data-tooltip', 'Save filter');
     if (window.lucide) window.lucide.createIcons();
 
     state.editingFilter = {

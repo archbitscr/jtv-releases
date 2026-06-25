@@ -316,7 +316,7 @@ export function renderAssignerEvents() {
     }
 
     if (activeList.length === 0) {
-        container.innerHTML = `<div class="empty-list-msg" style="color: rgba(255,255,255,0.4); text-align: center; margin-top: 20px; font-size: 12px;">No hay filtros definidos</div>`;
+        container.innerHTML = `<div class="empty-list-msg" style="color: rgba(255,255,255,0.4); text-align: center; margin-top: 20px; font-size: 12px;">No filters defined</div>`;
         return;
     }
 
@@ -460,7 +460,7 @@ export function renderAssignerMetaChips(channel) {
     
     const cats = channel.categories || [];
     if (cats.length === 0) {
-        chipsContainer.innerHTML = `<span style="font-size: 12px; color: rgba(255,255,255,0.4);">Ninguna</span>`;
+        chipsContainer.innerHTML = `<span style="font-size: 12px; color: rgba(255,255,255,0.4);">None</span>`;
         return;
     }
 
@@ -500,7 +500,7 @@ export function renderAssignerMetaChipsMultiple() {
 
     const uniqueCats = Object.keys(catCounts);
     if (uniqueCats.length === 0) {
-        chipsContainer.innerHTML = `<span style="font-size: 12px; color: rgba(255,255,255,0.4);">Ninguna</span>`;
+        chipsContainer.innerHTML = `<span style="font-size: 12px; color: rgba(255,255,255,0.4);">None</span>`;
         return;
     }
 
@@ -569,7 +569,7 @@ export function selectAssignerChannelMultiple() {
         }
     } else {
         nameText.textContent = "Selección Múltiple";
-        idText.textContent = `${state.assignerSelectedChannelIndices.length} canales seleccionados`;
+        idText.textContent = `${state.assignerSelectedChannelIndices.length} channels selected`;
         
         logoContainer.innerHTML = `<i data-lucide="layers" style="width: 28px; height: 28px; color: #00ffcc;"></i>`;
         if (window.lucide) {

@@ -69,7 +69,7 @@ export async function initDeveloperFeatures() {
     const powerOffBtn = document.getElementById('power-off-btn');
     if (powerOffBtn) {
         powerOffBtn.onclick = () => {
-            console.log('[DeveloperModule] Clicked "Apagar" button. Closing application...');
+            console.log('[DeveloperModule] Clicked "Shut Down" button. Closing application...');
             window.close();
         };
     }
@@ -118,8 +118,8 @@ export async function initDeveloperFeatures() {
         devModeItem.className = 'setting-item';
         devModeItem.innerHTML = `
             <div class="setting-item-info">
-                <span class="setting-title">Modo desarrollador</span>
-                <span class="setting-desc">Habilita herramientas internas de depuración y pestañas de desarrollo.</span>
+                <span class="setting-title">Developer Mode</span>
+                <span class="setting-desc">Enables internal debugging tools and development tabs.</span>
             </div>
             <label class="settings-switch">
                 <input type="checkbox" id="developer-mode-toggle">
@@ -141,7 +141,7 @@ export async function initDeveloperFeatures() {
         <div class="setting-item">
             <div class="setting-item-info">
                 <span class="setting-title">Glass Tuner</span>
-                <span class="setting-desc">Herramienta visual para ajustar el glassmorphism del HUD, Sidebar y Top Nav en tiempo real.</span>
+                <span class="setting-desc">Visual tool to adjust HUD, Sidebar, and Top Nav glassmorphism in real time.</span>
             </div>
             <label class="settings-switch">
                 <input type="checkbox" id="glass-tuner-toggle">
@@ -151,8 +151,8 @@ export async function initDeveloperFeatures() {
         <div class="setting-divider"></div>
         <div class="setting-item">
             <div class="setting-item-info">
-                <span class="setting-title">Controles de Señal y Fuentes</span>
-                <span class="setting-desc">Mostrar autotuner e interruptor de fuentes de canales en el menú inferior.</span>
+                <span class="setting-title">Signal & Source Controls</span>
+                <span class="setting-desc">Show autotuner and channel source switcher in the bottom menu.</span>
             </div>
             <label class="settings-switch">
                 <input type="checkbox" id="hud-dev-controls-toggle">
@@ -162,18 +162,18 @@ export async function initDeveloperFeatures() {
         <div class="setting-divider"></div>
         <div class="setting-item">
             <div class="setting-item-info">
-                <span class="setting-title">Herramientas</span>
-                <span class="setting-desc">Acciones rápidas para depuración.</span>
+                <span class="setting-title">Tools</span>
+                <span class="setting-desc">Quick debugging actions.</span>
             </div>
             <div class="setting-item-actions">
-                <button id="open-devtools-btn" class="settings-action-btn">Abrir DevTools</button>
+                <button id="open-devtools-btn" class="settings-action-btn">Open DevTools</button>
             </div>
         </div>
         <div class="setting-divider"></div>
         <div class="setting-item">
             <div class="setting-item-info">
                 <span class="setting-title">Diagnostics Watchers</span>
-                <span class="setting-desc">Activa los watchers de diagnóstico (eval.tmp, take-screenshot.tmp y audio detector).</span>
+                <span class="setting-desc">Activates diagnostic watchers (eval.tmp, take-screenshot.tmp, and audio detector).</span>
             </div>
             <label class="settings-switch">
                 <input type="checkbox" id="diagnostics-toggle">
@@ -183,8 +183,8 @@ export async function initDeveloperFeatures() {
         <div class="setting-divider"></div>
         <div class="setting-item">
             <div class="setting-item-info">
-                <span class="setting-title">Indicador de Clics</span>
-                <span class="setting-desc">Muestra un círculo rojo visual en las coordenadas de cada clic de ratón.</span>
+                <span class="setting-title">Click Indicator</span>
+                <span class="setting-desc">Shows a red visual circle at each mouse click coordinate.</span>
             </div>
             <label class="settings-switch">
                 <input type="checkbox" id="diagnostic-clicks-toggle">
@@ -193,19 +193,19 @@ export async function initDeveloperFeatures() {
         </div>
         <div class="setting-divider"></div>
         <div class="developer-timeouts-section" style="padding-top: 10px;">
-            <h4 style="font-size: 15px; color: #00ffcc; margin-top: 15px; margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Ajustes de Timeouts</h4>
-            <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 15px;">Configura o desactiva de forma manual los tiempos de espera y watchdog del sistema (en milisegundos).</p>
+            <h4 style="font-size: 15px; color: #00ffcc; margin-top: 15px; margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Timeout Settings</h4>
+            <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 15px;">Manually configure or disable system timeouts and watchdog (in milliseconds).</p>
             
             <div style="display: flex; flex-direction: column; gap: 15px;">
-                <!-- Grupo 1: Panel de Ajustes -->
+                <!-- Grupo 1: Settings Panel -->
                 <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
-                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Panel de Ajustes</h5>
+                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Settings Panel</h5>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         <!-- Settings active -->
                         <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Ajustes activos (Con Stream)</span>
-                                <span class="setting-desc" style="font-size: 11px;">Cierra ajustes al reproducir.</span>
+                                <span class="setting-title" style="font-size: 13px;">Settings active (With Stream)</span>
+                                <span class="setting-desc" style="font-size: 11px;">Closes settings during playback.</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <input type="number" id="timeout-settings-active" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
@@ -219,8 +219,8 @@ export async function initDeveloperFeatures() {
                         <!-- Settings inactive -->
                         <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Ajustes inactivos (Sin Stream)</span>
-                                <span class="setting-desc" style="font-size: 11px;">Cierra ajustes en reposo.</span>
+                                <span class="setting-title" style="font-size: 13px;">Settings inactive (No Stream)</span>
+                                <span class="setting-desc" style="font-size: 11px;">Closes settings when idle.</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <input type="number" id="timeout-settings-inactive" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
@@ -233,15 +233,15 @@ export async function initDeveloperFeatures() {
                     </div>
                 </div>
 
-                <!-- Grupo 2: Menú Lateral -->
+                <!-- Grupo 2: Side Menu -->
                 <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
-                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Menú Lateral</h5>
+                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Side Menu</h5>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         <!-- Menu active -->
                         <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Menú lateral activo (Con Stream)</span>
-                                <span class="setting-desc" style="font-size: 11px;">Cierra menú al reproducir.</span>
+                                <span class="setting-title" style="font-size: 13px;">Side menu active (With Stream)</span>
+                                <span class="setting-desc" style="font-size: 11px;">Closes menu during playback.</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <input type="number" id="timeout-menu-active" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
@@ -255,8 +255,8 @@ export async function initDeveloperFeatures() {
                         <!-- Menu inactive -->
                         <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Menú lateral inactivo (Sin Stream)</span>
-                                <span class="setting-desc" style="font-size: 11px;">Cierra menú en reposo.</span>
+                                <span class="setting-title" style="font-size: 13px;">Side menu inactive (No Stream)</span>
+                                <span class="setting-desc" style="font-size: 11px;">Closes menu when idle.</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <input type="number" id="timeout-menu-inactive" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
@@ -269,15 +269,15 @@ export async function initDeveloperFeatures() {
                     </div>
                 </div>
 
-                <!-- Grupo 3: Menú Inferior (HUD) -->
+                <!-- Grupo 3: Bottom Menu (HUD) -->
                 <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
-                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Menú Inferior (HUD)</h5>
+                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Bottom Menu (HUD)</h5>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         <!-- Zapping HUD -->
                         <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Ocultar HUD Zapping</span>
-                                <span class="setting-desc" style="font-size: 11px;">Oculta barra inferior de info y fuentes.</span>
+                                <span class="setting-title" style="font-size: 13px;">Hide Zapping HUD</span>
+                                <span class="setting-desc" style="font-size: 11px;">Hides bottom info and source bar.</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <input type="number" id="timeout-zappinghud" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
@@ -290,15 +290,15 @@ export async function initDeveloperFeatures() {
                     </div>
                 </div>
 
-                <!-- Grupo 4: Menú Superior (Navegación) -->
+                <!-- Grupo 4: Top Menu (Navigation) -->
                 <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
-                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Menú Superior (Navegación)</h5>
+                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Top Menu (Navigation)</h5>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         <!-- Top Nav -->
                         <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Ocultar Menú Superior</span>
-                                <span class="setting-desc" style="font-size: 11px;">Oculta barra superior de navegación.</span>
+                                <span class="setting-title" style="font-size: 13px;">Hide Top Menu</span>
+                                <span class="setting-desc" style="font-size: 11px;">Hides top navigation bar.</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <input type="number" id="timeout-topnav" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
@@ -311,15 +311,15 @@ export async function initDeveloperFeatures() {
                     </div>
                 </div>
 
-                <!-- Grupo 5: Cursor del Mouse -->
+                <!-- Grupo 5: Mouse Cursor -->
                 <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
-                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Cursor del Mouse</h5>
+                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Mouse Cursor</h5>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         <!-- Hide cursor active -->
                         <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Ocultar Cursor (Con Stream)</span>
-                                <span class="setting-desc" style="font-size: 11px;">Oculta el cursor durante la reproducción.</span>
+                                <span class="setting-title" style="font-size: 13px;">Hide Cursor (With Stream)</span>
+                                <span class="setting-desc" style="font-size: 11px;">Hides cursor during playback.</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <input type="number" id="timeout-cursor-active" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
@@ -333,8 +333,8 @@ export async function initDeveloperFeatures() {
                         <!-- Hide cursor inactive -->
                         <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Ocultar Cursor (Sin Stream)</span>
-                                <span class="setting-desc" style="font-size: 11px;">Oculta el cursor en reposo.</span>
+                                <span class="setting-title" style="font-size: 13px;">Hide Cursor (No Stream)</span>
+                                <span class="setting-desc" style="font-size: 11px;">Hides cursor when idle.</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <input type="number" id="timeout-cursor-inactive" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
@@ -347,15 +347,15 @@ export async function initDeveloperFeatures() {
                     </div>
                 </div>
 
-                <!-- Grupo 6: Failover y Watchdog -->
+                <!-- Grupo 6: Failover & Watchdog -->
                 <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
-                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Failover y Watchdog</h5>
+                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Failover & Watchdog</h5>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         <!-- Failover Main -->
                         <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Failover Fuente Principal</span>
-                                <span class="setting-desc" style="font-size: 11px;">Tiempo de gracia antes del primer reintento.</span>
+                                <span class="setting-title" style="font-size: 13px;">Main Source Failover</span>
+                                <span class="setting-desc" style="font-size: 11px;">Grace time before first retry.</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <input type="number" id="timeout-failover-main" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
@@ -369,8 +369,8 @@ export async function initDeveloperFeatures() {
                         <!-- Failover Alt -->
                         <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Failover Fuentes Alternas</span>
-                                <span class="setting-desc" style="font-size: 11px;">Tiempo de gracia por cada fuente alternativa.</span>
+                                <span class="setting-title" style="font-size: 13px;">Alternate Sources Failover</span>
+                                <span class="setting-desc" style="font-size: 11px;">Grace time per alternate source.</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <input type="number" id="timeout-failover-alt" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
@@ -384,8 +384,8 @@ export async function initDeveloperFeatures() {
                         <!-- Watchdog Freeze limit -->
                         <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Watchdog Congelamiento Video</span>
-                                <span class="setting-desc" style="font-size: 11px;">Detecta currentTime congelado en el reproductor.</span>
+                                <span class="setting-title" style="font-size: 13px;">Video Freeze Watchdog</span>
+                                <span class="setting-desc" style="font-size: 11px;">Detects frozen currentTime in the player.</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <input type="number" id="timeout-watchdog-freeze" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
@@ -421,56 +421,56 @@ export async function initDeveloperFeatures() {
                 <!-- Right: edit/add form -->
                 <div class="crud-form-panel crud-scroll-panel" style="flex: 1; overflow-y: auto; padding-left: 5px; min-height: 0; height: 100%; display: flex; flex-direction: column;">
                     <div id="crud-form-empty-message" style="color: rgba(255,255,255,0.4); text-align: center; margin-top: 60px;">
-                        Selecciona un canal de la lista o presiona "+ Nuevo" para editar
+                        Select a channel from the list or press "+ New" to edit
                     </div>
                     <div id="crud-channel-form" class="hidden" style="display: flex; flex-direction: column; gap: 14px; padding-bottom: 20px;">
                         <input type="hidden" id="crud-channel-index">
                         
                         <!-- 1. Nombre -->
                         <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Nombre del Canal</label>
+                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Channel Name</label>
                             <input type="text" id="crud-name-input" class="dark-input" placeholder="Ej. HBO USA" style="margin:0;">
                         </div>
                         
                         <!-- 2. Número ID -->
                         <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Número / ID</label>
+                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Number / ID</label>
                             <input type="text" id="crud-id-input" class="dark-input" placeholder="Ej. 101" style="margin:0;">
                         </div>
                         
                         <!-- 3. Stream URL -->
                         <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Stream URL (Fuente 1)</label>
-                            <input type="text" id="crud-stream-input" class="dark-input" placeholder="URL principal" style="margin:0;">
+                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Stream URL (Source 1)</label>
+                            <input type="text" id="crud-stream-input" class="dark-input" placeholder="Main URL" style="margin:0;">
                         </div>
                         
                         <!-- 4. Señal -->
                         <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Señal</label>
+                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Signal</label>
                             <div style="display: flex; align-items: center; gap: 15px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 6px 12px; height: 36px; align-self: flex-start;">
                                 <div style="display: flex; align-items: center; gap: 6px;">
                                     <span style="font-size: 11px; color: rgba(255,255,255,0.5);">Video:</span>
                                     <span id="crud-signal-video-status" class="autotune-dot checking"></span>
-                                    <span id="crud-signal-video-text" style="font-size: 13px; font-weight: 500;">Comprobando...</span>
+                                    <span id="crud-signal-video-text" style="font-size: 13px; font-weight: 500;">Checking...</span>
                                 </div>
                                 <div style="width: 1px; height: 16px; background: rgba(255,255,255,0.1);"></div>
                                 <div style="display: flex; align-items: center; gap: 6px;">
                                     <span style="font-size: 11px; color: rgba(255,255,255,0.5);">Audio:</span>
                                     <span id="crud-signal-audio-status" class="autotune-dot checking"></span>
-                                    <span id="crud-signal-audio-text" style="font-size: 13px; font-weight: 500;">Comprobando...</span>
+                                    <span id="crud-signal-audio-text" style="font-size: 13px; font-weight: 500;">Checking...</span>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- 5. Filtros / Categorías -->
                         <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Categorías (separadas por comas)</label>
+                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Categories (comma-separated)</label>
                             <input type="text" id="crud-categories-input" class="dark-input" placeholder="Ej. sports, live, all" style="margin:0;">
                         </div>
                         
-                        <!-- 6. Logo del Canal (Tamaño de 80px, sin placeholder cuando está vacío) -->
+                        <!-- 6. Channel Logo (Tamaño de 80px, sin placeholder cuando está vacío) -->
                         <div class="edit-group" style="display:flex; flex-direction:column; gap:8px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Logo del Canal</label>
+                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Channel Logo</label>
                             <div style="display: flex; gap: 12px; align-items: center;">
                                 <div id="crud-logo-preview-container" style="width: 80px; height: 80px; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
                                     <img id="crud-logo-preview" style="max-width: 100%; max-height: 100%; object-fit: contain; display: none;">
@@ -479,10 +479,10 @@ export async function initDeveloperFeatures() {
                                     <input type="text" id="crud-logo-input" class="dark-input" placeholder="Ej. https://... o base64" style="margin:0; width: 100%;">
                                     <div style="display: flex; gap: 8px;">
                                         <button type="button" id="crud-logo-upload-btn" class="settings-action-btn" style="margin: 0; padding: 6px 12px; font-size: 12px; display: flex; align-items: center; gap: 6px;">
-                                            <i data-lucide="upload" style="width: 14px; height: 14px;"></i> Subir Imagen
+                                            <i data-lucide="upload" style="width: 14px; height: 14px;"></i> Upload Image
                                         </button>
                                         <button type="button" id="crud-logo-delete-btn" class="danger-btn" style="margin: 0; padding: 6px 12px; font-size: 12px; display: flex; align-items: center; gap: 6px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444;">
-                                            <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i> Eliminar
+                                            <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i> Delete
                                         </button>
                                         <input type="file" id="crud-logo-file-input" accept="image/*" style="display: none;">
                                     </div>
@@ -490,21 +490,21 @@ export async function initDeveloperFeatures() {
                             </div>
                         </div>
 
-                        <!-- 7. Optimizar Logo -->
+                        <!-- 7. Optimize Logo -->
                         <div class="edit-group" style="display:flex; flex-direction:column; gap:5px; margin-top: 4px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Optimizar Logo</label>
+                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Optimize Logo</label>
                             <button type="button" id="crud-logo-scraper-btn" class="settings-action-btn" style="margin-top: 2px; width: 100%; padding: 8px 16px; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                                <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i> Buscar y Optimizar Logo
+                                <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i> Search & Optimize Logo
                             </button>
                         </div>
                         
                         <!-- 8. Botones Guardar / Eliminar -->
                         <div style="display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 15px;">
                             <button type="button" id="crud-save-btn" class="settings-action-btn" style="flex: 1; padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600;">
-                                <i data-lucide="save" style="width: 16px; height: 16px;"></i> Guardar Canal
+                                <i data-lucide="save" style="width: 16px; height: 16px;"></i> Save Channel
                             </button>
                             <button type="button" id="crud-delete-btn" class="danger-btn" style="flex: 1; padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #ef4444;">
-                                <i data-lucide="trash-2" style="width: 16px; height: 16px;"></i> Eliminar Canal
+                                <i data-lucide="trash-2" style="width: 16px; height: 16px;"></i> Delete Channel
                             </button>
                         </div>
                     </div>
@@ -640,7 +640,7 @@ export async function initDeveloperFeatures() {
     const openDevtoolsBtn = document.getElementById('open-devtools-btn');
     if (openDevtoolsBtn) {
         openDevtoolsBtn.onclick = async () => {
-            console.log('[DeveloperModule] Clicked "Abrir DevTools". States:', { devModeAvailable, developerModeEnabled });
+            console.log('[DeveloperModule] Clicked "Open DevTools". States:', { devModeAvailable, developerModeEnabled });
             if (!devModeAvailable || !developerModeEnabled) {
                 console.warn('[DeveloperModule] Action ignored: developer mode is not active/available');
                 return;
@@ -657,7 +657,7 @@ export async function initDeveloperFeatures() {
     const reloadWindowBtn = document.getElementById('reload-window-btn');
     if (reloadWindowBtn) {
         reloadWindowBtn.onclick = async () => {
-            console.log('[DeveloperModule] Clicked "Recargar Ventana". States:', { devModeAvailable, developerModeEnabled });
+            console.log('[DeveloperModule] Clicked "Reload Window". States:', { devModeAvailable, developerModeEnabled });
             if (!devModeAvailable || !developerModeEnabled) {
                 console.warn('[DeveloperModule] Action ignored: developer mode is not active/available');
                 return;
@@ -693,7 +693,7 @@ export async function initDeveloperFeatures() {
             const catsText = document.getElementById('crud-categories-input').value;
 
             if (!name || !id || !path) {
-                alert('Nombre, ID y Stream URL son requeridos.');
+                alert('Name, ID, and Stream URL are required.');
                 return;
             }
 
@@ -734,7 +734,7 @@ export async function initDeveloperFeatures() {
             const index = parseInt(document.getElementById('crud-channel-index').value, 10);
             if (index < 0) return;
 
-            if (!confirm('¿Seguro que deseas eliminar este canal?')) return;
+            if (!confirm('Are you sure you want to delete this channel?')) return;
 
             const channels = window.getChannels ? window.getChannels() : [];
             channels.splice(index, 1);
@@ -763,7 +763,7 @@ export async function initDeveloperFeatures() {
         logoScraperBtn.onclick = async () => {
             const name = document.getElementById('crud-name-input').value.trim();
             if (!name) {
-                alert('Introduce un nombre de canal primero.');
+                alert('Enter a channel name first.');
                 return;
             }
             await nativeApi.openLogoScraper(name);
@@ -1030,10 +1030,10 @@ function selectCrudChannel(index) {
         if (videoDot && videoText && audioDot && audioText) {
             videoDot.className = 'autotune-dot checking';
             videoDot.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
-            videoText.innerText = 'Sin transmisión';
+            videoText.innerText = 'No broadcast';
             audioDot.className = 'autotune-dot checking';
             audioDot.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
-            audioText.innerText = 'Sin transmisión';
+            audioText.innerText = 'No broadcast';
         }
     }
 }
@@ -1087,10 +1087,10 @@ async function runSignalCheck(url, videoDot, videoText, audioDot, audioText) {
     
     videoDot.className = 'autotune-dot checking';
     videoDot.style.backgroundColor = '';
-    videoText.innerText = 'Comprobando...';
+    videoText.innerText = 'Checking...';
     audioDot.className = 'autotune-dot checking';
     audioDot.style.backgroundColor = '';
-    audioText.innerText = 'Comprobando...';
+    audioText.innerText = 'Checking...';
     
     try {
         const fullUrl = url.startsWith('http') ? url : `${window.globalDomain || 'https://dlhd.pk/'}${url}`;
@@ -1317,17 +1317,17 @@ export function updateDeveloperUI() {
     const trialStatusEl = document.getElementById('account-trial-status');
     if (trialStatusEl) {
         if (developerModeEnabled) {
-            trialStatusEl.innerText = 'Modo Desarrollador';
+            trialStatusEl.innerText = 'Developer Mode';
         } else {
             nativeApi.getNetworkDate().then(trialCheck => {
                 if (trialCheck && trialCheck.firstTime) {
-                    trialStatusEl.innerText = 'Período de prueba activo (3 días restantes).';
+                    trialStatusEl.innerText = 'Trial period active (3 days remaining).';
                 } else if (trialCheck) {
                     const daysLeft = Math.max(0, 3 - (trialCheck.elapsedDays || 0));
-                    trialStatusEl.innerText = `Período de prueba activo. Quedan ${daysLeft.toFixed(1)} días.`;
+                    trialStatusEl.innerText = `Trial period active. ${daysLeft.toFixed(1)} days remaining.`;
                 }
             }).catch(() => {
-                trialStatusEl.innerText = 'Período de prueba activo.';
+                trialStatusEl.innerText = 'Trial period active.';
             });
         }
     }

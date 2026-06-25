@@ -9,8 +9,8 @@ export function setSettingsFilterTab(tab) {
         const addBtn = document.getElementById(state.editingFilter.addBtnId);
         if (addBtn) {
             addBtn.innerHTML = `<i data-lucide="plus"></i>`;
-            addBtn.setAttribute('title', 'Agregar Filtro');
-            addBtn.setAttribute('data-tooltip', 'Agregar Filtro');
+            addBtn.setAttribute('title', 'Add Filter');
+            addBtn.setAttribute('data-tooltip', 'Add Filter');
         }
         const input = document.getElementById(state.editingFilter.inputId);
         if (input) {

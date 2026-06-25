@@ -19,7 +19,7 @@ export function initDashCustomSelects() {
                     btn.classList.toggle('has-value', opt.value !== 'all');
                     const label = btn.querySelector('.dash-custom-select-label');
                     if (label) {
-                        label.textContent = opt.value !== 'all' ? opt.textContent : (select.dataset.label || select.getAttribute('aria-label') || 'Filtro');
+                        label.textContent = opt.value !== 'all' ? opt.textContent : (select.dataset.label || select.getAttribute('aria-label') || 'Filter');
                     }
                 }
                 item.addEventListener('click', (e) => {
@@ -27,7 +27,7 @@ export function initDashCustomSelects() {
                     select.value = opt.value;
                     const label = btn.querySelector('.dash-custom-select-label');
                     if (label) {
-                        label.textContent = opt.value !== 'all' ? opt.textContent : (select.dataset.label || select.getAttribute('aria-label') || 'Filtro');
+                        label.textContent = opt.value !== 'all' ? opt.textContent : (select.dataset.label || select.getAttribute('aria-label') || 'Filter');
                     }
                     btn.classList.toggle('has-value', opt.value !== 'all');
                     // Update selected highlight in menu

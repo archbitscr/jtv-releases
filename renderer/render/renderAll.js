@@ -36,7 +36,7 @@ export function renderSettingsFilters() {
         if (!container) return;
         container.innerHTML = '';
         if (list.length === 0) {
-            container.innerHTML = `<div class="empty-list-msg">No hay filtros definidos</div>`;
+            container.innerHTML = `<div class="empty-list-msg">No filters defined</div>`;
             return;
         }
         list.forEach(filter => {
@@ -68,7 +68,7 @@ export function renderSettingsFilters() {
                 </div>
                 ${showControls ? `
                 <div style="display: flex; gap: 4px; align-items: center;" onclick="event.stopPropagation();">
-                    <button class="remove-btn" type="button" title="Eliminar"><i data-lucide="x"></i></button>
+                    <button class="remove-btn" type="button" title="Delete"><i data-lucide="x"></i></button>
                 </div>
                 ` : ''}
             `;
@@ -91,7 +91,7 @@ export function renderSettingsFilters() {
                 enabledCheckbox.type = 'checkbox';
                 enabledCheckbox.className = 'filter-lang-enabled';
                 enabledCheckbox.checked = filter.enabled !== false;
-                enabledCheckbox.title = 'Activar/desactivar idioma';
+                enabledCheckbox.title = 'Toggle language';
                 enabledCheckbox.style.cssText = 'margin-right:8px;cursor:pointer;accent-color:#00ffcc;width:14px;height:14px;flex-shrink:0;';
                 enabledCheckbox.addEventListener('change', async (e) => {
                     e.stopPropagation();

@@ -18,7 +18,7 @@ export function getOrGenerateTooltip(el) {
         if (settingItem) {
             const titleEl = settingItem.querySelector('.setting-title');
             if (titleEl) {
-                const tooltipText = `Activar/Desactivar: ${titleEl.textContent.trim()}`;
+                const tooltipText = `Toggle: ${titleEl.textContent.trim()}`;
                 el.setAttribute('data-tooltip', tooltipText);
                 return tooltipText;
             }
@@ -26,51 +26,51 @@ export function getOrGenerateTooltip(el) {
     }
 
     if (id.includes('close-settings') || className.includes('settings-close')) {
-        el.setAttribute('data-tooltip', 'Cerrar ajustes');
-        return 'Cerrar ajustes';
+        el.setAttribute('data-tooltip', 'Close settings');
+        return 'Close settings';
     }
 
     if (id === 'crud-add-new-btn') {
-        el.setAttribute('data-tooltip', 'Crear un nuevo canal');
-        return 'Crear un nuevo canal';
+        el.setAttribute('data-tooltip', 'Create a new channel');
+        return 'Create a new channel';
     }
 
     if (id === 'crud-save-btn') {
-        el.setAttribute('data-tooltip', 'Guardar cambios del canal');
-        return 'Guardar cambios del canal';
+        el.setAttribute('data-tooltip', 'Save channel changes');
+        return 'Save channel changes';
     }
 
     if (id === 'crud-delete-btn') {
-        el.setAttribute('data-tooltip', 'Eliminar este canal permanentemente');
-        return 'Eliminar este canal permanentemente';
+        el.setAttribute('data-tooltip', 'Delete this channel permanently');
+        return 'Delete this channel permanently';
     }
 
     if (id === 'crud-logo-scraper-btn') {
-        el.setAttribute('data-tooltip', 'Buscar y optimizar logo en internet');
-        return 'Buscar y optimizar logo en internet';
+        el.setAttribute('data-tooltip', 'Search and optimize logo online');
+        return 'Search and optimize logo online';
     }
 
     if (id === 'crud-logo-upload-btn') {
-        el.setAttribute('data-tooltip', 'Subir una imagen local como logo');
-        return 'Subir una imagen local como logo';
+        el.setAttribute('data-tooltip', 'Upload a local image as logo');
+        return 'Upload a local image as logo';
     }
 
     if (id === 'crud-logo-delete-btn') {
-        el.setAttribute('data-tooltip', 'Eliminar el logo actual');
-        return 'Eliminar el logo actual';
+        el.setAttribute('data-tooltip', 'Delete current logo');
+        return 'Delete current logo';
     }
 
     if (className.includes('crud-channel-item')) {
         const nameEl = el.querySelector('.crud-channel-name');
         const channelName = nameEl ? nameEl.textContent.trim() : 'canal';
-        const tooltipText = `Editar: ${channelName}`;
+        const tooltipText = `Edit: ${channelName}`;
         el.setAttribute('data-tooltip', tooltipText);
         return tooltipText;
     }
 
     if (className.includes('settings-tab-btn')) {
         const text = el.textContent.trim();
-        const tooltipText = `Sección ${text}`;
+        const tooltipText = `Section ${text}`;
         el.setAttribute('data-tooltip', tooltipText);
         return tooltipText;
     }
@@ -84,8 +84,8 @@ export function getOrGenerateTooltip(el) {
 
     // Check select dropdowns
     if (el.tagName === 'SELECT') {
-        const label = el.getAttribute('aria-label') || (el.options && el.options[0] ? el.options[0].text : 'Seleccionar');
-        const tooltipText = `Filtrar por: ${label}`;
+        const label = el.getAttribute('aria-label') || (el.options && el.options[0] ? el.options[0].text : 'Select');
+        const tooltipText = `Filter by: ${label}`;
         el.setAttribute('data-tooltip', tooltipText);
         return tooltipText;
     }
@@ -104,23 +104,23 @@ export function getOrGenerateTooltip(el) {
         const iconName = icon.getAttribute('data-lucide');
         let tooltipText = '';
         switch (iconName) {
-            case 'x': tooltipText = 'Cerrar'; break;
-            case 'tv': tooltipText = 'Ver En Vivo'; break;
-            case 'film': tooltipText = 'Películas'; break;
+            case 'x': tooltipText = 'Close'; break;
+            case 'tv': tooltipText = 'Watch Live'; break;
+            case 'film': tooltipText = 'Movies'; break;
             case 'clapperboard': tooltipText = 'Series'; break;
-            case 'heart': tooltipText = el.classList.contains('active') || id.includes('fav') ? 'Quitar de Favoritos' : 'Agregar a Favoritos'; break;
-            case 'settings': case 'settings-2': case 'sliders': tooltipText = 'Ajustes y Filtros'; break;
-            case 'search': tooltipText = 'Buscar'; break;
-            case 'plus': case 'plus-circle': tooltipText = 'Agregar'; break;
-            case 'minus': tooltipText = 'Disminuir / Quitar'; break;
-            case 'arrow-left': case 'chevron-left': tooltipText = 'Volver / Anterior'; break;
-            case 'arrow-right': case 'chevron-right': tooltipText = 'Siguiente'; break;
-            case 'trash-2': tooltipText = 'Eliminar'; break;
-            case 'upload': tooltipText = 'Subir archivo o imagen'; break;
-            case 'volume-2': case 'volume-x': case 'volume-1': tooltipText = 'Volumen / Silencio'; break;
-            case 'home': tooltipText = 'Inicio'; break;
-            case 'code-2': tooltipText = 'Modo Desarrollador'; break;
-            case 'user': tooltipText = 'Mi Cuenta'; break;
+            case 'heart': tooltipText = el.classList.contains('active') || id.includes('fav') ? 'Remove from Favorites' : 'Add to Favorites'; break;
+            case 'settings': case 'settings-2': case 'sliders': tooltipText = 'Settings & Filters'; break;
+            case 'search': tooltipText = 'Search'; break;
+            case 'plus': case 'plus-circle': tooltipText = 'Add'; break;
+            case 'minus': tooltipText = 'Decrease / Remove'; break;
+            case 'arrow-left': case 'chevron-left': tooltipText = 'Back / Previous'; break;
+            case 'arrow-right': case 'chevron-right': tooltipText = 'Next'; break;
+            case 'trash-2': tooltipText = 'Delete'; break;
+            case 'upload': tooltipText = 'Upload file or image'; break;
+            case 'volume-2': case 'volume-x': case 'volume-1': tooltipText = 'Volume / Mute'; break;
+            case 'home': tooltipText = 'Home'; break;
+            case 'code-2': tooltipText = 'Developer Mode'; break;
+            case 'user': tooltipText = 'My Account'; break;
         }
         if (tooltipText) {
             el.setAttribute('data-tooltip', tooltipText);
@@ -130,20 +130,20 @@ export function getOrGenerateTooltip(el) {
 
     // Generic fallbacks based on ids / classes
     if (id.includes('close') || className.includes('close')) {
-        el.setAttribute('data-tooltip', 'Cerrar');
-        return 'Cerrar';
+        el.setAttribute('data-tooltip', 'Close');
+        return 'Close';
     }
     if (id.includes('delete') || className.includes('delete') || className.includes('danger')) {
-        el.setAttribute('data-tooltip', 'Eliminar');
-        return 'Eliminar';
+        el.setAttribute('data-tooltip', 'Delete');
+        return 'Delete';
     }
     if (id.includes('save') || className.includes('save')) {
-        el.setAttribute('data-tooltip', 'Guardar');
-        return 'Guardar';
+        el.setAttribute('data-tooltip', 'Save');
+        return 'Save';
     }
     if (id.includes('back') || className.includes('back')) {
-        el.setAttribute('data-tooltip', 'Volver');
-        return 'Volver';
+        el.setAttribute('data-tooltip', 'Back');
+        return 'Back';
     }
 
     return null;
