@@ -19,7 +19,7 @@ export async function syncChannels(silent = false) {
     const btn = document.getElementById('sync-channels-btn');
     if (!silent) {
         if (btn) {
-            btn.innerText = "Sincronizando...";
+            btn.innerText = "Syncing...";
             btn.disabled = true;
         }
     }

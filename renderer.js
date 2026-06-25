@@ -325,27 +325,27 @@ async function init() {
         if (isDevMode) {
             trialStatusEl.innerText = 'Modo Desarrollador';
         } else if (trialCheck.firstTime) {
-            trialStatusEl.innerText = 'Período de prueba activo (3 días restantes).';
+            trialStatusEl.innerText = 'Trial period active (3 days remaining).';
         } else {
             const daysLeft = Math.max(0, 3 - (trialCheck.elapsedDays || 0));
-            trialStatusEl.innerText = `Período de prueba activo. Quedan ${daysLeft.toFixed(1)} días.`;
+            trialStatusEl.innerText = `Trial period active. ${daysLeft.toFixed(1)} days remaining.`;
         }
     }
 
     // Progress bar animations
     setTimeout(() => {
         if (loaderProgressBar) loaderProgressBar.style.width = '35%';
-        if (loaderMessage) loaderMessage.innerText = 'Cargando fondos y estilos...';
+        if (loaderMessage) loaderMessage.innerText = 'Loading wallpapers and styles...';
     }, 450);
 
     setTimeout(() => {
         if (loaderProgressBar) loaderProgressBar.style.width = '65%';
-        if (loaderMessage) loaderMessage.innerText = 'Sincronizando canales DaddyLive...';
+        if (loaderMessage) loaderMessage.innerText = 'Syncing DaddyLive channels...';
     }, 1000);
 
     setTimeout(() => {
         if (loaderProgressBar) loaderProgressBar.style.width = '100%';
-        if (loaderMessage) loaderMessage.innerText = 'Listo.';
+        if (loaderMessage) loaderMessage.innerText = 'Ready.';
     }, 1650);
 
     // Core Data Loading and sflix / Domain setups

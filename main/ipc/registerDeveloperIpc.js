@@ -214,7 +214,7 @@ export function registerDeveloperIpc({ ipcMain, context }) {
                         statusDiv.innerText = 'No logos found.';
                     }
                 } catch(e) {
-                    statusDiv.innerText = 'Error de búsqueda: ' + e.message;
+                    statusDiv.innerText = 'Search error: ' + e.message;
                 }
             }
 
@@ -236,7 +236,7 @@ export function registerDeveloperIpc({ ipcMain, context }) {
                     try {
                         const dataUrl = canvas.toDataURL('image/png');
                         ipcRenderer.send('logo-scraped', dataUrl);
-                        statusDiv.innerText = '¡Logo inyectado con éxito!';
+                        statusDiv.innerText = 'Logo injected successfully!';
                         setTimeout(() => window.close(), 600);
                     } catch(e) {
                         statusDiv.innerText = 'Error CORS. Intenta con otra imagen.';
