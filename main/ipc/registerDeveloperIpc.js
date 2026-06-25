@@ -136,7 +136,7 @@ export function registerDeveloperIpc({ ipcMain, context }) {
         </style>
     </head>
     <body>
-        <h2>Buscar Logo para <span style="color: #00ffcc;">\${safeChannelName}</span></h2>
+        <h2>Search Logo for <span style="color: #00ffcc;">\${safeChannelName}</span></h2>
         <input type="text" id="search-input" value="\${safeChannelName} logo png">
         <br>
         <button id="search-btn">Buscar</button>

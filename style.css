@@ -1985,7 +1985,7 @@ body.hide-cursor * {
     font-size: 0.65rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
-    pointer-events: none; /* Desactiva interacción con mouse */
+    pointer-events: none; /* Disables mouse interaction */
     white-space: nowrap;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -5020,7 +5020,7 @@ body.hide-cursor * {
 
 .filter-group-card {
     flex: 1 1 0;
-    width: 0; /* Garantiza división de anchos idénticos sin solapamientos */
+    width: 0; /* Ensures identical width division without overlaps */
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 8px;

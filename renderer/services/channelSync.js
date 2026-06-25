@@ -60,7 +60,7 @@ export async function syncChannels(silent = false) {
 
     if (!silent) {
         if (btn) {
-            btn.innerText = "Sincronizar canales con DaddyLive";
+            btn.innerText = "Sync channels with DaddyLive";
             btn.disabled = false;
         }
     }

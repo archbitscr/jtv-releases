@@ -336,7 +336,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     state.isVodPlaying = false;
     state.shouldRestoreTunedChannel = false;
 
-    nativeApi.logDiagnostic(`Sintonizando canal ID: ${channel.id} ("${channel.name}") [ResetSource=${resetSource}]`);
+    nativeApi.logDiagnostic(`Tuning channel ID: ${channel.id} ("${channel.name}") [ResetSource=${resetSource}]`);
 
     if (resetSource) {
         state.playerSource = "stream";

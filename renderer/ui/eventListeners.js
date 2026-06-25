@@ -283,7 +283,7 @@ export function setupEventListeners() {
                             parentalKidsToggle.checked = true;
                             syncParentalDependentOptions();
                         }
-                    }, "Introduce tu PIN para desactivar Kids Mode:");
+                    }, "Enter your PIN to disable Kids Mode:");
                 } else {
                     localStorage.setItem('jtv_parental_kids_mode', 'false');
                     syncParentalDependentOptions();
@@ -428,7 +428,7 @@ export function setupEventListeners() {
                             if (parentalNewPin1) parentalNewPin1.focus();
                         }
                     }
-                }, "Introduce tu PIN actual para cambiarlo:");
+                }, "Enter your current PIN to change it:");
             } else {
                 if (parentalPinCreationWrapper) {
                     resetPinCreationForm();
@@ -461,7 +461,7 @@ export function setupEventListeners() {
                     updateParentalPinUI();
                     renderAll();
                 }
-            }, "Introduce tu PIN para eliminarlo y restablecer el Control Parental:");
+            }, "Enter your PIN to delete it and reset Parental Controls:");
         };
     }
 
@@ -479,8 +479,8 @@ export function setupEventListeners() {
                     parentalAdultToggle.checked = !shouldEnable;
                 }
             }, shouldEnable
-                ? "Introduce tu PIN para desbloquear contenido para adultos:"
-                : "Introduce tu PIN para ocultar contenido para adultos:");
+                ? "Enter your PIN to unlock adult content:"
+                : "Enter your PIN to hide adult content:");
         };
     }
 
@@ -804,7 +804,7 @@ export function setupEventListeners() {
                 if (storedHash) {
                     promptParentalPIN((confirmed) => {
                         if (confirmed) activateTab();
-                    }, "Introduce tu PIN de Control Parental para editar los ajustes:");
+                    }, "Enter your Parental Controls PIN to edit settings:");
                 } else {
                     activateTab();
                 }
@@ -1111,8 +1111,8 @@ export function setupEventListeners() {
                 
                 state.editingFilter = null;
                 addBtn.innerHTML = `<i data-lucide="plus"></i>`;
-                addBtn.setAttribute('title', 'Agregar Filtro');
-                addBtn.setAttribute('data-tooltip', 'Agregar Filtro');
+                addBtn.setAttribute('title', 'Add Filter');
+                addBtn.setAttribute('data-tooltip', 'Add Filter');
             } else {
                 if (listToCheck.some(f => f.name.toLowerCase() === name.toLowerCase())) {
                     alert(`The filter "${name}" already exists in this group.`);
