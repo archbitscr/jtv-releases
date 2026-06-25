@@ -302,17 +302,17 @@
                         <div class="edit-group">
                             <label>Channel name</label>
                             <input type="text" id="edit-name-input" class="dark-input" placeholder="Ej. HBO USA">
-                            <span id="edit-name-error" class="error-text hidden">El nombre es obligatorio</span>
+                            <span id="edit-name-error" class="error-text hidden">Name is required</span>
                         </div>
                         <div class="edit-group">
-                            <label>ID / numero del canal</label>
+                            <label>ID / channel number</label>
                             <input type="text" id="edit-id-input" class="dark-input" placeholder="Ej. 55">
-                            <span id="edit-id-error" class="error-text hidden">El numero es obligatorio</span>
+                            <span id="edit-id-error" class="error-text hidden">Number is required</span>
                         </div>
                         <div class="edit-group">
                             <label>Stream URL / Ruta</label>
                             <input type="text" id="edit-stream-input" class="dark-input" placeholder="Ej. watch.php?id=55 o https://...">
-                            <span id="edit-stream-error" class="error-text hidden">La ruta es obligatoria</span>
+                            <span id="edit-stream-error" class="error-text hidden">Stream URL is required</span>
                         </div>
                         <div class="config-section">
                             <h3>Assigned filters</h3>
@@ -464,7 +464,7 @@
                         <h3 class="settings-page-title">Channels</h3>
                         
                         <!-- Sub-navigation for Channels Tab -->
-                        <nav class="channels-subnav" aria-label="Opciones de canales">
+                        <nav class="channels-subnav" aria-label="Channel options">
                             <button class="channels-subnav-btn active" data-channels-tab="crud"><i data-lucide="edit"></i> CRUD Editor</button>
                             <button class="channels-subnav-btn" data-channels-tab="settings"><i data-lucide="tv"></i> Live only</button>
                         </nav>
@@ -500,9 +500,9 @@
                         </div>
                     </div>
 
-                    <!-- Section: Mi Cuenta (Tarea 11) -->
+                    <!-- Section: My Account -->
                     <div id="settings-sect-account" class="settings-sect-pane active">
-                        <h3 class="settings-page-title">Mi Cuenta</h3>
+                        <h3 class="settings-page-title">My Account</h3>
                         <div class="setting-item">
                             <div class="setting-item-info">
                                 <span class="setting-title">Authentication</span>
@@ -745,7 +745,7 @@
                                                     <img id="assigner-meta-logo" style="max-width: 100%; max-height: 100%; object-fit: contain; display: none;">
                                                 </div>
                                                 <div style="display: flex; flex-direction: column; justify-content: center;">
-                                                    <span id="assigner-meta-name" style="font-weight: 600; font-size: 14px; color: #fff; word-break: break-word; white-space: normal;">Canal</span>
+                                                    <span id="assigner-meta-name" style="font-weight: 600; font-size: 14px; color: #fff; word-break: break-word; white-space: normal;">Channel</span>
                                                     <span id="assigner-meta-id" style="font-size: 12px; color: rgba(255,255,255,0.5);">Num: -</span>
                                                 </div>
                                             </div>
@@ -758,7 +758,7 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Botones para guardar / confirmar -->
+                                            <!-- Save / confirm buttons -->
                                             <div style="display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06);">
                                                 <span style="font-size: 11px; color: rgba(255,255,255,0.4);">Checkbox changes in column 2 are applied dynamically to the channel.</span>
                                                 <button id="assigner-apply-btn" class="primary-btn" style="width: 100%; padding: 8px 12px; font-size: 12px; font-weight: 600; margin: 0; display: flex; align-items: center; justify-content: center; gap: 6px; border: none; border-radius: 999px; background: var(--accent); color: black;">

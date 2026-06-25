@@ -412,7 +412,7 @@ export async function initDeveloperFeatures() {
                 <div class="crud-list-panel" style="flex: 1; border-right: 1px solid rgba(255,255,255,0.08); padding-right: 15px; display: flex; flex-direction: column; min-height: 0; height: 100%;">
                     <div class="crud-list-header" style="margin-bottom: 12px; display: flex; gap: 10px;">
                         <input type="search" id="crud-search" class="dark-input" placeholder="Filtrar..." style="margin: 0; padding: 6px 10px; flex: 1;">
-                        <button id="crud-add-new-btn" class="settings-action-btn" style="margin: 0; white-space: nowrap;">+ Nuevo</button>
+                        <button id="crud-add-new-btn" class="settings-action-btn" style="margin: 0; white-space: nowrap;">+ New</button>
                     </div>
                     <div id="crud-channels-list" class="crud-scroll-panel" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; padding-right: 5px;">
                         <!-- Populated dynamically -->

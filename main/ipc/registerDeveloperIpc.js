@@ -139,7 +139,7 @@ export function registerDeveloperIpc({ ipcMain, context }) {
         <h2>Search Logo for <span style="color: #00ffcc;">\${safeChannelName}</span></h2>
         <input type="text" id="search-input" value="\${safeChannelName} logo png">
         <br>
-        <button id="search-btn">Buscar</button>
+        <button id="search-btn">Search</button>
         <div id="status" style="margin-top: 15px; color: #a5b4fc; font-weight: 600;"></div>
         <div class="results" id="results-container"></div>
 
@@ -187,7 +187,7 @@ export function registerDeveloperIpc({ ipcMain, context }) {
                         urls.push('https://img.logo.dev/' + cleanName.toLowerCase().replace(/\\\\s+/g, '') + '.com?token=pk_test');
                     }
 
-                    statusDiv.innerText = 'Resultados encontrados. Haz clic en uno para recortar a 300x300 e inyectarlo:';
+                    statusDiv.innerText = 'Results found. Click one to crop to 300x300 and inject:';
                     
                     const uniqueUrls = [...new Set(urls)].slice(0, 15);
                     let displayCount = 0;
@@ -239,11 +239,11 @@ export function registerDeveloperIpc({ ipcMain, context }) {
                         statusDiv.innerText = 'Logo injected successfully!';
                         setTimeout(() => window.close(), 600);
                     } catch(e) {
-                        statusDiv.innerText = 'Error CORS. Intenta con otra imagen.';
+                        statusDiv.innerText = 'CORS error. Try another image.';
                     }
                 };
                 img.onerror = () => {
-                    statusDiv.innerText = 'Error al cargar imagen. Intenta con otra.';
+                    statusDiv.innerText = 'Error loading image. Try another one.';
                 };
             }
 
