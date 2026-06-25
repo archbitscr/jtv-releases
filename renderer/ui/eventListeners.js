@@ -376,11 +376,11 @@ export function setupEventListeners() {
         const eye2 = document.getElementById('toggle-new-pin-2');
         if (eye1) {
             eye1.setAttribute('data-lucide', 'eye');
-            eye1.title = "Mostrar PIN";
+            eye1.title = "Show PIN";
         }
         if (eye2) {
             eye2.setAttribute('data-lucide', 'eye');
-            eye2.title = "Mostrar PIN";
+            eye2.title = "Show PIN";
         }
         if (window.lucide) window.lucide.createIcons();
 
@@ -400,7 +400,7 @@ export function setupEventListeners() {
     const updateParentalPinUI = () => {
         const storedHash = localStorage.getItem('jtv_parental_pin');
         if (parentalChangePinBtn) {
-            parentalChangePinBtn.textContent = storedHash ? "Cambiar PIN" : "Crear PIN";
+            parentalChangePinBtn.textContent = storedHash ? "Change PIN" : "Create PIN";
         }
         if (parentalDeletePinBtn) {
             parentalDeletePinBtn.classList.toggle('hidden', !storedHash);
@@ -493,7 +493,7 @@ export function setupEventListeners() {
                 const isPassword = parentalNewPin1.type === 'password';
                 parentalNewPin1.type = isPassword ? 'text' : 'password';
                 toggleNewPin1.setAttribute('data-lucide', isPassword ? 'eye-off' : 'eye');
-                toggleNewPin1.title = isPassword ? "Ocultar PIN" : "Mostrar PIN";
+                toggleNewPin1.title = isPassword ? "Hide PIN" : "Show PIN";
                 if (window.lucide) window.lucide.createIcons();
             }
         };
@@ -505,7 +505,7 @@ export function setupEventListeners() {
                 const isPassword = parentalNewPin2.type === 'password';
                 parentalNewPin2.type = isPassword ? 'text' : 'password';
                 toggleNewPin2.setAttribute('data-lucide', isPassword ? 'eye-off' : 'eye');
-                toggleNewPin2.title = isPassword ? "Ocultar PIN" : "Mostrar PIN";
+                toggleNewPin2.title = isPassword ? "Hide PIN" : "Show PIN";
                 if (window.lucide) window.lucide.createIcons();
             }
         };

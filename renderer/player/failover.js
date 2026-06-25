@@ -87,7 +87,7 @@ function scheduleNextCycle(channelId) {
         retryTimeoutId = null;
         const channel = state.channels?.find(c => c.id === channelId);
         if (!channel) return;
-        setRetryText('Buscando fuentes alternas...');
+        setRetryText('Searching alternate sources...');
         runFailoverCycle(channelId);
     }, delayMs);
 }
@@ -102,7 +102,7 @@ function runFailoverCycle(channelId) {
 
     // Show overlay immediately on first cycle
     showNoSignalOverlay(true);
-    setRetryText('Buscando fuentes alternas...');
+    setRetryText('Searching alternate sources...');
 
     const cfg = window.timeoutsConfig || {};
     const nativeApi = window.jtvAPI;

@@ -152,7 +152,7 @@ export function registerDeveloperIpc({ ipcMain, context }) {
 
             async function searchLogos() {
                 const query = searchInput.value;
-                statusDiv.innerText = 'Buscando...';
+                statusDiv.innerText = 'Searching...';
                 resultsContainer.innerHTML = '';
                 try {
                     const searchUrl = 'https://html.duckduckgo.com/html/?q=' + encodeURIComponent(query);
@@ -219,7 +219,7 @@ export function registerDeveloperIpc({ ipcMain, context }) {
             }
 
             function selectLogo(url) {
-                statusDiv.innerText = 'Procesando e inyectando imagen...';
+                statusDiv.innerText = 'Processing and injecting image...';
                 const img = new Image();
                 img.crossOrigin = 'Anonymous';
                 img.src = url;

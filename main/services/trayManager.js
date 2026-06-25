@@ -19,7 +19,7 @@ export function createTrayManager(context) {
 
         const contextMenu = Menu.buildFromTemplate([
           {
-            label: 'Mostrar JTV',
+            label: 'Show JTV',
             click: () => {
               const win = context.windowManager.getMainWindow();
               if (win) {
@@ -30,7 +30,7 @@ export function createTrayManager(context) {
           },
           { type: 'separator' },
           {
-            label: 'Salir',
+            label: 'Quit',
             click: () => {
               app.isQuiting = true;
               app.quit();

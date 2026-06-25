@@ -305,7 +305,7 @@ async function init() {
     
     if (appLoader) appLoader.classList.remove('hidden');
     if (loaderProgressBar) loaderProgressBar.style.width = '0%';
-    if (loaderMessage) loaderMessage.innerText = 'Inicializando base de datos local...';
+    if (loaderMessage) loaderMessage.innerText = 'Initializing local database...';
 
     // Verify trial period on startup
     const trialCheck = await nativeApi.getNetworkDate().catch(() => ({ expired: false }));
