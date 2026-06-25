@@ -30,10 +30,10 @@
       "package.json",
       "main/**/*",
       "shared/**/*",
-      "build/icon.ico"
+      "dist/assets/icons/icon.ico"
     ],
     "win": {
-      "icon": "build/icon.ico",
+      "icon": "dist/assets/icons/icon.ico",
       "target": [
         "nsis"
       ]
@@ -43,7 +43,6 @@
       "perMachine": true,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
-      "include": "build/installer.nsh",
       "deleteAppDataOnUninstall": false
     }
   },
