@@ -117,22 +117,22 @@ export const state = {
         { name: "XXX", icon: "ban" }
     ],
     filterEvents: [
+        { name: "FIFA 2026", icon: "🏆" },
         { name: "Formula 1", icon: "🏁" },
+        { name: "Motorsport", icon: "🏎️" },
         { name: "MotoGP", icon: "🏍️" },
         { name: "Rally", icon: "🏎️" },
-        { name: "Soccer", icon: "⚽" },
-        { name: "FIFA 2026", icon: "⚽" },
+        { name: "Futbol", icon: "⚽" },
         { name: "NBA", icon: "🏀" },
         { name: "NFL", icon: "🏈" },
         { name: "Boxing", icon: "🥊" },
         { name: "UFC", icon: "🤼" },
         { name: "MLB", icon: "⚾" },
-        { name: "Cricket", icon: "🏏" },
-        { name: "Motorsport", icon: "🏎️" },
         { name: "Golf", icon: "⛳" },
+        { name: "Cricket", icon: "🏏" },
         { name: "Concerts", icon: "🎤" },
         { name: "Awards", icon: "🏆" },
-        { name: "Theater", icon: "🎭" }
+        { name: "Festival", icon: "🎭" }
     ],
     filterList: [],
     dropdownsPopulated: false,
