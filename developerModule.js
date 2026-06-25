@@ -1102,19 +1102,19 @@ async function runSignalCheck(url, videoDot, videoText, audioDot, audioText) {
             // Video Status
             if (res.video) {
                 videoDot.className = 'autotune-dot online';
-                videoText.innerText = 'Activo';
+                videoText.innerText = 'Active';
             } else {
                 videoDot.className = 'autotune-dot offline';
-                videoText.innerText = 'Inactivo';
+                videoText.innerText = 'Inactive';
             }
             
             // Audio Status
             if (res.audio) {
                 audioDot.className = 'autotune-dot online';
-                audioText.innerText = 'Activo';
+                audioText.innerText = 'Active';
             } else {
                 audioDot.className = 'autotune-dot offline';
-                audioText.innerText = 'Inactivo';
+                audioText.innerText = 'Inactive';
             }
         } else {
             let reason = 'Offline';

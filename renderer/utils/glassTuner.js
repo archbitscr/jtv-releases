@@ -87,7 +87,7 @@ function buildModal() {
         </div>
         <div class="glass-tuner-actions">
             <button id="glass-tuner-reset" class="glass-tuner-action-btn">Reset</button>
-            <button id="glass-tuner-copy" class="glass-tuner-action-btn glass-tuner-save-btn">Copiar CSS</button>
+            <button id="glass-tuner-copy" class="glass-tuner-action-btn glass-tuner-save-btn">Copy CSS</button>
         </div>
     `;
     document.body.appendChild(modal);

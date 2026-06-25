@@ -18,7 +18,7 @@ export function updateFullscreenButton() {
     
     fullscreenToggleBtn.classList.toggle('is-fullscreen', state.isAppFullscreen);
     fullscreenToggleIcon.setAttribute('data-lucide', state.isAppFullscreen ? 'minimize' : 'maximize');
-    fullscreenToggleBtn.title = state.isAppFullscreen ? 'Salir de pantalla completa' : 'Pantalla completa';
+    fullscreenToggleBtn.title = state.isAppFullscreen ? 'Exit fullscreen' : 'Fullscreen';
     fullscreenToggleBtn.setAttribute('aria-label', fullscreenToggleBtn.title);
     if (window.lucide) window.lucide.createIcons();
 }

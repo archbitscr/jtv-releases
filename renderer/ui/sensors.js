@@ -10,7 +10,7 @@ export function updateSensorsUI() {
     if (vodEl) vodEl.textContent = String(state.isVodPlaying);
     if (chanEl) {
         if (!state.activeChannelId) {
-            chanEl.textContent = "Ninguno";
+            chanEl.textContent = "None";
         } else {
             const tuned = window.JTV_SENSORS.getTunedChannel();
             chanEl.textContent = tuned ? `${tuned.type}: ${tuned.title || tuned.name || tuned.id}` : `ID: ${state.activeChannelId}`;

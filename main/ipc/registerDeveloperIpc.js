@@ -202,7 +202,7 @@ export function registerDeveloperIpc({ ipcMain, context }) {
                         img.onerror = () => item.remove();
                         img.onload = () => {
                             const label = document.createElement('div');
-                            label.innerText = 'Inyectar';
+                            label.innerText = 'Inject';
                             item.appendChild(label);
                             displayCount++;
                         };
