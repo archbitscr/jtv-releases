@@ -154,3 +154,17 @@ Este documento unifica de forma cronológica todas las mejoras, características
     1.  **Inicio del Período de Prueba:** El trial de 31 días se activa únicamente en la primera sintonía de un canal. El proceso principal obtiene la fecha UTC real de la cabecera HTTP `Date` de red (inmune a cambios de reloj local).
     2.  **Cifrado y Persistencia:** Guardar la fecha encriptada con AES-256 en el Registro de Windows (`HKEY_CURRENT_USER\Software\prnt` bajo el valor `driver_config`).
     3.  **Validación:** Comprobar la diferencia de fecha contra la cabecera HTTP de red en cada inicio/sintonía. Si expira o se altera/elimina la clave del registro, bloquear el acceso.
+
+---
+
+### ⏳ Prioridad 3: Internacionalización
+
+#### 5. Tarea 30: Traducción de la UI al Inglés (Base para i18n)
+*   **Componente:** `index.html`, archivos JS del renderer (`eventListeners.js`, `playerUI.js`, `channelList.js`, `renderAll.js`, `favoritesGrid.js`, `filterAssigner.js`, `filterManager.js`, `tooltips.js`, `navigation.js`, `parental.js`), `developerModule.js`, `style.css`.
+*   **Objetivo:** Convertir todos los textos visibles en español de la interfaz de usuario al inglés. Esto establece la base en inglés para una futura implementación de i18n multi-idioma.
+*   **Alcance:**
+    1.  Textos estáticos en HTML: placeholders, labels, títulos, botones, mensajes de error, modales.
+    2.  Textos dinámicos en JS: alertas, confirms, tooltips generados, mensajes de estado, textos de "no results", textos de EPG fallback.
+    3.  Textos en CSS (pseudo-elementos `::before`/`::after` con `content:`), si existen.
+    4.  **Excluir:** Nombres de canales, nombres de categorías/filtros (English, Español, Sports, etc.), y textos de logs/consola que no son visibles al usuario.
+*   **Nota:** No se implementa i18n en esta tarea. Solo se reemplazan strings hardcodeados de español a inglés directamente en el código fuente.
