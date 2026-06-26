@@ -139,8 +139,8 @@ export async function initDeveloperFeatures() {
     devPane.innerHTML = `
         <h3 class="settings-page-title">Developer Mode</h3>
         <nav class="settings-subnav" aria-label="Developer sections">
-            <button class="settings-subnav-btn active" data-dev-tab="dev-general"><i data-lucide="settings"></i> General</button>
-            <button class="settings-subnav-btn" data-dev-tab="dev-timeouts"><i data-lucide="timer"></i> Timeouts</button>
+            <button class="settings-subnav-btn active" data-dev-tab="dev-tab-general"><i data-lucide="settings"></i> General</button>
+            <button class="settings-subnav-btn" data-dev-tab="dev-tab-timeouts"><i data-lucide="timer"></i> Timeouts</button>
         </nav>
         <div id="dev-tab-general" class="dev-tab-pane">
         <div class="setting-item">
