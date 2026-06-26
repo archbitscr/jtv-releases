@@ -138,6 +138,11 @@ export async function initDeveloperFeatures() {
     devPane.className = 'settings-sect-pane';
     devPane.innerHTML = `
         <h3 class="settings-page-title">Developer Mode</h3>
+        <nav class="settings-subnav" aria-label="Developer sections">
+            <button class="settings-subnav-btn active" data-dev-tab="dev-general"><i data-lucide="settings"></i> General</button>
+            <button class="settings-subnav-btn" data-dev-tab="dev-timeouts"><i data-lucide="timer"></i> Timeouts</button>
+        </nav>
+        <div id="dev-tab-general" class="dev-tab-pane">
         <div class="setting-item">
             <div class="setting-item-info">
                 <span class="setting-title">Glass Tuner</span>
@@ -191,9 +196,8 @@ export async function initDeveloperFeatures() {
                 <span class="settings-switch-slider"></span>
             </label>
         </div>
-        <div class="setting-divider"></div>
-        <div class="developer-timeouts-section" style="padding-top: 10px;">
-            <h4 style="font-size: 15px; color: #00ffcc; margin-top: 15px; margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Timeout Settings</h4>
+        </div>
+        <div id="dev-tab-timeouts" class="dev-tab-pane" style="display: none;">
             <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 15px;">Manually configure or disable system timeouts and watchdog (in milliseconds).</p>
             
             <div style="display: flex; flex-direction: column; gap: 15px;">
@@ -399,11 +403,21 @@ export async function initDeveloperFeatures() {
                 </div>
             </div>
         </div>
-        </div>
     `;
     mainContainer.appendChild(devPane);
 
-    // 2b. Inject Channels CRUD Section Pane (Tarea 18, 20)
+    // Developer subtab switching
+    devPane.querySelectorAll('.settings-subnav-btn[data-dev-tab]').forEach(btn => {
+        btn.onclick = () => {
+            devPane.querySelectorAll('.settings-subnav-btn[data-dev-tab]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            devPane.querySelectorAll('.dev-tab-pane').forEach(p => p.style.display = 'none');
+            const target = document.getElementById(btn.dataset.devTab);
+            if (target) target.style.display = '';
+        };
+    });
+
+    // 2b. Inject Channels CRUD Section Pane
     const devChannelsPane = document.getElementById('developer-channels-crud-container');
     if (devChannelsPane) {
         devChannelsPane.innerHTML = `
