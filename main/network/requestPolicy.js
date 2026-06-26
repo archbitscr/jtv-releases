@@ -4,7 +4,15 @@ import { ALLOWED_DOMAINS, KNOWN_AD_DOMAINS } from './policyConfig.js';
 export function attachRequestPolicy(electronSession, context) {
   electronSession.webRequest.onBeforeRequest((details, callback) => {
     const urlStr = (details.url || '').toLowerCase();
-    if (urlStr.startsWith('file://')) {
+    // Allow Electron/Chromium internal schemes (file, devtools, chrome) through
+    // so DevTools and internal pages can load their own resources.
+    if (
+      urlStr.startsWith('file://') ||
+      urlStr.startsWith('devtools://') ||
+      urlStr.startsWith('chrome://') ||
+      urlStr.startsWith('chrome-extension://') ||
+      urlStr.startsWith('chrome-devtools://')
+    ) {
       return callback({ cancel: false });
     }
 
