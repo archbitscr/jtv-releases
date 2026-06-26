@@ -45,11 +45,6 @@ export function getOrGenerateTooltip(el) {
         return 'Delete this channel permanently';
     }
 
-    if (id === 'crud-logo-scraper-btn') {
-        el.setAttribute('data-tooltip', 'Search and optimize logo online');
-        return 'Search and optimize logo online';
-    }
-
     if (id === 'crud-logo-upload-btn') {
         el.setAttribute('data-tooltip', 'Upload a local image as logo');
         return 'Upload a local image as logo';

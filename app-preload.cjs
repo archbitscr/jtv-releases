@@ -75,8 +75,6 @@ contextBridge.exposeInMainWorld('jtvAPI', {
     relaunch: () => ipcRenderer.invoke('relaunch'),
     googleLogin: () => ipcRenderer.invoke('google-login'),
     getNetworkDate: (streamUrl) => ipcRenderer.invoke('get-network-date', streamUrl),
-    openLogoScraper: (channelName) => ipcRenderer.invoke('open-logo-scraper', channelName),
-    onLogoScraperResult: (callback) => subscribe('logo-scraper-result', callback),
     checkChannelStatus: (url) => ipcRenderer.invoke('check-channel-status', url),
     onWebviewHttpError: (callback) => subscribe('webview-http-error', callback),
     onWebviewLoadFailed: (callback) => subscribe('webview-load-failed', callback)

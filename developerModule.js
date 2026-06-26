@@ -490,15 +490,7 @@ export async function initDeveloperFeatures() {
                             </div>
                         </div>
 
-                        <!-- 7. Optimize Logo -->
-                        <div class="edit-group" style="display:flex; flex-direction:column; gap:5px; margin-top: 4px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Optimize Logo</label>
-                            <button type="button" id="crud-logo-scraper-btn" class="settings-action-btn" style="margin-top: 2px; width: 100%; padding: 8px 16px; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                                <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i> Search & Optimize Logo
-                            </button>
-                        </div>
-                        
-                        <!-- 8. Save / Delete Buttons -->
+                        <!-- 7. Save / Delete Buttons -->
                         <div style="display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 15px;">
                             <button type="button" id="crud-save-btn" class="settings-action-btn" style="flex: 1; padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600;">
                                 <i data-lucide="save" style="width: 16px; height: 16px;"></i> Save Channel
@@ -758,18 +750,6 @@ export async function initDeveloperFeatures() {
         };
     }
 
-    const logoScraperBtn = document.getElementById('crud-logo-scraper-btn');
-    if (logoScraperBtn) {
-        logoScraperBtn.onclick = async () => {
-            const name = document.getElementById('crud-name-input').value.trim();
-            if (!name) {
-                alert('Enter a channel name first.');
-                return;
-            }
-            await nativeApi.openLogoScraper(name);
-        };
-    }
-
     // 6. Global click diagnostics listener
     document.addEventListener('mousedown', (e) => {
         if (!developerModeEnabled || !showDiagnosticClicks) return;
@@ -794,16 +774,6 @@ export async function initDeveloperFeatures() {
         setTimeout(() => {
             dot.remove();
         }, 900);
-    });
-
-    // 7. Receive Scraper result
-    nativeApi.onLogoScraperResult((dataUrl) => {
-        const logoInput = document.getElementById('crud-logo-input');
-        if (logoInput) {
-            logoInput.value = dataUrl;
-            updateLogoPreview(dataUrl);
-            checkCrudFormDirty();
-        }
     });
 
     if (logoInput) {
