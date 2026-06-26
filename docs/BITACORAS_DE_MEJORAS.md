@@ -115,6 +115,11 @@ Este documento unifica de forma cronológica todas las mejoras, características
 *   ✅ **Tarea 27:** Reglas de Zapping por Modos — todos vs favoritos con listas filtradas independientes.
 *   ✅ **Tarea 28 / Item 14:** Estabilización de Landing Page — parpadeo eliminado, submenús organizados.
 *   ✅ **Tarea 29 / Item 15:** Reestructuración de Filtros — 3 dropdowns unificados compartidos por sidebar y landing.
+*   ✅ **Tarea 31:** Emojis en Dropdown de Géneros — `populateDropdowns()` generalizada para mostrar emojis en cualquier filtro con iconos emoji, no solo eventos.
+*   ✅ **Tarea 32:** Emojis en Iconos del Filtro de Géneros — iconos Lucide reemplazados por emojis en `appState.js` (🏆📰🎬📺😂🎨🧸👥🎵🎥💫🍴🌍🔍🌐🔞). Galería unificada con eventos.
+*   ✅ **Tarea 33:** Eliminación del Optimizador de Logo y Mini-App — removidos el botón, handler IPC, ventana BrowserWindow, y APIs del preload (~200 líneas eliminadas).
+*   ✅ **Tarea 34:** Reparación de Open DevTools — tres bugs corregidos: (1) `developerModeEnabled` no se sincronizaba al main process al guardar estado, (2) `nativeApi.setDeveloperMode()` no existía en preload y silenciosamente reseteaba el flag, (3) la política ZeroTrust bloqueaba scripts `devtools://` impidiendo que la UI de DevTools se renderizara.
+*   ✅ **Tarea 35:** Segregación de Developer en Subpestañas — creadas subpestañas "General" y "Timeouts" usando clases CSS existentes (`.settings-subnav`), con clase `.dev-subnav-btn` para evitar conflicto con el handler global de filtros.
 
 ---
 
@@ -169,37 +174,3 @@ Este documento unifica de forma cronológica todas las mejoras, características
     4.  **Excluir:** Nombres de canales, nombres de categorías/filtros, y textos de logs/consola.
 *   **Subtarea completada:** Traducción de toda la UI de español a inglés como base (textos estáticos en HTML, textos dinámicos en JS, tooltips, alertas, mensajes de estado, comentarios de código).
 
----
-
-### ⏳ Prioridad 4: UI y Limpieza
-
-#### 6. Tarea 31: Emojis en Dropdown de Géneros del Landing Grid
-*   **Componente:** `populateDropdowns()` en `filterManager.js`, `appState.js`.
-*   **Acción Requerida:**
-    1.  Asignar emojis a los géneros de canales (como ya los tiene el filtro de eventos).
-    2.  Mostrar los emojis en el dropdown de géneros del landing grid, igual que el dropdown de eventos.
-
-#### 7. Tarea 32: Emojis en Iconos del Filtro de Géneros
-*   **Componente:** `appState.js` (definición de `filterGenres`).
-*   **Acción Requerida:**
-    1.  Reemplazar los iconos Lucide de los géneros por emojis en la configuración por defecto.
-    2.  El sistema de renderizado ya soporta emojis — solo requiere cambiar los datos.
-
-#### 8. Tarea 33: Eliminar Optimizador de Logo y Mini-App
-*   **Componente:** `developerModule.js`, `registerDeveloperIpc.js`.
-*   **Acción Requerida:**
-    1.  Remover el botón "Search & Optimize Logo" del editor CRUD.
-    2.  Eliminar el handler IPC que abre la ventana de búsqueda de logos y todo el HTML/JS asociado.
-
-#### 9. Tarea 34: Reparar Open DevTools
-*   **Componente:** `developerModule.js`, `registerDeveloperIpc.js`.
-*   **Acción Requerida:**
-    1.  Diagnosticar por qué el botón "Open DevTools" no abre la ventana de herramientas de desarrollo.
-    2.  Verificar sincronización del flag `developerModeEnabled` entre renderer y main process.
-
-#### 10. Tarea 35: Segregar Developer en Subpestañas General/Timeout
-*   **Componente:** `developerModule.js`.
-*   **Acción Requerida:**
-    1.  Crear navegación de subpestañas dentro del pane de Developer con dos secciones: "General" y "Timeout".
-    2.  Mover el bloque de Timeout Settings a la subpestaña "Timeout".
-    3.  Reutilizar las clases CSS existentes (`.settings-subnav`, `.settings-subnav-btn`) para mantener consistencia visual.
