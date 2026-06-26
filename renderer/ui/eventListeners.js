@@ -1801,6 +1801,80 @@ export function setupEventListeners() {
             renderParentalChannelsList(e.target.value);
         };
     }
+
+    // Initialize global scrollbar auto-hide behavior
+    initGlobalScrollbarAutoHide();
+}
+
+// Global scrollbar auto-hide helper logic
+const scrollbarHideTimers = new WeakMap();
+
+function showScrollbar(scrollEl) {
+    if (!scrollEl) return;
+    scrollEl.classList.add('scrollbar-active');
+
+    const currentTimer = scrollbarHideTimers.get(scrollEl);
+    if (currentTimer) clearTimeout(currentTimer);
+
+    const nextTimer = setTimeout(() => {
+        scrollEl.classList.remove('scrollbar-active');
+        scrollbarHideTimers.delete(scrollEl);
+    }, 1500);
+
+    scrollbarHideTimers.set(scrollEl, nextTimer);
+}
+
+function hideScrollbarFast(scrollEl) {
+    if (!scrollEl) return;
+    const currentTimer = scrollbarHideTimers.get(scrollEl);
+    if (currentTimer) clearTimeout(currentTimer);
+
+    const nextTimer = setTimeout(() => {
+        scrollEl.classList.remove('scrollbar-active');
+        scrollbarHideTimers.delete(scrollEl);
+    }, 300);
+
+    scrollbarHideTimers.set(scrollEl, nextTimer);
+}
+
+function initGlobalScrollbarAutoHide() {
+    const scrollSelectors = [
+        '.scroll-area',
+        '.settings-sidebar',
+        '.settings-main-content',
+        '.scroll-panel',
+        '.crud-scroll-panel',
+        '.filter-group-list',
+        '.custom-select-options',
+        '.api-code-block',
+        '.glass-tuner-body'
+    ].join(', ');
+
+    // 1. Mouse hover activity
+    document.addEventListener('mouseover', (e) => {
+        const scrollEl = e.target.closest(scrollSelectors);
+        if (scrollEl) {
+            showScrollbar(scrollEl);
+        }
+    });
+
+    // 2. Mouse leave activity
+    document.addEventListener('mouseout', (e) => {
+        const scrollEl = e.target.closest(scrollSelectors);
+        if (scrollEl && (!e.relatedTarget || !scrollEl.contains(e.relatedTarget))) {
+            hideScrollbarFast(scrollEl);
+        }
+    });
+
+    // 3. Movement, scrolling and touch activity
+    ['mousemove', 'wheel', 'scroll', 'touchstart'].forEach(eventName => {
+        document.addEventListener(eventName, (e) => {
+            const scrollEl = e.target.closest(scrollSelectors);
+            if (scrollEl) {
+                showScrollbar(scrollEl);
+            }
+        }, { passive: true, capture: eventName === 'scroll' });
+    });
 }
 
 // VOD Scraping, Detail and Cache functions have been moved to vodContent.js and vodCache.js
