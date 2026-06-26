@@ -1847,7 +1847,13 @@ function initGlobalScrollbarAutoHide() {
         '.filter-group-list',
         '.custom-select-options',
         '.api-code-block',
-        '.glass-tuner-body'
+        '.glass-tuner-body',
+        '.dash-custom-select-menu',
+        '.compact-picker',
+        '.filter-icon-dropdown',
+        '#parental-allowed-channels-list',
+        '#assigner-metadata-content',
+        '#details-overview'
     ].join(', ');
 
     // 1. Mouse hover activity
