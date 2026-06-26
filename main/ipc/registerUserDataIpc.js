@@ -59,6 +59,12 @@ export function registerUserDataIpc({ ipcMain, context }) {
     if (data && data.globalDomain) {
       context.state.globalDomain = data.globalDomain;
     }
+    if (data && data.developerModeEnabled !== undefined) {
+      context.state.developerModeEnabled = !!data.developerModeEnabled;
+    }
+    if (data && data.diagnosticsEnabled !== undefined) {
+      context.state.diagnosticsEnabled = !!data.diagnosticsEnabled;
+    }
     if (data && data.cloudflareProtectionEnabled !== undefined) {
       context.state.cloudflareProtectionEnabled = data.cloudflareProtectionEnabled;
       if (data.cloudflareProtectionEnabled) {
