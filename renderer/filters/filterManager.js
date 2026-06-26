@@ -37,8 +37,8 @@ export function populateDropdowns() {
     const genres = new Set((state.filterGenres || []).map(f => f.name));
     const events = new Set((state.filterEvents || []).map(f => f.name));
 
-    const getEventIconHtml = (eventName) => {
-        const found = (state.filterEvents || []).find(f => f.name.toLowerCase() === eventName.toLowerCase());
+    const getFilterEmoji = (name, filterList) => {
+        const found = (filterList || []).find(f => f.name.toLowerCase() === name.toLowerCase());
         if (found && found.icon) {
             const isEmoji = /[^\x00-\x7F]/.test(found.icon) || found.icon.length <= 2;
             if (isEmoji) return found.icon;
@@ -46,20 +46,20 @@ export function populateDropdowns() {
         return '';
     };
 
-    const updateSelect = (ids, set, defaultText, isEvent = false) => {
+    const updateSelect = (ids, set, defaultText, filterList = null) => {
         ids.forEach(id => {
             const select = document.getElementById(id);
             if (!select) return;
             const currentVal = select.value;
             select.innerHTML = `<option value="all">${defaultText}</option>`;
-            const sortedArray = isEvent ? Array.from(set) : Array.from(set).sort();
+            const sortedArray = filterList ? Array.from(set) : Array.from(set).sort();
             sortedArray.forEach(val => {
                 const opt = document.createElement('option');
                 opt.value = val;
 
                 let displayText = val;
-                if (isEvent) {
-                    const emoji = getEventIconHtml(val);
+                if (filterList) {
+                    const emoji = getFilterEmoji(val, filterList);
                     if (emoji) displayText = emoji + ' ' + val;
                 }
                 opt.textContent = displayText;
@@ -74,8 +74,8 @@ export function populateDropdowns() {
     };
 
     updateSelect(['filter-select-language'], languages, 'All');
-    updateSelect(['filter-select-genre'], genres, 'All');
-    updateSelect(['filter-select-event'], events, 'All', true);
+    updateSelect(['filter-select-genre'], genres, 'All', state.filterGenres);
+    updateSelect(['filter-select-event'], events, 'All', state.filterEvents);
     state.dropdownsPopulated = true;
     if (ext.initDashCustomSelects) ext.initDashCustomSelects();
 }
