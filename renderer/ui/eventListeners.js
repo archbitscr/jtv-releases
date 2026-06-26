@@ -815,7 +815,7 @@ export function setupEventListeners() {
         };
     });
 
-    document.querySelectorAll('.settings-subnav-btn').forEach(btn => {
+    document.querySelectorAll('.settings-subnav-btn:not(.dev-subnav-btn)').forEach(btn => {
         btn.onclick = () => setSettingsFilterTab(btn.dataset.filterType);
     });
 
