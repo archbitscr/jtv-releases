@@ -23,8 +23,8 @@ export function initIconPickers() {
         const dropdown = document.createElement('div');
         dropdown.className = 'filter-icon-dropdown';
         
-        const isEventPicker = btn.id === 'event-icon-select-btn';
-        const iconsToUse = isEventPicker ? eventIconsList.map(item => item.name) : iconsList;
+        const isEmojiPicker = btn.id === 'event-icon-select-btn' || btn.id === 'genre-icon-select-btn' || btn.id === 'series-icon-select-btn' || btn.id === 'movies-icon-select-btn';
+        const iconsToUse = isEmojiPicker ? eventIconsList.map(item => item.name) : iconsList;
         
         const currentSelected = btn.getAttribute('data-selected-icon') || btn.querySelector('i')?.getAttribute('data-lucide') || btn.querySelector('.emoji-icon')?.textContent || '';
         if (isEventPicker) {
@@ -35,7 +35,7 @@ export function initIconPickers() {
             const opt = document.createElement('div');
             opt.className = 'filter-icon-option';
             
-            if (isEventPicker) {
+            if (isEmojiPicker) {
                 const foundColor = eventIconsList.find(i => i.name === iconName)?.color;
                 if (foundColor) {
                     opt.style.color = foundColor;
@@ -57,7 +57,7 @@ export function initIconPickers() {
                 btn.innerHTML = isEmoji
                     ? `<span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">${emojiToHtml(iconName, 16)}</span>`
                     : `<i data-lucide="${iconName}"></i>`;
-                if (isEventPicker) {
+                if (isEmojiPicker) {
                     updateEventIconSelectBtnColor(btn, iconName);
                 }
                 
