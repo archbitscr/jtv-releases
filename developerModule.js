@@ -560,17 +560,6 @@ export async function initDeveloperFeatures() {
             }
             developerModeEnabled = !!e.target.checked;
 
-            let res;
-            try {
-                res = await nativeApi.setDeveloperMode(developerModeEnabled);
-            } catch (err) {
-                res = { error: err.message };
-            }
-
-            if (res && res.error) {
-                developerModeEnabled = false;
-            }
-
             if (!developerModeEnabled) {
                 diagnosticsEnabled = false;
                 showDiagnosticClicks = false;

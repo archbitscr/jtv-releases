@@ -112,7 +112,17 @@ export const eventIconsList = [
     { name: '👍', color: '#3b82f6', label: 'Like' },
     { name: '🤝', color: '#10b981', label: 'Agreement' },
     { name: '🍀', color: '#22c55e', label: 'Clover / Luck' },
-    { name: '🧘', color: '#a855f7', label: 'Yoga' }
+    { name: '🧘', color: '#a855f7', label: 'Yoga' },
+    { name: '📰', color: '#64748b', label: 'News' },
+    { name: '😂', color: '#eab308', label: 'Comedy' },
+    { name: '🧸', color: '#f59e0b', label: 'Kids / Toys' },
+    { name: '👥', color: '#6366f1', label: 'Reality / People' },
+    { name: '🎥', color: '#475569', label: 'Documentary / Film' },
+    { name: '🍴', color: '#f97316', label: 'Food / Dining' },
+    { name: '🌍', color: '#10b981', label: 'Travel / World' },
+    { name: '🔍', color: '#3b82f6', label: 'Investigation / Search' },
+    { name: '🌐', color: '#06b6d4', label: 'Regional / Global' },
+    { name: '🔞', color: '#ef4444', label: 'Adult Content' }
 ];
 
 const customEmojiIcons = {
