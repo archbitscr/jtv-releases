@@ -261,11 +261,11 @@ export function showModule(moduleName) {
         document.querySelector('.header-nav-btn[data-nav="settings"]')?.classList.add('active');
         
         document.querySelectorAll('.settings-tab-btn').forEach(b => b.classList.remove('active'));
-        const accountTabBtn = document.querySelector('.settings-tab-btn[data-settings-tab="account"]');
-        if (accountTabBtn) accountTabBtn.classList.add('active');
-        
+        const generalTabBtn = document.querySelector('.settings-tab-btn[data-settings-tab="general"]');
+        if (generalTabBtn) generalTabBtn.classList.add('active');
+
         document.querySelectorAll('.settings-sect-pane').forEach(pane => {
-            pane.classList.toggle('active', pane.id === 'settings-sect-account');
+            pane.classList.toggle('active', pane.id === 'settings-sect-general');
         });
         
         document.title = "JTV - Settings";
