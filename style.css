@@ -35,6 +35,40 @@ body, html {
     scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
 
+/* Global minimalist Webkit scrollbars (thin, rounded, no arrows) */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4) !important;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
 #app {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
 }
@@ -794,7 +828,12 @@ body.player-active .edge-mask {
     padding-bottom: 5px;
 }
 
-.category-chips { scrollbar-width: none; }
+.category-chips {
+    scrollbar-width: none;
+}
+.category-chips::-webkit-scrollbar {
+    display: none;
+}
 
 .chip:hover { color: white; border-color: var(--accent); }
 .chip.active { background: var(--accent-dim); color: var(--accent); border-color: var(--accent); }
@@ -3057,9 +3096,19 @@ body.hide-cursor * {
     transition: scrollbar-color 0.6s ease;
 }
 
+#developer-channels-crud-container .crud-scroll-panel::-webkit-scrollbar-thumb {
+    background: transparent;
+    transition: background-color 0.6s ease;
+}
+
 #developer-channels-crud-container .crud-scroll-panel.scrollbar-active {
     scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
     transition: scrollbar-color 0.15s ease;
+}
+
+#developer-channels-crud-container .crud-scroll-panel.scrollbar-active::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.22);
+    transition: background-color 0.15s ease;
 }
 
 #developer-channels-crud-container #crud-channel-form {

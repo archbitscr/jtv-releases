@@ -27,7 +27,7 @@ export function showNoSignalOverlay(show, type = 'signal') {
     if (!overlay) return;
     if (show) {
         const icon = document.getElementById('no-signal-icon');
-        if (icon) icon.src = type === 'internet' ? './assets/no-internet.png' : './assets/no-signal.png';
+        if (icon) icon.src = type === 'internet' ? './assets/images/no-internet.png' : './assets/images/no-signal.png';
         const titleEl = document.querySelector('#no-signal-overlay h2');
         if (titleEl) titleEl.textContent = type === 'internet' ? 'No Internet' : 'No Signal';
         overlay.classList.remove('hidden');

@@ -30,10 +30,10 @@
       "package.json",
       "main/**/*",
       "shared/**/*",
-      "dist/assets/icons/icon.ico"
+      "dist/assets/images/JTV.ico"
     ],
     "win": {
-      "icon": "dist/assets/icons/icon.ico",
+      "icon": "dist/assets/images/JTV.ico",
       "target": [
         "nsis"
       ]
