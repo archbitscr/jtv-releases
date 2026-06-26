@@ -31,7 +31,7 @@ export const state = {
     currentlyWatchingId: null,
     lastTunedChannel: null,
     shouldRestoreTunedChannel: false,
-    zapSourceTab: "channels",
+    zapSourceTab: "favorites",
 
     // Settings & API Configuration
     globalDomain: "https://dlhd.pk/",
@@ -163,11 +163,11 @@ export const state = {
     currentPinCallback: null,
 
     // Feature Flags
-    audioLevelerEnabled: false,
+    audioLevelerEnabled: true,
     hwAccelEnabled: true,
     minimizeToTray: false,
-    preventSleep: false,
-    cloudflareProtectionEnabled: false,
+    preventSleep: true,
+    cloudflareProtectionEnabled: true,
     savedData: null,
 
     // Assigner / Event Assigner
