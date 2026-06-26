@@ -27,7 +27,7 @@ export function initIconPickers() {
         const iconsToUse = isEmojiPicker ? eventIconsList.map(item => item.name) : iconsList;
         
         const currentSelected = btn.getAttribute('data-selected-icon') || btn.querySelector('i')?.getAttribute('data-lucide') || btn.querySelector('.emoji-icon')?.textContent || '';
-        if (isEventPicker) {
+        if (isEmojiPicker) {
             updateEventIconSelectBtnColor(btn, currentSelected);
         }
         
