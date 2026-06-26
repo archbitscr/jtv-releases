@@ -3,6 +3,7 @@ import { escapeHtml } from '../utils/sanitize.js';
 import { highlightText } from '../utils/domHelpers.js';
 import { sanitizeIconName } from '../utils/sanitize.js';
 import { sortCategories } from './filterManager.js';
+import { emojiToHtml } from './filterState.js';
 import { saveChannelsAndFilters } from '../services/stateManager.js';
 import { renderSettingsFilters } from '../render/renderAll.js';
 
@@ -352,7 +353,7 @@ export function renderAssignerEvents() {
             <input type="checkbox" class="assigner-event-checkbox" data-event-name="${escapeHtml(filter.name)}" style="margin: 0; width: 15px; height: 15px; cursor: pointer;" ${isChecked ? 'checked' : ''}>
             <span style="font-size: 13px; color: #fff; font-weight: 500; display: flex; align-items: center; gap: 6px;">
                 ${isEmoji 
-                    ? `<span class="emoji-icon" style="font-size: 14px; display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px;">${filter.icon}</span>`
+                    ? `<span class="emoji-icon" style="font-size: 14px; display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px;">${emojiToHtml(filter.icon, 14)}</span>`
                     : `<i data-lucide="${sanitizeIconName(filter.icon)}" style="width: 14px; height: 14px; color: #a5b4fc;"></i>`}
                 ${escapeHtml(filter.name)}
             </span>

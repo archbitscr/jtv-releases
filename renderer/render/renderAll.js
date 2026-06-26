@@ -1,6 +1,7 @@
 import { state } from '../state/appState.js';
 import { sanitizeIconName, escapeHtml } from '../utils/sanitize.js';
 import { syncFilterList } from '../filters/filterManager.js';
+import { emojiToHtml } from '../filters/filterState.js';
 import { saveChannelsAndFilters } from '../services/stateManager.js';
 import Sortable from 'sortablejs';
 
@@ -62,7 +63,7 @@ export function renderSettingsFilters() {
             item.innerHTML = `
                 <div class="item-details" style="flex: 1; display: flex; align-items: center; gap: 6px;">
                     ${isEmoji 
-                        ? `<span class="emoji-icon" style="font-size: 14px; display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px;">${filter.icon}</span>`
+                        ? `<span class="emoji-icon" style="font-size: 14px; display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px;">${emojiToHtml(filter.icon, 14)}</span>`
                         : `<i data-lucide="${sanitizeIconName(filter.icon)}" style="color: ${iconColor} !important;"></i>`}
                     <span>${escapeHtml(filter.name)}</span>
                 </div>

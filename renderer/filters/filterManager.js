@@ -1,5 +1,5 @@
 import { state } from '../state/appState.js';
-import { eventIconsList, mapIconToEmoji, getGenreIcon } from './filterState.js';
+import { eventIconsList, mapIconToEmoji, getGenreIcon, emojiToHtml } from './filterState.js';
 import { sanitizeIconName, escapeHtml, sanitizeMediaUrl } from '../utils/sanitize.js';
 import { getPlaceholderHtml, TV_ICON_SVG } from '../utils/domHelpers.js';
 
@@ -355,7 +355,7 @@ export function renderChannelFiltersManager(channel) {
             const isEmoji = (filter.icon && /[^\x00-\x7F]/.test(filter.icon)) || (filter.icon && filter.icon.length <= 2);
             chip.innerHTML = `
                 ${isEmoji 
-                    ? `<span class="emoji-icon" style="font-size: 14px; display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; margin-right: 4px;">${filter.icon}</span>`
+                    ? `<span class="emoji-icon" style="font-size: 14px; display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; margin-right: 4px;">${emojiToHtml(filter.icon, 14)}</span>`
                     : `<i data-lucide="${filter.icon}"></i>`}
                 <span>${filter.name || catName}</span>
                 <button class="remove-btn" onclick="removeFilterFromChannel('${catName}')"><i data-lucide="x"></i></button>
@@ -484,7 +484,7 @@ export function startEditingFilter(type, filter) {
             selectBtn.setAttribute('data-selected-icon', filter.icon);
             const isEmoji = (filter.icon && /[^\x00-\x7F]/.test(filter.icon)) || (filter.icon && filter.icon.length <= 2);
             selectBtn.innerHTML = isEmoji
-                ? `<span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">${filter.icon}</span>`
+                ? `<span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">${emojiToHtml(filter.icon, 16)}</span>`
                 : `<i data-lucide="${sanitizeIconName(filter.icon)}"></i>`;
             if (selectBtnId === 'event-icon-select-btn') {
                 updateEventIconSelectBtnColor(selectBtn, filter.icon);

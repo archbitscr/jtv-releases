@@ -9,6 +9,7 @@ import { warmupVodCache } from '../vod/vodCache.js';
 import { hashPIN, verifyPIN, promptParentalPIN, isParentalTimeLocked, getCurrentPinCallback } from '../settings/parental.js';
 import { applyWallpaper } from '../settings/wallpaper.js';
 import { syncFilterList, populateDropdowns, removeSettingsFilter, removeFilter, updateEventIconSelectBtnColor } from '../filters/filterManager.js';
+import { emojiToHtml } from '../filters/filterState.js';
 import { syncCustomSelect, initDashCustomSelects } from '../utils/customSelect.js';
 import { initIconPickers } from '../utils/iconPicker.js';
 import { initCustomTooltips } from '../utils/tooltips.js';
@@ -1028,7 +1029,7 @@ export function setupEventListeners() {
                             selectBtn.setAttribute('data-selected-icon', defaultIcon);
                             const isEmoji = (defaultIcon && /[^\x00-\x7F]/.test(defaultIcon)) || (defaultIcon && defaultIcon.length <= 2);
                             selectBtn.innerHTML = isEmoji
-                                ? `<span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">${defaultIcon}</span>`
+                                ? `<span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">${emojiToHtml(defaultIcon, 16)}</span>`
                                 : `<i data-lucide="${defaultIcon}"></i>`;
                         }
                     }

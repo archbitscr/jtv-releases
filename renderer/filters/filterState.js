@@ -115,6 +115,18 @@ export const eventIconsList = [
     { name: '🧘', color: '#a855f7', label: 'Yoga' }
 ];
 
+const customEmojiIcons = {
+    '🎾': './assets/images/tennis.svg',
+};
+
+export function emojiToHtml(emoji, size = 14) {
+    const src = customEmojiIcons[emoji];
+    if (src) {
+        return `<img src="${src}" alt="${emoji}" style="width: ${size}px; height: ${size}px; vertical-align: middle; object-fit: contain;">`;
+    }
+    return emoji;
+}
+
 export function mapIconToEmoji(iconOrName) {
     if (!iconOrName) return '🏁';
     const norm = iconOrName.toLowerCase().trim();

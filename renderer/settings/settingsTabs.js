@@ -1,5 +1,6 @@
 import { state } from '../state/appState.js';
 import { renderSettingsFilters } from '../render/renderAll.js';
+import { emojiToHtml } from '../filters/filterState.js';
 
 export function setSettingsFilterTab(tab) {
     state.activeSettingsFilterTab = tab;
@@ -27,7 +28,7 @@ export function setSettingsFilterTab(tab) {
                 selectBtn.setAttribute('data-selected-icon', defIcon);
                 const isEmoji = (defIcon && /[^\x00-\x7F]/.test(defIcon)) || (defIcon && defIcon.length <= 2);
                 selectBtn.innerHTML = isEmoji
-                    ? `<span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">${defIcon}</span>`
+                    ? `<span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">${emojiToHtml(defIcon, 16)}</span>`
                     : `<i data-lucide="${defIcon}"></i>`;
             }
         }

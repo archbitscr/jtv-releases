@@ -1,4 +1,4 @@
-import { eventIconsList } from '../filters/filterState.js';
+import { eventIconsList, emojiToHtml } from '../filters/filterState.js';
 import { updateEventIconSelectBtnColor } from '../filters/filterManager.js';
 
 export function initIconPickers() {
@@ -48,14 +48,14 @@ export function initIconPickers() {
             opt.setAttribute('data-icon', iconName);
             const isEmoji = (iconName && /[^\x00-\x7F]/.test(iconName)) || (iconName && iconName.length <= 2);
             opt.innerHTML = isEmoji
-                ? `<span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">${iconName}</span>`
+                ? `<span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">${emojiToHtml(iconName, 16)}</span>`
                 : `<i data-lucide="${iconName}"></i>`;
-            
+
             opt.onclick = (e) => {
                 e.stopPropagation();
                 btn.setAttribute('data-selected-icon', iconName);
                 btn.innerHTML = isEmoji
-                    ? `<span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">${iconName}</span>`
+                    ? `<span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">${emojiToHtml(iconName, 16)}</span>`
                     : `<i data-lucide="${iconName}"></i>`;
                 if (isEventPicker) {
                     updateEventIconSelectBtnColor(btn, iconName);
