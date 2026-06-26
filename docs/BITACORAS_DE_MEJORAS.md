@@ -159,12 +159,47 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ### ⏳ Prioridad 3: Internacionalización
 
-#### 5. Tarea 30: Traducción de la UI al Inglés (Base para i18n)
-*   **Componente:** `index.html`, archivos JS del renderer (`eventListeners.js`, `playerUI.js`, `channelList.js`, `renderAll.js`, `favoritesGrid.js`, `filterAssigner.js`, `filterManager.js`, `tooltips.js`, `navigation.js`, `parental.js`), `developerModule.js`, `style.css`.
-*   **Objetivo:** Convertir todos los textos visibles en español de la interfaz de usuario al inglés. Esto establece la base en inglés para una futura implementación de i18n multi-idioma.
-*   **Alcance:**
-    1.  Textos estáticos en HTML: placeholders, labels, títulos, botones, mensajes de error, modales.
-    2.  Textos dinámicos en JS: alertas, confirms, tooltips generados, mensajes de estado, textos de "no results", textos de EPG fallback.
-    3.  Textos en CSS (pseudo-elementos `::before`/`::after` con `content:`), si existen.
-    4.  **Excluir:** Nombres de canales, nombres de categorías/filtros (English, Español, Sports, etc.), y textos de logs/consola que no son visibles al usuario.
-*   **Nota:** No se implementa i18n en esta tarea. Solo se reemplazan strings hardcodeados de español a inglés directamente en el código fuente.
+#### 5. Tarea 30: Soporte Multi-idioma (i18n)
+*   **Componente:** Todos los archivos del renderer y main process con textos visibles al usuario.
+*   **Objetivo:** Implementar un sistema de internacionalización (i18n) que permita a la app funcionar en múltiples idiomas, con inglés como idioma base.
+*   **Acción Requerida:**
+    1.  Extraer todos los strings hardcodeados de la UI a archivos de traducción (ej. `locales/en.json`, `locales/es.json`).
+    2.  Implementar un sistema de carga de idioma basado en la preferencia del usuario.
+    3.  Agregar selector de idioma de interfaz en Ajustes Generales.
+    4.  **Excluir:** Nombres de canales, nombres de categorías/filtros, y textos de logs/consola.
+*   **Subtarea completada:** Traducción de toda la UI de español a inglés como base (textos estáticos en HTML, textos dinámicos en JS, tooltips, alertas, mensajes de estado, comentarios de código).
+
+---
+
+### ⏳ Prioridad 4: UI y Limpieza
+
+#### 6. Tarea 31: Emojis en Dropdown de Géneros del Landing Grid
+*   **Componente:** `populateDropdowns()` en `filterManager.js`, `appState.js`.
+*   **Acción Requerida:**
+    1.  Asignar emojis a los géneros de canales (como ya los tiene el filtro de eventos).
+    2.  Mostrar los emojis en el dropdown de géneros del landing grid, igual que el dropdown de eventos.
+
+#### 7. Tarea 32: Emojis en Iconos del Filtro de Géneros
+*   **Componente:** `appState.js` (definición de `filterGenres`).
+*   **Acción Requerida:**
+    1.  Reemplazar los iconos Lucide de los géneros por emojis en la configuración por defecto.
+    2.  El sistema de renderizado ya soporta emojis — solo requiere cambiar los datos.
+
+#### 8. Tarea 33: Eliminar Optimizador de Logo y Mini-App
+*   **Componente:** `developerModule.js`, `registerDeveloperIpc.js`.
+*   **Acción Requerida:**
+    1.  Remover el botón "Search & Optimize Logo" del editor CRUD.
+    2.  Eliminar el handler IPC que abre la ventana de búsqueda de logos y todo el HTML/JS asociado.
+
+#### 9. Tarea 34: Reparar Open DevTools
+*   **Componente:** `developerModule.js`, `registerDeveloperIpc.js`.
+*   **Acción Requerida:**
+    1.  Diagnosticar por qué el botón "Open DevTools" no abre la ventana de herramientas de desarrollo.
+    2.  Verificar sincronización del flag `developerModeEnabled` entre renderer y main process.
+
+#### 10. Tarea 35: Segregar Developer en Subpestañas General/Timeout
+*   **Componente:** `developerModule.js`.
+*   **Acción Requerida:**
+    1.  Crear navegación de subpestañas dentro del pane de Developer con dos secciones: "General" y "Timeout".
+    2.  Mover el bloque de Timeout Settings a la subpestaña "Timeout".
+    3.  Reutilizar las clases CSS existentes (`.settings-subnav`, `.settings-subnav-btn`) para mantener consistencia visual.
