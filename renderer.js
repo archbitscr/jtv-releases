@@ -380,30 +380,12 @@ async function init() {
             }
         }
 
-        const defaultEvents = [
-            { name: "Formula 1", icon: "🏁" },
-            { name: "MotoGP", icon: "🏍️" },
-            { name: "Rally", icon: "🏎️" },
-            { name: "Soccer", icon: "⚽" },
-            { name: "Mundial", icon: "🏆" },
-            { name: "NBA", icon: "🏀" },
-            { name: "NFL", icon: "🏈" },
-            { name: "Boxing", icon: "🥊" },
-            { name: "UFC", icon: "🤼" },
-            { name: "MLB", icon: "⚾" },
-            { name: "Concerts", icon: "🎤" },
-            { name: "Awards", icon: "🏆" },
-            { name: "Theater", icon: "🎭" }
-        ];
-
         if (savedData.filterEvents) {
             const loadedEvents = [...savedData.filterEvents];
             loadedEvents.forEach(e => {
                 e.icon = mapIconToEmoji(e.icon || e.name);
             });
             state.filterEvents = loadedEvents;
-        } else {
-            state.filterEvents = defaultEvents;
         }
 
         syncFilterList();
