@@ -1331,28 +1331,6 @@ body.player-active .edge-mask {
     display: none;
 }
 
-.dash-custom-select-menu::-webkit-scrollbar {
-    width: 4px;
-}
-
-.dash-custom-select-menu::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.dash-custom-select-menu::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.12);
-    border-radius: 4px;
-}
-
-.dash-custom-select-menu:hover::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-.dash-custom-select-menu::-webkit-scrollbar-button {
-    display: none;
-    width: 0;
-    height: 0;
-}
 
 @keyframes dropdownFadeIn {
     from { opacity: 0; transform: translateY(-4px); }
@@ -5562,39 +5540,11 @@ body:has(#resolution-blocker:not(.hidden)) #player-container {
     max-height: none !important;
 }
 
-/* Minimalist scrollbars for settings panels and dropdown pickers */
-.scroll-panel::-webkit-scrollbar,
-.filter-icon-dropdown::-webkit-scrollbar {
-    width: 4px !important;
-    height: 4px !important;
-}
-
-.scroll-panel::-webkit-scrollbar-track,
-.filter-icon-dropdown::-webkit-scrollbar-track {
-    background: transparent !important;
-}
-
-.scroll-panel::-webkit-scrollbar-thumb,
-.filter-icon-dropdown::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.12) !important;
-    border-radius: 4px !important;
-}
-
-.scroll-panel:hover::-webkit-scrollbar-thumb,
-.filter-icon-dropdown:hover::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.25) !important;
-}
-
-.scroll-panel::-webkit-scrollbar-button,
-.filter-icon-dropdown::-webkit-scrollbar-button {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-}
-
-.scroll-panel::-webkit-scrollbar-corner,
-.filter-icon-dropdown::-webkit-scrollbar-corner {
-    background: transparent !important;
+/* Use native Chromium thin scrollbar for settings panels and dropdown pickers */
+.scroll-panel,
+.filter-icon-dropdown {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
 }
 
 .retry-dot {
