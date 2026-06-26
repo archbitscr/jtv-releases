@@ -816,20 +816,6 @@ body.player-active .edge-mask {
     pointer-events: none;
 }
 
-.category-chips {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-    overflow-x: auto;
-    padding-bottom: 5px;
-}
-
-.category-chips {
-    scrollbar-width: none;
-}
-.category-chips::-webkit-scrollbar {
-    display: none;
-}
 
 .chip:hover { color: white; border-color: var(--accent); }
 .chip.active { background: var(--accent-dim); color: var(--accent); border-color: var(--accent); }
