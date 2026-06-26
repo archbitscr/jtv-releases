@@ -30,23 +30,9 @@ body, html {
 }
 
 /* Minimalist auto-hide scrollbars */
-::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-    background: transparent;
-}
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-}
-*:hover::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-}
-*:hover::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.4);
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
 
 #app {
@@ -808,7 +794,7 @@ body.player-active .edge-mask {
     padding-bottom: 5px;
 }
 
-.category-chips::-webkit-scrollbar { display: none; }
+.category-chips { scrollbar-width: none; }
 
 .chip:hover { color: white; border-color: var(--accent); }
 .chip.active { background: var(--accent-dim); color: var(--accent); border-color: var(--accent); }
@@ -1057,28 +1043,6 @@ body.player-active .edge-mask {
     height: 100%;
 }
 
-.scroll-area::-webkit-scrollbar,
-.menu-content::-webkit-scrollbar {
-    width: 4px;
-}
-
-.scroll-area::-webkit-scrollbar-thumb,
-.menu-content::-webkit-scrollbar-thumb { 
-    background: rgba(255,255,255,0.05); 
-    border-radius: 10px; 
-    transition: 0.3s;
-}
-
-.scroll-area:hover::-webkit-scrollbar-thumb,
-.menu-content:hover::-webkit-scrollbar-thumb { 
-    background: rgba(255,255,255,0.2); 
-}
-
-.scroll-area::-webkit-scrollbar-track,
-.menu-content::-webkit-scrollbar-track {
-    background: transparent;
-    margin: 5px 0;
-}
 
 .grid-text-content {
     flex: 1;
@@ -2989,26 +2953,6 @@ body.hide-cursor * {
     scrollbar-color: rgba(255,255,255,0.15) transparent;
 }
 
-.settings-sidebar::-webkit-scrollbar,
-.settings-main-content::-webkit-scrollbar {
-    width: 4px;
-}
-
-.settings-sidebar::-webkit-scrollbar-thumb,
-.settings-main-content::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.08);
-    border-radius: 10px;
-}
-
-.settings-sidebar:hover::-webkit-scrollbar-thumb,
-.settings-main-content:hover::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.22);
-}
-
-.settings-sidebar::-webkit-scrollbar-track,
-.settings-main-content::-webkit-scrollbar-track {
-    background: transparent;
-}
 
 .settings-sect-pane {
     display: none;
@@ -3108,42 +3052,14 @@ body.hide-cursor * {
 }
 
 /* Webkit scrollbar — thin track, no arrows */
-#developer-channels-crud-container .crud-scroll-panel::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+#developer-channels-crud-container .crud-scroll-panel {
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.6s ease;
 }
 
-#developer-channels-crud-container .crud-scroll-panel::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-/* Base state: fully transparent thumb. Transition controls the FADE-OUT (slow). */
-#developer-channels-crud-container .crud-scroll-panel::-webkit-scrollbar-thumb {
-    background: transparent;
-    border-radius: 999px;
-    transition: background-color 0.6s ease;
-}
-
-/* Suppress arrow buttons completely */
-#developer-channels-crud-container .crud-scroll-panel::-webkit-scrollbar-button {
-    width: 0;
-    height: 0;
-    display: none;
-}
-
-#developer-channels-crud-container .crud-scroll-panel::-webkit-scrollbar-corner {
-    background: transparent;
-}
-
-/* Active state: visible thumb. Transition here controls the FADE-IN (fast). */
-#developer-channels-crud-container .crud-scroll-panel.scrollbar-active::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.22);
-    transition: background-color 0.15s ease;
-}
-
-/* Firefox: show color only when active */
 #developer-channels-crud-container .crud-scroll-panel.scrollbar-active {
     scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+    transition: scrollbar-color 0.15s ease;
 }
 
 #developer-channels-crud-container #crud-channel-form {
@@ -3595,22 +3511,6 @@ body.hide-cursor * {
     padding: 0;
 }
 
-.api-code-block::-webkit-scrollbar {
-    height: 6px;
-}
-
-.api-code-block::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.08);
-    border-radius: 10px;
-}
-
-.api-code-block:hover::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.22);
-}
-
-.api-code-block::-webkit-scrollbar-track {
-    background: transparent;
-}
 
 /* Volume HUD Pill Badge */
 .volume-badge {
@@ -4544,20 +4444,6 @@ body.hide-cursor * {
     visibility: hidden;
 }
 
-/* Custom Scrollbar for Options List */
-.custom-select-options::-webkit-scrollbar {
-    width: 5px;
-}
-.custom-select-options::-webkit-scrollbar-track {
-    background: transparent;
-}
-.custom-select-options::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 3px;
-}
-.custom-select-options::-webkit-scrollbar-thumb:hover {
-    background: var(--accent);
-}
 
 /* Custom Select Option Item */
 .custom-select-option {
@@ -4973,19 +4859,6 @@ body.hide-cursor * {
     border-color: rgba(0, 255, 204, 0.5);
 }
 
-.glass-tuner-body::-webkit-scrollbar {
-    width: 4px;
-}
-
-.glass-tuner-body::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.glass-tuner-body::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
-}
-
 /* User Mode electric neon white for Power Off button */
 .floating-reload-btn.neon-white {
     background: rgba(255, 255, 255, 0.15);
@@ -5148,24 +5021,6 @@ body.hide-cursor * {
     scrollbar-color: rgba(255,255,255,0.15) transparent;
 }
 
-.filter-group-list::-webkit-scrollbar {
-    width: 4px;
-}
-.filter-group-list::-webkit-scrollbar-track {
-    background: transparent;
-}
-.filter-group-list::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-}
-.filter-group-list:hover::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-}
-.filter-group-list::-webkit-scrollbar-button {
-    display: none;
-    width: 0;
-    height: 0;
-}
 
 .filter-list-item {
     display: flex;
@@ -5544,12 +5399,6 @@ body:has(#resolution-blocker:not(.hidden)) #player-container {
     max-height: none !important;
 }
 
-/* Use native Chromium thin scrollbar for settings panels and dropdown pickers */
-.scroll-panel,
-.filter-icon-dropdown {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
-}
 
 .retry-dot {
     width: 7px;
