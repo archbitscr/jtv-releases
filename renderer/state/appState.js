@@ -106,7 +106,7 @@ export const state = {
         { name: "Comedy", icon: "😂" },
         { name: "Animation", icon: "🎨" },
         { name: "Kids", icon: "🧸" },
-        { name: "Reality Tv", icon: "👥" },
+        { name: "Reality", icon: "👥" },
         { name: "Music", icon: "🎵" },
         { name: "Documentary", icon: "🎥" },
         { name: "Lifestyle", icon: "💫" },
