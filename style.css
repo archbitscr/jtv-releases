@@ -5153,7 +5153,6 @@ body.hide-cursor * {
 }
 .filter-group-list::-webkit-scrollbar-track {
     background: transparent;
-    margin: 4px 0;
 }
 .filter-group-list::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.05);
@@ -5161,6 +5160,11 @@ body.hide-cursor * {
 }
 .filter-group-list:hover::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
+}
+.filter-group-list::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 .filter-list-item {
