@@ -1121,7 +1121,7 @@
     "id": "131",
     "name": "Telemundo",
     "path": "watch.php?id=131",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 2997.471,
     "categories": [
       "all",
@@ -2068,7 +2068,9 @@
     "categories": [
       "all",
       "English",
-      "Reality Tv"
+      "Reality Tv",
+      "Investigation",
+      "Documentary"
     ]
   },
   {
@@ -6424,7 +6426,10 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "English"
+      "English",
+      "Documentary",
+      "Lifestyle",
+      "Reality Tv"
     ]
   },
   {
