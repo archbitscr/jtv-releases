@@ -130,7 +130,7 @@ export const state = {
         { name: "MLB", icon: "⚾" },
         { name: "Golf", icon: "⛳" },
         { name: "Cricket", icon: "🏏" },
-        { name: "Tennis", icon: "🥎" },
+        { name: "Tennis", icon: "🎾" },
         { name: "NHL", icon: "🏒" },
         { name: "Rugby", icon: "🏉" },
         { name: "Cycling", icon: "🚴" },
