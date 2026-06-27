@@ -344,12 +344,12 @@ async function init() {
     setTimeout(() => {
         if (loaderProgressBar) loaderProgressBar.style.width = '65%';
         if (loaderMessage) loaderMessage.innerText = 'Syncing DaddyLive channels...';
-    }, 650);
+    }, 600);
 
     setTimeout(() => {
         if (loaderProgressBar) loaderProgressBar.style.width = '100%';
         if (loaderMessage) loaderMessage.innerText = 'Ready.';
-    }, 1000);
+    }, 900);
 
     // Core Data Loading and sflix / Domain setups
     const savedData = await nativeApi.loadUserData();
@@ -524,7 +524,7 @@ async function init() {
             }, 600);
         }
         
-    }, 1200);
+    }, 900);
 
     showModule('home');
 
