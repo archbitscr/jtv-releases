@@ -202,9 +202,12 @@ export function createMainWindow(context) {
       k === '*' ||
       k === 'Add' ||
       k === 'Subtract' ||
-      k === 'Multiply'
+      k === 'Multiply' ||
+      k === ' '
     ) {
-      win.webContents.send(IPC.APP_HOTKEY, { key: k, repeat: !!input.isAutoRepeat });
+      const ctrl = input.control || input.meta;
+      const keyPayload = ctrl && k.startsWith('Arrow') ? `Ctrl+${k}` : k;
+      win.webContents.send(IPC.APP_HOTKEY, { key: keyPayload, repeat: !!input.isAutoRepeat });
       event.preventDefault();
     }
   });

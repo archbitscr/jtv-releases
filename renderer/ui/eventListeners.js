@@ -1367,24 +1367,30 @@ export function setupEventListeners() {
         }
     }, true);
 
-    function matchesHotkey(action, key) {
+    function matchesHotkey(action, key, e) {
         const keys = state.hotkeyMap[action];
-        return keys && keys.some(k => k.toLowerCase() === key.toLowerCase());
+        if (!keys) return false;
+        return keys.some(k => {
+            if (k.startsWith('Ctrl+')) {
+                return e && (e.ctrlKey || e.metaKey) && k.slice(5).toLowerCase() === key.toLowerCase();
+            }
+            return k.toLowerCase() === key.toLowerCase();
+        });
     }
 
-    function handleHotkeyAction(key) {
-        if (matchesHotkey('volumeUp', key)) {
+    function handleHotkeyAction(key, e) {
+        if (matchesHotkey('volumeUp', key, e)) {
             adjustVolume(1);
             return true;
-        } else if (matchesHotkey('volumeDown', key)) {
+        } else if (matchesHotkey('volumeDown', key, e)) {
             adjustVolume(-1);
             return true;
-        } else if (matchesHotkey('toggleMute', key)) {
+        } else if (matchesHotkey('toggleMute', key, e)) {
             toggleMute();
             return true;
         }
 
-        if (matchesHotkey('escape', key)) {
+        if (matchesHotkey('escape', key, e)) {
             const detailsModal = document.getElementById('details-modal');
             if (detailsModal && !detailsModal.classList.contains('hidden')) {
                 detailsModal.classList.add('hidden');
@@ -1406,7 +1412,7 @@ export function setupEventListeners() {
             return true;
         }
 
-        if (matchesHotkey('fullscreen', key)) {
+        if (matchesHotkey('fullscreen', key, e)) {
             toggleAppFullscreen();
             return true;
         }
@@ -1416,13 +1422,13 @@ export function setupEventListeners() {
         const isParentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
 
         if (!state.isHomeActive && state.activeChannelId && !isSettingsOpen && !isDetailsOpen && !isParentalOpen) {
-            if (matchesHotkey('prevChannel', key)) {
+            if (matchesHotkey('prevChannel', key, e)) {
                 zapChannel('up');
                 return true;
-            } else if (matchesHotkey('nextChannel', key)) {
+            } else if (matchesHotkey('nextChannel', key, e)) {
                 zapChannel('down');
                 return true;
-            } else if (matchesHotkey('prevSource', key)) {
+            } else if (matchesHotkey('prevSource', key, e)) {
                 const sources = Array.from(document.querySelectorAll('.source-btn')).map(b => b.dataset.source);
                 const currentIdx = sources.indexOf(state.playerSource);
                 if (currentIdx !== -1) {
@@ -1430,7 +1436,7 @@ export function setupEventListeners() {
                     document.querySelector(`.source-btn[data-source="${sources[prevIdx]}"]`)?.click();
                 }
                 return true;
-            } else if (matchesHotkey('nextSource', key)) {
+            } else if (matchesHotkey('nextSource', key, e)) {
                 const sources = Array.from(document.querySelectorAll('.source-btn')).map(b => b.dataset.source);
                 const currentIdx = sources.indexOf(state.playerSource);
                 if (currentIdx !== -1) {
@@ -1441,16 +1447,22 @@ export function setupEventListeners() {
             }
         }
 
-        if (matchesHotkey('toggleHUD', key)) {
+        if (matchesHotkey('toggleHUD', key, e)) {
             if (!state.isHomeActive && state.activeChannelId && !state.isVodPlaying) {
+                state.hudPinned = !state.hudPinned;
                 const sourceSwitcherEl = document.getElementById('source-switcher');
                 if (sourceSwitcherEl) {
-                    if (sourceSwitcherEl.classList.contains('hidden')) {
+                    if (state.hudPinned) {
                         sourceSwitcherEl.classList.remove('hidden');
-                        startInactivityTimers();
+                        clearInactivityTimers();
                     } else {
-                        sourceSwitcherEl.classList.add('hidden');
+                        startInactivityTimers();
                     }
+                }
+                const pinBtn = document.getElementById('hud-pin-btn');
+                if (pinBtn) {
+                    pinBtn.classList.toggle('active', state.hudPinned);
+                    pinBtn.title = state.hudPinned ? 'Unpin HUD' : 'Pin HUD';
                 }
                 return true;
             }
@@ -1477,7 +1489,8 @@ export function setupEventListeners() {
             }
         }
 
-        const handled = handleHotkeyAction(e.key);
+        if (activeHotkeyListener) return;
+        const handled = handleHotkeyAction(e.key, e);
         if (handled) {
             e.preventDefault();
         }
@@ -1486,7 +1499,10 @@ export function setupEventListeners() {
     if (nativeApi && nativeApi.onAppHotkey) {
         nativeApi.onAppHotkey((payload) => {
             if (payload && payload.key) {
-                handleHotkeyAction(payload.key);
+                if (activeHotkeyListener) return;
+                const fakeEvent = { ctrlKey: payload.key.startsWith('Ctrl+'), metaKey: false };
+                const rawKey = payload.key.startsWith('Ctrl+') ? payload.key.slice(5) : payload.key;
+                handleHotkeyAction(rawKey, fakeEvent);
             }
         });
     }
@@ -1500,17 +1516,29 @@ export function setupEventListeners() {
     };
 
     function keyToDisplay(key) {
+        if (key.startsWith('Ctrl+')) return 'Ctrl+' + keyToDisplay(key.slice(5));
         return KEY_DISPLAY[key] || (key.length === 1 ? key.toUpperCase() : key);
     }
 
     function syncHotkeyDisplay() {
         document.querySelectorAll('.hotkey-key[data-action]').forEach(el => {
             const action = el.dataset.action;
+            const slot = parseInt(el.dataset.slot || '0', 10);
             const keys = state.hotkeyMap[action];
-            if (keys && keys.length) {
-                el.textContent = keyToDisplay(keys[0]);
+            if (keys && keys[slot] !== undefined) {
+                el.textContent = keyToDisplay(keys[slot]);
+            } else {
+                el.textContent = '—';
             }
         });
+    }
+
+    function setEditBtnIcon(editBtn, icon) {
+        const i = editBtn.querySelector('[data-lucide]');
+        if (i) {
+            i.setAttribute('data-lucide', icon);
+            if (window.lucide) window.lucide.createIcons({ nodes: [i] });
+        }
     }
 
     function stopHotkeyListening() {
@@ -1519,17 +1547,21 @@ export function setupEventListeners() {
         document.removeEventListener('keydown', handler, true);
         keyEl.classList.remove('listening');
         editBtn.classList.remove('listening');
+        setEditBtnIcon(editBtn, 'plus');
+        nativeApi.typingState(false);
         activeHotkeyListener = null;
+        syncHotkeyDisplay();
     }
 
     document.querySelectorAll('.hotkey-edit-btn').forEach(editBtn => {
         editBtn.onclick = (e) => {
             e.stopPropagation();
             const action = editBtn.dataset.action;
-            const keyEl = document.querySelector(`.hotkey-key[data-action="${action}"]`);
+            const slot = parseInt(editBtn.dataset.slot || '0', 10);
+            const keyEl = document.querySelector(`.hotkey-key[data-action="${action}"][data-slot="${slot}"]`);
             if (!keyEl) return;
 
-            if (activeHotkeyListener && activeHotkeyListener.action === action) {
+            if (activeHotkeyListener && activeHotkeyListener.editBtn === editBtn) {
                 stopHotkeyListening();
                 return;
             }
@@ -1537,21 +1569,28 @@ export function setupEventListeners() {
 
             keyEl.classList.add('listening');
             editBtn.classList.add('listening');
+            setEditBtnIcon(editBtn, 'x');
             keyEl.textContent = '...';
+            nativeApi.typingState(true);
 
             const handler = (ev) => {
                 ev.preventDefault();
                 ev.stopPropagation();
                 ev.stopImmediatePropagation();
-                const newKey = ev.key;
-                state.hotkeyMap[action] = [newKey];
-                keyEl.textContent = keyToDisplay(newKey);
+                let newKey = ev.key;
+                if ((ev.ctrlKey || ev.metaKey) && newKey !== 'Control' && newKey !== 'Meta') {
+                    newKey = 'Ctrl+' + newKey;
+                }
+                if (newKey === 'Control' || newKey === 'Meta' || newKey === 'Shift' || newKey === 'Alt') return;
+                const keys = state.hotkeyMap[action] ? [...state.hotkeyMap[action]] : [];
+                keys[slot] = newKey;
+                state.hotkeyMap[action] = keys;
                 stopHotkeyListening();
                 saveAppState();
             };
 
             document.addEventListener('keydown', handler, true);
-            activeHotkeyListener = { action, keyEl, editBtn, handler };
+            activeHotkeyListener = { action, slot, keyEl, editBtn, handler };
         };
     });
 

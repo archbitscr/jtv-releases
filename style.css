@@ -3395,30 +3395,54 @@ body.hide-cursor * {
     margin-bottom: 12px;
 }
 
-/* Hotkey items */
-.hotkey-item {
+/* Hotkey card grid */
+.hotkey-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.hotkey-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 14px 16px;
     display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hotkey-card-header .setting-title {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.hotkey-card-header .setting-desc {
+    font-size: 0.7rem;
+}
+
+.hotkey-card-keys {
+    display: flex;
+    gap: 8px;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
 }
 
 .hotkey-binding {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     flex-shrink: 0;
 }
 
 .hotkey-key {
-    min-width: 60px;
-    padding: 6px 14px;
+    min-width: 50px;
+    padding: 5px 12px;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     color: rgba(255, 255, 255, 0.8);
     font-family: inherit;
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     font-weight: 500;
     text-align: center;
     transition: all 0.2s ease;
@@ -3437,8 +3461,8 @@ body.hide-cursor * {
 }
 
 .hotkey-edit-btn {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.04);

@@ -36,13 +36,13 @@ export const state = {
     hotkeyMap: {
         fullscreen: ['f'],
         toggleHUD: [' '],
-        volumeUp: ['+', '=', 'Add'],
-        volumeDown: ['-', 'Subtract'],
+        volumeUp: ['='],
+        volumeDown: ['Subtract'],
         toggleMute: ['*', 'Multiply'],
-        prevChannel: ['ArrowUp'],
-        nextChannel: ['ArrowDown'],
-        prevSource: ['ArrowLeft'],
-        nextSource: ['ArrowRight'],
+        prevChannel: ['ArrowLeft', '+'],
+        nextChannel: ['ArrowRight', '-'],
+        prevSource: ['Ctrl+ArrowLeft'],
+        nextSource: ['Ctrl+ArrowRight'],
         escape: ['Escape']
     },
 
