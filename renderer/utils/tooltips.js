@@ -41,6 +41,18 @@ export function getOrGenerateTooltip(el) {
         el.removeAttribute('title');
     }
 
+    // Dynamic tooltips: favorite buttons and sidebar edit — never cache
+    const icon = el.querySelector('[data-lucide]');
+    const iconName = icon ? icon.getAttribute('data-lucide') : null;
+    if (iconName === 'heart') {
+        const favBtn = el.closest('.favorite, .favorite-btn, [id*="fav"]');
+        const isActive = (favBtn && favBtn.classList.contains('active')) || el.classList.contains('active');
+        return isActive ? 'Remove from Favorites' : 'Add to Favorites';
+    }
+    if (iconName === 'sliders' && el.closest('.channel-actions')) {
+        return 'Edit channel';
+    }
+
     let tooltip = el.getAttribute('data-tooltip');
     if (tooltip && tooltip.trim() !== '') return tooltip;
 
@@ -89,25 +101,15 @@ export function getOrGenerateTooltip(el) {
     }
 
     // Check nested icons
-    const icon = el.querySelector('[data-lucide]');
     if (icon) {
-        const iconName = icon.getAttribute('data-lucide');
         let tooltipText = '';
         switch (iconName) {
             case 'x': tooltipText = 'Close'; break;
             case 'tv': tooltipText = 'Watch Live'; break;
             case 'film': tooltipText = 'Movies'; break;
             case 'clapperboard': tooltipText = 'Series'; break;
-            case 'heart': {
-                const favBtn = el.closest('.favorite, .favorite-btn, [id*="fav"]');
-                const isActive = (favBtn && favBtn.classList.contains('active')) || el.classList.contains('active');
-                tooltipText = isActive ? 'Remove from Favorites' : 'Add to Favorites';
-                el.removeAttribute('data-tooltip');
-                break;
-            }
-            case 'settings': case 'settings-2': case 'sliders':
-                tooltipText = el.closest('.channel-actions') ? 'Edit channel' : 'Settings & Filters';
-                break;
+            case 'heart': tooltipText = 'Favorite'; break;
+            case 'settings': case 'settings-2': case 'sliders': tooltipText = 'Settings & Filters'; break;
             case 'search': tooltipText = 'Search'; break;
             case 'plus': case 'plus-circle': tooltipText = 'Add'; break;
             case 'minus': tooltipText = 'Decrease / Remove'; break;
