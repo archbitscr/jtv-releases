@@ -338,7 +338,7 @@ async function init() {
     // Progress bar animations
     setTimeout(() => {
         if (loaderProgressBar) loaderProgressBar.style.width = '50%';
-        if (loaderMessage) loaderMessage.innerText = 'Loading wallpapers and styles...';
+        if (loaderMessage) loaderMessage.innerText = 'Loading UI/UX...';
     }, 300);
 
     setTimeout(() => {
