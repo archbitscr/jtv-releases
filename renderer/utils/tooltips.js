@@ -1,29 +1,48 @@
 import { state } from '../state/appState.js';
 
+const SUPPRESS_IDS = new Set([
+    'parental-pin-cancel-btn', 'parental-pin-submit-btn',
+    'parental-save-pin-btn', 'parental-cancel-pin-btn',
+    'parental-delete-pin-btn',
+    'open-devtools-btn',
+    'factory-reset-btn', 'sync-channels-btn', 'apply-domain-btn',
+    'close-home',
+]);
+
+function shouldSuppressTooltip(el) {
+    const id = el.id || '';
+    const className = el.className || '';
+    if (SUPPRESS_IDS.has(id)) return true;
+    // Settings toggles
+    if (className.includes('settings-switch') || className.includes('settings-switch-slider') || (el.tagName === 'INPUT' && el.type === 'checkbox' && el.closest('.setting-item'))) return true;
+    // Settings sub-nav tabs (assignment, general, timeouts, etc.)
+    if (className.includes('settings-subnav-btn') || className.includes('assigner-tab-btn') || className.includes('connectivity-subnav-btn') || className.includes('channels-subnav-btn')) return true;
+    // Settings main tabs
+    if (className.includes('settings-tab-btn')) return true;
+    // Sidebar All/Favorites tabs
+    if (className.includes('tab-btn') && el.closest('.channel-tabs')) return true;
+    // Factory reset, sync channels, save & sync buttons in settings
+    if (id === 'factory-reset-btn' || id === 'sync-channels-btn' || id === 'save-sync-btn') return true;
+    return false;
+}
+
 export function getOrGenerateTooltip(el) {
+    if (shouldSuppressTooltip(el)) {
+        el.removeAttribute('title');
+        el.removeAttribute('data-tooltip');
+        return null;
+    }
+
     if (el.hasAttribute('title')) {
         el.setAttribute('data-tooltip', el.getAttribute('title'));
         el.removeAttribute('title');
     }
-    
+
     let tooltip = el.getAttribute('data-tooltip');
     if (tooltip && tooltip.trim() !== '') return tooltip;
-    
+
     const id = el.id || '';
     const className = el.className || '';
-
-    // Check specifically labeled containers/elements first
-    if (className.includes('settings-switch') || className.includes('settings-switch-slider') || (el.tagName === 'INPUT' && el.type === 'checkbox')) {
-        const settingItem = el.closest('.setting-item');
-        if (settingItem) {
-            const titleEl = settingItem.querySelector('.setting-title');
-            if (titleEl) {
-                const tooltipText = `Toggle: ${titleEl.textContent.trim()}`;
-                el.setAttribute('data-tooltip', tooltipText);
-                return tooltipText;
-            }
-        }
-    }
 
     if (id.includes('close-settings') || className.includes('settings-close')) {
         el.setAttribute('data-tooltip', 'Close settings');
@@ -59,13 +78,6 @@ export function getOrGenerateTooltip(el) {
         const nameEl = el.querySelector('.crud-channel-name');
         const channelName = nameEl ? nameEl.textContent.trim() : 'canal';
         const tooltipText = `Edit: ${channelName}`;
-        el.setAttribute('data-tooltip', tooltipText);
-        return tooltipText;
-    }
-
-    if (className.includes('settings-tab-btn')) {
-        const text = el.textContent.trim();
-        const tooltipText = `Section ${text}`;
         el.setAttribute('data-tooltip', tooltipText);
         return tooltipText;
     }
@@ -189,10 +201,15 @@ export function initCustomTooltips() {
             const spaceRight = vw - rect.right;
 
             let top, left;
+            const forcedPos = target.getAttribute('data-tooltip-pos');
 
-            // Vertical vs horizontal placement: prefer top/bottom, fall back to sides
-            if (spaceAbove >= th + gap + margin || spaceBelow >= th + gap + margin) {
-                // Place above or below
+            if (forcedPos === 'left') {
+                left = rect.left - tw - gap;
+                top = rect.top + (rect.height - th) / 2;
+            } else if (forcedPos === 'right') {
+                left = rect.right + gap;
+                top = rect.top + (rect.height - th) / 2;
+            } else if (spaceAbove >= th + gap + margin || spaceBelow >= th + gap + margin) {
                 if (spaceAbove >= th + gap + margin) {
                     top = rect.top - th - gap;
                 } else {
@@ -200,7 +217,6 @@ export function initCustomTooltips() {
                 }
                 left = rect.left + (rect.width - tw) / 2;
             } else if (spaceRight >= tw + gap + margin || spaceLeft >= tw + gap + margin) {
-                // Place to the side
                 if (spaceRight >= tw + gap + margin) {
                     left = rect.right + gap;
                 } else {
@@ -208,7 +224,6 @@ export function initCustomTooltips() {
                 }
                 top = rect.top + (rect.height - th) / 2;
             } else {
-                // Fallback: below
                 top = rect.bottom + gap;
                 left = rect.left + (rect.width - tw) / 2;
             }

@@ -130,11 +130,11 @@
                         <!-- Fav & Settings vertical stack -->
                         <div class="hud-action-stack">
                             <!-- Favorite Toggle -->
-                            <button id="hud-fav-btn" class="hud-action-btn favorite-btn" title="Favorite">
+                            <button id="hud-fav-btn" class="hud-action-btn favorite-btn" title="Favorite" data-tooltip-pos="left">
                                 <i data-lucide="heart" id="tuner-fav-heart"></i>
                             </button>
                             <!-- Pin HUD (user mode) -->
-                            <button id="hud-pin-btn" class="hud-action-btn pin-btn" title="Pin HUD">
+                            <button id="hud-pin-btn" class="hud-action-btn pin-btn" title="Pin HUD" data-tooltip-pos="left">
                                 <i data-lucide="pin"></i>
                             </button>
                             <!-- Tune Settings (dev mode only) -->
@@ -145,17 +145,17 @@
                         
                         <!-- Volume Control Stack (Compact Icons) -->
                         <div class="hud-action-stack volume-compact-stack">
-                            <button id="tuner-vol-up" class="vol-icon" title="Volume up" tabindex="0" aria-label="Volume up"><i data-lucide="plus"></i></button>
-                            <button id="tuner-mute" class="hud-action-btn" title="Mute / unmute">
+                            <button id="tuner-vol-up" class="vol-icon" title="Volume up" tabindex="0" aria-label="Volume up" data-tooltip-pos="right"><i data-lucide="plus"></i></button>
+                            <button id="tuner-mute" class="hud-action-btn" title="Mute / unmute" data-tooltip-pos="right">
                                 <i data-lucide="volume-2" id="tuner-mute-icon"></i>
                             </button>
-                            <button id="tuner-vol-down" class="vol-icon" title="Volume down" tabindex="0" aria-label="Volume down"><i data-lucide="minus"></i></button>
+                            <button id="tuner-vol-down" class="vol-icon" title="Volume down" tabindex="0" aria-label="Volume down" data-tooltip-pos="right"><i data-lucide="minus"></i></button>
                         </div>
                         
                         <!-- Zapper vertical stack -->
                         <div class="hud-action-stack">
-                            <button id="tuner-up" class="hud-action-btn zapper-btn" title="Previous channel"><i data-lucide="chevron-up"></i></button>
-                            <button id="tuner-down" class="hud-action-btn zapper-btn" title="Next channel"><i data-lucide="chevron-down"></i></button>
+                            <button id="tuner-up" class="hud-action-btn zapper-btn" title="Previous channel" data-tooltip-pos="right"><i data-lucide="chevron-up"></i></button>
+                            <button id="tuner-down" class="hud-action-btn zapper-btn" title="Next channel" data-tooltip-pos="right"><i data-lucide="chevron-down"></i></button>
                         </div>
                     </div>
                 </div>
@@ -327,7 +327,7 @@
                         </div>
                         <div class="config-section fav-config">
                             <h3>Favorite status</h3>
-                            <button id="edit-fav-toggle" class="action-btn favorite edit-mode">
+                            <button id="edit-fav-toggle" class="action-btn favorite edit-mode" data-tooltip-pos="right">
                                 <i data-lucide="heart"></i>
                             </button>
                         </div>
@@ -1011,13 +1011,13 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
         </div>
 
         <div id="fullscreen-hover-zone" class="fullscreen-hover-zone">
-            <button id="fullscreen-toggle" class="fullscreen-toggle-btn" title="Fullscreen">
+            <button id="fullscreen-toggle" class="fullscreen-toggle-btn" title="Fullscreen" data-tooltip-pos="left">
                 <i id="fullscreen-toggle-icon" data-lucide="maximize"></i>
             </button>
         </div>
 
         <div id="power-hover-zone" class="power-hover-zone" style="display:none">
-            <button id="power-user-btn" class="power-toggle-btn" title="Shut Down Application">
+            <button id="power-user-btn" class="power-toggle-btn" title="Shut Down Application" data-tooltip-pos="left">
                 <i data-lucide="power"></i>
             </button>
         </div>
@@ -1102,10 +1102,10 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
         <button id="glass-tuner-btn" class="floating-reload-btn" title="Glass Tuner" style="display: none;">
             <i data-lucide="palette"></i>
         </button>
-        <button id="reload-window-btn" class="floating-reload-btn" title="Reload Window">
+        <button id="reload-window-btn" class="floating-reload-btn" title="Reload Window" data-tooltip-pos="left">
             <i data-lucide="refresh-cw">↻</i>
         </button>
-        <button id="power-off-btn" class="floating-reload-btn" title="Shut Down Application">
+        <button id="power-off-btn" class="floating-reload-btn" title="Shut Down Application" data-tooltip-pos="left">
             <i data-lucide="power"></i>
         </button>
     </div>
