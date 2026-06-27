@@ -1214,8 +1214,6 @@ export function updateDeveloperUI() {
     if (eventCard) {
         eventCard.classList.remove('full-width-card');
         if (listFilterEvents) listFilterEvents.classList.remove('grid-3-columns');
-        const eventAddForm = eventCard.querySelector('.filter-group-add-form');
-        if (eventAddForm) eventAddForm.style.display = developerModeEnabled ? '' : 'none';
     }
 
     // Assignment section: always visible (user sees Events only)
