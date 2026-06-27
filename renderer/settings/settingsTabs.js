@@ -35,7 +35,7 @@ export function setSettingsFilterTab(tab) {
         state.editingFilter = null;
     }
 
-    document.querySelectorAll('.settings-subnav-btn').forEach(btn => {
+    document.querySelectorAll('.settings-subnav-btn[data-filter-type]').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.filterType === tab);
     });
     document.querySelectorAll('.filters-subsect-pane').forEach(pane => {
