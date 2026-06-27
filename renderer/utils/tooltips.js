@@ -101,12 +101,12 @@ export function getOrGenerateTooltip(el) {
             case 'heart': {
                 const favBtn = el.closest('.favorite, .favorite-btn, [id*="fav"]');
                 const isActive = (favBtn && favBtn.classList.contains('active')) || el.classList.contains('active');
-                tooltipText = isActive ? 'Quitar de Favoritos' : 'Agregar a Favoritos';
+                tooltipText = isActive ? 'Remove from Favorites' : 'Add to Favorites';
                 el.removeAttribute('data-tooltip');
                 break;
             }
             case 'settings': case 'settings-2': case 'sliders':
-                tooltipText = el.closest('.channel-actions') ? 'Editar canal' : 'Ajustes y Filtros';
+                tooltipText = el.closest('.channel-actions') ? 'Edit channel' : 'Settings & Filters';
                 break;
             case 'search': tooltipText = 'Search'; break;
             case 'plus': case 'plus-circle': tooltipText = 'Add'; break;
