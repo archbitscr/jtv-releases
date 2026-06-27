@@ -3850,8 +3850,8 @@ body.hide-cursor * {
 .vol-icon {
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    width: 30px;
-    height: 30px;
+    width: 27px;
+    height: 27px;
     color: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
@@ -3869,9 +3869,10 @@ body.hide-cursor * {
 }
 
 .vol-icon:hover {
-    opacity: 1;
-    transform: scale(1.2);
-    color: var(--accent);
+    background: #ffffff;
+    color: #131313;
+    border-color: #ffffff;
+    transform: scale(1.1);
 }
 
 /* White active state for non-favorite, non-pin buttons */
