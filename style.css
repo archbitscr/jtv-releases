@@ -3581,15 +3581,15 @@ body.hide-cursor * {
     color: var(--accent);
 }
 
-/* White active state for non-favorite buttons */
-.hud-action-btn.active:not(.favorite-btn) {
+/* White active state for non-favorite, non-pin buttons */
+.hud-action-btn.active:not(.favorite-btn):not(.pin-btn) {
     background: #ffffff !important;
     color: #131313 !important;
     border-color: #ffffff !important;
 }
 
-.hud-action-btn.active:not(.favorite-btn) i,
-.hud-action-btn.active:not(.favorite-btn) svg {
+.hud-action-btn.active:not(.favorite-btn):not(.pin-btn) i,
+.hud-action-btn.active:not(.favorite-btn):not(.pin-btn) svg {
     color: #131313 !important;
     stroke: #131313 !important;
 }

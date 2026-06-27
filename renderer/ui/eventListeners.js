@@ -1538,11 +1538,6 @@ export function setupEventListeners() {
             state.hudPinned = !state.hudPinned;
             hudPinBtn.classList.toggle('active', state.hudPinned);
             hudPinBtn.title = state.hudPinned ? 'Unpin HUD' : 'Pin HUD';
-            const icon = hudPinBtn.querySelector('[data-lucide]');
-            if (icon) {
-                icon.setAttribute('data-lucide', state.hudPinned ? 'pin-off' : 'pin');
-                if (window.lucide) window.lucide.createIcons({ nodes: [icon] });
-            }
             if (state.hudPinned) {
                 clearInactivityTimers();
             } else {
