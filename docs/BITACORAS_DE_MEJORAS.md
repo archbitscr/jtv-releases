@@ -125,9 +125,34 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ## III. Plan de Tareas Pendientes (Hoja de Ruta)
 
-### ⏳ Prioridad 1: Usabilidad y Optimización
+*Ordenadas por dificultad ascendente. Tareas marcadas con 🧠 requieren Opus 4.8 por complejidad.*
 
-#### 1. Tarea 3 / Item 10: Optimización del Caché VOD y Paginación
+---
+
+### ⏳ Dificultad Baja
+
+#### 1. Tarea 36: Botón de PIN en HUD
+*   **Componente:** HUD inferior (`index.html`), `eventListeners.js`, `parental.js`.
+*   **Acción Requerida:**
+    1.  Agregar un botón de acceso rápido al Control Parental (PIN lock/unlock) en el HUD inferior.
+    2.  El botón debe permitir activar/desactivar el modo Kids sin navegar a Ajustes.
+
+---
+
+### ⏳ Dificultad Media-Baja
+
+#### 2. Tarea 38: Hotkey Manager
+*   **Componente:** `eventListeners.js`, `createMainWindow.js`, Ajustes.
+*   **Acción Requerida:**
+    1.  Centralizar todos los atajos de teclado en un gestor configurable.
+    2.  Permitir al usuario ver y personalizar los hotkeys desde Ajustes.
+    3.  Documentar los atajos disponibles en la UI.
+
+---
+
+### ⏳ Dificultad Media
+
+#### 3. Tarea 3 / Item 10: Optimización del Caché VOD y Paginación
 *   **Componente:** `refreshVodContent()` e interacciones de redimensionado de ventana.
 *   **Problema:** Al redimensionar la ventana o paginar, se destruye el contenedor y se lanzan peticiones HTTP masivas al servidor de películas, causando parpadeos de carga y consumo excesivo de red.
 *   **Acción Requerida:**
@@ -135,34 +160,16 @@ Este documento unifica de forma cronológica todas las mejoras, características
     2.  Si los datos ya existen (caché caliente), la paginación y el ajuste de grilla al redimensionar deben hacerse de forma local (offline DOM manipulation).
     3.  Disparar peticiones HTTP *únicamente* en búsquedas nuevas o en la carga inicial.
 
----
-
-### ⏳ Prioridad 2: Configuración de Lanzador, Compilación y Seguridad de Producción
-
-#### 2. Tarea 11 / Item 11: Pantalla de Carga y Flujo de Expiración/Login
-*   **Componente:** Pantalla de carga inicial (`index.html`/`renderer.js`), proceso de inicio de Electron (`main.js`) y sección de Ajustes.
+#### 4. Tarea 37: Soporte Multi-Resolución
+*   **Componente:** `style.css`, `layout.js`, `createMainWindow.js`.
 *   **Acción Requerida:**
-    1.  **Redimensión Dinámica:** Al iniciar, establecer alto mínimo de `720px` (resolución base `1280x720`) y redimensionar la ventana para ocupar como máximo el `80%` del monitor del usuario.
-    2.  **Pantalla de Carga:** Mostrar logotipo de JTV animado con barra de progreso blanca (grosor de `10px`). Duración mínima de 2 segundos. Transición final suave mediante desvanecimiento lento.
-    3.  **Pestaña "Mi cuenta" en Ajustes:** Crear una pestaña llamada "Mi cuenta" debajo de "General" con botón de login con Google (diseño premium y borde animado estilo arcoíris) e indicar: *"Período de Prueba por 3 días. Inicia sesión para desbloquear la aplicación una vez concluido este período"*.
-    4.  **Bloqueo y Expiración:** Al iniciar la app empaquetada (Production `.exe`), si expira el trial de 3 días, detener la carga, mostrar un mensaje de expiración y botones para Iniciar Sesión (Google Login realiza bypass para desbloquear en esta fase) o Desinstalar. El modo de desarrollo evade este bloqueo por defecto.
-
-#### 3. Tarea 23 / Item 12: Configuración de Compilación (Tree Shaking de Módulos Dev)
-*   **Componente:** `vite.config.js`, scripts en `package.json` y directivas en código JS.
-*   **Acción Requerida:**
-    1.  Modularizar y proteger herramientas dev (CRUD, autotuner, diagnóstico de clicks, bypass de trial) bajo condicionales de entorno (`if (!import.meta.env.PROD)`).
-    2.  Configurar Vite/Rollup para eliminar todo código muerto dev-only en las compilaciones de producción.
-
-#### 4. Tarea 24: Protección en Compilado de Producción (Trial Lock y HTTP Server Time)
-*   **Componente:** `main.js`, interceptores del webview y Registro de Windows.
-*   **Acción Requerida:**
-    1.  **Inicio del Período de Prueba:** El trial de 31 días se activa únicamente en la primera sintonía de un canal. El proceso principal obtiene la fecha UTC real de la cabecera HTTP `Date` de red (inmune a cambios de reloj local).
-    2.  **Cifrado y Persistencia:** Guardar la fecha encriptada con AES-256 en el Registro de Windows (`HKEY_CURRENT_USER\Software\prnt` bajo el valor `driver_config`).
-    3.  **Validación:** Comprobar la diferencia de fecha contra la cabecera HTTP de red en cada inicio/sintonía. Si expira o se altera/elimina la clave del registro, bloquear el acceso.
+    1.  Adaptar la UI para funcionar correctamente en múltiples resoluciones de pantalla (720p, 1080p, 1440p, 4K).
+    2.  Implementar escalado dinámico de fuentes, grids y componentes según el viewport.
+    3.  Revisar y ajustar breakpoints y tamaños mínimos/máximos.
 
 ---
 
-### ⏳ Prioridad 3: Internacionalización
+### ⏳ Dificultad Media-Alta
 
 #### 5. Tarea 30: Soporte Multi-idioma (i18n)
 *   **Componente:** Todos los archivos del renderer y main process con textos visibles al usuario.
@@ -172,43 +179,48 @@ Este documento unifica de forma cronológica todas las mejoras, características
     2.  Implementar un sistema de carga de idioma basado en la preferencia del usuario.
     3.  Agregar selector de idioma de interfaz en Ajustes Generales.
     4.  **Excluir:** Nombres de canales, nombres de categorías/filtros, y textos de logs/consola.
-*   **Subtarea completada:** Traducción de toda la UI de español a inglés como base (textos estáticos en HTML, textos dinámicos en JS, tooltips, alertas, mensajes de estado, comentarios de código).
+*   **Subtarea completada:** Traducción de toda la UI de español a inglés como base.
+
+#### 6. Tarea 23 / Item 12: Configuración de Compilación (Tree Shaking de Módulos Dev)
+*   **Componente:** `vite.config.js`, scripts en `package.json` y directivas en código JS.
+*   **Acción Requerida:**
+    1.  Modularizar y proteger herramientas dev (CRUD, autotuner, diagnóstico de clicks, bypass de trial) bajo condicionales de entorno (`if (!import.meta.env.PROD)`).
+    2.  Configurar Vite/Rollup para eliminar todo código muerto dev-only en las compilaciones de producción.
 
 ---
 
-### ⏳ Prioridad 4: Funcionalidad y UX Avanzada
+### ⏳ Dificultad Alta — 🧠 Recomendado Opus 4.8
 
-#### 6. Tarea 36: Botón de PIN en HUD
-*   **Componente:** HUD inferior (`index.html`), `eventListeners.js`, `parental.js`.
+#### 7. Tarea 11 / Item 11: Pantalla de Carga y Flujo de Expiración/Login 🧠
+*   **Componente:** Pantalla de carga inicial (`index.html`/`renderer.js`), proceso de inicio de Electron (`main.js`) y sección de Ajustes.
 *   **Acción Requerida:**
-    1.  Agregar un botón de acceso rápido al Control Parental (PIN lock/unlock) en el HUD inferior.
-    2.  El botón debe permitir activar/desactivar el modo Kids sin navegar a Ajustes.
+    1.  **Redimensión Dinámica:** Al iniciar, establecer alto mínimo de `720px` (resolución base `1280x720`) y redimensionar la ventana para ocupar como máximo el `80%` del monitor del usuario.
+    2.  **Pantalla de Carga:** Mostrar logotipo de JTV animado con barra de progreso blanca (grosor de `10px`). Duración mínima de 2 segundos. Transición final suave mediante desvanecimiento lento.
+    3.  **Pestaña "Mi cuenta" en Ajustes:** Crear una pestaña llamada "Mi cuenta" debajo de "General" con botón de login con Google (diseño premium y borde animado estilo arcoíris) e indicar: *"Período de Prueba por 3 días. Inicia sesión para desbloquear la aplicación una vez concluido este período"*.
+    4.  **Bloqueo y Expiración:** Al iniciar la app empaquetada (Production `.exe`), si expira el trial de 3 días, detener la carga, mostrar un mensaje de expiración y botones para Iniciar Sesión (Google Login realiza bypass para desbloquear en esta fase) o Desinstalar. El modo de desarrollo evade este bloqueo por defecto.
 
-#### 7. Tarea 37: Soporte Multi-Resolución
-*   **Componente:** `style.css`, `layout.js`, `createMainWindow.js`.
+#### 8. Tarea 24: Protección en Compilado de Producción (Trial Lock y HTTP Server Time) 🧠
+*   **Componente:** `main.js`, interceptores del webview y Registro de Windows.
 *   **Acción Requerida:**
-    1.  Adaptar la UI para funcionar correctamente en múltiples resoluciones de pantalla (720p, 1080p, 1440p, 4K).
-    2.  Implementar escalado dinámico de fuentes, grids y componentes según el viewport.
-    3.  Revisar y ajustar breakpoints y tamaños mínimos/máximos.
+    1.  **Inicio del Período de Prueba:** El trial de 31 días se activa únicamente en la primera sintonía de un canal. El proceso principal obtiene la fecha UTC real de la cabecera HTTP `Date` de red (inmune a cambios de reloj local).
+    2.  **Cifrado y Persistencia:** Guardar la fecha encriptada con AES-256 en el Registro de Windows (`HKEY_CURRENT_USER\Software\prnt` bajo el valor `driver_config`).
+    3.  **Validación:** Comprobar la diferencia de fecha contra la cabecera HTTP de red en cada inicio/sintonía. Si expira o se altera/elimina la clave del registro, bloquear el acceso.
 
-#### 8. Tarea 38: Hotkey Manager
-*   **Componente:** `eventListeners.js`, `createMainWindow.js`, Ajustes.
-*   **Acción Requerida:**
-    1.  Centralizar todos los atajos de teclado en un gestor configurable.
-    2.  Permitir al usuario ver y personalizar los hotkeys desde Ajustes.
-    3.  Documentar los atajos disponibles en la UI.
-
-#### 9. Tarea 39: Multi-Fuentes de Canales
-*   **Componente:** `channelSync.js`, `playerController.js`, Ajustes de Conectividad.
-*   **Acción Requerida:**
-    1.  Explorar implementación de soporte para múltiples proveedores de canales (no solo DaddyLive).
-    2.  Permitir al usuario agregar URLs y listas personalizadas (M3U, XTREAM, URLs directas).
-    3.  Unificar las fuentes en una sola lista de canales con indicador de origen.
-
-#### 10. Tarea 40: AutoUpdater
+#### 9. Tarea 40: AutoUpdater 🧠
 *   **Componente:** Main process (`bootstrap.js`), `electron-updater`.
 *   **Acción Requerida:**
     1.  Integrar `electron-updater` para verificar y descargar actualizaciones automáticamente.
     2.  Mostrar notificación al usuario cuando hay una actualización disponible.
     3.  Implementar descarga en segundo plano e instalación al reiniciar.
     4.  Configurar publicación de releases (GitHub Releases o servidor propio).
+
+---
+
+### ⏳ Dificultad Muy Alta — 🧠 Recomendado Opus 4.8
+
+#### 10. Tarea 39: Multi-Fuentes de Canales 🧠
+*   **Componente:** `channelSync.js`, `playerController.js`, Ajustes de Conectividad.
+*   **Acción Requerida:**
+    1.  Explorar implementación de soporte para múltiples proveedores de canales (no solo DaddyLive).
+    2.  Permitir al usuario agregar URLs y listas personalizadas (M3U, XTREAM, URLs directas).
+    3.  Unificar las fuentes en una sola lista de canales con indicador de origen.
