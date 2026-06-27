@@ -3825,8 +3825,8 @@ body.hide-cursor * {
 /* Mini buttons (Fav & Pin) — floating top-right of source-switcher */
 .hud-mini-float {
     position: absolute;
-    top: 6px;
-    right: 6px;
+    top: 8px;
+    right: 8px;
     display: flex;
     flex-direction: row;
     gap: 5px;
@@ -3849,16 +3849,16 @@ body.hide-cursor * {
 
 .vol-icon {
     cursor: pointer;
-    opacity: 0.4;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     width: 30px;
     height: 30px;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    border: none;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
     outline: none;
     padding: 0;
 }
