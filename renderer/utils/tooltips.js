@@ -98,8 +98,16 @@ export function getOrGenerateTooltip(el) {
             case 'tv': tooltipText = 'Watch Live'; break;
             case 'film': tooltipText = 'Movies'; break;
             case 'clapperboard': tooltipText = 'Series'; break;
-            case 'heart': tooltipText = el.classList.contains('active') || id.includes('fav') ? 'Remove from Favorites' : 'Add to Favorites'; break;
-            case 'settings': case 'settings-2': case 'sliders': tooltipText = 'Settings & Filters'; break;
+            case 'heart': {
+                const favBtn = el.closest('.favorite, .favorite-btn, [id*="fav"]');
+                const isActive = (favBtn && favBtn.classList.contains('active')) || el.classList.contains('active');
+                tooltipText = isActive ? 'Quitar de Favoritos' : 'Agregar a Favoritos';
+                el.removeAttribute('data-tooltip');
+                break;
+            }
+            case 'settings': case 'settings-2': case 'sliders':
+                tooltipText = el.closest('.channel-actions') ? 'Editar canal' : 'Ajustes y Filtros';
+                break;
             case 'search': tooltipText = 'Search'; break;
             case 'plus': case 'plus-circle': tooltipText = 'Add'; break;
             case 'minus': tooltipText = 'Decrease / Remove'; break;
@@ -184,7 +192,10 @@ export function initCustomTooltips() {
             const spaceRight = vw - rect.right;
 
             let top, left;
-            const forcedPos = target.getAttribute('data-tooltip-pos');
+            let forcedPos = target.getAttribute('data-tooltip-pos');
+            if (!forcedPos && target.closest('#main-menu .channel-actions')) {
+                forcedPos = 'right';
+            }
 
             if (forcedPos === 'left') {
                 left = rect.left - tw - gap;
