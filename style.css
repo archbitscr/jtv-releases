@@ -3020,10 +3020,23 @@ body.hide-cursor * {
     flex-direction: column;
 }
 
-/* The allowed-channels tab scrolls its channel list, not the whole pane */
+/* The allowed-channels tab scrolls its channel list, not the whole pane.
+   Pack children at the top; only the channel list grows to fill height. */
 #parental-tab-allowed .parental-allowed-item {
     padding-top: 0;
     padding-bottom: 0;
+    justify-content: flex-start;
+}
+
+/* Description must not grow vertically (base .setting-item-info has flex:1,
+   which otherwise eats all the space and pushes the list to the bottom). */
+#parental-tab-allowed .parental-allowed-item .setting-item-info {
+    flex: 0 0 auto;
+}
+
+#parental-allowed-channels-list {
+    flex: 1 1 auto;
+    min-height: 0;
 }
 
 /* When parental pane is active, prevent the settings container from
