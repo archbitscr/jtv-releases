@@ -1130,6 +1130,12 @@ export function updateDeveloperUI() {
     console.log('[DeveloperModule] updateDeveloperUI: developerModeEnabled =', developerModeEnabled, 'reloadWindowBtn =', !!reloadWindowBtn, 'powerOffBtn =', !!powerOffBtn);
 
     if (devToggle) devToggle.checked = !!developerModeEnabled;
+
+    const hudPinBtn = document.getElementById('hud-pin-btn');
+    const hudSettingsBtn = document.getElementById('hud-settings-btn');
+    if (hudPinBtn) hudPinBtn.style.display = developerModeEnabled ? 'none' : '';
+    if (hudSettingsBtn) hudSettingsBtn.style.display = developerModeEnabled ? '' : 'none';
+
     const hudDevToggle = document.getElementById('hud-dev-controls-toggle');
     if (hudDevToggle) {
         hudDevToggle.checked = !!hudDevControlsEnabled;
