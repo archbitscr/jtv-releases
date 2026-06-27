@@ -4749,61 +4749,146 @@ body[data-module="home"] .power-hover-zone:hover .power-toggle-btn {
     font-weight: 500;
 }
 
-.parental-time-field {
+/* ---- Premium custom time picker (replaces native time dropdown) ---- */
+.custom-time-picker {
+    position: relative;
     width: 150px;
+}
+
+.ctp-display {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     margin: 0;
-    background: rgba(0, 0, 0, 0.4) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 8px !important;
-    color: #ffffff !important;
-    padding: 6px 10px !important;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 8px 12px;
     font-family: inherit;
-    font-size: 0.875rem;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.parental-time-field:focus {
-    border-color: rgba(0, 255, 204, 0.5) !important;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 255, 204, 0.2);
-}
-
-.parental-time-field::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-}
-
-.parental-time-field::-webkit-calendar-picker-indicator:hover {
-    opacity: 1;
-}
-
-.parental-time-field::-webkit-datetime-edit {
-    color: rgba(255, 255, 255, 0.9);
-    font-family: inherit;
-    font-size: 0.875rem;
+    font-size: 0.9rem;
+    font-weight: 500;
     letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-.parental-time-field::-webkit-datetime-edit-fields-wrapper {
-    padding: 0;
+.ctp-display:hover {
+    border-color: rgba(0, 255, 204, 0.35);
+    background: rgba(0, 0, 0, 0.55);
 }
 
-.parental-time-field::-webkit-datetime-edit-hour-field,
-.parental-time-field::-webkit-datetime-edit-minute-field,
-.parental-time-field::-webkit-datetime-edit-ampm-field {
-    padding: 2px 4px;
-    border-radius: 4px;
-    transition: background 0.15s;
+.ctp-display.open {
+    border-color: rgba(0, 255, 204, 0.6);
+    box-shadow: 0 0 8px rgba(0, 255, 204, 0.18);
 }
 
-.parental-time-field::-webkit-datetime-edit-hour-field:focus,
-.parental-time-field::-webkit-datetime-edit-minute-field:focus,
-.parental-time-field::-webkit-datetime-edit-ampm-field:focus {
-    background: rgba(0, 255, 204, 0.15);
-    color: #00ffcc;
-    outline: none;
+.ctp-display.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.ctp-display i,
+.ctp-display svg {
+    width: 15px;
+    height: 15px;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.ctp-display .ctp-time {
+    flex: 1;
+    text-align: left;
+}
+
+.ctp-display .ctp-sep {
+    margin: 0 2px;
+    opacity: 0.6;
+}
+
+.ctp-display .ctp-period {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.ctp-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 50;
+    display: flex;
+    gap: 4px;
+    padding: 8px;
+    width: 100%;
+    min-width: 180px;
+    height: 200px;
+    background: rgba(18, 20, 24, 0.98);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.15s ease-out;
+}
+
+.ctp-dropdown.hidden {
+    display: none;
+}
+
+.ctp-dropdown.drop-up {
+    top: auto;
+    bottom: calc(100% + 6px);
+}
+
+.ctp-col {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.ctp-col::-webkit-scrollbar {
+    width: 5px;
+}
+
+.ctp-col::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+}
+
+.ctp-col-period {
+    flex: 0 0 auto;
+    width: 48px;
+}
+
+.ctp-option {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 7px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.12s ease, color 0.12s ease;
+    flex-shrink: 0;
+}
+
+.ctp-option:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+}
+
+.ctp-option.selected {
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-weight: 700;
 }
 
 .disabled-setting-row {

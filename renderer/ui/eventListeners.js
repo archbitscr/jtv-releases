@@ -13,6 +13,7 @@ import { emojiToHtml } from '../filters/filterState.js';
 import { syncCustomSelect, initDashCustomSelects } from '../utils/customSelect.js';
 import { initIconPickers } from '../utils/iconPicker.js';
 import { initCustomTooltips } from '../utils/tooltips.js';
+import { attachTimePicker } from '../ui/timePicker.js';
 import { syncCenterNavWidth, checkResolution, updateFullscreenButton, toggleAppFullscreen, getActiveSidebarTab, getCurrentNavigationChannels, isEditableElement, updateVodGridDimensions, handleResizeDimensions } from '../ui/layout.js';
 import { updateSensorsUI } from '../ui/sensors.js';
 import { updateTriggersVisibility } from '../ui/triggersVisibility.js';
@@ -227,9 +228,14 @@ export function setupEventListeners() {
     const parentalEndTime = document.getElementById('parental-end-time');
     const parentalChangePinBtn = document.getElementById('parental-change-pin-btn');
 
+    let startTimePicker = null;
+    let endTimePicker = null;
+
     const updateParentalTimeFields = (enabled) => {
         if (parentalStartTime) parentalStartTime.disabled = !enabled;
         if (parentalEndTime) parentalEndTime.disabled = !enabled;
+        if (startTimePicker) startTimePicker.setDisabled(!enabled);
+        if (endTimePicker) endTimePicker.setDisabled(!enabled);
         const timeRow = document.getElementById('parental-time-settings-row');
         if (timeRow) {
             timeRow.classList.toggle('disabled-setting-row', !enabled);
@@ -273,19 +279,22 @@ export function setupEventListeners() {
 
     if (parentalStartTime) {
         parentalStartTime.value = localStorage.getItem('jtv_parental_start_time') || '08:00';
-        parentalStartTime.onchange = (e) => {
-            localStorage.setItem('jtv_parental_start_time', e.target.value);
+        startTimePicker = attachTimePicker(parentalStartTime, (value) => {
+            localStorage.setItem('jtv_parental_start_time', value);
             renderAll();
-        };
+        });
     }
 
     if (parentalEndTime) {
         parentalEndTime.value = localStorage.getItem('jtv_parental_end_time') || '20:00';
-        parentalEndTime.onchange = (e) => {
-            localStorage.setItem('jtv_parental_end_time', e.target.value);
+        endTimePicker = attachTimePicker(parentalEndTime, (value) => {
+            localStorage.setItem('jtv_parental_end_time', value);
             renderAll();
-        };
+        });
     }
+
+    // Apply the initial disabled state now that pickers exist.
+    updateParentalTimeFields(localStorage.getItem('jtv_parental_schedule_enabled') === 'true');
 
     const parentalPinCreationWrapper = document.getElementById('parental-pin-creation-wrapper');
     const parentalNewPin1 = document.getElementById('parental-new-pin-1');
