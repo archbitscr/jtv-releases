@@ -3765,6 +3765,72 @@ body.hide-cursor * {
     transform: scale(1.22);
 }
 
+.power-hover-zone {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 100px;
+    height: 100px;
+    z-index: 1200;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0;
+}
+
+@media (max-width: 1200px), (max-height: 800px) {
+    .power-hover-zone {
+        width: 54px;
+        height: 54px;
+    }
+}
+
+.power-toggle-btn {
+    width: 54px;
+    height: 54px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    background: rgba(10, 10, 10, 0.25);
+    backdrop-filter: blur(60px);
+    -webkit-backdrop-filter: blur(60px);
+    color: rgba(255, 255, 255, 0.82);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(4px);
+    pointer-events: none;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+    transition: opacity 0.22s ease, transform 0.22s ease, background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+}
+
+.power-hover-zone:hover .power-toggle-btn,
+.power-toggle-btn:focus-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.power-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.power-toggle-btn i,
+.power-toggle-btn svg {
+    width: 27px;
+    height: 27px;
+    stroke-width: 2.5;
+    transition: transform 0.22s ease;
+    transform: scale(1);
+}
+
+.power-toggle-btn:hover svg {
+    transform: scale(1.22);
+}
+
 /* Hover Trigger Top */
 .hover-trigger.top {
     top: 0;

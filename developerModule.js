@@ -74,6 +74,11 @@ export async function initDeveloperFeatures() {
         };
     }
 
+    const powerUserBtn = document.getElementById('power-user-btn');
+    if (powerUserBtn) {
+        powerUserBtn.onclick = () => window.close();
+    }
+
     try {
         const flags = await nativeApi.getAppFlags();
         devModeAvailable = !!flags?.devModeAvailable;
@@ -1119,6 +1124,7 @@ export function updateDeveloperUI() {
     const openDevtoolsBtn = document.getElementById('open-devtools-btn');
     const reloadWindowBtn = document.getElementById('reload-window-btn');
     const powerOffBtn = document.getElementById('power-off-btn');
+    const powerHoverZone = document.getElementById('power-hover-zone');
 
     console.log('[DeveloperModule] updateDeveloperUI: developerModeEnabled =', developerModeEnabled, 'reloadWindowBtn =', !!reloadWindowBtn, 'powerOffBtn =', !!powerOffBtn);
 
@@ -1146,6 +1152,7 @@ export function updateDeveloperUI() {
     if (isLoaderVisible || isOnboardingVisible) {
         if (reloadWindowBtn) reloadWindowBtn.style.display = 'none';
         if (powerOffBtn) powerOffBtn.style.display = 'none';
+        if (powerHoverZone) powerHoverZone.style.display = 'none';
     } else {
         if (developerModeEnabled) {
             if (reloadWindowBtn) reloadWindowBtn.style.display = 'flex';
@@ -1153,12 +1160,11 @@ export function updateDeveloperUI() {
                 powerOffBtn.style.display = 'flex';
                 powerOffBtn.classList.remove('neon-white');
             }
+            if (powerHoverZone) powerHoverZone.style.display = 'none';
         } else {
             if (reloadWindowBtn) reloadWindowBtn.style.display = 'none';
-            if (powerOffBtn) {
-                powerOffBtn.style.display = 'flex';
-                powerOffBtn.classList.add('neon-white');
-            }
+            if (powerOffBtn) powerOffBtn.style.display = 'none';
+            if (powerHoverZone) powerHoverZone.style.display = 'flex';
         }
     }
 

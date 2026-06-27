@@ -121,6 +121,7 @@ Este documento unifica de forma cronológica todas las mejoras, características
 *   ✅ **Tarea 34:** Reparación de Open DevTools — tres bugs corregidos: (1) `developerModeEnabled` no se sincronizaba al main process al guardar estado, (2) `nativeApi.setDeveloperMode()` no existía en preload y silenciosamente reseteaba el flag, (3) la política ZeroTrust bloqueaba scripts `devtools://` impidiendo que la UI de DevTools se renderizara.
 *   ✅ **Tarea 35:** Segregación de Developer en Subpestañas — creadas subpestañas "General" y "Timeouts" usando clases CSS existentes (`.settings-subnav`), con clase `.dev-subnav-btn` para evitar conflicto con el handler global de filtros.
 *   ✅ **Tarea 36:** Botón Pin en HUD — nuevo `#hud-pin-btn` con icono `pin`/`pin-off` y estilos blancos (análogos al favorito en rojo). Fija el HUD cancelando el timer `zappingHUD` en `inactivity.js`. Visibilidad condicional: Pin en modo usuario, Ajustes solo en dev mode. Estado `hudPinned` no persistido, resetea al cerrar.
+*   ✅ **Tarea 36b:** Botón Power en modo usuario — nuevo `#power-hover-zone` con `#power-user-btn` en esquina inferior derecha, espejo del botón fullscreen (superior derecha). Glassmorphism, oculto por defecto, visible on hover con icono `power` (stroke-width 2.5) y scale 1.22 on hover. En dev mode el hover zone se oculta y se usa el `#power-off-btn` existente del floating container.
 
 ---
 
