@@ -174,3 +174,41 @@ Este documento unifica de forma cronológica todas las mejoras, características
     4.  **Excluir:** Nombres de canales, nombres de categorías/filtros, y textos de logs/consola.
 *   **Subtarea completada:** Traducción de toda la UI de español a inglés como base (textos estáticos en HTML, textos dinámicos en JS, tooltips, alertas, mensajes de estado, comentarios de código).
 
+---
+
+### ⏳ Prioridad 4: Funcionalidad y UX Avanzada
+
+#### 6. Tarea 36: Botón de PIN en HUD
+*   **Componente:** HUD inferior (`index.html`), `eventListeners.js`, `parental.js`.
+*   **Acción Requerida:**
+    1.  Agregar un botón de acceso rápido al Control Parental (PIN lock/unlock) en el HUD inferior.
+    2.  El botón debe permitir activar/desactivar el modo Kids sin navegar a Ajustes.
+
+#### 7. Tarea 37: Soporte Multi-Resolución
+*   **Componente:** `style.css`, `layout.js`, `createMainWindow.js`.
+*   **Acción Requerida:**
+    1.  Adaptar la UI para funcionar correctamente en múltiples resoluciones de pantalla (720p, 1080p, 1440p, 4K).
+    2.  Implementar escalado dinámico de fuentes, grids y componentes según el viewport.
+    3.  Revisar y ajustar breakpoints y tamaños mínimos/máximos.
+
+#### 8. Tarea 38: Hotkey Manager
+*   **Componente:** `eventListeners.js`, `createMainWindow.js`, Ajustes.
+*   **Acción Requerida:**
+    1.  Centralizar todos los atajos de teclado en un gestor configurable.
+    2.  Permitir al usuario ver y personalizar los hotkeys desde Ajustes.
+    3.  Documentar los atajos disponibles en la UI.
+
+#### 9. Tarea 39: Multi-Fuentes de Canales
+*   **Componente:** `channelSync.js`, `playerController.js`, Ajustes de Conectividad.
+*   **Acción Requerida:**
+    1.  Explorar implementación de soporte para múltiples proveedores de canales (no solo DaddyLive).
+    2.  Permitir al usuario agregar URLs y listas personalizadas (M3U, XTREAM, URLs directas).
+    3.  Unificar las fuentes en una sola lista de canales con indicador de origen.
+
+#### 10. Tarea 40: AutoUpdater
+*   **Componente:** Main process (`bootstrap.js`), `electron-updater`.
+*   **Acción Requerida:**
+    1.  Integrar `electron-updater` para verificar y descargar actualizaciones automáticamente.
+    2.  Mostrar notificación al usuario cuando hay una actualización disponible.
+    3.  Implementar descarga en segundo plano e instalación al reiniciar.
+    4.  Configurar publicación de releases (GitHub Releases o servidor propio).
