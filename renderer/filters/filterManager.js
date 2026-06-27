@@ -11,7 +11,14 @@ export function initFilterManager(dependencies) {
 
 export function syncFilterList() {
     if (Array.isArray(state.filterLanguages)) {
-        const priority = ['english', 'español / latino'];
+        const priority = [
+            'english', 'español / latino', 'français', 'português', 'italiano',
+            'deutsch', 'russian', 'arabic', 'chinese', 'japanese', 'korean',
+            'hindi', 'turkish', 'polish', 'dutch', 'romanian', 'czech',
+            'greek', 'hungarian', 'swedish', 'danish', 'finnish', 'norwegian',
+            'bulgarian', 'croatian', 'serbian', 'slovak', 'slovenian',
+            'european', 'middle east'
+        ];
         state.filterLanguages.sort((a, b) => {
             const ai = priority.indexOf((a.name || '').toLowerCase());
             const bi = priority.indexOf((b.name || '').toLowerCase());

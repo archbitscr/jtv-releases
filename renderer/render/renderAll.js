@@ -60,7 +60,7 @@ export function renderSettingsFilters() {
 
             // Genre is read-only in user mode; language add/delete controls
             // are hidden at the card level but checkboxes remain functional.
-            const readOnlyType = !isDevMode && type === 'genre';
+            const readOnlyType = !isDevMode && (type === 'genre' || type === 'language');
             const showControls = readOnlyType ? false : (isDevMode || !isSystem);
 
             item.innerHTML = `
