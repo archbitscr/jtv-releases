@@ -3825,7 +3825,7 @@ body.hide-cursor * {
 /* Mini buttons (Fav & Pin) — floating top-right of source-switcher */
 .hud-mini-float {
     position: absolute;
-    top: 2px;
+    top: 6px;
     right: 6px;
     display: flex;
     flex-direction: row;
