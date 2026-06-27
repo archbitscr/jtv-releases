@@ -3831,6 +3831,19 @@ body.hide-cursor * {
     transform: scale(1.22);
 }
 
+/* Homescreen: buttons faintly visible as idle hint */
+body[data-module="home"] .fullscreen-toggle-btn,
+body[data-module="home"] .power-toggle-btn {
+    opacity: 0.12;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+body[data-module="home"] .fullscreen-hover-zone:hover .fullscreen-toggle-btn,
+body[data-module="home"] .power-hover-zone:hover .power-toggle-btn {
+    opacity: 1;
+}
+
 /* Hover Trigger Top */
 .hover-trigger.top {
     top: 0;

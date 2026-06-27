@@ -147,6 +147,7 @@ export function showModule(moduleName) {
 
     state.currentModule = moduleName;
     state.isVodPlaying = false;
+    document.body.setAttribute('data-module', moduleName);
 
     const sectionTitle = document.getElementById('section-title');
     if (sectionTitle) {
