@@ -323,12 +323,15 @@ async function init() {
     const trialStatusEl = document.getElementById('account-trial-status');
     if (trialStatusEl) {
         if (isDevMode) {
-            trialStatusEl.innerText = 'Modo Desarrollador';
+            trialStatusEl.innerText = 'Developer Mode';
         } else if (trialCheck.firstTime) {
-            trialStatusEl.innerText = 'Trial period active (3 days remaining).';
+            trialStatusEl.innerText = 'Trial period active (3d remaining).';
         } else {
-            const daysLeft = Math.max(0, 3 - (trialCheck.elapsedDays || 0));
-            trialStatusEl.innerText = `Trial period active. ${daysLeft.toFixed(1)} days remaining.`;
+            const totalHoursLeft = Math.max(0, (3 - (trialCheck.elapsedDays || 0)) * 24);
+            const d = Math.floor(totalHoursLeft / 24);
+            const h = Math.round(totalHoursLeft % 24);
+            const timeStr = d >= 1 ? `${d}d remaining.` : `${h}h remaining.`;
+            trialStatusEl.innerText = `Trial period active. ${timeStr}`;
         }
     }
 

@@ -107,9 +107,7 @@ export function setupEventListeners() {
         }
     };
     const loaderLoginBtn = document.getElementById('loader-login-btn');
-    const settingsLoginBtn = document.getElementById('settings-login-btn');
     if (loaderLoginBtn) loaderLoginBtn.onclick = (e) => { e.preventDefault(); };
-    if (settingsLoginBtn) settingsLoginBtn.onclick = (e) => { e.preventDefault(); };
 
     // 3. Factory Reset
     const factoryResetBtn = document.getElementById('factory-reset-btn');
