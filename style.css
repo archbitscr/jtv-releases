@@ -5712,8 +5712,8 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     font-size: 11px;
     color: rgba(255, 255, 255, 0.7);
     padding: 8px 10px;
-    min-height: 5.6em;
-    max-height: 5.6em;
+    min-height: 7.5em;
+    max-height: 7.5em;
     line-height: 1.4em;
     overflow-y: auto;
     white-space: pre-wrap;
