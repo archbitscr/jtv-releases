@@ -760,6 +760,17 @@ export function setupEventListeners() {
                 }
                 if (targetTab === 'developer') {
                     updateDeveloperUI();
+                    // Reset sub-tabs to General and re-render icons
+                    const devPane = document.getElementById('settings-sect-developer');
+                    if (devPane) {
+                        devPane.querySelectorAll('.dev-subnav-btn').forEach(b => b.classList.remove('active'));
+                        const firstBtn = devPane.querySelector('.dev-subnav-btn');
+                        if (firstBtn) firstBtn.classList.add('active');
+                        devPane.querySelectorAll('.dev-tab-pane').forEach(p => p.style.display = 'none');
+                        const firstPane = document.getElementById('dev-tab-general');
+                        if (firstPane) firstPane.style.display = '';
+                    }
+                    if (window.lucide) window.lucide.createIcons();
                 }
                 if (targetTab === 'channels') {
                     const devState = window.getDeveloperState ? window.getDeveloperState() : null;

@@ -410,6 +410,7 @@ export async function initDeveloperFeatures() {
         </div>
     `;
     mainContainer.appendChild(devPane);
+    if (window.lucide) window.lucide.createIcons();
 
     // Developer subtab switching
     devPane.querySelectorAll('.dev-subnav-btn').forEach(btn => {
