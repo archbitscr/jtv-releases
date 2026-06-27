@@ -3807,11 +3807,53 @@ body.hide-cursor * {
     display: none !important;
 }
 
-/* Compact Volume Icons */
-.volume-compact-stack {
+/* HUD Center Block (Vol up / Prev-Mute-Next row / Vol down) */
+.hud-center-block {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 2px !important;
+    gap: 2px;
 }
+
+.hud-center-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.hud-mute-btn {
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.hud-mute-btn i,
+.hud-mute-btn svg {
+    width: 22px !important;
+    height: 22px !important;
+}
+
+/* Mini buttons (Fav & Pin) */
+.hud-mini-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4px;
+    align-self: stretch;
+}
+
+.hud-mini-btn {
+    width: 22px !important;
+    height: 22px !important;
+    border-radius: 6px !important;
+}
+
+.hud-mini-btn i,
+.hud-mini-btn svg {
+    width: 11px !important;
+    height: 11px !important;
+}
+
+/* Compact Volume Icons */
 
 .vol-icon {
     cursor: pointer;

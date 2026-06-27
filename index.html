@@ -127,35 +127,31 @@
 
                     <!-- HUD Actions -->
                     <div class="hud-actions-container">
-                        <!-- Fav & Settings vertical stack -->
-                        <div class="hud-action-stack">
-                            <!-- Favorite Toggle -->
-                            <button id="hud-fav-btn" class="hud-action-btn favorite-btn" title="Favorite" data-tooltip-pos="left">
+                        <!-- Channel/Mute/Volume center block -->
+                        <div class="hud-center-block">
+                            <button id="tuner-vol-up" class="vol-icon" title="Volume up" tabindex="0" aria-label="Volume up"><i data-lucide="plus"></i></button>
+                            <div class="hud-center-row">
+                                <button id="tuner-up" class="hud-action-btn zapper-btn" title="Previous channel"><i data-lucide="chevron-left"></i></button>
+                                <button id="tuner-mute" class="hud-action-btn hud-mute-btn" title="Mute / unmute">
+                                    <i data-lucide="volume-2" id="tuner-mute-icon"></i>
+                                </button>
+                                <button id="tuner-down" class="hud-action-btn zapper-btn" title="Next channel"><i data-lucide="chevron-right"></i></button>
+                            </div>
+                            <button id="tuner-vol-down" class="vol-icon" title="Volume down" tabindex="0" aria-label="Volume down"><i data-lucide="minus"></i></button>
+                        </div>
+                        <!-- Fav & Pin mini stack (top-right / bottom-right) -->
+                        <div class="hud-mini-stack">
+                            <button id="hud-fav-btn" class="hud-action-btn hud-mini-btn favorite-btn" title="Favorite">
                                 <i data-lucide="heart" id="tuner-fav-heart"></i>
                             </button>
                             <!-- Pin HUD (user mode) -->
-                            <button id="hud-pin-btn" class="hud-action-btn pin-btn" title="Pin HUD" data-tooltip-pos="left">
+                            <button id="hud-pin-btn" class="hud-action-btn hud-mini-btn pin-btn" title="Pin HUD">
                                 <i data-lucide="pin"></i>
                             </button>
                             <!-- Tune Settings (dev mode only) -->
-                            <button id="hud-settings-btn" class="hud-action-btn settings-btn" title="Edit channel" style="display:none">
+                            <button id="hud-settings-btn" class="hud-action-btn hud-mini-btn settings-btn" title="Edit channel" style="display:none">
                                 <i data-lucide="sliders"></i>
                             </button>
-                        </div>
-                        
-                        <!-- Volume Control Stack (Compact Icons) -->
-                        <div class="hud-action-stack volume-compact-stack">
-                            <button id="tuner-vol-up" class="vol-icon" title="Volume up" tabindex="0" aria-label="Volume up" data-tooltip-pos="right"><i data-lucide="plus"></i></button>
-                            <button id="tuner-mute" class="hud-action-btn" title="Mute / unmute" data-tooltip-pos="right">
-                                <i data-lucide="volume-2" id="tuner-mute-icon"></i>
-                            </button>
-                            <button id="tuner-vol-down" class="vol-icon" title="Volume down" tabindex="0" aria-label="Volume down" data-tooltip-pos="right"><i data-lucide="minus"></i></button>
-                        </div>
-                        
-                        <!-- Zapper vertical stack -->
-                        <div class="hud-action-stack">
-                            <button id="tuner-up" class="hud-action-btn zapper-btn" title="Previous channel" data-tooltip-pos="right"><i data-lucide="chevron-up"></i></button>
-                            <button id="tuner-down" class="hud-action-btn zapper-btn" title="Next channel" data-tooltip-pos="right"><i data-lucide="chevron-down"></i></button>
                         </div>
                     </div>
                 </div>
