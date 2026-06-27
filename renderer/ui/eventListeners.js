@@ -1512,8 +1512,8 @@ export function setupEventListeners() {
 
     const KEY_DISPLAY = {
         ' ': 'Space', 'Escape': 'Esc', 'ArrowUp': '↑', 'ArrowDown': '↓',
-        'ArrowLeft': '←', 'ArrowRight': '→', 'Add': 'Num+', 'Subtract': 'Num-',
-        'Multiply': 'Num*', 'PageUp': 'PgUp', 'PageDown': 'PgDn'
+        'ArrowLeft': '←', 'ArrowRight': '→', 'Add': '+', 'Subtract': '-',
+        'Multiply': '*', 'PageUp': 'PgUp', 'PageDown': 'PgDn'
     };
 
     const HOTKEY_DEFS = [

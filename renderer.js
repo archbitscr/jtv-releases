@@ -426,7 +426,13 @@ async function init() {
             state.currentVolumeLevel = savedData.currentVolumeLevel;
         }
         if (savedData.hotkeyMap) {
-            state.hotkeyMap = { ...state.hotkeyMap, ...savedData.hotkeyMap };
+            const merged = { ...state.hotkeyMap, ...savedData.hotkeyMap };
+            for (const action of Object.keys(merged)) {
+                if (Array.isArray(merged[action]) && merged[action].length > 2) {
+                    merged[action] = merged[action].slice(0, 2);
+                }
+            }
+            state.hotkeyMap = merged;
         }
         if (savedData.timeoutsConfig) {
             window.timeoutsConfig = { ...window.timeoutsConfig, ...savedData.timeoutsConfig };
