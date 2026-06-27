@@ -2101,6 +2101,24 @@ body.hide-cursor * {
     filter: drop-shadow(0 0 8px #ff0033);
 }
 
+.hud-action-btn.pin-btn i,
+.hud-action-btn.pin-btn svg {
+    fill: transparent;
+    transition: 0.3s;
+}
+
+.hud-action-btn.pin-btn:hover,
+.hud-action-btn.pin-btn.active {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hud-action-btn.pin-btn.active i,
+.hud-action-btn.pin-btn.active svg {
+    fill: #ffffff !important;
+    filter: drop-shadow(0 0 8px #ffffff);
+}
+
 .hud-action-btn.settings-btn:hover {
     color: #ffffff;
 }

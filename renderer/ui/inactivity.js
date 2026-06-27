@@ -73,7 +73,7 @@ export function startInactivityTimers() {
     }
 
     // 4. Zapping HUD / Source Switcher
-    if (sourceSwitcher && !sourceSwitcher.classList.contains('hidden')) {
+    if (sourceSwitcher && !sourceSwitcher.classList.contains('hidden') && !state.hudPinned) {
         if (cfg.zappingHUDEnabled) {
             timeouts.set('zappingHUD', () => {
                 if (!sourceSwitcher.matches(':hover')) {

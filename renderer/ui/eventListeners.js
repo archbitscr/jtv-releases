@@ -1524,7 +1524,33 @@ export function setupEventListeners() {
         };
     }
 
+    const hudPinBtn = document.getElementById('hud-pin-btn');
     const hudSettingsBtn = document.getElementById('hud-settings-btn');
+
+    const devStateForHud = window.getDeveloperState ? window.getDeveloperState() : null;
+    const isDevModeForHud = devStateForHud && devStateForHud.developerModeEnabled;
+    if (hudPinBtn) hudPinBtn.style.display = isDevModeForHud ? 'none' : '';
+    if (hudSettingsBtn) hudSettingsBtn.style.display = isDevModeForHud ? '' : 'none';
+
+    if (hudPinBtn) {
+        hudPinBtn.onclick = (e) => {
+            e.stopPropagation();
+            state.hudPinned = !state.hudPinned;
+            hudPinBtn.classList.toggle('active', state.hudPinned);
+            hudPinBtn.title = state.hudPinned ? 'Unpin HUD' : 'Pin HUD';
+            const icon = hudPinBtn.querySelector('[data-lucide]');
+            if (icon) {
+                icon.setAttribute('data-lucide', state.hudPinned ? 'pin-off' : 'pin');
+                if (window.lucide) window.lucide.createIcons({ nodes: [icon] });
+            }
+            if (state.hudPinned) {
+                clearInactivityTimers();
+            } else {
+                startInactivityTimers();
+            }
+        };
+    }
+
     if (hudSettingsBtn) {
         hudSettingsBtn.onclick = (e) => {
             e.stopPropagation();

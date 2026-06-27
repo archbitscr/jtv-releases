@@ -120,6 +120,7 @@ Este documento unifica de forma cronológica todas las mejoras, características
 *   ✅ **Tarea 33:** Eliminación del Optimizador de Logo y Mini-App — removidos el botón, handler IPC, ventana BrowserWindow, y APIs del preload (~200 líneas eliminadas).
 *   ✅ **Tarea 34:** Reparación de Open DevTools — tres bugs corregidos: (1) `developerModeEnabled` no se sincronizaba al main process al guardar estado, (2) `nativeApi.setDeveloperMode()` no existía en preload y silenciosamente reseteaba el flag, (3) la política ZeroTrust bloqueaba scripts `devtools://` impidiendo que la UI de DevTools se renderizara.
 *   ✅ **Tarea 35:** Segregación de Developer en Subpestañas — creadas subpestañas "General" y "Timeouts" usando clases CSS existentes (`.settings-subnav`), con clase `.dev-subnav-btn` para evitar conflicto con el handler global de filtros.
+*   ✅ **Tarea 36:** Botón Pin en HUD — nuevo `#hud-pin-btn` con icono `pin`/`pin-off` y estilos blancos (análogos al favorito en rojo). Fija el HUD cancelando el timer `zappingHUD` en `inactivity.js`. Visibilidad condicional: Pin en modo usuario, Ajustes solo en dev mode. Estado `hudPinned` no persistido, resetea al cerrar.
 
 ---
 
@@ -131,11 +132,16 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ### ⏳ Dificultad Baja
 
-#### 1. Tarea 36: Botón de PIN en HUD
-*   **Componente:** HUD inferior (`index.html`), `eventListeners.js`, `parental.js`.
+#### ~~1. Tarea 36: Botón de Pin en HUD~~ ✅
+*   **Objetivo:** Mantener fijo en pantalla el HUD (menú inferior) mediante un botón de pin.
+*   **Componentes:** HUD inferior (`index.html`), `style.css`, `appState.js`, `eventListeners.js`, `inactivity.js`.
 *   **Acción Requerida:**
-    1.  Agregar un botón de acceso rápido al Control Parental (PIN lock/unlock) en el HUD inferior.
-    2.  El botón debe permitir activar/desactivar el modo Kids sin navegar a Ajustes.
+    1.  Usar el botón existente de Ajustes (`#hud-settings-btn`) como base: reemplazarlo en modo usuario por un botón de Pin (`#hud-pin-btn`). El botón de Ajustes pasa a ser dev mode only.
+    2.  Icono Lucide `pin` (off) / `pin-off` (on), mismo tamaño relativo que el icono de sliders del botón de Ajustes.
+    3.  Tooltip descriptivo en el botón.
+    4.  Mismos button states CSS que el botón de favoritos (`.favorite-btn`), pero en tono blanco en lugar de rojo: icono vacío (fill transparent) en modo off, icono lleno (fill blanco con glow) en modo on.
+    5.  Al activar el pin, cancelar el timer de inactividad del HUD (`zappingHUD`). Al desactivar, restaurar el auto-ocultamiento.
+    6.  Estado `hudPinned` en `appState.js`, no persistido a disco — se resetea a `false` cuando el usuario cierra la app.
 
 ---
 
