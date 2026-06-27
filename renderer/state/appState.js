@@ -36,9 +36,9 @@ export const state = {
     hotkeyMap: {
         fullscreen: ['f'],
         toggleHUD: [' '],
-        volumeUp: ['ArrowUp', 'Add'],
-        volumeDown: ['ArrowDown', 'Subtract'],
-        toggleMute: ['m', 'Multiply'],
+        volumeUp: ['ArrowUp', '+'],
+        volumeDown: ['ArrowDown', '-'],
+        toggleMute: ['m', '*'],
         prevChannel: ['ArrowLeft'],
         nextChannel: ['ArrowRight'],
         prevSource: ['PageUp'],
