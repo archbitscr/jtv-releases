@@ -4819,16 +4819,16 @@ body[data-module="home"] .power-hover-zone:hover .power-toggle-btn {
     left: 0;
     z-index: 50;
     display: flex;
-    gap: 4px;
-    padding: 8px;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
     width: 100%;
     min-width: 180px;
-    height: 200px;
     background: rgba(18, 20, 24, 0.98);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+    border-radius: 14px;
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
     animation: fadeIn 0.15s ease-out;
 }
@@ -4842,50 +4842,88 @@ body[data-module="home"] .power-hover-zone:hover .power-toggle-btn {
     bottom: calc(100% + 6px);
 }
 
-.ctp-col {
-    flex: 1;
-    overflow-y: auto;
+.ctp-steppers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.ctp-stepper {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
 }
 
-.ctp-col::-webkit-scrollbar {
-    width: 5px;
-}
-
-.ctp-col::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 3px;
-}
-
-.ctp-col-period {
-    flex: 0 0 auto;
-    width: 48px;
-}
-
-.ctp-option {
+.ctp-arrow {
     background: transparent;
     border: none;
-    color: rgba(255, 255, 255, 0.6);
-    font-family: inherit;
-    font-size: 0.85rem;
-    font-weight: 500;
-    padding: 7px 0;
-    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.45);
     cursor: pointer;
+    padding: 4px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     transition: background 0.12s ease, color 0.12s ease;
-    flex-shrink: 0;
 }
 
-.ctp-option:hover {
+.ctp-arrow:hover {
     background: rgba(255, 255, 255, 0.06);
+    color: var(--accent);
+}
+
+.ctp-arrow i,
+.ctp-arrow svg {
+    width: 18px;
+    height: 18px;
+}
+
+.ctp-val {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 1px;
+}
+
+.ctp-colon {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    padding-bottom: 2px;
+}
+
+.ctp-period-toggle {
+    display: flex;
+    gap: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.ctp-period-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: background 0.12s ease, color 0.12s ease;
+}
+
+.ctp-period-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
     color: #ffffff;
 }
 
-.ctp-option.selected {
+.ctp-period-btn.active {
     background: var(--accent-dim);
     color: var(--accent);
     font-weight: 700;

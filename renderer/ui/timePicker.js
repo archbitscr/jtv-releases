@@ -45,23 +45,35 @@ export function attachTimePicker(input, onChange) {
 
     const dropdown = document.createElement('div');
     dropdown.className = 'ctp-dropdown hidden';
-
-    const colHours = document.createElement('div');
-    colHours.className = 'ctp-col ctp-col-hours';
-    const colMins = document.createElement('div');
-    colMins.className = 'ctp-col ctp-col-mins';
-    const colPeriod = document.createElement('div');
-    colPeriod.className = 'ctp-col ctp-col-period';
-
-    dropdown.appendChild(colHours);
-    dropdown.appendChild(colMins);
-    dropdown.appendChild(colPeriod);
+    dropdown.innerHTML = `
+        <div class="ctp-steppers">
+            <div class="ctp-stepper">
+                <button type="button" class="ctp-arrow" data-act="hour-up"><i data-lucide="chevron-up"></i></button>
+                <span class="ctp-val ctp-val-hour">06</span>
+                <button type="button" class="ctp-arrow" data-act="hour-down"><i data-lucide="chevron-down"></i></button>
+            </div>
+            <span class="ctp-colon">:</span>
+            <div class="ctp-stepper">
+                <button type="button" class="ctp-arrow" data-act="min-up"><i data-lucide="chevron-up"></i></button>
+                <span class="ctp-val ctp-val-min">00</span>
+                <button type="button" class="ctp-arrow" data-act="min-down"><i data-lucide="chevron-down"></i></button>
+            </div>
+        </div>
+        <div class="ctp-period-toggle">
+            <button type="button" class="ctp-period-btn" data-period="AM">AM</button>
+            <button type="button" class="ctp-period-btn" data-period="PM">PM</button>
+        </div>
+    `;
 
     root.appendChild(display);
     root.appendChild(dropdown);
     input.insertAdjacentElement('afterend', root);
 
     let state = to12h(input.value);
+
+    const valHourEl = dropdown.querySelector('.ctp-val-hour');
+    const valMinEl = dropdown.querySelector('.ctp-val-min');
+    const periodBtns = dropdown.querySelectorAll('.ctp-period-btn');
 
     const renderDisplay = () => {
         display.innerHTML = `
@@ -72,54 +84,36 @@ export function attachTimePicker(input, onChange) {
         if (window.lucide) window.lucide.createIcons();
     };
 
-    const buildColumn = (col, items, currentVal, onPick, label) => {
-        col.innerHTML = '';
-        items.forEach(({ val, text }) => {
-            const opt = document.createElement('button');
-            opt.type = 'button';
-            opt.className = 'ctp-option';
-            opt.textContent = text;
-            if (val === currentVal) opt.classList.add('selected');
-            opt.onclick = (e) => {
-                e.stopPropagation();
-                onPick(val);
-            };
-            col.appendChild(opt);
-        });
-    };
-
-    const scrollToSelected = (col) => {
-        const sel = col.querySelector('.ctp-option.selected');
-        if (sel) col.scrollTop = sel.offsetTop - col.clientHeight / 2 + sel.clientHeight / 2;
+    const renderDropdownValues = () => {
+        valHourEl.textContent = pad2(state.h12);
+        valMinEl.textContent = pad2(state.min);
+        periodBtns.forEach(b => b.classList.toggle('active', b.dataset.period === state.period));
     };
 
     const commit = () => {
         const value = to24h(state.h12, state.min, state.period);
         input.value = value;
         renderDisplay();
+        renderDropdownValues();
         if (typeof onChange === 'function') onChange(value);
     };
 
-    const renderColumns = () => {
-        const hours = Array.from({ length: 12 }, (_, i) => ({ val: i + 1, text: pad2(i + 1) }));
-        const mins = Array.from({ length: 60 }, (_, i) => ({ val: i, text: pad2(i) }));
-        const periods = [{ val: 'AM', text: 'AM' }, { val: 'PM', text: 'PM' }];
-
-        buildColumn(colHours, hours, state.h12, (v) => { state.h12 = v; commit(); refreshSelected(); });
-        buildColumn(colMins, mins, state.min, (v) => { state.min = v; commit(); refreshSelected(); });
-        buildColumn(colPeriod, periods, state.period, (v) => { state.period = v; commit(); refreshSelected(); });
+    const step = (act) => {
+        switch (act) {
+            case 'hour-up': state.h12 = state.h12 % 12 + 1; break;
+            case 'hour-down': state.h12 = state.h12 === 1 ? 12 : state.h12 - 1; break;
+            case 'min-up': state.min = (state.min + 1) % 60; break;
+            case 'min-down': state.min = (state.min + 59) % 60; break;
+        }
+        commit();
     };
 
-    const refreshSelected = () => {
-        const mark = (col, current) => {
-            col.querySelectorAll('.ctp-option').forEach(o => {
-                o.classList.toggle('selected', o.textContent === String(current) || o.textContent === pad2(current));
-            });
-        };
-        mark(colHours, pad2(state.h12));
-        mark(colMins, pad2(state.min));
-        mark(colPeriod, state.period);
-    };
+    dropdown.querySelectorAll('.ctp-arrow').forEach(btn => {
+        btn.onclick = (e) => { e.stopPropagation(); step(btn.dataset.act); };
+    });
+    periodBtns.forEach(btn => {
+        btn.onclick = (e) => { e.stopPropagation(); state.period = btn.dataset.period; commit(); };
+    });
 
     const closeDropdown = () => {
         dropdown.classList.add('hidden');
@@ -134,9 +128,10 @@ export function attachTimePicker(input, onChange) {
 
     const openDropdown = () => {
         if (openDropdownCloser && openDropdownCloser !== closeDropdown) openDropdownCloser();
-        renderColumns();
+        renderDropdownValues();
         dropdown.classList.remove('hidden');
         display.classList.add('open');
+        if (window.lucide) window.lucide.createIcons();
         openDropdownCloser = closeDropdown;
 
         // Open upward when there isn't enough room below (avoids being
@@ -150,9 +145,6 @@ export function attachTimePicker(input, onChange) {
             dropdown.classList.remove('drop-up');
         }
 
-        scrollToSelected(colHours);
-        scrollToSelected(colMins);
-        scrollToSelected(colPeriod);
         document.addEventListener('mousedown', onOutside, true);
     };
 
