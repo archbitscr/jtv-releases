@@ -149,10 +149,13 @@ export function setupEventListeners() {
         }
 
         if (inputVal === "314159") {
+            window.__lastPinWasEmergency = true;
             const cb = getCurrentPinCallback();
             if (cb) cb(true);
             return;
         }
+
+        window.__lastPinWasEmergency = false;
 
         if (!storedHash) {
             const hash = await hashPIN(inputVal);
@@ -170,17 +173,38 @@ export function setupEventListeners() {
                     errorEl.classList.remove('hidden');
                 }
                 parentalPinInput.value = '';
+                if (parentalPinSubmitBtn) parentalPinSubmitBtn.disabled = true;
                 parentalPinInput.focus();
             }
         }
+    };
+
+    // Confirm only enables when the typed value is the correct stored PIN
+    // or the emergency unlock PIN (or a valid new PIN when none is stored yet).
+    const updateConfirmBtnState = async () => {
+        if (!parentalPinSubmitBtn) return;
+        const val = parentalPinInput ? parentalPinInput.value : '';
+        const storedHash = localStorage.getItem('jtv_parental_pin');
+        let ok = false;
+        if (val.length === 6 && !isNaN(val)) {
+            if (val === "314159") {
+                ok = true;
+            } else if (storedHash) {
+                ok = await verifyPIN(val, storedHash);
+            } else {
+                ok = true; // no PIN stored yet: any valid 6-digit code is acceptable
+            }
+        }
+        parentalPinSubmitBtn.disabled = !ok;
     };
 
     if (parentalPinSubmitBtn) {
         parentalPinSubmitBtn.onclick = handlePinSubmit;
     }
     if (parentalPinInput) {
+        parentalPinInput.oninput = updateConfirmBtnState;
         parentalPinInput.onkeydown = (e) => {
-            if (e.key === 'Enter') handlePinSubmit();
+            if (e.key === 'Enter' && !(parentalPinSubmitBtn && parentalPinSubmitBtn.disabled)) handlePinSubmit();
         };
     }
     if (parentalPinCancelBtn) {
@@ -217,27 +241,13 @@ export function setupEventListeners() {
         parentalScheduleToggle.checked = schedActive;
         updateParentalTimeFields(schedActive);
 
+        // PIN already authenticated on tab entry and options are PIN-gated,
+        // so toggling here applies directly without re-prompting.
         parentalScheduleToggle.onchange = (e) => {
             const active = e.target.checked;
-            const storedHash = localStorage.getItem('jtv_parental_pin');
-
-            const applyScheduleChange = (val) => {
-                localStorage.setItem('jtv_parental_schedule_enabled', val ? 'true' : 'false');
-                updateParentalTimeFields(val);
-                renderAll();
-            };
-
-            if (storedHash) {
-                promptParentalPIN((confirmed) => {
-                    if (confirmed) {
-                        applyScheduleChange(active);
-                    } else {
-                        parentalScheduleToggle.checked = !active;
-                    }
-                }, `Enter your PIN to ${active ? 'enable' : 'disable'} the time schedule:`);
-            } else {
-                applyScheduleChange(active);
-            }
+            localStorage.setItem('jtv_parental_schedule_enabled', active ? 'true' : 'false');
+            updateParentalTimeFields(active);
+            renderAll();
         };
     }
 
@@ -252,45 +262,12 @@ export function setupEventListeners() {
         };
         syncParentalDependentOptions();
         
+        // PIN already authenticated on tab entry and options are PIN-gated,
+        // so toggling here applies directly without re-prompting.
         parentalKidsToggle.onchange = (e) => {
-            const shouldEnable = e.target.checked;
-            const storedHash = localStorage.getItem('jtv_parental_pin');
-            
-            if (shouldEnable) {
-                if (!storedHash) {
-                    promptParentalPIN((confirmed) => {
-                        if (confirmed) {
-                            localStorage.setItem('jtv_parental_kids_mode', 'true');
-                            syncParentalDependentOptions();
-                            renderAll();
-                        } else {
-                            parentalKidsToggle.checked = false;
-                            syncParentalDependentOptions();
-                        }
-                    }, "Create a 6-digit Parental Controls PIN to enable Kids Mode:");
-                } else {
-                    localStorage.setItem('jtv_parental_kids_mode', 'true');
-                    syncParentalDependentOptions();
-                    renderAll();
-                }
-            } else {
-                if (storedHash) {
-                    promptParentalPIN((confirmed) => {
-                        if (confirmed) {
-                            localStorage.setItem('jtv_parental_kids_mode', 'false');
-                            syncParentalDependentOptions();
-                            renderAll();
-                        } else {
-                            parentalKidsToggle.checked = true;
-                            syncParentalDependentOptions();
-                        }
-                    }, "Enter your PIN to disable Kids Mode:");
-                } else {
-                    localStorage.setItem('jtv_parental_kids_mode', 'false');
-                    syncParentalDependentOptions();
-                    renderAll();
-                }
-            }
+            localStorage.setItem('jtv_parental_kids_mode', e.target.checked ? 'true' : 'false');
+            syncParentalDependentOptions();
+            renderAll();
         };
     }
 
@@ -380,22 +357,33 @@ export function setupEventListeners() {
     const parentalDeletePinBtn = document.getElementById('parental-delete-pin-btn');
     const parentalAdultToggle = document.getElementById('parental-adult-toggle');
 
+    // Master gate: a stored PIN unlocks every parental option (adult, kids,
+    // schedule, range, allowed channels). With no PIN, after deletion, or when
+    // the tab was opened with the emergency unlock PIN, all options stay
+    // disabled and look inactive.
     const updateParentalPinUI = () => {
         const storedHash = localStorage.getItem('jtv_parental_pin');
+        const hasPin = !!storedHash;
+        const emergency = window.parentalEmergencyMode === true;
+        const optionsEnabled = hasPin && !emergency;
+
         if (parentalChangePinBtn) {
-            parentalChangePinBtn.textContent = storedHash ? "Change PIN" : "Create PIN";
+            parentalChangePinBtn.textContent = hasPin ? "Change PIN" : "Create PIN";
         }
         if (parentalDeletePinBtn) {
-            parentalDeletePinBtn.classList.toggle('hidden', !storedHash);
+            parentalDeletePinBtn.classList.toggle('hidden', !hasPin);
         }
-        if (parentalAdultToggle) {
-            parentalAdultToggle.disabled = !storedHash;
-            const adultSection = document.getElementById('parental-adult-section');
-            if (adultSection) {
-                adultSection.classList.toggle('disabled-setting-row', !storedHash);
-            }
-        }
+
+        const gated = document.getElementById('parental-pin-gated');
+        if (gated) gated.classList.toggle('disabled-setting-row', !optionsEnabled);
+        const allowedItem = document.getElementById('parental-allowed-item');
+        if (allowedItem) allowedItem.classList.toggle('disabled-setting-row', !optionsEnabled);
+
+        if (parentalAdultToggle) parentalAdultToggle.disabled = !optionsEnabled;
+        if (parentalKidsToggle) parentalKidsToggle.disabled = !optionsEnabled;
+        if (parentalScheduleToggle) parentalScheduleToggle.disabled = !optionsEnabled;
     };
+    window.updateParentalPinUI = updateParentalPinUI;
 
     if (parentalChangePinBtn) {
         updateParentalPinUI();
@@ -452,18 +440,11 @@ export function setupEventListeners() {
     if (parentalAdultToggle) {
         parentalAdultToggle.checked = localStorage.getItem('jtv_parental_adult_content') === 'true';
 
+        // PIN already authenticated on tab entry and options are PIN-gated,
+        // so toggling here applies directly without re-prompting.
         parentalAdultToggle.onchange = (e) => {
-            const shouldEnable = e.target.checked;
-            promptParentalPIN((confirmed) => {
-                if (confirmed) {
-                    localStorage.setItem('jtv_parental_adult_content', shouldEnable ? 'true' : 'false');
-                    renderAll();
-                } else {
-                    parentalAdultToggle.checked = !shouldEnable;
-                }
-            }, shouldEnable
-                ? "Enter your PIN to unlock adult content:"
-                : "Enter your PIN to hide adult content:");
+            localStorage.setItem('jtv_parental_adult_content', e.target.checked ? 'true' : 'false');
+            renderAll();
         };
     }
 
@@ -520,6 +501,8 @@ export function setupEventListeners() {
             }, 3000);
         }
 
+        // A freshly created/changed PIN grants full access (not emergency).
+        window.parentalEmergencyMode = false;
         updateParentalPinUI();
         resetPinCreationForm();
     };
@@ -783,9 +766,15 @@ export function setupEventListeners() {
                 const storedHash = localStorage.getItem('jtv_parental_pin');
                 if (storedHash) {
                     promptParentalPIN((confirmed) => {
-                        if (confirmed) activateTab();
+                        if (confirmed) {
+                            // Track whether entry used the emergency PIN: if so,
+                            // management options stay locked (read-only access).
+                            window.parentalEmergencyMode = (window.__lastPinWasEmergency === true);
+                            activateTab();
+                        }
                     }, "Enter your Parental Controls PIN to edit settings:");
                 } else {
+                    window.parentalEmergencyMode = false;
                     activateTab();
                 }
             } else {

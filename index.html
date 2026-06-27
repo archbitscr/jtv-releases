@@ -854,13 +854,13 @@
                                 <div style="display: flex; flex-direction: column; gap: 4px;">
                                     <label style="font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 500;">New PIN</label>
                                     <div style="position: relative; display: flex; align-items: center;">
-                                        <input type="text" id="parental-new-pin-1" class="dark-input" maxlength="6" inputmode="numeric" pattern="[0-9]*" style="letter-spacing: 4px; font-size: 16px; padding: 8px 12px; width: 100%; margin: 0;" placeholder="000000">
+                                        <input type="text" id="parental-new-pin-1" class="dark-input" maxlength="6" inputmode="numeric" pattern="[0-9]*" style="letter-spacing: 4px; font-size: 16px; padding: 8px 12px; width: 100%; margin: 0;">
                                     </div>
                                 </div>
                                 <div style="display: flex; flex-direction: column; gap: 4px;">
                                     <label style="font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 500;">Confirm New PIN</label>
                                     <div style="position: relative; display: flex; align-items: center;">
-                                        <input type="text" id="parental-new-pin-2" class="dark-input" maxlength="6" inputmode="numeric" pattern="[0-9]*" style="letter-spacing: 4px; font-size: 16px; padding: 8px 12px; width: 100%; margin: 0;" placeholder="000000">
+                                        <input type="text" id="parental-new-pin-2" class="dark-input" maxlength="6" inputmode="numeric" pattern="[0-9]*" style="letter-spacing: 4px; font-size: 16px; padding: 8px 12px; width: 100%; margin: 0;">
                                     </div>
                                 </div>
                                 
@@ -906,6 +906,8 @@
                             <h4 style="margin: 0 0 5px 0; color: #00ffcc; font-size: 14px; font-weight: 700;">PIN Saved!</h4>
                             <p id="parental-pin-success-msg" style="margin: 0; font-size: 12px; color: rgba(255, 255, 255, 0.7); line-height: 1.4;">The Parental Controls PIN has been updated successfully.</p>
                         </div>
+                        <!-- Everything below requires a PIN to exist (master gate) -->
+                        <div id="parental-pin-gated">
                         <div class="setting-divider"></div>
                         <!-- 2. Adult Channels -->
                         <div class="setting-item" id="parental-adult-section">
@@ -957,18 +959,16 @@
                         </div>
                         </div>
                         </div>
+                        </div>
                         <!-- Sub-tab: Allowed Channels -->
                         <div id="parental-tab-allowed" class="parental-tab-pane" style="display: none;">
-                        <div class="setting-item" style="flex-direction: column; align-items: stretch; gap: 15px;">
-                            <div class="setting-item-info" style="margin-bottom: 5px;">
-                                <span class="setting-title">Additional Allowed Channels</span>
+                        <div class="setting-item parental-allowed-item" id="parental-allowed-item" style="flex-direction: column; align-items: stretch; gap: 12px; flex: 1; min-height: 0; padding-top: 0;">
+                            <div class="setting-item-info">
                                 <span class="setting-desc">Select channels that are not in the "Kids" genre but you want to allow in Kids Mode.</span>
                             </div>
-                            <div style="display: flex; flex-direction: column; gap: 10px;">
-                                <input type="text" id="parental-channels-search" class="dark-input" placeholder="Search channel..." style="width: 100%; max-width: 320px; font-size: 13px; padding: 8px 12px; margin: 0;">
-                                <div id="parental-allowed-channels-list" style="max-height: 250px; overflow-y: auto; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px;">
-                                    <!-- Populated dynamically -->
-                                </div>
+                            <input type="text" id="parental-channels-search" class="dark-input" placeholder="Search channel..." style="width: 100%; max-width: 320px; font-size: 13px; padding: 8px 12px; margin: 0;">
+                            <div id="parental-allowed-channels-list" style="flex: 1; min-height: 0; overflow-y: auto; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+                                <!-- Populated dynamically -->
                             </div>
                         </div>
                         </div>
@@ -1081,7 +1081,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                 <h2>Parental Controls</h2>
                 <p id="parental-pin-message">Enter your 6-digit PIN to continue:</p>
                 <div style="display: flex; gap: 8px; justify-content: center; margin: 20px 0;">
-                    <input type="text" maxlength="6" id="parental-pin-input" class="dark-input" inputmode="numeric" pattern="[0-9]*" style="width: 160px; font-size: 24px; letter-spacing: 6px; text-align: center; margin: 0;" placeholder="000000">
+                    <input type="text" maxlength="6" id="parental-pin-input" class="dark-input" inputmode="numeric" pattern="[0-9]*" style="width: 160px; font-size: 24px; letter-spacing: 6px; text-align: center; margin: 0;">
                 </div>
                 <p id="parental-pin-error" style="color: #ff4a4a; font-size: 13px; margin: -10px 0 15px 0; font-weight: 500;" class="hidden"></p>
                 <div style="display: flex; gap: 10px; justify-content: center;">

@@ -64,6 +64,12 @@ export function promptParentalPIN(callback, customMessage = "") {
     }
     
     input.value = '';
+
+    // Confirm starts disabled; it only enables once a valid/correct PIN is typed
+    // (see the input handler in eventListeners.js).
+    const submitBtn = document.getElementById('parental-pin-submit-btn');
+    if (submitBtn) submitBtn.disabled = true;
+
     modal.classList.remove('hidden');
     input.focus();
     

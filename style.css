@@ -3002,6 +3002,29 @@ body.hide-cursor * {
     display: block;
 }
 
+/* Parental section fills available height so the Allowed Channels list
+   can grow to use the full page instead of a fixed 250px box. */
+#settings-sect-parental.active {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1;
+}
+
+#settings-sect-parental .parental-tab-pane {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* Confirm button in the PIN modal is inert until a valid PIN is typed */
+#parental-pin-submit-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
 #settings-sect-channels.active {
     display: flex;
     flex: 1 1 auto;
@@ -3303,6 +3326,12 @@ body.hide-cursor * {
     background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
     font-weight: 600;
+}
+
+/* Tighter gap under the sub-nav separator for Parental and Developer */
+#settings-sect-parental .settings-subnav,
+#settings-sect-developer .settings-subnav {
+    margin-bottom: 12px;
 }
 
 .connectivity-subsect-pane {
