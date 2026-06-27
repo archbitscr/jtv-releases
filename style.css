@@ -218,8 +218,8 @@ body.player-active .edge-mask {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 500px;
-    height: 200px;
+    width: 650px;
+    height: 180px;
 }
 
 /* Glass Menus */
@@ -1864,7 +1864,7 @@ body.hide-cursor * {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    padding: 14px 24px;
+    padding: 14px 14px 14px 20px;
     gap: 20px;
 
     background: rgba(0, 0, 0, 0.3);
@@ -2067,8 +2067,8 @@ body.hide-cursor * {
 
 .hud-action-stack .hud-action-btn,
 .hud-center-row .hud-action-btn {
-    width: 27px;
-    height: 27px;
+    width: 32px;
+    height: 32px;
 }
 
 .hud-action-btn i,
@@ -3814,7 +3814,7 @@ body.hide-cursor * {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
+    gap: 4px;
 }
 
 .hud-center-row {
@@ -3826,11 +3826,15 @@ body.hide-cursor * {
 /* Mini buttons (Fav & Pin) — floating top-right of source-switcher */
 .hud-mini-float {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+}
+
+.hud-mini-fav {
+    position: absolute;
+    top: 14px;
+    right: 94px;
     z-index: 2;
 }
 
@@ -3851,8 +3855,8 @@ body.hide-cursor * {
 .vol-icon {
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    width: 27px;
-    height: 27px;
+    width: 32px;
+    height: 32px;
     color: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
@@ -4148,8 +4152,8 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 500px;
-    height: 200px;
+    width: 650px;
+    height: 100px;
 }
 
 /* Tuning Hint message in sidebar menu */
