@@ -735,24 +735,30 @@ export function setupEventListeners() {
     const cardSettings = document.getElementById('card-settings');
     if (cardSettings) cardSettings.onclick = () => showModule('settings');
 
-    // Settings tab clicks inside Configuration screen
-    document.querySelectorAll('.settings-tab-btn').forEach(btn => {
-        btn.onclick = () => {
+    // Settings tab clicks inside Configuration screen.
+    // Delegated on the container so the dynamically-injected Developer tab
+    // is handled by the same logic (no load-order or double-binding issues).
+    const settingsTabsContainer = document.querySelector('.settings-tabs');
+    if (settingsTabsContainer) {
+        settingsTabsContainer.addEventListener('click', (e) => {
+            const btn = e.target.closest('.settings-tab-btn');
+            if (!btn || !settingsTabsContainer.contains(btn)) return;
+
             const targetTab = btn.dataset.settingsTab;
-            
+            if (!targetTab) return;
+
             const activateTab = () => {
                 document.querySelectorAll('.settings-tab-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
+
                 document.querySelectorAll('.settings-sect-pane').forEach(pane => {
                     pane.classList.toggle('active', pane.id === `settings-sect-${targetTab}`);
                 });
-                
+
                 if (targetTab === 'parental') {
                     if (typeof updateParentalPinUI === 'function') updateParentalPinUI();
                     if (typeof window.renderParentalChannelsList === 'function') window.renderParentalChannelsList();
                 }
-                
                 if (targetTab === 'sensors') {
                     updateSensorsUI();
                 }
@@ -785,10 +791,10 @@ export function setupEventListeners() {
             } else {
                 activateTab();
             }
-        };
-    });
+        });
+    }
 
-    document.querySelectorAll('.settings-subnav-btn:not(.dev-subnav-btn)').forEach(btn => {
+    document.querySelectorAll('.settings-subnav-btn[data-filter-type]').forEach(btn => {
         btn.onclick = () => setSettingsFilterTab(btn.dataset.filterType);
     });
 

@@ -543,17 +543,9 @@ export async function initDeveloperFeatures() {
     if (logoInput) logoInput.oninput = checkCrudFormDirty;
     if (categoriesInput) categoriesInput.oninput = checkCrudFormDirty;
 
-    // 3. Tab switching integration
-    devTabBtn.onclick = () => {
-        document.querySelectorAll('.settings-tab-btn').forEach(b => b.classList.remove('active'));
-        devTabBtn.classList.add('active');
-        
-        document.querySelectorAll('.settings-sect-pane').forEach(pane => {
-            pane.classList.toggle('active', pane.id === 'settings-sect-developer');
-        });
-        
-        updateDeveloperUI();
-    };
+    // 3. Tab switching is handled by the delegated listener in
+    // eventListeners.js (.settings-tabs container), which covers this
+    // dynamically-injected tab too. No per-button handler needed here.
 
     // 4. Wire up event listeners
     const developerModeToggle = document.getElementById('developer-mode-toggle');
@@ -1175,12 +1167,15 @@ export function updateDeveloperUI() {
     const channelsTab = document.getElementById('settings-tab-channels');
     const filtersTab = document.getElementById('settings-tab-filters');
     
-    const displayStyle = developerModeEnabled ? 'block' : 'none';
+    // Use '' (revert to stylesheet display:flex) to show, 'none' to hide.
+    // Forcing 'block' here previously broke the button's flex layout
+    // (icon + label misaligned, looked like plain text instead of a button).
+    const displayStyle = developerModeEnabled ? '' : 'none';
     if (devTab) devTab.style.display = displayStyle;
     if (connectivityTab) connectivityTab.style.display = displayStyle;
     if (sensorsTab) sensorsTab.style.display = displayStyle;
     if (channelsTab) channelsTab.style.display = displayStyle;
-    if (filtersTab) filtersTab.style.display = 'block'; // Always visible in user and dev mode
+    if (filtersTab) filtersTab.style.display = ''; // Always visible in user and dev mode
 
     const devChannelsCrud = document.getElementById('developer-channels-crud-container');
     if (devChannelsCrud) {
