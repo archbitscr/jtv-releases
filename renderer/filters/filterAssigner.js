@@ -265,18 +265,30 @@ export function handleAssignerChannelClick(index, e, isCheckmarkClick = false) {
     }
 
     selectAssignerChannelMultiple();
+    updateAssignerBulkSelectBtn();
 }
 
 export function updateAssignerBulkSelectBtn() {
     const bulkBtn = document.getElementById('assigner-bulk-select');
+    const countEl = document.getElementById('assigner-selection-count');
+    const count = state.assignerSelectedChannelIndices.length;
+
+    if (countEl) {
+        if (count > 0) {
+            countEl.textContent = `${count} selected`;
+            countEl.style.display = '';
+        } else {
+            countEl.style.display = 'none';
+        }
+    }
+
     if (!bulkBtn) return;
 
-    if (state.assignerSelectedChannelIndices.length === 0) {
+    if (count === 0) {
         bulkBtn.style.display = 'none';
     } else {
         bulkBtn.style.display = 'flex';
 
-        // Check if all visible channels are selected
         const filterVal = (document.getElementById('assigner-search')?.value || '').toLowerCase();
         const chList = window.getChannels ? window.getChannels() : [];
         const visibleIndices = [];
@@ -293,8 +305,8 @@ export function updateAssignerBulkSelectBtn() {
 
         const iconEl = bulkBtn.querySelector('i');
         if (iconEl) {
-            iconEl.setAttribute('data-lucide', allVisibleSelected ? 'check-square' : 'square');
-            iconEl.style.color = allVisibleSelected ? '#00ffcc' : 'rgba(255,255,255,0.6)';
+            iconEl.setAttribute('data-lucide', allVisibleSelected ? 'check-square' : 'minus-square');
+            iconEl.style.color = '#00ffcc';
         }
         if (window.lucide) {
             window.lucide.createIcons();

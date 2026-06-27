@@ -698,15 +698,16 @@
                                 <div class="event-assigner-container" style="display: flex; gap: 15px; height: 380px; align-items: stretch; margin-bottom: 15px;">
                                     <!-- Column 1: Copy of channel CRUD list -->
                                     <div class="filter-group-card assigner-col-channels" style="flex: 1; display: flex; flex-direction: column; min-height: 0; height: 100%;">
-                                        <div class="filter-group-header">
+                                        <div class="filter-group-header" style="display: flex; align-items: center; gap: 8px;">
                                             <h4>Channels</h4>
+                                            <span id="assigner-selection-count" style="display: none; font-size: 11px; font-weight: 600; color: var(--accent); opacity: 0.8;"></span>
                                         </div>
                                         <div class="filter-group-add-form" style="margin-top: 6px;">
                                             <div class="filter-input-wrapper">
                                                 <input type="search" id="assigner-search" class="settings-filter-input" placeholder="Filter..." style="padding-right: 8px !important;">
                                             </div>
-                                            <button id="assigner-bulk-select" class="bulk-select-btn" type="button" title="Bulk select" style="display: none; flex-shrink: 0; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; align-items: center; justify-content: center; width: 28px; height: 28px; cursor: pointer; color: rgba(255,255,255,0.6); transition: all 0.2s; padding: 0; margin: 0;">
-                                                <i data-lucide="square" style="width: 14px; height: 14px;"></i>
+                                            <button id="assigner-bulk-select" class="bulk-select-btn" type="button" title="Clear selection" style="display: none; flex-shrink: 0; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; align-items: center; justify-content: center; width: 28px; height: 28px; cursor: pointer; color: rgba(255,255,255,0.6); transition: all 0.2s; padding: 0; margin: 0;">
+                                                <i data-lucide="minus-square" style="width: 14px; height: 14px;"></i>
                                             </button>
                                         </div>
                                         <div id="assigner-channels-list" class="filter-group-list scroll-panel" style="flex: 1;">
