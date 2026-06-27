@@ -634,9 +634,9 @@
     "categories": [
       "all",
       "Español",
-      "Futbol",
       "Sports",
-      "News"
+      "News",
+      "Futbol"
     ]
   },
   {
@@ -1168,10 +1168,10 @@
     "watchTime": 53.689,
     "categories": [
       "all",
+      "Russian",
       "Sports",
       "News",
-      "FIFA 2026",
-      "Russian"
+      "FIFA 2026"
     ]
   },
   {
@@ -1330,8 +1330,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Sports",
       "Hebrew",
+      "Sports",
       "Futbol"
     ]
   },
@@ -1566,10 +1566,10 @@
     "watchTime": 253.804,
     "categories": [
       "all",
+      "Español",
       "Sports",
       "News",
-      "FIFA 2026",
-      "Español"
+      "FIFA 2026"
     ]
   },
   {
@@ -1758,8 +1758,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Sports",
-      "Turkish"
+      "Turkish",
+      "Sports"
     ]
   },
   {
@@ -1770,8 +1770,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Sports",
-      "Turkish"
+      "Turkish",
+      "Sports"
     ]
   },
   {
@@ -1794,9 +1794,9 @@
     "watchTime": 22.056,
     "categories": [
       "all",
+      "Turkish",
       "Sports",
-      "News",
-      "Turkish"
+      "News"
     ]
   },
   {
@@ -1956,8 +1956,8 @@
     "categories": [
       "all",
       "English",
-      "Cricket",
-      "Sports"
+      "Sports",
+      "Cricket"
     ]
   },
   {
@@ -2873,8 +2873,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Sports",
       "Italiano",
+      "Sports",
       "Movies"
     ]
   },
@@ -3074,8 +3074,8 @@
     "watchTime": 63.702,
     "categories": [
       "all",
-      "Sports",
       "Dutch",
+      "Sports",
       "News"
     ]
   },
@@ -3501,10 +3501,10 @@
     "watchTime": 0,
     "categories": [
       "all",
+      "English",
       "Sports",
       "Futbol",
-      "FIFA 2026",
-      "English"
+      "FIFA 2026"
     ]
   },
   {
@@ -4967,8 +4967,8 @@
       "all",
       "Español",
       "Sports",
-      "FIFA 2026",
-      "News"
+      "News",
+      "FIFA 2026"
     ]
   },
   {
@@ -5963,8 +5963,8 @@
     "watchTime": 42.315,
     "categories": [
       "all",
-      "Sports",
-      "Greek"
+      "Greek",
+      "Sports"
     ]
   },
   {
@@ -5975,8 +5975,8 @@
     "watchTime": 25.921,
     "categories": [
       "all",
-      "Sports",
-      "Greek"
+      "Greek",
+      "Sports"
     ]
   },
   {
@@ -5987,8 +5987,8 @@
     "watchTime": 19.867,
     "categories": [
       "all",
-      "Sports",
-      "Greek"
+      "Greek",
+      "Sports"
     ]
   },
   {
@@ -5999,8 +5999,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Sports",
-      "Greek"
+      "Greek",
+      "Sports"
     ]
   },
   {
@@ -6011,8 +6011,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Sports",
-      "Greek"
+      "Greek",
+      "Sports"
     ]
   },
   {
@@ -6023,8 +6023,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Sports",
-      "Greek"
+      "Greek",
+      "Sports"
     ]
   },
   {
@@ -6035,8 +6035,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Sports",
-      "Greek"
+      "Greek",
+      "Sports"
     ]
   },
   {
@@ -6047,8 +6047,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Sports",
-      "Greek"
+      "Greek",
+      "Sports"
     ]
   },
   {
@@ -6059,8 +6059,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Sports",
-      "Greek"
+      "Greek",
+      "Sports"
     ]
   },
   {
@@ -6143,8 +6143,8 @@
     "watchTime": 0,
     "categories": [
       "all",
-      "Sports",
-      "Greek"
+      "Greek",
+      "Sports"
     ]
   },
   {
@@ -6922,9 +6922,9 @@
     "categories": [
       "all",
       "English",
+      "Sports",
       "Motorsport",
-      "Rally",
-      "Sports"
+      "Rally"
     ]
   },
   {
@@ -8575,9 +8575,9 @@
     "categories": [
       "all",
       "Español",
-      "FIFA 2026",
       "Sports",
-      "News"
+      "News",
+      "FIFA 2026"
     ]
   },
   {
@@ -9083,8 +9083,8 @@
     "watchTime": 74.922,
     "categories": [
       "all",
-      "Sports",
       "Dutch",
+      "Sports",
       "News"
     ]
   },
@@ -9446,9 +9446,9 @@
     "watchTime": 0,
     "categories": [
       "all",
+      "Español",
       "Sports",
-      "MotoGP",
-      "Español"
+      "MotoGP"
     ]
   },
   {
