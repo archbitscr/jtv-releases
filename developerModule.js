@@ -97,8 +97,13 @@ export async function initDeveloperFeatures() {
     devTabBtn.id = 'settings-tab-developer';
     devTabBtn.dataset.settingsTab = 'developer';
     devTabBtn.innerHTML = '<i data-lucide="code-2"></i> Developer <span class="dev-indicator"></span>';
+
+    // Place System above Developer: find System tab, insert Developer after it
+    const systemTab = document.querySelector('[data-settings-tab="account"]');
     const parentalTab = document.getElementById('settings-tab-parental');
-    if (parentalTab && parentalTab.nextSibling) {
+    if (systemTab && systemTab.nextSibling) {
+        tabsContainer.insertBefore(devTabBtn, systemTab.nextSibling);
+    } else if (parentalTab && parentalTab.nextSibling) {
         tabsContainer.insertBefore(devTabBtn, parentalTab.nextSibling);
     } else {
         tabsContainer.appendChild(devTabBtn);
