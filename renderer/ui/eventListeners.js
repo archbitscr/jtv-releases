@@ -554,15 +554,22 @@ export function setupEventListeners() {
     }
 
     // Parental sub-tab switching
-    document.querySelectorAll('.parental-subnav-btn').forEach(btn => {
-        btn.onclick = () => {
-            document.querySelectorAll('.parental-subnav-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            document.querySelectorAll('.parental-tab-pane').forEach(p => p.style.display = 'none');
-            const target = document.getElementById(btn.dataset.parentalTab);
-            if (target) target.style.display = '';
-        };
-    });
+    const parentalPane = document.getElementById('settings-sect-parental');
+    if (parentalPane) {
+        parentalPane.querySelectorAll('.parental-subnav-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                parentalPane.querySelectorAll('.parental-subnav-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                parentalPane.querySelectorAll('.parental-tab-pane').forEach(p => p.style.display = 'none');
+                const target = document.getElementById(btn.dataset.parentalTab);
+                if (target) target.style.display = '';
+                if (btn.dataset.parentalTab === 'parental-tab-allowed' && typeof window.renderParentalChannelsList === 'function') {
+                    window.renderParentalChannelsList();
+                }
+            });
+        });
+    }
 
     // 6. Unified filter dropdowns (single set shared by sidebar and landing)
     ['filter-select-language', 'filter-select-genre', 'filter-select-event'].forEach(id => {
