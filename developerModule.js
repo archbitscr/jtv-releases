@@ -1211,18 +1211,11 @@ export function updateDeveloperUI() {
         const genreAddForm = genreCard.querySelector('.filter-group-add-form');
         if (genreAddForm) genreAddForm.style.display = developerModeEnabled ? '' : 'none';
     }
-    if (eventCard && listFilterEvents) {
-        if (!developerModeEnabled) {
-            eventCard.classList.add('full-width-card');
-            listFilterEvents.classList.add('grid-3-columns');
-            const eventAddForm = eventCard.querySelector('.filter-group-add-form');
-            if (eventAddForm) eventAddForm.style.display = 'none';
-        } else {
-            eventCard.classList.remove('full-width-card');
-            listFilterEvents.classList.remove('grid-3-columns');
-            const eventAddForm = eventCard.querySelector('.filter-group-add-form');
-            if (eventAddForm) eventAddForm.style.display = '';
-        }
+    if (eventCard) {
+        eventCard.classList.remove('full-width-card');
+        if (listFilterEvents) listFilterEvents.classList.remove('grid-3-columns');
+        const eventAddForm = eventCard.querySelector('.filter-group-add-form');
+        if (eventAddForm) eventAddForm.style.display = developerModeEnabled ? '' : 'none';
     }
 
     // Assignment section: always visible (user sees Events only)
