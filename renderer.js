@@ -325,12 +325,12 @@ async function init() {
         if (isDevMode) {
             trialStatusEl.innerText = 'Developer Mode';
         } else if (trialCheck.firstTime) {
-            trialStatusEl.innerText = 'Trial period active (3d remaining).';
+            trialStatusEl.innerText = 'Trial period active (3 days remaining).';
         } else {
             const totalHoursLeft = Math.max(0, (3 - (trialCheck.elapsedDays || 0)) * 24);
             const d = Math.floor(totalHoursLeft / 24);
             const h = Math.round(totalHoursLeft % 24);
-            const timeStr = d >= 1 ? `${d}d remaining.` : `${h}h remaining.`;
+            const timeStr = d >= 1 ? `${d} days remaining.` : `${h} hours remaining.`;
             trialStatusEl.innerText = `Trial period active. ${timeStr}`;
         }
     }

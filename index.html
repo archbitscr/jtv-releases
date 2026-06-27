@@ -385,11 +385,11 @@
                     <h2>Settings</h2>
                     <div class="settings-tabs">
                         <button class="settings-tab-btn active" data-settings-tab="general"><i data-lucide="settings-2"></i> General</button>
-                        <button class="settings-tab-btn" data-settings-tab="account"><i data-lucide="monitor"></i> System</button>
                         <button class="settings-tab-btn" data-settings-tab="channels" id="settings-tab-channels"><i data-lucide="tv"></i> Channels <span class="dev-indicator"></span></button>
                         <button class="settings-tab-btn" data-settings-tab="filters" id="settings-tab-filters"><i data-lucide="filter"></i> Filters</button>
                         <button class="settings-tab-btn" data-settings-tab="background"><i data-lucide="image"></i> Wallpapers</button>
                         <button class="settings-tab-btn" data-settings-tab="parental" id="settings-tab-parental"><i data-lucide="shield"></i> Parental</button>
+                        <button class="settings-tab-btn" data-settings-tab="account"><i data-lucide="monitor"></i> System</button>
                         <button class="settings-tab-btn" data-settings-tab="connectivity" id="settings-tab-connectivity"><i data-lucide="network"></i> Connectivity <span class="dev-indicator"></span></button>
                         <button class="settings-tab-btn" data-settings-tab="sensors"><i data-lucide="cpu"></i> Sensors <span class="dev-indicator"></span></button>
                     </div>
@@ -507,6 +507,16 @@
                     <!-- Section: My Account -->
                     <div id="settings-sect-account" class="settings-sect-pane">
                         <h3 class="settings-page-title">System</h3>
+                        <div class="setting-item">
+                            <div class="setting-item-info">
+                                <span class="setting-title">App Payment</span>
+                                <span class="setting-desc">Purchase a license to unlock permanent access.</span>
+                            </div>
+                            <div class="setting-item-actions">
+                                <button id="app-payment-btn" class="settings-action-btn" disabled>Coming Soon</button>
+                            </div>
+                        </div>
+                        <div class="setting-divider"></div>
                         <div class="setting-item">
                             <div class="setting-item-info">
                                 <span class="setting-title">Subscription Status</span>

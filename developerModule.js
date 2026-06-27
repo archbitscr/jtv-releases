@@ -1280,9 +1280,9 @@ export function updateDeveloperUI() {
         const activeTabBtn = document.querySelector('.settings-tab-btn.active');
         const activeTab = activeTabBtn ? activeTabBtn.dataset.settingsTab : null;
         if (activeTab === 'developer' || activeTab === 'connectivity' || activeTab === 'sensors' || activeTab === 'channels') {
-            const accountTabBtn = document.querySelector('.settings-tab-btn[data-settings-tab="account"]');
-            if (accountTabBtn) {
-                accountTabBtn.click();
+            const generalTabBtn = document.querySelector('.settings-tab-btn[data-settings-tab="general"]');
+            if (generalTabBtn) {
+                generalTabBtn.click();
             }
         }
     }
@@ -1295,12 +1295,12 @@ export function updateDeveloperUI() {
         } else {
             nativeApi.getNetworkDate().then(trialCheck => {
                 if (trialCheck && trialCheck.firstTime) {
-                    trialStatusEl.innerText = 'Trial period active (3d remaining).';
+                    trialStatusEl.innerText = 'Trial period active (3 days remaining).';
                 } else if (trialCheck) {
                     const totalHoursLeft = Math.max(0, (3 - (trialCheck.elapsedDays || 0)) * 24);
                     const d = Math.floor(totalHoursLeft / 24);
                     const h = Math.round(totalHoursLeft % 24);
-                    const timeStr = d >= 1 ? `${d}d remaining.` : `${h}h remaining.`;
+                    const timeStr = d >= 1 ? `${d} days remaining.` : `${h} hours remaining.`;
                     trialStatusEl.innerText = `Trial period active. ${timeStr}`;
                 }
             }).catch(() => {
