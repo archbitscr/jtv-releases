@@ -3,9 +3,12 @@ import { state } from '../state/appState.js';
 const SUPPRESS_IDS = new Set([
     'parental-pin-cancel-btn', 'parental-pin-submit-btn',
     'parental-save-pin-btn', 'parental-cancel-pin-btn',
-    'parental-delete-pin-btn',
+    'parental-delete-pin-btn', 'parental-change-pin-btn',
+    'parental-pin-input', 'parental-new-pin-1', 'parental-new-pin-2',
     'open-devtools-btn',
     'factory-reset-btn', 'sync-channels-btn', 'apply-domain-btn',
+    'crud-save-btn', 'crud-delete-btn', 'crud-logo-delete-btn', 'crud-logo-upload-btn',
+    'crud-search',
     'close-home',
 ]);
 
@@ -21,8 +24,8 @@ function shouldSuppressTooltip(el) {
     if (className.includes('settings-tab-btn')) return true;
     // Sidebar All/Favorites tabs
     if (className.includes('tab-btn') && el.closest('.channel-tabs')) return true;
-    // Factory reset, sync channels, save & sync buttons in settings
-    if (id === 'factory-reset-btn' || id === 'sync-channels-btn' || id === 'save-sync-btn') return true;
+    // Inputs inside CRUD or connectivity sections
+    if (el.tagName === 'INPUT' && el.closest('#settings-sect-developer, #settings-sect-connectivity, #settings-sect-parental')) return true;
     return false;
 }
 
@@ -52,26 +55,6 @@ export function getOrGenerateTooltip(el) {
     if (id === 'crud-add-new-btn') {
         el.setAttribute('data-tooltip', 'Create a new channel');
         return 'Create a new channel';
-    }
-
-    if (id === 'crud-save-btn') {
-        el.setAttribute('data-tooltip', 'Save channel changes');
-        return 'Save channel changes';
-    }
-
-    if (id === 'crud-delete-btn') {
-        el.setAttribute('data-tooltip', 'Delete this channel permanently');
-        return 'Delete this channel permanently';
-    }
-
-    if (id === 'crud-logo-upload-btn') {
-        el.setAttribute('data-tooltip', 'Upload a local image as logo');
-        return 'Upload a local image as logo';
-    }
-
-    if (id === 'crud-logo-delete-btn') {
-        el.setAttribute('data-tooltip', 'Delete current logo');
-        return 'Delete current logo';
     }
 
     if (className.includes('crud-channel-item')) {

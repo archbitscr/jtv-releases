@@ -364,26 +364,8 @@ export function setupEventListeners() {
     };
 
     const resetPinCreationForm = () => {
-        if (parentalNewPin1) {
-            parentalNewPin1.value = '';
-            parentalNewPin1.type = 'password';
-        }
-        if (parentalNewPin2) {
-            parentalNewPin2.value = '';
-            parentalNewPin2.type = 'password';
-        }
-
-        const eye1 = document.getElementById('toggle-new-pin-1');
-        const eye2 = document.getElementById('toggle-new-pin-2');
-        if (eye1) {
-            eye1.setAttribute('data-lucide', 'eye');
-            eye1.title = "Show PIN";
-        }
-        if (eye2) {
-            eye2.setAttribute('data-lucide', 'eye');
-            eye2.title = "Show PIN";
-        }
-        if (window.lucide) window.lucide.createIcons();
+        if (parentalNewPin1) parentalNewPin1.value = '';
+        if (parentalNewPin2) parentalNewPin2.value = '';
 
         if (parentalCreationError) {
             parentalCreationError.textContent = '';
@@ -485,33 +467,6 @@ export function setupEventListeners() {
         };
     }
 
-    const toggleNewPin1 = document.getElementById('toggle-new-pin-1');
-    const toggleNewPin2 = document.getElementById('toggle-new-pin-2');
-
-    if (toggleNewPin1) {
-        toggleNewPin1.onclick = () => {
-            if (parentalNewPin1) {
-                const isPassword = parentalNewPin1.type === 'password';
-                parentalNewPin1.type = isPassword ? 'text' : 'password';
-                toggleNewPin1.setAttribute('data-lucide', isPassword ? 'eye-off' : 'eye');
-                toggleNewPin1.title = isPassword ? "Hide PIN" : "Show PIN";
-                if (window.lucide) window.lucide.createIcons();
-            }
-        };
-    }
-
-    if (toggleNewPin2) {
-        toggleNewPin2.onclick = () => {
-            if (parentalNewPin2) {
-                const isPassword = parentalNewPin2.type === 'password';
-                parentalNewPin2.type = isPassword ? 'text' : 'password';
-                toggleNewPin2.setAttribute('data-lucide', isPassword ? 'eye-off' : 'eye');
-                toggleNewPin2.title = isPassword ? "Hide PIN" : "Show PIN";
-                if (window.lucide) window.lucide.createIcons();
-            }
-        };
-    }
-
     const handleSavePin = async () => {
         const pin1 = parentalNewPin1 ? parentalNewPin1.value : '';
         const pin2 = parentalNewPin2 ? parentalNewPin2.value : '';
@@ -597,6 +552,17 @@ export function setupEventListeners() {
             resetPinCreationForm();
         };
     }
+
+    // Parental sub-tab switching
+    document.querySelectorAll('.parental-subnav-btn').forEach(btn => {
+        btn.onclick = () => {
+            document.querySelectorAll('.parental-subnav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.parental-tab-pane').forEach(p => p.style.display = 'none');
+            const target = document.getElementById(btn.dataset.parentalTab);
+            if (target) target.style.display = '';
+        };
+    });
 
     // 6. Unified filter dropdowns (single set shared by sidebar and landing)
     ['filter-select-language', 'filter-select-genre', 'filter-select-event'].forEach(id => {

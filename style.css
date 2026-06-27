@@ -4695,7 +4695,7 @@ body[data-module="home"] .power-hover-zone:hover .power-toggle-btn {
 }
 
 .parental-time-field {
-    width: 110px;
+    width: 150px;
     margin: 0;
     background: rgba(0, 0, 0, 0.4) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -4711,6 +4711,44 @@ body[data-module="home"] .power-hover-zone:hover .power-toggle-btn {
     border-color: rgba(0, 255, 204, 0.5) !important;
     outline: none;
     box-shadow: 0 0 5px rgba(0, 255, 204, 0.2);
+}
+
+.parental-time-field::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.parental-time-field::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+.parental-time-field::-webkit-datetime-edit {
+    color: rgba(255, 255, 255, 0.9);
+    font-family: inherit;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+}
+
+.parental-time-field::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+}
+
+.parental-time-field::-webkit-datetime-edit-hour-field,
+.parental-time-field::-webkit-datetime-edit-minute-field,
+.parental-time-field::-webkit-datetime-edit-ampm-field {
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background 0.15s;
+}
+
+.parental-time-field::-webkit-datetime-edit-hour-field:focus,
+.parental-time-field::-webkit-datetime-edit-minute-field:focus,
+.parental-time-field::-webkit-datetime-edit-ampm-field:focus {
+    background: rgba(0, 255, 204, 0.15);
+    color: #00ffcc;
+    outline: none;
 }
 
 .disabled-setting-row {

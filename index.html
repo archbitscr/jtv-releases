@@ -389,7 +389,7 @@
                         <button class="settings-tab-btn" data-settings-tab="channels" id="settings-tab-channels"><i data-lucide="tv"></i> Channels <span class="dev-indicator"></span></button>
                         <button class="settings-tab-btn" data-settings-tab="filters" id="settings-tab-filters"><i data-lucide="filter"></i> Filters</button>
                         <button class="settings-tab-btn" data-settings-tab="background"><i data-lucide="image"></i> Wallpapers</button>
-                        <button class="settings-tab-btn" data-settings-tab="parental" id="settings-tab-parental"><i data-lucide="shield"></i> Parental Controls</button>
+                        <button class="settings-tab-btn" data-settings-tab="parental" id="settings-tab-parental"><i data-lucide="shield"></i> Parental</button>
                         <button class="settings-tab-btn" data-settings-tab="connectivity" id="settings-tab-connectivity"><i data-lucide="network"></i> Connectivity <span class="dev-indicator"></span></button>
                         <button class="settings-tab-btn" data-settings-tab="sensors"><i data-lucide="cpu"></i> Sensors <span class="dev-indicator"></span></button>
                     </div>
@@ -555,7 +555,7 @@
                             <input type="text" id="global-domain-input" class="dark-input" placeholder="DaddyLive Domain">
                             <input type="text" id="api-endpoint-input" class="dark-input" placeholder="API Endpoint">
                             <input type="text" id="api-key-input" class="dark-input" placeholder="API Key">
-                            <button id="apply-domain-btn" class="primary-btn">Save &amp; Sync</button>
+                            <button id="apply-domain-btn" class="settings-action-btn" style="padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600;"><i data-lucide="save" style="width: 16px; height: 16px;"></i> Save &amp; Sync</button>
                         </div>
 
                         <!-- Sub-pane: APIs -->
@@ -829,7 +829,12 @@
                     
                     <!-- Section: Parental Controls -->
                     <div id="settings-sect-parental" class="settings-sect-pane">
-                        <h3 class="settings-page-title">Parental Controls</h3>
+                        <h3 class="settings-page-title">Parental</h3>
+                        <nav class="settings-subnav" aria-label="Parental sections">
+                            <button class="settings-subnav-btn parental-subnav-btn active" data-parental-tab="parental-tab-general"><i data-lucide="settings"></i> General</button>
+                            <button class="settings-subnav-btn parental-subnav-btn" data-parental-tab="parental-tab-allowed"><i data-lucide="users"></i> Allowed Channels</button>
+                        </nav>
+                        <div id="parental-tab-general" class="parental-tab-pane">
                         <!-- 1. PIN -->
                         <div class="setting-item">
                             <div class="setting-item-info">
@@ -849,15 +854,13 @@
                                 <div style="display: flex; flex-direction: column; gap: 4px;">
                                     <label style="font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 500;">New PIN</label>
                                     <div style="position: relative; display: flex; align-items: center;">
-                                        <input type="password" id="parental-new-pin-1" class="dark-input" maxlength="6" style="letter-spacing: 4px; font-size: 16px; padding: 8px 36px 8px 12px; width: 100%; margin: 0;" placeholder="******">
-                                        <i data-lucide="eye" id="toggle-new-pin-1" style="position: absolute; right: 12px; cursor: pointer; opacity: 0.5; font-size: 15px; width: 15px; height: 15px; transition: opacity 0.2s;" title="Show PIN"></i>
+                                        <input type="text" id="parental-new-pin-1" class="dark-input" maxlength="6" inputmode="numeric" pattern="[0-9]*" style="letter-spacing: 4px; font-size: 16px; padding: 8px 12px; width: 100%; margin: 0;" placeholder="000000">
                                     </div>
                                 </div>
                                 <div style="display: flex; flex-direction: column; gap: 4px;">
                                     <label style="font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 500;">Confirm New PIN</label>
                                     <div style="position: relative; display: flex; align-items: center;">
-                                        <input type="password" id="parental-new-pin-2" class="dark-input" maxlength="6" style="letter-spacing: 4px; font-size: 16px; padding: 8px 36px 8px 12px; width: 100%; margin: 0;" placeholder="******">
-                                        <i data-lucide="eye" id="toggle-new-pin-2" style="position: absolute; right: 12px; cursor: pointer; opacity: 0.5; font-size: 15px; width: 15px; height: 15px; transition: opacity 0.2s;" title="Show PIN"></i>
+                                        <input type="text" id="parental-new-pin-2" class="dark-input" maxlength="6" inputmode="numeric" pattern="[0-9]*" style="letter-spacing: 4px; font-size: 16px; padding: 8px 12px; width: 100%; margin: 0;" placeholder="000000">
                                     </div>
                                 </div>
                                 
@@ -952,8 +955,10 @@
                                 <label class="parental-time-label">To <input type="time" id="parental-end-time" class="dark-input parental-time-field" value="20:00"></label>
                             </div>
                         </div>
-                        <div class="setting-divider"></div>
-                        <!-- 6. Channels Permitidos -->
+                        </div>
+                        </div>
+                        <!-- Sub-tab: Allowed Channels -->
+                        <div id="parental-tab-allowed" class="parental-tab-pane" style="display: none;">
                         <div class="setting-item" style="flex-direction: column; align-items: stretch; gap: 15px;">
                             <div class="setting-item-info" style="margin-bottom: 5px;">
                                 <span class="setting-title">Additional Allowed Channels</span>
@@ -1076,7 +1081,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                 <h2>Parental Controls</h2>
                 <p id="parental-pin-message">Enter your 6-digit PIN to continue:</p>
                 <div style="display: flex; gap: 8px; justify-content: center; margin: 20px 0;">
-                    <input type="password" maxlength="6" id="parental-pin-input" class="dark-input" style="width: 160px; font-size: 24px; letter-spacing: 6px; text-align: center; margin: 0;" placeholder="******">
+                    <input type="text" maxlength="6" id="parental-pin-input" class="dark-input" inputmode="numeric" pattern="[0-9]*" style="width: 160px; font-size: 24px; letter-spacing: 6px; text-align: center; margin: 0;" placeholder="000000">
                 </div>
                 <p id="parental-pin-error" style="color: #ff4a4a; font-size: 13px; margin: -10px 0 15px 0; font-weight: 500;" class="hidden"></p>
                 <div style="display: flex; gap: 10px; justify-content: center;">
