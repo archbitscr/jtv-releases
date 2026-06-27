@@ -1507,94 +1507,160 @@ export function setupEventListeners() {
         });
     }
 
-    // Hotkey editing UI
+    // Hotkey dynamic card UI
     let activeHotkeyListener = null;
 
     const KEY_DISPLAY = {
         ' ': 'Space', 'Escape': 'Esc', 'ArrowUp': '↑', 'ArrowDown': '↓',
-        'ArrowLeft': '←', 'ArrowRight': '→', 'Add': '+', 'Subtract': '-', 'Multiply': '*'
+        'ArrowLeft': '←', 'ArrowRight': '→', 'Add': 'Num+', 'Subtract': 'Num-',
+        'Multiply': 'Num*', 'PageUp': 'PgUp', 'PageDown': 'PgDn'
     };
+
+    const HOTKEY_DEFS = [
+        { action: 'fullscreen', title: 'Toggle Fullscreen', desc: 'Enter or exit fullscreen mode.' },
+        { action: 'toggleHUD', title: 'Toggle HUD / Pin', desc: 'Show HUD and toggle pin state.' },
+        { action: 'volumeUp', title: 'Volume Up', desc: 'Increase the volume level.' },
+        { action: 'volumeDown', title: 'Volume Down', desc: 'Decrease the volume level.' },
+        { action: 'toggleMute', title: 'Toggle Mute', desc: 'Mute or unmute audio.' },
+        { action: 'prevChannel', title: 'Channel Up', desc: 'Zap to the previous channel.' },
+        { action: 'nextChannel', title: 'Channel Down', desc: 'Zap to the next channel.' },
+        { action: 'escape', title: 'Close / Go Back', desc: 'Close modals or return to previous view.' },
+        { action: 'prevSource', title: 'Previous Source', desc: 'Switch to the previous video source.' },
+        { action: 'nextSource', title: 'Next Source', desc: 'Switch to the next video source.' }
+    ];
 
     function keyToDisplay(key) {
         if (key.startsWith('Ctrl+')) return 'Ctrl+' + keyToDisplay(key.slice(5));
         return KEY_DISPLAY[key] || (key.length === 1 ? key.toUpperCase() : key);
     }
 
-    function syncHotkeyDisplay() {
-        document.querySelectorAll('.hotkey-key[data-action]').forEach(el => {
-            const action = el.dataset.action;
-            const slot = parseInt(el.dataset.slot || '0', 10);
-            const keys = state.hotkeyMap[action];
-            if (keys && keys[slot] !== undefined) {
-                el.textContent = keyToDisplay(keys[slot]);
-            } else {
-                el.textContent = '—';
+    function findConflicts(action, key) {
+        for (const [a, keys] of Object.entries(state.hotkeyMap)) {
+            if (a === action) continue;
+            if (keys.some(k => k.toLowerCase() === key.toLowerCase())) {
+                const def = HOTKEY_DEFS.find(d => d.action === a);
+                return def ? def.title : a;
             }
-        });
-    }
-
-    function setEditBtnIcon(editBtn, icon) {
-        const i = editBtn.querySelector('[data-lucide]');
-        if (i) {
-            i.setAttribute('data-lucide', icon);
-            if (window.lucide) window.lucide.createIcons({ nodes: [i] });
         }
+        return null;
     }
 
     function stopHotkeyListening() {
         if (!activeHotkeyListener) return;
-        const { keyEl, editBtn, handler } = activeHotkeyListener;
+        const { handler } = activeHotkeyListener;
         document.removeEventListener('keydown', handler, true);
-        keyEl.classList.remove('listening');
-        editBtn.classList.remove('listening');
-        setEditBtnIcon(editBtn, 'plus');
         nativeApi.typingState(false);
         activeHotkeyListener = null;
-        syncHotkeyDisplay();
+        renderHotkeyCards();
     }
 
-    document.querySelectorAll('.hotkey-edit-btn').forEach(editBtn => {
-        editBtn.onclick = (e) => {
-            e.stopPropagation();
-            const action = editBtn.dataset.action;
-            const slot = parseInt(editBtn.dataset.slot || '0', 10);
-            const keyEl = document.querySelector(`.hotkey-key[data-action="${action}"][data-slot="${slot}"]`);
-            if (!keyEl) return;
+    function renderHotkeyCards() {
+        const grid = document.getElementById('hotkey-grid');
+        if (!grid) return;
+        grid.innerHTML = '';
 
-            if (activeHotkeyListener && activeHotkeyListener.editBtn === editBtn) {
-                stopHotkeyListening();
-                return;
-            }
-            stopHotkeyListening();
+        HOTKEY_DEFS.forEach(def => {
+            const card = document.createElement('div');
+            card.className = 'hotkey-card';
 
-            keyEl.classList.add('listening');
-            editBtn.classList.add('listening');
-            setEditBtnIcon(editBtn, 'x');
-            keyEl.textContent = '...';
-            nativeApi.typingState(true);
+            const header = document.createElement('div');
+            header.className = 'hotkey-card-header';
+            header.innerHTML = `<span class="setting-title">${def.title}</span><span class="setting-desc">${def.desc}</span>`;
 
-            const handler = (ev) => {
-                ev.preventDefault();
-                ev.stopPropagation();
-                ev.stopImmediatePropagation();
-                let newKey = ev.key;
-                if ((ev.ctrlKey || ev.metaKey) && newKey !== 'Control' && newKey !== 'Meta') {
-                    newKey = 'Ctrl+' + newKey;
+            const controls = document.createElement('div');
+            controls.className = 'hotkey-card-controls';
+
+            const keys = state.hotkeyMap[def.action] || [];
+
+            keys.forEach((key, idx) => {
+                const chip = document.createElement('div');
+                chip.className = 'hotkey-chip';
+                chip.textContent = keyToDisplay(key);
+
+                const conflict = findConflicts(def.action, key);
+                if (conflict) {
+                    chip.classList.add('conflict');
+                    chip.title = `Conflict: already used by "${conflict}"`;
                 }
-                if (newKey === 'Control' || newKey === 'Meta' || newKey === 'Shift' || newKey === 'Alt') return;
-                const keys = state.hotkeyMap[action] ? [...state.hotkeyMap[action]] : [];
-                keys[slot] = newKey;
-                state.hotkeyMap[action] = keys;
+
+                const delBtn = document.createElement('button');
+                delBtn.className = 'hotkey-chip-delete';
+                delBtn.title = 'Delete';
+                delBtn.textContent = '×';
+                delBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    state.hotkeyMap[def.action] = keys.filter((_, i) => i !== idx);
+                    saveAppState();
+                    renderHotkeyCards();
+                };
+                chip.appendChild(delBtn);
+                controls.appendChild(chip);
+            });
+
+            const addBtn = document.createElement('button');
+            addBtn.className = 'hotkey-add-btn';
+            addBtn.title = 'Add hotkey';
+            addBtn.innerHTML = '<i data-lucide="plus"></i>';
+            if (keys.length >= 2) {
+                addBtn.disabled = true;
+            }
+            addBtn.onclick = (e) => {
+                e.stopPropagation();
+                if (keys.length >= 2) return;
                 stopHotkeyListening();
-                saveAppState();
+                startListening(def.action, controls, addBtn);
             };
+            controls.appendChild(addBtn);
 
-            document.addEventListener('keydown', handler, true);
-            activeHotkeyListener = { action, slot, keyEl, editBtn, handler };
+            card.appendChild(header);
+            card.appendChild(controls);
+            grid.appendChild(card);
+        });
+
+        if (window.lucide) window.lucide.createIcons();
+    }
+
+    function startListening(action, controls, addBtn) {
+        addBtn.disabled = true;
+
+        const listener = document.createElement('div');
+        listener.className = 'hotkey-listener';
+        listener.textContent = 'Press a key...';
+
+        const cancelBtn = document.createElement('button');
+        cancelBtn.className = 'hotkey-listener-cancel';
+        cancelBtn.title = 'Cancel';
+        cancelBtn.textContent = '×';
+        cancelBtn.onclick = (e) => {
+            e.stopPropagation();
+            stopHotkeyListening();
         };
-    });
+        listener.appendChild(cancelBtn);
 
-    syncHotkeyDisplay();
+        controls.insertBefore(listener, addBtn);
+        nativeApi.typingState(true);
+
+        const handler = (ev) => {
+            ev.preventDefault();
+            ev.stopPropagation();
+            ev.stopImmediatePropagation();
+            let newKey = ev.key;
+            if ((ev.ctrlKey || ev.metaKey) && newKey !== 'Control' && newKey !== 'Meta') {
+                newKey = 'Ctrl+' + newKey;
+            }
+            if (newKey === 'Control' || newKey === 'Meta' || newKey === 'Shift' || newKey === 'Alt') return;
+            const keys = state.hotkeyMap[action] ? [...state.hotkeyMap[action]] : [];
+            keys.push(newKey);
+            state.hotkeyMap[action] = keys;
+            stopHotkeyListening();
+            saveAppState();
+        };
+
+        document.addEventListener('keydown', handler, true);
+        activeHotkeyListener = { action, handler };
+    }
+
+    renderHotkeyCards();
 
     // Tuner Zapper Buttons Listeners
     tunerUpBtn.onclick = (e) => {

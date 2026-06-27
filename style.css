@@ -3408,8 +3408,14 @@ body.hide-cursor * {
     border-radius: 12px;
     padding: 14px 16px;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.hotkey-card-header {
+    flex: 1;
+    min-width: 0;
 }
 
 .hotkey-card-header .setting-title {
@@ -3421,22 +3427,18 @@ body.hide-cursor * {
     font-size: 0.7rem;
 }
 
-.hotkey-card-keys {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.hotkey-binding {
+.hotkey-card-controls {
     display: flex;
     align-items: center;
     gap: 6px;
     flex-shrink: 0;
 }
 
-.hotkey-key {
-    min-width: 50px;
-    padding: 5px 12px;
+.hotkey-chip {
+    position: relative;
+    min-width: 36px;
+    height: 30px;
+    padding: 0 10px;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
@@ -3444,25 +3446,49 @@ body.hide-cursor * {
     font-family: inherit;
     font-size: 0.75rem;
     font-weight: 500;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
     transition: all 0.2s ease;
 }
 
-.hotkey-key.listening {
-    border-color: var(--accent);
-    color: var(--accent);
-    box-shadow: 0 0 8px rgba(0, 255, 204, 0.3);
-    animation: hotkey-pulse 1.2s infinite alternate;
+.hotkey-chip.conflict {
+    border-color: rgba(255, 75, 75, 0.5);
+    animation: hotkey-conflict-pulse 1.5s infinite alternate;
 }
 
-@keyframes hotkey-pulse {
-    from { box-shadow: 0 0 4px rgba(0, 255, 204, 0.2); }
-    to { box-shadow: 0 0 12px rgba(0, 255, 204, 0.5); }
+@keyframes hotkey-conflict-pulse {
+    from { box-shadow: 0 0 4px rgba(255, 75, 75, 0.2); }
+    to { box-shadow: 0 0 10px rgba(255, 75, 75, 0.4); }
 }
 
-.hotkey-edit-btn {
-    width: 28px;
-    height: 28px;
+.hotkey-chip-delete {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(255, 75, 75, 0.9);
+    border: none;
+    color: #fff;
+    font-size: 10px;
+    line-height: 1;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.hotkey-chip:hover .hotkey-chip-delete {
+    display: flex;
+}
+
+.hotkey-add-btn {
+    width: 30px;
+    height: 30px;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.04);
@@ -3472,24 +3498,70 @@ body.hide-cursor * {
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
+    flex-shrink: 0;
 }
 
-.hotkey-edit-btn i,
-.hotkey-edit-btn svg {
+.hotkey-add-btn i,
+.hotkey-add-btn svg {
     width: 14px;
     height: 14px;
 }
 
-.hotkey-edit-btn:hover {
+.hotkey-add-btn:hover:not(:disabled) {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
 }
 
-.hotkey-edit-btn.listening {
-    background: rgba(0, 255, 204, 0.15);
-    border-color: var(--accent);
+.hotkey-add-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.hotkey-listener {
+    height: 30px;
+    min-width: 80px;
+    padding: 0 28px 0 10px;
+    background: rgba(0, 255, 204, 0.06);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
     color: var(--accent);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    position: relative;
+    animation: hotkey-pulse 1.2s infinite alternate;
+}
+
+.hotkey-listener-cancel {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 14px;
+    transition: background 0.15s;
+}
+
+.hotkey-listener-cancel:hover {
+    background: rgba(0, 255, 204, 0.15);
+}
+
+@keyframes hotkey-pulse {
+    from { box-shadow: 0 0 4px rgba(0, 255, 204, 0.2); }
+    to { box-shadow: 0 0 12px rgba(0, 255, 204, 0.5); }
 }
 
 .connectivity-subsect-pane {

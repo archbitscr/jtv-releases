@@ -203,11 +203,12 @@ export function createMainWindow(context) {
       k === 'Add' ||
       k === 'Subtract' ||
       k === 'Multiply' ||
-      k === ' '
+      k === ' ' ||
+      k === 'm' || k === 'M' ||
+      k === 'PageUp' ||
+      k === 'PageDown'
     ) {
-      const ctrl = input.control || input.meta;
-      const keyPayload = ctrl && k.startsWith('Arrow') ? `Ctrl+${k}` : k;
-      win.webContents.send(IPC.APP_HOTKEY, { key: keyPayload, repeat: !!input.isAutoRepeat });
+      win.webContents.send(IPC.APP_HOTKEY, { key: k, repeat: !!input.isAutoRepeat });
       event.preventDefault();
     }
   });
