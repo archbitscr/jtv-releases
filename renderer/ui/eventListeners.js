@@ -661,7 +661,14 @@ export function setupEventListeners() {
         document.body.classList.remove('hide-cursor');
     };
 
-    mainMenu.onmouseleave = () => startInactivityTimers();
+    mainMenu.onmouseleave = (e) => {
+        const toEl = e.relatedTarget;
+        if (toEl && (toEl === triggerLeft || triggerLeft.contains(toEl))) return;
+        if (state.currentModule === 'live' && state.activeChannelId && !state.isVodPlaying) {
+            hideMenu();
+        }
+        startInactivityTimers();
+    };
 
     const settingsScreenEl = document.getElementById('settings-screen');
     if (settingsScreenEl) {
