@@ -3888,14 +3888,18 @@ body.hide-cursor * {
 
 /* Homescreen: buttons faintly visible as idle hint */
 body[data-module="home"] .fullscreen-toggle-btn,
-body[data-module="home"] .power-toggle-btn {
+body[data-module="home"] .power-toggle-btn,
+body[data-module="live"] .fullscreen-toggle-btn,
+body[data-module="live"] .power-toggle-btn {
     opacity: 0.12;
     transform: translateY(0);
     pointer-events: auto;
 }
 
 body[data-module="home"] .fullscreen-hover-zone:hover .fullscreen-toggle-btn,
-body[data-module="home"] .power-hover-zone:hover .power-toggle-btn {
+body[data-module="home"] .power-hover-zone:hover .power-toggle-btn,
+body[data-module="live"] .fullscreen-hover-zone:hover .fullscreen-toggle-btn,
+body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     opacity: 1;
 }
 
