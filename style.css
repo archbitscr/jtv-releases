@@ -5346,17 +5346,6 @@ body[data-module="home"] .power-hover-zone:hover .power-toggle-btn {
     display: block;
 }
 
-/* Filters section fills height only when assignment tab is active */
-.settings-main-content:has(#filters-content-asignacion.active) {
-    overflow-y: hidden;
-}
-
-.settings-main-content:has(#filters-content-asignacion.active) #settings-sect-filters {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
-}
 
 .filter-list-item .rename-btn {
     background: transparent;
@@ -5494,26 +5483,12 @@ body[data-module="home"] .power-hover-zone:hover .power-toggle-btn {
 .event-assigner-container {
     display: flex;
     gap: 15px;
-    flex: 1;
-    min-height: 0;
     align-items: stretch;
     width: 100%;
     box-sizing: border-box;
-    overflow: hidden;
-}
-
-#filters-assigner-section {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
-}
-
-#filters-content-asignacion.active {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
+    /* Bounded height: 80vh container - title/desc/subnav/padding (~160px) */
+    height: calc(80vh - 160px);
+    max-height: calc(80vh - 160px);
 }
 
 /* Bulk select button: neutral when empty, accent when active */
@@ -5534,9 +5509,8 @@ body[data-module="home"] .power-hover-zone:hover .power-toggle-btn {
     width: 0px !important;
     min-width: 0 !important;
     max-width: none !important;
-    height: auto !important;
     min-height: 0 !important;
-    max-height: 100% !important;
+    max-height: none !important;
     box-sizing: border-box;
     overflow: hidden;
 }
