@@ -2035,6 +2035,7 @@ body.hide-cursor * {
 
 /* HUD Actions Container (Horizontal Placement) */
 .hud-actions-container {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -3821,12 +3822,14 @@ body.hide-cursor * {
     gap: 4px;
 }
 
-/* Mini buttons (Fav & Pin) */
-.hud-mini-row {
+/* Mini buttons (Fav & Pin) — floating top-right */
+.hud-mini-float {
+    position: absolute;
+    top: 8px;
+    right: 10px;
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-    align-self: flex-start;
+    flex-direction: row;
+    gap: 5px;
 }
 
 .hud-mini-btn {
