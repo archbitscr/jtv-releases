@@ -3822,14 +3822,15 @@ body.hide-cursor * {
     gap: 4px;
 }
 
-/* Mini buttons (Fav & Pin) — floating top-right */
+/* Mini buttons (Fav & Pin) — floating top-right of source-switcher */
 .hud-mini-float {
     position: absolute;
-    top: 8px;
-    right: 10px;
+    top: 2px;
+    right: 6px;
     display: flex;
     flex-direction: row;
     gap: 5px;
+    z-index: 2;
 }
 
 .hud-mini-btn {
