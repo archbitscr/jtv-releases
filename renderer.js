@@ -339,17 +339,17 @@ async function init() {
     setTimeout(() => {
         if (loaderProgressBar) loaderProgressBar.style.width = '35%';
         if (loaderMessage) loaderMessage.innerText = 'Loading wallpapers and styles...';
-    }, 450);
+    }, 300);
 
     setTimeout(() => {
         if (loaderProgressBar) loaderProgressBar.style.width = '65%';
         if (loaderMessage) loaderMessage.innerText = 'Syncing DaddyLive channels...';
-    }, 1000);
+    }, 650);
 
     setTimeout(() => {
         if (loaderProgressBar) loaderProgressBar.style.width = '100%';
         if (loaderMessage) loaderMessage.innerText = 'Ready.';
-    }, 1650);
+    }, 1000);
 
     // Core Data Loading and sflix / Domain setups
     const savedData = await nativeApi.loadUserData();
@@ -524,7 +524,7 @@ async function init() {
             }, 600);
         }
         
-    }, 2000);
+    }, 1200);
 
     showModule('home');
 
