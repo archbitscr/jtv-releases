@@ -430,6 +430,9 @@ async function init() {
         if (savedData.currentVolumeLevel !== undefined) {
             state.currentVolumeLevel = savedData.currentVolumeLevel;
         }
+        if (savedData.hotkeyMap) {
+            state.hotkeyMap = { ...state.hotkeyMap, ...savedData.hotkeyMap };
+        }
         if (savedData.timeoutsConfig) {
             window.timeoutsConfig = { ...window.timeoutsConfig, ...savedData.timeoutsConfig };
         }

@@ -33,6 +33,18 @@ export const state = {
     shouldRestoreTunedChannel: false,
     zapSourceTab: "favorites",
     hudPinned: false,
+    hotkeyMap: {
+        fullscreen: ['f'],
+        toggleHUD: [' '],
+        volumeUp: ['+', '=', 'Add'],
+        volumeDown: ['-', 'Subtract'],
+        toggleMute: ['*', 'Multiply'],
+        prevChannel: ['ArrowUp'],
+        nextChannel: ['ArrowDown'],
+        prevSource: ['ArrowLeft'],
+        nextSource: ['ArrowRight'],
+        escape: ['Escape']
+    },
 
     // Settings & API Configuration
     globalDomain: "https://dlhd.pk/",

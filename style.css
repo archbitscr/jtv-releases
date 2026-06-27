@@ -3354,10 +3354,84 @@ body.hide-cursor * {
     font-weight: 600;
 }
 
-/* Tighter gap under the sub-nav separator for Parental and Developer */
+/* Tighter gap under the sub-nav separator for General, Parental and Developer */
+#settings-sect-general .settings-subnav,
 #settings-sect-parental .settings-subnav,
 #settings-sect-developer .settings-subnav {
     margin-bottom: 12px;
+}
+
+/* Hotkey items */
+.hotkey-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.hotkey-binding {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.hotkey-key {
+    min-width: 60px;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: inherit;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.hotkey-key.listening {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 8px rgba(0, 255, 204, 0.3);
+    animation: hotkey-pulse 1.2s infinite alternate;
+}
+
+@keyframes hotkey-pulse {
+    from { box-shadow: 0 0 4px rgba(0, 255, 204, 0.2); }
+    to { box-shadow: 0 0 12px rgba(0, 255, 204, 0.5); }
+}
+
+.hotkey-edit-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.hotkey-edit-btn i,
+.hotkey-edit-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.hotkey-edit-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.hotkey-edit-btn.listening {
+    background: rgba(0, 255, 204, 0.15);
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .connectivity-subsect-pane {

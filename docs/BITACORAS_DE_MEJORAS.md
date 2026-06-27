@@ -122,6 +122,7 @@ Este documento unifica de forma cronológica todas las mejoras, características
 *   ✅ **Tarea 35:** Segregación de Developer en Subpestañas — creadas subpestañas "General" y "Timeouts" usando clases CSS existentes (`.settings-subnav`), con clase `.dev-subnav-btn` para evitar conflicto con el handler global de filtros.
 *   ✅ **Tarea 36:** Botón Pin en HUD — nuevo `#hud-pin-btn` con icono `pin`/`pin-off` y estilos blancos (análogos al favorito en rojo). Fija el HUD cancelando el timer `zappingHUD` en `inactivity.js`. Visibilidad condicional: Pin en modo usuario, Ajustes solo en dev mode. Estado `hudPinned` no persistido, resetea al cerrar.
 *   ✅ **Tarea 36b:** Botón Power en modo usuario — nuevo `#power-hover-zone` con `#power-user-btn` en esquina inferior derecha, espejo del botón fullscreen (superior derecha). Glassmorphism, oculto por defecto, visible on hover con icono `power` (stroke-width 2.5) y scale 1.22 on hover. En dev mode el hover zone se oculta y se usa el `#power-off-btn` existente del floating container.
+*   ✅ **Tarea 36c:** Hotkey Manager + Reestructuración Settings — sección General dividida en sub-pestañas "General" y "Hotkeys" con `.general-subnav-btn`. Tab sidebar renombrado a "Settings", título `<h2>` eliminado. 10 hotkeys configurables con UI de edición en tiempo real (botón +, modo listening con glow acento). `hotkeyMap` en `appState.js` persistido a disco. `handleHotkeyAction` refactorizado a `matchesHotkey()`. Developer Mode movido a primera posición en pestaña System.
 
 ---
 
@@ -166,12 +167,16 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ### ⏳ Dificultad Media-Baja
 
-#### 2. Tarea 38: Hotkey Manager
-*   **Componente:** `eventListeners.js`, `createMainWindow.js`, Ajustes.
-*   **Acción Requerida:**
-    1.  Centralizar todos los atajos de teclado en un gestor configurable.
-    2.  Permitir al usuario ver y personalizar los hotkeys desde Ajustes.
-    3.  Documentar los atajos disponibles en la UI.
+#### ~~2. Tarea 38: Hotkey Manager~~ ✅
+*   **Componente:** `eventListeners.js`, `settingsTabs.js`, `stateManager.js`, `appState.js`, `renderer.js`, `index.html`, `style.css`.
+*   **Implementación:**
+    1.  Sección General dividida en sub-pestañas "General" y "Hotkeys" con clase `.general-subnav-btn` y función `setGeneralTab()`.
+    2.  Tab del sidebar renombrado de "General" a "Settings"; título `<h2>Settings</h2>` eliminado para liberar espacio vertical.
+    3.  10 hotkeys configurables: Fullscreen, Toggle HUD, Volume Up/Down, Toggle Mute, Prev/Next Channel, Prev/Next Source, Escape.
+    4.  UI de edición: campo `.hotkey-key` muestra la tecla actual; botón `+` (`.hotkey-edit-btn`) activa modo listening (glow acento, texto "..."). Al presionar una tecla se asigna y persiste.
+    5.  `state.hotkeyMap` en `appState.js` con defaults, persistido vía `stateManager.js`, restaurado en `renderer.js`.
+    6.  `handleHotkeyAction()` refactorizado de comparaciones hardcoded a `matchesHotkey(action, key)` usando el mapa dinámico.
+    7.  Developer Mode movido de pestaña General a primera posición en pestaña System.
 
 ---
 

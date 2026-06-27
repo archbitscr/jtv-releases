@@ -44,6 +44,15 @@ export function setSettingsFilterTab(tab) {
     renderSettingsFilters();
 }
 
+export function setGeneralTab(tab) {
+    document.querySelectorAll('.general-subnav-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.generalTab === tab);
+    });
+    document.querySelectorAll('.general-tab-pane').forEach(pane => {
+        pane.style.display = pane.id === tab ? '' : 'none';
+    });
+}
+
 export function setConnectivityTab(tab) {
     document.querySelectorAll('.connectivity-subnav-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.connTab === tab);

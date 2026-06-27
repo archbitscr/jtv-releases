@@ -112,12 +112,11 @@ export async function initDeveloperFeatures() {
         tabsContainer.appendChild(channelsTab);
     }
 
-    // 2. Inject developer mode toggle in General tab pane (at the end)
-    const generalPane = document.getElementById('settings-sect-general');
-    if (generalPane) {
-        const devModeDivider = document.createElement('div');
-        devModeDivider.className = 'setting-divider';
-        generalPane.appendChild(devModeDivider);
+    // 2. Inject developer mode toggle at the top of System tab pane
+    const systemPane = document.getElementById('settings-sect-account');
+    if (systemPane) {
+        const systemTitle = systemPane.querySelector('.settings-page-title');
+        const insertRef = systemTitle ? systemTitle.nextSibling : systemPane.firstChild;
 
         const devModeItem = document.createElement('div');
         devModeItem.className = 'setting-item';
@@ -131,7 +130,11 @@ export async function initDeveloperFeatures() {
                 <span class="settings-switch-slider"></span>
             </label>
         `;
-        generalPane.appendChild(devModeItem);
+        const devModeDivider = document.createElement('div');
+        devModeDivider.className = 'setting-divider';
+
+        systemPane.insertBefore(devModeDivider, insertRef);
+        systemPane.insertBefore(devModeItem, devModeDivider);
     }
 
     // 2b. Inject Developer Section Pane

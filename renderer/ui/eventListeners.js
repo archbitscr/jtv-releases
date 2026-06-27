@@ -21,7 +21,7 @@ import { adjustVolume, toggleMute, updateVolumeUI } from '../ui/volumeController
 import { saveAppState } from '../services/stateManager.js';
 import { syncChannels } from '../services/channelSync.js';
 import { checkValidity, updateEditLogo } from '../ui/editPane.js';
-import { setSettingsFilterTab, setConnectivityTab, setChannelsTab } from '../settings/settingsTabs.js';
+import { setSettingsFilterTab, setConnectivityTab, setChannelsTab, setGeneralTab } from '../settings/settingsTabs.js';
 import { renderAll, renderSettingsFilters } from '../render/renderAll.js';
 import { processLogo } from '../utils/domHelpers.js';
 import { renderChannelFiltersManager, removeFilterFromChannel, bindAddFilterToChannel } from '../filters/filterManager.js';
@@ -749,6 +749,9 @@ export function setupEventListeners() {
                     if (typeof updateParentalPinUI === 'function') updateParentalPinUI();
                     if (typeof window.renderParentalChannelsList === 'function') window.renderParentalChannelsList();
                 }
+                if (targetTab === 'general') {
+                    setGeneralTab('general-tab-options');
+                }
                 if (targetTab === 'sensors') {
                     updateSensorsUI();
                 }
@@ -800,6 +803,10 @@ export function setupEventListeners() {
             }
         });
     }
+
+    document.querySelectorAll('.general-subnav-btn').forEach(btn => {
+        btn.onclick = () => setGeneralTab(btn.dataset.generalTab);
+    });
 
     document.querySelectorAll('.settings-subnav-btn[data-filter-type]').forEach(btn => {
         btn.onclick = () => setSettingsFilterTab(btn.dataset.filterType);
@@ -1360,19 +1367,24 @@ export function setupEventListeners() {
         }
     }, true);
 
+    function matchesHotkey(action, key) {
+        const keys = state.hotkeyMap[action];
+        return keys && keys.some(k => k.toLowerCase() === key.toLowerCase());
+    }
+
     function handleHotkeyAction(key) {
-        if (key === '+' || key === '=' || key === 'Add') {
+        if (matchesHotkey('volumeUp', key)) {
             adjustVolume(1);
             return true;
-        } else if (key === '-' || key === 'Subtract') {
+        } else if (matchesHotkey('volumeDown', key)) {
             adjustVolume(-1);
             return true;
-        } else if (key === '*' || key === 'Multiply') {
+        } else if (matchesHotkey('toggleMute', key)) {
             toggleMute();
             return true;
         }
 
-        if (key === 'Escape') {
+        if (matchesHotkey('escape', key)) {
             const detailsModal = document.getElementById('details-modal');
             if (detailsModal && !detailsModal.classList.contains('hidden')) {
                 detailsModal.classList.add('hidden');
@@ -1394,18 +1406,23 @@ export function setupEventListeners() {
             return true;
         }
 
+        if (matchesHotkey('fullscreen', key)) {
+            toggleAppFullscreen();
+            return true;
+        }
+
         const isSettingsOpen = !document.getElementById('settings-screen').classList.contains('hidden');
         const isDetailsOpen = !document.getElementById('details-modal').classList.contains('hidden');
         const isParentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
 
         if (!state.isHomeActive && state.activeChannelId && !isSettingsOpen && !isDetailsOpen && !isParentalOpen) {
-            if (key === 'ArrowUp') {
+            if (matchesHotkey('prevChannel', key)) {
                 zapChannel('up');
                 return true;
-            } else if (key === 'ArrowDown') {
+            } else if (matchesHotkey('nextChannel', key)) {
                 zapChannel('down');
                 return true;
-            } else if (key === 'ArrowLeft') {
+            } else if (matchesHotkey('prevSource', key)) {
                 const sources = Array.from(document.querySelectorAll('.source-btn')).map(b => b.dataset.source);
                 const currentIdx = sources.indexOf(state.playerSource);
                 if (currentIdx !== -1) {
@@ -1413,7 +1430,7 @@ export function setupEventListeners() {
                     document.querySelector(`.source-btn[data-source="${sources[prevIdx]}"]`)?.click();
                 }
                 return true;
-            } else if (key === 'ArrowRight') {
+            } else if (matchesHotkey('nextSource', key)) {
                 const sources = Array.from(document.querySelectorAll('.source-btn')).map(b => b.dataset.source);
                 const currentIdx = sources.indexOf(state.playerSource);
                 if (currentIdx !== -1) {
@@ -1424,7 +1441,7 @@ export function setupEventListeners() {
             }
         }
 
-        if (key === ' ' || key === 'Spacebar') {
+        if (matchesHotkey('toggleHUD', key)) {
             if (!state.isHomeActive && state.activeChannelId && !state.isVodPlaying) {
                 const sourceSwitcherEl = document.getElementById('source-switcher');
                 if (sourceSwitcherEl) {
@@ -1474,7 +1491,71 @@ export function setupEventListeners() {
         });
     }
 
+    // Hotkey editing UI
+    let activeHotkeyListener = null;
 
+    const KEY_DISPLAY = {
+        ' ': 'Space', 'Escape': 'Esc', 'ArrowUp': '↑', 'ArrowDown': '↓',
+        'ArrowLeft': '←', 'ArrowRight': '→', 'Add': '+', 'Subtract': '-', 'Multiply': '*'
+    };
+
+    function keyToDisplay(key) {
+        return KEY_DISPLAY[key] || (key.length === 1 ? key.toUpperCase() : key);
+    }
+
+    function syncHotkeyDisplay() {
+        document.querySelectorAll('.hotkey-key[data-action]').forEach(el => {
+            const action = el.dataset.action;
+            const keys = state.hotkeyMap[action];
+            if (keys && keys.length) {
+                el.textContent = keyToDisplay(keys[0]);
+            }
+        });
+    }
+
+    function stopHotkeyListening() {
+        if (!activeHotkeyListener) return;
+        const { keyEl, editBtn, handler } = activeHotkeyListener;
+        document.removeEventListener('keydown', handler, true);
+        keyEl.classList.remove('listening');
+        editBtn.classList.remove('listening');
+        activeHotkeyListener = null;
+    }
+
+    document.querySelectorAll('.hotkey-edit-btn').forEach(editBtn => {
+        editBtn.onclick = (e) => {
+            e.stopPropagation();
+            const action = editBtn.dataset.action;
+            const keyEl = document.querySelector(`.hotkey-key[data-action="${action}"]`);
+            if (!keyEl) return;
+
+            if (activeHotkeyListener && activeHotkeyListener.action === action) {
+                stopHotkeyListening();
+                return;
+            }
+            stopHotkeyListening();
+
+            keyEl.classList.add('listening');
+            editBtn.classList.add('listening');
+            keyEl.textContent = '...';
+
+            const handler = (ev) => {
+                ev.preventDefault();
+                ev.stopPropagation();
+                ev.stopImmediatePropagation();
+                const newKey = ev.key;
+                state.hotkeyMap[action] = [newKey];
+                keyEl.textContent = keyToDisplay(newKey);
+                stopHotkeyListening();
+                saveAppState();
+            };
+
+            document.addEventListener('keydown', handler, true);
+            activeHotkeyListener = { action, keyEl, editBtn, handler };
+        };
+    });
+
+    syncHotkeyDisplay();
 
     // Tuner Zapper Buttons Listeners
     tunerUpBtn.onclick = (e) => {
