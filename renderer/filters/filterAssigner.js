@@ -257,8 +257,8 @@ export function updateAssignerBulkSelectBtn() {
 
     if (!bulkBtn) return;
 
-    // Always visible: empty-square when nothing selected, check-square when
-    // all visible selected, minus-square for partial selection.
+    bulkBtn.classList.toggle('has-selection', count > 0);
+
     let icon = 'square';
     if (count > 0) {
         const filterVal = (document.getElementById('assigner-search')?.value || '').toLowerCase();

@@ -5346,6 +5346,18 @@ body[data-module="home"] .power-hover-zone:hover .power-toggle-btn {
     display: block;
 }
 
+/* Filters section fills height when active (like CRUD) */
+#settings-sect-filters.active {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+.settings-main-content:has(#settings-sect-filters.active) {
+    overflow-y: hidden;
+}
+
 .filter-list-item .rename-btn {
     background: transparent;
     border: none;
@@ -5482,11 +5494,38 @@ body[data-module="home"] .power-hover-zone:hover .power-toggle-btn {
 .event-assigner-container {
     display: flex;
     gap: 15px;
-    height: 380px;
+    flex: 1;
+    min-height: 0;
     align-items: stretch;
-    margin-bottom: 15px;
     width: 100%;
     box-sizing: border-box;
+}
+
+#filters-assigner-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+#filters-content-asignacion.active {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+/* Bulk select button: neutral when empty, accent when active */
+.bulk-select-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.bulk-select-btn.has-selection {
+    background: rgba(0, 255, 204, 0.08);
+    border-color: rgba(0, 255, 204, 0.25);
+    color: #00ffcc;
 }
 
 .event-assigner-container .filter-group-card {
