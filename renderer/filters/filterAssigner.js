@@ -41,49 +41,22 @@ export function initEventAssigner() {
     const bulkBtn = document.getElementById('assigner-bulk-select');
     if (bulkBtn) {
         bulkBtn.onclick = () => {
-            const filterVal = (document.getElementById('assigner-search')?.value || '').toLowerCase();
-            const chList = window.getChannels ? window.getChannels() : [];
-            const visibleIndices = [];
-            chList.forEach((c, index) => {
-                const num = c.id || (index + 1);
-                const name = c.name || '';
-                if (filterVal && !name.toLowerCase().includes(filterVal) && !String(num).includes(filterVal)) {
-                    return;
-                }
-                visibleIndices.push(index);
-            });
-
-            const allVisibleSelected = visibleIndices.length > 0 && visibleIndices.every(idx => state.assignerSelectedChannelIndices.includes(idx));
-
-            if (allVisibleSelected) {
-                // Deselect all visible channels
-                state.assignerSelectedChannelIndices = state.assignerSelectedChannelIndices.filter(idx => !visibleIndices.includes(idx));
+            if (state.assignerSelectedChannelIndices.length > 0) {
+                state.assignerSelectedChannelIndices = [];
             } else {
-                // Select all visible channels
-                visibleIndices.forEach(idx => {
-                    if (!state.assignerSelectedChannelIndices.includes(idx)) {
-                        state.assignerSelectedChannelIndices.push(idx);
+                const filterVal = (document.getElementById('assigner-search')?.value || '').toLowerCase();
+                const chList = window.getChannels ? window.getChannels() : [];
+                chList.forEach((c, index) => {
+                    const num = c.id || (index + 1);
+                    const name = c.name || '';
+                    if (filterVal && !name.toLowerCase().includes(filterVal) && !String(num).includes(filterVal)) return;
+                    if (!state.assignerSelectedChannelIndices.includes(index)) {
+                        state.assignerSelectedChannelIndices.push(index);
                     }
                 });
             }
 
-            // Update channels highlights & checkmarks
-            const items = document.querySelectorAll('#assigner-channels-list .crud-channel-item');
-            items.forEach(item => {
-                const itemIdx = parseInt(item.dataset.channelIndex, 10);
-                const isSelected = state.assignerSelectedChannelIndices.includes(itemIdx);
-                item.classList.toggle('active', isSelected);
-                const iconEl = item.querySelector('.assigner-channel-checkmark i');
-                if (iconEl) {
-                    iconEl.setAttribute('data-lucide', isSelected ? 'check-square' : 'square');
-                    iconEl.style.color = isSelected ? '#00ffcc' : 'rgba(255,255,255,0.2)';
-                }
-            });
-
-            if (window.lucide) {
-                window.lucide.createIcons();
-            }
-
+            refreshAssignerCheckmarks();
             selectAssignerChannelMultiple();
             updateAssignerBulkSelectBtn();
         };
@@ -221,12 +194,30 @@ export function renderAssignerChannelsList() {
     bindAssignerScrollbarActivity();
 }
 
+// Re-renders all channel checkmark icons by replacing the inner HTML of the
+// checkmark container. This avoids the stale-reference problem where
+// lucide.createIcons() replaces <i> with <svg> and subsequent querySelector('i')
+// fails to find the element.
+function refreshAssignerCheckmarks() {
+    const items = document.querySelectorAll('#assigner-channels-list .crud-channel-item');
+    items.forEach(item => {
+        const itemIdx = parseInt(item.dataset.channelIndex, 10);
+        const isSelected = state.assignerSelectedChannelIndices.includes(itemIdx);
+        item.classList.toggle('active', isSelected);
+
+        const cm = item.querySelector('.assigner-channel-checkmark');
+        if (cm) {
+            cm.innerHTML = `<i data-lucide="${isSelected ? 'check-square' : 'square'}" style="width: 14px; height: 14px; color: ${isSelected ? '#00ffcc' : 'rgba(255,255,255,0.2)'};"></i>`;
+        }
+    });
+    if (window.lucide) window.lucide.createIcons();
+}
+
 export function handleAssignerChannelClick(index, e, isCheckmarkClick = false) {
     if (window.assignerSelectedFilters) {
         window.assignerSelectedFilters.clear();
     }
     if (e.shiftKey && state.lastSelectedIdx !== -1) {
-        // Range selection
         const start = Math.min(state.lastSelectedIdx, index);
         const end = Math.max(state.lastSelectedIdx, index);
         for (let i = start; i <= end; i++) {
@@ -236,7 +227,6 @@ export function handleAssignerChannelClick(index, e, isCheckmarkClick = false) {
         }
         state.lastSelectedIdx = index;
     } else {
-        // Normal click or checkmark click: Toggle single index (always, preserving others)
         const pos = state.assignerSelectedChannelIndices.indexOf(index);
         if (pos > -1) {
             state.assignerSelectedChannelIndices.splice(pos, 1);
@@ -245,25 +235,8 @@ export function handleAssignerChannelClick(index, e, isCheckmarkClick = false) {
         }
         state.lastSelectedIdx = index;
     }
-    
-    // Refresh channels list highlights and checkmark icons
-    const items = document.querySelectorAll('#assigner-channels-list .crud-channel-item');
-    items.forEach(item => {
-        const itemIdx = parseInt(item.dataset.channelIndex, 10);
-        const isSelected = state.assignerSelectedChannelIndices.includes(itemIdx);
-        item.classList.toggle('active', isSelected);
-        
-        const iconEl = item.querySelector('.assigner-channel-checkmark i');
-        if (iconEl) {
-            iconEl.setAttribute('data-lucide', isSelected ? 'check-square' : 'square');
-            iconEl.style.color = isSelected ? '#00ffcc' : 'rgba(255,255,255,0.2)';
-        }
-    });
 
-    if (window.lucide) {
-        window.lucide.createIcons();
-    }
-
+    refreshAssignerCheckmarks();
     selectAssignerChannelMultiple();
     updateAssignerBulkSelectBtn();
 }
@@ -284,34 +257,25 @@ export function updateAssignerBulkSelectBtn() {
 
     if (!bulkBtn) return;
 
-    if (count === 0) {
-        bulkBtn.style.display = 'none';
-    } else {
-        bulkBtn.style.display = 'flex';
-
+    // Always visible: empty-square when nothing selected, check-square when
+    // all visible selected, minus-square for partial selection.
+    let icon = 'square';
+    if (count > 0) {
         const filterVal = (document.getElementById('assigner-search')?.value || '').toLowerCase();
         const chList = window.getChannels ? window.getChannels() : [];
         const visibleIndices = [];
         chList.forEach((c, index) => {
             const num = c.id || (index + 1);
             const name = c.name || '';
-            if (filterVal && !name.toLowerCase().includes(filterVal) && !String(num).includes(filterVal)) {
-                return;
-            }
+            if (filterVal && !name.toLowerCase().includes(filterVal) && !String(num).includes(filterVal)) return;
             visibleIndices.push(index);
         });
-
         const allVisibleSelected = visibleIndices.length > 0 && visibleIndices.every(idx => state.assignerSelectedChannelIndices.includes(idx));
-
-        const iconEl = bulkBtn.querySelector('i');
-        if (iconEl) {
-            iconEl.setAttribute('data-lucide', allVisibleSelected ? 'check-square' : 'minus-square');
-            iconEl.style.color = '#00ffcc';
-        }
-        if (window.lucide) {
-            window.lucide.createIcons();
-        }
+        icon = allVisibleSelected ? 'check-square' : 'minus-square';
     }
+
+    bulkBtn.innerHTML = `<i data-lucide="${icon}" style="width: 14px; height: 14px;"></i>`;
+    if (window.lucide) window.lucide.createIcons();
 }
 
 export function renderAssignerEvents() {
