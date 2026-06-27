@@ -337,19 +337,14 @@ async function init() {
 
     // Progress bar animations
     setTimeout(() => {
-        if (loaderProgressBar) loaderProgressBar.style.width = '35%';
+        if (loaderProgressBar) loaderProgressBar.style.width = '50%';
         if (loaderMessage) loaderMessage.innerText = 'Loading wallpapers and styles...';
     }, 300);
 
     setTimeout(() => {
-        if (loaderProgressBar) loaderProgressBar.style.width = '65%';
-        if (loaderMessage) loaderMessage.innerText = 'Syncing DaddyLive channels...';
-    }, 600);
-
-    setTimeout(() => {
         if (loaderProgressBar) loaderProgressBar.style.width = '100%';
         if (loaderMessage) loaderMessage.innerText = 'Ready.';
-    }, 900);
+    }, 600);
 
     // Core Data Loading and sflix / Domain setups
     const savedData = await nativeApi.loadUserData();
