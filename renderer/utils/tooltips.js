@@ -52,6 +52,9 @@ export function getOrGenerateTooltip(el) {
     if (iconName === 'sliders' && el.closest('.channel-actions')) {
         return 'Edit channel';
     }
+    if (iconName === 'pin') {
+        return el.classList.contains('active') ? 'Unpin HUD' : 'Pin HUD';
+    }
 
     let tooltip = el.getAttribute('data-tooltip');
     if (tooltip && tooltip.trim() !== '') return tooltip;
