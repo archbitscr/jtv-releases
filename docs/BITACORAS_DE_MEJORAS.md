@@ -125,6 +125,24 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ---
 
+### [2026-06-27] - Parental Overhaul, Settings Restructure, Filtros de Usuario y Polish
+
+*   **Rediseño completo de Control Parental**: Implementadas subpestañas internas (PIN, Kids Mode, Schedule, Allowed Channels). PIN visible con máscara, master-gate que requiere PIN para acceder a la sección. Lista de canales permitidos ocupa toda la altura disponible. Modal de PIN con UX mejorada (botones en fila, estilo consistente).
+*   **Time Picker Premium**: Reemplazado el input nativo de hora por un stepper personalizado con flechas up/down y toggle AM/PM, estilo glassmorphism.
+*   **Reestructuración de Settings**: Pestaña "My Account" renombrada a "System". Autenticación Google removida. Formato de trial corregido. Pestaña "App Payment" agregada. Tab "System" reubicada debajo de Parental Controls.
+*   **Filtros editables en modo usuario**: Usuarios pueden agregar/editar/eliminar eventos en la pestaña Live de Filtros. Idiomas y géneros protegidos (solo editable el toggle de enabled para idiomas). Botones de eliminar idiomas ocultos en modo usuario. Asignación de filtros visible para usuarios.
+*   **Fix de layout en Asignación de Filtros**: Columnas con altura acotada (`calc(80vh - 160px)`), contador de selección, lógica de bulk select corregida, checkmarks sincronizados.
+*   **Eliminación de tooltips innecesarios**: Removidos tooltips redundantes, reposicionados los restantes.
+*   **Botones fullscreen y power visibles en homescreen**: Visibles con opacidad reducida sobre la pantalla de inicio.
+*   **Loading screen con imagen**: Logo de texto reemplazado por `JTV_loading.png` con tamaño nativo.
+*   **Fix de Developer sub-tabs**: Botones de dev no se renderizaban como botones al entrar/re-entrar a la pestaña. Botones dev ocultos durante el loader. Botones de usuario visibles en Live TV.
+*   **Fix de ordenamiento de idiomas**: Corrección del sort para reconocer tanto "Español" como "Español / Latino".
+*   **Emoji de Tennis**: Reemplazado por SVG custom (`tennis.svg`) para compatibilidad.
+*   **Eliminación del auto-desinstalador**: Removido el script NSH que desinstalaba versiones anteriores silenciosamente.
+*   **Datos de canales**: Sincronizaciones múltiples con ediciones del usuario, 8+ canales PPV agregados, renombramientos de eventos, nuevos géneros (Comedy, Reality Tv).
+
+---
+
 ## III. Plan de Tareas Pendientes (Hoja de Ruta)
 
 *Ordenadas por dificultad ascendente. Tareas marcadas con 🧠 requieren Opus 4.8 por complejidad.*
