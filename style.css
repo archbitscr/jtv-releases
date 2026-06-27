@@ -3003,7 +3003,9 @@ body.hide-cursor * {
 }
 
 /* Parental section fills available height so the Allowed Channels list
-   can grow to use the full page instead of a fixed 250px box. */
+   can grow to use the full page instead of a fixed 250px box.
+   The flex chain is: .settings-main-content (flex col) → #settings-sect-parental
+   (flex col, flex:1) → .parental-tab-pane (flex col, flex:1) → content. */
 #settings-sect-parental.active {
     display: flex;
     flex-direction: column;
@@ -3016,7 +3018,18 @@ body.hide-cursor * {
     min-height: 0;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+}
+
+/* The allowed-channels tab scrolls its channel list, not the whole pane */
+#parental-tab-allowed .parental-allowed-item {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* When parental pane is active, prevent the settings container from
+   scrolling so the flex chain can fill the viewport height. */
+.settings-main-content:has(#settings-sect-parental.active) {
+    overflow-y: hidden;
 }
 
 /* Confirm button in the PIN modal is inert until a valid PIN is typed */
