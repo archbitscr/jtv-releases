@@ -5704,6 +5704,27 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     overflow: hidden;
 }
 
+.sync-log-box {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 8px 10px;
+    max-height: 4.8em;
+    line-height: 1.2em;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+    margin-top: 8px;
+    display: none;
+}
+
+.sync-log-box.active {
+    display: block;
+}
+
 /* Disable webview pointer events when settings or modal overlays are active */
 body:has(#settings-screen:not(.hidden)) webview,
 body:has(#settings-screen:not(.hidden)) #player-container,

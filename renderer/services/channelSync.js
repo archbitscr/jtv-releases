@@ -13,19 +13,30 @@ export async function updateSchedule() {
     }
 }
 
+function syncLog(msg) {
+    const log = document.getElementById('sync-log');
+    if (!log) return;
+    log.classList.add('active');
+    log.textContent += msg + '\n';
+    log.scrollTop = log.scrollHeight;
+}
+
 export async function syncChannels(silent = false) {
     const nativeApi = window.jtvAPI;
     if (!nativeApi) return;
     const btn = document.getElementById('sync-channels-btn');
+    const log = document.getElementById('sync-log');
+
     if (!silent) {
-        if (btn) {
-            btn.innerText = "Syncing...";
-            btn.disabled = true;
-        }
+        if (btn) { btn.innerText = "Syncing..."; btn.disabled = true; }
+        if (log) { log.textContent = ''; log.classList.add('active'); }
+        syncLog(`> Connecting to ${state.globalDomain}...`);
     }
 
     const newChannels = await nativeApi.fetchChannels(state.globalDomain);
     if (newChannels && !newChannels.error) {
+        if (!silent) syncLog(`> Received ${newChannels.length} channels`);
+        let updated = 0, added = 0;
         newChannels.forEach(nc => {
             const existing = state.channels.find(c => String(c.id) === String(nc.id));
             if (existing) {
@@ -43,26 +54,28 @@ export async function syncChannels(silent = false) {
                 nc.categories.push('all');
             }
         });
-        const existingIds = new Set(state.channels.map(c => String(c.id)));
         newChannels.forEach(nc => {
             const idx = state.channels.findIndex(c => String(c.id) === String(nc.id));
             if (idx >= 0) {
                 state.channels[idx] = nc;
+                updated++;
             } else {
                 state.channels.push(nc);
+                added++;
             }
         });
+        if (!silent) syncLog(`> Updated: ${updated} | New: ${added}`);
         state.dropdownsPopulated = false;
         autoCategorizeChannels();
         renderAll();
         saveAppState();
+        if (!silent) syncLog('> Sync complete.');
+    } else {
+        if (!silent) syncLog('> ERROR: Sync failed.');
     }
 
     if (!silent) {
-        if (btn) {
-            btn.innerText = "Sync channels with DaddyLive";
-            btn.disabled = false;
-        }
+        if (btn) { btn.innerText = "Sync Channels"; btn.disabled = false; }
     }
 
     updateSchedule();
