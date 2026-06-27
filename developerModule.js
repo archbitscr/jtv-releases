@@ -1196,28 +1196,39 @@ export function updateDeveloperUI() {
     const filtersGroupsContainer = document.querySelector('.filters-groups-container');
 
     if (filtersGroupsContainer) {
-        filtersGroupsContainer.style.display = 'flex'; // Always flex
+        filtersGroupsContainer.style.display = 'flex';
     }
+    // Language: always visible; add-form only in dev mode
     if (langCard) {
-        langCard.style.display = developerModeEnabled ? 'flex' : 'none';
+        langCard.style.display = '';
+        const langAddForm = langCard.querySelector('.filter-group-add-form');
+        if (langAddForm) langAddForm.style.display = developerModeEnabled ? '' : 'none';
     }
+    // Genre: always visible; add-form only in dev mode; read-only class in user mode
     if (genreCard) {
-        genreCard.style.display = developerModeEnabled ? 'flex' : 'none';
+        genreCard.style.display = '';
+        genreCard.classList.toggle('readonly-filter-group', !developerModeEnabled);
+        const genreAddForm = genreCard.querySelector('.filter-group-add-form');
+        if (genreAddForm) genreAddForm.style.display = developerModeEnabled ? '' : 'none';
     }
     if (eventCard && listFilterEvents) {
         if (!developerModeEnabled) {
             eventCard.classList.add('full-width-card');
             listFilterEvents.classList.add('grid-3-columns');
+            const eventAddForm = eventCard.querySelector('.filter-group-add-form');
+            if (eventAddForm) eventAddForm.style.display = 'none';
         } else {
             eventCard.classList.remove('full-width-card');
             listFilterEvents.classList.remove('grid-3-columns');
+            const eventAddForm = eventCard.querySelector('.filter-group-add-form');
+            if (eventAddForm) eventAddForm.style.display = '';
         }
     }
 
-    // Show/hide Event Assigner section (Tarea 29)
+    // Assignment section: always visible (user sees Events only)
     const assignerSection = document.getElementById('filters-assigner-section');
     if (assignerSection) {
-        assignerSection.style.display = developerModeEnabled ? 'block' : 'none';
+        assignerSection.style.display = 'block';
     }
 
     // Show/hide VOD settings subtabs (Series and Movies)

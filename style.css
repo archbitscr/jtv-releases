@@ -5132,6 +5132,11 @@ body[data-module="home"] .power-hover-zone:hover .power-toggle-btn {
     backdrop-filter: blur(10px);
 }
 
+.readonly-filter-group .filter-list-item {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
 .filter-group-header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     padding-bottom: 4px;

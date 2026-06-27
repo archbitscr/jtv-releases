@@ -58,7 +58,10 @@ export function renderSettingsFilters() {
             const isSystem = (type === 'language' && systemLanguages.includes(filter.name)) ||
                              ((type === 'genre' || type === 'series' || type === 'movies') && systemGenres.includes(filter.name));
 
-            const showControls = isDevMode || !isSystem;
+            // Genre is read-only in user mode; language add/delete controls
+            // are hidden at the card level but checkboxes remain functional.
+            const readOnlyType = !isDevMode && (type === 'genre' || type === 'event');
+            const showControls = readOnlyType ? false : (isDevMode || !isSystem);
 
             item.innerHTML = `
                 <div class="item-details" style="flex: 1; display: flex; align-items: center; gap: 6px;">

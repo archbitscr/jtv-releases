@@ -11,7 +11,15 @@ export function initFilterManager(dependencies) {
 
 export function syncFilterList() {
     if (Array.isArray(state.filterLanguages)) {
-        state.filterLanguages.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'es', { sensitivity: 'base' }));
+        const priority = ['english', 'español / latino'];
+        state.filterLanguages.sort((a, b) => {
+            const ai = priority.indexOf((a.name || '').toLowerCase());
+            const bi = priority.indexOf((b.name || '').toLowerCase());
+            if (ai !== -1 && bi !== -1) return ai - bi;
+            if (ai !== -1) return -1;
+            if (bi !== -1) return 1;
+            return (a.name || '').localeCompare(b.name || '', 'es', { sensitivity: 'base' });
+        });
     }
     if (Array.isArray(state.filterGenres)) {
         state.filterGenres.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'es', { sensitivity: 'base' }));
