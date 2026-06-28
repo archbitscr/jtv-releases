@@ -36,11 +36,11 @@ export const state = {
     hotkeyMap: {
         fullscreen: ['f'],
         toggleHUD: [' '],
-        volumeUp: ['ArrowUp', '+'],
-        volumeDown: ['ArrowDown', '-'],
+        volumeUp: ['ArrowRight', '+'],
+        volumeDown: ['ArrowLeft', '-'],
         toggleMute: ['m', '*'],
-        prevChannel: ['ArrowLeft'],
-        nextChannel: ['ArrowRight'],
+        prevChannel: ['ArrowUp'],
+        nextChannel: ['ArrowDown'],
         prevSource: ['PageUp'],
         nextSource: ['PageDown'],
         escape: ['Escape']
