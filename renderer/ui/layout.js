@@ -1,6 +1,7 @@
 import { state } from '../state/appState.js';
 import { getFilteredChannelsList } from '../filters/filterManager.js';
 import { refreshVodContent } from '../vod/vodContent.js';
+import { renderFavoritesGrid } from '../render/favoritesGrid.js';
 
 export function syncCenterNavWidth() {
     const topNavMenu = document.getElementById('top-nav-menu');
@@ -47,24 +48,25 @@ export function isEditableElement(element) {
 }
 
 export function updateVodGridDimensions() {
-    if (state.currentModule !== 'movies' && state.currentModule !== 'series') return null;
-
     const wrapper = document.querySelector('.grid-carousel-wrapper');
     const grid = document.getElementById('favorites-grid');
     if (!wrapper || !grid) return null;
 
     const isVodActive = grid.classList.contains('vod-active') || state.currentModule === 'movies' || state.currentModule === 'series';
-    const gridWidth = isVodActive ? (window.innerWidth * 0.95) - 120 : wrapper.clientWidth - 120; // Subtract space for nav buttons
+    if (!isVodActive) return null;
+    const navSpace = Math.min(120, window.innerWidth * 0.1);
+    const gridWidth = (window.innerWidth * 0.95) - navSpace; // Subtract space for nav buttons
     const gridHeight = window.innerHeight - 280;
 
     const rowHeight = gridHeight / 3;
     const posterHeight = Math.max(100, rowHeight - 45); // Account for card padding and vod-info text
     const posterWidth = (2 / 3) * posterHeight;
-    const cardWidth = Math.floor(posterWidth);
+    const cardWidth = Math.floor(posterWidth * 0.75);
 
     const gap = 20;
     let cols = Math.floor((gridWidth + gap) / (cardWidth + gap));
-    if (cols < 5) cols = 5;
+    const minCols = window.innerWidth < 900 ? 2 : window.innerWidth < 1400 ? 3 : 5;
+    if (cols < minCols) cols = minCols;
 
     const itemsPerPage = cols * 3;
 
@@ -77,7 +79,20 @@ export function updateVodGridDimensions() {
 export async function handleResizeDimensions() {
     syncCenterNavWidth();
     checkResolution();
-    if (state.currentModule === 'movies' || state.currentModule === 'series') {
+
+    const cols = window.innerWidth < 800 ? 1 : 2;
+    const rows = window.innerHeight <= 600 ? 3 : 5;
+    const newFavsPerPage = cols * rows;
+    if (state.FAVS_PER_PAGE !== newFavsPerPage) {
+        state.FAVS_PER_PAGE = newFavsPerPage;
+        if (state.currentModule === 'live') {
+            renderFavoritesGrid();
+        }
+    }
+
+    const grid = document.getElementById('favorites-grid');
+    const isVod = grid && grid.classList.contains('vod-active');
+    if (state.currentModule === 'movies' || state.currentModule === 'series' || isVod) {
         const dims = updateVodGridDimensions();
         if (dims && state.VOD_ITEMS_PER_PAGE !== dims.itemsPerPage) {
             state.VOD_ITEMS_PER_PAGE = dims.itemsPerPage;
@@ -89,37 +104,4 @@ export async function handleResizeDimensions() {
 let resolutionBypassed = false;
 
 export function checkResolution() {
-    if (resolutionBypassed) return;
-    const devState = window.getDeveloperState ? window.getDeveloperState() : null;
-    if (devState && devState.diagnosticsEnabled) {
-        const blocker = document.getElementById('resolution-blocker');
-        if (blocker) blocker.classList.add('hidden');
-        return;
-    }
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    const blocker = document.getElementById('resolution-blocker');
-    
-    if (width < 1024 || height < 720) {
-        const resVal = document.getElementById('current-res-val');
-        if (blocker) {
-            blocker.classList.remove('hidden');
-        }
-        if (resVal) {
-            resVal.textContent = `${width} x ${height}`;
-        }
-        
-        // Bind bypass button
-        const bypassBtn = document.getElementById('bypass-res-btn');
-        if (bypassBtn) {
-            bypassBtn.onclick = () => {
-                resolutionBypassed = true;
-                if (blocker) blocker.classList.add('hidden');
-            };
-        }
-    } else {
-        if (blocker) {
-            blocker.classList.add('hidden');
-        }
-    }
 }

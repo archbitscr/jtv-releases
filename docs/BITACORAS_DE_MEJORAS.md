@@ -192,12 +192,26 @@ Este documento unifica de forma cronológica todas las mejoras, características
     2.  Si los datos ya existen (caché caliente), la paginación y el ajuste de grilla al redimensionar deben hacerse de forma local (offline DOM manipulation).
     3.  Disparar peticiones HTTP *únicamente* en búsquedas nuevas o en la carga inicial.
 
-#### 4. Tarea 37: Soporte Multi-Resolución
-*   **Componente:** `style.css`, `layout.js`, `createMainWindow.js`.
+#### 4. Tarea 37: Soporte Multi-Resolución (PC)
+*   **Objetivo:** Escalado proporcional completo — la app debe funcionar desde 600×500 hasta 4K, con todos los elementos escalando proporcionalmente. Resolución mínima de ventana: 600×500.
+*   **Componentes:** `style.css`, `layout.js`, `createMainWindow.js`, `favoritesGrid.js`, `index.html`.
+*   **Caso de uso clave:** Usuario con monitor 24" divide el escritorio en dos — JTV ocupa la mitad izquierda (~960×540 o menos) mientras trabaja en Word en la derecha. Live TV debe ser funcional y legible a ese tamaño.
 *   **Acción Requerida:**
-    1.  Adaptar la UI para funcionar correctamente en múltiples resoluciones de pantalla (720p, 1080p, 1440p, 4K).
-    2.  Implementar escalado dinámico de fuentes, grids y componentes según el viewport.
-    3.  Revisar y ajustar breakpoints y tamaños mínimos/máximos.
+    1.  Establecer `minWidth: 600, minHeight: 500` en `createMainWindow.js`.
+    2.  Escalado proporcional con `clamp()` y unidades `vw`/`vh` en todos los componentes: tarjetas del dashboard, grid de Live TV, controles del HUD, sidebar, fuentes, spacing.
+    3.  HUD compacto: cuando la ventana es muy pequeña, los controles se reducen proporcionalmente sin perder funcionalidad.
+    4.  Grid de Live TV adaptativo — columnas, thumbnails y espaciado se ajustan fluidamente al viewport.
+    5.  Escalado hacia arriba para 1440p y 4K — contenido crece proporcionalmente, no se queda diminuto.
+    6.  Media queries solo para cambios estructurales (ej: sidebar se colapsa, grid cambia de layout).
+*   **Nota:** La versión Android requerirá adaptaciones adicionales (rotación landscape/portrait, controles táctiles). Se planificará como tarea independiente post-producción.
+*   **Progreso (2026-06-28):**
+    *   ✅ Tarjetas del home: `aspect-ratio: 330/720`, max-width 330px, escalado proporcional con `clamp()`.
+    *   ✅ Ventana mínima: 600×500 en `createMainWindow.js`.
+    *   ✅ Elementos VOD restaurados: tarjetas Series/Movies, botones nav, controles VOD, sub-nav filtros, dashboard-nav.
+    *   ✅ Media query ≤800px: grid Live TV 1 col × 5 items, título y búsqueda escalados, top-nav proporcional, dashboard-top-row al 80%.
+    *   ✅ Media query ≤600px alto: grid se reduce a 3 items.
+    *   ✅ `FAVS_PER_PAGE` dinámico en `layout.js`: 5 items (<800px ancho), 3 rows (≤600px alto).
+    *   ✅ Sidebar responsivo ≤800px: ancho `clamp(180px, 38vw, 280px)`, logos ocultos, textos/iconos/chips proporcionales.
 
 ---
 

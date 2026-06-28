@@ -9,6 +9,8 @@ export function createMainWindow(context) {
   const win = new BrowserWindow({
     width: 1200,
     height: 800,
+    minWidth: 600,
+    minHeight: 500,
     frame: true,
     show: false,
     autoHideMenuBar: true,
