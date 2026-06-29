@@ -99,83 +99,151 @@ JTV.app/
 - **Seguridad Hardened (2026-06-20):** Context isolation, sandbox, preloads separados, ZeroTrust con whitelist de dominios, Cloudflare DoH integrado.
 - **Motor de Filtrado Unificado (2026-06-24):** Pipeline única `getFilteredChannelsList()` como fuente de verdad para sidebar y landing. 3 dropdowns compartidos.
 
-## 8. Arquitectura CSS — 4 Pilares y Prefijos por Componente
+## 8. Arquitectura CSS — 4 Pilares y Componentes
 
-> **Propósito:** Definir la convención de naming CSS por contexto funcional. Cada componente de la app pertenece a una de 4 secciones principales y usa un prefijo único para que búsquedas, refactorizaciones y aplicación de clamp() por sección sean precisas.
+> **Propósito:** Mapa completo de la estructura visual de la app. Cada componente pertenece a una de 4 secciones principales con un prefijo CSS único. Sirve como referencia para refactorizaciones y aplicación de clamp().
+> 
+> **Leyenda:** ▣ = dev-only (Opus — no modificar, eliminado en producción por Tarea 23)
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                      JTV.app — Arquitectura CSS                            │
-│              4 secciones principales · prefijos por componente              │
-├──────────┬──────────────────────────┬────────────┬──────────────────────────┤
-│          │                          │            │                          │
-│   HOME   │        LIVE TV           │    VOD     │       SETTINGS           │
-│          │                          │            │                          │
-│ ┌──────┐ │ ┌──────────┐ ┌────────┐ │ ┌────────┐ │ ┌────────┐              │
-│ │Cards │ │ │Player Bar│ │Top Nav │ │ │Series/ │ │ │Ajustes │ .settings-*  │
-│ │.home-│ │ │ .pbar-*  │ │.tnav-* │ │ │Movies  │ │ └────────┘              │
-│ └──────┘ │ └──────────┘ └────────┘ │ │ .vod-* │ │ ┌────────┐              │
-│          │ ┌──────────┐ ┌────────┐ │ └────────┘ │ │Modals  │ .modal-*     │
-│    ✓     │ │ Sidebar  │ │Landing │ │            │ └────────┘              │
-│   Ya     │ │ .side-*  │ │.land-* │ │     ✓     │ ┌────────┐              │
-│ coherente│ └──────────┘ └────────┘ │    Ya      │ │Vol OSD │ .volosd-*    │
-│          │ ┌──────────┐ ┌────────┐ │ coherente  │ └────────┘              │
-│          │ │Filter Bar│ │Player  │ │            │ ┌────────┐              │
-│          │ │ .fbar-*  │ │.player-│ │            │ │FS/Power│ .corner-*    │
-│          │ └──────────┘ └────────┘ │            │ └────────┘              │
-│          │                          │            │ ┌────────┐              │
-│          │ Player Bar incluye:      │            │ │DevFloat│ .devfloat-*  │
-│          │ · Logo, Info, EPG badges │            │ └────────┘              │
-│          │ · Zapping (prev/next)    │            │ ┌────────┐              │
-│          │ · Volumen (up/down/mute) │            │ │Tooltips│ .tooltip-*   │
-│          │ · Sources, Fav, Pin      │            │ └────────┘              │
-│          │ · Autotune indicators    │            │ ┌────────┐              │
-│          │                          │            │ │Search  │ .search-*    │
-│          │ Sidebar incluye:         │            │ └────────┘              │
-│          │ · Tabs (Ch/Fav)          │            │ ┌────────┐              │
-│          │ · Channel list items     │            │ │Scrolls │ global       │
-│          │ · Logo, name, EPG, acts  │            │ └────────┘              │
-│          │                          │            │                          │
-│          │ Landing incluye:         │            │   + transversales       │
-│          │ · Grid carousel + arrows │            │                          │
-│          │ · Grid items + badges    │            │                          │
-│          │ · Title, search, dots    │            │                          │
-└──────────┴──────────────────────────┴────────────┴──────────────────────────┘
+▣ = dev-only (Opus — no modificar, eliminado en producción)
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                 │
+│   HOME                             LIVE TV                                      │
+│                                                                                 │
+│   ┌──────────────────┐             ┌──────────────────┐ ┌──────────────────┐    │
+│   │ Cards            │             │ Player Bar       │ │ Top Nav          │    │
+│   │   .home-*        │             │   .pbar-*        │ │   .tnav-*        │    │
+│   │                  │             │                  │ │                  │    │
+│   │ · cards-container│             │ · Logo canal     │ │ · Nav buttons    │    │
+│   │ · home-card x4   │             │ · Info (name,EPG)│ │   (Live,Series,  │    │
+│   │ · card-header    │             │ · Filter badges  │ │    Movies,Sett)  │    │
+│   │ · card-icon      │             │ · Zapping ▲▼     │ │ · Active state   │    │
+│   │ · card h2        │             │ · Vol + Mute     │ │ · Icons          │    │
+│   │ · app-home-screen│             │ · Source selector│ └──────────────────┘    │
+│   └──────────────────┘             │ · Fav + Pin      │                          │
+│                                    │ · Autotune dots  │ ┌──────────────────┐    │
+│                                    │ · Settings btn   │ │ Sidebar          │    │
+│                                    └──────────────────┘ │   .side-*        │    │
+│   VOD                                                   │                  │    │
+│                                    ┌──────────────────┐ │ · Menu container │    │
+│   ┌──────────────────┐             │ Landing / Grid   │ │ · Tabs (Ch/Fav)  │    │
+│   │ Cards/Controls   │             │   .land-*        │ │ · Channel items  │    │
+│   │   .vod-*         │             │                  │ │   (logo,name,    │    │
+│   │                  │             │ · Dashboard title│ │    EPG,id-tag)   │    │
+│   │ · vod-card       │             │ · Grid carousel  │ │ · Action buttons │    │
+│   │ · vod-poster     │             │ · Grid nav < >   │ │ · Close button   │    │
+│   │ · vod-fav-btn    │             │ · Grid items     │ │ · Scroll area    │    │
+│   │ · vod-badge      │             │   (logo,name,    │ └──────────────────┘    │
+│   │ · vod-info (h4)  │             │    EPG,badge)    │                          │
+│   │ · vod-meta       │             │ · Dots pagination│ ┌──────────────────┐    │
+│   │ · vod-controls   │             │ · Exit button    │ │ Filter Bar       │    │
+│   │ · vod-filters    │             │ · Landing nav    │ │   .fbar-*        │    │
+│   │   (genre,rating, │             └──────────────────┘ │                  │    │
+│   │    year)         │                                  │ · Custom selects │    │
+│   │ · vod-filter-btn │             ┌──────────────────┐ │   (Lang,Genre,   │    │
+│   │ · vod-filter-sel │             │ Player           │ │    Event)        │    │
+│   └──────────────────┘             │   .player-*      │ │ · Chevron icons  │    │
+│                                    │                  │ │ · Dropdown menus │    │
+│   ┌──────────────────┐             │ · Webview        │ │ · Filter buttons │    │
+│   │ Details Modal    │             │ · Edge masks     │ └──────────────────┘    │
+│   │   .vod-details-* │             │ · Player barrier │                          │
+│   │                  │             │ · No-signal ovl  │                          │
+│   │ · Backdrop       │             └──────────────────┘                          │
+│   │ · Poster area    │                                                           │
+│   │ · Info (title,   │                                                           │
+│   │   meta,overview) │                                                           │
+│   │ · Play button    │                                                           │
+│   │ · Close button   │                                                           │
+│   └──────────────────┘                                                           │
+│                                                                                  │
+│   SETTINGS                                                                       │
+│                                                                                  │
+│   ┌─────────────────────────┐       ┌─────────────────────────────────────────┐  │
+│   │ User-Facing Tabs        │       │ ▣ Dev-Only Tabs (Opus — no modificar)   │  │
+│   │   .settings-*           │       │   .settings-* (eliminados en prod)      │  │
+│   │                         │       │                                         │  │
+│   │ · General (opts+hotkeys)│       │ · Channels (CRUD + Sync)               │  │
+│   │ · Filters (Live+Assign) │       │ · Connectivity (Servers + APIs)        │  │
+│   │ · Wallpaper (picker)    │       │ · Sensors (status + API docs)          │  │
+│   │ · Parental (PIN, kids,  │       │ · Developer (General + Timeouts)       │  │
+│   │   schedule, allowed)    │       │ · Filters sub-controles dev            │  │
+│   │ · System (lang, pay,    │       │   (add-form genres, Series, Movies)    │  │
+│   │   reset)                │       │                                         │  │
+│   │ · Items, switches, btns │       │ Marcados data-dev="true"               │  │
+│   │ · Sidebar tabs, subnavs │       │ Tree-shaking Tarea 23                  │  │
+│   └─────────────────────────┘       └─────────────────────────────────────────┘  │
+│                                                                                  │
+│   Transversales:                                                                 │
+│   ┌────────────┐ ┌────────────┐ ┌────────────┐ ┌────────────┐                   │
+│   │ Modals     │ │ Vol OSD    │ │ FS/Power   │ │ Tooltips   │                   │
+│   │ .modal-*   │ │ .volosd-*  │ │ .corner-*  │ │ .tooltip-* │                   │
+│   │· PIN parent│ │· Indicator │ │· Fullscreen│ │· Popup tip │                   │
+│   │· Trial exp.│ │· Bar + text│ │· Power btn │ │· Positioning│                  │
+│   │· Res.block │ │· Icon      │ │· Hover zone│ │· Animation │                   │
+│   └────────────┘ └────────────┘ └────────────┘ └────────────┘                   │
+│   ┌────────────┐ ┌────────────┐ ┌──────────────────────────┐                    │
+│   │ Search     │ │▣ Dev Float │ │ Scrollbars               │                    │
+│   │ .search-*  │ │ .floating-*│ │  ::-webkit-scrollbar*    │                    │
+│   │· Search box│ │ (Opus, no  │ │  global pseudo-elements  │                    │
+│   │· Clear btn │ │  modificar)│ │  Ubicados en zona        │                    │
+│   │· Search ico│ │· Glass Tun.│ │  Settings del CSS        │                    │
+│   └────────────┘ │· Reload btn│ └──────────────────────────┘                    │
+│                   └────────────┘                                                  │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Tabla de mapeo detallado
+### Detalle de componentes por sección
 
-**Home**
-| Componente | Prefijo | Reemplaza |
+**Home** — Pantalla inicial con tarjetas de navegación
+| Componente | Prefijo | Sub-elementos |
 |---|---|---|
-| Tarjetas de navegación | `.home-*` | Mantener (ya coherente) |
+| Tarjetas de navegación | `.home-*` | `.home-cards-container`, `.home-card`, `.home-card-header`, `.card-icon-wrapper`, `.home-card h2`, `.app-home-screen` |
 
-**Live TV**
-| Componente | Prefijo | Reemplaza |
+**Live TV** — Reproducción en vivo con sidebar, grid y controles
+| Componente | Prefijo | Sub-elementos |
 |---|---|---|
-| Player Bar (panel inferior) | `.pbar-` | `.source-switcher`, `.hud-*`, `.vol-icon`, `.vol-*`, `.zapper-*`, `.autotune-indicator`, `.source-btn`, `.pin-btn`, `.favorite-btn`, `#tuner-*` |
-| Top Nav (barra superior) | `.tnav-` | `.top-nav-*`, `.nav-btn` |
-| Sidebar (menú lateral) | `.side-` | `.glass-menu`, `.tab-btn`, `.channel-item`, `.channel-logo`, `.channel-info`, `.channel-id-tag`, `.channel-actions`, `.action-btn`, `.close-btn`, `.menu-tabs*` |
-| Landing (dashboard/grid) | `.land-` | `.home-dashboard`, `.dashboard-*`, `.favorites-grid`, `.grid-item`, `.grid-badge`, `.grid-logo`, `.grid-epg`, `.grid-nav-*`, `.grid-dot*`, `.grid-carousel-*`, `.section-title`, `.home-exit-btn` |
-| Filter Bar (dropdowns landing) | `.fbar-` | `.dash-custom-select*`, `.dash-chevron`, `.vod-filter-btn` (en landing), `.vod-filters-*` |
-| Player (webview/overlays) | `.player-` | `#player-container`, `.player-barrier`, `.edge-mask`, `#no-signal-overlay` |
+| Player Bar (panel inferior) | `.pbar-*` | `.pbar-logo-*`, `.pbar-info-*`, `.pbar-channel-text`, `.pbar-epg-text`, `.pbar-filter-badge`, `.pbar-zap-btn`, `.pbar-vol-icon`, `.pbar-mute-btn`, `.pbar-source-btn`, `.pbar-sources-row`, `.pbar-mini-*`, `.pbar-fav-btn`, `.pbar-pin-btn`, `.pbar-autotune`, `.pbar-action-btn`, `.pbar-action-stack`, `.pbar-center-*` |
+| Top Nav (barra superior) | `.tnav-*` | `.tnav-menu`, `.tnav-buttons`, `.tnav-btn`, `.tnav-btn i/svg` |
+| Sidebar (menú lateral) | `.side-*` | `.side-menu`, `.side-tabs`, `.side-tabs-center`, `.side-tab-btn`, `.side-close-btn`, `.side-channel-item`, `.side-channel-logo`, `.side-channel-info`, `.side-channel-id`, `.side-channel-name-row`, `.side-channel-meta-row`, `.side-epg-text`, `.side-channel-actions`, `.side-action-btn`, `.side-scroll-area` |
+| Landing (dashboard/grid) | `.land-*` | `.land-dashboard`, `.land-content`, `.land-top-row`, `.land-title-block`, `.land-title`, `.land-controls-block`, `.land-exit-block`, `.land-exit-btn`, `.land-nav`, `.land-grid`, `.land-carousel-wrapper`, `.land-nav-btn`, `.land-item`, `.land-badge`, `.land-logo`, `.land-text-content`, `.land-item h4`, `.land-epg`, `.land-dots-container`, `.land-dots`, `.land-dot` |
+| Filter Bar (dropdowns landing) | `.fbar-*` | `.fbar-select`, `.fbar-select-btn`, `.fbar-select-menu`, `.fbar-select-option`, `.fbar-select-label`, `.fbar-chevron`, `.fbar-filter-btn` |
+| Player (webview/overlays) | `.player-*` | `#player-container`, `.player-barrier`, `.edge-mask`, `#no-signal-overlay` |
 
-**VOD**
-| Componente | Prefijo | Reemplaza |
+**VOD** — Series y películas con tarjetas, búsqueda y modal de detalles
+| Componente | Prefijo | Sub-elementos |
 |---|---|---|
-| Series/Películas | `.vod-*` | Mantener (ya coherente) |
+| Tarjetas y controles | `.vod-*` | `.vod-card`, `.vod-poster-container`, `.vod-fav-btn`, `.vod-badge`, `.vod-badge.rating`, `.vod-info`, `.vod-info h4`, `.vod-meta`, `.vod-controls`, `.vod-filters-row`, `.vod-filters-label`, `.vod-filter-btn`, `.vod-filter-select` |
+| Modal de detalles | `.vod-details-*` | `.vod-details-modal`, `.vod-details-backdrop`, `.vod-details-container`, `.vod-details-body`, `.vod-details-poster`, `.vod-details-info`, `.vod-details-meta`, `.vod-meta-badge`, `.vod-details-actions`, `.vod-details-close` |
 
-**Settings (incluye transversales)**
-| Componente | Prefijo | Reemplaza |
+**Settings** — Panel de ajustes, pestañas dev-only y componentes transversales
+
+*Pestañas user-facing:*
+| Componente | Prefijo | Sub-elementos / Notas |
 |---|---|---|
-| Panel de ajustes | `.settings-*` | Mantener (ya coherente) |
-| Modals (PIN, trial, blocker) | `.modal-*` | `.onboarding-*`, `.resolution-blocker`, `.blocker-content`, `.parental-pin-modal` |
-| Volume OSD | `.volosd-*` | `.volume-indicator*`, `.volume-bar-*` |
-| Fullscreen/Power buttons | `.corner-*` | `.fullscreen-hover-zone`, `.fullscreen-toggle-btn`, `.power-hover-zone`, `.power-toggle-btn` |
-| Floating Dev Controls | `.devfloat-*` | `.floating-controls-*`, `.floating-reload-btn` |
-| Tooltips | `.tooltip-*` | `.custom-tooltip` |
-| Search | `.search-*` | `.vod-search-container`, `.clear-search-btn` |
-| Scrollbars | global | `::-webkit-scrollbar*` |
+| Panel de ajustes | `.settings-*` | General (options + hotkeys), Filters (Live + Assignment), Wallpaper (picker grid), Parental (PIN, kids, schedule, allowed channels), System (language, payment, reset). Setting items, switches, action buttons, selects, subnavs. |
+
+*Pestañas dev-only (▣ Opus — no modificar, eliminadas en producción por Tarea 23):*
+| Componente | Prefijo | Notas |
+|---|---|---|
+| Channels (CRUD + Sync) | `.settings-*` | `data-dev="true"`, strip en build. CSS en bloque DEV-ONLY. |
+| Connectivity (Servers + APIs) | `.settings-*` | `data-dev="true"`, strip en build. |
+| Sensors (status + API docs) | `.settings-*` | `data-dev="true"`, strip en build. CSS en bloque DEV-ONLY. |
+| Developer (General + Timeouts) | `.settings-*` | `data-dev="true"`, strip en build. CSS en bloque DEV-ONLY. |
+| Filters sub-controles dev | `.settings-*` | add-form Genres (`data-dev`), pestañas Series/Movies (`data-dev`). Tab Filters en sí es user-facing. |
+
+*Transversales (pertenecen a Settings):*
+| Componente | Prefijo | Sub-elementos / Notas |
+|---|---|---|
+| Modals (PIN, trial, blocker) | `.modal-*` | `.modal-overlay`, `.modal-backdrop`, `.modal-content`, `.modal-blocker`, `.modal-blocker-content`, `.modal-parental-*` |
+| Volume OSD | `.volosd-*` | `.volosd-indicator`, `.volosd-bar-container`, `.volosd-bar`, `.volosd-text`, `.volosd-icon` |
+| Fullscreen/Power buttons | `.corner-*` | `.corner-fs-zone`, `.corner-fs-btn`, `.corner-power-zone`, `.corner-power-btn` |
+| Tooltips | `.tooltip-*` | `.tooltip-popup` |
+| Search | `.search-*` | `.search-container`, `.search-clear-btn`, `.search-icon` |
+| Floating Dev Controls | ▣ `.floating-*` | `.floating-controls-container`, `.floating-reload-btn` — Opus, dev-only, eliminados en prod. |
+| Scrollbars | global | `::-webkit-scrollbar*`, `.scrollbar-active` — pseudo-elementos. Ubicados en zona Settings del CSS. |
 
 ---
 
