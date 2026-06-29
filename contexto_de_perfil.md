@@ -99,7 +99,87 @@ JTV.app/
 - **Seguridad Hardened (2026-06-20):** Context isolation, sandbox, preloads separados, ZeroTrust con whitelist de dominios, Cloudflare DoH integrado.
 - **Motor de Filtrado Unificado (2026-06-24):** Pipeline única `getFilteredChannelsList()` como fuente de verdad para sidebar y landing. 3 dropdowns compartidos.
 
-## 8. Convención Dev-Only (Preparación para Tarea 23 — Tree Shaking)
+## 8. Arquitectura CSS — 4 Pilares y Prefijos por Componente
+
+> **Propósito:** Definir la convención de naming CSS por contexto funcional. Cada componente de la app pertenece a una de 4 secciones principales y usa un prefijo único para que búsquedas, refactorizaciones y aplicación de clamp() por sección sean precisas.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      JTV.app — Arquitectura CSS                            │
+│              4 secciones principales · prefijos por componente              │
+├──────────┬──────────────────────────┬────────────┬──────────────────────────┤
+│          │                          │            │                          │
+│   HOME   │        LIVE TV           │    VOD     │       SETTINGS           │
+│          │                          │            │                          │
+│ ┌──────┐ │ ┌──────────┐ ┌────────┐ │ ┌────────┐ │ ┌────────┐              │
+│ │Cards │ │ │Player Bar│ │Top Nav │ │ │Series/ │ │ │Ajustes │ .settings-*  │
+│ │.home-│ │ │ .pbar-*  │ │.tnav-* │ │ │Movies  │ │ └────────┘              │
+│ └──────┘ │ └──────────┘ └────────┘ │ │ .vod-* │ │ ┌────────┐              │
+│          │ ┌──────────┐ ┌────────┐ │ └────────┘ │ │Modals  │ .modal-*     │
+│    ✓     │ │ Sidebar  │ │Landing │ │            │ └────────┘              │
+│   Ya     │ │ .side-*  │ │.land-* │ │     ✓     │ ┌────────┐              │
+│ coherente│ └──────────┘ └────────┘ │    Ya      │ │Vol OSD │ .volosd-*    │
+│          │ ┌──────────┐ ┌────────┐ │ coherente  │ └────────┘              │
+│          │ │Filter Bar│ │Player  │ │            │ ┌────────┐              │
+│          │ │ .fbar-*  │ │.player-│ │            │ │FS/Power│ .corner-*    │
+│          │ └──────────┘ └────────┘ │            │ └────────┘              │
+│          │                          │            │ ┌────────┐              │
+│          │ Player Bar incluye:      │            │ │DevFloat│ .devfloat-*  │
+│          │ · Logo, Info, EPG badges │            │ └────────┘              │
+│          │ · Zapping (prev/next)    │            │ ┌────────┐              │
+│          │ · Volumen (up/down/mute) │            │ │Tooltips│ .tooltip-*   │
+│          │ · Sources, Fav, Pin      │            │ └────────┘              │
+│          │ · Autotune indicators    │            │ ┌────────┐              │
+│          │                          │            │ │Search  │ .search-*    │
+│          │ Sidebar incluye:         │            │ └────────┘              │
+│          │ · Tabs (Ch/Fav)          │            │ ┌────────┐              │
+│          │ · Channel list items     │            │ │Scrolls │ global       │
+│          │ · Logo, name, EPG, acts  │            │ └────────┘              │
+│          │                          │            │                          │
+│          │ Landing incluye:         │            │   + transversales       │
+│          │ · Grid carousel + arrows │            │                          │
+│          │ · Grid items + badges    │            │                          │
+│          │ · Title, search, dots    │            │                          │
+└──────────┴──────────────────────────┴────────────┴──────────────────────────┘
+```
+
+### Tabla de mapeo detallado
+
+**Home**
+| Componente | Prefijo | Reemplaza |
+|---|---|---|
+| Tarjetas de navegación | `.home-*` | Mantener (ya coherente) |
+
+**Live TV**
+| Componente | Prefijo | Reemplaza |
+|---|---|---|
+| Player Bar (panel inferior) | `.pbar-` | `.source-switcher`, `.hud-*`, `.vol-icon`, `.vol-*`, `.zapper-*`, `.autotune-indicator`, `.source-btn`, `.pin-btn`, `.favorite-btn`, `#tuner-*` |
+| Top Nav (barra superior) | `.tnav-` | `.top-nav-*`, `.nav-btn` |
+| Sidebar (menú lateral) | `.side-` | `.glass-menu`, `.tab-btn`, `.channel-item`, `.channel-logo`, `.channel-info`, `.channel-id-tag`, `.channel-actions`, `.action-btn`, `.close-btn`, `.menu-tabs*` |
+| Landing (dashboard/grid) | `.land-` | `.home-dashboard`, `.dashboard-*`, `.favorites-grid`, `.grid-item`, `.grid-badge`, `.grid-logo`, `.grid-epg`, `.grid-nav-*`, `.grid-dot*`, `.grid-carousel-*`, `.section-title`, `.home-exit-btn` |
+| Filter Bar (dropdowns landing) | `.fbar-` | `.dash-custom-select*`, `.dash-chevron`, `.vod-filter-btn` (en landing), `.vod-filters-*` |
+| Player (webview/overlays) | `.player-` | `#player-container`, `.player-barrier`, `.edge-mask`, `#no-signal-overlay` |
+
+**VOD**
+| Componente | Prefijo | Reemplaza |
+|---|---|---|
+| Series/Películas | `.vod-*` | Mantener (ya coherente) |
+
+**Settings (incluye transversales)**
+| Componente | Prefijo | Reemplaza |
+|---|---|---|
+| Panel de ajustes | `.settings-*` | Mantener (ya coherente) |
+| Modals (PIN, trial, blocker) | `.modal-*` | `.onboarding-*`, `.resolution-blocker`, `.blocker-content`, `.parental-pin-modal` |
+| Volume OSD | `.volosd-*` | `.volume-indicator*`, `.volume-bar-*` |
+| Fullscreen/Power buttons | `.corner-*` | `.fullscreen-hover-zone`, `.fullscreen-toggle-btn`, `.power-hover-zone`, `.power-toggle-btn` |
+| Floating Dev Controls | `.devfloat-*` | `.floating-controls-*`, `.floating-reload-btn` |
+| Tooltips | `.tooltip-*` | `.custom-tooltip` |
+| Search | `.search-*` | `.vod-search-container`, `.clear-search-btn` |
+| Scrollbars | global | `::-webkit-scrollbar*` |
+
+---
+
+## 9. Convención Dev-Only (Preparación para Tarea 23 — Tree Shaking)
 
 > **Propósito:** Estandarizar la identificación de todo código, HTML y CSS que es exclusivo del modo desarrollo, para que la Tarea 23 (Tree Shaking de Módulos Dev) pueda eliminarlos mecánicamente del build de producción.
 

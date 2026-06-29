@@ -242,11 +242,57 @@ Este documento unifica de forma cronológica todas las mejoras, características
     5.  **Verificación:** tras `vite build`, confirmar que `dist/index.html` no contiene `data-dev`, el CSS no contiene reglas dev (`.dev-indicator`, sensores, glass tuner) y el JS no contiene `developerModule`/CRUD.
 *   **Pendiente futuro (no crítico):** excluir físicamente los archivos dev del main process (`main/ipc/registerDeveloperIpc.js`, `main/ipc/registerDiagnosticsIpc.js`, `main/diagnostics/`) del empaquetado de electron-builder para reducir aún más el asar (hoy quedan inertes por el gate, no eliminados).
 
+#### 7. Tarea 38: Homogenización de Nombres CSS por Contexto Funcional
+*   **Componente:** `style.css`, `index.html`, todos los archivos JS que referencian selectores CSS.
+*   **Objetivo:** Unificar los nombres de clases CSS bajo un prefijo único por sección funcional de la app. Actualmente, una misma sección (ej. el panel inferior de reproducción) usa 8+ prefijos distintos (`.source-switcher`, `.hud-*`, `.vol-*`, `.autotune-*`, `.zapper-*`, etc.), lo que causa que búsquedas y refactorizaciones por sección fallen al no compartir convención de naming.
+*   **Secciones principales de la app:** Home, Live TV, VOD (Series/Películas), Settings.
+*   **Mapeo de componentes por sección y prefijos propuestos:**
+
+**Home**
+| Componente | Prefijo | Reemplaza |
+|---|---|---|
+| Tarjetas de navegación | `.home-` | Mantener (ya coherente) |
+
+**Live TV**
+| Componente | Prefijo | Reemplaza |
+|---|---|---|
+| Player Bar (panel inferior) | `.pbar-` | `.source-switcher`, `.hud-*`, `.vol-icon`, `.vol-*`, `.zapper-*`, `.autotune-indicator`, `.source-btn`, `.pin-btn`, `.favorite-btn`, `#tuner-*` |
+| Top Nav (barra superior) | `.tnav-` | `.top-nav-*`, `.nav-btn` |
+| Sidebar (menú lateral) | `.side-` | `.glass-menu`, `.tab-btn`, `.channel-item`, `.channel-logo`, `.channel-info`, `.channel-id-tag`, `.channel-actions`, `.action-btn`, `.close-btn`, `.menu-tabs*` |
+| Landing (dashboard/grid) | `.land-` | `.home-dashboard`, `.dashboard-*`, `.favorites-grid`, `.grid-item`, `.grid-badge`, `.grid-logo`, `.grid-epg`, `.grid-nav-*`, `.grid-dot*`, `.grid-carousel-*`, `.section-title`, `.home-exit-btn` |
+| Filter Bar (dropdowns landing) | `.fbar-` | `.dash-custom-select*`, `.dash-chevron`, `.vod-filter-btn` (en landing), `.vod-filters-*` |
+| Player (webview/overlays) | `.player-` | `#player-container`, `.player-barrier`, `.edge-mask`, `#no-signal-overlay` |
+
+**VOD**
+| Componente | Prefijo | Reemplaza |
+|---|---|---|
+| Series/Películas | `.vod-` | Mantener (ya coherente) |
+
+**Settings (incluye transversales)**
+| Componente | Prefijo | Reemplaza |
+|---|---|---|
+| Panel de ajustes | `.settings-` | Mantener (ya coherente) |
+| Fullscreen/Power buttons | `.settings-` | `.fullscreen-hover-zone`, `.fullscreen-toggle-btn`, `.power-hover-zone`, `.power-toggle-btn` |
+| Modals (PIN, trial, blocker) | `.settings-` | `.onboarding-*`, `.resolution-blocker`, `.blocker-content`, `.parental-pin-modal` |
+| Volume OSD | `.settings-` | `.volume-indicator*`, `.volume-bar-*` |
+| Floating Dev Controls | `.settings-` | `.floating-controls-*`, `.floating-reload-btn` |
+| Scrollbars globales | `.settings-` | `::-webkit-scrollbar*` |
+| Tooltips | `.settings-` | `.custom-tooltip` |
+| Search (barras de búsqueda) | `.search-` | `.vod-search-container`, `.clear-search-btn` |
+
+*   **Acción Requerida:**
+    1.  Documentar el mapeo final en `contexto_de_perfil.md` (nueva sección).
+    2.  Renombrar por sección, una a la vez (CSS + HTML + JS), con build + verificación visual entre cada una.
+    3.  Orden: Player Bar → Sidebar → Landing → Filter Bar → Top Nav → Player → transversales.
+    4.  Las secciones ya coherentes (`.home-*`, `.vod-*`, `.settings-*`) no se tocan.
+*   **Impacto estimado:** ~200+ selectores CSS, ~50+ IDs HTML, ~30+ referencias JS.
+*   **Nota:** No mezclar con aplicación de clamp() — esta tarea es exclusivamente de renombrado.
+
 ---
 
 ### ⏳ Dificultad Alta — 🧠 Recomendado Opus 4.8
 
-#### 7. Tarea 11 / Item 11: Pantalla de Carga y Flujo de Expiración/Login 🧠
+#### 8. Tarea 11 / Item 11: Pantalla de Carga y Flujo de Expiración/Login 🧠
 *   **Componente:** Pantalla de carga inicial (`index.html`/`renderer.js`), proceso de inicio de Electron (`main.js`) y sección de Ajustes.
 *   **Acción Requerida:**
     1.  **Redimensión Dinámica:** Al iniciar, establecer alto mínimo de `720px` (resolución base `1280x720`) y redimensionar la ventana para ocupar como máximo el `80%` del monitor del usuario.
@@ -254,14 +300,14 @@ Este documento unifica de forma cronológica todas las mejoras, características
     3.  **Pestaña "Mi cuenta" en Ajustes:** Crear una pestaña llamada "Mi cuenta" debajo de "General" con botón de login con Google (diseño premium y borde animado estilo arcoíris) e indicar: *"Período de Prueba por 3 días. Inicia sesión para desbloquear la aplicación una vez concluido este período"*.
     4.  **Bloqueo y Expiración:** Al iniciar la app empaquetada (Production `.exe`), si expira el trial de 3 días, detener la carga, mostrar un mensaje de expiración y botones para Iniciar Sesión (Google Login realiza bypass para desbloquear en esta fase) o Desinstalar. El modo de desarrollo evade este bloqueo por defecto.
 
-#### 8. Tarea 24: Protección en Compilado de Producción (Trial Lock y HTTP Server Time) 🧠
+#### 9. Tarea 24: Protección en Compilado de Producción (Trial Lock y HTTP Server Time) 🧠
 *   **Componente:** `main.js`, interceptores del webview y Registro de Windows.
 *   **Acción Requerida:**
     1.  **Inicio del Período de Prueba:** El trial de 31 días se activa únicamente en la primera sintonía de un canal. El proceso principal obtiene la fecha UTC real de la cabecera HTTP `Date` de red (inmune a cambios de reloj local).
     2.  **Cifrado y Persistencia:** Guardar la fecha encriptada con AES-256 en el Registro de Windows (`HKEY_CURRENT_USER\Software\prnt` bajo el valor `driver_config`).
     3.  **Validación:** Comprobar la diferencia de fecha contra la cabecera HTTP de red en cada inicio/sintonía. Si expira o se altera/elimina la clave del registro, bloquear el acceso.
 
-#### 9. Tarea 40: AutoUpdater 🧠
+#### 10. Tarea 40: AutoUpdater 🧠
 *   **Componente:** Main process (`bootstrap.js`), `electron-updater`.
 *   **Acción Requerida:**
     1.  Integrar `electron-updater` para verificar y descargar actualizaciones automáticamente.
