@@ -891,11 +891,11 @@ export function updateDeveloperUI() {
     if (filtersGroupsContainer) {
         filtersGroupsContainer.style.display = 'flex';
     }
-    // Language: always visible; add-form only in dev mode
+    // Language: always visible AND editable (Task 23 — users may pick languages freely)
     if (langCard) {
         langCard.style.display = '';
         const langAddForm = langCard.querySelector('.filter-group-add-form');
-        if (langAddForm) langAddForm.style.display = developerModeEnabled ? '' : 'none';
+        if (langAddForm) langAddForm.style.display = '';
     }
     // Genre: always visible; add-form only in dev mode; read-only class in user mode
     if (genreCard) {

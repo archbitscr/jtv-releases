@@ -379,7 +379,7 @@
                 <aside class="settings-sidebar">
                     <div class="settings-tabs">
                         <button class="settings-tab-btn active" data-settings-tab="general"><i data-lucide="settings-2"></i> Settings</button>
-                        <button class="settings-tab-btn" data-settings-tab="filters" id="settings-tab-filters" data-dev="true"><i data-lucide="filter"></i> Filters <span class="dev-indicator"></span></button>
+                        <button class="settings-tab-btn" data-settings-tab="filters" id="settings-tab-filters"><i data-lucide="filter"></i> Filters</button>
                         <button class="settings-tab-btn" data-settings-tab="background"><i data-lucide="image"></i> Wallpapers</button>
                         <button class="settings-tab-btn" data-settings-tab="parental" id="settings-tab-parental"><i data-lucide="shield"></i> Parental</button>
                         <button class="settings-tab-btn" data-settings-tab="account"><i data-lucide="monitor"></i> System</button>
@@ -610,8 +610,8 @@
                         </div>
                     </div>
 
-                    <!-- Section: Filters -->
-                    <div id="settings-sect-filters" class="settings-sect-pane" data-dev="true">
+                    <!-- Section: Filters (user-facing tab; specific edit controls are dev-only via data-dev) -->
+                    <div id="settings-sect-filters" class="settings-sect-pane">
                         <h3 class="settings-page-title">Channel Filters</h3>
                         <p class="section-desc" style="margin-bottom: 8px;">Manage available event filters to organize TV channels.</p>
                         
@@ -619,8 +619,8 @@
                         <nav class="settings-subnav" aria-label="Filters by section">
                             <button class="settings-subnav-btn active" data-filter-type="asignacion"><i data-lucide="tag"></i> Assignment</button>
                             <button class="settings-subnav-btn" data-filter-type="tv"><i data-lucide="tv"></i> Live</button>
-                            <button class="settings-subnav-btn" data-filter-type="series"><i data-lucide="clapperboard"></i> Series</button>
-                            <button class="settings-subnav-btn" data-filter-type="movies"><i data-lucide="film"></i> Movies</button>
+                            <button class="settings-subnav-btn" data-filter-type="series" data-dev="true"><i data-lucide="clapperboard"></i> Series</button>
+                            <button class="settings-subnav-btn" data-filter-type="movies" data-dev="true"><i data-lucide="film"></i> Movies</button>
                         </nav>
                         
                         <!-- Subtab Content: Live TV (Channels Live) -->
@@ -643,12 +643,12 @@
                                     </div>
                                 </div>
 
-                                <!-- Grupo 2: Genre -->
-                                <div class="filter-group-card" id="group-card-genre">
+                                <!-- Grupo 2: Genre (read-only for users; add-form is dev-only) -->
+                                <div class="filter-group-card readonly-filter-group" id="group-card-genre">
                                     <div class="filter-group-header">
                                         <h4>Genres</h4>
                                     </div>
-                                    <div class="filter-group-add-form">
+                                    <div class="filter-group-add-form" data-dev="true">
                                         <div class="filter-icon-picker-wrapper">
                                             <button id="genre-icon-select-btn" class="filter-icon-select-btn" type="button" title="Select Icon">
                                                 <i data-lucide="tag"></i>
@@ -689,8 +689,8 @@
                             </div>
                         </div>
 
-                        <!-- Subtab Content: Series -->
-                        <div id="filters-content-series" class="filters-subsect-pane">
+                        <!-- Subtab Content: Series (dev-only) -->
+                        <div id="filters-content-series" class="filters-subsect-pane" data-dev="true">
                             <div class="filters-groups-container">
                                 <div class="filter-group-card" id="group-card-series" style="flex: 1 1 100%; max-width: 100%;">
                                     <div class="filter-group-header">
@@ -715,8 +715,8 @@
                             </div>
                         </div>
 
-                        <!-- Subtab Content: Movies -->
-                        <div id="filters-content-movies" class="filters-subsect-pane">
+                        <!-- Subtab Content: Movies (dev-only) -->
+                        <div id="filters-content-movies" class="filters-subsect-pane" data-dev="true">
                             <div class="filters-groups-container">
                                 <div class="filter-group-card" id="group-card-movies" style="flex: 1 1 100%; max-width: 100%;">
                                     <div class="filter-group-header">
@@ -1402,8 +1402,8 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
             </div>
         </div>
     </div>
-    <!-- Floating controls for developer/user modes -->
-    <div id="floating-controls-container" class="floating-controls-container">
+    <!-- Floating controls (dev-only): Glass Tuner, Reload Window, Shut Down -->
+    <div id="floating-controls-container" class="floating-controls-container" data-dev="true">
         <button id="glass-tuner-btn" class="floating-reload-btn" title="Glass Tuner" style="display: none;">
             <i data-lucide="palette"></i>
         </button>

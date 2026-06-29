@@ -15,7 +15,7 @@ import { initIconPickers } from '../utils/iconPicker.js';
 import { initCustomTooltips } from '../utils/tooltips.js';
 import { attachTimePicker } from '../ui/timePicker.js';
 import { syncCenterNavWidth, checkResolution, updateFullscreenButton, toggleAppFullscreen, getActiveSidebarTab, getCurrentNavigationChannels, isEditableElement, updateVodGridDimensions, handleResizeDimensions } from '../ui/layout.js';
-import { updateSensorsUI } from '../ui/sensors.js';
+// sensors.js is dev-only: loaded dynamically in renderer.js dev block; called via window.updateSensorsUI?.()
 import { updateTriggersVisibility } from '../ui/triggersVisibility.js';
 import { adjustVolume, toggleMute, updateVolumeUI } from '../ui/volumeController.js';
 import { saveAppState } from '../services/stateManager.js';
@@ -29,7 +29,7 @@ import { selectAssignerChannelMultiple, renderAssignerChannelsList, renderAssign
 import { showNoSignalOverlay, triggerFailover, stopNoSignalRetryLoop } from '../player/failover.js';
 import { updateSourceSwitcherUI } from '../player/sourceSwitcher.js';
 import { renderVodControls, renderFavoritesGrid, toggleVodFavorite, getCurrentVodPageIndex, setCurrentVodPageIndex, getVodYear, getVodRatingNumber, getFilteredLiveChannels } from '../render/favoritesGrid.js';
-import { updateDeveloperUI } from '../../developerModule.js';
+// developerModule.js is dev-only: loaded dynamically in renderer.js dev block; called via window.updateDeveloperUI?.()
 
 export function setupEventListeners() {
     // Local handle to the preload-exposed jtvAPI (preload injects window.jtvAPI)
@@ -753,7 +753,7 @@ export function setupEventListeners() {
                     setGeneralTab('general-tab-options');
                 }
                 if (targetTab === 'sensors') {
-                    updateSensorsUI();
+                    window.updateSensorsUI?.();
                 }
                 if (targetTab === 'filters') {
                     renderSettingsFilters();
@@ -762,7 +762,7 @@ export function setupEventListeners() {
                     setConnectivityTab('servers');
                 }
                 if (targetTab === 'developer') {
-                    updateDeveloperUI();
+                    window.updateDeveloperUI?.();
                     // Reset sub-tabs to General and re-render icons
                     const devPane = document.getElementById('settings-sect-developer');
                     if (devPane) {

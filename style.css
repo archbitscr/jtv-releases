@@ -5367,9 +5367,8 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     background: rgba(0, 255, 204, 0.1);
     border-color: rgba(0, 255, 204, 0.5);
 }
-/* === DEV-ONLY END === */
 
-/* User Mode electric neon white for Power Off button */
+/* Neon-white state for the dev floating Power Off button */
 .floating-reload-btn.neon-white {
     background: rgba(255, 255, 255, 0.15);
     border: 2px solid #ffffff;
@@ -5394,6 +5393,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), inset 0 0 6px rgba(255, 255, 255, 0.4);
     }
 }
+/* === DEV-ONLY END === */
 
 /* --- Redesigned Settings Filters Grid --- */
 .filters-groups-container {

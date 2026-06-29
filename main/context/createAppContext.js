@@ -16,7 +16,10 @@ export function createAppContext({ appRootDir }) {
   const userDataStore = createUserDataStore(userDataPath);
   const persisted = userDataStore.load();
 
-  const devModeAvailable = true;
+  // Task 23: dev mode is available only when running unpackaged (npm run start / vite dev).
+  // In the packaged .exe (app.isPackaged === true) it is false, so all dev IPC handlers
+  // (registerDeveloperIpc, registerDiagnosticsIpc, main/diagnostics watchers) stay inert.
+  const devModeAvailable = !app.isPackaged;
   const developerModeEnabled = persisted?.developerModeEnabled !== undefined ? !!persisted.developerModeEnabled : true;
   const diagnosticsEnabled = developerModeEnabled && !!persisted?.diagnosticsEnabled;
   const globalDomain = persisted?.globalDomain || "https://dlhd.pk/";

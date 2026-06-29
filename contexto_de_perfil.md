@@ -124,17 +124,23 @@ JTV.app/
 | `.dev-indicator` | CSS class | `style.css` (DEV-ONLY block) | wrap ✅ + gate | Punto verde en tabs dev-only |
 | CSS Sensors/Diagnostics | CSS block | `style.css` `/* Sensors and Diagnostics Styles */` | wrap ✅ | Envuelto en `DEV-ONLY START/END` |
 | CSS DevTools + Glass Tuner | CSS block | `style.css` `/* Floating reload button… */` → `/* Glass Tuner Modal */` | wrap ✅ | Envuelto en `DEV-ONLY START/END` |
-| `flags.devModeAvailable` | Main flag | `main/context/createAppContext.js` L19 | hardcoded `true` ⚠️ | Controla visibilidad/IPC dev. Task 23 debe condicionarlo a no-prod. |
+| `flags.devModeAvailable` | Main flag | `main/context/createAppContext.js` | `!app.isPackaged` ✅ | `true` solo sin empaquetar; en el `.exe` es `false` → IPC dev inertes. |
+| Pestaña Filters | HTML tab + panel | `index.html` (`#settings-sect-filters`) | **NO dev** (user-facing) ✅ | Tab de usuario. Sub-controles dev marcados granularmente (ver abajo). |
+| Filters: add-form Géneros | HTML | `#group-card-genre .filter-group-add-form` | `data-dev` ✅ | Géneros read-only para usuario (`readonly-filter-group` estático). |
+| Filters: subpestañas VOD | HTML | subnav + `#filters-content-series/movies` | `data-dev` ✅ | Series/Movies ocultas para usuario. |
+| `#floating-controls-container` | HTML | `index.html` (Glass Tuner / Reload / dev Power) | `data-dev` ✅ | Botones flotantes dev. CSS `.neon-white` dentro de DEV-ONLY. |
 
-### Hallazgos de auditoría (pendientes para Tarea 23 — Tree Shaking)
-- ⚠️ **`eventListeners.js:32` importa estáticamente** `updateDeveloperUI` de `developerModule.js`. Esto fuerza a `developerModule.js` (y su árbol) dentro del bundle de producción, anulando el `import()` dinámico condicional de `renderer.js`. Vite ya lo advierte en build. **Task 23 debe eliminar este import estático** (o aislar `updateDeveloperUI`) para que el árbol dev sea eliminable.
-- ⚠️ `sensors.js` también se importa estáticamente en `renderer.js`.
-- ⚠️ `devModeAvailable = true` está hardcodeado en `createAppContext.js`; en producción debe derivarse de `!app.isPackaged` o equivalente.
-- ℹ️ CSS dev-only candidato no envuelto aún por riesgo de mezcla con CSS de usuario: `/* Blinking dot for autotuning */` (~L4644) y controles HUD de señal/fuente. Revisar en Task 23.
+### Estado Tarea 23 (Tree Shaking) — ✅ COMPLETADA
+Hallazgos de la auditoría previa, ya resueltos:
+- ✅ **`eventListeners.js` import estático** de `developerModule.js`/`sensors.js` → eliminado; ahora vía `window.updateDeveloperUI?.()` / `window.updateSensorsUI?.()`. Los módulos dev se cargan solo con `import()` bajo `if (!import.meta.env.PROD)` en `renderer.js` → excluidos del bundle de prod.
+- ✅ **`devModeAvailable`** → `!app.isPackaged` en `createAppContext.js`.
+- ✅ **Strip HTML/CSS** → plugin Vite `stripDevOnly` (`vite.config.js`, `apply:'build'`) elimina elementos `data-dev`, comentarios HTML y bloques `DEV-ONLY` del CSS.
+- ✅ **Fix:** `#power-user-btn` (apagado de usuario) se cablea ahora en core (`renderer.js`), no en el módulo dev.
+- ℹ️ Pendiente futuro: excluir físicamente `main/ipc/registerDeveloperIpc.js`, `registerDiagnosticsIpc.js` y `main/diagnostics/` del empaquetado electron-builder (hoy inertes por el gate, no eliminados del asar).
 
-### Convención de Marcado (implementada en esta tarea)
-- **HTML:** Pestañas, paneles y settings dev-only llevan atributo `data-dev="true"`. ✅
-- **CSS:** Reglas exclusivas de dev agrupadas entre `/* === DEV-ONLY START === */` ... `/* === DEV-ONLY END === */`. ✅ (bloques principales; sweep completo en Task 23)
-- **Visibilidad:** Regla global `body:not(.dev-mode) [data-dev="true"] { display: none !important; }` (+ `.dev-indicator`) en `style.css`. ✅
-- **Activación dev-mode:** `renderer.js` añade `body.dev-mode` si `import.meta.env.DEV`; `developerModule.js` lo añade cuando `devModeAvailable`. ✅
-- **JS (pendiente Task 23):** Módulos dev-only deben importarse condicionalmente con `if (!import.meta.env.PROD)` y sin imports estáticos que los anclen al bundle.
+### Convención de Marcado (implementada y activa)
+- **HTML:** Pestañas, paneles y settings dev-only llevan `data-dev="true"`; el plugin de build los elimina en producción. ✅
+- **CSS:** Reglas exclusivas de dev agrupadas entre `/* === DEV-ONLY START === */` ... `/* === DEV-ONLY END === */`; el plugin las elimina en producción. ✅
+- **Visibilidad (dev):** Regla global `body:not(.dev-mode) [data-dev="true"] { display: none !important; }` (+ `.dev-indicator`) en `style.css`.
+- **Activación dev-mode:** `renderer.js` añade `body.dev-mode` si `import.meta.env.DEV`; `developerModule.js` lo añade cuando `devModeAvailable`.
+- **JS:** Módulos dev-only se importan con `import()` dinámico bajo `if (!import.meta.env.PROD)`, sin imports estáticos que los anclen al bundle. ✅

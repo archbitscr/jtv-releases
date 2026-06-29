@@ -29,7 +29,7 @@ import { adjustVolume, toggleMute, updateVolumeUI } from './renderer/ui/volumeCo
 import { setSettingsFilterTab, setConnectivityTab, setChannelsTab } from './renderer/settings/settingsTabs.js';
 import { ensurePlayerCurtain, showPlayerCurtain, hidePlayerCurtain, updateWebviewPointerEvents, updateHudChannelFilters } from './renderer/ui/playerUI.js';
 import { syncCenterNavWidth, checkResolution, updateFullscreenButton, toggleAppFullscreen, handleResizeDimensions, updateVodGridDimensions } from './renderer/ui/layout.js';
-import { updateSensorsUI } from './renderer/ui/sensors.js';
+// sensors.js is dev-only: loaded dynamically in the dev block below (see import.meta.env.PROD gate)
 import { updateTriggersVisibility } from './renderer/ui/triggersVisibility.js';
 import { setupEventListeners } from './renderer/ui/eventListeners.js';
 
@@ -297,7 +297,6 @@ async function init() {
     window.syncCenterNavWidth = syncCenterNavWidth;
     window.checkResolution = checkResolution;
     window.handleResizeDimensions = handleResizeDimensions;
-    window.updateSensorsUI = updateSensorsUI;
     window.updateTriggersVisibility = updateTriggersVisibility;
     window.showEditPane = (ch) => {
         if (window.selectCrudChannel) window.selectCrudChannel(state.channels.findIndex(c => c.id === ch.id));
@@ -444,9 +443,14 @@ async function init() {
         }
     }
 
-    const isProd = false;
-    if (!isProd) {
+    // Dev-only modules (Task 23): loaded exclusively via dynamic import() guarded by
+    // import.meta.env.PROD. In production builds Vite/esbuild replaces PROD with `true`,
+    // eliminates this block as dead code, and — since nothing else imports them — drops
+    // developerModule.js, glassTuner.js and sensors.js from the bundle entirely.
+    if (!import.meta.env.PROD) {
         try {
+            const sensorsModule = await import('./renderer/ui/sensors.js');
+            window.updateSensorsUI = sensorsModule.updateSensorsUI;
             const devModule = await import('./developerModule.js');
             if (savedData) {
                 window.setDeveloperState(savedData);
@@ -457,6 +461,17 @@ async function init() {
         } catch (err) {
             console.error('Failed to load developer module:', err);
         }
+    }
+
+    // User-mode shutdown control (Task 23). The dev module manages #power-hover-zone
+    // visibility while developing; in production the dev module is absent, so wire the
+    // user Power button and reveal its hover zone here — otherwise the packaged app
+    // (frameless) would have no way to close.
+    const powerUserBtn = document.getElementById('power-user-btn');
+    if (powerUserBtn) powerUserBtn.onclick = () => window.close();
+    if (import.meta.env.PROD) {
+        const powerHoverZone = document.getElementById('power-hover-zone');
+        if (powerHoverZone) powerHoverZone.style.display = 'flex';
     }
 
     if (state.autoUpdateDomain) {
