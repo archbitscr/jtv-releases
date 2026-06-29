@@ -61,7 +61,7 @@ export function updateVodGridDimensions() {
     const rowHeight = gridHeight / 3;
     const posterHeight = Math.max(100, rowHeight - 45); // Account for card padding and vod-info text
     const posterWidth = (2 / 3) * posterHeight;
-    const cardWidth = Math.floor(posterWidth * 0.75);
+    const cardWidth = Math.floor(posterWidth * 0.56);
 
     const gap = 20;
     let cols = Math.floor((gridWidth + gap) / (cardWidth + gap));

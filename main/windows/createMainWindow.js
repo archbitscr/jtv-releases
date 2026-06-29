@@ -7,10 +7,11 @@ export function createMainWindow(context) {
   const guestPreloadPath = path.join(context.__dirname, 'guest-preload.cjs');
 
   const win = new BrowserWindow({
-    width: 1200,
-    height: 800,
-    minWidth: 600,
-    minHeight: 500,
+    width: 1080,
+    height: 720,
+    minWidth: 640,
+    minHeight: 480,
+    useContentSize: true,
     frame: true,
     show: false,
     autoHideMenuBar: true,
@@ -30,6 +31,8 @@ export function createMainWindow(context) {
 
   if (context.flags.isPackaged) {
     win.loadFile(path.join(context.__dirname, 'dist', 'index.html'));
+  } else if (process.env.VITE_DEV_SERVER_URL) {
+    win.loadURL(process.env.VITE_DEV_SERVER_URL);
   } else {
     win.loadFile(path.join(context.__dirname, 'index.html'));
   }

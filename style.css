@@ -227,7 +227,7 @@ body.player-active .edge-mask {
     position: fixed;
     top: 0;
     left: 0;
-    width: clamp(280px, 30vw, 380px);
+    width: clamp(280px, 22vw, 500px);
     height: 100vh;
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(8px);
@@ -271,7 +271,7 @@ body.player-active .edge-mask {
     background: none;
     border: none;
     color: white;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 1.2vw, 2.2rem);
     cursor: pointer;
     opacity: 0.6;
     transition: 0.3s;
@@ -300,15 +300,15 @@ body.player-active .edge-mask {
     background: none;
     border: 1px solid transparent;
     color: rgba(255, 255, 255, 0.78);
-    padding: 8px 10px;
+    padding: clamp(6px, 0.6vw, 14px) clamp(8px, 0.7vw, 18px);
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: clamp(0.78rem, 0.75vw, 1.3rem);
     font-weight: 700;
     transition: var(--transition);
-    border-radius: 8px;
+    border-radius: clamp(6px, 0.5vw, 12px);
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: clamp(4px, 0.4vw, 10px);
 }
 
 .tab-btn:hover {
@@ -320,8 +320,8 @@ body.player-active .edge-mask {
 
 .tab-btn i,
 .tab-btn svg {
-    width: 15px;
-    height: 15px;
+    width: clamp(13px, 1.2vw, 26px);
+    height: clamp(13px, 1.2vw, 26px);
     flex-shrink: 0;
 }
 
@@ -417,8 +417,8 @@ body.player-active .edge-mask {
 }
 
 .channel-logo {
-    width: 44px;
-    height: 44px;
+    width: clamp(36px, 3.2vw, 72px);
+    height: clamp(36px, 3.2vw, 72px);
     background: transparent;
     overflow: hidden;
     flex-shrink: 0;
@@ -439,7 +439,7 @@ body.player-active .edge-mask {
 }
 .channel-info h4 { font-size: 0.95rem; font-weight: 500; color: #fff; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .channel-id-tag {
-    font-size: 0.75rem;
+    font-size: clamp(0.65rem, 0.6vw, 1.1rem);
     color: rgba(255, 255, 255, 0.58);
     opacity: 1;
     font-weight: 800;
@@ -455,12 +455,12 @@ body.player-active .edge-mask {
     color: rgba(255, 255, 255, 0.58);
     border-color: rgba(255, 255, 255, 0.1);
 }
-.channel-info p { font-size: 0.85rem; color: rgba(255, 255, 255, 0.68); font-weight: 500; }
+.channel-info p { font-size: clamp(0.75rem, 0.7vw, 1.2rem); color: rgba(255, 255, 255, 0.68); font-weight: 500; }
 
 .channel-actions {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: clamp(4px, 0.4vw, 10px);
     align-items: center;
 }
 
@@ -473,6 +473,12 @@ body.player-active .edge-mask {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.action-btn i,
+.action-btn svg {
+    width: clamp(14px, 1.3vw, 28px);
+    height: clamp(14px, 1.3vw, 28px);
 }
 
 .action-btn.favorite i,
@@ -887,17 +893,17 @@ body.player-active .edge-mask {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(5, 1fr);
     grid-auto-flow: column;
-    gap: clamp(8px, 1.2vw, 15px);
+    gap: clamp(8px, 1vw, 22px);
     width: 100%;
-    max-width: clamp(500px, 70vw, 900px);
+    max-width: clamp(500px, 65vw, 1400px);
 }
 
 .grid-carousel-wrapper {
     display: flex;
     align-items: center;
-    gap: clamp(10px, 2vw, 30px);
+    gap: clamp(10px, 1.5vw, 36px);
     width: 100%;
-    max-width: clamp(700px, 85vw, 1100px);
+    max-width: clamp(700px, 80vw, 1700px);
     justify-content: center;
 }
 
@@ -920,8 +926,8 @@ body.player-active .edge-mask {
 }
 
 .grid-nav-btn i {
-    width: 48px;
-    height: 48px;
+    width: clamp(36px, 3vw, 64px);
+    height: clamp(36px, 3vw, 64px);
 }
 
 .grid-dots-container {
@@ -963,12 +969,12 @@ body.player-active .edge-mask {
     position: relative;
     background: rgba(255,255,255,0.05);
     border: 1px solid var(--glass-border);
-    border-radius: clamp(10px, 1vw, 15px);
+    border-radius: clamp(10px, 0.8vw, 22px);
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    padding: clamp(10px, 1.2vw, 15px) clamp(12px, 1.5vw, 20px);
+    padding: clamp(10px, 1vw, 24px) clamp(12px, 1.2vw, 32px);
     cursor: pointer;
     transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     backdrop-filter: blur(10px);
@@ -976,15 +982,15 @@ body.player-active .edge-mask {
 
 .grid-badge {
     position: absolute;
-    top: 8px;
-    right: 12px;
+    top: clamp(5px, 0.5vw, 10px);
+    right: clamp(8px, 0.7vw, 16px);
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--accent);
-    font-size: 0.7rem;
+    font-size: clamp(0.6rem, 0.5vw, 0.95rem);
     font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 4px;
+    padding: clamp(1px, 0.15vw, 4px) clamp(4px, 0.35vw, 8px);
+    border-radius: clamp(3px, 0.25vw, 6px);
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.15);
     pointer-events: none;
     transition: 0.3s;
@@ -1010,8 +1016,8 @@ body.player-active .edge-mask {
 }
 
 .grid-item .grid-logo {
-    width: clamp(35px, 3.5vw, 50px);
-    height: clamp(35px, 3.5vw, 50px);
+    width: clamp(35px, 3vw, 72px);
+    height: clamp(35px, 3vw, 72px);
     margin-bottom: 0;
     margin-right: clamp(8px, 1vw, 15px);
     display: flex;
@@ -1028,7 +1034,7 @@ body.player-active .edge-mask {
 }
 
 .grid-item h4 {
-    font-size: clamp(0.85rem, 1vw, 1.1rem);
+    font-size: clamp(0.85rem, 0.9vw, 1.5rem);
     color: white;
     text-align: left;
     margin: 0;
@@ -1080,7 +1086,7 @@ body.player-active .edge-mask {
 }
 
 .grid-epg {
-    font-size: 0.75rem;
+    font-size: clamp(0.65rem, 0.6vw, 1.1rem);
     color: var(--accent);
     opacity: 0.6;
     margin-top: 4px;
@@ -1159,7 +1165,7 @@ body.player-active .edge-mask {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: clamp(900px, 90vw, 1400px);
+    max-width: clamp(900px, 85vw, 2000px);
     width: 100%;
     padding-top: 12px;
 }
@@ -1219,10 +1225,10 @@ body.player-active .edge-mask {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.8);
-    padding: 7px 10px;
-    border-radius: 12px;
+    padding: clamp(5px, 0.45vw, 10px) clamp(8px, 0.6vw, 16px);
+    border-radius: clamp(8px, 0.7vw, 16px);
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: clamp(0.78rem, 0.65vw, 1.2rem);
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -1245,11 +1251,11 @@ body.player-active .edge-mask {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.8);
-    padding: 7px 10px;
-    border-radius: 12px;
+    padding: clamp(5px, 0.45vw, 10px) clamp(8px, 0.6vw, 16px);
+    border-radius: clamp(8px, 0.7vw, 16px);
     font-weight: 700;
-    font-size: 0.9rem;
-    min-width: 110px;
+    font-size: clamp(0.78rem, 0.65vw, 1.2rem);
+    min-width: clamp(80px, 7vw, 160px);
     cursor: pointer;
     outline: none;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1290,8 +1296,8 @@ body.player-active .edge-mask {
 }
 
 .dash-chevron {
-    width: 12px !important;
-    height: 12px !important;
+    width: clamp(10px, 0.8vw, 18px) !important;
+    height: clamp(10px, 0.8vw, 18px) !important;
     transition: transform 0.2s ease;
     flex-shrink: 0;
 }
@@ -1328,10 +1334,10 @@ body.player-active .edge-mask {
 }
 
 .dash-custom-select-option {
-    padding: 8px 14px;
+    padding: clamp(6px, 0.5vw, 12px) clamp(10px, 0.85vw, 20px);
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
-    font-size: 13px;
+    font-size: clamp(0.75rem, 0.6vw, 1.1rem);
     font-weight: 400;
     font-family: inherit;
     transition: background 0.18s ease, color 0.18s ease, padding-left 0.18s ease;
@@ -1360,8 +1366,8 @@ body.player-active .edge-mask {
 
 /* Tab Icon Sizing */
 .tab-btn i {
-    width: 20px;
-    height: 20px;
+    width: clamp(16px, 1.1vw, 26px);
+    height: clamp(16px, 1.1vw, 26px);
 }
 
 /* Wrapped Filters (No Scroll) */
@@ -1495,12 +1501,12 @@ body.player-active .edge-mask {
 /* Compact Menu Items */
 .channel-item {
     position: relative;
-    padding: 6px 10px;
-    margin-bottom: 4px;
-    border-radius: 8px;
+    padding: clamp(4px, 0.4vw, 10px) clamp(8px, 0.6vw, 16px);
+    margin-bottom: clamp(2px, 0.25vw, 6px);
+    border-radius: clamp(6px, 0.5vw, 12px);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: clamp(6px, 0.6vw, 14px);
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1518,7 +1524,7 @@ body.player-active .edge-mask {
     box-shadow: inset 3px 0 0 var(--accent) !important;
 }
 
-.channel-info h4 { font-size: 0.92rem; font-weight: 500; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.channel-info h4 { font-size: clamp(0.8rem, 0.8vw, 1.4rem); font-weight: 500; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .channel-info .channel-meta-row {
     display: flex;
     align-items: center;
@@ -1527,8 +1533,8 @@ body.player-active .edge-mask {
     margin-top: 2px;
     overflow: hidden;
 }
-.channel-info .epg-text { 
-    font-size: 0.8rem; 
+.channel-info .epg-text {
+    font-size: clamp(0.7rem, 0.55vw, 1rem); 
     color: rgba(255, 255, 255, 0.72);
     display: block;
     white-space: nowrap;
@@ -1668,7 +1674,7 @@ body.player-active .edge-mask {
 
 /* Home Dashboard Refinement */
 .dashboard-title {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 2.5vw, 5rem);
     font-weight: 700;
     letter-spacing: 4px;
     background: linear-gradient(to right, #fff, var(--accent));
@@ -1868,7 +1874,7 @@ body.hide-cursor * {
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 1000;
-    width: clamp(380px, 45vw, 580px);
+    width: clamp(380px, 38vw, 800px);
 
     display: flex;
     flex-direction: row;
@@ -1903,8 +1909,8 @@ body.hide-cursor * {
 }
 
 .hud-logo-container {
-    width: clamp(40px, 5.5vw, 72px);
-    height: clamp(40px, 5.5vw, 72px);
+    width: clamp(40px, 5vw, 110px);
+    height: clamp(40px, 5vw, 110px);
     background: transparent;
     border: none;
     display: flex;
@@ -1921,10 +1927,10 @@ body.hide-cursor * {
 }
 
 .hud-logo-container .placeholder-circle {
-    width: clamp(36px, 5vw, 64px);
-    height: clamp(36px, 5vw, 64px);
-    border-radius: clamp(10px, 1.2vw, 16px);
-    font-size: clamp(1rem, 1.3vw, 1.6rem);
+    width: clamp(36px, 4vw, 84px);
+    height: clamp(36px, 4vw, 84px);
+    border-radius: clamp(10px, 1.2vw, 20px);
+    font-size: clamp(1rem, 1.2vw, 2rem);
 }
 
 /* Program Info & Sources Area */
@@ -1944,7 +1950,7 @@ body.hide-cursor * {
 }
 
 #tuner-channel-text {
-    font-size: clamp(0.85rem, 1.1vw, 1.25rem);
+    font-size: clamp(0.85rem, 1.1vw, 1.8rem);
     font-weight: 700;
     color: #fff;
     margin: 0;
@@ -1955,7 +1961,7 @@ body.hide-cursor * {
 }
 
 .hud-epg-text {
-    font-size: clamp(0.7rem, 0.8vw, 0.9rem);
+    font-size: clamp(0.7rem, 0.7vw, 1.3rem);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.55);
     margin: 0 0 4px 0;
@@ -1979,11 +1985,11 @@ body.hide-cursor * {
 .hud-filter-badge {
     display: inline-flex;
     align-items: center;
-    padding: 2px 6px;
+    padding: clamp(2px, 0.2vw, 4px) clamp(4px, 0.4vw, 10px);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 4px;
-    font-size: 0.65rem;
+    border-radius: clamp(3px, 0.25vw, 6px);
+    font-size: clamp(0.55rem, 0.5vw, 0.9rem);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     pointer-events: none; /* Disables mouse interaction */
@@ -2062,8 +2068,8 @@ body.hide-cursor * {
 
 .hud-action-btn {
     position: relative;
-    width: 38px;
-    height: 38px;
+    width: clamp(30px, 2.8vw, 60px);
+    height: clamp(30px, 2.8vw, 60px);
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -2077,21 +2083,21 @@ body.hide-cursor * {
 
 .hud-action-stack .hud-action-btn,
 .hud-center-row .hud-action-btn {
-    width: clamp(24px, 2.5vw, 32px);
-    height: clamp(24px, 2.5vw, 32px);
+    width: clamp(24px, 2.2vw, 48px);
+    height: clamp(24px, 2.2vw, 48px);
 }
 
 .hud-action-btn i,
 .hud-action-btn svg {
-    width: clamp(14px, 1.4vw, 18px);
-    height: clamp(14px, 1.4vw, 18px);
+    width: clamp(14px, 1.4vw, 28px);
+    height: clamp(14px, 1.4vw, 28px);
     stroke-width: 2px;
 }
 
 .hud-action-stack .hud-action-btn i,
 .hud-action-stack .hud-action-btn svg {
-    width: clamp(14px, 1.4vw, 18px);
-    height: clamp(14px, 1.4vw, 18px);
+    width: clamp(14px, 1.4vw, 28px);
+    height: clamp(14px, 1.4vw, 28px);
 }
 
 .hud-action-btn:hover {
@@ -2232,9 +2238,9 @@ body.hide-cursor * {
     align-items: center;
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 12px 18px;
-    gap: 10px;
+    border-radius: clamp(10px, 0.7vw, 16px);
+    padding: clamp(10px, 0.8vw, 18px) clamp(14px, 1vw, 26px);
+    gap: clamp(8px, 0.6vw, 14px);
     width: 100%;
     max-width: none;
     margin: 0 auto;
@@ -2246,12 +2252,12 @@ body.hide-cursor * {
     color: white;
     outline: none;
     width: 100%;
-    font-size: 1rem;
+    font-size: clamp(0.85rem, 0.7vw, 1.3rem);
 }
 
 .vod-search-container i {
-    width: 20px;
-    height: 20px;
+    width: clamp(16px, 1.2vw, 28px);
+    height: clamp(16px, 1.2vw, 28px);
     color: rgba(255, 255, 255, 0.5);
 }
 
@@ -2311,10 +2317,10 @@ body.hide-cursor * {
 
 .vod-fav-btn {
     position: absolute;
-    top: 8px;
-    left: 8px;
-    width: 32px;
-    height: 32px;
+    top: clamp(4px, 0.5vw, 10px);
+    left: clamp(4px, 0.5vw, 10px);
+    width: clamp(24px, 2vw, 40px);
+    height: clamp(24px, 2vw, 40px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2328,8 +2334,8 @@ body.hide-cursor * {
 }
 
 .vod-fav-btn svg {
-    width: 16px;
-    height: 16px;
+    width: clamp(12px, 1vw, 20px);
+    height: clamp(12px, 1vw, 20px);
 }
 
 .vod-fav-btn:hover {
@@ -2356,31 +2362,31 @@ body.hide-cursor * {
 
 .vod-badge {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: clamp(4px, 0.5vw, 10px);
+    right: clamp(4px, 0.5vw, 10px);
     background: rgba(0, 0, 0, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: #fff;
-    font-size: 0.7rem;
+    font-size: clamp(0.55rem, 0.5vw, 0.9rem);
     font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 4px;
+    padding: clamp(1px, 0.15vw, 4px) clamp(4px, 0.35vw, 8px);
+    border-radius: clamp(3px, 0.25vw, 6px);
     z-index: 2;
 }
 
 .vod-badge.rating {
-    bottom: 8px;
-    right: 8px;
+    bottom: clamp(4px, 0.5vw, 10px);
+    right: clamp(4px, 0.5vw, 10px);
     top: auto;
     left: auto;
     background: rgba(0, 0, 0, 0.85);
     border-color: var(--accent);
     color: var(--accent);
-    font-size: 0.7rem;
+    font-size: clamp(0.55rem, 0.5vw, 0.9rem);
 }
 
 .vod-info {
-    padding: 10px;
+    padding: clamp(6px, 0.6vw, 14px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2391,7 +2397,7 @@ body.hide-cursor * {
 }
 
 .vod-info h4 {
-    font-size: 0.92rem !important;
+    font-size: clamp(0.75rem, 0.7vw, 1.2rem) !important;
     font-weight: 500 !important;
     margin: 0 !important;
     width: 100%;
@@ -2406,7 +2412,7 @@ body.hide-cursor * {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.78rem;
+    font-size: clamp(0.65rem, 0.55vw, 1rem);
     color: rgba(255, 255, 255, 0.4);
     width: 100%;
 }
@@ -2717,15 +2723,15 @@ body.hide-cursor * {
     flex-direction: row;
     justify-content: center;
     align-items: stretch;
-    gap: clamp(10px, 1.5vw, 24px);
+    gap: clamp(14px, 2.2vw, 57px);
     width: 100%;
-    max-width: clamp(480px, 75vw, 1440px);
 }
 
 .home-card {
     flex: 1 1 0;
-    max-width: 330px;
-    aspect-ratio: 330 / 720;
+    flex: 0 0 clamp(107px, 16.67vw, 427px);
+    width: clamp(107px, 16.67vw, 427px);
+    aspect-ratio: 9 / 19;
     height: auto;
     background-color: rgba(255, 255, 255, 0.03);
     border: 4px solid rgba(255, 255, 255, 0.14);
@@ -2768,9 +2774,9 @@ body.hide-cursor * {
 
 .home-card-header {
     position: absolute;
-    top: clamp(60px, 30%, 100px);
-    left: 12px;
-    right: 12px;
+    top: clamp(59px, 9.26vw, 237px);
+    left: clamp(10px, 1.5vw, 38px);
+    right: clamp(10px, 1.5vw, 38px);
     padding: 6px 10px;
     display: flex;
     flex-direction: column;
@@ -2801,8 +2807,6 @@ body.hide-cursor * {
 }
 
 .card-icon-wrapper {
-    width: 64px;
-    height: 64px;
     border-radius: 50%;
     background: transparent;
     display: flex;
@@ -2821,13 +2825,13 @@ body.hide-cursor * {
 
 .card-icon-wrapper i,
 .card-icon-wrapper svg {
-    width: 28px;
-    height: 28px;
+    width: clamp(20px, 3.15vw, 81px);
+    height: clamp(20px, 3.15vw, 81px);
 }
 
 .home-card h2 {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: clamp(0.68rem, 1.78vw, 2.84rem);
+    font-weight: 600;
     color: white;
     margin: 0;
 }
@@ -2867,12 +2871,18 @@ body.hide-cursor * {
 
 .settings-close {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: clamp(12px, 1.85vw, 47px);
+    right: clamp(12px, 1.85vw, 47px);
     background: none;
     border: none;
     color: #fff;
-    font-size: 1.8rem;
+    font-size: clamp(1.07rem, 2.67vw, 4.27rem);
+}
+
+.settings-close i,
+.settings-close svg {
+    width: clamp(17px, 2.67vw, 68px);
+    height: clamp(17px, 2.67vw, 68px);
     cursor: pointer;
     opacity: 0.7;
     transition: 0.2s;
@@ -2887,7 +2897,7 @@ body.hide-cursor * {
 .settings-container {
     position: relative;
     width: 95%;
-    max-width: 1400px;
+    max-width: 130vh;
     height: 100%;
     max-height: 80vh;
     background: transparent;
@@ -2902,9 +2912,9 @@ body.hide-cursor * {
 }
 
 .settings-sidebar {
-    width: clamp(140px, 14vw, 180px);
+    width: clamp(107px, 16.67vw, 427px);
     border-right: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 20px 10px;
+    padding: clamp(12px, 1.85vw, 47px) clamp(6px, 0.93vw, 24px);
     display: flex;
     flex-direction: column;
     background: transparent;
@@ -2914,16 +2924,16 @@ body.hide-cursor * {
 
 .settings-sidebar-footer {
     margin-top: auto;
-    padding-top: 18px;
+    padding-top: clamp(11px, 1.67vw, 43px);
 }
 
 .settings-version-info {
-    font-size: 0.75rem;
+    font-size: clamp(0.44rem, 1.11vw, 1.78rem);
     color: rgba(255,255,255,0.35);
-    padding-left: 10px;
+    padding-left: clamp(6px, 0.93vw, 24px);
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: clamp(1px, 0.19vw, 5px);
 }
 
 .settings-version-info a {
@@ -2937,40 +2947,40 @@ body.hide-cursor * {
 }
 
 .settings-sidebar h2 {
-    font-size: 1.5rem;
+    font-size: clamp(0.89rem, 2.22vw, 3.56rem);
     font-weight: 700;
     color: white;
-    margin-bottom: 25px;
-    padding-left: 10px;
+    margin-bottom: clamp(15px, 2.31vw, 59px);
+    padding-left: clamp(6px, 0.93vw, 24px);
 }
 
 .settings-tabs {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: clamp(5px, 0.74vw, 19px);
 }
 
 .settings-tab-btn {
     background: none;
     border: none;
     color: rgba(255,255,255,0.5);
-    padding: 10px 12px;
+    padding: clamp(6px, 0.93vw, 24px) clamp(7px, 1.11vw, 28px);
     text-align: left;
-    font-size: 0.9rem;
+    font-size: clamp(0.53rem, 1.33vw, 2.13rem);
     font-weight: 600;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: clamp(7px, 1.11vw, 28px);
     transition: all 0.2s;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: clamp(5px, 0.74vw, 19px);
     position: relative;
 }
 
 .settings-tab-btn i,
 .settings-tab-btn svg {
-    width: 18px;
-    height: 18px;
+    width: clamp(11px, 1.67vw, 43px);
+    height: clamp(11px, 1.67vw, 43px);
 }
 
 .settings-tab-btn:hover {
@@ -2985,11 +2995,11 @@ body.hide-cursor * {
 
 .dev-indicator {
     position: absolute;
-    right: 12px;
+    right: clamp(4px, 0.56vw, 14px);
     top: 50%;
     transform: translateY(-50%);
-    width: 6px;
-    height: 6px;
+    width: clamp(4px, 0.56vw, 14px);
+    height: clamp(4px, 0.56vw, 14px);
     background-color: #00ffcc;
     border-radius: 50%;
     box-shadow: 0 0 6px rgba(0, 255, 204, 0.6);
@@ -3347,10 +3357,10 @@ body.hide-cursor * {
 #settings-sect-filters .settings-subnav {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 22px;
+    gap: clamp(5px, 0.74vw, 19px);
+    margin-bottom: clamp(13px, 2.04vw, 52px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: 10px;
+    padding-bottom: clamp(6px, 0.93vw, 24px);
 }
 
 .connectivity-subnav-btn,
@@ -3360,16 +3370,16 @@ body.hide-cursor * {
     background: transparent;
     border: none;
     color: rgba(255, 255, 255, 0.42);
-    font-size: 0.8125rem;
+    font-size: clamp(0.48rem, 1.20vw, 1.93rem);
     font-weight: 500;
     letter-spacing: -0.01em;
-    padding: 7px 14px;
+    padding: clamp(4px, 0.65vw, 17px) clamp(8px, 1.30vw, 33px);
     border-radius: 999px;
     cursor: pointer;
     transition: background 0.15s ease, color 0.15s ease;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: clamp(4px, 0.56vw, 14px);
 }
 
 .connectivity-subnav-btn i,
@@ -3380,8 +3390,8 @@ body.hide-cursor * {
 .settings-subnav-btn svg,
 #settings-sect-filters .settings-subnav-btn i,
 #settings-sect-filters .settings-subnav-btn svg {
-    width: 14px;
-    height: 14px;
+    width: clamp(8px, 1.30vw, 33px);
+    height: clamp(8px, 1.30vw, 33px);
 }
 
 .connectivity-subnav-btn:hover,
@@ -3405,7 +3415,7 @@ body.hide-cursor * {
 #settings-sect-general .settings-subnav,
 #settings-sect-parental .settings-subnav,
 #settings-sect-developer .settings-subnav {
-    margin-bottom: 12px;
+    margin-bottom: clamp(7px, 1.11vw, 28px);
 }
 
 /* Hotkey card grid */
@@ -3844,21 +3854,21 @@ body.hide-cursor * {
 
 .hud-mini-fav {
     position: absolute;
-    top: clamp(6px, 1vw, 14px);
-    right: clamp(60px, 7.5vw, 94px);
+    top: clamp(6px, 1vw, 18px);
+    right: clamp(60px, 7vw, 120px);
     z-index: 2;
 }
 
 .hud-mini-btn {
-    width: clamp(18px, 1.8vw, 24px) !important;
-    height: clamp(18px, 1.8vw, 24px) !important;
+    width: clamp(18px, 2vw, 36px) !important;
+    height: clamp(18px, 2vw, 36px) !important;
     border-radius: 50% !important;
 }
 
 .hud-mini-btn i,
 .hud-mini-btn svg {
-    width: clamp(9px, 0.9vw, 12px) !important;
-    height: clamp(9px, 0.9vw, 12px) !important;
+    width: clamp(9px, 1vw, 18px) !important;
+    height: clamp(9px, 1vw, 18px) !important;
 }
 
 /* Compact Volume Icons */
@@ -3866,8 +3876,8 @@ body.hide-cursor * {
 .vol-icon {
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    width: clamp(22px, 2.3vw, 32px);
-    height: clamp(22px, 2.3vw, 32px);
+    width: clamp(22px, 2.5vw, 48px);
+    height: clamp(22px, 2.5vw, 48px);
     color: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
@@ -3880,8 +3890,8 @@ body.hide-cursor * {
 }
 
 .vol-icon svg {
-    width: clamp(14px, 1.4vw, 18px);
-    height: clamp(14px, 1.4vw, 18px);
+    width: clamp(14px, 1.5vw, 26px);
+    height: clamp(14px, 1.5vw, 26px);
 }
 
 .vol-icon:hover {
@@ -3940,8 +3950,8 @@ body.hide-cursor * {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 14px 24px;
-    gap: 20px;
+    padding: clamp(10px, 0.8vw, 20px) clamp(16px, 1.4vw, 36px);
+    gap: clamp(12px, 1.2vw, 28px);
 
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);
@@ -3965,17 +3975,17 @@ body.hide-cursor * {
 
 .top-nav-buttons {
     display: flex;
-    gap: 12px !important; /* 1.25x gap spacing */
+    gap: clamp(8px, 0.8vw, 20px) !important;
 }
 
 .top-nav-buttons .nav-btn {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.7);
-    padding: 8px 16px !important;
-    border-radius: 10px !important;
+    padding: clamp(6px, 0.5vw, 14px) clamp(12px, 1vw, 28px) !important;
+    border-radius: clamp(8px, 0.6vw, 14px) !important;
     cursor: pointer;
-    font-size: 1.15rem !important;
+    font-size: clamp(0.95rem, 0.9vw, 1.6rem) !important;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -4001,8 +4011,8 @@ body.hide-cursor * {
 
 .top-nav-buttons .nav-btn i,
 .top-nav-buttons .nav-btn svg {
-    width: 20px !important; /* 1.25x larger icons */
-    height: 20px !important;
+    width: clamp(16px, 1.2vw, 28px) !important;
+    height: clamp(16px, 1.2vw, 28px) !important;
 }
 
 .fullscreen-hover-zone {
@@ -4027,10 +4037,10 @@ body.hide-cursor * {
 }
 
 .fullscreen-toggle-btn {
-    width: 54px;
-    height: 54px;
+    width: clamp(28px, 3.9vw, 96px);
+    height: clamp(28px, 3.9vw, 96px);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
+    border-radius: clamp(8px, 1.3vw, 28px);
     background: rgba(10, 10, 10, 0.25);
     backdrop-filter: blur(60px);
     -webkit-backdrop-filter: blur(60px);
@@ -4061,8 +4071,8 @@ body.hide-cursor * {
 
 .fullscreen-toggle-btn i,
 .fullscreen-toggle-btn svg {
-    width: 27px;
-    height: 27px;
+    width: clamp(12px, 1.7vw, 42px);
+    height: clamp(12px, 1.7vw, 42px);
     transition: transform 0.22s ease;
     transform: scale(1);
 }
@@ -4096,10 +4106,10 @@ body.hide-cursor * {
 }
 
 .power-toggle-btn {
-    width: 54px;
-    height: 54px;
+    width: clamp(28px, 3.9vw, 96px);
+    height: clamp(28px, 3.9vw, 96px);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
+    border-radius: clamp(8px, 1.3vw, 28px);
     background: rgba(10, 10, 10, 0.25);
     backdrop-filter: blur(60px);
     -webkit-backdrop-filter: blur(60px);
@@ -4130,8 +4140,8 @@ body.hide-cursor * {
 
 .power-toggle-btn i,
 .power-toggle-btn svg {
-    width: 27px;
-    height: 27px;
+    width: clamp(12px, 1.7vw, 42px);
+    height: clamp(12px, 1.7vw, 42px);
     stroke-width: 2.5;
     transition: transform 0.22s ease;
     transform: scale(1);
@@ -4329,7 +4339,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
 /* Modern Minimalist Section Title */
 .section-title {
     position: static !important;
-    font-size: 2.6rem !important;
+    font-size: clamp(2rem, 2vw, 4rem) !important;
     font-weight: 600 !important;
     color: rgba(255, 255, 255, 0.95) !important;
     font-family: 'Outfit', sans-serif !important;
@@ -4348,7 +4358,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     margin-top: 6px !important;
     color: rgba(255, 255, 255, 0.7) !important;
     font-weight: 700 !important;
-    font-size: 0.95rem !important;
+    font-size: clamp(0.85rem, 0.7vw, 1.3rem) !important;
     cursor: pointer !important;
     align-self: flex-end;
     transition: transform 0.2s ease, color 0.2s ease;
@@ -5102,8 +5112,8 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
 
 .floating-reload-btn {
     position: relative;
-    width: 44px;
-    height: 44px;
+    width: clamp(28px, 3.9vw, 96px);
+    height: clamp(28px, 3.9vw, 96px);
     border-radius: 50%;
     background: rgba(0, 255, 204, 0.15);
     border: 1px solid rgba(0, 255, 204, 0.4);
@@ -5120,8 +5130,8 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
 
 .floating-reload-btn i,
 .floating-reload-btn svg {
-    width: 20px;
-    height: 20px;
+    width: clamp(12px, 1.7vw, 42px);
+    height: clamp(12px, 1.7vw, 42px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6059,33 +6069,9 @@ body:has(#resolution-blocker:not(.hidden)) #player-container {
     }
 }
 
-/* ====== Responsive: Large screens (4K) ====== */
-@media (min-width: 2400px) {
-    .dashboard-content {
-        max-width: 1800px;
-    }
-    .grid-carousel-wrapper {
-        max-width: 1500px;
-    }
-    .favorites-grid {
-        max-width: 1200px;
-        gap: 20px;
-    }
-    .grid-item {
-        padding: 20px 28px;
-        border-radius: 20px;
-    }
-    .grid-item .grid-logo {
-        width: 65px;
-        height: 65px;
-    }
-    .grid-item h4 {
-        font-size: 1.4rem;
-    }
-    .settings-sidebar {
-        width: 220px;
-    }
+/* ====== Responsive: Extra-large screens (4K ≥2500px) ====== */
+@media (min-width: 2500px) {
     #main-menu {
-        width: 500px;
+        width: 600px;
     }
 }

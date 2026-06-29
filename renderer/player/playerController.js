@@ -334,6 +334,8 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     state.watchStartTime = Date.now();
     state.isHomeActive = false;
     state.isVodPlaying = false;
+    state.currentModule = 'live';
+    document.body.setAttribute('data-module', 'live');
     state.shouldRestoreTunedChannel = false;
 
     nativeApi.logDiagnostic(`Tuning channel ID: ${channel.id} ("${channel.name}") [ResetSource=${resetSource}]`);
@@ -403,8 +405,17 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     if (ext.syncMenuScroll) ext.syncMenuScroll();
     if (ext.startInactivityTimers) ext.startInactivityTimers();
 
+    // Update hover-trigger visibility early so the sidebar/HUD triggers are enabled
+    // even if a later call (e.g. switchTab on first tune) throws. (Fixes sidebar not
+    // appearing on the first channel tune from the home dashboard.)
+    if (ext.updateTriggersVisibility) ext.updateTriggersVisibility();
+
     if (wasHomeActive) {
-        if (ext.switchTab) ext.switchTab(state.zapSourceTab);
+        try {
+            if (ext.switchTab) ext.switchTab(state.zapSourceTab);
+        } catch (err) {
+            if (nativeApi && nativeApi.logDiagnostic) nativeApi.logDiagnostic(`switchTab failed on tune: ${err && err.message}`);
+        }
     }
 
     // Use current source folder for path
