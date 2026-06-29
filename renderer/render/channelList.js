@@ -32,7 +32,7 @@ export function renderList(container, list, highlightTerm = "") {
     
     list.forEach((channel, index) => {
         const item = document.createElement('div');
-        item.className = `channel-item stagger-reveal ${String(state.activeChannelId) === String(channel.id) ? 'active' : ''}`;
+        item.className = `side-channel-item stagger-reveal ${String(state.activeChannelId) === String(channel.id) ? 'active' : ''}`;
         item.style.animationDelay = `${Math.min(index * 0.015, 0.3)}s`;
         item.setAttribute('data-id', channel.id);
 
@@ -46,28 +46,28 @@ export function renderList(container, list, highlightTerm = "") {
         const logoHtml = getSafeLogoHtml(channel.name, channel.logo);
 
         item.innerHTML = `
-            <div class="channel-logo">${logoHtml}</div>
-            <div class="channel-info">
-                <div class="channel-name-row">
+            <div class="side-channel-logo">${logoHtml}</div>
+            <div class="side-channel-info">
+                <div class="side-channel-name-row">
                     <h4>${highlightedName}</h4>
                 </div>
-                <div class="channel-meta-row">
-                    <p class="epg-text">${epgText}</p>
-                    <span class="pbar-filter-badge">${highlightedId}</span>
+                <div class="side-channel-meta-row">
+                    <p class="side-epg-text">${epgText}</p>
+                    <span class="side-channel-id">${highlightedId}</span>
                 </div>
             </div>
-            <div class="channel-actions">
-                <button class="action-btn favorite ${channel.favorite ? 'active' : ''}" title="Favorite">
+            <div class="side-channel-actions">
+                <button class="side-action-btn favorite ${channel.favorite ? 'active' : ''}" title="Favorite">
                     <i data-lucide="heart" style="${channel.favorite ? 'fill:#ff4b4b;color:#ff4b4b;' : 'fill:transparent;color:currentColor;'}"></i>
                 </button>
-                <button class="action-btn edit-btn" title="Edit" data-id="${channel.id}">
+                <button class="side-action-btn edit-btn" title="Edit" data-id="${channel.id}">
                     <i data-lucide="sliders"></i>
                 </button>
             </div>
         `;
 
         item.onclick = (e) => {
-            if (e.target.closest('.action-btn')) return;
+            if (e.target.closest('.side-action-btn')) return;
             const clickedTab = container.id === 'favorites-list' ? 'favorites' : 'channels';
             if (ext.selectChannel) ext.selectChannel(channel, true, clickedTab);
         };
@@ -129,14 +129,14 @@ export function syncMenuScroll(channelId) {
     const id = channelId || state.activeChannelId;
     if (!id) return;
     
-    const mainMenu = document.getElementById('main-menu');
+    const mainMenu = document.getElementById('side-menu');
     if (!mainMenu || mainMenu.classList.contains('hidden')) return;
 
-    mainMenu.querySelectorAll('.channel-item').forEach(item => {
+    mainMenu.querySelectorAll('.side-channel-item').forEach(item => {
         item.classList.remove('active');
     });
 
-    const items = document.querySelectorAll(`.channel-item[data-id="${id}"]`);
+    const items = document.querySelectorAll(`.side-channel-item[data-id="${id}"]`);
     items.forEach(item => {
         item.classList.add('active');
         const pane = item.closest('.tab-pane');

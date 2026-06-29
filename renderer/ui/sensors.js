@@ -38,7 +38,7 @@ window.JTV_SENSORS = {
         }
     },
     isSidebarOpen: () => {
-        const mainMenu = document.getElementById('main-menu');
+        const mainMenu = document.getElementById('side-menu');
         return mainMenu ? !mainMenu.classList.contains('hidden') : false;
     },
     getAudioState: async () => {

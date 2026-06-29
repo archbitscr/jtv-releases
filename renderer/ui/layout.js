@@ -32,7 +32,7 @@ export async function toggleAppFullscreen() {
 }
 
 export function getActiveSidebarTab() {
-    const activeTabBtn = document.querySelector('.tab-btn.active');
+    const activeTabBtn = document.querySelector('.side-tab-btn.active');
     const activeTab = activeTabBtn ? activeTabBtn.dataset.tab : 'channels';
     return activeTab === 'favorites' ? 'favorites' : 'channels';
 }

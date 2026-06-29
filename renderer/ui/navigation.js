@@ -18,7 +18,7 @@ export function hideEditPane(shouldValidate = true) {
 
     if (editView) editView.classList.add('hidden');
     
-    const activeTabBtn = document.querySelector('.tab-btn.active');
+    const activeTabBtn = document.querySelector('.side-tab-btn.active');
     const activeTab = activeTabBtn ? activeTabBtn.dataset.tab : 'channels';
     tabPanes.forEach(pane => pane.classList.toggle('active', pane.id === `tab-${activeTab}`));
 
@@ -29,7 +29,7 @@ export function hideEditPane(shouldValidate = true) {
 }
 
 export function hideMenu() {
-    const mainMenu = document.getElementById('main-menu');
+    const mainMenu = document.getElementById('side-menu');
     if (mainMenu) mainMenu.classList.add('hidden');
     hideEditPane(true);
     
@@ -277,7 +277,7 @@ export function showModule(moduleName) {
 
 export function switchTab(tabId) {
     if (!tabId) return;
-    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabBtns = document.querySelectorAll('.side-tab-btn');
     const tabPanes = document.querySelectorAll('.tab-pane');
 
     if (ext.validateAndCleanupCurrentEdit) ext.validateAndCleanupCurrentEdit();

@@ -23,7 +23,7 @@ function shouldSuppressTooltip(el) {
     // Settings main tabs
     if (className.includes('settings-tab-btn')) return true;
     // Sidebar All/Favorites tabs
-    if (className.includes('tab-btn') && el.closest('.channel-tabs')) return true;
+    if (className.includes('side-tab-btn') && el.closest('.channel-tabs')) return true;
     // Inputs inside CRUD or connectivity sections
     if (el.tagName === 'INPUT' && el.closest('#settings-sect-developer, #settings-sect-connectivity, #settings-sect-parental')) return true;
     return false;
@@ -49,7 +49,7 @@ export function getOrGenerateTooltip(el) {
         const isActive = (favBtn && favBtn.classList.contains('active')) || el.classList.contains('active');
         return isActive ? 'Remove from Favorites' : 'Add to Favorites';
     }
-    if (iconName === 'sliders' && el.closest('.channel-actions')) {
+    if (iconName === 'sliders' && el.closest('.side-channel-actions')) {
         return 'Edit channel';
     }
     if (iconName === 'pin') {
@@ -165,7 +165,7 @@ export function initCustomTooltips() {
     let hideTimer = null;
 
     document.addEventListener('mouseover', (e) => {
-        const target = e.target.closest('button, input, select, textarea, a, .tnav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [title], [data-tooltip], [onclick], [role="button"]');
+        const target = e.target.closest('button, input, select, textarea, a, .tnav-btn, .side-tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [title], [data-tooltip], [onclick], [role="button"]');
         if (!target) return;
 
         if (state.currentModule === 'live' && target.closest('#tnav-menu')) return;
@@ -198,7 +198,7 @@ export function initCustomTooltips() {
 
             let top, left;
             let forcedPos = target.getAttribute('data-tooltip-pos');
-            if (!forcedPos && target.closest('#main-menu .channel-actions')) {
+            if (!forcedPos && target.closest('#side-menu .side-channel-actions')) {
                 forcedPos = 'right';
             }
 
@@ -243,7 +243,7 @@ export function initCustomTooltips() {
     });
 
     document.addEventListener('mouseout', (e) => {
-        const target = e.target.closest('button, input, select, textarea, a, .tnav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [data-tooltip]');
+        const target = e.target.closest('button, input, select, textarea, a, .tnav-btn, .side-tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [data-tooltip]');
         if (target) {
             clearTimeout(tooltipTimer);
             clearTimeout(hideTimer);

@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=4">
+    <link rel="stylesheet" href="./style.css?v=5">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen (Tarea 11) -->
@@ -261,28 +261,28 @@
 
 
         <!-- Unified Left Menu -->
-        <aside id="main-menu" class="glass-menu left hidden">
+        <aside id="side-menu" class="glass-menu left hidden">
             <!-- Combined tab row with close button -->
-            <div class="menu-tabs">
-                <div class="menu-tabs-center">
-                    <button class="tab-btn" data-tab="home" id="menu-home-btn" title="Live TV Home"><i data-lucide="home"></i> Home</button>
-                    <button class="tab-btn active" data-tab="channels"><i data-lucide="tv"></i> All</button>
-                    <button class="tab-btn" data-tab="favorites"><i data-lucide="heart"></i> Favorites</button>
+            <div class="side-tabs">
+                <div class="side-tabs-center">
+                    <button class="side-tab-btn" data-tab="home" id="menu-home-btn" title="Live TV Home"><i data-lucide="home"></i> Home</button>
+                    <button class="side-tab-btn active" data-tab="channels"><i data-lucide="tv"></i> All</button>
+                    <button class="side-tab-btn" data-tab="favorites"><i data-lucide="heart"></i> Favorites</button>
                 </div>
-                <button class="close-btn menu-close-btn" title="Close menu"><i data-lucide="x"></i></button>
+                <button class="close-btn side-close-btn" title="Close menu"><i data-lucide="x"></i></button>
             </div>
 
             <div class="menu-content">
                 <!-- Channels Tab -->
                 <div id="tab-channels" class="tab-pane active">
-                    <div class="scroll-area">
+                    <div class="side-scroll-area">
                         <div id="all-channels-list" class="carousel"></div>
                     </div>
                 </div>
 
                 <!-- Favorites Tab -->
                 <div id="tab-favorites" class="tab-pane">
-                    <div class="scroll-area">
+                    <div class="side-scroll-area">
                         <div id="favorites-list" class="carousel"></div>
                     </div>
                     <!-- Tuning Hint Message -->
@@ -297,7 +297,7 @@
                         <button id="back-to-list-btn" class="back-btn"><i data-lucide="arrow-left"></i> Back</button>
                         <h2 id="editing-channel-name">Edit channel</h2>
                     </div>
-                    <div class="modal-body scroll-area">
+                    <div class="modal-body side-scroll-area">
                         <div class="edit-group">
                             <label>Channel name</label>
                             <input type="text" id="edit-name-input" class="dark-input" placeholder="Ej. HBO USA">
@@ -322,7 +322,7 @@
                         </div>
                         <div class="config-section fav-config">
                             <h3>Favorite status</h3>
-                            <button id="edit-fav-toggle" class="action-btn favorite edit-mode" data-tooltip-pos="right">
+                            <button id="edit-fav-toggle" class="side-action-btn favorite edit-mode" data-tooltip-pos="right">
                                 <i data-lucide="heart"></i>
                             </button>
                         </div>

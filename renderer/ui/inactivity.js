@@ -23,7 +23,7 @@ export function startInactivityTimers() {
     clearInactivityTimers();
     document.body.classList.remove('hide-cursor');
 
-    const mainMenu = document.getElementById('main-menu');
+    const mainMenu = document.getElementById('side-menu');
     const topNavMenu = document.getElementById('tnav-menu');
     const sourceSwitcher = document.getElementById('pbar');
     const settingsScreen = document.getElementById('settings-screen');

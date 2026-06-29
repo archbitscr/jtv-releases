@@ -44,7 +44,7 @@ export function setupEventListeners() {
     const triggerBottom = document.getElementById('trigger-bottom');
     const triggerRight = document.getElementById('trigger-right');
     const triggerTop = document.getElementById('trigger-top');
-    const mainMenu = document.getElementById('main-menu');
+    const mainMenu = document.getElementById('side-menu');
     const sourceSwitcher = document.getElementById('pbar');
     const topNavMenu = document.getElementById('tnav-menu');
     const gridPrevBtn = document.getElementById('grid-prev');
@@ -845,7 +845,7 @@ export function setupEventListeners() {
     }
 
     // Sidebar close buttons — hide menu/edit pane
-    document.querySelectorAll('.menu-close-btn').forEach(btn => {
+    document.querySelectorAll('.side-close-btn').forEach(btn => {
         btn.onclick = () => {
             hideMenu();
             hideEditPane();
@@ -920,7 +920,7 @@ export function setupEventListeners() {
     }
 
     backToListBtn.onclick = () => hideEditPane();
-    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabBtns = document.querySelectorAll('.side-tab-btn');
     tabBtns.forEach(btn => btn.onclick = () => {
         const tab = btn.dataset.tab;
         if (tab === 'channels' || tab === 'favorites') {
@@ -2036,7 +2036,7 @@ function hideScrollbarFast(scrollEl) {
 
 function initGlobalScrollbarAutoHide() {
     const scrollSelectors = [
-        '.scroll-area',
+        '.side-scroll-area',
         '.settings-sidebar',
         '.settings-main-content',
         '.scroll-panel',
