@@ -4,7 +4,7 @@ import { refreshVodContent } from '../vod/vodContent.js';
 import { renderFavoritesGrid } from '../render/favoritesGrid.js';
 
 export function syncCenterNavWidth() {
-    const topNavMenu = document.getElementById('top-nav-menu');
+    const topNavMenu = document.getElementById('tnav-menu');
     if (!topNavMenu) return;
     const width = Math.round(topNavMenu.getBoundingClientRect().width);
     if (width > 0) {

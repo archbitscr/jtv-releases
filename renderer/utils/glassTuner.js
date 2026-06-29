@@ -4,7 +4,7 @@ let glassTunerEnabled = false;
 const TARGETS = [
     { key: 'hud', label: 'HUD (Source Switcher)', selector: '.pbar' },
     { key: 'sidebar', label: 'Sidebar (Menu)', selector: '.glass-menu' },
-    { key: 'topnav', label: 'Top Nav', selector: '.top-nav-menu' },
+    { key: 'topnav', label: 'Top Nav', selector: '.tnav-menu' },
 ];
 
 const PARAMS = [

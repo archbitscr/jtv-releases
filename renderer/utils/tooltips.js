@@ -165,10 +165,10 @@ export function initCustomTooltips() {
     let hideTimer = null;
 
     document.addEventListener('mouseover', (e) => {
-        const target = e.target.closest('button, input, select, textarea, a, .nav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [title], [data-tooltip], [onclick], [role="button"]');
+        const target = e.target.closest('button, input, select, textarea, a, .tnav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [title], [data-tooltip], [onclick], [role="button"]');
         if (!target) return;
 
-        if (state.currentModule === 'live' && target.closest('#top-nav-menu')) return;
+        if (state.currentModule === 'live' && target.closest('#tnav-menu')) return;
         if (state.currentModule === 'live' && target.closest('.dashboard-landing-nav')) return;
 
         const text = getOrGenerateTooltip(target);
@@ -243,7 +243,7 @@ export function initCustomTooltips() {
     });
 
     document.addEventListener('mouseout', (e) => {
-        const target = e.target.closest('button, input, select, textarea, a, .nav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [data-tooltip]');
+        const target = e.target.closest('button, input, select, textarea, a, .tnav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [data-tooltip]');
         if (target) {
             clearTimeout(tooltipTimer);
             clearTimeout(hideTimer);

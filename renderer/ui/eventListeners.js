@@ -46,7 +46,7 @@ export function setupEventListeners() {
     const triggerTop = document.getElementById('trigger-top');
     const mainMenu = document.getElementById('main-menu');
     const sourceSwitcher = document.getElementById('pbar');
-    const topNavMenu = document.getElementById('top-nav-menu');
+    const topNavMenu = document.getElementById('tnav-menu');
     const gridPrevBtn = document.getElementById('grid-prev');
     const gridNextBtn = document.getElementById('grid-next');
     const gridDots = document.getElementById('grid-dots');
@@ -688,7 +688,7 @@ export function setupEventListeners() {
     });
 
     // Top HUD navigation button clicks
-    document.querySelectorAll('.top-nav-menu .nav-btn').forEach(btn => {
+    document.querySelectorAll('.tnav-menu .tnav-btn').forEach(btn => {
         btn.onclick = (e) => {
             e.stopPropagation();
             const dest = btn.dataset.nav;

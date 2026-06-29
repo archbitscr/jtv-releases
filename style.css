@@ -2062,8 +2062,8 @@ body.hide-cursor * {
 
 .pbar-action-btn {
     position: relative;
-    width: 38px;
-    height: 38px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -4180,7 +4180,7 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 /* Top Navigation HUD */
-.top-nav-menu {
+.tnav-menu {
     position: fixed;
     top: 0 !important;
     left: 50%;
@@ -4207,19 +4207,19 @@ body:not(.dev-mode) .dev-indicator {
     pointer-events: auto;
 }
 
-.top-nav-menu.hidden {
+.tnav-menu.hidden {
     display: flex !important;
     transform: translate(-50%, -100%) !important; /* Move fully off-screen */
     opacity: 0;
     pointer-events: none;
 }
 
-.top-nav-buttons {
+.tnav-buttons {
     display: flex;
     gap: 12px !important;
 }
 
-.top-nav-buttons .nav-btn {
+.tnav-buttons .tnav-btn {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.7);
@@ -4236,22 +4236,22 @@ body:not(.dev-mode) .dev-indicator {
     flex-shrink: 0;
 }
 
-.top-nav-buttons .nav-btn:hover {
+.tnav-buttons .tnav-btn:hover {
     background: #ffffff !important;
     color: #131313 !important;
     border-color: #ffffff !important;
     transform: translateY(2px);
 }
 
-.top-nav-buttons .nav-btn.active {
+.tnav-buttons .tnav-btn.active {
     background: var(--accent-dim) !important;
     color: var(--accent) !important;
     border-color: var(--accent) !important;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-.top-nav-buttons .nav-btn i,
-.top-nav-buttons .nav-btn svg {
+.tnav-buttons .tnav-btn i,
+.tnav-buttons .tnav-btn svg {
     width: 20px !important;
     height: 20px !important;
 }
@@ -4607,7 +4607,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
 }
 
 /* Top Nav Menu Dashboard Integration (Positioned above search bar, touching top) */
-#home-dashboard:not(.hidden) ~ #top-nav-menu {
+#home-dashboard:not(.hidden) ~ #tnav-menu {
     position: absolute !important;
     top: 0 !important; /* Touch top window border */
     left: 50% !important;
@@ -6290,20 +6290,20 @@ body:has(#resolution-blocker:not(.hidden)) #player-container {
         width: 28px;
         height: 28px;
     }
-    .top-nav-buttons {
+    .tnav-buttons {
         gap: clamp(4px, 1vw, 12px) !important;
     }
-    .top-nav-buttons .nav-btn {
+    .tnav-buttons .tnav-btn {
         padding: clamp(4px, 1vw, 8px) clamp(8px, 1.5vw, 16px) !important;
         font-size: clamp(0.75rem, 2vw, 1.15rem) !important;
         border-radius: 8px !important;
     }
-    .top-nav-buttons .nav-btn i,
-    .top-nav-buttons .nav-btn svg {
+    .tnav-buttons .tnav-btn i,
+    .tnav-buttons .tnav-btn svg {
         width: clamp(12px, 2.5vw, 20px) !important;
         height: clamp(12px, 2.5vw, 20px) !important;
     }
-    .top-nav-menu {
+    .tnav-menu {
         padding: clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px) !important;
     }
     .glass-menu {

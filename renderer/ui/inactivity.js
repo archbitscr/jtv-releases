@@ -24,7 +24,7 @@ export function startInactivityTimers() {
     document.body.classList.remove('hide-cursor');
 
     const mainMenu = document.getElementById('main-menu');
-    const topNavMenu = document.getElementById('top-nav-menu');
+    const topNavMenu = document.getElementById('tnav-menu');
     const sourceSwitcher = document.getElementById('pbar');
     const settingsScreen = document.getElementById('settings-screen');
 

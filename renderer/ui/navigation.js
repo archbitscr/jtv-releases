@@ -39,10 +39,10 @@ export function hideMenu() {
 }
 
 export function updateTopNavVisibility(moduleName) {
-    const topBtnLive = document.getElementById('top-btn-live');
-    const topBtnSeries = document.getElementById('top-btn-series');
-    const topBtnMovies = document.getElementById('top-btn-movies');
-    const topBtnSettings = document.getElementById('top-btn-settings');
+    const topBtnLive = document.getElementById('tnav-btn-live');
+    const topBtnSeries = document.getElementById('tnav-btn-series');
+    const topBtnMovies = document.getElementById('tnav-btn-movies');
+    const topBtnSettings = document.getElementById('tnav-btn-settings');
     
     if (topBtnLive) {
         topBtnLive.classList.remove('hidden');
@@ -63,7 +63,7 @@ export function updateTopNavVisibility(moduleName) {
 }
 
 export function showLiveLanding() {
-    const topNavMenu = document.getElementById('top-nav-menu');
+    const topNavMenu = document.getElementById('tnav-menu');
     const sectionTitle = document.getElementById('section-title');
     const sourceSwitcher = document.getElementById('pbar');
     
@@ -103,7 +103,7 @@ export function showModule(moduleName) {
     const gridDots = document.getElementById('grid-dots');
     const playerContainer = document.getElementById('player-container');
     const sourceSwitcher = document.getElementById('pbar');
-    const topNavMenu = document.getElementById('top-nav-menu');
+    const topNavMenu = document.getElementById('tnav-menu');
     
     if (vodControls) vodControls.classList.add('hidden');
     if (liveSearchContainer) liveSearchContainer.classList.add('hidden');
