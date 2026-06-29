@@ -96,8 +96,8 @@ export async function toggleMute() {
 export function updateVolumeUI() {
     const nativeApi = window.jtvAPI;
     if (!nativeApi) return;
-    const tunerMuteBtn = document.getElementById('tuner-mute');
-    const tunerMuteIcon = document.getElementById('tuner-mute-icon');
+    const tunerMuteBtn = document.getElementById('pbar-mute');
+    const tunerMuteIcon = document.getElementById('pbar-mute-icon');
     
     nativeApi.isAudioMuted().then(isMuted => {
         if (tunerMuteBtn) {

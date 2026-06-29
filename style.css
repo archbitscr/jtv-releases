@@ -1574,10 +1574,10 @@ body.player-active .edge-mask {
 
 /* Compact mode for small windows (split-screen, laptops) */
 @media (max-width: 900px) {
-    .hud-channel-filters {
+    .pbar-channel-filters {
         display: none;
     }
-    .hud-autotune-row {
+    .pbar-autotune-row {
         gap: 6px !important;
     }
 }
@@ -1862,7 +1862,7 @@ body.hide-cursor * {
 }
 
 /* Source Switcher HUD */
-.source-switcher {
+.pbar {
     position: absolute;
     bottom: 0 !important;
     left: 50%;
@@ -1890,7 +1890,7 @@ body.hide-cursor * {
     pointer-events: auto;
 }
 
-.source-switcher.hidden {
+.pbar.hidden {
     display: flex !important;
     opacity: 0;
     transform: translate(-50%, 100%) !important;
@@ -1898,11 +1898,11 @@ body.hide-cursor * {
 }
 
 /* Channel Identity (Logo/Icon) */
-.hud-logo-wrapper {
+.pbar-logo-wrapper {
     flex-shrink: 0;
 }
 
-.hud-logo-container {
+.pbar-logo-container {
     width: 72px;
     height: 72px;
     background: transparent;
@@ -1914,13 +1914,13 @@ body.hide-cursor * {
     overflow: hidden;
 }
 
-.hud-logo-container img {
+.pbar-logo-container img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
 
-.hud-logo-container .placeholder-circle {
+.pbar-logo-container .placeholder-circle {
     width: 64px;
     height: 64px;
     border-radius: 16px;
@@ -1928,7 +1928,7 @@ body.hide-cursor * {
 }
 
 /* Program Info & Sources Area */
-.hud-info-area {
+.pbar-info-area {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -1938,12 +1938,12 @@ body.hide-cursor * {
     min-width: 0;
 }
 
-.hud-channel-header {
+.pbar-channel-header {
     display: flex;
     align-items: center;
 }
 
-#tuner-channel-text {
+#pbar-channel-text {
     font-size: 1.25rem;
     font-weight: 700;
     color: #fff;
@@ -1954,7 +1954,7 @@ body.hide-cursor * {
     text-overflow: ellipsis;
 }
 
-.hud-epg-text {
+.pbar-epg-text {
     font-size: 0.9rem;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.55);
@@ -1965,7 +1965,7 @@ body.hide-cursor * {
 }
 
 /* HUD Channel Filters Container */
-.hud-channel-filters {
+.pbar-channel-filters {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -1976,7 +1976,7 @@ body.hide-cursor * {
 }
 
 /* HUD Channel Filter Badges */
-.hud-filter-badge {
+.pbar-filter-badge {
     display: inline-flex;
     align-items: center;
     padding: 2px 6px;
@@ -1993,13 +1993,13 @@ body.hide-cursor * {
 }
 
 /* Sources Selection Row */
-.hud-sources-row {
+.pbar-sources-row {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.hud-sources-row .sources-label {
+.pbar-sources-row .sources-label {
     font-size: 0.7rem;
     font-weight: 700;
     color: var(--accent);
@@ -2007,13 +2007,13 @@ body.hide-cursor * {
     letter-spacing: 1px;
 }
 
-.hud-sources-row .source-buttons {
+.pbar-sources-row .pbar-source-buttons {
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-.hud-sources-row .source-btn {
+.pbar-sources-row .pbar-source-btn {
     width: 23px;
     height: 23px;
     border-radius: 50%;
@@ -2029,13 +2029,13 @@ body.hide-cursor * {
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hud-sources-row .source-btn:hover {
+.pbar-sources-row .pbar-source-btn:hover {
     border-color: var(--accent);
     color: var(--accent);
     transform: scale(1.08);
 }
 
-.hud-sources-row .source-btn.active {
+.pbar-sources-row .pbar-source-btn.active {
     background: #ffffff !important;
     color: #131313 !important;
     border-color: #ffffff !important;
@@ -2044,7 +2044,7 @@ body.hide-cursor * {
 }
 
 /* HUD Actions Container (Horizontal Placement) */
-.hud-actions-container {
+.pbar-actions-container {
     position: relative;
     display: flex;
     align-items: center;
@@ -2053,14 +2053,14 @@ body.hide-cursor * {
     flex-shrink: 0;
 }
 
-.hud-action-stack {
+.pbar-action-stack {
     display: flex;
     flex-direction: column;
     gap: 3px;
     justify-content: center;
 }
 
-.hud-action-btn {
+.pbar-action-btn {
     position: relative;
     width: 38px;
     height: 38px;
@@ -2075,78 +2075,78 @@ body.hide-cursor * {
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hud-action-stack .hud-action-btn,
-.hud-center-row .hud-action-btn {
+.pbar-action-stack .pbar-action-btn,
+.pbar-center-row .pbar-action-btn {
     width: 32px;
     height: 32px;
 }
 
-.hud-action-btn i,
-.hud-action-btn svg {
+.pbar-action-btn i,
+.pbar-action-btn svg {
     width: 18px;
     height: 18px;
     stroke-width: 2px;
 }
 
-.hud-action-stack .hud-action-btn i,
-.hud-action-stack .hud-action-btn svg {
+.pbar-action-stack .pbar-action-btn i,
+.pbar-action-stack .pbar-action-btn svg {
     width: 18px;
     height: 18px;
 }
 
-.hud-action-btn:hover {
+.pbar-action-btn:hover {
     background: #ffffff !important;
     color: #131313 !important;
     border-color: #ffffff !important;
     transform: scale(1.1);
 }
 
-.hud-action-btn.favorite-btn:hover,
-.hud-action-btn.favorite-btn.active {
+.pbar-action-btn.pbar-fav-btn:hover,
+.pbar-action-btn.pbar-fav-btn.active {
     color: #ff4b4b;
     border-color: rgba(255, 75, 75, 0.2);
 }
 
-.hud-action-btn.favorite-btn.active i,
-.hud-action-btn.favorite-btn.active svg {
+.pbar-action-btn.pbar-fav-btn.active i,
+.pbar-action-btn.pbar-fav-btn.active svg {
     fill: #ff4b4b !important;
     filter: drop-shadow(0 0 8px #ff0033);
 }
 
-.hud-action-btn.pin-btn i,
-.hud-action-btn.pin-btn svg {
+.pbar-action-btn.pbar-pin-btn i,
+.pbar-action-btn.pbar-pin-btn svg {
     fill: transparent;
     transition: 0.3s;
 }
 
-.hud-action-btn.pin-btn:hover,
-.hud-action-btn.pin-btn.active {
+.pbar-action-btn.pbar-pin-btn:hover,
+.pbar-action-btn.pbar-pin-btn.active {
     color: #ffffff;
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-.hud-action-btn.pin-btn.active i,
-.hud-action-btn.pin-btn.active svg {
+.pbar-action-btn.pbar-pin-btn.active i,
+.pbar-action-btn.pbar-pin-btn.active svg {
     fill: #ffffff !important;
     filter: drop-shadow(0 0 8px #ffffff);
 }
 
-.hud-action-btn.settings-btn:hover {
+.pbar-action-btn.pbar-settings-btn:hover {
     color: #ffffff;
 }
 
-.hud-action-btn.settings-btn:hover i,
-.hud-action-btn.settings-btn:hover svg {
+.pbar-action-btn.pbar-settings-btn:hover i,
+.pbar-action-btn.pbar-settings-btn:hover svg {
     filter: drop-shadow(0 0 8px #ffffff);
 }
 
-.tuner-btn i {
+.pbar-tuner-btn i {
     width: 28px;
     height: 28px;
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.tuner-btn:hover {
+.pbar-tuner-btn:hover {
     color: #000000;
     background: var(--accent);
     border-color: var(--accent);
@@ -2154,11 +2154,11 @@ body.hide-cursor * {
     transform: scale(1.08);
 }
 
-.tuner-btn:hover i {
+.pbar-tuner-btn:hover i {
     transform: scale(1.15);
 }
 
-.tuner-btn:active {
+.pbar-tuner-btn:active {
     transform: scale(0.95);
 }
 
@@ -4072,49 +4072,49 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 /* HUD Center Block (Vol up / Prev-Mute-Next row / Vol down) */
-.hud-center-block {
+.pbar-center-block {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 4px;
 }
 
-.hud-center-row {
+.pbar-center-row {
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
-/* Mini buttons (Fav & Pin) — floating top-right of source-switcher */
-.hud-mini-float {
+/* Mini buttons (Fav & Pin) — floating top-right of pbar */
+.pbar-mini-float {
     position: absolute;
     top: 14px;
     right: 14px;
     z-index: 2;
 }
 
-.hud-mini-fav {
+.pbar-mini-fav {
     position: absolute;
     top: 14px;
     right: 94px;
     z-index: 2;
 }
 
-.hud-mini-btn {
+.pbar-mini-btn {
     width: 24px !important;
     height: 24px !important;
     border-radius: 50% !important;
 }
 
-.hud-mini-btn i,
-.hud-mini-btn svg {
+.pbar-mini-btn i,
+.pbar-mini-btn svg {
     width: 12px !important;
     height: 12px !important;
 }
 
 /* Compact Volume Icons */
 
-.vol-icon {
+.pbar-vol-icon {
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     width: 32px;
@@ -4130,12 +4130,12 @@ body:not(.dev-mode) .dev-indicator {
     padding: 0;
 }
 
-.vol-icon svg {
+.pbar-vol-icon svg {
     width: 18px;
     height: 18px;
 }
 
-.vol-icon:hover {
+.pbar-vol-icon:hover {
     background: #ffffff;
     color: #131313;
     border-color: #ffffff;
@@ -4143,38 +4143,38 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 /* White active state for non-favorite, non-pin buttons */
-.hud-action-btn.active:not(.favorite-btn):not(.pin-btn) {
+.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn) {
     background: #ffffff !important;
     color: #131313 !important;
     border-color: #ffffff !important;
 }
 
-.hud-action-btn.active:not(.favorite-btn):not(.pin-btn) i,
-.hud-action-btn.active:not(.favorite-btn):not(.pin-btn) svg {
+.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn) i,
+.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn) svg {
     color: #131313 !important;
     stroke: #131313 !important;
 }
 
-#tuner-mute.active {
+#pbar-mute.active {
     background: #ffffff !important;
     color: #131313 !important;
     border-color: #ffffff !important;
 }
 
-#tuner-mute.active i,
-#tuner-mute.active svg {
+#pbar-mute.active i,
+#pbar-mute.active svg {
     color: #131313 !important;
     stroke: #131313 !important;
 }
 
-.zapper-btn:hover {
+.pbar-zap-btn:hover {
     background: #ffffff !important;
     color: #131313 !important;
     border-color: #ffffff !important;
 }
 
-.zapper-btn:hover i,
-.zapper-btn:hover svg {
+.pbar-zap-btn:hover i,
+.pbar-zap-btn:hover svg {
     color: #131313 !important;
     stroke: #131313 !important;
 }
@@ -4424,7 +4424,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
 /* Volume HUD Indicator */
 .volume-indicator {
     position: absolute;
-    bottom: 140px; /* Positioned directly above source-switcher bottom menu */
+    bottom: 140px; /* Positioned directly above pbar bottom menu */
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 10005;

@@ -290,9 +290,9 @@ export function mountRemotePlayer(url) {
 export async function selectChannel(channel, resetSource = true, sourceTab = null) {
     const nativeApi = window.jtvAPI;
     const playerContainer = document.getElementById('player-container');
-    const sourceSwitcher = document.getElementById('source-switcher');
-    const tunerChannelText = document.getElementById('tuner-channel-text');
-    const tunerFavHeart = document.getElementById('tuner-fav-heart');
+    const sourceSwitcher = document.getElementById('pbar');
+    const tunerChannelText = document.getElementById('pbar-channel-text');
+    const tunerFavHeart = document.getElementById('pbar-fav-heart');
 
     // Verify trial period expiration on channel tune (Tarea 24)
     const check = await nativeApi.getNetworkDate(channel.path).catch(() => ({ expired: false }));
@@ -353,12 +353,12 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
 
     // Update Tuned Info HUD
     tunerChannelText.textContent = `${channel.name} - ${channel.id}`;
-    const tunerEpgText = document.getElementById('tuner-epg-text');
+    const tunerEpgText = document.getElementById('pbar-epg-text');
     if (tunerEpgText) {
         tunerEpgText.textContent = epgText;
     }
 
-    const hudLogoContainer = document.getElementById('hud-logo-container');
+    const hudLogoContainer = document.getElementById('pbar-logo-container');
     if (hudLogoContainer) {
         hudLogoContainer.innerHTML = getSafeLogoHtml(channel.name, channel.logo);
     }
@@ -366,7 +366,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     // Update HUD channel filters (Tarea 28)
     if (ext.updateHudChannelFilters) ext.updateHudChannelFilters(channel);
 
-    const hudFavBtn = document.getElementById('hud-fav-btn');
+    const hudFavBtn = document.getElementById('pbar-fav-btn');
     if (hudFavBtn) {
         hudFavBtn.classList.toggle('active', channel.favorite || false);
     }
@@ -381,7 +381,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
         }
     }
 
-    const tunerMuteIcon = document.getElementById('tuner-mute-icon');
+    const tunerMuteIcon = document.getElementById('pbar-mute-icon');
     if (tunerMuteIcon) {
         nativeApi.isAudioMuted().then(isMuted => {
             tunerMuteIcon.setAttribute('data-lucide', isMuted ? 'volume-x' : 'volume-2');
@@ -432,8 +432,8 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
 }
 
 export async function updateHudAutotuneIndicators(path) {
-    const audioIndicator = document.getElementById('hud-indicator-audio');
-    const videoIndicator = document.getElementById('hud-indicator-video');
+    const audioIndicator = document.getElementById('pbar-indicator-audio');
+    const videoIndicator = document.getElementById('pbar-indicator-video');
     if (!audioIndicator || !videoIndicator) return;
 
     // Reset to inactive first
@@ -503,8 +503,8 @@ export function zapChannel(direction) {
 }
 
 export function playVod(item) {
-    const tunerChannelText = document.getElementById('tuner-channel-text');
-    const tunerFavHeart = document.getElementById('tuner-fav-heart');
+    const tunerChannelText = document.getElementById('pbar-channel-text');
+    const tunerFavHeart = document.getElementById('pbar-fav-heart');
 
     if (ext.applyWallpaper) ext.applyWallpaper('none');
     if (ext.showPlayerCurtain) ext.showPlayerCurtain();

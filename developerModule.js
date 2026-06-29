@@ -809,8 +809,8 @@ export function updateDeveloperUI() {
 
     if (devToggle) devToggle.checked = !!developerModeEnabled;
 
-    const hudPinBtn = document.getElementById('hud-pin-btn');
-    const hudSettingsBtn = document.getElementById('hud-settings-btn');
+    const hudPinBtn = document.getElementById('pbar-pin-btn');
+    const hudSettingsBtn = document.getElementById('pbar-settings-btn');
     if (hudPinBtn) hudPinBtn.style.display = developerModeEnabled ? 'none' : '';
     if (hudSettingsBtn) hudSettingsBtn.style.display = developerModeEnabled ? '' : 'none';
 
@@ -945,11 +945,11 @@ export function updateDeveloperUI() {
 
     // Show/hide HUD toggle sources button and indicators (Tarea 28)
     const showDevControls = developerModeEnabled && hudDevControlsEnabled;
-    const hudToggleSourcesBtn = document.getElementById('hud-toggle-sources-btn');
-    const hudSourcesRow = document.getElementById('hud-sources-row');
-    const hudIndicatorAudio = document.getElementById('hud-indicator-audio');
-    const hudIndicatorVideo = document.getElementById('hud-indicator-video');
-    const hudChannelFilters = document.getElementById('hud-channel-filters');
+    const hudToggleSourcesBtn = document.getElementById('pbar-toggle-sources-btn');
+    const hudSourcesRow = document.getElementById('pbar-sources-row');
+    const hudIndicatorAudio = document.getElementById('pbar-indicator-audio');
+    const hudIndicatorVideo = document.getElementById('pbar-indicator-video');
+    const hudChannelFilters = document.getElementById('pbar-channel-filters');
 
     if (hudToggleSourcesBtn) {
         hudToggleSourcesBtn.style.display = showDevControls ? 'flex' : 'none';

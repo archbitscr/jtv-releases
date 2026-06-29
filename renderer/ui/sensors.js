@@ -29,7 +29,7 @@ window.JTV_SENSORS = {
     getTunedChannel: () => {
         if (!state.activeChannelId) return null;
         if (state.isVodPlaying) {
-            const tunerChannelText = document.getElementById('tuner-channel-text');
+            const tunerChannelText = document.getElementById('pbar-channel-text');
             const title = tunerChannelText ? tunerChannelText.innerText : 'VOD';
             return { id: state.activeChannelId, type: 'VOD', title };
         } else {

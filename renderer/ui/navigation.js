@@ -65,7 +65,7 @@ export function updateTopNavVisibility(moduleName) {
 export function showLiveLanding() {
     const topNavMenu = document.getElementById('top-nav-menu');
     const sectionTitle = document.getElementById('section-title');
-    const sourceSwitcher = document.getElementById('source-switcher');
+    const sourceSwitcher = document.getElementById('pbar');
     
     updateTopNavVisibility('live');
     if (topNavMenu) {
@@ -102,7 +102,7 @@ export function showModule(moduleName) {
     const favoritesGrid = document.getElementById('favorites-grid');
     const gridDots = document.getElementById('grid-dots');
     const playerContainer = document.getElementById('player-container');
-    const sourceSwitcher = document.getElementById('source-switcher');
+    const sourceSwitcher = document.getElementById('pbar');
     const topNavMenu = document.getElementById('top-nav-menu');
     
     if (vodControls) vodControls.classList.add('hidden');

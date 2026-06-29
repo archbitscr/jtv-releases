@@ -25,7 +25,7 @@ export function startInactivityTimers() {
 
     const mainMenu = document.getElementById('main-menu');
     const topNavMenu = document.getElementById('top-nav-menu');
-    const sourceSwitcher = document.getElementById('source-switcher');
+    const sourceSwitcher = document.getElementById('pbar');
     const settingsScreen = document.getElementById('settings-screen');
 
     const hasChannel = !!(state.activeChannelId && !state.isVodPlaying);

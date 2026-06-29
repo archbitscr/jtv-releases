@@ -78,78 +78,78 @@
                 </div>
                 
                 <!-- Source Switcher HUD -->
-                <div id="source-switcher" class="source-switcher glass-panel hidden">
+                <div id="pbar" class="pbar glass-panel hidden">
                     <!-- Channel Identity (Logo/Icon) -->
-                    <div class="hud-logo-wrapper">
-                        <div id="hud-logo-container" class="hud-logo-container">
+                    <div class="pbar-logo-wrapper">
+                        <div id="pbar-logo-container" class="pbar-logo-container">
                             <!-- Populated dynamically -->
                         </div>
                     </div>
 
                     <!-- Program Info & Sources -->
-                    <div class="hud-info-area">
-                        <div class="hud-channel-header">
-                            <h2 id="tuner-channel-text">Tuned channel</h2>
+                    <div class="pbar-info-area">
+                        <div class="pbar-channel-header">
+                            <h2 id="pbar-channel-text">Tuned channel</h2>
                         </div>
-                        <p id="tuner-epg-text" class="hud-epg-text">Live broadcast</p>
+                        <p id="pbar-epg-text" class="pbar-epg-text">Live broadcast</p>
                         
                         <!-- Autotuner Indicators & Source Toggle Row -->
-                        <div class="hud-autotune-row" style="display: flex; align-items: center; gap: 12px; margin-top: 6px;">
+                        <div class="pbar-autotune-row" style="display: flex; align-items: center; gap: 12px; margin-top: 6px;">
                             <!-- Audio Indicator -->
-                            <span id="hud-indicator-audio" class="autotune-indicator inactive" title="Autotune Audio: Inactive" style="color: rgba(255,255,255,0.25); display: flex; align-items: center; transition: all 0.2s;">
+                            <span id="pbar-indicator-audio" class="pbar-autotune-indicator inactive" title="Autotune Audio: Inactive" style="color: rgba(255,255,255,0.25); display: flex; align-items: center; transition: all 0.2s;">
                                 <i data-lucide="volume-2" style="width: 18px; height: 18px;"></i>
                             </span>
                             <!-- Video Indicator -->
-                            <span id="hud-indicator-video" class="autotune-indicator inactive" title="Autotune Video: Inactive" style="color: rgba(255,255,255,0.25); display: flex; align-items: center; transition: all 0.2s;">
+                            <span id="pbar-indicator-video" class="pbar-autotune-indicator inactive" title="Autotune Video: Inactive" style="color: rgba(255,255,255,0.25); display: flex; align-items: center; transition: all 0.2s;">
                                 <i data-lucide="video" style="width: 18px; height: 18px;"></i>
                             </span>
                             <!-- Toggle Source Selector (Visible only in developer mode) -->
-                            <button id="hud-toggle-sources-btn" class="hud-source-toggle-btn" title="Show/hide sources" style="display: none; background: none; border: none; padding: 2px; color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.2s; align-items: center; justify-content: center;">
+                            <button id="pbar-toggle-sources-btn" class="pbar-source-toggle-btn" title="Show/hide sources" style="display: none; background: none; border: none; padding: 2px; color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.2s; align-items: center; justify-content: center;">
                                 <i data-lucide="server" style="width: 18px; height: 18px;"></i>
                             </button>
 
                             <!-- Sources Selection (Hidden by default, displayed inline) -->
-                            <div id="hud-sources-row" class="hud-sources-row hidden">
-                                <div class="source-buttons">
-                                    <button class="source-btn active" data-source="stream" title="Source 1">1</button>
-                                    <button class="source-btn" data-source="player" title="Source 2">2</button>
-                                    <button class="source-btn" data-source="casting" title="Source 3">3</button>
-                                    <button class="source-btn" data-source="plus" title="Source 4">4</button>
-                                    <button class="source-btn" data-source="watch" title="Source 5">5</button>
-                                    <button class="source-btn" data-source="cast" title="Source 6">6</button>
+                            <div id="pbar-sources-row" class="pbar-sources-row hidden">
+                                <div class="pbar-source-buttons">
+                                    <button class="pbar-source-btn active" data-source="stream" title="Source 1">1</button>
+                                    <button class="pbar-source-btn" data-source="player" title="Source 2">2</button>
+                                    <button class="pbar-source-btn" data-source="casting" title="Source 3">3</button>
+                                    <button class="pbar-source-btn" data-source="plus" title="Source 4">4</button>
+                                    <button class="pbar-source-btn" data-source="watch" title="Source 5">5</button>
+                                    <button class="pbar-source-btn" data-source="cast" title="Source 6">6</button>
                                 </div>
                             </div>
 
                             <!-- Channel Filters (Visible when dev mode is disabled or dev controls is off) -->
-                            <div id="hud-channel-filters" class="hud-channel-filters"></div>
+                            <div id="pbar-channel-filters" class="pbar-channel-filters"></div>
                         </div>
                     </div>
 
                     <!-- HUD Actions -->
-                    <div class="hud-actions-container">
+                    <div class="pbar-actions-container">
                         <!-- Channel/Mute/Volume center block -->
-                        <div class="hud-center-block">
-                            <button id="tuner-up" class="hud-action-btn zapper-btn" title="Previous channel"><i data-lucide="chevron-up"></i></button>
-                            <div class="hud-center-row">
-                                <button id="tuner-vol-down" class="vol-icon" title="Volume down" tabindex="0" aria-label="Volume down"><i data-lucide="minus"></i></button>
-                                <button id="tuner-mute" class="hud-action-btn hud-mute-btn" title="Mute / unmute">
-                                    <i data-lucide="volume-2" id="tuner-mute-icon"></i>
+                        <div class="pbar-center-block">
+                            <button id="pbar-up" class="pbar-action-btn pbar-zap-btn" title="Previous channel"><i data-lucide="chevron-up"></i></button>
+                            <div class="pbar-center-row">
+                                <button id="pbar-vol-down" class="pbar-vol-icon" title="Volume down" tabindex="0" aria-label="Volume down"><i data-lucide="minus"></i></button>
+                                <button id="pbar-mute" class="pbar-action-btn pbar-mute-btn" title="Mute / unmute">
+                                    <i data-lucide="volume-2" id="pbar-mute-icon"></i>
                                 </button>
-                                <button id="tuner-vol-up" class="vol-icon" title="Volume up" tabindex="0" aria-label="Volume up"><i data-lucide="plus"></i></button>
+                                <button id="pbar-vol-up" class="pbar-vol-icon" title="Volume up" tabindex="0" aria-label="Volume up"><i data-lucide="plus"></i></button>
                             </div>
-                            <button id="tuner-down" class="hud-action-btn zapper-btn" title="Next channel"><i data-lucide="chevron-down"></i></button>
+                            <button id="pbar-down" class="pbar-action-btn pbar-zap-btn" title="Next channel"><i data-lucide="chevron-down"></i></button>
                         </div>
                     </div>
                     <!-- Fav floating (left of pin) -->
-                    <button id="hud-fav-btn" class="hud-action-btn hud-mini-btn hud-mini-fav favorite-btn" title="Favorite">
-                        <i data-lucide="heart" id="tuner-fav-heart"></i>
+                    <button id="pbar-fav-btn" class="pbar-action-btn pbar-mini-btn pbar-mini-fav pbar-fav-btn" title="Favorite">
+                        <i data-lucide="heart" id="pbar-fav-heart"></i>
                     </button>
                     <!-- Pin floating top-right -->
-                    <div class="hud-mini-float">
-                        <button id="hud-pin-btn" class="hud-action-btn hud-mini-btn pin-btn" title="Pin HUD">
+                    <div class="pbar-mini-float">
+                        <button id="pbar-pin-btn" class="pbar-action-btn pbar-mini-btn pbar-pin-btn" title="Pin HUD">
                             <i data-lucide="pin"></i>
                         </button>
-                        <button id="hud-settings-btn" class="hud-action-btn hud-mini-btn settings-btn" title="Edit channel" style="display:none">
+                        <button id="pbar-settings-btn" class="pbar-action-btn pbar-mini-btn pbar-settings-btn" title="Edit channel" style="display:none">
                             <i data-lucide="sliders"></i>
                         </button>
                     </div>

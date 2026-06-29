@@ -64,7 +64,7 @@ export function initWebviewPointerEventsObserver() {
 }
 
 export function updateHudChannelFilters(channel) {
-    const container = document.getElementById('hud-channel-filters');
+    const container = document.getElementById('pbar-channel-filters');
     if (!container) return;
 
     container.innerHTML = '';
@@ -73,7 +73,7 @@ export function updateHudChannelFilters(channel) {
     categories.forEach(cat => {
         if (cat.toLowerCase() === 'all') return;
         const badge = document.createElement('span');
-        badge.className = 'hud-filter-badge';
+        badge.className = 'pbar-filter-badge';
         badge.textContent = cat;
         container.appendChild(badge);
     });

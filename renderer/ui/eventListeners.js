@@ -45,7 +45,7 @@ export function setupEventListeners() {
     const triggerRight = document.getElementById('trigger-right');
     const triggerTop = document.getElementById('trigger-top');
     const mainMenu = document.getElementById('main-menu');
-    const sourceSwitcher = document.getElementById('source-switcher');
+    const sourceSwitcher = document.getElementById('pbar');
     const topNavMenu = document.getElementById('top-nav-menu');
     const gridPrevBtn = document.getElementById('grid-prev');
     const gridNextBtn = document.getElementById('grid-next');
@@ -60,9 +60,9 @@ export function setupEventListeners() {
     const logoCanvas = document.getElementById('logo-canvas');
     const editUploadBtn = document.getElementById('edit-upload-btn');
     const editFavToggle = document.getElementById('edit-fav-toggle');
-    const tunerUpBtn = document.getElementById('tuner-up');
-    const tunerDownBtn = document.getElementById('tuner-down');
-    const tunerFavHeart = document.getElementById('tuner-fav-heart');
+    const tunerUpBtn = document.getElementById('pbar-up');
+    const tunerDownBtn = document.getElementById('pbar-down');
+    const tunerFavHeart = document.getElementById('pbar-fav-heart');
     const editNameInput = document.getElementById('edit-name-input');
     const editIdInput = document.getElementById('edit-id-input');
     const editStreamInput = document.getElementById('edit-stream-input');
@@ -1352,7 +1352,7 @@ export function setupEventListeners() {
         channel.favorite = !channel.favorite;
         editFavToggle.classList.toggle('active', channel.favorite);
         if (String(state.activeChannelId) === String(channel.id)) {
-            const hudFavBtn = document.getElementById('hud-fav-btn');
+            const hudFavBtn = document.getElementById('pbar-fav-btn');
             if (hudFavBtn) hudFavBtn.classList.toggle('active', channel.favorite);
             if (tunerFavHeart) {
                 tunerFavHeart.style.fill = channel.favorite ? '#ff4b4b' : 'transparent';
@@ -1435,19 +1435,19 @@ export function setupEventListeners() {
                 zapChannel('down');
                 return true;
             } else if (matchesHotkey('prevSource', key, e)) {
-                const sources = Array.from(document.querySelectorAll('.source-btn')).map(b => b.dataset.source);
+                const sources = Array.from(document.querySelectorAll('.pbar-source-btn')).map(b => b.dataset.source);
                 const currentIdx = sources.indexOf(state.playerSource);
                 if (currentIdx !== -1) {
                     const prevIdx = (currentIdx - 1 + sources.length) % sources.length;
-                    document.querySelector(`.source-btn[data-source="${sources[prevIdx]}"]`)?.click();
+                    document.querySelector(`.pbar-source-btn[data-source="${sources[prevIdx]}"]`)?.click();
                 }
                 return true;
             } else if (matchesHotkey('nextSource', key, e)) {
-                const sources = Array.from(document.querySelectorAll('.source-btn')).map(b => b.dataset.source);
+                const sources = Array.from(document.querySelectorAll('.pbar-source-btn')).map(b => b.dataset.source);
                 const currentIdx = sources.indexOf(state.playerSource);
                 if (currentIdx !== -1) {
                     const nextIdx = (currentIdx + 1) % sources.length;
-                    document.querySelector(`.source-btn[data-source="${sources[nextIdx]}"]`)?.click();
+                    document.querySelector(`.pbar-source-btn[data-source="${sources[nextIdx]}"]`)?.click();
                 }
                 return true;
             }
@@ -1456,7 +1456,7 @@ export function setupEventListeners() {
         if (matchesHotkey('toggleHUD', key, e)) {
             if (!state.isHomeActive && state.activeChannelId && !state.isVodPlaying) {
                 state.hudPinned = !state.hudPinned;
-                const sourceSwitcherEl = document.getElementById('source-switcher');
+                const sourceSwitcherEl = document.getElementById('pbar');
                 if (sourceSwitcherEl) {
                     if (state.hudPinned) {
                         sourceSwitcherEl.classList.remove('hidden');
@@ -1465,7 +1465,7 @@ export function setupEventListeners() {
                         startInactivityTimers();
                     }
                 }
-                const pinBtn = document.getElementById('hud-pin-btn');
+                const pinBtn = document.getElementById('pbar-pin-btn');
                 if (pinBtn) {
                     pinBtn.classList.toggle('active', state.hudPinned);
                     pinBtn.title = state.hudPinned ? 'Unpin HUD' : 'Pin HUD';
@@ -1679,7 +1679,7 @@ export function setupEventListeners() {
     };
 
     // HUD Quick Actions Listeners
-    const hudFavBtn = document.getElementById('hud-fav-btn');
+    const hudFavBtn = document.getElementById('pbar-fav-btn');
     if (hudFavBtn) {
         hudFavBtn.onclick = (e) => {
             e.stopPropagation();
@@ -1702,8 +1702,8 @@ export function setupEventListeners() {
         };
     }
 
-    const hudPinBtn = document.getElementById('hud-pin-btn');
-    const hudSettingsBtn = document.getElementById('hud-settings-btn');
+    const hudPinBtn = document.getElementById('pbar-pin-btn');
+    const hudSettingsBtn = document.getElementById('pbar-settings-btn');
 
     const devStateForHud = window.getDeveloperState ? window.getDeveloperState() : null;
     const isDevModeForHud = devStateForHud && devStateForHud.developerModeEnabled;
@@ -1754,7 +1754,7 @@ export function setupEventListeners() {
         };
     }
 
-    const tunerMuteBtn = document.getElementById('tuner-mute');
+    const tunerMuteBtn = document.getElementById('pbar-mute');
     if (tunerMuteBtn) {
         tunerMuteBtn.onclick = async (e) => {
             e.stopPropagation();
@@ -1762,7 +1762,7 @@ export function setupEventListeners() {
         };
     }
 
-    const tunerVolUpBtn = document.getElementById('tuner-vol-up');
+    const tunerVolUpBtn = document.getElementById('pbar-vol-up');
     if (tunerVolUpBtn) {
         tunerVolUpBtn.onclick = (e) => {
             e.stopPropagation();
@@ -1770,7 +1770,7 @@ export function setupEventListeners() {
         };
     }
 
-    const tunerVolDownBtn = document.getElementById('tuner-vol-down');
+    const tunerVolDownBtn = document.getElementById('pbar-vol-down');
     if (tunerVolDownBtn) {
         tunerVolDownBtn.onclick = (e) => {
             e.stopPropagation();
@@ -1779,7 +1779,7 @@ export function setupEventListeners() {
     }
 
     // Source Buttons Listeners
-    const sourceBtns = document.querySelectorAll('.source-btn');
+    const sourceBtns = document.querySelectorAll('.pbar-source-btn');
     sourceBtns.forEach(btn => {
         btn.onclick = () => {
             if (state.failoverTimeoutId) clearTimeout(state.failoverTimeoutId);
@@ -1796,8 +1796,8 @@ export function setupEventListeners() {
     });
 
     // Toggle Source Selector button click listener
-    const hudToggleSourcesBtn = document.getElementById('hud-toggle-sources-btn');
-    const hudSourcesRow = document.getElementById('hud-sources-row');
+    const hudToggleSourcesBtn = document.getElementById('pbar-toggle-sources-btn');
+    const hudSourcesRow = document.getElementById('pbar-sources-row');
     if (hudToggleSourcesBtn && hudSourcesRow) {
         hudToggleSourcesBtn.onclick = (e) => {
             e.stopPropagation();

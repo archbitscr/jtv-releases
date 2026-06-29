@@ -53,7 +53,7 @@ export function renderList(container, list, highlightTerm = "") {
                 </div>
                 <div class="channel-meta-row">
                     <p class="epg-text">${epgText}</p>
-                    <span class="hud-filter-badge">${highlightedId}</span>
+                    <span class="pbar-filter-badge">${highlightedId}</span>
                 </div>
             </div>
             <div class="channel-actions">
@@ -83,9 +83,9 @@ export function renderList(container, list, highlightTerm = "") {
             }
             btn.classList.toggle('active', channel.favorite);
             if (String(state.activeChannelId) === String(channel.id)) {
-                const hudFavBtn = document.getElementById('hud-fav-btn');
+                const hudFavBtn = document.getElementById('pbar-fav-btn');
                 if (hudFavBtn) hudFavBtn.classList.toggle('active', channel.favorite);
-                const tunerHeart = document.getElementById('tuner-fav-heart');
+                const tunerHeart = document.getElementById('pbar-fav-heart');
                 if (tunerHeart) {
                     tunerHeart.style.fill = channel.favorite ? '#ff4b4b' : 'transparent';
                     tunerHeart.style.color = channel.favorite ? '#ff4b4b' : 'currentColor';

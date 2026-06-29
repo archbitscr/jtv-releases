@@ -99,7 +99,7 @@ window.handleEditLogoError = (img) => {
 };
 
 window.updateSourceSwitcherUI = (source) => {
-    const sourceBtns = document.querySelectorAll('.source-btn');
+    const sourceBtns = document.querySelectorAll('.pbar-source-btn');
     sourceBtns.forEach(btn => {
         if (btn.dataset.source === source) {
             btn.classList.add('active');

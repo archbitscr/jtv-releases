@@ -31,8 +31,8 @@ export function showNoSignalOverlay(show, type = 'signal') {
         const titleEl = document.querySelector('#no-signal-overlay h2');
         if (titleEl) titleEl.textContent = type === 'internet' ? 'No Internet' : 'No Signal';
         overlay.classList.remove('hidden');
-        const audioIndicator = document.getElementById('hud-indicator-audio');
-        const videoIndicator = document.getElementById('hud-indicator-video');
+        const audioIndicator = document.getElementById('pbar-indicator-audio');
+        const videoIndicator = document.getElementById('pbar-indicator-video');
         if (audioIndicator) {
             audioIndicator.style.color = 'rgba(255,255,255,0.25)';
             audioIndicator.classList.remove('active');

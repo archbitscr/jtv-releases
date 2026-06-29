@@ -45,7 +45,7 @@ export function getOrGenerateTooltip(el) {
     const icon = el.querySelector('[data-lucide]');
     const iconName = icon ? icon.getAttribute('data-lucide') : null;
     if (iconName === 'heart') {
-        const favBtn = el.closest('.favorite, .favorite-btn, [id*="fav"]');
+        const favBtn = el.closest('.favorite, .pbar-fav-btn, [id*="fav"]');
         const isActive = (favBtn && favBtn.classList.contains('active')) || el.classList.contains('active');
         return isActive ? 'Remove from Favorites' : 'Add to Favorites';
     }
@@ -165,7 +165,7 @@ export function initCustomTooltips() {
     let hideTimer = null;
 
     document.addEventListener('mouseover', (e) => {
-        const target = e.target.closest('button, input, select, textarea, a, .nav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .vol-icon, .settings-switch, .settings-switch-slider, [title], [data-tooltip], [onclick], [role="button"]');
+        const target = e.target.closest('button, input, select, textarea, a, .nav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [title], [data-tooltip], [onclick], [role="button"]');
         if (!target) return;
 
         if (state.currentModule === 'live' && target.closest('#top-nav-menu')) return;
@@ -243,7 +243,7 @@ export function initCustomTooltips() {
     });
 
     document.addEventListener('mouseout', (e) => {
-        const target = e.target.closest('button, input, select, textarea, a, .nav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .vol-icon, .settings-switch, .settings-switch-slider, [data-tooltip]');
+        const target = e.target.closest('button, input, select, textarea, a, .nav-btn, .tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [data-tooltip]');
         if (target) {
             clearTimeout(tooltipTimer);
             clearTimeout(hideTimer);
