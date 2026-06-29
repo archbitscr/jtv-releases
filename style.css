@@ -2993,6 +2993,12 @@ body.hide-cursor * {
     background: var(--accent-dim);
 }
 
+/* === DEV-ONLY START === */
+/* Dev-only visibility convention (prep for Task 23 — Tree Shaking).
+   Elements marked data-dev="true" and the green .dev-indicator dots stay hidden
+   unless <body> carries the .dev-mode class (added in Vite dev builds and when dev
+   mode is available). Everything between DEV-ONLY START/END markers is intended to
+   be strippable from production builds. */
 .dev-indicator {
     position: absolute;
     right: clamp(4px, 0.56vw, 14px);
@@ -3005,6 +3011,16 @@ body.hide-cursor * {
     box-shadow: 0 0 6px rgba(0, 255, 204, 0.6);
     pointer-events: none;
 }
+
+/* Global visibility gate for all dev-only HTML (tabs, panes, settings, indicators) */
+body:not(.dev-mode) [data-dev="true"] {
+    display: none !important;
+}
+
+body:not(.dev-mode) .dev-indicator {
+    display: none !important;
+}
+/* === DEV-ONLY END === */
 
 
 .settings-main-content {
@@ -3762,6 +3778,7 @@ body.hide-cursor * {
     display: flex;
 }
 
+/* === DEV-ONLY START === */
 /* Sensors and Diagnostics Styles */
 .sensors-status-card {
     padding: 20px;
@@ -3823,6 +3840,7 @@ body.hide-cursor * {
     color: inherit;
     padding: 0;
 }
+/* === DEV-ONLY END === */
 
 
 /* Volume HUD Pill Badge */
@@ -5099,6 +5117,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     transition: opacity 0.3s ease;
 }
 
+/* === DEV-ONLY START === */
 /* Floating reload button for developer tools */
 .floating-controls-container {
     position: fixed;
@@ -5348,6 +5367,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     background: rgba(0, 255, 204, 0.1);
     border-color: rgba(0, 255, 204, 0.5);
 }
+/* === DEV-ONLY END === */
 
 /* User Mode electric neon white for Power Off button */
 .floating-reload-btn.neon-white {

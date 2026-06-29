@@ -112,6 +112,11 @@ window.updateSourceSwitcherUI = (source) => {
 async function init() {
     window.timeouts = timeouts;
 
+    // Dev-only UI gate (prep for Task 23 — Tree Shaking): reveal elements marked
+    // data-dev="true". Always active in the Vite dev server; in packaged builds the
+    // developer module adds .dev-mode when dev mode is available (see developerModule.js).
+    if (import.meta.env.DEV) document.body.classList.add('dev-mode');
+
     // Initialize watch duration trackers
     initWatchTimer({ saveAppState });
 

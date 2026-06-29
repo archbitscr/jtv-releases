@@ -379,13 +379,14 @@
                 <aside class="settings-sidebar">
                     <div class="settings-tabs">
                         <button class="settings-tab-btn active" data-settings-tab="general"><i data-lucide="settings-2"></i> Settings</button>
-                        <button class="settings-tab-btn" data-settings-tab="channels" id="settings-tab-channels"><i data-lucide="tv"></i> Channels <span class="dev-indicator"></span></button>
-                        <button class="settings-tab-btn" data-settings-tab="filters" id="settings-tab-filters"><i data-lucide="filter"></i> Filters</button>
+                        <button class="settings-tab-btn" data-settings-tab="filters" id="settings-tab-filters" data-dev="true"><i data-lucide="filter"></i> Filters <span class="dev-indicator"></span></button>
                         <button class="settings-tab-btn" data-settings-tab="background"><i data-lucide="image"></i> Wallpapers</button>
                         <button class="settings-tab-btn" data-settings-tab="parental" id="settings-tab-parental"><i data-lucide="shield"></i> Parental</button>
                         <button class="settings-tab-btn" data-settings-tab="account"><i data-lucide="monitor"></i> System</button>
-                        <button class="settings-tab-btn" data-settings-tab="connectivity" id="settings-tab-connectivity"><i data-lucide="network"></i> Connectivity <span class="dev-indicator"></span></button>
-                        <button class="settings-tab-btn" data-settings-tab="sensors"><i data-lucide="cpu"></i> Sensors <span class="dev-indicator"></span></button>
+                        <button class="settings-tab-btn" data-settings-tab="developer" id="settings-tab-developer" data-dev="true"><i data-lucide="code-2"></i> Developer <span class="dev-indicator"></span></button>
+                        <button class="settings-tab-btn" data-settings-tab="channels" id="settings-tab-channels" data-dev="true"><i data-lucide="tv"></i> Channels <span class="dev-indicator"></span></button>
+                        <button class="settings-tab-btn" data-settings-tab="connectivity" id="settings-tab-connectivity" data-dev="true"><i data-lucide="network"></i> Connectivity <span class="dev-indicator"></span></button>
+                        <button class="settings-tab-btn" data-settings-tab="sensors" data-dev="true"><i data-lucide="cpu"></i> Sensors <span class="dev-indicator"></span></button>
                     </div>
                     <div class="settings-sidebar-footer">
                         <div class="settings-version-info">
@@ -468,7 +469,7 @@
                     </div>
 
                     <!-- Section: Channels -->
-                    <div id="settings-sect-channels" class="settings-sect-pane">
+                    <div id="settings-sect-channels" class="settings-sect-pane" data-dev="true">
                         
                         <!-- Sub-navigation for Channels Tab -->
                         <nav class="channels-subnav" aria-label="Channel options">
@@ -511,6 +512,18 @@
                     <!-- Section: My Account -->
                     <div id="settings-sect-account" class="settings-sect-pane">
                         <h3 class="settings-page-title">System Options</h3>
+                        <!-- Developer Mode toggle (dev-only) -->
+                        <div class="setting-item" data-dev="true">
+                            <div class="setting-item-info">
+                                <span class="setting-title">Developer Mode</span>
+                                <span class="setting-desc">Enables internal debugging tools and development tabs.</span>
+                            </div>
+                            <label class="settings-switch">
+                                <input type="checkbox" id="developer-mode-toggle">
+                                <span class="settings-switch-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-divider" data-dev="true"></div>
                         <div class="setting-item">
                             <div class="setting-item-info">
                                 <span class="setting-title">App Language</span>
@@ -573,7 +586,7 @@
                     </div>
 
                     <!-- Section: Connectivity -->
-                    <div id="settings-sect-connectivity" class="settings-sect-pane">
+                    <div id="settings-sect-connectivity" class="settings-sect-pane" data-dev="true">
                         
                         <nav class="connectivity-subnav" aria-label="Opciones de conectividad">
                             <button class="connectivity-subnav-btn active" data-conn-tab="servers"><i data-lucide="globe"></i> Servers</button>
@@ -598,7 +611,7 @@
                     </div>
 
                     <!-- Section: Filters -->
-                    <div id="settings-sect-filters" class="settings-sect-pane">
+                    <div id="settings-sect-filters" class="settings-sect-pane" data-dev="true">
                         <h3 class="settings-page-title">Channel Filters</h3>
                         <p class="section-desc" style="margin-bottom: 8px;">Manage available event filters to organize TV channels.</p>
                         
@@ -1008,7 +1021,7 @@
                     </div>
                     
                     <!-- Section: Sensors & API -->
-                    <div id="settings-sect-sensors" class="settings-sect-pane">
+                    <div id="settings-sect-sensors" class="settings-sect-pane" data-dev="true">
                         
                         <div class="sensors-status-card glass-panel">
                             <h4>Sensor Status</h4>
@@ -1041,6 +1054,275 @@ window.JTV_SENSORS.navigateTo('home');
 // Audio status
 await window.JTV_SENSORS.getAudioState();</code></pre>
                         </div>
+                    </div>
+                    <!-- Section: Developer (dev-only) -->
+                    <div id="settings-sect-developer" class="settings-sect-pane" data-dev="true">
+        <h3 class="settings-page-title">Developer Mode</h3>
+        <nav class="settings-subnav" aria-label="Developer sections">
+            <button class="settings-subnav-btn dev-subnav-btn active" data-dev-tab="dev-tab-general"><i data-lucide="settings"></i> General</button>
+            <button class="settings-subnav-btn dev-subnav-btn" data-dev-tab="dev-tab-timeouts"><i data-lucide="timer"></i> Timeouts</button>
+        </nav>
+        <div id="dev-tab-general" class="dev-tab-pane">
+        <div class="setting-item">
+            <div class="setting-item-info">
+                <span class="setting-title">Glass Tuner</span>
+                <span class="setting-desc">Visual tool to adjust HUD, Sidebar, and Top Nav glassmorphism in real time.</span>
+            </div>
+            <label class="settings-switch">
+                <input type="checkbox" id="glass-tuner-toggle">
+                <span class="settings-switch-slider"></span>
+            </label>
+        </div>
+        <div class="setting-divider"></div>
+        <div class="setting-item">
+            <div class="setting-item-info">
+                <span class="setting-title">Signal & Source Controls</span>
+                <span class="setting-desc">Show autotuner and channel source switcher in the bottom menu.</span>
+            </div>
+            <label class="settings-switch">
+                <input type="checkbox" id="hud-dev-controls-toggle">
+                <span class="settings-switch-slider"></span>
+            </label>
+        </div>
+        <div class="setting-divider"></div>
+        <div class="setting-item">
+            <div class="setting-item-info">
+                <span class="setting-title">Tools</span>
+                <span class="setting-desc">Quick debugging actions.</span>
+            </div>
+            <div class="setting-item-actions">
+                <button id="open-devtools-btn" class="settings-action-btn">Open DevTools</button>
+            </div>
+        </div>
+        <div class="setting-divider"></div>
+        <div class="setting-item">
+            <div class="setting-item-info">
+                <span class="setting-title">Diagnostics Watchers</span>
+                <span class="setting-desc">Activates diagnostic watchers (eval.tmp, take-screenshot.tmp, and audio detector).</span>
+            </div>
+            <label class="settings-switch">
+                <input type="checkbox" id="diagnostics-toggle">
+                <span class="settings-switch-slider"></span>
+            </label>
+        </div>
+        <div class="setting-divider"></div>
+        <div class="setting-item">
+            <div class="setting-item-info">
+                <span class="setting-title">Click Indicator</span>
+                <span class="setting-desc">Shows a red visual circle at each mouse click coordinate.</span>
+            </div>
+            <label class="settings-switch">
+                <input type="checkbox" id="diagnostic-clicks-toggle">
+                <span class="settings-switch-slider"></span>
+            </label>
+        </div>
+        </div>
+        <div id="dev-tab-timeouts" class="dev-tab-pane" style="display: none;">
+            <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 15px;">Manually configure or disable system timeouts and watchdog (in milliseconds).</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <!-- Grupo 1: Settings Panel -->
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
+                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Settings Panel</h5>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <!-- Settings active -->
+                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                            <div class="setting-item-info">
+                                <span class="setting-title" style="font-size: 13px;">Settings active (With Stream)</span>
+                                <span class="setting-desc" style="font-size: 11px;">Closes settings during playback.</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="number" id="timeout-settings-active" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                                <label class="settings-switch">
+                                    <input type="checkbox" id="timeout-settings-active-enabled">
+                                    <span class="settings-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Settings inactive -->
+                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                            <div class="setting-item-info">
+                                <span class="setting-title" style="font-size: 13px;">Settings inactive (No Stream)</span>
+                                <span class="setting-desc" style="font-size: 11px;">Closes settings when idle.</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="number" id="timeout-settings-inactive" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                                <label class="settings-switch">
+                                    <input type="checkbox" id="timeout-settings-inactive-enabled">
+                                    <span class="settings-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grupo 2: Side Menu -->
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
+                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Side Menu</h5>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <!-- Menu active -->
+                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                            <div class="setting-item-info">
+                                <span class="setting-title" style="font-size: 13px;">Side menu active (With Stream)</span>
+                                <span class="setting-desc" style="font-size: 11px;">Closes menu during playback.</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="number" id="timeout-menu-active" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                                <label class="settings-switch">
+                                    <input type="checkbox" id="timeout-menu-active-enabled">
+                                    <span class="settings-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Menu inactive -->
+                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                            <div class="setting-item-info">
+                                <span class="setting-title" style="font-size: 13px;">Side menu inactive (No Stream)</span>
+                                <span class="setting-desc" style="font-size: 11px;">Closes menu when idle.</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="number" id="timeout-menu-inactive" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                                <label class="settings-switch">
+                                    <input type="checkbox" id="timeout-menu-inactive-enabled">
+                                    <span class="settings-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grupo 3: Bottom Menu (HUD) -->
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
+                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Bottom Menu (HUD)</h5>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <!-- Zapping HUD -->
+                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                            <div class="setting-item-info">
+                                <span class="setting-title" style="font-size: 13px;">Hide Zapping HUD</span>
+                                <span class="setting-desc" style="font-size: 11px;">Hides bottom info and source bar.</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="number" id="timeout-zappinghud" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                                <label class="settings-switch">
+                                    <input type="checkbox" id="timeout-zappinghud-enabled">
+                                    <span class="settings-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grupo 4: Top Menu (Navigation) -->
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
+                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Top Menu (Navigation)</h5>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <!-- Top Nav -->
+                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                            <div class="setting-item-info">
+                                <span class="setting-title" style="font-size: 13px;">Hide Top Menu</span>
+                                <span class="setting-desc" style="font-size: 11px;">Hides top navigation bar.</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="number" id="timeout-topnav" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                                <label class="settings-switch">
+                                    <input type="checkbox" id="timeout-topnav-enabled">
+                                    <span class="settings-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grupo 5: Mouse Cursor -->
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
+                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Mouse Cursor</h5>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <!-- Hide cursor active -->
+                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                            <div class="setting-item-info">
+                                <span class="setting-title" style="font-size: 13px;">Hide Cursor (With Stream)</span>
+                                <span class="setting-desc" style="font-size: 11px;">Hides cursor during playback.</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="number" id="timeout-cursor-active" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                                <label class="settings-switch">
+                                    <input type="checkbox" id="timeout-cursor-active-enabled">
+                                    <span class="settings-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Hide cursor inactive -->
+                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                            <div class="setting-item-info">
+                                <span class="setting-title" style="font-size: 13px;">Hide Cursor (No Stream)</span>
+                                <span class="setting-desc" style="font-size: 11px;">Hides cursor when idle.</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="number" id="timeout-cursor-inactive" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                                <label class="settings-switch">
+                                    <input type="checkbox" id="timeout-cursor-inactive-enabled">
+                                    <span class="settings-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grupo 6: Failover & Watchdog -->
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
+                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Failover & Watchdog</h5>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <!-- Failover Main -->
+                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                            <div class="setting-item-info">
+                                <span class="setting-title" style="font-size: 13px;">Main Source Failover</span>
+                                <span class="setting-desc" style="font-size: 11px;">Grace time before first retry.</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="number" id="timeout-failover-main" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                                <label class="settings-switch">
+                                    <input type="checkbox" id="timeout-failover-main-enabled">
+                                    <span class="settings-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Failover Alt -->
+                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                            <div class="setting-item-info">
+                                <span class="setting-title" style="font-size: 13px;">Alternate Sources Failover</span>
+                                <span class="setting-desc" style="font-size: 11px;">Grace time per alternate source.</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="number" id="timeout-failover-alt" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                                <label class="settings-switch">
+                                    <input type="checkbox" id="timeout-failover-alt-enabled">
+                                    <span class="settings-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Watchdog Freeze limit -->
+                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                            <div class="setting-item-info">
+                                <span class="setting-title" style="font-size: 13px;">Video Freeze Watchdog</span>
+                                <span class="setting-desc" style="font-size: 11px;">Detects frozen currentTime in the player.</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="number" id="timeout-watchdog-freeze" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                                <label class="settings-switch">
+                                    <input type="checkbox" id="timeout-watchdog-freeze-enabled">
+                                    <span class="settings-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
                     </div>
                 </main>
             </div>
