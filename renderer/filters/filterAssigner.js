@@ -314,23 +314,14 @@ export function renderAssignerEvents() {
 
         const label = document.createElement('label');
         label.className = 'assigner-event-item';
-        label.style.display = 'flex';
-        label.style.alignItems = 'center';
-        label.style.gap = '8px';
-        label.style.padding = '8px 12px';
-        label.style.background = 'rgba(255,255,255,0.02)';
-        label.style.border = '1px solid rgba(255,255,255,0.06)';
-        label.style.borderRadius = '6px';
-        label.style.cursor = 'pointer';
-        label.style.transition = 'all 0.15s ease';
 
         const isEmoji = (filter.icon && /[^\x00-\x7F]/.test(filter.icon)) || (filter.icon && filter.icon.length <= 2);
         label.innerHTML = `
-            <input type="checkbox" class="assigner-event-checkbox" data-event-name="${escapeHtml(filter.name)}" style="margin: 0; width: 15px; height: 15px; cursor: pointer;" ${isChecked ? 'checked' : ''}>
-            <span style="font-size: 13px; color: #fff; font-weight: 500; display: flex; align-items: center; gap: 6px;">
-                ${isEmoji 
-                    ? `<span class="emoji-icon" style="font-size: 14px; display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px;">${emojiToHtml(filter.icon, 14)}</span>`
-                    : `<i data-lucide="${sanitizeIconName(filter.icon)}" style="width: 14px; height: 14px; color: #a5b4fc;"></i>`}
+            <input type="checkbox" class="assigner-event-checkbox" data-event-name="${escapeHtml(filter.name)}" ${isChecked ? 'checked' : ''}>
+            <span>
+                ${isEmoji
+                    ? `<span class="emoji-icon">${emojiToHtml(filter.icon)}</span>`
+                    : `<i data-lucide="${sanitizeIconName(filter.icon)}"></i>`}
                 ${escapeHtml(filter.name)}
             </span>
         `;
@@ -437,7 +428,7 @@ export function renderAssignerMetaChips(channel) {
     
     const cats = channel.categories || [];
     if (cats.length === 0) {
-        chipsContainer.innerHTML = `<span style="font-size: 12px; color: rgba(255,255,255,0.4);">None</span>`;
+        chipsContainer.innerHTML = `<span class="assigner-no-categories">None</span>`;
         return;
     }
 
@@ -446,13 +437,7 @@ export function renderAssignerMetaChips(channel) {
     sortedCats.forEach(c => {
         if (c.toLowerCase() === 'all') return;
         const chip = document.createElement('span');
-        chip.style.display = 'inline-block';
-        chip.style.padding = '3px 8px';
-        chip.style.background = 'rgba(255,255,255,0.06)';
-        chip.style.border = '1px solid rgba(255,255,255,0.1)';
-        chip.style.borderRadius = '4px';
-        chip.style.fontSize = '11px';
-        chip.style.color = '#a5b4fc';
+        chip.className = 'assigner-category-chip solid';
         chip.textContent = c;
         chipsContainer.appendChild(chip);
     });
@@ -477,7 +462,7 @@ export function renderAssignerMetaChipsMultiple() {
 
     const uniqueCats = Object.keys(catCounts);
     if (uniqueCats.length === 0) {
-        chipsContainer.innerHTML = `<span style="font-size: 12px; color: rgba(255,255,255,0.4);">None</span>`;
+        chipsContainer.innerHTML = `<span class="assigner-no-categories">None</span>`;
         return;
     }
 
@@ -488,20 +473,12 @@ export function renderAssignerMetaChipsMultiple() {
         if (c.toLowerCase() === 'all') return;
         const count = catCounts[c];
         const chip = document.createElement('span');
-        chip.style.display = 'inline-block';
-        chip.style.padding = '3px 8px';
-        chip.style.borderRadius = '4px';
-        chip.style.fontSize = '11px';
-        
+
         if (count === N) {
-            chip.style.background = 'rgba(255,255,255,0.06)';
-            chip.style.border = '1px solid rgba(255,255,255,0.1)';
-            chip.style.color = '#a5b4fc';
+            chip.className = 'assigner-category-chip solid';
             chip.textContent = c;
         } else {
-            chip.style.background = 'rgba(255,255,255,0.02)';
-            chip.style.border = '1px dashed rgba(255,255,255,0.05)';
-            chip.style.color = 'rgba(165,180,252,0.6)';
+            chip.className = 'assigner-category-chip dashed';
             chip.textContent = `${c} (${count}/${N})`;
         }
         chipsContainer.appendChild(chip);
@@ -570,7 +547,7 @@ export function selectAssignerChannel(index) {
 }
 
 export function bindAssignerScrollbarActivity() {
-    const scrollPanels = document.querySelectorAll('.event-assigner-container .crud-scroll-panel');
+    const scrollPanels = document.querySelectorAll('.event-assigner-container .scroll-panel');
     const scrollbarHideTimers = new WeakMap();
 
     const showScrollbar = (scrollEl) => {

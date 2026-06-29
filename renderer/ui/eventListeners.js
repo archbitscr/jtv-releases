@@ -1022,7 +1022,7 @@ export function setupEventListeners() {
                             selectBtn.setAttribute('data-selected-icon', defaultIcon);
                             const isEmoji = (defaultIcon && /[^\x00-\x7F]/.test(defaultIcon)) || (defaultIcon && defaultIcon.length <= 2);
                             selectBtn.innerHTML = isEmoji
-                                ? `<span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">${emojiToHtml(defaultIcon, 16)}</span>`
+                                ? `<span class="emoji-icon">${emojiToHtml(defaultIcon)}</span>`
                                 : `<i data-lucide="${defaultIcon}"></i>`;
                         }
                     }
@@ -1942,31 +1942,30 @@ export function setupEventListeners() {
 
             const item = document.createElement('label');
             item.className = 'parental-channel-item';
-            item.style.cssText = 'display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 8px; cursor: pointer; transition: all 0.2s ease;';
             
             const infoDiv = document.createElement('div');
-            infoDiv.style.cssText = 'display: flex; align-items: center; gap: 10px;';
+            infoDiv.className = 'parental-channel-info';
             
             const numSpan = document.createElement('span');
-            numSpan.style.cssText = 'font-size: 11px; color: rgba(255, 255, 255, 0.4); font-weight: 600; min-width: 24px;';
+            numSpan.className = 'parental-channel-num';
             numSpan.textContent = `#${c.id}`;
             infoDiv.appendChild(numSpan);
             
             const nameSpan = document.createElement('span');
-            nameSpan.style.cssText = 'font-size: 13px; color: #fff; font-weight: 500;';
+            nameSpan.className = 'parental-channel-name';
             nameSpan.textContent = c.name;
             infoDiv.appendChild(nameSpan);
 
             if (isNativeKids) {
                 const badge = document.createElement('span');
-                badge.style.cssText = 'font-size: 10px; color: #00ffcc; background: rgba(0, 255, 204, 0.1); padding: 2px 6px; border-radius: 4px; font-weight: 600; text-transform: uppercase;';
+                badge.className = 'parental-channel-badge';
                 badge.textContent = 'Kids (Auto)';
                 infoDiv.appendChild(badge);
             } else if (c.categories && c.categories.length > 1) {
                 const displayCat = c.categories.find(cat => cat.toLowerCase() !== 'all');
                 if (displayCat) {
                     const badge = document.createElement('span');
-                    badge.style.cssText = 'font-size: 10px; color: rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.05); padding: 2px 6px; border-radius: 4px; font-weight: 500;';
+                    badge.className = 'parental-channel-badge-secondary';
                     badge.textContent = displayCat;
                     infoDiv.appendChild(badge);
                 }
@@ -1978,7 +1977,6 @@ export function setupEventListeners() {
             checkbox.type = 'checkbox';
             checkbox.checked = isChecked;
             checkbox.disabled = isNativeKids;
-            checkbox.style.cssText = 'cursor: pointer; width: 16px; height: 16px; accent-color: #00ffcc;';
             
             if (!isNativeKids) {
                 checkbox.onchange = (e) => {

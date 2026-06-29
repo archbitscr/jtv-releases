@@ -28,7 +28,7 @@ export function setSettingsFilterTab(tab) {
                 selectBtn.setAttribute('data-selected-icon', defIcon);
                 const isEmoji = (defIcon && /[^\x00-\x7F]/.test(defIcon)) || (defIcon && defIcon.length <= 2);
                 selectBtn.innerHTML = isEmoji
-                    ? `<span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">${emojiToHtml(defIcon, 16)}</span>`
+                    ? `<span class="emoji-icon">${emojiToHtml(defIcon)}</span>`
                     : `<i data-lucide="${defIcon}"></i>`;
             }
         }

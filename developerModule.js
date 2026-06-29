@@ -113,82 +113,82 @@ export async function initDeveloperFeatures() {
     const devChannelsPane = document.getElementById('developer-channels-crud-container');
     if (devChannelsPane) {
         devChannelsPane.innerHTML = `
-            <div class="channels-crud-container" style="display: flex; gap: 20px; flex: 1; min-height: 0; overflow: hidden; align-items: stretch;">
+            <div class="channels-crud-container" style="display: flex; gap: clamp(13px, 1.85vw, 51px); flex: 1; min-height: 0; overflow: hidden; align-items: stretch;">
                 <!-- Left: list of channels -->
-                <div class="crud-list-panel" style="flex: 1; border-right: 1px solid rgba(255,255,255,0.08); padding-right: 15px; display: flex; flex-direction: column; min-height: 0; height: 100%;">
-                    <div class="crud-list-header" style="margin-bottom: 12px; display: flex; gap: 10px;">
-                        <input type="search" id="crud-search" class="dark-input" placeholder="Filtrar..." style="margin: 0; padding: 6px 10px; flex: 1;">
+                <div class="crud-list-panel" style="flex: 1; border-right: 1px solid rgba(255,255,255,0.08); padding-right: clamp(10px, 1.39vw, 38px); display: flex; flex-direction: column; min-height: 0; height: 100%;">
+                    <div class="crud-list-header" style="margin-bottom: clamp(8px, 1.11vw, 31px); display: flex; gap: clamp(7px, 0.93vw, 26px);">
+                        <input type="search" id="crud-search" class="dark-input" placeholder="Filtrar..." style="margin: 0; flex: 1;">
                         <button id="crud-add-new-btn" class="settings-action-btn" style="margin: 0; white-space: nowrap;">+ New</button>
                     </div>
-                    <div id="crud-channels-list" class="crud-scroll-panel" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; padding-right: 5px;">
+                    <div id="crud-channels-list" class="crud-scroll-panel" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: clamp(4px, 0.56vw, 15px); padding-right: clamp(3px, 0.46vw, 13px);">
                         <!-- Populated dynamically -->
                     </div>
                 </div>
                 <!-- Right: edit/add form -->
-                <div class="crud-form-panel crud-scroll-panel" style="flex: 1; overflow-y: auto; padding-left: 5px; min-height: 0; height: 100%; display: flex; flex-direction: column;">
-                    <div id="crud-form-empty-message" style="color: rgba(255,255,255,0.4); text-align: center; margin-top: 60px;">
+                <div class="crud-form-panel crud-scroll-panel" style="flex: 1; overflow-y: auto; padding-left: clamp(3px, 0.46vw, 13px); min-height: 0; height: 100%; display: flex; flex-direction: column;">
+                    <div id="crud-form-empty-message" style="color: rgba(255,255,255,0.4); text-align: center; margin-top: clamp(40px, 5.56vw, 154px); font-size: clamp(0.54rem, 1.20vw, 2.08rem);">
                         Select a channel from the list or press "+ New" to edit
                     </div>
-                    <div id="crud-channel-form" class="hidden" style="display: flex; flex-direction: column; gap: 14px; padding-bottom: 20px;">
+                    <div id="crud-channel-form" class="hidden" style="display: flex; flex-direction: column; gap: clamp(9px, 1.30vw, 36px); padding-bottom: clamp(13px, 1.85vw, 51px);">
                         <input type="hidden" id="crud-channel-index">
-                        
+
                         <!-- 1. Name -->
-                        <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Channel Name</label>
+                        <div class="edit-group" style="display:flex; flex-direction:column; gap: clamp(3px, 0.46vw, 13px);">
+                            <label class="crud-field-label">Channel Name</label>
                             <input type="text" id="crud-name-input" class="dark-input" placeholder="Ej. HBO USA" style="margin:0;">
                         </div>
-                        
+
                         <!-- 2. Number ID -->
-                        <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Number / ID</label>
+                        <div class="edit-group" style="display:flex; flex-direction:column; gap: clamp(3px, 0.46vw, 13px);">
+                            <label class="crud-field-label">Number / ID</label>
                             <input type="text" id="crud-id-input" class="dark-input" placeholder="Ej. 101" style="margin:0;">
                         </div>
-                        
+
                         <!-- 3. Stream URL -->
-                        <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Stream URL (Source 1)</label>
+                        <div class="edit-group" style="display:flex; flex-direction:column; gap: clamp(3px, 0.46vw, 13px);">
+                            <label class="crud-field-label">Stream URL (Source 1)</label>
                             <input type="text" id="crud-stream-input" class="dark-input" placeholder="Main URL" style="margin:0;">
                         </div>
-                        
+
                         <!-- 4. Signal -->
-                        <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Signal</label>
-                            <div style="display: flex; align-items: center; gap: 15px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 6px 12px; height: 36px; align-self: flex-start;">
-                                <div style="display: flex; align-items: center; gap: 6px;">
-                                    <span style="font-size: 11px; color: rgba(255,255,255,0.5);">Video:</span>
+                        <div class="edit-group" style="display:flex; flex-direction:column; gap: clamp(3px, 0.46vw, 13px);">
+                            <label class="crud-field-label">Signal</label>
+                            <div class="crud-signal-row">
+                                <div style="display: flex; align-items: center; gap: clamp(4px, 0.56vw, 15px);">
+                                    <span class="crud-signal-label">Video:</span>
                                     <span id="crud-signal-video-status" class="autotune-dot checking"></span>
-                                    <span id="crud-signal-video-text" style="font-size: 13px; font-weight: 500;">Checking...</span>
+                                    <span id="crud-signal-video-text" class="crud-signal-text">Checking...</span>
                                 </div>
-                                <div style="width: 1px; height: 16px; background: rgba(255,255,255,0.1);"></div>
-                                <div style="display: flex; align-items: center; gap: 6px;">
-                                    <span style="font-size: 11px; color: rgba(255,255,255,0.5);">Audio:</span>
+                                <div class="crud-signal-divider"></div>
+                                <div style="display: flex; align-items: center; gap: clamp(4px, 0.56vw, 15px);">
+                                    <span class="crud-signal-label">Audio:</span>
                                     <span id="crud-signal-audio-status" class="autotune-dot checking"></span>
-                                    <span id="crud-signal-audio-text" style="font-size: 13px; font-weight: 500;">Checking...</span>
+                                    <span id="crud-signal-audio-text" class="crud-signal-text">Checking...</span>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- 5. Filters / Categories -->
-                        <div class="edit-group" style="display:flex; flex-direction:column; gap:5px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Categories (comma-separated)</label>
+                        <div class="edit-group" style="display:flex; flex-direction:column; gap: clamp(3px, 0.46vw, 13px);">
+                            <label class="crud-field-label">Categories (comma-separated)</label>
                             <input type="text" id="crud-categories-input" class="dark-input" placeholder="Ej. sports, live, all" style="margin:0;">
                         </div>
-                        
-                        <!-- 6. Channel Logo (80px size, no placeholder when empty) -->
-                        <div class="edit-group" style="display:flex; flex-direction:column; gap:8px;">
-                            <label style="font-size:12px; color:rgba(255,255,255,0.6)">Channel Logo</label>
-                            <div style="display: flex; gap: 12px; align-items: center;">
-                                <div id="crud-logo-preview-container" style="width: 80px; height: 80px; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
+
+                        <!-- 6. Channel Logo -->
+                        <div class="edit-group" style="display:flex; flex-direction:column; gap: clamp(5px, 0.74vw, 20px);">
+                            <label class="crud-field-label">Channel Logo</label>
+                            <div style="display: flex; gap: clamp(8px, 1.11vw, 31px); align-items: center;">
+                                <div id="crud-logo-preview-container" class="crud-logo-preview">
                                     <img id="crud-logo-preview" style="max-width: 100%; max-height: 100%; object-fit: contain; display: none;">
                                 </div>
-                                <div style="display: flex; flex-direction: column; gap: 8px; flex: 1;">
+                                <div style="display: flex; flex-direction: column; gap: clamp(5px, 0.74vw, 20px); flex: 1;">
                                     <input type="text" id="crud-logo-input" class="dark-input" placeholder="Ej. https://... o base64" style="margin:0; width: 100%;">
-                                    <div style="display: flex; gap: 8px;">
-                                        <button type="button" id="crud-logo-upload-btn" class="settings-action-btn" style="margin: 0; padding: 6px 12px; font-size: 12px; display: flex; align-items: center; gap: 6px;">
-                                            <i data-lucide="upload" style="width: 14px; height: 14px;"></i> Upload Image
+                                    <div style="display: flex; gap: clamp(5px, 0.74vw, 20px);">
+                                        <button type="button" id="crud-logo-upload-btn" class="settings-action-btn crud-small-btn">
+                                            <i data-lucide="upload"></i> Upload Image
                                         </button>
-                                        <button type="button" id="crud-logo-delete-btn" class="danger-btn" style="margin: 0; padding: 6px 12px; font-size: 12px; display: flex; align-items: center; gap: 6px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444;">
-                                            <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i> Delete
+                                        <button type="button" id="crud-logo-delete-btn" class="danger-btn crud-small-btn">
+                                            <i data-lucide="trash-2"></i> Delete
                                         </button>
                                         <input type="file" id="crud-logo-file-input" accept="image/*" style="display: none;">
                                     </div>
@@ -197,12 +197,12 @@ export async function initDeveloperFeatures() {
                         </div>
 
                         <!-- 7. Save / Delete Buttons -->
-                        <div style="display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 15px;">
-                            <button type="button" id="crud-save-btn" class="settings-action-btn" style="flex: 1; padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600;">
-                                <i data-lucide="save" style="width: 16px; height: 16px;"></i> Save Channel
+                        <div class="crud-actions-row">
+                            <button type="button" id="crud-save-btn" class="settings-action-btn crud-main-btn">
+                                <i data-lucide="save"></i> Save Channel
                             </button>
-                            <button type="button" id="crud-delete-btn" class="danger-btn" style="flex: 1; padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #ef4444;">
-                                <i data-lucide="trash-2" style="width: 16px; height: 16px;"></i> Delete Channel
+                            <button type="button" id="crud-delete-btn" class="danger-btn crud-main-btn">
+                                <i data-lucide="trash-2"></i> Delete Channel
                             </button>
                         </div>
                     </div>

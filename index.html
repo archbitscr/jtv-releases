@@ -380,7 +380,7 @@
                     <div class="settings-tabs">
                         <button class="settings-tab-btn active" data-settings-tab="general"><i data-lucide="settings-2"></i> Settings</button>
                         <button class="settings-tab-btn" data-settings-tab="filters" id="settings-tab-filters"><i data-lucide="filter"></i> Filters</button>
-                        <button class="settings-tab-btn" data-settings-tab="background"><i data-lucide="image"></i> Wallpapers</button>
+                        <button class="settings-tab-btn" data-settings-tab="background"><i data-lucide="image"></i> Wallpaper</button>
                         <button class="settings-tab-btn" data-settings-tab="parental" id="settings-tab-parental"><i data-lucide="shield"></i> Parental</button>
                         <button class="settings-tab-btn" data-settings-tab="account"><i data-lucide="monitor"></i> System</button>
                         <button class="settings-tab-btn" data-settings-tab="developer" id="settings-tab-developer" data-dev="true"><i data-lucide="code-2"></i> Developer <span class="dev-indicator"></span></button>
@@ -599,7 +599,7 @@
                             <input type="text" id="global-domain-input" class="dark-input" placeholder="DaddyLive Domain">
                             <input type="text" id="api-endpoint-input" class="dark-input" placeholder="API Endpoint">
                             <input type="text" id="api-key-input" class="dark-input" placeholder="API Key">
-                            <button id="apply-domain-btn" class="settings-action-btn" style="padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600;"><i data-lucide="save" style="width: 16px; height: 16px;"></i> Save &amp; Sync</button>
+                            <button id="apply-domain-btn" class="settings-action-btn" style="display: flex; align-items: center; justify-content: center; gap: clamp(5px, 0.74vw, 20px); font-weight: 600;"><i data-lucide="save"></i> Save &amp; Sync</button>
                         </div>
 
                         <!-- Sub-pane: APIs -->
@@ -613,7 +613,7 @@
                     <!-- Section: Filters (user-facing tab; specific edit controls are dev-only via data-dev) -->
                     <div id="settings-sect-filters" class="settings-sect-pane">
                         <h3 class="settings-page-title">Channel Filters</h3>
-                        <p class="section-desc" style="margin-bottom: 8px;">Manage available event filters to organize TV channels.</p>
+                        <p class="section-desc" style="margin-bottom: clamp(5px, 0.74vw, 20px);">Manage available event filters to organize TV channels.</p>
                         
                         <!-- Sub-navigation for Filters Tab (Channels Live, Series, Peliculas) -->
                         <nav class="settings-subnav" aria-label="Filters by section">
@@ -673,7 +673,7 @@
                                     <div class="filter-group-add-form">
                                         <div class="filter-icon-picker-wrapper">
                                             <button id="event-icon-select-btn" class="filter-icon-select-btn" type="button" title="Select Icon" data-selected-icon="🏁">
-                                                <span class="emoji-icon" style="font-size: 16px; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;">🏁</span>
+                                                <span class="emoji-icon">🏁</span>
                                             </button>
                                         </div>
                                         <div class="filter-input-wrapper">
@@ -692,7 +692,7 @@
                         <!-- Subtab Content: Series (dev-only) -->
                         <div id="filters-content-series" class="filters-subsect-pane" data-dev="true">
                             <div class="filters-groups-container">
-                                <div class="filter-group-card" id="group-card-series" style="flex: 1 1 100%; max-width: 100%;">
+                                <div class="filter-group-card full-width-card" id="group-card-series">
                                     <div class="filter-group-header">
                                         <h4>Series Genres</h4>
                                     </div>
@@ -718,7 +718,7 @@
                         <!-- Subtab Content: Movies (dev-only) -->
                         <div id="filters-content-movies" class="filters-subsect-pane" data-dev="true">
                             <div class="filters-groups-container">
-                                <div class="filter-group-card" id="group-card-movies" style="flex: 1 1 100%; max-width: 100%;">
+                                <div class="filter-group-card full-width-card" id="group-card-movies">
                                     <div class="filter-group-header">
                                         <h4>Movie Genres</h4>
                                     </div>
@@ -746,76 +746,76 @@
                             <div id="filters-assigner-section">
                                 <div class="event-assigner-container">
                                     <!-- Column 1: Copy of channel CRUD list -->
-                                    <div class="filter-group-card assigner-col-channels" style="flex: 1; display: flex; flex-direction: column; min-height: 0; height: 100%;">
-                                        <div class="filter-group-header" style="display: flex; align-items: baseline;">
+                                    <div class="filter-group-card assigner-col-channels">
+                                        <div class="filter-group-header assigner-header">
                                             <h4>Channels</h4>
-                                            <span id="assigner-selection-count" style="display: none; margin-left: auto; color: var(--accent); text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;"></span>
+                                            <span id="assigner-selection-count"></span>
                                         </div>
-                                        <div class="filter-group-add-form" style="margin-top: 6px;">
+                                        <div class="filter-group-add-form">
                                             <div class="filter-input-wrapper">
-                                                <input type="search" id="assigner-search" class="settings-filter-input" placeholder="Filter..." style="padding-right: 8px !important;">
+                                                <input type="search" id="assigner-search" class="settings-filter-input" placeholder="Filter...">
                                             </div>
-                                            <button id="assigner-bulk-select" class="bulk-select-btn" type="button" title="Select all / Clear" style="flex-shrink: 0; border-radius: 4px; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; cursor: pointer; transition: all 0.2s; padding: 0; margin: 0;">
-                                                <i data-lucide="square" style="width: 14px; height: 14px;"></i>
+                                            <button id="assigner-bulk-select" class="bulk-select-btn" type="button" title="Select all / Clear">
+                                                <i data-lucide="square"></i>
                                             </button>
                                         </div>
-                                        <div id="assigner-channels-list" class="filter-group-list scroll-panel" style="flex: 1;">
-                                            <!-- Populated dynamically -->
-                                        </div>
-                                    </div>
+                                        <div id="assigner-channels-list" class="filter-group-list scroll-panel">
+                                             <!-- Populated dynamically -->
+                                         </div>
+                                     </div>
 
-                                    <!-- Column 2: Assignment checkboxes -->
-                                    <div class="filter-group-card assigner-col-events" style="flex: 1; display: flex; flex-direction: column; min-height: 0; height: 100%;">
-                                        <div class="filter-group-header">
-                                            <h4>Assign Filters</h4>
-                                            <nav id="assigner-tabs-nav" style="display: flex; width: 100%; gap: 4px; background: rgba(0, 0, 0, 0.2); padding: 3px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: 4px;">
-                                                <button id="assigner-tab-languages" class="assigner-tab-btn" data-assigner-tab="languages" style="flex: 1; text-align: center; padding: 4px 6px; font-size: 11px; font-weight: 600; border: none; border-radius: 4px; background: none; color: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.2s;">Languages</button>
-                                                <button id="assigner-tab-genres" class="assigner-tab-btn" data-assigner-tab="genres" style="flex: 1; text-align: center; padding: 4px 6px; font-size: 11px; font-weight: 600; border: none; border-radius: 4px; background: none; color: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.2s;">Genre</button>
-                                                <button id="assigner-tab-events" class="assigner-tab-btn active" data-assigner-tab="events" style="flex: 1; text-align: center; padding: 4px 6px; font-size: 11px; font-weight: 600; border: none; border-radius: 4px; background: var(--accent); color: #000; cursor: pointer; transition: all 0.2s;">Events</button>
-                                            </nav>
-                                        </div>
-                                        <div id="assigner-events-list" class="filter-group-list scroll-panel" style="margin-top: 8px; flex: 1;">
-                                            <!-- Populated dynamically -->
-                                        </div>
-                                    </div>
+                                     <!-- Column 2: Assignment checkboxes -->
+                                     <div class="filter-group-card assigner-col-events">
+                                         <div class="filter-group-header">
+                                             <h4>Assign Filters</h4>
+                                             <nav id="assigner-tabs-nav">
+                                                 <button id="assigner-tab-languages" class="assigner-tab-btn" data-assigner-tab="languages">Languages</button>
+                                                 <button id="assigner-tab-genres" class="assigner-tab-btn" data-assigner-tab="genres">Genre</button>
+                                                 <button id="assigner-tab-events" class="assigner-tab-btn active" data-assigner-tab="events">Events</button>
+                                             </nav>
+                                         </div>
+                                         <div id="assigner-events-list" class="filter-group-list scroll-panel">
+                                             <!-- Populated dynamically -->
+                                         </div>
+                                     </div>
 
-                                    <!-- Column 3: Channel info and status -->
-                                    <div class="filter-group-card assigner-col-metadata" style="flex: 1.5; display: flex; flex-direction: column; min-height: 0; height: 100%;">
-                                        <div class="filter-group-header">
-                                            <h4>Channel Details</h4>
-                                        </div>
-                                        <div id="assigner-metadata-empty" style="color: rgba(255,255,255,0.4); text-align: center; margin-top: 60px; font-size: 12px;">
-                                            Select one or more channels to assign or unassign filters.
-                                        </div>
-                                        <div id="assigner-metadata-content" class="hidden" style="display: flex; flex-direction: column; gap: 12px; height: 100%; overflow-y: auto; padding-right: 5px; margin-top: 8px;">
-                                            <!-- Channel header (logo and name) -->
-                                            <div style="display: flex; align-items: center; gap: 10px;">
-                                                <div id="assigner-meta-logo-container" style="width: 50px; height: 50px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
-                                                    <img id="assigner-meta-logo" style="max-width: 100%; max-height: 100%; object-fit: contain; display: none;">
-                                                </div>
-                                                <div style="display: flex; flex-direction: column; justify-content: center;">
-                                                    <span id="assigner-meta-name" style="font-weight: 600; font-size: 14px; color: #fff; word-break: break-word; white-space: normal;">Channel</span>
-                                                    <span id="assigner-meta-id" style="font-size: 12px; color: rgba(255,255,255,0.5);">Num: -</span>
-                                                </div>
-                                            </div>
+                                     <!-- Column 3: Channel info and status -->
+                                     <div class="filter-group-card assigner-col-metadata">
+                                         <div class="filter-group-header">
+                                             <h4>Channel Details</h4>
+                                         </div>
+                                         <div id="assigner-metadata-empty">
+                                             Select one or more channels to assign or unassign filters.
+                                         </div>
+                                         <div id="assigner-metadata-content" class="hidden">
+                                             <!-- Channel header (logo and name) -->
+                                             <div class="assigner-meta-header">
+                                                 <div id="assigner-meta-logo-container">
+                                                     <img id="assigner-meta-logo" class="assigner-meta-logo-img">
+                                                 </div>
+                                                 <div class="assigner-meta-name-col">
+                                                     <span id="assigner-meta-name">Channel</span>
+                                                     <span id="assigner-meta-id">Num: -</span>
+                                                 </div>
+                                             </div>
 
-                                            <!-- Current categories -->
-                                            <div style="display: flex; flex-direction: column; gap: 6px;">
-                                                <span style="font-size: 11px; color: rgba(255,255,255,0.5);">Current categories &amp; events:</span>
-                                                <div id="assigner-meta-categories" style="display: flex; flex-wrap: wrap; gap: 6px;">
-                                                    <!-- Category chips -->
-                                                </div>
-                                            </div>
+                                             <!-- Current categories -->
+                                             <div class="assigner-meta-categories-box">
+                                                 <span class="assigner-meta-categories-label">Current categories &amp; events:</span>
+                                                 <div id="assigner-meta-categories">
+                                                     <!-- Category chips -->
+                                                 </div>
+                                             </div>
 
-                                            <!-- Save / confirm buttons -->
-                                            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06);">
-                                                <span style="font-size: 11px; color: rgba(255,255,255,0.4);">Checkbox changes in column 2 are applied dynamically to the channel.</span>
-                                                <button id="assigner-apply-btn" class="primary-btn" style="width: 100%; padding: 8px 12px; font-size: 12px; font-weight: 600; margin: 0; display: flex; align-items: center; justify-content: center; gap: 6px; border: none; border-radius: 999px; background: var(--accent); color: black;">
-                                                    <i data-lucide="save" style="width: 14px; height: 14px;"></i> Save changes
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                             <!-- Save / confirm buttons -->
+                                             <div class="assigner-meta-actions-box">
+                                                 <span class="assigner-meta-actions-label">Checkbox changes in column 2 are applied dynamically to the channel.</span>
+                                                 <button id="assigner-apply-btn" class="primary-btn">
+                                                     <i data-lucide="save"></i> Save changes
+                                                 </button>
+                                             </div>
+                                         </div>
+                                     </div>
                                 </div>
                             </div>
                         </div>
@@ -887,70 +887,70 @@
                                 <span class="setting-title">6-digit PIN</span>
                                 <span class="setting-desc">Required to manage parental controls and unlock restricted content.</span>
                             </div>
-                            <div class="setting-item-actions" style="display: flex; gap: 8px;">
+                            <div class="setting-item-actions">
                                 <button id="parental-change-pin-btn" class="settings-action-btn">Create PIN</button>
                                 <button id="parental-delete-pin-btn" class="settings-action-btn danger-btn hidden">Delete PIN</button>
                             </div>
                         </div>
-                        <div id="parental-pin-creation-wrapper" class="hidden" style="margin-top: 15px; padding: 20px; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; transition: all 0.3s ease;">
-                            <h4 id="parental-pin-creation-title" style="margin: 0 0 10px 0; color: #00ffcc; font-size: 14px; font-weight: 600;">Set Parental Controls PIN</h4>
-                            <p style="margin: 0 0 15px 0; font-size: 12px; color: rgba(255, 255, 255, 0.5);">Create a 6-digit numeric code. Write it down in a safe place.</p>
+                        <div id="parental-pin-creation-wrapper" class="hidden parental-pin-card">
+                            <h4 id="parental-pin-creation-title" class="parental-pin-title">Set Parental Controls PIN</h4>
+                            <p class="parental-pin-desc">Create a 6-digit numeric code. Write it down in a safe place.</p>
                             
-                            <div style="display: flex; flex-direction: column; gap: 12px; max-width: 320px;">
-                                <div style="display: flex; flex-direction: column; gap: 4px;">
-                                    <label style="font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 500;">New PIN</label>
-                                    <div style="position: relative; display: flex; align-items: center;">
-                                        <input type="text" id="parental-new-pin-1" class="dark-input" maxlength="6" inputmode="numeric" pattern="[0-9]*" style="letter-spacing: 4px; font-size: 16px; padding: 8px 12px; width: 100%; margin: 0;">
+                            <div class="parental-pin-form">
+                                <div class="parental-field-group">
+                                    <label class="parental-field-label">New PIN</label>
+                                    <div class="parental-input-wrapper">
+                                        <input type="text" id="parental-new-pin-1" class="dark-input parental-pin-input-field" maxlength="6" inputmode="numeric" pattern="[0-9]*">
                                     </div>
                                 </div>
-                                <div style="display: flex; flex-direction: column; gap: 4px;">
-                                    <label style="font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 500;">Confirm New PIN</label>
-                                    <div style="position: relative; display: flex; align-items: center;">
-                                        <input type="text" id="parental-new-pin-2" class="dark-input" maxlength="6" inputmode="numeric" pattern="[0-9]*" style="letter-spacing: 4px; font-size: 16px; padding: 8px 12px; width: 100%; margin: 0;">
+                                <div class="parental-field-group">
+                                    <label class="parental-field-label">Confirm New PIN</label>
+                                    <div class="parental-input-wrapper">
+                                        <input type="text" id="parental-new-pin-2" class="dark-input parental-pin-input-field" maxlength="6" inputmode="numeric" pattern="[0-9]*">
                                     </div>
                                 </div>
                                 
-                                <div style="margin-top: 5px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 12px;">
-                                    <span style="font-size: 11px; color: rgba(255, 255, 255, 0.6); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px;">PIN Requirements</span>
-                                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px;">
-                                        <li id="pin-req-length" style="font-size: 12px; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 8px; transition: color 0.2s;">
-                                            <span class="req-icon-container" style="display: flex; align-items: center; justify-content: center; width: 14px; height: 14px;">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><circle cx="12" cy="12" r="10"></circle></svg>
+                                <div class="parental-reqs-card">
+                                    <span class="parental-reqs-title">PIN Requirements</span>
+                                    <ul class="parental-reqs-list">
+                                        <li id="pin-req-length" class="parental-reqs-item">
+                                            <span class="req-icon-container parental-reqs-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle></svg>
                                             </span>
                                             Exactly 6 digits
                                         </li>
-                                        <li id="pin-req-digits" style="font-size: 12px; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 8px; transition: color 0.2s;">
-                                            <span class="req-icon-container" style="display: flex; align-items: center; justify-content: center; width: 14px; height: 14px;">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><circle cx="12" cy="12" r="10"></circle></svg>
+                                        <li id="pin-req-digits" class="parental-reqs-item">
+                                            <span class="req-icon-container parental-reqs-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle></svg>
                                             </span>
                                             Numbers only (0-9)
                                         </li>
-                                        <li id="pin-req-match" style="font-size: 12px; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 8px; transition: color 0.2s;">
-                                            <span class="req-icon-container" style="display: flex; align-items: center; justify-content: center; width: 14px; height: 14px;">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><circle cx="12" cy="12" r="10"></circle></svg>
+                                        <li id="pin-req-match" class="parental-reqs-item">
+                                            <span class="req-icon-container parental-reqs-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle></svg>
                                             </span>
                                             Codes match
                                         </li>
                                     </ul>
                                 </div>
                                 
-                                <p id="parental-creation-error" style="color: #ff4a4a; font-size: 12px; margin: 0; font-weight: 500;" class="hidden"></p>
+                                <p id="parental-creation-error" class="parental-error-msg hidden"></p>
                                 
-                                <div style="display: flex; gap: 10px; margin-top: 5px;">
-                                    <button id="parental-save-pin-btn" class="settings-action-btn primary-btn" style="padding: 8px 16px; font-size: 12px; margin: 0;">Save PIN</button>
-                                    <button id="parental-cancel-pin-btn" class="settings-action-btn" style="padding: 8px 16px; font-size: 12px; margin: 0;">Cancel</button>
+                                <div class="parental-actions-row">
+                                    <button id="parental-save-pin-btn" class="settings-action-btn primary-btn parental-pin-btn">Save PIN</button>
+                                    <button id="parental-cancel-pin-btn" class="settings-action-btn parental-pin-btn">Cancel</button>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Success Card -->
-                        <div id="parental-pin-success-card" class="hidden" style="margin-top: 15px; padding: 20px; background: rgba(0, 255, 204, 0.08); border: 1px solid rgba(0, 255, 204, 0.2); border-radius: 12px; text-align: center; max-width: 320px; transition: all 0.3s ease;">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#00ffcc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; margin: 0 auto 10px auto; display: block;">
+                        <div id="parental-pin-success-card" class="hidden parental-success-card">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#00ffcc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="parental-success-icon">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
                             </svg>
-                            <h4 style="margin: 0 0 5px 0; color: #00ffcc; font-size: 14px; font-weight: 700;">PIN Saved!</h4>
-                            <p id="parental-pin-success-msg" style="margin: 0; font-size: 12px; color: rgba(255, 255, 255, 0.7); line-height: 1.4;">The Parental Controls PIN has been updated successfully.</p>
+                            <h4 class="parental-success-title">PIN Saved!</h4>
+                            <p id="parental-pin-success-msg" class="parental-success-msg">The Parental Controls PIN has been updated successfully.</p>
                         </div>
                         <!-- Everything below requires a PIN to exist (master gate) -->
                         <div id="parental-pin-gated">
@@ -1008,12 +1008,12 @@
                         </div>
                         <!-- Sub-tab: Allowed Channels -->
                         <div id="parental-tab-allowed" class="parental-tab-pane" style="display: none;">
-                        <div class="setting-item parental-allowed-item" id="parental-allowed-item" style="flex-direction: column; align-items: stretch; gap: 12px; flex: 1; min-height: 0; padding: 0;">
+                        <div class="setting-item parental-allowed-item" id="parental-allowed-item">
                             <div class="setting-item-info">
                                 <span class="setting-desc">Select channels that are not in the "Kids" genre but you want to allow in Kids Mode.</span>
                             </div>
-                            <input type="text" id="parental-channels-search" class="dark-input" placeholder="Search channel..." style="width: 100%; max-width: 320px; font-size: 13px; padding: 8px 12px; margin: 0;">
-                            <div id="parental-allowed-channels-list" style="flex: 1; min-height: 0; overflow-y: auto; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+                            <input type="text" id="parental-channels-search" class="dark-input" placeholder="Search channel...">
+                            <div id="parental-allowed-channels-list">
                                 <!-- Populated dynamically -->
                             </div>
                         </div>
@@ -1118,36 +1118,33 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
         </div>
         </div>
         <div id="dev-tab-timeouts" class="dev-tab-pane" style="display: none;">
-            <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 15px;">Manually configure or disable system timeouts and watchdog (in milliseconds).</p>
-            
-            <div style="display: flex; flex-direction: column; gap: 15px;">
+            <p class="timeout-desc">Manually configure or disable system timeouts and watchdog (in milliseconds).</p>
+
+            <div class="timeout-groups">
                 <!-- Grupo 1: Settings Panel -->
-                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
-                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Settings Panel</h5>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <!-- Settings active -->
-                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                <div class="timeout-group-card">
+                    <h5 class="timeout-group-title">Settings Panel</h5>
+                    <div class="timeout-group-items">
+                        <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Settings active (With Stream)</span>
-                                <span class="setting-desc" style="font-size: 11px;">Closes settings during playback.</span>
+                                <span class="setting-title">Settings active (With Stream)</span>
+                                <span class="setting-desc">Closes settings during playback.</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="number" id="timeout-settings-active" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                            <div class="timeout-controls">
+                                <input type="number" id="timeout-settings-active" class="dark-input timeout-input">
                                 <label class="settings-switch">
                                     <input type="checkbox" id="timeout-settings-active-enabled">
                                     <span class="settings-switch-slider"></span>
                                 </label>
                             </div>
                         </div>
-                        
-                        <!-- Settings inactive -->
-                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                        <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Settings inactive (No Stream)</span>
-                                <span class="setting-desc" style="font-size: 11px;">Closes settings when idle.</span>
+                                <span class="setting-title">Settings inactive (No Stream)</span>
+                                <span class="setting-desc">Closes settings when idle.</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="number" id="timeout-settings-inactive" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                            <div class="timeout-controls">
+                                <input type="number" id="timeout-settings-inactive" class="dark-input timeout-input">
                                 <label class="settings-switch">
                                     <input type="checkbox" id="timeout-settings-inactive-enabled">
                                     <span class="settings-switch-slider"></span>
@@ -1158,32 +1155,29 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                 </div>
 
                 <!-- Grupo 2: Side Menu -->
-                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
-                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Side Menu</h5>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <!-- Menu active -->
-                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                <div class="timeout-group-card">
+                    <h5 class="timeout-group-title">Side Menu</h5>
+                    <div class="timeout-group-items">
+                        <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Side menu active (With Stream)</span>
-                                <span class="setting-desc" style="font-size: 11px;">Closes menu during playback.</span>
+                                <span class="setting-title">Side menu active (With Stream)</span>
+                                <span class="setting-desc">Closes menu during playback.</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="number" id="timeout-menu-active" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                            <div class="timeout-controls">
+                                <input type="number" id="timeout-menu-active" class="dark-input timeout-input">
                                 <label class="settings-switch">
                                     <input type="checkbox" id="timeout-menu-active-enabled">
                                     <span class="settings-switch-slider"></span>
                                 </label>
                             </div>
                         </div>
-                        
-                        <!-- Menu inactive -->
-                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                        <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Side menu inactive (No Stream)</span>
-                                <span class="setting-desc" style="font-size: 11px;">Closes menu when idle.</span>
+                                <span class="setting-title">Side menu inactive (No Stream)</span>
+                                <span class="setting-desc">Closes menu when idle.</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="number" id="timeout-menu-inactive" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                            <div class="timeout-controls">
+                                <input type="number" id="timeout-menu-inactive" class="dark-input timeout-input">
                                 <label class="settings-switch">
                                     <input type="checkbox" id="timeout-menu-inactive-enabled">
                                     <span class="settings-switch-slider"></span>
@@ -1194,17 +1188,16 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                 </div>
 
                 <!-- Grupo 3: Bottom Menu (HUD) -->
-                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
-                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Bottom Menu (HUD)</h5>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <!-- Zapping HUD -->
-                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                <div class="timeout-group-card">
+                    <h5 class="timeout-group-title">Bottom Menu (HUD)</h5>
+                    <div class="timeout-group-items">
+                        <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Hide Zapping HUD</span>
-                                <span class="setting-desc" style="font-size: 11px;">Hides bottom info and source bar.</span>
+                                <span class="setting-title">Hide Zapping HUD</span>
+                                <span class="setting-desc">Hides bottom info and source bar.</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="number" id="timeout-zappinghud" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                            <div class="timeout-controls">
+                                <input type="number" id="timeout-zappinghud" class="dark-input timeout-input">
                                 <label class="settings-switch">
                                     <input type="checkbox" id="timeout-zappinghud-enabled">
                                     <span class="settings-switch-slider"></span>
@@ -1215,17 +1208,16 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                 </div>
 
                 <!-- Grupo 4: Top Menu (Navigation) -->
-                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
-                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Top Menu (Navigation)</h5>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <!-- Top Nav -->
-                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                <div class="timeout-group-card">
+                    <h5 class="timeout-group-title">Top Menu (Navigation)</h5>
+                    <div class="timeout-group-items">
+                        <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Hide Top Menu</span>
-                                <span class="setting-desc" style="font-size: 11px;">Hides top navigation bar.</span>
+                                <span class="setting-title">Hide Top Menu</span>
+                                <span class="setting-desc">Hides top navigation bar.</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="number" id="timeout-topnav" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                            <div class="timeout-controls">
+                                <input type="number" id="timeout-topnav" class="dark-input timeout-input">
                                 <label class="settings-switch">
                                     <input type="checkbox" id="timeout-topnav-enabled">
                                     <span class="settings-switch-slider"></span>
@@ -1236,32 +1228,29 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                 </div>
 
                 <!-- Grupo 5: Mouse Cursor -->
-                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
-                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Mouse Cursor</h5>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <!-- Hide cursor active -->
-                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                <div class="timeout-group-card">
+                    <h5 class="timeout-group-title">Mouse Cursor</h5>
+                    <div class="timeout-group-items">
+                        <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Hide Cursor (With Stream)</span>
-                                <span class="setting-desc" style="font-size: 11px;">Hides cursor during playback.</span>
+                                <span class="setting-title">Hide Cursor (With Stream)</span>
+                                <span class="setting-desc">Hides cursor during playback.</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="number" id="timeout-cursor-active" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                            <div class="timeout-controls">
+                                <input type="number" id="timeout-cursor-active" class="dark-input timeout-input">
                                 <label class="settings-switch">
                                     <input type="checkbox" id="timeout-cursor-active-enabled">
                                     <span class="settings-switch-slider"></span>
                                 </label>
                             </div>
                         </div>
-                        
-                        <!-- Hide cursor inactive -->
-                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                        <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Hide Cursor (No Stream)</span>
-                                <span class="setting-desc" style="font-size: 11px;">Hides cursor when idle.</span>
+                                <span class="setting-title">Hide Cursor (No Stream)</span>
+                                <span class="setting-desc">Hides cursor when idle.</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="number" id="timeout-cursor-inactive" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                            <div class="timeout-controls">
+                                <input type="number" id="timeout-cursor-inactive" class="dark-input timeout-input">
                                 <label class="settings-switch">
                                     <input type="checkbox" id="timeout-cursor-inactive-enabled">
                                     <span class="settings-switch-slider"></span>
@@ -1272,47 +1261,42 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                 </div>
 
                 <!-- Grupo 6: Failover & Watchdog -->
-                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
-                    <h5 style="font-size: 12px; color: #a5b4fc; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">Failover & Watchdog</h5>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <!-- Failover Main -->
-                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                <div class="timeout-group-card">
+                    <h5 class="timeout-group-title">Failover & Watchdog</h5>
+                    <div class="timeout-group-items">
+                        <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Main Source Failover</span>
-                                <span class="setting-desc" style="font-size: 11px;">Grace time before first retry.</span>
+                                <span class="setting-title">Main Source Failover</span>
+                                <span class="setting-desc">Grace time before first retry.</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="number" id="timeout-failover-main" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                            <div class="timeout-controls">
+                                <input type="number" id="timeout-failover-main" class="dark-input timeout-input">
                                 <label class="settings-switch">
                                     <input type="checkbox" id="timeout-failover-main-enabled">
                                     <span class="settings-switch-slider"></span>
                                 </label>
                             </div>
                         </div>
-
-                        <!-- Failover Alt -->
-                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                        <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Alternate Sources Failover</span>
-                                <span class="setting-desc" style="font-size: 11px;">Grace time per alternate source.</span>
+                                <span class="setting-title">Alternate Sources Failover</span>
+                                <span class="setting-desc">Grace time per alternate source.</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="number" id="timeout-failover-alt" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                            <div class="timeout-controls">
+                                <input type="number" id="timeout-failover-alt" class="dark-input timeout-input">
                                 <label class="settings-switch">
                                     <input type="checkbox" id="timeout-failover-alt-enabled">
                                     <span class="settings-switch-slider"></span>
                                 </label>
                             </div>
                         </div>
-
-                        <!-- Watchdog Freeze limit -->
-                        <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0; border: none; margin: 0;">
+                        <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="font-size: 13px;">Video Freeze Watchdog</span>
-                                <span class="setting-desc" style="font-size: 11px;">Detects frozen currentTime in the player.</span>
+                                <span class="setting-title">Video Freeze Watchdog</span>
+                                <span class="setting-desc">Detects frozen currentTime in the player.</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="number" id="timeout-watchdog-freeze" class="dark-input" style="width: 80px; margin: 0; padding: 4px 8px; text-align: center; height: 30px; font-size: 13px;">
+                            <div class="timeout-controls">
+                                <input type="number" id="timeout-watchdog-freeze" class="dark-input timeout-input">
                                 <label class="settings-switch">
                                     <input type="checkbox" id="timeout-watchdog-freeze-enabled">
                                     <span class="settings-switch-slider"></span>
@@ -1376,17 +1360,17 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
         <!-- Parental PIN Modal -->
         <div id="parental-pin-modal" class="onboarding-modal hidden">
             <div class="onboarding-backdrop" id="parental-pin-backdrop"></div>
-            <div class="onboarding-content glass-card" style="max-width: 400px; text-align: center;">
-                <i data-lucide="shield-alert" style="width: 48px; height: 48px; color: #00ffcc; margin: 0 auto 15px auto; display: block;"></i>
+            <div class="onboarding-content glass-card parental-modal-card">
+                <i data-lucide="shield-alert" class="parental-modal-icon"></i>
                 <h2>Parental Controls</h2>
                 <p id="parental-pin-message">Enter your 6-digit PIN to continue:</p>
-                <div style="display: flex; gap: 8px; justify-content: center; margin: 20px 0;">
-                    <input type="text" maxlength="6" id="parental-pin-input" class="dark-input" inputmode="numeric" pattern="[0-9]*" style="width: 160px; font-size: 24px; letter-spacing: 6px; text-align: center; margin: 0;">
+                <div class="parental-modal-input-container">
+                    <input type="text" maxlength="6" id="parental-pin-input" class="dark-input parental-modal-input" inputmode="numeric" pattern="[0-9]*">
                 </div>
-                <p id="parental-pin-error" style="color: #ff4a4a; font-size: 13px; margin: -10px 0 15px 0; font-weight: 500;" class="hidden"></p>
-                <div style="display: flex; gap: 10px; justify-content: center;">
-                    <button id="parental-pin-cancel-btn" class="danger-btn" style="margin: 0;">Cancel</button>
-                    <button id="parental-pin-submit-btn" class="settings-action-btn" style="margin: 0; border-color: rgba(0, 255, 204, 0.3); color: #00ffcc;">Confirm</button>
+                <p id="parental-pin-error" class="parental-modal-error hidden"></p>
+                <div class="parental-modal-actions">
+                    <button id="parental-pin-cancel-btn" class="danger-btn parental-modal-btn">Cancel</button>
+                    <button id="parental-pin-submit-btn" class="settings-action-btn parental-modal-btn parental-confirm-btn">Confirm</button>
                 </div>
             </div>
         </div>
@@ -1394,11 +1378,11 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
         <!-- Trial Expired Blocker Overlay -->
         <div id="trial-expired-blocker" class="resolution-blocker hidden">
             <div class="blocker-content glass-card" style="text-align: center;">
-                <i data-lucide="calendar-off" style="width: 64px; height: 64px; color: #ff4a4a; margin: 0 auto 20px auto; display: block;"></i>
+                <i data-lucide="calendar-off" class="trial-blocker-icon"></i>
                 <h2>Trial Period Expired</h2>
                 <p>Your 3-day trial period for JTV has ended.</p>
                 <p>Please purchase a license or sign in to continue using the application.</p>
-                <button id="trial-close-app-btn" class="primary-btn" style="margin: 20px auto 0 auto; display: block;">Close Application</button>
+                <button id="trial-close-app-btn" class="primary-btn trial-blocker-btn">Close Application</button>
             </div>
         </div>
     </div>

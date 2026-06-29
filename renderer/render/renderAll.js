@@ -64,14 +64,14 @@ export function renderSettingsFilters() {
             const showControls = readOnlyType ? false : (isDevMode || !isSystem);
 
             item.innerHTML = `
-                <div class="item-details" style="flex: 1; display: flex; align-items: center; gap: 6px;">
-                    ${isEmoji 
-                        ? `<span class="emoji-icon" style="font-size: 14px; display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px;">${emojiToHtml(filter.icon, 14)}</span>`
+                <div class="item-details">
+                    ${isEmoji
+                        ? `<span class="emoji-icon">${emojiToHtml(filter.icon)}</span>`
                         : `<i data-lucide="${sanitizeIconName(filter.icon)}" style="color: ${iconColor} !important;"></i>`}
                     <span>${escapeHtml(filter.name)}</span>
                 </div>
                 ${showControls ? `
-                <div style="display: flex; gap: 4px; align-items: center;" onclick="event.stopPropagation();">
+                <div class="filter-item-controls" onclick="event.stopPropagation();">
                     <button class="remove-btn" type="button" title="Delete"><i data-lucide="x"></i></button>
                 </div>
                 ` : ''}
@@ -96,7 +96,7 @@ export function renderSettingsFilters() {
                 enabledCheckbox.className = 'filter-lang-enabled';
                 enabledCheckbox.checked = filter.enabled !== false;
                 enabledCheckbox.title = 'Toggle language';
-                enabledCheckbox.style.cssText = 'margin-right:8px;cursor:pointer;accent-color:#00ffcc;width:14px;height:14px;flex-shrink:0;';
+                enabledCheckbox.classList.add('filter-lang-checkbox');
                 enabledCheckbox.addEventListener('change', async (e) => {
                     e.stopPropagation();
                     filter.enabled = e.target.checked;

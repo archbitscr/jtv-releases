@@ -129,10 +129,10 @@ const customEmojiIcons = {
     '🎾': './assets/images/tennis.svg',
 };
 
-export function emojiToHtml(emoji, size = 14) {
+export function emojiToHtml(emoji) {
     const src = customEmojiIcons[emoji];
     if (src) {
-        return `<img src="${src}" alt="${emoji}" style="width: ${size}px; height: ${size}px; vertical-align: middle; object-fit: contain;">`;
+        return `<img src="${src}" alt="${emoji}" class="custom-emoji-img">`;
     }
     return emoji;
 }
