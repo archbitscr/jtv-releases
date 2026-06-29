@@ -53,8 +53,9 @@ export function registerAppBootstrap({ appRootDir }) {
       context.services.powerManager.init();
     }
 
-    // Load diagnostics controller in special build
-    if (true) {
+    // Diagnostics controller: dev-only (Task 23). Not loaded in the packaged .exe
+    // (devModeAvailable false) and excluded from the electron-builder package.
+    if (context.flags.devModeAvailable) {
       try {
         const { createDiagnosticsController } = await import('./diagnostics/controller.js');
         context.diagnosticsController = createDiagnosticsController(context);

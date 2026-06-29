@@ -13,8 +13,11 @@ export async function registerIpc({ ipcMain, context }) {
   registerVodIpc({ ipcMain, context });
   registerScrapeIpc({ ipcMain, context });
 
-  // Enable developer features in special build
-  if (true) {
+  // Developer/Diagnostics IPC: loaded only in dev (Task 23). In the packaged .exe
+  // devModeAvailable is false, so these modules are never imported — and they are
+  // excluded from the electron-builder package (see package.json "files"), so the
+  // dynamic import would not resolve there anyway.
+  if (context.flags.devModeAvailable) {
     try {
       const { registerDiagnosticsIpc } = await import('./registerDiagnosticsIpc.js');
       const { registerDeveloperIpc } = await import('./registerDeveloperIpc.js');

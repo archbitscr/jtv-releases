@@ -29,6 +29,9 @@
       "guest-preload.cjs",
       "package.json",
       "main/**/*",
+      "!main/ipc/registerDeveloperIpc.js",
+      "!main/ipc/registerDiagnosticsIpc.js",
+      "!main/diagnostics/**/*",
       "shared/**/*",
       "dist/assets/images/JTV.ico"
     ],

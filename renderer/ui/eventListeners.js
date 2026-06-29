@@ -1228,19 +1228,25 @@ export function setupEventListeners() {
     favoritesGrid.addEventListener('wheel', handleWheel);
     gridDots.addEventListener('wheel', handleWheel);
 
-    document.getElementById('sync-channels-btn').onclick = () => syncChannels();
-    document.getElementById('apply-domain-btn').onclick = () => {
+    // sync-channels-btn / apply-domain-btn live in the dev-only Channels & Connectivity
+    // panes (stripped in production builds), so guard against missing elements.
+    const syncChannelsBtn = document.getElementById('sync-channels-btn');
+    if (syncChannelsBtn) syncChannelsBtn.onclick = () => syncChannels();
+    const applyDomainBtn = document.getElementById('apply-domain-btn');
+    if (applyDomainBtn) applyDomainBtn.onclick = () => {
         state.globalDomain = globalDomainInput.value;
         state.apiKey = apiKeyInput.value;
         state.apiEndpoint = apiEndpointInput.value;
-        state.tmdbKey = document.getElementById('tmdb-key-input').value.trim();
-        state.omdbKey = document.getElementById('omdb-key-input').value.trim();
+        const tmdbInput = document.getElementById('tmdb-key-input');
+        const omdbInput = document.getElementById('omdb-key-input');
+        if (tmdbInput) state.tmdbKey = tmdbInput.value.trim();
+        if (omdbInput) state.omdbKey = omdbInput.value.trim();
         if (!state.globalDomain.endsWith('/')) state.globalDomain += '/';
         window.globalDomain = state.globalDomain;
         saveAppState(); syncChannels(); alert('Settings saved. Syncing...');
     };
 
-    autoDomainToggle.onchange = (e) => { state.autoUpdateDomain = e.target.checked; saveAppState(); };
+    if (autoDomainToggle) autoDomainToggle.onchange = (e) => { state.autoUpdateDomain = e.target.checked; saveAppState(); };
     const audioLevelerToggle = document.getElementById('audio-leveler-toggle');
     if (audioLevelerToggle) {
         audioLevelerToggle.onchange = (e) => {
