@@ -64,7 +64,7 @@ export function updateTopNavVisibility(moduleName) {
 
 export function showLiveLanding() {
     const topNavMenu = document.getElementById('tnav-menu');
-    const sectionTitle = document.getElementById('section-title');
+    const sectionTitle = document.getElementById('land-title');
     const sourceSwitcher = document.getElementById('pbar');
     
     updateTopNavVisibility('live');
@@ -81,7 +81,7 @@ export function showLiveLanding() {
         sectionTitle.classList.remove('hidden');
     }
 
-    const homeDashboard = document.getElementById('home-dashboard');
+    const homeDashboard = document.getElementById('land-dashboard');
     if (homeDashboard) homeDashboard.classList.remove('hidden');
     
     if (ext.syncGridPageToActiveChannel) ext.syncGridPageToActiveChannel();
@@ -99,8 +99,8 @@ export function showModule(moduleName) {
     const vodControls = document.getElementById('vod-controls');
     const liveSearchContainer = document.getElementById('live-search-container');
     const dashboardFiltersEl = document.getElementById('dashboard-filters');
-    const favoritesGrid = document.getElementById('favorites-grid');
-    const gridDots = document.getElementById('grid-dots');
+    const favoritesGrid = document.getElementById('land-grid');
+    const gridDots = document.getElementById('land-dots');
     const playerContainer = document.getElementById('player-container');
     const sourceSwitcher = document.getElementById('pbar');
     const topNavMenu = document.getElementById('tnav-menu');
@@ -149,7 +149,7 @@ export function showModule(moduleName) {
     state.isVodPlaying = false;
     document.body.setAttribute('data-module', moduleName);
 
-    const sectionTitle = document.getElementById('section-title');
+    const sectionTitle = document.getElementById('land-title');
     if (sectionTitle) {
         if (moduleName === 'live') {
             sectionTitle.textContent = "Live TV";
@@ -166,7 +166,7 @@ export function showModule(moduleName) {
     }
 
     document.getElementById('app-home-screen').classList.add('hidden');
-    document.getElementById('home-dashboard').classList.add('hidden');
+    document.getElementById('land-dashboard').classList.add('hidden');
     document.getElementById('settings-screen').classList.add('hidden');
     
     document.querySelectorAll('.header-nav-btn').forEach(btn => btn.classList.remove('active'));
@@ -201,7 +201,7 @@ export function showModule(moduleName) {
             return;
         } else {
             if (ext.applyWallpaper) ext.applyWallpaper(state.selectedWallpaper);
-            document.getElementById('home-dashboard').classList.remove('hidden');
+            document.getElementById('land-dashboard').classList.remove('hidden');
             state.isHomeActive = true;
             const liveSearchInput = document.getElementById('live-landing-search');
             if (liveSearchInput) liveSearchInput.value = "";
@@ -210,7 +210,7 @@ export function showModule(moduleName) {
             document.title = "JTV - Live TV";
         }
     } else if (moduleName === 'series') {
-        document.getElementById('home-dashboard').classList.remove('hidden');
+        document.getElementById('land-dashboard').classList.remove('hidden');
         state.isHomeActive = true;
         document.querySelector('.header-nav-btn[data-nav="series"]')?.classList.add('active');
         hideMenu();
@@ -234,7 +234,7 @@ export function showModule(moduleName) {
         if (ext.refreshVodContent) ext.refreshVodContent();
         document.title = "JTV - Series";
     } else if (moduleName === 'movies') {
-        document.getElementById('home-dashboard').classList.remove('hidden');
+        document.getElementById('land-dashboard').classList.remove('hidden');
         state.isHomeActive = true;
         document.querySelector('.header-nav-btn[data-nav="movies"]')?.classList.add('active');
         hideMenu();

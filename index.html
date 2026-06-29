@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=5">
+    <link rel="stylesheet" href="./style.css?v=6">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen (Tarea 11) -->
@@ -157,14 +157,14 @@
 
 
 
-                <div id="home-dashboard" class="home-dashboard hidden">
-                    <div class="dashboard-content">
-                        <div class="dashboard-top-row">
-                            <div class="dashboard-title-block">
-                                <h2 id="section-title" class="section-title">Movies</h2>
+                <div id="land-dashboard" class="land-dashboard hidden">
+                    <div class="land-content">
+                        <div class="land-top-row">
+                            <div class="land-title-block">
+                                <h2 id="land-title" class="land-title">Movies</h2>
                             </div>
 
-                            <div class="dashboard-controls-block">
+                            <div class="land-controls-block">
                                 <div id="live-search-container" class="vod-controls hidden">
                                     <div class="vod-search-container">
                                         <i data-lucide="search"></i>
@@ -198,14 +198,14 @@
                                 </div>
                             </div>
 
-                            <div class="dashboard-exit-block">
-                                <button id="close-home" class="home-exit-btn" title="Exit">Exit</button>
+                            <div class="land-exit-block">
+                                <button id="close-home" class="land-exit-btn" title="Exit">Exit</button>
                             </div>
                         </div>
 
-                        <div class="dashboard-landing-nav" style="display: flex; gap: 10px; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
-                            <button id="dashboard-nav-all" class="vod-filter-btn">All</button>
-                            <button id="dashboard-nav-favorites" class="vod-filter-btn">Favorites</button>
+                        <div class="land-nav" style="display: flex; gap: 10px; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+                            <button id="land-nav-all" class="vod-filter-btn">All</button>
+                            <button id="land-nav-favorites" class="vod-filter-btn">Favorites</button>
 
                             <!-- Unified filter dropdowns (shared by sidebar and landing) -->
                             <div class="dash-custom-select" data-for="filter-select-language">
@@ -230,14 +230,14 @@
                                 <div class="dash-custom-select-menu hidden"></div>
                             </div>
                         </div>
-                        <div class="grid-carousel-wrapper">
-                            <button id="grid-prev" class="grid-nav-btn"><i data-lucide="arrow-left-circle"></i></button>
-                            <div id="favorites-grid" class="favorites-grid"></div>
-                            <button id="grid-next" class="grid-nav-btn"><i data-lucide="arrow-right-circle"></i></button>
+                        <div class="land-carousel-wrapper">
+                            <button id="land-prev" class="land-nav-btn"><i data-lucide="arrow-left-circle"></i></button>
+                            <div id="land-grid" class="land-grid"></div>
+                            <button id="land-next" class="land-nav-btn"><i data-lucide="arrow-right-circle"></i></button>
                         </div>
                         
-                        <div class="grid-dots-container">
-                            <div id="grid-dots" class="grid-dots"></div>
+                        <div class="land-dots-container">
+                            <div id="land-dots" class="land-dots"></div>
                         </div>
                     </div>
                 </div>

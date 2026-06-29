@@ -394,7 +394,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     
     // Hide landing overlay and home screens only on manual channel change
     if (resetSource) {
-        document.getElementById('home-dashboard').classList.add('hidden');
+        document.getElementById('land-dashboard').classList.add('hidden');
         document.getElementById('app-home-screen').classList.add('hidden');
         document.getElementById('settings-screen').classList.add('hidden');
         state.isHomeActive = false;

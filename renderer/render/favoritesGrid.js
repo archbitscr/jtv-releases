@@ -138,12 +138,12 @@ export function updateVodYearOptions(items) {
 }
 
 export function renderFavoritesGrid() {
-    const homeDashboard = document.getElementById('home-dashboard');
-    const favoritesGrid = document.getElementById('favorites-grid');
+    const homeDashboard = document.getElementById('land-dashboard');
+    const favoritesGrid = document.getElementById('land-grid');
     if (!homeDashboard || !favoritesGrid) return;
 
-    const dbNavAll = document.getElementById('dashboard-nav-all');
-    const dbNavFavs = document.getElementById('dashboard-nav-favorites');
+    const dbNavAll = document.getElementById('land-nav-all');
+    const dbNavFavs = document.getElementById('land-nav-favorites');
     if (dbNavAll && dbNavFavs) {
         dbNavAll.classList.toggle('active', state.zapSourceTab === 'channels');
         dbNavFavs.classList.toggle('active', state.zapSourceTab === 'favorites');
@@ -180,7 +180,7 @@ export function renderFavoritesGrid() {
             const channel = pageFavs[i];
             const gridItem = document.createElement('div');
             const isActive = channel && String(state.activeChannelId) === String(channel.id);
-            gridItem.className = `grid-item stagger-reveal ${isActive ? 'active' : ''}`;
+            gridItem.className = `land-item stagger-reveal ${isActive ? 'active' : ''}`;
             gridItem.style.animationDelay = `${(i % 5) * 0.04}s`;
             if (channel) {
                 gridItem.setAttribute('data-id', channel.id);
@@ -190,11 +190,11 @@ export function renderFavoritesGrid() {
                 const logoHtml = getSafeLogoHtml(channel.name, channel.logo);
                 const badgeIndex = state.favPage * state.FAVS_PER_PAGE + i + 1;
                 gridItem.innerHTML = `
-                    <div class="grid-badge">${badgeIndex}</div>
-                    <div class="grid-logo">${logoHtml}</div>
-                    <div class="grid-text-content">
+                    <div class="land-badge">${badgeIndex}</div>
+                    <div class="land-logo">${logoHtml}</div>
+                    <div class="land-text-content">
                         <h4>${escapeHtml(channel.name)}</h4>
-                        <p class="grid-epg">${escapeHtml(epgText)}</p>
+                        <p class="land-epg">${escapeHtml(epgText)}</p>
                     </div>
                 `;
                 gridItem.onclick = () => {
@@ -202,7 +202,7 @@ export function renderFavoritesGrid() {
                 };
             } else {
                 gridItem.classList.add('empty');
-                gridItem.innerHTML = `<div class="grid-logo"><i data-lucide="plus" style="opacity: 0.1"></i></div>`;
+                gridItem.innerHTML = `<div class="land-logo"><i data-lucide="plus" style="opacity: 0.1"></i></div>`;
             }
             favoritesGrid.appendChild(gridItem);
         }
@@ -266,7 +266,7 @@ export function renderFavoritesGrid() {
         for (let i = 0; i < itemsToRender; i++) {
             const item = visibleItems[i];
             const gridItem = document.createElement('div');
-            gridItem.className = 'grid-item vod-card stagger-reveal';
+            gridItem.className = 'land-item vod-card stagger-reveal';
             gridItem.style.animationDelay = `${(i % 10) * 0.03}s`;
 
             if (item) {
@@ -307,7 +307,7 @@ export function renderFavoritesGrid() {
 }
 
 export function renderGridDots(totalPages) {
-    const gridDots = document.getElementById('grid-dots');
+    const gridDots = document.getElementById('land-dots');
     if (!gridDots) return;
     gridDots.innerHTML = '';
     if (totalPages <= 1) return;
@@ -322,7 +322,7 @@ export function renderGridDots(totalPages) {
 
     if (startDot > 0) {
         const dot = document.createElement('div');
-        dot.className = 'grid-dot';
+        dot.className = 'land-dot';
         dot.innerText = '...';
         dot.style.display = 'flex';
         dot.style.alignItems = 'center';
@@ -334,7 +334,7 @@ export function renderGridDots(totalPages) {
 
     for (let i = startDot; i < endDot; i++) {
         const dot = document.createElement('div');
-        dot.className = `grid-dot ${currentPage === i ? 'active' : ''}`;
+        dot.className = `land-dot ${currentPage === i ? 'active' : ''}`;
         dot.onclick = async () => {
             if (state.activeDashTab === "live") {
                 state.favPage = i;
@@ -353,7 +353,7 @@ export function renderGridDots(totalPages) {
 
     if (endDot < totalPages) {
         const dot = document.createElement('div');
-        dot.className = 'grid-dot';
+        dot.className = 'land-dot';
         dot.innerText = '...';
         dot.style.display = 'flex';
         dot.style.alignItems = 'center';

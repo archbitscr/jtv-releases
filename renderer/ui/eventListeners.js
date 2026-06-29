@@ -47,10 +47,10 @@ export function setupEventListeners() {
     const mainMenu = document.getElementById('side-menu');
     const sourceSwitcher = document.getElementById('pbar');
     const topNavMenu = document.getElementById('tnav-menu');
-    const gridPrevBtn = document.getElementById('grid-prev');
-    const gridNextBtn = document.getElementById('grid-next');
-    const gridDots = document.getElementById('grid-dots');
-    const favoritesGrid = document.getElementById('favorites-grid');
+    const gridPrevBtn = document.getElementById('land-prev');
+    const gridNextBtn = document.getElementById('land-next');
+    const gridDots = document.getElementById('land-dots');
+    const favoritesGrid = document.getElementById('land-grid');
     const backToListBtn = document.getElementById('back-to-list-btn');
     const allChannelsList = document.getElementById('all-channels-list');
     const favoritesList = document.getElementById('favorites-list');
@@ -573,8 +573,8 @@ export function setupEventListeners() {
     });
 
     // 7. Dashboard landing navigation
-    const dbNavAll = document.getElementById('dashboard-nav-all');
-    const dbNavFavs = document.getElementById('dashboard-nav-favorites');
+    const dbNavAll = document.getElementById('land-nav-all');
+    const dbNavFavs = document.getElementById('land-nav-favorites');
 
     if (dbNavAll) {
         dbNavAll.onclick = () => {
@@ -834,7 +834,7 @@ export function setupEventListeners() {
         closeHomeBtn.onclick = (e) => {
             e.stopPropagation();
             if (state.activeChannelId && !state.isVodPlaying) {
-                document.getElementById('home-dashboard').classList.add('hidden');
+                document.getElementById('land-dashboard').classList.add('hidden');
                 state.isHomeActive = false;
                 sourceSwitcher.classList.remove('hidden');
                 updateTriggersVisibility();

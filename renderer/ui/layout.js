@@ -48,8 +48,8 @@ export function isEditableElement(element) {
 }
 
 export function updateVodGridDimensions() {
-    const wrapper = document.querySelector('.grid-carousel-wrapper');
-    const grid = document.getElementById('favorites-grid');
+    const wrapper = document.querySelector('.land-carousel-wrapper');
+    const grid = document.getElementById('land-grid');
     if (!wrapper || !grid) return null;
 
     const isVodActive = grid.classList.contains('vod-active') || state.currentModule === 'movies' || state.currentModule === 'series';
@@ -90,7 +90,7 @@ export async function handleResizeDimensions() {
         }
     }
 
-    const grid = document.getElementById('favorites-grid');
+    const grid = document.getElementById('land-grid');
     const isVod = grid && grid.classList.contains('vod-active');
     if (state.currentModule === 'movies' || state.currentModule === 'series' || isVod) {
         const dims = updateVodGridDimensions();

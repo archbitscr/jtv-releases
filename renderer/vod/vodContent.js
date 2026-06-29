@@ -57,8 +57,8 @@ export function getSFlixUrlForPage(type, pageNum) {
 }
 
 export async function refreshVodContent() {
-    const favoritesGrid = document.getElementById('favorites-grid');
-    const gridDots = document.getElementById('grid-dots');
+    const favoritesGrid = document.getElementById('land-grid');
+    const gridDots = document.getElementById('land-dots');
     if (!favoritesGrid) return;
 
     const token = ++state.vodRequestToken;

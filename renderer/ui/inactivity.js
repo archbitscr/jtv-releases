@@ -97,7 +97,7 @@ export function startInactivityTimers() {
     }
 
     // 6. Home-dashboard inactivity timeout when channel is playing
-    const homeDashboard = document.getElementById('home-dashboard');
+    const homeDashboard = document.getElementById('land-dashboard');
     if (homeDashboard && !homeDashboard.classList.contains('hidden') && hasChannel) {
         const homeDelay = cfg.settingsActive || 5000;
         timeouts.set('home', () => {
