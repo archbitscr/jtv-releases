@@ -639,11 +639,6 @@ body.player-active .edge-mask {
     gap: 6px;
 }
 
-.search-row .search-container {
-    flex: 1 1 0;
-    min-width: 0;
-}
-
 /* Icon-only filter toggle button next to search bar */
 .sidebar-filter-toggle-btn {
     position: relative;
@@ -1071,32 +1066,6 @@ body.player-active .edge-mask {
 }
 
 /* Search Bar Upgrade */
-.search-container {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px;
-    padding: 6px 15px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    transition: 0.3s;
-    backdrop-filter: blur(5px);
-}
-
-.search-container input {
-    background: transparent !important;
-    border: none !important;
-    color: white !important;
-    outline: none !important;
-    width: 100%;
-}
-
-.search-container:focus-within {
-    background: rgba(255,255,255,0.07);
-    border-color: var(--accent);
-    box-shadow: 0 0 15px rgba(0,255,255,0.1);
-}
-
 /* Video & Player Layering */
 #video-container {
     position: relative;
@@ -2220,7 +2189,7 @@ body.hide-cursor * {
     display: none !important;
 }
 
-.vod-search-container {
+.search-container {
     display: flex;
     align-items: center;
     background: rgba(0, 0, 0, 0.4);
@@ -2233,7 +2202,7 @@ body.hide-cursor * {
     margin: 0 auto;
 }
 
-.vod-search-container input {
+.search-container input {
     background: transparent;
     border: none;
     color: white;
@@ -2242,7 +2211,7 @@ body.hide-cursor * {
     font-size: 1rem;
 }
 
-.vod-search-container i {
+.search-container i {
     width: 20px;
     height: 20px;
     color: rgba(255, 255, 255, 0.5);
@@ -2612,11 +2581,8 @@ body.hide-cursor * {
 }
 
 /* Search Bar Clear Button and Gap */
-.search-container {
-    gap: 12px;
-}
 
-.clear-search-btn {
+.search-clear-btn {
     background: none;
     border: none;
     color: rgba(255, 255, 255, 0.4);
@@ -2628,12 +2594,12 @@ body.hide-cursor * {
     transition: color 0.2s;
 }
 
-.clear-search-btn:hover {
+.search-clear-btn:hover {
     color: #ff4b4b;
 }
 
-.clear-search-btn svg,
-.clear-search-btn i {
+.search-clear-btn svg,
+.search-clear-btn i {
     width: 16px;
     height: 16px;
 }
@@ -6240,7 +6206,7 @@ body:has(#modal-blocker:not(.hidden)) #player-container {
         width: 100% !important;
         min-width: 0;
     }
-    .vod-search-container {
+    .search-container {
         max-width: 100%;
         min-width: 0;
     }
@@ -6255,14 +6221,14 @@ body:has(#modal-blocker:not(.hidden)) #player-container {
     .vod-controls {
         max-width: 100%;
     }
-    .vod-search-container {
+    .search-container {
         padding: clamp(6px, 1.2vw, 12px) clamp(8px, 1.5vw, 18px);
         border-radius: 8px;
     }
-    .vod-search-container input {
+    .search-container input {
         font-size: clamp(0.75rem, 2vw, 1rem);
     }
-    .vod-search-container i {
+    .search-container i {
         width: clamp(14px, 2.5vw, 20px);
         height: clamp(14px, 2.5vw, 20px);
     }
