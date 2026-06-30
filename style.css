@@ -1270,37 +1270,37 @@ body.player-active .edge-mask {
 }
 
 /* Custom select button-style dropdowns */
-.dash-custom-select {
+.fbar-select {
     position: relative;
     display: inline-flex;
     flex-direction: column;
 }
 
-.dash-custom-select-btn {
+.fbar-select-btn {
     display: flex;
     align-items: center;
     gap: 6px;
     white-space: nowrap;
 }
 
-.dash-custom-select-btn.has-value {
+.fbar-select-btn.has-value {
     border-color: var(--accent);
     color: var(--accent);
     background: rgba(255, 255, 255, 0.08);
 }
 
-.dash-chevron {
+.fbar-chevron {
     width: 12px !important;
     height: 12px !important;
     transition: transform 0.2s ease;
     flex-shrink: 0;
 }
 
-.dash-custom-select.open .dash-chevron {
+.fbar-select.open .fbar-chevron {
     transform: rotate(180deg);
 }
 
-.dash-custom-select-menu {
+.fbar-select-menu {
     position: absolute;
     top: calc(100% + 6px);
     left: 0;
@@ -1317,7 +1317,7 @@ body.player-active .edge-mask {
     animation: dropdownFadeIn 0.15s ease;
 }
 
-.dash-custom-select-menu.hidden {
+.fbar-select-menu.hidden {
     display: none;
 }
 
@@ -1327,7 +1327,7 @@ body.player-active .edge-mask {
     to   { opacity: 1; transform: translateY(0);    }
 }
 
-.dash-custom-select-option {
+.fbar-select-option {
     padding: 8px 14px;
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
@@ -1339,13 +1339,13 @@ body.player-active .edge-mask {
     user-select: none;
 }
 
-.dash-custom-select-option:hover {
+.fbar-select-option:hover {
     background: rgba(255, 255, 255, 0.07);
     color: rgba(255, 255, 255, 0.95);
     padding-left: 20px;
 }
 
-.dash-custom-select-option.selected {
+.fbar-select-option.selected {
     color: var(--accent);
     font-weight: 600;
 }

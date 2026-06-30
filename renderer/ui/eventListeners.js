@@ -2045,7 +2045,7 @@ function initGlobalScrollbarAutoHide() {
         '.custom-select-options',
         '.api-code-block',
         '.glass-tuner-body',
-        '.dash-custom-select-menu',
+        '.fbar-select-menu',
         '.compact-picker',
         '.filter-icon-dropdown',
         '#parental-allowed-channels-list',

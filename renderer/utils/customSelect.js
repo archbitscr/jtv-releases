@@ -1,9 +1,9 @@
 export function initDashCustomSelects() {
-    document.querySelectorAll('.dash-custom-select').forEach(wrapper => {
+    document.querySelectorAll('.fbar-select').forEach(wrapper => {
         const selectId = wrapper.dataset.for;
         const select = document.getElementById(selectId);
-        const btn = wrapper.querySelector('.dash-custom-select-btn');
-        const menu = wrapper.querySelector('.dash-custom-select-menu');
+        const btn = wrapper.querySelector('.fbar-select-btn');
+        const menu = wrapper.querySelector('.fbar-select-menu');
         if (!select || !btn || !menu) return;
 
         // Rebuild menu from current select options
@@ -11,13 +11,13 @@ export function initDashCustomSelects() {
             menu.innerHTML = '';
             Array.from(select.options).forEach(opt => {
                 const item = document.createElement('div');
-                item.className = 'dash-custom-select-option';
+                item.className = 'fbar-select-option';
                 item.textContent = opt.textContent;
                 item.dataset.value = opt.value;
                 if (select.value === opt.value) {
                     item.classList.add('selected');
                     btn.classList.toggle('has-value', opt.value !== 'all');
-                    const label = btn.querySelector('.dash-custom-select-label');
+                    const label = btn.querySelector('.fbar-select-label');
                     if (label) {
                         label.textContent = opt.value !== 'all' ? opt.textContent : (select.dataset.label || select.getAttribute('aria-label') || 'Filter');
                     }
@@ -25,13 +25,13 @@ export function initDashCustomSelects() {
                 item.addEventListener('click', (e) => {
                     e.stopPropagation();
                     select.value = opt.value;
-                    const label = btn.querySelector('.dash-custom-select-label');
+                    const label = btn.querySelector('.fbar-select-label');
                     if (label) {
                         label.textContent = opt.value !== 'all' ? opt.textContent : (select.dataset.label || select.getAttribute('aria-label') || 'Filter');
                     }
                     btn.classList.toggle('has-value', opt.value !== 'all');
                     // Update selected highlight in menu
-                    menu.querySelectorAll('.dash-custom-select-option').forEach(el => el.classList.remove('selected'));
+                    menu.querySelectorAll('.fbar-select-option').forEach(el => el.classList.remove('selected'));
                     item.classList.add('selected');
                     // Close menu
                     menu.classList.add('hidden');
@@ -53,9 +53,9 @@ export function initDashCustomSelects() {
             e.stopPropagation();
             const isOpen = !menu.classList.contains('hidden');
             // Close all other dash dropdowns
-            document.querySelectorAll('.dash-custom-select').forEach(w => {
+            document.querySelectorAll('.fbar-select').forEach(w => {
                 if (w !== wrapper) {
-                    w.querySelector('.dash-custom-select-menu')?.classList.add('hidden');
+                    w.querySelector('.fbar-select-menu')?.classList.add('hidden');
                     w.classList.remove('open');
                 }
             });
@@ -76,8 +76,8 @@ export function initDashCustomSelects() {
     if (!document._dashSelectClickHandler) {
         document._dashSelectClickHandler = true;
         document.addEventListener('click', () => {
-            document.querySelectorAll('.dash-custom-select-menu').forEach(m => m.classList.add('hidden'));
-            document.querySelectorAll('.dash-custom-select').forEach(w => w.classList.remove('open'));
+            document.querySelectorAll('.fbar-select-menu').forEach(m => m.classList.add('hidden'));
+            document.querySelectorAll('.fbar-select').forEach(w => w.classList.remove('open'));
         });
     }
 }

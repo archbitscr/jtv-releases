@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=6">
+    <link rel="stylesheet" href="./style.css?v=7">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen (Tarea 11) -->
@@ -208,26 +208,26 @@
                             <button id="land-nav-favorites" class="vod-filter-btn">Favorites</button>
 
                             <!-- Unified filter dropdowns (shared by sidebar and landing) -->
-                            <div class="dash-custom-select" data-for="filter-select-language">
+                            <div class="fbar-select" data-for="filter-select-language">
                                 <select id="filter-select-language" aria-label="Language" data-label="Language" style="display:none;">
                                     <option value="all">All</option>
                                 </select>
-                                <button class="vod-filter-btn dash-custom-select-btn" type="button"><span class="dash-custom-select-label">Language</span> <i data-lucide="chevron-down" class="dash-chevron"></i></button>
-                                <div class="dash-custom-select-menu hidden"></div>
+                                <button class="vod-filter-btn fbar-select-btn" type="button"><span class="fbar-select-label">Language</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
+                                <div class="fbar-select-menu hidden"></div>
                             </div>
-                            <div class="dash-custom-select" data-for="filter-select-genre">
+                            <div class="fbar-select" data-for="filter-select-genre">
                                 <select id="filter-select-genre" aria-label="Genre" data-label="Genre" style="display:none;">
                                     <option value="all">All</option>
                                 </select>
-                                <button class="vod-filter-btn dash-custom-select-btn" type="button"><span class="dash-custom-select-label">Genre</span> <i data-lucide="chevron-down" class="dash-chevron"></i></button>
-                                <div class="dash-custom-select-menu hidden"></div>
+                                <button class="vod-filter-btn fbar-select-btn" type="button"><span class="fbar-select-label">Genre</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
+                                <div class="fbar-select-menu hidden"></div>
                             </div>
-                            <div class="dash-custom-select" data-for="filter-select-event">
+                            <div class="fbar-select" data-for="filter-select-event">
                                 <select id="filter-select-event" aria-label="Event" data-label="Event" style="display:none;">
                                     <option value="all">All</option>
                                 </select>
-                                <button class="vod-filter-btn dash-custom-select-btn" type="button"><span class="dash-custom-select-label">Event</span> <i data-lucide="chevron-down" class="dash-chevron"></i></button>
-                                <div class="dash-custom-select-menu hidden"></div>
+                                <button class="vod-filter-btn fbar-select-btn" type="button"><span class="fbar-select-label">Event</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
+                                <div class="fbar-select-menu hidden"></div>
                             </div>
                         </div>
                         <div class="land-carousel-wrapper">
