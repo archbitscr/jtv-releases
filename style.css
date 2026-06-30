@@ -9,7 +9,7 @@
     --text-dim: #666666;
     --card-bg: #111111;
     --transition: all 0.3s ease;
-    --center-nav-width: 530px;
+    --center-nav-width: clamp(355px, 49.07vw, 1357px);
 }
 
 * {
@@ -796,7 +796,7 @@ body.player-active .edge-mask {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 100px 40px 40px 40px;
+    padding: clamp(67px, 9.26vw, 256px) clamp(27px, 3.70vw, 102px) clamp(27px, 3.70vw, 102px) clamp(27px, 3.70vw, 102px);
     background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
     
     /* Smooth Transition */
@@ -813,15 +813,6 @@ body.player-active .edge-mask {
     pointer-events: none;
 }
 
-.dashboard-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 3rem;
-    color: white;
-    text-shadow: 0 0 20px rgba(255,255,255,0.2);
-    letter-spacing: 2px;
-}
-
 .land-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -835,9 +826,9 @@ body.player-active .edge-mask {
 .land-carousel-wrapper {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: clamp(20px, 2.78vw, 77px);
     width: 100%;
-    max-width: 1100px;
+    max-width: clamp(737px, 101.85vw, 2816px);
     justify-content: center;
 }
 
@@ -860,50 +851,32 @@ body.player-active .edge-mask {
 }
 
 .land-nav-btn i {
-    width: 48px;
-    height: 48px;
+    width: clamp(32px, 4.44vw, 123px);
+    height: clamp(32px, 4.44vw, 123px);
 }
 
 .land-dots-container {
     background: transparent;
     width: 100%;
-    max-width: 900px;
-    height: 40px;
-    border-radius: 6px;
+    max-width: clamp(603px, 83.33vw, 2304px);
+    height: clamp(27px, 3.70vw, 102px);
+    border-radius: clamp(4px, 0.56vw, 15px);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 12px;
+    margin-top: clamp(8px, 1.11vw, 31px);
 }
 
 .land-dots {
     display: flex;
-    gap: 12px;
-}
-
-.land-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.25);
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.land-dot:hover {
-    background: rgba(255, 255, 255, 0.6);
-}
-
-.land-dot.active {
-    background: white;
-    transform: scale(1.2);
+    gap: clamp(8px, 1.11vw, 31px);
 }
 
 .land-item {
     position: relative;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
-    border-radius: 15px;
+    border-radius: clamp(10px, 1.39vw, 38px);
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -928,10 +901,10 @@ body.player-active .edge-mask {
 }
 
 .land-item .land-logo {
-    width: 50px;
-    height: 50px;
+    width: clamp(34px, 4.63vw, 128px);
+    height: clamp(34px, 4.63vw, 128px);
     margin-bottom: 0;
-    margin-right: 15px;
+    margin-right: clamp(10px, 1.39vw, 38px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -946,7 +919,7 @@ body.player-active .edge-mask {
 }
 
 .land-item h4 {
-    font-size: 1rem;
+    font-size: clamp(0.67rem, 1.48vw, 2.56rem);
     color: white;
     text-align: left;
     margin: 0;
@@ -1001,10 +974,10 @@ body.player-active .edge-mask {
 }
 
 .land-epg {
-    font-size: 0.75rem;
+    font-size: clamp(0.50rem, 1.11vw, 1.92rem);
     color: var(--accent);
     opacity: 0.6;
-    margin-top: 4px;
+    margin-top: clamp(3px, 0.37vw, 10px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1018,21 +991,21 @@ body.player-active .edge-mask {
 /* Channel ID tag (same chip used in sidebar, .side-channel-id) — replaces the old list-number badge */
 .land-channel-id {
     position: absolute;
-    top: 8px;
-    right: 12px;
+    top: clamp(5px, 0.74vw, 20px);
+    right: clamp(8px, 1.11vw, 31px);
     display: inline-flex;
     align-items: center;
-    padding: 2px 6px;
+    padding: clamp(1px, 0.19vw, 5px) clamp(4px, 0.56vw, 15px);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 4px;
-    font-size: 0.65rem;
+    border-radius: clamp(3px, 0.37vw, 10px);
+    font-size: clamp(0.44rem, 0.96vw, 1.66rem);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     pointer-events: none;
     white-space: nowrap;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: clamp(0px, 0.05vw, 1px);
     transition: 0.3s;
 }
 
@@ -1081,18 +1054,18 @@ body.player-active .edge-mask {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 1400px;
+    max-width: clamp(938px, 129.63vw, 3584px);
     width: 100%;
-    padding-top: 12px;
+    padding-top: clamp(8px, 1.11vw, 31px);
 }
 
 .land-top-row {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr var(--center-nav-width) 1fr;
-    column-gap: 40px;
+    column-gap: clamp(27px, 3.70vw, 102px);
     align-items: flex-start;
-    margin-bottom: 12px;
+    margin-bottom: clamp(8px, 1.11vw, 31px);
 }
 
 .land-title-block {
@@ -1101,7 +1074,7 @@ body.player-active .edge-mask {
     align-items: flex-start;
     justify-content: flex-start;
     min-width: 0;
-    padding-top: 6px;
+    padding-top: clamp(4px, 0.56vw, 15px);
     justify-self: end;
 }
 
@@ -1116,7 +1089,7 @@ body.player-active .edge-mask {
     min-width: 0;
     display: flex;
     justify-content: flex-end;
-    padding-top: 10px;
+    padding-top: clamp(7px, 0.93vw, 26px);
     justify-self: start;
 }
 
@@ -1602,18 +1575,6 @@ body.player-active .edge-mask {
 }
 
 /* Home Dashboard Refinement */
-.dashboard-title {
-    font-size: clamp(2.5rem, 2.5vw, 5rem);
-    font-weight: 700;
-    letter-spacing: 4px;
-    background: linear-gradient(to right, #fff, var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 3.5rem;
-    text-transform: uppercase;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.6);
-}
-
 body.hide-cursor {
     cursor: none;
 }
@@ -1658,8 +1619,8 @@ body.hide-cursor * {
 }
 
 .land-dot {
-    width: 9px;
-    height: 9px;
+    width: clamp(6px, 0.83vw, 23px);
+    height: clamp(6px, 0.83vw, 23px);
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     cursor: pointer;
@@ -4506,7 +4467,7 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 /* Modern Minimalist Section Title */
 .land-title {
     position: static !important;
-    font-size: clamp(2rem, 2vw, 4rem) !important;
+    font-size: clamp(1.74rem, 3.85vw, 6.66rem) !important;
     font-weight: 600 !important;
     color: rgba(255, 255, 255, 0.95) !important;
     font-family: 'Outfit', sans-serif !important;
@@ -4522,10 +4483,10 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     background: none !important;
     border: none !important;
     padding: 0 !important;
-    margin-top: 6px !important;
+    margin-top: clamp(4px, 0.56vw, 15px) !important;
     color: rgba(255, 255, 255, 0.7) !important;
     font-weight: 700 !important;
-    font-size: clamp(0.85rem, 0.7vw, 1.3rem) !important;
+    font-size: clamp(0.64rem, 1.41vw, 2.43rem) !important;
     cursor: pointer !important;
     align-self: flex-end;
     transition: transform 0.2s ease, color 0.2s ease;
@@ -4775,14 +4736,22 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 }
 
 /* Home landing nav and dropdowns */
+.land-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(7px, 0.93vw, 26px);
+    margin-bottom: clamp(13px, 1.85vw, 51px);
+    flex-wrap: wrap;
+}
+
 .land-nav button {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.05);
     color: rgba(255, 255, 255, 0.7);
-    padding: 8px 18px;
-    border-radius: 20px;
+    padding: clamp(5px, 0.74vw, 20px) clamp(12px, 1.67vw, 46px);
+    border-radius: clamp(13px, 1.85vw, 51px);
     cursor: pointer;
-    font-size: 13px;
+    font-size: clamp(0.54rem, 1.20vw, 2.08rem);
     font-weight: 600;
     transition: all 0.2s ease;
 }
@@ -6183,11 +6152,6 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
     }
     .land-title {
         font-size: clamp(1.2rem, 4vw, 2rem) !important;
-    }
-    .dashboard-title {
-        font-size: clamp(1.4rem, 4.5vw, 3rem);
-        margin-bottom: 1rem;
-        letter-spacing: 2px;
     }
     .vod-controls {
         max-width: 100%;
