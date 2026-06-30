@@ -153,17 +153,26 @@ iframe {
     pointer-events: auto;
 }
 
-/* Black masks to hide border artifacts/symbols from webview */
+/* Pillarbox/letterbox margins outside the 16:9 video box (now that the
+   webview itself is sized to match, via updatePlayerVideoBox()) — kept
+   transparent so the wallpaper shows through instead of solid black. */
 .edge-mask {
     display: none;
     position: absolute;
-    background: #000 !important;
+    background: transparent !important;
     z-index: 15; /* Above webview (z-index 1) but below HUD (z-index 1000) */
     pointer-events: none; /* Let mouse events pass through to triggers or player-barrier */
 }
 
 body.player-active .edge-mask {
     display: block;
+}
+
+/* When a channel is tuned and the user reopens the Live TV grid on top of it
+   (showLiveLanding), let the playing webview show through instead of the
+   opaque dashboard background. */
+body.player-active .land-dashboard {
+    background: transparent;
 }
 
 /* Pillarbox - aspect ratio wider than 16:9 */

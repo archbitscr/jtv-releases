@@ -278,6 +278,7 @@ export function mountRemotePlayer(url) {
     });
 
     playerContainer.appendChild(webview);
+    if (ext.updatePlayerVideoBox) ext.updatePlayerVideoBox();
     updatePlayerActiveState();
 
     if (ext.ensurePlayerCurtain) ext.ensurePlayerCurtain();

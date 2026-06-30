@@ -28,7 +28,7 @@ import { checkValidity, updateEditLogo } from './renderer/ui/editPane.js';
 import { adjustVolume, toggleMute, updateVolumeUI } from './renderer/ui/volumeController.js';
 import { setSettingsFilterTab, setConnectivityTab, setChannelsTab } from './renderer/settings/settingsTabs.js';
 import { ensurePlayerCurtain, showPlayerCurtain, hidePlayerCurtain, updateWebviewPointerEvents, updateHudChannelFilters } from './renderer/ui/playerUI.js';
-import { syncCenterNavWidth, checkResolution, updateFullscreenButton, toggleAppFullscreen, handleResizeDimensions, updateVodGridDimensions } from './renderer/ui/layout.js';
+import { syncCenterNavWidth, checkResolution, updateFullscreenButton, toggleAppFullscreen, handleResizeDimensions, updateVodGridDimensions, updatePlayerVideoBox } from './renderer/ui/layout.js';
 // sensors.js is dev-only: loaded dynamically in the dev block below (see import.meta.env.PROD gate)
 import { updateTriggersVisibility } from './renderer/ui/triggersVisibility.js';
 import { setupEventListeners } from './renderer/ui/eventListeners.js';
@@ -159,7 +159,8 @@ async function init() {
         updateHudChannelFilters,
         syncMenuScroll,
         saveAppState,
-        syncGridPageToActiveChannel
+        syncGridPageToActiveChannel,
+        updatePlayerVideoBox
     });
 
     // Initialize UI navigation dependencies

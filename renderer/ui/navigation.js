@@ -83,7 +83,8 @@ export function showLiveLanding() {
 
     const homeDashboard = document.getElementById('land-dashboard');
     if (homeDashboard) homeDashboard.classList.remove('hidden');
-    
+
+    if (ext.applyWallpaper) ext.applyWallpaper(state.selectedWallpaper);
     if (ext.syncGridPageToActiveChannel) ext.syncGridPageToActiveChannel();
     if (ext.renderFavoritesGrid) ext.renderFavoritesGrid();
     

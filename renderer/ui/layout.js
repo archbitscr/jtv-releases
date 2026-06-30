@@ -3,6 +3,29 @@ import { getFilteredChannelsList } from '../filters/filterManager.js';
 import { refreshVodContent } from '../vod/vodContent.js';
 import { renderFavoritesGrid } from '../render/favoritesGrid.js';
 
+export function updatePlayerVideoBox() {
+    const webview = document.getElementById('player-webview');
+    if (!webview) return;
+
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    let w, h;
+    if (vw / vh > 16 / 9) {
+        // Window wider than 16:9 -> pillarbox left/right
+        h = vh;
+        w = vh * 16 / 9;
+    } else {
+        // Window taller/narrower than 16:9 -> letterbox top/bottom
+        w = vw;
+        h = vw * 9 / 16;
+    }
+
+    webview.style.width = `${w}px`;
+    webview.style.height = `${h}px`;
+    webview.style.top = `${(vh - h) / 2}px`;
+    webview.style.left = `${(vw - w) / 2}px`;
+}
+
 export function syncCenterNavWidth() {
     const topNavMenu = document.getElementById('tnav-menu');
     if (!topNavMenu) return;
@@ -79,6 +102,7 @@ export function updateVodGridDimensions() {
 export async function handleResizeDimensions() {
     syncCenterNavWidth();
     checkResolution();
+    updatePlayerVideoBox();
 
     const rows = window.innerHeight <= 500 ? 4 : 5;
     const newFavsPerPage = 2 * rows;
