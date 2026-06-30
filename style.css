@@ -1837,7 +1837,7 @@ body.hide-cursor * {
     align-items: flex-start;
     justify-content: flex-start;
     padding: 14px 14px 14px 20px;
-    gap: 20px;
+    gap: 14px;
 
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);

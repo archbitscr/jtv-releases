@@ -289,6 +289,31 @@ Este documento unifica de forma cronológica todas las mejoras, características
 *   **Impacto estimado:** ~200+ selectores CSS, ~50+ IDs HTML, ~30+ referencias JS.
 *   **Nota:** No mezclar con aplicación de clamp() — esta tarea es exclusivamente de renombrado.
 
+#### 8. Tarea 41: Reordenamiento Estructural de HTML y CSS según los 4 Pilares
+*   **Componente:** `index.html`, `style.css`.
+*   **Objetivo:** Hacer que el orden físico de los bloques en `index.html` y `style.css` siga consistentemente el esquema de 4 pilares (Home, Live TV, VOD, Settings + transversales) y la jerarquía visual definida en `contexto_de_perfil.md` (sección 8), de modo que ambos archivos comparen el mismo orden entre sí y cada componente quede agrupado junto a los demás de su pilar.
+*   **Prerequisito:** Depende del renombrado por prefijo de la Tarea 38 (ya completada) para identificar qué bloque pertenece a qué pilar.
+*   **Hallazgos de desorden (auditoría inicial 2026-06-29):**
+    *   **HTML:**
+        1.  `#app-home-screen` (pilar Home) aparece *después* de todo Live TV (`#pbar`, `#land-dashboard`, `#tnav-menu`, `#side-menu`) en el DOM, pese a ser el pilar de entrada de la app.
+        2.  Controles de VOD (`#vod-controls`, `.vod-filter-btn`, `.fbar-select-*`) están anidados dentro de `#land-dashboard` (contenedor de Live TV), mientras que `#vod-details-modal` (mismo pilar VOD) está casi 1200 líneas más abajo, sin agrupación física con el resto de VOD.
+        3.  Los modales/transversales de la familia `.modal-*` (`#no-signal-overlay`, `#parental-pin-modal`, `#trial-expired-blocker`) están dispersos: uno al inicio del archivo (dentro de `#tv-screen`) y dos al final.
+    *   **CSS:**
+        1.  `.pbar-*` (Player Bar) aparece en al menos 3 bloques no contiguos (~L1826-2127, ~L4028-4139, ~L4838 autotune).
+        2.  `.side-*` (Sidebar) aparece en al menos 4 bloques no contiguos (~L225-512, ~L1306, ~L2549-2639, ~L4363).
+        3.  `.fbar-*` (Filter Bar) aparece interrumpido en al menos 2 lugares (~L1217, ~L4778).
+        4.  Comentarios de sección obsoletos: `/* Home Dashboard */` (L822) y `/* Home Dashboard Refinement */` (L1631) en realidad documentan `.land-dashboard` (Live TV Landing/Grid), no el pilar Home real (`#app-home-screen`, sección correcta "App Home Screen Landing Page" en ~L2639) — comentarios heredados de antes del renombrado de Task 38, desincronizados de los nombres reales.
+        5.  Bloques `DEV-ONLY` (Settings) interrumpen la continuidad de Player Bar/Settings en varios puntos del archivo.
+*   **Acción Requerida:**
+    1.  Usar el mapa de la sección 8 de `contexto_de_perfil.md` (4 pilares + transversales) como única fuente de orden canónico.
+    2.  Reordenar `index.html`: agrupar cada pilar en un bloque contiguo, en el orden Home → Live TV (Player Bar → Top Nav → Sidebar → Landing/Grid → Filter Bar → Player) → VOD (Cards/Controles + Details Modal) → Settings (tabs user-facing → dev-only) → Transversales (Modals, Vol OSD, FS/Power, Tooltips, Search, Floating Dev, Scrollbars).
+    3.  Reordenar `style.css` con el mismo orden, consolidando cada prefijo (`.pbar-*`, `.tnav-*`, `.side-*`, `.land-*`, `.fbar-*`, `.player-*`, `.vod-*`, `.vod-details-*`, `.settings-*`, `.modal-*`, `.volosd-*`, `.corner-*`, `.tooltip-*`, `.search-*`) en un único bloque contiguo.
+    4.  Corregir o eliminar comentarios de sección obsoletos que no coincidan con los nombres reales post-Task 38.
+    5.  Validar con build + verificación visual completa después de mover cada pilar (uno a la vez, no todo de una vez), siguiendo la misma metodología de Task 38.
+    6.  No modificar lógica, valores ni nombres de selectores — es exclusivamente reordenamiento físico de bloques, igual que Task 38 fue exclusivamente renombrado.
+*   **Riesgo:** Alto — mover bloques grandes de HTML puede romper anidamiento de `<div>` o alterar el contexto de selectores CSS dependientes de jerarquía (`:has()`, descendientes tipo `.pbar-center-row .pbar-action-btn`). Requiere verificación exhaustiva de cada selector afectado tras mover su HTML correspondiente.
+*   **Nota:** No mezclar con clamp() — esta tarea es exclusivamente de reordenamiento estructural, posterior a Task 38 y previo (o en paralelo, por sección ya reordenada) a la reaplicación de clamp() pendiente.
+
 ---
 
 ### ⏳ Dificultad Alta — 🧠 Recomendado Opus 4.8
