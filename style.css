@@ -893,9 +893,6 @@ body.player-active .land-dashboard {
     padding: 8px 36px 8px 8px;
     cursor: pointer;
     transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    will-change: opacity, transform, backdrop-filter;
 }
 
 .land-item:hover {
@@ -1585,19 +1582,16 @@ body.player-active .land-dashboard {
     opacity: 0;
 }
 
-/* .land-item also uses backdrop-filter (glass effect). Animating opacity on
-   the same element that has backdrop-filter makes Chromium skip/delay the
-   blur compositing until the animation settles (~1s flat dark tint before
-   the glass effect "kicks in"). Drop the opacity fade for this case and
-   keep only the slide-up transform, which doesn't have that issue. */
-@keyframes stagger-up-solid {
-    from { transform: translateY(20px); }
-    to { transform: translateY(0); }
-}
-
+/* .land-item used to have backdrop-filter (glass effect). Animating opacity
+   on an element with backdrop-filter made Chromium skip/delay the blur
+   compositing until the animation settled (~1s flat dark tint before the
+   glass effect "kicked in"). Root cause turned out to be backdrop-filter
+   itself, not the animation — removed from .land-item. No fade/slide-in for
+   these cards anymore to avoid reintroducing the issue. */
 .land-item.stagger-reveal {
-    animation: stagger-up-solid 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: none;
     opacity: 1;
+    transform: none;
 }
 
 /* Home Dashboard Refinement */
