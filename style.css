@@ -9,7 +9,7 @@
     --text-dim: #666666;
     --card-bg: #111111;
     --transition: all 0.3s ease;
-    --center-nav-width: 520px;
+    --center-nav-width: 530px;
 }
 
 * {
@@ -237,7 +237,7 @@ body.player-active .edge-mask {
     transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s;
     display: flex;
     flex-direction: column;
-    padding: 12px 16px 16px 16px;
+    padding: 12px 10px 12px 14px;
     box-shadow: 0 20px 20px 8px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
     overflow: hidden;
 }
@@ -477,6 +477,8 @@ body.player-active .edge-mask {
 
 .side-action-btn.favorite i,
 .side-action-btn.favorite svg {
+    width: 16px;
+    height: 16px;
     fill: transparent;
     transition: 0.3s;
 }
@@ -498,6 +500,12 @@ body.player-active .edge-mask {
 
 .side-action-btn.edit-btn {
     transition: all 0.2s ease;
+}
+
+.side-action-btn.edit-btn i,
+.side-action-btn.edit-btn svg {
+    width: 20px;
+    height: 20px;
 }
 
 .side-action-btn.edit-btn:hover {
@@ -1440,13 +1448,13 @@ body.player-active .edge-mask {
 /* Compact Menu Items */
 .side-channel-item {
     position: relative;
-    padding: 6px 10px;
+    padding: 4px 6px 4px 10px;
     margin-bottom: 4px;
-    border-radius: 8px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.06);
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -2195,7 +2203,7 @@ body.hide-cursor * {
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
-    padding: 12px 18px;
+    padding: 6px 12px;
     gap: 10px;
     width: 100%;
     max-width: none;
@@ -4183,7 +4191,7 @@ body:not(.dev-mode) .dev-indicator {
     padding: 8px 16px !important;
     border-radius: 10px !important;
     cursor: pointer;
-    font-size: 1.15rem !important;
+    font-size: 1rem !important;
     font-weight: 600;
     display: flex;
     align-items: center;
