@@ -1,5 +1,7 @@
 import { state } from '../state/appState.js';
 
+let lastLoadedWallpaper = null;
+
 export function normalizeWallpaperPath(wall) {
     if (!wall || wall === 'none') return wall;
     if (wall.startsWith('assets/')) return wall;
@@ -39,14 +41,29 @@ export function applyWallpaper(wall) {
     if (window.jtvAPI) {
         window.jtvAPI.logRenderer(`applyWallpaper called with wall: "${wall}"`);
     }
-    
+
     const token = ++state.wallpaperRequestToken;
     appWall.style.transition = '';
+
+    // Already decoded this exact image before (e.g. it was just hidden via
+    // applyWallpaper('none') when a channel was tuned) — skip the Image()
+    // reload + decode round-trip and show it back immediately. Avoids a
+    // ~1s delay every time this re-runs (e.g. on every showLiveLanding()).
+    if (lastLoadedWallpaper === wall) {
+        appWall.style.backgroundImage = `url('${wall}')`;
+        appWall.classList.add('visible');
+        document.querySelectorAll('.wallpaper-option').forEach(opt => {
+            opt.classList.toggle('active', opt.dataset.wall === wall);
+        });
+        return;
+    }
+
     const img = new Image();
     img.onload = () => {
         if (token !== state.wallpaperRequestToken) return;
         appWall.style.backgroundImage = `url('${wall}')`;
         appWall.classList.add('visible');
+        lastLoadedWallpaper = wall;
     };
     img.onerror = () => {
         if (token !== state.wallpaperRequestToken) return;
