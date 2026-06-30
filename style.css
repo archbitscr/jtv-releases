@@ -281,9 +281,9 @@ body.player-active .edge-mask {
 
 /* Tabs */
 .side-tabs {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: center;
     margin: 0 0 clamp(7px, 0.93vw, 26px) 0;
     position: relative;
     padding-bottom: clamp(5px, 0.74vw, 20px);
@@ -291,9 +291,11 @@ body.player-active .edge-mask {
 }
 
 .side-tabs-center {
+    grid-column: 2;
     display: flex;
     align-items: center;
     gap: clamp(7px, 0.93vw, 26px);
+    min-width: 0;
 }
 
 .side-tab-btn {
@@ -345,11 +347,15 @@ body.player-active .edge-mask {
 
 /* Close button pushed to far right in the tab row */
 .side-close-btn {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    grid-column: 3;
+    justify-self: end;
     flex-shrink: 0;
+}
+
+.side-close-btn i,
+.side-close-btn svg {
+    width: clamp(12px, 1.67vw, 46px);
+    height: clamp(12px, 1.67vw, 46px);
 }
 
 /* Vertical divider between home btn and channel tabs */
