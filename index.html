@@ -46,13 +46,13 @@
                 <div id="player-container"></div>
                 
                 <!-- No Signal Screen -->
-                <div id="no-signal-overlay" class="modal-blocker hidden" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; background: rgba(0,0,0,0.85);">
-                    <div class="modal-blocker-content glass-card" style="text-align: center; border: none !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important;">
-                        <img id="no-signal-icon" src="./assets/images/no-signal.png" style="width:96px;height:auto;margin:0 auto 20px auto;display:block;">
+                <div id="no-signal-overlay" class="modal-blocker hidden">
+                    <div class="modal-blocker-content glass-card no-signal-content">
+                        <img id="no-signal-icon" src="./assets/images/no-signal.png">
                         <h2>No Signal</h2>
-                        <div id="no-signal-retry-status" style="margin-top: 16px; display: flex; flex-direction: column; align-items: center; gap: 10px;">
-                            <p id="no-signal-retry-text" style="font-size: 0.85em; opacity: 0.5;">Waiting for signal to be restored...</p>
-                            <div style="display: flex; gap: 6px; align-items: center;">
+                        <div id="no-signal-retry-status">
+                            <p id="no-signal-retry-text">Waiting for signal to be restored...</p>
+                            <div class="retry-dots-row">
                                 <span class="retry-dot"></span>
                                 <span class="retry-dot"></span>
                                 <span class="retry-dot"></span>

@@ -153,6 +153,51 @@ iframe {
     pointer-events: auto;
 }
 
+/* No Signal overlay (was inline style in HTML) */
+#no-signal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.no-signal-content {
+    text-align: center;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+#no-signal-icon {
+    width: clamp(64px, 8.89vw, 246px);
+    height: auto;
+    margin: 0 auto clamp(13px, 1.85vw, 51px) auto;
+    display: block;
+}
+
+#no-signal-retry-status {
+    margin-top: clamp(11px, 1.48vw, 41px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(7px, 0.93vw, 26px);
+}
+
+#no-signal-retry-text {
+    font-size: clamp(0.57em, 1.26vw, 2.18em);
+    opacity: 0.5;
+}
+
+.retry-dots-row {
+    display: flex;
+    gap: clamp(4px, 0.56vw, 15px);
+    align-items: center;
+}
+
 /* Pillarbox/letterbox margins outside the 16:9 video box (now that the
    webview itself is sized to match, via updatePlayerVideoBox()) — kept
    transparent so the wallpaper shows through instead of solid black. */
@@ -1689,72 +1734,6 @@ body.hide-cursor * {
 .placeholder-msg { font-size: 1.5rem; color: #333; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
 .logo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #1a1a1a; color: #444; }
 .logo-placeholder svg { width: 24px; height: 24px; }
-
-/* Player Controls Overlay */
-.player-controls {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    z-index: 1000;
-    transition: opacity 0.3s, transform 0.3s;
-    pointer-events: auto;
-}
-
-.player-controls.hidden {
-    opacity: 0;
-    transform: translateY(20px);
-    pointer-events: none;
-}
-
-.controls-left, .controls-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.control-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-}
-
-.control-btn:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-.volume-slider-container {
-    width: 150px;
-    display: flex;
-    align-items: center;
-}
-
-#volume-slider {
-    width: 100%;
-    cursor: pointer;
-    accent-color: #ffffff;
-}
-
-#volume-text {
-    font-size: 0.9rem;
-    font-weight: 600;
-    min-width: 45px;
-    color: rgba(255,255,255,0.7);
-}
 
 /* Hide Junk in Iframe */
 #player-container iframe {
@@ -6137,8 +6116,8 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
 
 
 .retry-dot {
-    width: 7px;
-    height: 7px;
+    width: clamp(5px, 0.65vw, 18px);
+    height: clamp(5px, 0.65vw, 18px);
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.6);
     animation: retryPulse 1.2s ease-in-out infinite;
