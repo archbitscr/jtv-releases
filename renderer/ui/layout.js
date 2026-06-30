@@ -1,6 +1,7 @@
 import { state } from '../state/appState.js';
 import { getFilteredChannelsList } from '../filters/filterManager.js';
 import { refreshVodContent } from '../vod/vodContent.js';
+import { renderFavoritesGrid } from '../render/favoritesGrid.js';
 
 export function syncCenterNavWidth() {
     const topNavMenu = document.getElementById('tnav-menu');
@@ -78,6 +79,15 @@ export function updateVodGridDimensions() {
 export async function handleResizeDimensions() {
     syncCenterNavWidth();
     checkResolution();
+
+    const rows = window.innerHeight <= 500 ? 4 : 5;
+    const newFavsPerPage = 2 * rows;
+    if (state.FAVS_PER_PAGE !== newFavsPerPage) {
+        state.FAVS_PER_PAGE = newFavsPerPage;
+        if (state.currentModule === 'live') {
+            renderFavoritesGrid();
+        }
+    }
 
     const grid = document.getElementById('land-grid');
     const isVod = grid && grid.classList.contains('vod-active');

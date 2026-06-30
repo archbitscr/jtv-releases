@@ -6224,6 +6224,13 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
     }
 }
 
+/* ====== Responsive: Short windows (≤500px height) ====== */
+@media (max-height: 500px) {
+    .land-grid {
+        grid-template-rows: repeat(4, 1fr);
+    }
+}
+
 /* ====== Responsive: Extra-large screens (4K ≥2500px) ====== */
 @media (min-width: 2500px) {
     #side-menu {
