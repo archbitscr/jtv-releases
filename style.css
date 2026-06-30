@@ -4415,7 +4415,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
 }
 
 /* Volume HUD Indicator */
-.volume-indicator {
+.volosd-indicator {
     position: absolute;
     bottom: 140px; /* Positioned directly above pbar bottom menu */
     left: 50%;
@@ -4441,21 +4441,21 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     pointer-events: none;
 }
 
-.volume-indicator.hidden {
+.volosd-indicator.hidden {
     display: flex !important;
     opacity: 0;
     transform: translate(-50%, 20px);
 }
 
-.volume-indicator i,
-.volume-indicator svg {
+.volosd-indicator i,
+.volosd-indicator svg {
     width: 18px;
     height: 18px;
     color: #ffffff !important;
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)) !important;
 }
 
-.volume-bar-container {
+.volosd-bar-container {
     width: 120px;
     height: 6px;
     background: rgba(255, 255, 255, 0.15);
@@ -4463,7 +4463,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     overflow: hidden;
 }
 
-.volume-indicator-bar {
+.volosd-bar {
     height: 100%;
     width: 100%;
     background: #ffffff !important;
@@ -4472,7 +4472,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.9) !important;
 }
 
-.volume-indicator span {
+.volosd-indicator span {
     font-size: 0.95rem;
     font-weight: 700;
     color: white;

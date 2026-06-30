@@ -5,10 +5,10 @@ export function showVolumeHUD(level, isMuted) {
     const isChannelPlaying = state.activeChannelId && !state.isVodPlaying;
     if (!isChannelPlaying) return;
 
-    const hud = document.getElementById('volume-indicator');
-    const bar = document.getElementById('volume-indicator-bar');
-    const text = document.getElementById('volume-indicator-text');
-    const icon = document.getElementById('volume-indicator-icon');
+    const hud = document.getElementById('volosd-indicator');
+    const bar = document.getElementById('volosd-bar');
+    const text = document.getElementById('volosd-text');
+    const icon = document.getElementById('volosd-icon');
     
     if (!hud || !bar || !text || !icon) return;
     
