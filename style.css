@@ -1478,7 +1478,7 @@ body.player-active .edge-mask {
 /* Compact Menu Items */
 .side-channel-item {
     position: relative;
-    padding: 4px 6px 4px 10px;
+    padding: 6px 10px;
     margin-bottom: 4px;
     border-radius: 10px;
     display: flex;
