@@ -1834,7 +1834,7 @@ body.hide-cursor * {
 
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     padding: 14px 14px 14px 20px;
     gap: 20px;
@@ -2024,8 +2024,8 @@ body.hide-cursor * {
 
 .pbar-action-btn {
     position: relative;
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -4076,8 +4076,8 @@ body:not(.dev-mode) .dev-indicator {
 .pbar-vol-icon {
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     color: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
@@ -4383,7 +4383,7 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 /* Volume HUD Indicator */
 .volosd-indicator {
     position: absolute;
-    bottom: 140px; /* Positioned directly above pbar bottom menu */
+    bottom: 150px; /* Positioned directly above pbar bottom menu */
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 10005;
