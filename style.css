@@ -166,6 +166,13 @@ body.player-active .edge-mask {
     display: block;
 }
 
+/* When a channel is tuned and the user reopens the Live TV grid on top of it
+   (showLiveLanding), let the playing webview show through instead of the
+   opaque dashboard background. */
+body.player-active .land-dashboard {
+    background: transparent;
+}
+
 /* Pillarbox - aspect ratio wider than 16:9 */
 .edge-mask.left {
     top: 0;
