@@ -894,6 +894,8 @@ body.player-active .land-dashboard {
     cursor: pointer;
     transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    will-change: opacity, transform, backdrop-filter;
 }
 
 .land-item:hover {
