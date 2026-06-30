@@ -74,7 +74,7 @@ export async function initDeveloperFeatures() {
         };
     }
 
-    const powerUserBtn = document.getElementById('power-user-btn');
+    const powerUserBtn = document.getElementById('corner-power-btn');
     if (powerUserBtn) {
         powerUserBtn.onclick = () => window.close();
     }
@@ -803,7 +803,7 @@ export function updateDeveloperUI() {
     const openDevtoolsBtn = document.getElementById('open-devtools-btn');
     const reloadWindowBtn = document.getElementById('reload-window-btn');
     const powerOffBtn = document.getElementById('power-off-btn');
-    const powerHoverZone = document.getElementById('power-hover-zone');
+    const powerHoverZone = document.getElementById('corner-power-zone');
 
     console.log('[DeveloperModule] updateDeveloperUI: developerModeEnabled =', developerModeEnabled, 'reloadWindowBtn =', !!reloadWindowBtn, 'powerOffBtn =', !!powerOffBtn);
 

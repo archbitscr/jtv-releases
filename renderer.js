@@ -463,14 +463,14 @@ async function init() {
         }
     }
 
-    // User-mode shutdown control (Task 23). The dev module manages #power-hover-zone
+    // User-mode shutdown control (Task 23). The dev module manages #corner-power-zone
     // visibility while developing; in production the dev module is absent, so wire the
     // user Power button and reveal its hover zone here — otherwise the packaged app
     // (frameless) would have no way to close.
-    const powerUserBtn = document.getElementById('power-user-btn');
+    const powerUserBtn = document.getElementById('corner-power-btn');
     if (powerUserBtn) powerUserBtn.onclick = () => window.close();
     if (import.meta.env.PROD) {
-        const powerHoverZone = document.getElementById('power-hover-zone');
+        const powerHoverZone = document.getElementById('corner-power-zone');
         if (powerHoverZone) powerHoverZone.style.display = 'flex';
     }
 

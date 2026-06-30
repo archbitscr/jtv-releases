@@ -594,7 +594,7 @@ export function setupEventListeners() {
         };
     }
 
-    const fullscreenToggleBtn = document.getElementById('fullscreen-toggle');
+    const fullscreenToggleBtn = document.getElementById('corner-fs-btn');
     if (fullscreenToggleBtn) {
         fullscreenToggleBtn.onclick = async (e) => {
             e.stopPropagation();

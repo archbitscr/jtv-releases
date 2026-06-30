@@ -4249,7 +4249,7 @@ body:not(.dev-mode) .dev-indicator {
     height: 20px !important;
 }
 
-.fullscreen-hover-zone {
+.corner-fs-zone {
     position: fixed;
     top: clamp(16px, 2.22vw, 61px);
     right: clamp(16px, 2.22vw, 61px);
@@ -4262,7 +4262,7 @@ body:not(.dev-mode) .dev-indicator {
     padding: 0;
 }
 
-.fullscreen-toggle-btn {
+.corner-fs-btn {
     width: clamp(36px, 5.00vw, 138px);
     height: clamp(36px, 5.00vw, 138px);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -4282,36 +4282,36 @@ body:not(.dev-mode) .dev-indicator {
     transition: opacity 0.22s ease, transform 0.22s ease, background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
 }
 
-.fullscreen-hover-zone:hover .fullscreen-toggle-btn,
-.fullscreen-toggle-btn:focus-visible {
+.corner-fs-zone:hover .corner-fs-btn,
+.corner-fs-btn:focus-visible {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
 }
 
-.fullscreen-toggle-btn:hover {
+.corner-fs-btn:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.14);
     color: rgba(255, 255, 255, 0.95);
 }
 
-.fullscreen-toggle-btn i,
-.fullscreen-toggle-btn svg {
+.corner-fs-btn i,
+.corner-fs-btn svg {
     width: clamp(18px, 2.50vw, 69px);
     height: clamp(18px, 2.50vw, 69px);
     transition: transform 0.22s ease;
     transform: scale(1);
 }
 
-.fullscreen-toggle-btn.is-fullscreen svg {
+.corner-fs-btn.is-fullscreen svg {
     transform: scale(0.96);
 }
 
-.fullscreen-toggle-btn:hover svg {
+.corner-fs-btn:hover svg {
     transform: scale(1.22);
 }
 
-.power-hover-zone {
+.corner-power-zone {
     position: fixed;
     bottom: clamp(16px, 2.22vw, 61px);
     right: clamp(16px, 2.22vw, 61px);
@@ -4324,7 +4324,7 @@ body:not(.dev-mode) .dev-indicator {
     padding: 0;
 }
 
-.power-toggle-btn {
+.corner-power-btn {
     width: clamp(36px, 5.00vw, 138px);
     height: clamp(36px, 5.00vw, 138px);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -4344,21 +4344,21 @@ body:not(.dev-mode) .dev-indicator {
     transition: opacity 0.22s ease, transform 0.22s ease, background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
 }
 
-.power-hover-zone:hover .power-toggle-btn,
-.power-toggle-btn:focus-visible {
+.corner-power-zone:hover .corner-power-btn,
+.corner-power-btn:focus-visible {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
 }
 
-.power-toggle-btn:hover {
+.corner-power-btn:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.14);
     color: rgba(255, 255, 255, 0.95);
 }
 
-.power-toggle-btn i,
-.power-toggle-btn svg {
+.corner-power-btn i,
+.corner-power-btn svg {
     width: clamp(18px, 2.50vw, 69px);
     height: clamp(18px, 2.50vw, 69px);
     stroke-width: 2.5;
@@ -4366,24 +4366,24 @@ body:not(.dev-mode) .dev-indicator {
     transform: scale(1);
 }
 
-.power-toggle-btn:hover svg {
+.corner-power-btn:hover svg {
     transform: scale(1.22);
 }
 
 /* Homescreen: buttons faintly visible as idle hint */
-body[data-module="home"] .fullscreen-toggle-btn,
-body[data-module="home"] .power-toggle-btn,
-body[data-module="live"] .fullscreen-toggle-btn,
-body[data-module="live"] .power-toggle-btn {
+body[data-module="home"] .corner-fs-btn,
+body[data-module="home"] .corner-power-btn,
+body[data-module="live"] .corner-fs-btn,
+body[data-module="live"] .corner-power-btn {
     opacity: 0.12;
     transform: translateY(0);
     pointer-events: auto;
 }
 
-body[data-module="home"] .fullscreen-hover-zone:hover .fullscreen-toggle-btn,
-body[data-module="home"] .power-hover-zone:hover .power-toggle-btn,
-body[data-module="live"] .fullscreen-hover-zone:hover .fullscreen-toggle-btn,
-body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
+body[data-module="home"] .corner-fs-zone:hover .corner-fs-btn,
+body[data-module="home"] .corner-power-zone:hover .corner-power-btn,
+body[data-module="live"] .corner-fs-zone:hover .corner-fs-btn,
+body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     opacity: 1;
 }
 

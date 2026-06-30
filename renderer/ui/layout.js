@@ -13,8 +13,8 @@ export function syncCenterNavWidth() {
 }
 
 export function updateFullscreenButton() {
-    const fullscreenToggleBtn = document.getElementById('fullscreen-toggle');
-    const fullscreenToggleIcon = document.getElementById('fullscreen-toggle-icon');
+    const fullscreenToggleBtn = document.getElementById('corner-fs-btn');
+    const fullscreenToggleIcon = document.getElementById('corner-fs-icon');
     if (!fullscreenToggleBtn || !fullscreenToggleIcon) return;
     
     fullscreenToggleBtn.classList.toggle('is-fullscreen', state.isAppFullscreen);
