@@ -1585,6 +1585,21 @@ body.player-active .land-dashboard {
     opacity: 0;
 }
 
+/* .land-item also uses backdrop-filter (glass effect). Animating opacity on
+   the same element that has backdrop-filter makes Chromium skip/delay the
+   blur compositing until the animation settles (~1s flat dark tint before
+   the glass effect "kicks in"). Drop the opacity fade for this case and
+   keep only the slide-up transform, which doesn't have that issue. */
+@keyframes stagger-up-solid {
+    from { transform: translateY(20px); }
+    to { transform: translateY(0); }
+}
+
+.land-item.stagger-reveal {
+    animation: stagger-up-solid 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 1;
+}
+
 /* Home Dashboard Refinement */
 body.hide-cursor {
     cursor: none;
