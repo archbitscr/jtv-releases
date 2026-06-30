@@ -6174,12 +6174,6 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
         max-width: 95vw;
         gap: 8px;
     }
-    .land-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(5, 1fr);
-        grid-auto-flow: row;
-        max-width: 100%;
-    }
     .land-nav-btn i {
         width: 28px;
         height: 28px;
@@ -6227,13 +6221,6 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
     }
     .glass-menu .side-channel-actions {
         gap: clamp(2px, 0.4vw, 8px);
-    }
-}
-
-/* ====== Responsive: Short windows (≤600px height) ====== */
-@media (max-height: 600px) {
-    .land-grid {
-        grid-template-rows: repeat(3, 1fr);
     }
 }
 
