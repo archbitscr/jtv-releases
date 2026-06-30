@@ -129,7 +129,22 @@
                     <div class="pbar-actions-container">
                         <!-- Channel/Mute/Volume center block -->
                         <div class="pbar-center-block">
-                            <button id="pbar-up" class="pbar-action-btn pbar-zap-btn" title="Previous channel"><i data-lucide="chevron-up"></i></button>
+                            <div class="pbar-top-row">
+                                <!-- Fav (left corner of column) -->
+                                <button id="pbar-fav-btn" class="pbar-action-btn pbar-mini-btn pbar-mini-fav pbar-fav-btn" title="Favorite">
+                                    <i data-lucide="heart" id="pbar-fav-heart"></i>
+                                </button>
+                                <button id="pbar-up" class="pbar-action-btn pbar-zap-btn" title="Previous channel"><i data-lucide="chevron-up"></i></button>
+                                <!-- Pin (right corner of column) -->
+                                <div class="pbar-mini-float">
+                                    <button id="pbar-pin-btn" class="pbar-action-btn pbar-mini-btn pbar-pin-btn" title="Pin HUD">
+                                        <i data-lucide="pin"></i>
+                                    </button>
+                                    <button id="pbar-settings-btn" class="pbar-action-btn pbar-mini-btn pbar-settings-btn" title="Edit channel" style="display:none">
+                                        <i data-lucide="sliders"></i>
+                                    </button>
+                                </div>
+                            </div>
                             <div class="pbar-center-row">
                                 <button id="pbar-vol-down" class="pbar-vol-icon" title="Volume down" tabindex="0" aria-label="Volume down"><i data-lucide="minus"></i></button>
                                 <button id="pbar-mute" class="pbar-action-btn pbar-mute-btn" title="Mute / unmute">
@@ -139,19 +154,6 @@
                             </div>
                             <button id="pbar-down" class="pbar-action-btn pbar-zap-btn" title="Next channel"><i data-lucide="chevron-down"></i></button>
                         </div>
-                    </div>
-                    <!-- Fav floating (left of pin) -->
-                    <button id="pbar-fav-btn" class="pbar-action-btn pbar-mini-btn pbar-mini-fav pbar-fav-btn" title="Favorite">
-                        <i data-lucide="heart" id="pbar-fav-heart"></i>
-                    </button>
-                    <!-- Pin floating top-right -->
-                    <div class="pbar-mini-float">
-                        <button id="pbar-pin-btn" class="pbar-action-btn pbar-mini-btn pbar-pin-btn" title="Pin HUD">
-                            <i data-lucide="pin"></i>
-                        </button>
-                        <button id="pbar-settings-btn" class="pbar-action-btn pbar-mini-btn pbar-settings-btn" title="Edit channel" style="display:none">
-                            <i data-lucide="sliders"></i>
-                        </button>
                     </div>
                 </div>
 

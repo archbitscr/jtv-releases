@@ -4044,19 +4044,17 @@ body:not(.dev-mode) .dev-indicator {
     gap: 4px;
 }
 
-/* Mini buttons (Fav & Pin) — floating top-right of pbar */
-.pbar-mini-float {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 2;
+/* Top row of the center column: Fav (left) — channel up (center) — Pin (right) */
+.pbar-top-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.pbar-mini-fav {
-    position: absolute;
-    top: 14px;
-    right: 94px;
-    z-index: 2;
+/* Mini buttons (Fav & Pin) */
+.pbar-mini-float {
+    display: flex;
 }
 
 .pbar-mini-btn {
