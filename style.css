@@ -172,7 +172,7 @@ body.player-active .edge-mask {
    (showLiveLanding), let the playing webview show through instead of the
    opaque dashboard background. */
 body.player-active .land-dashboard {
-    background: transparent;
+    background: rgba(0, 0, 0, 0.35);
 }
 
 /* Pillarbox - aspect ratio wider than 16:9 */
