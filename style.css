@@ -1777,19 +1777,19 @@ body.hide-cursor * {
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 1000;
-    width: 580px;
+    width: clamp(389px, 53.70vw, 1485px);
 
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 14px 14px 14px 20px;
-    gap: 14px;
+    padding: clamp(9px, 1.30vw, 36px) clamp(9px, 1.30vw, 36px) clamp(9px, 1.30vw, 36px) clamp(13px, 1.85vw, 51px);
+    gap: clamp(9px, 1.30vw, 36px);
 
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border-radius: 24px 24px 0 0 !important;
+    border-radius: clamp(16px, 2.22vw, 61px) clamp(16px, 2.22vw, 61px) 0 0 !important;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: none !important;
     box-shadow: 0 20px 15px 15px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.15);
@@ -1812,8 +1812,8 @@ body.hide-cursor * {
 }
 
 .pbar-logo-container {
-    width: 72px;
-    height: 72px;
+    width: clamp(48px, 6.67vw, 184px);
+    height: clamp(48px, 6.67vw, 184px);
     background: transparent;
     border: none;
     display: flex;
@@ -1830,10 +1830,10 @@ body.hide-cursor * {
 }
 
 .pbar-logo-container .placeholder-circle {
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
-    font-size: 1.6rem;
+    width: clamp(43px, 5.93vw, 164px);
+    height: clamp(43px, 5.93vw, 164px);
+    border-radius: clamp(11px, 1.48vw, 41px);
+    font-size: clamp(1.07rem, 2.37vw, 4.10rem);
 }
 
 /* Program Info & Sources Area */
@@ -1841,7 +1841,7 @@ body.hide-cursor * {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: clamp(3px, 0.37vw, 10px);
     text-align: left;
     overflow: visible;
     min-width: 0;
@@ -1853,21 +1853,21 @@ body.hide-cursor * {
 }
 
 #pbar-channel-text {
-    font-size: 1.25rem;
+    font-size: clamp(0.84rem, 1.85vw, 3.20rem);
     font-weight: 700;
     color: #fff;
     margin: 0;
-    letter-spacing: 0.3px;
+    letter-spacing: clamp(0px, 0.03vw, 1px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .pbar-epg-text {
-    font-size: 0.9rem;
+    font-size: clamp(0.60rem, 1.33vw, 2.30rem);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.55);
-    margin: 0 0 4px 0;
+    margin: 0 0 clamp(3px, 0.37vw, 10px) 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1878,7 +1878,7 @@ body.hide-cursor * {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 2px;
+    gap: clamp(1px, 0.19vw, 5px);
     flex-wrap: wrap;
     flex-grow: 1;
     width: 100%;
@@ -1888,48 +1888,87 @@ body.hide-cursor * {
 .pbar-filter-badge {
     display: inline-flex;
     align-items: center;
-    padding: 2px 6px;
+    padding: clamp(1px, 0.19vw, 5px) clamp(4px, 0.56vw, 15px);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 4px;
-    font-size: 0.65rem;
+    border-radius: clamp(3px, 0.37vw, 10px);
+    font-size: clamp(0.44rem, 0.96vw, 1.66rem);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     pointer-events: none; /* Disables mouse interaction */
     white-space: nowrap;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: clamp(0px, 0.05vw, 1px);
+}
+
+/* Autotuner Indicators & Source Toggle Row (was inline style in HTML) */
+.pbar-autotune-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 1.11vw, 31px);
+    margin-top: clamp(4px, 0.56vw, 15px);
+}
+
+.pbar-autotune-indicator {
+    color: rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.pbar-autotune-indicator i,
+.pbar-autotune-indicator svg {
+    width: clamp(12px, 1.67vw, 46px);
+    height: clamp(12px, 1.67vw, 46px);
+}
+
+.pbar-source-toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    padding: clamp(1px, 0.19vw, 5px);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.2s;
+    align-items: center;
+    justify-content: center;
+}
+
+.pbar-source-toggle-btn i,
+.pbar-source-toggle-btn svg {
+    width: clamp(12px, 1.67vw, 46px);
+    height: clamp(12px, 1.67vw, 46px);
 }
 
 /* Sources Selection Row */
 .pbar-sources-row {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: clamp(8px, 1.11vw, 31px);
 }
 
 .pbar-sources-row .sources-label {
-    font-size: 0.7rem;
+    font-size: clamp(0.47rem, 1.04vw, 1.79rem);
     font-weight: 700;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: clamp(1px, 0.09vw, 3px);
 }
 
 .pbar-sources-row .pbar-source-buttons {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: clamp(4px, 0.56vw, 15px);
 }
 
 .pbar-sources-row .pbar-source-btn {
-    width: 23px;
-    height: 23px;
+    width: clamp(15px, 2.13vw, 59px);
+    height: clamp(15px, 2.13vw, 59px);
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: transparent;
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.8rem;
+    font-size: clamp(0.54rem, 1.19vw, 2.05rem);
     font-weight: 600;
     cursor: pointer;
     display: flex;
@@ -1957,7 +1996,7 @@ body.hide-cursor * {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: clamp(5px, 0.74vw, 20px);
     margin-left: auto;
     flex-shrink: 0;
 }
@@ -1965,14 +2004,14 @@ body.hide-cursor * {
 .pbar-action-stack {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: clamp(2px, 0.28vw, 8px);
     justify-content: center;
 }
 
 .pbar-action-btn {
     position: relative;
-    width: 30px;
-    height: 30px;
+    width: clamp(20px, 2.78vw, 77px);
+    height: clamp(20px, 2.78vw, 77px);
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1986,21 +2025,21 @@ body.hide-cursor * {
 
 .pbar-action-stack .pbar-action-btn,
 .pbar-center-row .pbar-action-btn {
-    width: 32px;
-    height: 32px;
+    width: clamp(21px, 2.96vw, 82px);
+    height: clamp(21px, 2.96vw, 82px);
 }
 
 .pbar-action-btn i,
 .pbar-action-btn svg {
-    width: 18px;
-    height: 18px;
+    width: clamp(12px, 1.67vw, 46px);
+    height: clamp(12px, 1.67vw, 46px);
     stroke-width: 2px;
 }
 
 .pbar-action-stack .pbar-action-btn i,
 .pbar-action-stack .pbar-action-btn svg {
-    width: 18px;
-    height: 18px;
+    width: clamp(12px, 1.67vw, 46px);
+    height: clamp(12px, 1.67vw, 46px);
 }
 
 .pbar-action-btn:hover {
@@ -2047,28 +2086,6 @@ body.hide-cursor * {
 .pbar-action-btn.pbar-settings-btn:hover i,
 .pbar-action-btn.pbar-settings-btn:hover svg {
     filter: drop-shadow(0 0 8px #ffffff);
-}
-
-.pbar-tuner-btn i {
-    width: 28px;
-    height: 28px;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.pbar-tuner-btn:hover {
-    color: #000000;
-    background: var(--accent);
-    border-color: var(--accent);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-    transform: scale(1.08);
-}
-
-.pbar-tuner-btn:hover i {
-    transform: scale(1.15);
-}
-
-.pbar-tuner-btn:active {
-    transform: scale(0.95);
 }
 
 /* --- JTV v2.0 VOD Layout & Styling --- */
@@ -3982,13 +3999,13 @@ body:not(.dev-mode) .dev-indicator {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: clamp(3px, 0.37vw, 10px);
 }
 
 .pbar-center-row {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: clamp(3px, 0.37vw, 10px);
 }
 
 /* Top row of the center column: Fav (left) — channel up (center) — Pin (right) */
@@ -4005,15 +4022,15 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .pbar-mini-btn {
-    width: 24px !important;
-    height: 24px !important;
+    width: clamp(16px, 2.22vw, 61px) !important;
+    height: clamp(16px, 2.22vw, 61px) !important;
     border-radius: 50% !important;
 }
 
 .pbar-mini-btn i,
 .pbar-mini-btn svg {
-    width: 12px !important;
-    height: 12px !important;
+    width: clamp(8px, 1.11vw, 31px) !important;
+    height: clamp(8px, 1.11vw, 31px) !important;
 }
 
 /* Compact Volume Icons */
@@ -4021,8 +4038,8 @@ body:not(.dev-mode) .dev-indicator {
 .pbar-vol-icon {
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    width: 30px;
-    height: 30px;
+    width: clamp(20px, 2.78vw, 77px);
+    height: clamp(20px, 2.78vw, 77px);
     color: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
@@ -4035,8 +4052,8 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .pbar-vol-icon svg {
-    width: 18px;
-    height: 18px;
+    width: clamp(12px, 1.67vw, 46px);
+    height: clamp(12px, 1.67vw, 46px);
 }
 
 .pbar-vol-icon:hover {
