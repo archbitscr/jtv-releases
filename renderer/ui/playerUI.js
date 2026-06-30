@@ -30,10 +30,10 @@ export function updateWebviewPointerEvents() {
     const settingsOpen = !document.getElementById('settings-screen').classList.contains('hidden');
     const parentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
     const detailsOpen = !document.getElementById('vod-details-modal').classList.contains('hidden');
-    const resolutionOpen = !document.getElementById('modal-blocker').classList.contains('hidden');
+    const noSignalOpen = !document.getElementById('no-signal-overlay').classList.contains('hidden');
     const trialExpiredOpen = !document.getElementById('trial-expired-blocker').classList.contains('hidden');
 
-    if (settingsOpen || parentalOpen || detailsOpen || resolutionOpen || trialExpiredOpen) {
+    if (settingsOpen || parentalOpen || detailsOpen || noSignalOpen || trialExpiredOpen) {
         webview.style.pointerEvents = 'none';
     } else {
         webview.style.pointerEvents = 'auto';
@@ -45,7 +45,7 @@ export function initWebviewPointerEventsObserver() {
         'settings-screen',
         'parental-pin-modal',
         'vod-details-modal',
-        'modal-blocker',
+        'no-signal-overlay',
         'trial-expired-blocker'
     ];
     
