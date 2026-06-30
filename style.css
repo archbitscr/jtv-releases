@@ -6130,8 +6130,8 @@ body:has(#vod-details-modal:not(.hidden)) webview,
 body:has(#vod-details-modal:not(.hidden)) #player-container,
 body:has(#trial-expired-blocker:not(.hidden)) webview,
 body:has(#trial-expired-blocker:not(.hidden)) #player-container,
-body:has(#modal-blocker:not(.hidden)) webview,
-body:has(#modal-blocker:not(.hidden)) #player-container {
+body:has(#no-signal-overlay:not(.hidden)) webview,
+body:has(#no-signal-overlay:not(.hidden)) #player-container {
     pointer-events: none !important;
 }
 
