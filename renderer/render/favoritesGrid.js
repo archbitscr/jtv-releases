@@ -194,7 +194,10 @@ export function renderFavoritesGrid() {
                     <div class="land-logo">${logoHtml}</div>
                     <div class="land-text-content">
                         <h4>${escapeHtml(channel.name)}</h4>
-                        <p class="land-epg">${escapeHtml(epgText)}</p>
+                        <div class="land-epg-row">
+                            <p class="land-epg">${escapeHtml(epgText)}</p>
+                            <span class="land-channel-id">${escapeHtml(String(channel.id))}</span>
+                        </div>
                     </div>
                 `;
                 gridItem.onclick = () => {

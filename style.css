@@ -866,9 +866,9 @@ body.player-active .edge-mask {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(5, 1fr);
     grid-auto-flow: column;
-    gap: 15px;
+    gap: 10px;
     width: 100%;
-    max-width: 900px;
+    max-width: 750px;
 }
 
 .land-carousel-wrapper {
@@ -940,14 +940,14 @@ body.player-active .edge-mask {
 
 .land-item {
     position: relative;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
     border-radius: 15px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    padding: 15px 20px;
+    padding: 8px 36px 8px 8px;
     cursor: pointer;
     transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     backdrop-filter: blur(10px);
@@ -1007,11 +1007,14 @@ body.player-active .edge-mask {
 }
 
 .land-item h4 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: white;
     text-align: left;
     margin: 0;
     opacity: 0.8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .land-item:hover h4 { opacity: 1; color: var(--accent); }
@@ -1058,19 +1061,46 @@ body.player-active .edge-mask {
     justify-content: center;
 }
 
+.land-epg-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 4px;
+    overflow: hidden;
+}
+
 .land-epg {
     font-size: 0.75rem;
     color: var(--accent);
     opacity: 0.6;
-    margin-top: 4px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: 400;
+    flex: 1;
 }
 
 .land-item:hover .land-epg {
     opacity: 1;
+}
+
+/* Channel ID tag (same chip used in sidebar, .side-channel-id) */
+.land-channel-id {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
 }
 
 /* Search Bar Upgrade */
