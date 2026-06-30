@@ -164,7 +164,7 @@ export function renderFavoritesGrid() {
     if (state.activeDashTab === "live") {
         if (vodControls) vodControls.classList.add('hidden');
         if (liveSearchContainer) liveSearchContainer.classList.remove('hidden');
-        if (dashboardFilters) dashboardFilters.classList.add('hidden');
+        if (dashboardFilters) dashboardFilters.classList.remove('hidden');
         favoritesGrid.classList.remove('vod-active');
 
         const allFavs = getFilteredLiveChannels();
