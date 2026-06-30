@@ -188,16 +188,12 @@ export function renderFavoritesGrid() {
                 const epgText = epg ? epg.event : "Live broadcast";
 
                 const logoHtml = getSafeLogoHtml(channel.name, channel.logo);
-                const badgeIndex = state.favPage * state.FAVS_PER_PAGE + i + 1;
                 gridItem.innerHTML = `
-                    <div class="land-badge">${badgeIndex}</div>
+                    <span class="land-channel-id">${escapeHtml(String(channel.id))}</span>
                     <div class="land-logo">${logoHtml}</div>
                     <div class="land-text-content">
                         <h4>${escapeHtml(channel.name)}</h4>
-                        <div class="land-epg-row">
-                            <p class="land-epg">${escapeHtml(epgText)}</p>
-                            <span class="land-channel-id">${escapeHtml(String(channel.id))}</span>
-                        </div>
+                        <p class="land-epg">${escapeHtml(epgText)}</p>
                     </div>
                 `;
                 gridItem.onclick = () => {

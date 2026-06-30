@@ -953,28 +953,6 @@ body.player-active .edge-mask {
     backdrop-filter: blur(10px);
 }
 
-.land-badge {
-    position: absolute;
-    top: 8px;
-    right: 12px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--accent);
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 4px;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.15);
-    pointer-events: none;
-    transition: 0.3s;
-}
-
-.land-item:hover .land-badge {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: var(--accent);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-}
-
 .land-item:hover {
     background: rgba(255,255,255,0.06);
     border-color: var(--accent);
@@ -1061,32 +1039,26 @@ body.player-active .edge-mask {
     justify-content: center;
 }
 
-.land-epg-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    margin-top: 4px;
-    overflow: hidden;
-}
-
 .land-epg {
     font-size: 0.75rem;
     color: var(--accent);
     opacity: 0.6;
+    margin-top: 4px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: 400;
-    flex: 1;
 }
 
 .land-item:hover .land-epg {
     opacity: 1;
 }
 
-/* Channel ID tag (same chip used in sidebar, .side-channel-id) */
+/* Channel ID tag (same chip used in sidebar, .side-channel-id) — replaces the old list-number badge */
 .land-channel-id {
+    position: absolute;
+    top: 8px;
+    right: 12px;
     display: inline-flex;
     align-items: center;
     padding: 2px 6px;
@@ -1100,7 +1072,13 @@ body.player-active .edge-mask {
     white-space: nowrap;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    flex-shrink: 0;
+    transition: 0.3s;
+}
+
+.land-item:hover .land-channel-id {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--accent);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 /* Search Bar Upgrade */
