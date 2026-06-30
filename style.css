@@ -1201,7 +1201,7 @@ body.player-active .edge-mask {
 .fbar-select-btn {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: clamp(4px, 0.56vw, 15px);
     white-space: nowrap;
 }
 
@@ -1212,8 +1212,8 @@ body.player-active .edge-mask {
 }
 
 .fbar-chevron {
-    width: 12px !important;
-    height: 12px !important;
+    width: clamp(8px, 1.11vw, 31px) !important;
+    height: clamp(8px, 1.11vw, 31px) !important;
     transition: transform 0.2s ease;
     flex-shrink: 0;
 }
@@ -1224,17 +1224,17 @@ body.player-active .edge-mask {
 
 .fbar-select-menu {
     position: absolute;
-    top: calc(100% + 6px);
+    top: calc(100% + clamp(4px, 0.56vw, 15px));
     left: 0;
     min-width: 100%;
     background: rgba(15, 15, 15, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
+    border-radius: clamp(5px, 0.74vw, 20px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     z-index: 10000;
-    max-height: 200px;
+    max-height: clamp(134px, 18.52vw, 512px);
     overflow-y: auto;
     animation: dropdownFadeIn 0.15s ease;
 }
@@ -1250,10 +1250,10 @@ body.player-active .edge-mask {
 }
 
 .fbar-select-option {
-    padding: 8px 14px;
+    padding: clamp(5px, 0.74vw, 20px) clamp(9px, 1.30vw, 36px);
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
-    font-size: 13px;
+    font-size: clamp(0.54rem, 1.20vw, 2.08rem);
     font-weight: 400;
     font-family: inherit;
     transition: background 0.18s ease, color 0.18s ease, padding-left 0.18s ease;
@@ -1264,7 +1264,7 @@ body.player-active .edge-mask {
 .fbar-select-option:hover {
     background: rgba(255, 255, 255, 0.07);
     color: rgba(255, 255, 255, 0.95);
-    padding-left: 20px;
+    padding-left: clamp(13px, 1.85vw, 51px);
 }
 
 .fbar-select-option.selected {
