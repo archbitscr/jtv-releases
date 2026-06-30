@@ -4121,13 +4121,13 @@ body:not(.dev-mode) .dev-indicator {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 14px 24px;
-    gap: 20px;
+    padding: clamp(9px, 1.30vw, 36px) clamp(16px, 2.22vw, 61px);
+    gap: clamp(13px, 1.85vw, 51px);
 
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border-radius: 0 0 24px 24px !important;
+    border-radius: 0 0 clamp(16px, 2.22vw, 61px) clamp(16px, 2.22vw, 61px) !important;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: none !important;
     box-shadow: 0 20px 20px 5px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
@@ -4146,21 +4146,21 @@ body:not(.dev-mode) .dev-indicator {
 
 .tnav-buttons {
     display: flex;
-    gap: 12px !important;
+    gap: clamp(8px, 1.11vw, 31px) !important;
 }
 
 .tnav-buttons .tnav-btn {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.7);
-    padding: 8px 16px !important;
-    border-radius: 10px !important;
+    padding: clamp(5px, 0.74vw, 20px) clamp(11px, 1.48vw, 41px) !important;
+    border-radius: clamp(7px, 0.93vw, 26px) !important;
     cursor: pointer;
-    font-size: 1rem !important;
+    font-size: clamp(0.67rem, 1.48vw, 2.56rem) !important;
     font-weight: 600;
     display: flex;
     align-items: center;
-    gap: 8px !important;
+    gap: clamp(5px, 0.74vw, 20px) !important;
     transition: all 0.2s ease;
     white-space: nowrap;
     flex-shrink: 0;
@@ -4182,8 +4182,8 @@ body:not(.dev-mode) .dev-indicator {
 
 .tnav-buttons .tnav-btn i,
 .tnav-buttons .tnav-btn svg {
-    width: 20px !important;
-    height: 20px !important;
+    width: clamp(13px, 1.85vw, 51px) !important;
+    height: clamp(13px, 1.85vw, 51px) !important;
 }
 
 .corner-fs-zone {
