@@ -5994,7 +5994,7 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     height: clamp(11px, 1.48vw, 41px);
 }
 
-.custom-tooltip {
+.tooltip-popup {
     position: fixed;
     z-index: 99999;
     background: rgba(15, 15, 27, 0.95);
@@ -6014,7 +6014,7 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     white-space: nowrap;
 }
 
-.custom-tooltip.show {
+.tooltip-popup.show {
     opacity: 1;
     transform: scale(1);
 }

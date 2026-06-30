@@ -153,11 +153,11 @@ export function getOrGenerateTooltip(el) {
 }
 
 export function initCustomTooltips() {
-    let tooltipEl = document.getElementById('app-custom-tooltip');
+    let tooltipEl = document.getElementById('tooltip-popup');
     if (!tooltipEl) {
         tooltipEl = document.createElement('div');
-        tooltipEl.id = 'app-custom-tooltip';
-        tooltipEl.className = 'custom-tooltip';
+        tooltipEl.id = 'tooltip-popup';
+        tooltipEl.className = 'tooltip-popup';
         document.body.appendChild(tooltipEl);
     }
 
