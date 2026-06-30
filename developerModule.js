@@ -830,7 +830,7 @@ export function updateDeveloperUI() {
     if (openDevtoolsBtn) openDevtoolsBtn.disabled = !developerModeEnabled;
 
     const appLoader = document.getElementById('app-loader');
-    const onboardingModal = document.getElementById('onboarding-modal');
+    const onboardingModal = document.getElementById('modal-overlay');
     const isLoaderVisible = appLoader && !appLoader.classList.contains('hidden');
     const isOnboardingVisible = onboardingModal && !onboardingModal.classList.contains('hidden');
 

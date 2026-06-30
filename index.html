@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=8">
+    <link rel="stylesheet" href="./style.css?v=9">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen (Tarea 11) -->
@@ -46,8 +46,8 @@
                 <div id="player-container"></div>
                 
                 <!-- No Signal Screen -->
-                <div id="no-signal-overlay" class="resolution-blocker hidden" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; background: rgba(0,0,0,0.85);">
-                    <div class="blocker-content glass-card" style="text-align: center; border: none !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important;">
+                <div id="no-signal-overlay" class="modal-blocker hidden" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; background: rgba(0,0,0,0.85);">
+                    <div class="modal-blocker-content glass-card" style="text-align: center; border: none !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important;">
                         <img id="no-signal-icon" src="./assets/images/no-signal.png" style="width:96px;height:auto;margin:0 auto 20px auto;display:block;">
                         <h2>No Signal</h2>
                         <div id="no-signal-retry-status" style="margin-top: 16px; display: flex; flex-direction: column; align-items: center; gap: 10px;">
@@ -1358,31 +1358,31 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
 
         <!-- Onboarding/Welcome Modal (Tarea 18, 21) -->
         <!-- Parental PIN Modal -->
-        <div id="parental-pin-modal" class="onboarding-modal hidden">
-            <div class="onboarding-backdrop" id="parental-pin-backdrop"></div>
-            <div class="onboarding-content glass-card parental-modal-card">
-                <i data-lucide="shield-alert" class="parental-modal-icon"></i>
+        <div id="parental-pin-modal" class="modal-overlay hidden">
+            <div class="modal-backdrop" id="parental-pin-backdrop"></div>
+            <div class="modal-content glass-card modal-parental-card">
+                <i data-lucide="shield-alert" class="modal-parental-icon"></i>
                 <h2>Parental Controls</h2>
                 <p id="parental-pin-message">Enter your 6-digit PIN to continue:</p>
-                <div class="parental-modal-input-container">
-                    <input type="text" maxlength="6" id="parental-pin-input" class="dark-input parental-modal-input" inputmode="numeric" pattern="[0-9]*">
+                <div class="modal-parental-input-container">
+                    <input type="text" maxlength="6" id="parental-pin-input" class="dark-input modal-parental-input" inputmode="numeric" pattern="[0-9]*">
                 </div>
-                <p id="parental-pin-error" class="parental-modal-error hidden"></p>
-                <div class="parental-modal-actions">
-                    <button id="parental-pin-cancel-btn" class="danger-btn parental-modal-btn">Cancel</button>
-                    <button id="parental-pin-submit-btn" class="settings-action-btn parental-modal-btn parental-confirm-btn">Confirm</button>
+                <p id="parental-pin-error" class="modal-parental-error hidden"></p>
+                <div class="modal-parental-actions">
+                    <button id="parental-pin-cancel-btn" class="danger-btn modal-parental-btn">Cancel</button>
+                    <button id="parental-pin-submit-btn" class="settings-action-btn modal-parental-btn modal-parental-confirm-btn">Confirm</button>
                 </div>
             </div>
         </div>
 
         <!-- Trial Expired Blocker Overlay -->
-        <div id="trial-expired-blocker" class="resolution-blocker hidden">
-            <div class="blocker-content glass-card" style="text-align: center;">
-                <i data-lucide="calendar-off" class="trial-blocker-icon"></i>
+        <div id="trial-expired-blocker" class="modal-blocker hidden">
+            <div class="modal-blocker-content glass-card" style="text-align: center;">
+                <i data-lucide="calendar-off" class="modal-blocker-icon"></i>
                 <h2>Trial Period Expired</h2>
                 <p>Your 3-day trial period for JTV has ended.</p>
                 <p>Please purchase a license or sign in to continue using the application.</p>
-                <button id="trial-close-app-btn" class="primary-btn trial-blocker-btn">Close Application</button>
+                <button id="trial-close-app-btn" class="primary-btn modal-blocker-btn">Close Application</button>
             </div>
         </div>
     </div>

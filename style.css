@@ -510,20 +510,6 @@ body.player-active .edge-mask {
 }
 
 /* Modal Overlay */
-.modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(15px);
-    z-index: 200;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .input-error {
     border-color: #ff4b4b !important;
     background: rgba(255, 75, 75, 0.05) !important;
@@ -538,16 +524,6 @@ body.player-active .edge-mask {
 }
 
 .hidden { display: none !important; }
-
-.modal-content.glass-menu {
-    position: relative;
-    width: 450px;
-    height: auto;
-    bottom: auto;
-    transform: none !important;
-    border: 1px solid var(--glass-border);
-    background: #0a0a0a;
-}
 
 .logo-edit-section {
     display: flex;
@@ -4518,7 +4494,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
 }
 
 /* Screen Resolution Blocker */
-.resolution-blocker {
+.modal-blocker {
     position: fixed;
     top: 0;
     left: 0;
@@ -4534,11 +4510,11 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     text-align: center;
 }
 
-.resolution-blocker.hidden {
+.modal-blocker.hidden {
     display: none !important;
 }
 
-.blocker-content {
+.modal-blocker-content {
     padding: clamp(30px, 4.17vw, 115px);
     max-width: clamp(348px, 48.15vw, 1331px);
     display: flex;
@@ -4549,43 +4525,43 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.blocker-content i,
-.blocker-content svg {
+.modal-blocker-content i,
+.modal-blocker-content svg {
     width: clamp(43px, 5.93vw, 164px);
     height: clamp(43px, 5.93vw, 164px);
     color: var(--accent);
 }
 
-.blocker-content h2 {
+.modal-blocker-content h2 {
     margin: 0;
     font-size: clamp(1.21rem, 2.67vw, 4.61rem);
     font-weight: 700;
     letter-spacing: clamp(0px, 0.05vw, 1px);
 }
 
-.blocker-content p {
+.modal-blocker-content p {
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
     line-height: 1.6;
     font-size: clamp(0.67rem, 1.48vw, 2.56rem);
 }
 
-.blocker-content p strong {
+.modal-blocker-content p strong {
     color: white;
 }
 
-.blocker-content .highlight-val {
+.modal-blocker-content .highlight-val {
     color: var(--accent);
     font-weight: 700;
 }
 
-.trial-blocker-icon {
+.modal-blocker-icon {
     color: #ff4a4a !important;
     margin: 0 auto clamp(13px, 1.85vw, 51px) auto;
     display: block;
 }
 
-.trial-blocker-btn {
+.modal-blocker-btn {
     margin: clamp(13px, 1.85vw, 51px) auto 0 auto;
     display: block;
 }
@@ -4741,7 +4717,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
 }
 
 /* Onboarding Welcome Modal Style (Tarea 18, 21) */
-.onboarding-modal {
+.modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -4754,7 +4730,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
-.onboarding-backdrop {
+.modal-backdrop {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -4763,7 +4739,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     -webkit-backdrop-filter: blur(clamp(10px, 1.39vw, 38px));
 }
 
-.onboarding-content {
+.modal-content {
     position: relative;
     width: 90%;
     max-width: clamp(295px, 40.74vw, 1126px);
@@ -4776,7 +4752,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     text-align: left;
 }
 
-.onboarding-content h2 {
+.modal-content h2 {
     font-size: clamp(0.84rem, 1.85vw, 3.20rem);
     font-weight: 600;
     color: #ffffff;
@@ -4786,7 +4762,7 @@ body[data-module="live"] .power-hover-zone:hover .power-toggle-btn {
     letter-spacing: -0.02em;
 }
 
-.onboarding-content p {
+.modal-content p {
     font-size: clamp(0.57rem, 1.26vw, 2.18rem);
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.5);
@@ -6188,8 +6164,8 @@ body:has(#vod-details-modal:not(.hidden)) webview,
 body:has(#vod-details-modal:not(.hidden)) #player-container,
 body:has(#trial-expired-blocker:not(.hidden)) webview,
 body:has(#trial-expired-blocker:not(.hidden)) #player-container,
-body:has(#resolution-blocker:not(.hidden)) webview,
-body:has(#resolution-blocker:not(.hidden)) #player-container {
+body:has(#modal-blocker:not(.hidden)) webview,
+body:has(#modal-blocker:not(.hidden)) #player-container {
     pointer-events: none !important;
 }
 
@@ -6839,13 +6815,13 @@ body:has(#resolution-blocker:not(.hidden)) #player-container {
 }
 
 /* Parental Verification PIN Modal */
-.parental-modal-card {
+.modal-parental-card {
     max-width: clamp(237px, 37.04vw, 948px) !important;
     padding: clamp(18px, 2.78vw, 71px) !important;
     text-align: center;
 }
 
-.parental-modal-icon {
+.modal-parental-icon {
     width: clamp(28px, 4.44vw, 114px) !important;
     height: clamp(28px, 4.44vw, 114px) !important;
     color: #00ffcc;
@@ -6853,14 +6829,14 @@ body:has(#resolution-blocker:not(.hidden)) #player-container {
     display: block;
 }
 
-.parental-modal-input-container {
+.modal-parental-input-container {
     display: flex;
     gap: clamp(5px, 0.74vw, 19px);
     justify-content: center;
     margin: clamp(12px, 1.85vw, 47px) 0;
 }
 
-.parental-modal-input {
+.modal-parental-input {
     width: clamp(95px, 14.81vw, 379px) !important;
     font-size: clamp(14px, 2.22vw, 57px) !important;
     letter-spacing: clamp(4px, 0.56vw, 14px) !important;
@@ -6868,25 +6844,25 @@ body:has(#resolution-blocker:not(.hidden)) #player-container {
     margin: 0 !important;
 }
 
-.parental-modal-error {
+.modal-parental-error {
     color: #ff4a4a;
     font-size: clamp(8px, 1.2vw, 31px);
     margin: clamp(-24px, -0.93vw, -6px) 0 clamp(9px, 1.39vw, 36px) 0;
     font-weight: 500;
 }
 
-.parental-modal-actions {
+.modal-parental-actions {
     display: flex;
     gap: clamp(6px, 0.93vw, 24px);
     justify-content: center;
     margin-top: clamp(12px, 1.85vw, 47px);
 }
 
-.parental-modal-btn {
+.modal-parental-btn {
     margin: 0 !important;
 }
 
-.parental-confirm-btn {
+.modal-parental-confirm-btn {
     border-color: rgba(0, 255, 204, 0.3) !important;
     color: #00ffcc !important;
 }
