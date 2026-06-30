@@ -212,10 +212,18 @@ Este documento unifica de forma cronológica todas las mejoras, características
     *   ✅ Tarjetas del home: `aspect-ratio: 330/720`, max-width 330px, escalado proporcional con `clamp()`.
     *   ✅ Ventana mínima: 600×500 en `createMainWindow.js`.
     *   ✅ Elementos VOD restaurados: tarjetas Series/Movies, botones nav, controles VOD, sub-nav filtros, dashboard-nav.
-    *   ✅ Media query ≤800px: grid Live TV 1 col × 5 items, título y búsqueda escalados, top-nav proporcional, dashboard-top-row al 80%.
-    *   ✅ Media query ≤600px alto: grid se reduce a 3 items.
-    *   ✅ `FAVS_PER_PAGE` dinámico en `layout.js`: 5 items (<800px ancho), 3 rows (≤600px alto).
-    *   ✅ Sidebar responsivo ≤800px: ancho `clamp(180px, 38vw, 280px)`, logos ocultos, textos/iconos/chips proporcionales.
+    *   ✅ Sidebar responsivo ≤800px: ancho `clamp(180px, 38vw, 280px)`, logos ocultos, textos/iconos/chips proporcionales (capa de modo compacto, complementaria al clamp base de la sección 2026-06-30).
+*   **Progreso (2026-06-30) — aplicación metódica de `clamp()` por sección, post Tarea 38:**
+    *   ✅ Sidebar (`.glass-menu`, `.side-*`) — clamp() completo en contenedor, tabs, items de canal, logo, iconos, chip de ID. Limpieza de selectores duplicados/huérfanos. Fix de íconos de tabs que no escalaban (regla `.side-tab-btn i` duplicada y suelta) y de `.side-tabs` colisionando con el botón de cerrar al crecer (convertido a CSS Grid).
+    *   ✅ Top Nav (`.tnav-*`) — clamp() completo.
+    *   ✅ Filter Bar (`.fbar-*`) — clamp() completo.
+    *   ✅ Landing/Grid (`.land-*`) — clamp() completo. Corregidos 2 clamp() preexistentes mal calibrados (`.land-title`, `.land-exit-btn` — el `vw` no correspondía a sus min/max). Migrado `.land-nav` de inline style en HTML a CSS. Limpieza de duplicados/huérfanos (`.land-dot`, `.dashboard-title`).
+    *   ✅ Player Bar (`.pbar-*`) — clamp() completo. Migrados 3 elementos de inline style a CSS (autotune row, indicadores de señal, toggle de fuentes). Eliminado `.pbar-tuner-btn` huérfano.
+    *   ✅ Player (`#no-signal-overlay` y overlays) — clamp() completo, inline styles migrados a CSS. Eliminado bloque huérfano "Player Controls Overlay" (~75 líneas, reemplazado hace tiempo por `.pbar`).
+    *   ✅ Transversales — Scrollbars, FS/Power y Modals/Tooltips ya estaban clampeados (trabajo previo de Settings); agregado Vol OSD (`.volosd-*`) y Search (`.search-*`). `.floating-*` (Dev-only) fuera de alcance a propósito.
+    *   ✅ Home (`.home-*`) — completado lo pendiente (padding, border-radius, header). Limpieza de 3 selectores huérfanos (`.home-close`, `.home-brand-title`, `.home-card p`).
+    *   ⏳ **Pendiente:** VOD (`.vod-*`, `.vod-details-*`) — no abordado a propósito. Settings no fue re-auditado en esta pasada (se asume ya clampeado de trabajo previo, pero falta confirmar metódicamente).
+    *   ℹ️ Se reemplazó el límite dinámico de `FAVS_PER_PAGE` por ancho (1 col / 5 items en <800px) — el grid de Live TV ahora es fijo en 2×5, con un único breakpoint por alto (≤500px → 2×4), alineado con `minHeight:500` de la ventana. Las dos reglas CSS asociadas a la reducción por ancho quedaron huérfanas y se eliminaron.
 
 ---
 
