@@ -411,9 +411,9 @@ body.player-active .edge-mask {
 }
 
 #tab-favorites .side-channel-item {
-    padding: 4px 8px;
+    padding: 6px 10px;
     gap: 10px;
-    border-radius: 4px;
+    border-radius: 10px;
 }
 
 .side-channel-logo {
