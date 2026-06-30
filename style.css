@@ -2137,9 +2137,9 @@ body.hide-cursor * {
     align-items: center;
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 6px 12px;
-    gap: 10px;
+    border-radius: clamp(8px, 1.11vw, 31px);
+    padding: clamp(4px, 0.56vw, 15px) clamp(8px, 1.11vw, 31px);
+    gap: clamp(7px, 0.93vw, 26px);
     width: 100%;
     max-width: none;
     margin: 0 auto;
@@ -2151,12 +2151,12 @@ body.hide-cursor * {
     color: white;
     outline: none;
     width: 100%;
-    font-size: 1rem;
+    font-size: clamp(0.67rem, 1.48vw, 2.56rem);
 }
 
 .search-container i {
-    width: 20px;
-    height: 20px;
+    width: clamp(13px, 1.85vw, 51px);
+    height: clamp(13px, 1.85vw, 51px);
     color: rgba(255, 255, 255, 0.5);
 }
 
@@ -2533,7 +2533,7 @@ body.hide-cursor * {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2px;
+    padding: clamp(1px, 0.19vw, 5px);
     transition: color 0.2s;
 }
 
@@ -2543,8 +2543,8 @@ body.hide-cursor * {
 
 .search-clear-btn svg,
 .search-clear-btn i {
-    width: 16px;
-    height: 16px;
+    width: clamp(11px, 1.48vw, 41px);
+    height: clamp(11px, 1.48vw, 41px);
 }
 
 /* Filter header changes */
@@ -4324,20 +4324,20 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 /* Volume HUD Indicator */
 .volosd-indicator {
     position: absolute;
-    bottom: 150px; /* Positioned directly above pbar bottom menu */
+    bottom: clamp(101px, 13.89vw, 384px); /* Positioned directly above pbar bottom menu */
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 10005;
-    
+
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 12px 24px;
-    
+    gap: clamp(10px, 1.39vw, 38px);
+    padding: clamp(8px, 1.11vw, 31px) clamp(16px, 2.22vw, 61px);
+
     background: rgba(10, 10, 10, 0.85) !important;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px;
+    border-radius: clamp(13px, 1.85vw, 51px);
     
     /* White electric neon style */
     border: 1px solid rgba(255, 255, 255, 0.95) !important;
@@ -4356,17 +4356,17 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 
 .volosd-indicator i,
 .volosd-indicator svg {
-    width: 18px;
-    height: 18px;
+    width: clamp(12px, 1.67vw, 46px);
+    height: clamp(12px, 1.67vw, 46px);
     color: #ffffff !important;
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)) !important;
 }
 
 .volosd-bar-container {
-    width: 120px;
-    height: 6px;
+    width: clamp(80px, 11.11vw, 307px);
+    height: clamp(4px, 0.56vw, 15px);
     background: rgba(255, 255, 255, 0.15);
-    border-radius: 3px;
+    border-radius: clamp(2px, 0.28vw, 8px);
     overflow: hidden;
 }
 
@@ -4374,16 +4374,16 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     height: 100%;
     width: 100%;
     background: #ffffff !important;
-    border-radius: 3px;
+    border-radius: clamp(2px, 0.28vw, 8px);
     transition: width 0.15s ease-out;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.9) !important;
 }
 
 .volosd-indicator span {
-    font-size: 0.95rem;
+    font-size: clamp(0.64rem, 1.41vw, 2.43rem);
     font-weight: 700;
     color: white;
-    min-width: 45px;
+    min-width: clamp(30px, 4.17vw, 115px);
     text-align: right;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
 }
