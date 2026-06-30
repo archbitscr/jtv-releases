@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=7">
+    <link rel="stylesheet" href="./style.css?v=8">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen (Tarea 11) -->
@@ -1329,32 +1329,32 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
         <canvas id="logo-canvas" width="256" height="256" style="display: none;"></canvas>
 
         <!-- VOD Details Modal -->
-        <div id="details-modal" class="details-modal hidden">
-            <div class="details-backdrop" id="details-backdrop"></div>
-            <div class="details-container glass-card">
-                <button id="close-details" class="close-btn details-close"><i data-lucide="x"></i></button>
-                <div class="details-body">
-                    <div class="details-poster-area">
+        <div id="vod-details-modal" class="vod-details-modal hidden">
+            <div class="vod-details-backdrop" id="vod-details-backdrop"></div>
+            <div class="vod-details-container glass-card">
+                <button id="close-details" class="close-btn vod-details-close"><i data-lucide="x"></i></button>
+                <div class="vod-details-body">
+                    <div class="vod-details-poster">
                         <!-- High-res poster from TMDB or fallback -->
-                        <div id="details-poster-placeholder"></div>
-                        <img id="details-poster" src="" alt="Poster" class="hidden">
+                        <div id="vod-details-poster-placeholder"></div>
+                        <img id="vod-details-poster-img" src="" alt="Poster" class="hidden">
                     </div>
-                    <div class="details-info-area">
-                        <h2 id="details-title">Movie Title</h2>
-                        <div class="details-meta">
-                            <span id="details-year" class="meta-badge">2026</span>
-                            <span id="details-quality" class="meta-badge quality">HD</span>
-                            <span id="details-rating" class="meta-badge rating">★ 0.0</span>
-                            <span id="details-imdb-rating" class="meta-badge imdb-rating hidden">IMDb: 0.0</span>
+                    <div class="vod-details-info">
+                        <h2 id="vod-details-title">Movie Title</h2>
+                        <div class="vod-details-meta">
+                            <span id="vod-details-year" class="vod-meta-badge">2026</span>
+                            <span id="vod-details-quality" class="vod-meta-badge quality">HD</span>
+                            <span id="vod-details-rating" class="vod-meta-badge rating">★ 0.0</span>
+                            <span id="vod-details-imdb-rating" class="vod-meta-badge imdb-rating hidden">IMDb: 0.0</span>
                         </div>
-                        <p id="details-overview">Plot overview goes here. Fetching details from TMDB...</p>
-                        <div class="details-actions">
+                        <p id="vod-details-overview">Plot overview goes here. Fetching details from TMDB...</p>
+                        <div class="vod-details-actions">
                             <button id="play-vod-btn" class="primary-btn play-btn"><i data-lucide="play"></i> Watch Now</button>
                         </div>
                     </div>
                 </div>
-            </div> <!-- closes details-container -->
-        </div> <!-- closes details-modal -->
+            </div> <!-- closes vod-details-container -->
+        </div> <!-- closes vod-details-modal -->
 
         <!-- Onboarding/Welcome Modal (Tarea 18, 21) -->
         <!-- Parental PIN Modal -->

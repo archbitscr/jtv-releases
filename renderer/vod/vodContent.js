@@ -141,15 +141,15 @@ export async function refreshVodContent() {
 }
 
 export async function showVodDetails(item) {
-    const modal = document.getElementById('details-modal');
-    const titleEl = document.getElementById('details-title');
-    const yearEl = document.getElementById('details-year');
-    const qualityEl = document.getElementById('details-quality');
-    const ratingEl = document.getElementById('details-rating');
-    const imdbRatingEl = document.getElementById('details-imdb-rating');
-    const overviewEl = document.getElementById('details-overview');
-    const posterEl = document.getElementById('details-poster');
-    const posterPlaceholder = document.getElementById('details-poster-placeholder');
+    const modal = document.getElementById('vod-details-modal');
+    const titleEl = document.getElementById('vod-details-title');
+    const yearEl = document.getElementById('vod-details-year');
+    const qualityEl = document.getElementById('vod-details-quality');
+    const ratingEl = document.getElementById('vod-details-rating');
+    const imdbRatingEl = document.getElementById('vod-details-imdb-rating');
+    const overviewEl = document.getElementById('vod-details-overview');
+    const posterEl = document.getElementById('vod-details-poster-img');
+    const posterPlaceholder = document.getElementById('vod-details-poster-placeholder');
     const playBtn = document.getElementById('play-vod-btn');
 
     if (!modal || !titleEl || !yearEl || !qualityEl || !ratingEl || !imdbRatingEl || !overviewEl || !posterEl || !posterPlaceholder || !playBtn) return;

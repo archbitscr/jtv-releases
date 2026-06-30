@@ -1397,7 +1397,7 @@ export function setupEventListeners() {
         }
 
         if (matchesHotkey('escape', key, e)) {
-            const detailsModal = document.getElementById('details-modal');
+            const detailsModal = document.getElementById('vod-details-modal');
             if (detailsModal && !detailsModal.classList.contains('hidden')) {
                 detailsModal.classList.add('hidden');
                 return true;
@@ -1424,7 +1424,7 @@ export function setupEventListeners() {
         }
 
         const isSettingsOpen = !document.getElementById('settings-screen').classList.contains('hidden');
-        const isDetailsOpen = !document.getElementById('details-modal').classList.contains('hidden');
+        const isDetailsOpen = !document.getElementById('vod-details-modal').classList.contains('hidden');
         const isParentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
 
         if (!state.isHomeActive && state.activeChannelId && !isSettingsOpen && !isDetailsOpen && !isParentalOpen) {
@@ -1897,13 +1897,13 @@ export function setupEventListeners() {
     const closeDetailsBtn = document.getElementById('close-details');
     if (closeDetailsBtn) {
         closeDetailsBtn.onclick = () => {
-            document.getElementById('details-modal').classList.add('hidden');
+            document.getElementById('vod-details-modal').classList.add('hidden');
         };
     }
-    const detailsBackdrop = document.getElementById('details-backdrop');
+    const detailsBackdrop = document.getElementById('vod-details-backdrop');
     if (detailsBackdrop) {
         detailsBackdrop.onclick = () => {
-            document.getElementById('details-modal').classList.add('hidden');
+            document.getElementById('vod-details-modal').classList.add('hidden');
         };
     }
 
@@ -2050,7 +2050,7 @@ function initGlobalScrollbarAutoHide() {
         '.filter-icon-dropdown',
         '#parental-allowed-channels-list',
         '#assigner-metadata-content',
-        '#details-overview'
+        '#vod-details-overview'
     ].join(', ');
 
     // 1. Mouse hover activity

@@ -29,7 +29,7 @@ export function updateWebviewPointerEvents() {
 
     const settingsOpen = !document.getElementById('settings-screen').classList.contains('hidden');
     const parentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
-    const detailsOpen = !document.getElementById('details-modal').classList.contains('hidden');
+    const detailsOpen = !document.getElementById('vod-details-modal').classList.contains('hidden');
     const resolutionOpen = !document.getElementById('resolution-blocker').classList.contains('hidden');
     const trialExpiredOpen = !document.getElementById('trial-expired-blocker').classList.contains('hidden');
 
@@ -44,7 +44,7 @@ export function initWebviewPointerEventsObserver() {
     const targets = [
         'settings-screen',
         'parental-pin-modal',
-        'details-modal',
+        'vod-details-modal',
         'resolution-blocker',
         'trial-expired-blocker'
     ];

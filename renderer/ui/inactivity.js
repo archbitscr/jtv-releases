@@ -54,7 +54,7 @@ export function startInactivityTimers() {
             if (!mainMenu.matches(':hover')) {
                 if (ext.hideMenu) ext.hideMenu();
             }
-            const detailsModal = document.getElementById('details-modal');
+            const detailsModal = document.getElementById('vod-details-modal');
             if (detailsModal && !detailsModal.classList.contains('hidden') && !detailsModal.matches(':hover')) {
                 detailsModal.classList.add('hidden');
             }
