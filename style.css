@@ -227,7 +227,7 @@ body.player-active .edge-mask {
     position: fixed;
     top: 0;
     left: 0;
-    width: 380px;
+    width: clamp(255px, 35.19vw, 973px);
     height: 100vh;
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(8px);
@@ -237,7 +237,7 @@ body.player-active .edge-mask {
     transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s;
     display: flex;
     flex-direction: column;
-    padding: 12px 10px 12px 14px;
+    padding: clamp(8px, 1.11vw, 31px) clamp(7px, 0.93vw, 26px) clamp(8px, 1.11vw, 31px) clamp(9px, 1.30vw, 36px);
     box-shadow: 0 20px 20px 8px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
     overflow: hidden;
 }
@@ -284,31 +284,31 @@ body.player-active .edge-mask {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 0 10px 0;
+    margin: 0 0 clamp(7px, 0.93vw, 26px) 0;
     position: relative;
-    padding-bottom: 8px;
+    padding-bottom: clamp(5px, 0.74vw, 20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .side-tabs-center {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: clamp(7px, 0.93vw, 26px);
 }
 
 .side-tab-btn {
     background: none;
     border: 1px solid transparent;
     color: rgba(255, 255, 255, 0.78);
-    padding: 8px 10px;
+    padding: clamp(5px, 0.74vw, 20px) clamp(7px, 0.93vw, 26px);
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: clamp(0.60rem, 1.33vw, 2.30rem);
     font-weight: 700;
     transition: var(--transition);
-    border-radius: 8px;
+    border-radius: clamp(5px, 0.74vw, 20px);
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: clamp(4px, 0.56vw, 15px);
 }
 
 .side-tab-btn:hover {
@@ -320,8 +320,8 @@ body.player-active .edge-mask {
 
 .side-tab-btn i,
 .side-tab-btn svg {
-    width: 15px;
-    height: 15px;
+    width: clamp(10px, 1.39vw, 38px);
+    height: clamp(10px, 1.39vw, 38px);
     flex-shrink: 0;
 }
 
@@ -377,7 +377,7 @@ body.player-active .edge-mask {
 .carousel {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: clamp(1px, 0.19vw, 5px);
 }
 
 .side-channel-item {
@@ -407,18 +407,18 @@ body.player-active .edge-mask {
 
 /* Compact spacing for Favorites Tab */
 #tab-favorites .carousel {
-    gap: 6px;
+    gap: clamp(4px, 0.56vw, 15px);
 }
 
 #tab-favorites .side-channel-item {
-    padding: 6px 10px;
-    gap: 10px;
-    border-radius: 10px;
+    padding: clamp(4px, 0.56vw, 15px) clamp(7px, 0.93vw, 26px);
+    gap: clamp(7px, 0.93vw, 26px);
+    border-radius: clamp(7px, 0.93vw, 26px);
 }
 
 .side-channel-logo {
-    width: 44px;
-    height: 44px;
+    width: clamp(29px, 4.07vw, 113px);
+    height: clamp(29px, 4.07vw, 113px);
     background: transparent;
     overflow: hidden;
     flex-shrink: 0;
@@ -435,7 +435,7 @@ body.player-active .edge-mask {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
+    gap: clamp(5px, 0.74vw, 20px);
 }
 .side-channel-info h4 { font-size: 0.95rem; font-weight: 500; color: #fff; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .channel-id-tag {
@@ -460,7 +460,7 @@ body.player-active .edge-mask {
 .side-channel-actions {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: clamp(5px, 0.74vw, 20px);
     align-items: center;
 }
 
@@ -477,8 +477,8 @@ body.player-active .edge-mask {
 
 .side-action-btn.favorite i,
 .side-action-btn.favorite svg {
-    width: 16px;
-    height: 16px;
+    width: clamp(11px, 1.48vw, 41px);
+    height: clamp(11px, 1.48vw, 41px);
     fill: transparent;
     transition: 0.3s;
 }
@@ -504,8 +504,8 @@ body.player-active .edge-mask {
 
 .side-action-btn.edit-btn i,
 .side-action-btn.edit-btn svg {
-    width: 20px;
-    height: 20px;
+    width: clamp(13px, 1.85vw, 51px);
+    height: clamp(13px, 1.85vw, 51px);
 }
 
 .side-action-btn.edit-btn:hover {
@@ -1456,12 +1456,12 @@ body.player-active .edge-mask {
 /* Compact Menu Items */
 .side-channel-item {
     position: relative;
-    padding: 6px 10px;
-    margin-bottom: 4px;
-    border-radius: 10px;
+    padding: clamp(4px, 0.56vw, 15px) clamp(7px, 0.93vw, 26px);
+    margin-bottom: clamp(3px, 0.37vw, 10px);
+    border-radius: clamp(7px, 0.93vw, 26px);
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: clamp(4px, 0.56vw, 15px);
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1479,17 +1479,17 @@ body.player-active .edge-mask {
     box-shadow: inset 3px 0 0 var(--accent) !important;
 }
 
-.side-channel-info h4 { font-size: 0.92rem; font-weight: 500; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.side-channel-info h4 { font-size: clamp(0.62rem, 1.36vw, 2.36rem); font-weight: 500; margin-bottom: clamp(1px, 0.19vw, 5px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .side-channel-info .side-channel-meta-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
-    margin-top: 2px;
+    gap: clamp(5px, 0.74vw, 20px);
+    margin-top: clamp(1px, 0.19vw, 5px);
     overflow: hidden;
 }
 .side-channel-info .side-epg-text {
-    font-size: 0.8rem;
+    font-size: clamp(0.54rem, 1.19vw, 2.05rem);
     color: rgba(255, 255, 255, 0.72);
     display: block;
     white-space: nowrap;
@@ -1503,17 +1503,17 @@ body.player-active .edge-mask {
 .side-channel-id {
     display: inline-flex;
     align-items: center;
-    padding: 2px 6px;
+    padding: clamp(1px, 0.19vw, 5px) clamp(4px, 0.56vw, 15px);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 4px;
-    font-size: 0.65rem;
+    border-radius: clamp(3px, 0.37vw, 10px);
+    font-size: clamp(0.44rem, 0.96vw, 1.66rem);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     pointer-events: none;
     white-space: nowrap;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: clamp(0px, 0.05vw, 1px);
 }
 
 .side-channel-actions {
@@ -1524,14 +1524,14 @@ body.player-active .edge-mask {
 }
 
 .placeholder-circle {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+    width: clamp(29px, 4.07vw, 113px);
+    height: clamp(29px, 4.07vw, 113px);
+    border-radius: clamp(8px, 1.11vw, 31px);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: clamp(0.80rem, 1.78vw, 3.07rem);
     color: white;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
