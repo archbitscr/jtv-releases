@@ -224,6 +224,7 @@ Este documento unifica de forma cronológica todas las mejoras, características
     *   ✅ Home (`.home-*`) — completado lo pendiente (padding, border-radius, header). Limpieza de 3 selectores huérfanos (`.home-close`, `.home-brand-title`, `.home-card p`).
     *   ⏳ **Pendiente:** VOD (`.vod-*`, `.vod-details-*`) — no abordado a propósito. Settings no fue re-auditado en esta pasada (se asume ya clampeado de trabajo previo, pero falta confirmar metódicamente).
     *   ℹ️ Se reemplazó el límite dinámico de `FAVS_PER_PAGE` por ancho (1 col / 5 items en <800px) — el grid de Live TV ahora es fijo en 2×5, con un único breakpoint por alto (≤500px → 2×4), alineado con `minHeight:500` de la ventana. Las dos reglas CSS asociadas a la reducción por ancho quedaron huérfanas y se eliminaron.
+    *   🔧 **Corrección de calibración del `max` de clamp() (2026-06-30):** el multiplicador original (`original × 2.56`) hacía que el valor `max` se alcanzara a los 2764.8px de ancho (1080×2.56), no a 3840px (4K) como se pretendía. Corregido el multiplicador a `original × 3840/1080` (≈×3.5556) — recalculado en **Sidebar (`.glass-menu`, `.side-*`), Top Nav (`.tnav-*`) y Player Bar (`.pbar-*`)** únicamente (47 reglas, 110 valores `max`); el resto de componentes (Filter Bar, Landing/Grid, Player, transversales, Home) **queda pendiente con el multiplicador viejo** hasta que se recalculen explícitamente. El `min` y el valor `vw` (preferred) no cambiaron — solo el techo superior se movió de 2764.8px a 3840px de ancho de viewport.
 
 ---
 

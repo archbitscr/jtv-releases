@@ -274,7 +274,7 @@ body.player-active .edge-mask {
     position: fixed;
     top: 0;
     left: 0;
-    width: clamp(255px, 35.19vw, 973px);
+    width: clamp(255px, 35.19vw, 1351px);
     height: 100vh;
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(8px);
@@ -284,7 +284,7 @@ body.player-active .edge-mask {
     transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s;
     display: flex;
     flex-direction: column;
-    padding: clamp(8px, 1.11vw, 31px) clamp(7px, 0.93vw, 26px) clamp(8px, 1.11vw, 31px) clamp(9px, 1.30vw, 36px);
+    padding: clamp(8px, 1.11vw, 43px) clamp(7px, 0.93vw, 36px) clamp(8px, 1.11vw, 43px) clamp(9px, 1.30vw, 50px);
     box-shadow: 0 20px 20px 8px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
     overflow: hidden;
 }
@@ -331,9 +331,9 @@ body.player-active .edge-mask {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    margin: 0 0 clamp(7px, 0.93vw, 26px) 0;
+    margin: 0 0 clamp(7px, 0.93vw, 36px) 0;
     position: relative;
-    padding-bottom: clamp(5px, 0.74vw, 20px);
+    padding-bottom: clamp(5px, 0.74vw, 28px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -341,7 +341,7 @@ body.player-active .edge-mask {
     grid-column: 2;
     display: flex;
     align-items: center;
-    gap: clamp(7px, 0.93vw, 26px);
+    gap: clamp(7px, 0.93vw, 36px);
     min-width: 0;
 }
 
@@ -349,15 +349,15 @@ body.player-active .edge-mask {
     background: none;
     border: 1px solid transparent;
     color: rgba(255, 255, 255, 0.78);
-    padding: clamp(5px, 0.74vw, 20px) clamp(7px, 0.93vw, 26px);
+    padding: clamp(5px, 0.74vw, 28px) clamp(7px, 0.93vw, 36px);
     cursor: pointer;
-    font-size: clamp(0.60rem, 1.33vw, 2.30rem);
+    font-size: clamp(0.60rem, 1.33vw, 3.19rem);
     font-weight: 700;
     transition: var(--transition);
-    border-radius: clamp(5px, 0.74vw, 20px);
+    border-radius: clamp(5px, 0.74vw, 28px);
     display: flex;
     align-items: center;
-    gap: clamp(4px, 0.56vw, 15px);
+    gap: clamp(4px, 0.56vw, 21px);
 }
 
 .side-tab-btn:hover {
@@ -369,8 +369,8 @@ body.player-active .edge-mask {
 
 .side-tab-btn i,
 .side-tab-btn svg {
-    width: clamp(13px, 1.85vw, 51px);
-    height: clamp(13px, 1.85vw, 51px);
+    width: clamp(13px, 1.85vw, 71px);
+    height: clamp(13px, 1.85vw, 71px);
     flex-shrink: 0;
 }
 
@@ -401,8 +401,8 @@ body.player-active .edge-mask {
 
 .side-close-btn i,
 .side-close-btn svg {
-    width: clamp(12px, 1.67vw, 46px);
-    height: clamp(12px, 1.67vw, 46px);
+    width: clamp(12px, 1.67vw, 64px);
+    height: clamp(12px, 1.67vw, 64px);
 }
 
 /* Vertical divider between home btn and channel tabs */
@@ -445,8 +445,8 @@ body.player-active .edge-mask {
 }
 
 .side-channel-logo {
-    width: clamp(29px, 4.07vw, 113px);
-    height: clamp(29px, 4.07vw, 113px);
+    width: clamp(29px, 4.07vw, 157px);
+    height: clamp(29px, 4.07vw, 157px);
     background: transparent;
     overflow: hidden;
     flex-shrink: 0;
@@ -463,12 +463,12 @@ body.player-active .edge-mask {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: clamp(5px, 0.74vw, 20px);
+    gap: clamp(5px, 0.74vw, 28px);
 }
 .side-channel-actions {
     display: flex;
     flex-direction: column;
-    gap: clamp(5px, 0.74vw, 20px);
+    gap: clamp(5px, 0.74vw, 28px);
     align-items: center;
 }
 
@@ -485,8 +485,8 @@ body.player-active .edge-mask {
 
 .side-action-btn.favorite i,
 .side-action-btn.favorite svg {
-    width: clamp(11px, 1.48vw, 41px);
-    height: clamp(11px, 1.48vw, 41px);
+    width: clamp(11px, 1.48vw, 57px);
+    height: clamp(11px, 1.48vw, 57px);
     fill: transparent;
     transition: 0.3s;
 }
@@ -512,8 +512,8 @@ body.player-active .edge-mask {
 
 .side-action-btn.edit-btn i,
 .side-action-btn.edit-btn svg {
-    width: clamp(13px, 1.85vw, 51px);
-    height: clamp(13px, 1.85vw, 51px);
+    width: clamp(13px, 1.85vw, 71px);
+    height: clamp(13px, 1.85vw, 71px);
 }
 
 .side-action-btn.edit-btn:hover {
@@ -1430,12 +1430,12 @@ body.player-active .edge-mask {
 /* Compact Menu Items */
 .side-channel-item {
     position: relative;
-    padding: clamp(4px, 0.56vw, 15px) clamp(7px, 0.93vw, 26px);
-    margin-bottom: clamp(3px, 0.37vw, 10px);
-    border-radius: clamp(7px, 0.93vw, 26px);
+    padding: clamp(4px, 0.56vw, 21px) clamp(7px, 0.93vw, 36px);
+    margin-bottom: clamp(3px, 0.37vw, 14px);
+    border-radius: clamp(7px, 0.93vw, 36px);
     display: flex;
     align-items: center;
-    gap: clamp(4px, 0.56vw, 15px);
+    gap: clamp(4px, 0.56vw, 21px);
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.1);
     cursor: pointer;
@@ -1454,17 +1454,17 @@ body.player-active .edge-mask {
     box-shadow: inset 3px 0 0 var(--accent) !important;
 }
 
-.side-channel-info h4 { font-size: clamp(0.62rem, 1.36vw, 2.36rem); font-weight: 500; color: #fff; margin-bottom: clamp(1px, 0.19vw, 5px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.side-channel-info h4 { font-size: clamp(0.62rem, 1.36vw, 3.28rem); font-weight: 500; color: #fff; margin-bottom: clamp(1px, 0.19vw, 7px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .side-channel-info .side-channel-meta-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: clamp(5px, 0.74vw, 20px);
-    margin-top: clamp(1px, 0.19vw, 5px);
+    gap: clamp(5px, 0.74vw, 28px);
+    margin-top: clamp(1px, 0.19vw, 7px);
     overflow: hidden;
 }
 .side-channel-info .side-epg-text {
-    font-size: clamp(0.54rem, 1.19vw, 2.05rem);
+    font-size: clamp(0.54rem, 1.19vw, 2.85rem);
     color: rgba(255, 255, 255, 0.72);
     font-weight: 500;
     display: block;
@@ -1479,11 +1479,11 @@ body.player-active .edge-mask {
 .side-channel-id {
     display: inline-flex;
     align-items: center;
-    padding: clamp(1px, 0.19vw, 5px) clamp(4px, 0.56vw, 15px);
+    padding: clamp(1px, 0.19vw, 7px) clamp(4px, 0.56vw, 21px);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: clamp(3px, 0.37vw, 10px);
-    font-size: clamp(0.44rem, 0.96vw, 1.66rem);
+    border-radius: clamp(3px, 0.37vw, 14px);
+    font-size: clamp(0.44rem, 0.96vw, 2.31rem);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     pointer-events: none;
@@ -1721,19 +1721,19 @@ body.hide-cursor * {
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 1000;
-    width: clamp(389px, 53.70vw, 1485px);
+    width: clamp(389px, 53.70vw, 2062px);
 
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: clamp(9px, 1.30vw, 36px) clamp(9px, 1.30vw, 36px) clamp(9px, 1.30vw, 36px) clamp(13px, 1.85vw, 51px);
-    gap: clamp(9px, 1.30vw, 36px);
+    padding: clamp(9px, 1.30vw, 50px) clamp(9px, 1.30vw, 50px) clamp(9px, 1.30vw, 50px) clamp(13px, 1.85vw, 71px);
+    gap: clamp(9px, 1.30vw, 50px);
 
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border-radius: clamp(16px, 2.22vw, 61px) clamp(16px, 2.22vw, 61px) 0 0 !important;
+    border-radius: clamp(16px, 2.22vw, 85px) clamp(16px, 2.22vw, 85px) 0 0 !important;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: none !important;
     box-shadow: 0 20px 15px 15px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.15);
@@ -1756,8 +1756,8 @@ body.hide-cursor * {
 }
 
 .pbar-logo-container {
-    width: clamp(48px, 6.67vw, 184px);
-    height: clamp(48px, 6.67vw, 184px);
+    width: clamp(48px, 6.67vw, 256px);
+    height: clamp(48px, 6.67vw, 256px);
     background: transparent;
     border: none;
     display: flex;
@@ -1774,10 +1774,10 @@ body.hide-cursor * {
 }
 
 .pbar-logo-container .placeholder-circle {
-    width: clamp(43px, 5.93vw, 164px);
-    height: clamp(43px, 5.93vw, 164px);
-    border-radius: clamp(11px, 1.48vw, 41px);
-    font-size: clamp(1.07rem, 2.37vw, 4.10rem);
+    width: clamp(43px, 5.93vw, 228px);
+    height: clamp(43px, 5.93vw, 228px);
+    border-radius: clamp(11px, 1.48vw, 57px);
+    font-size: clamp(1.07rem, 2.37vw, 5.69rem);
 }
 
 /* Program Info & Sources Area */
@@ -1785,7 +1785,7 @@ body.hide-cursor * {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: clamp(3px, 0.37vw, 10px);
+    gap: clamp(3px, 0.37vw, 14px);
     text-align: left;
     overflow: visible;
     min-width: 0;
@@ -1808,10 +1808,10 @@ body.hide-cursor * {
 }
 
 .pbar-epg-text {
-    font-size: clamp(0.60rem, 1.33vw, 2.30rem);
+    font-size: clamp(0.60rem, 1.33vw, 3.19rem);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.55);
-    margin: 0 0 clamp(3px, 0.37vw, 10px) 0;
+    margin: 0 0 clamp(3px, 0.37vw, 14px) 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1822,7 +1822,7 @@ body.hide-cursor * {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: clamp(1px, 0.19vw, 5px);
+    gap: clamp(1px, 0.19vw, 7px);
     flex-wrap: wrap;
     flex-grow: 1;
     width: 100%;
@@ -1832,11 +1832,11 @@ body.hide-cursor * {
 .pbar-filter-badge {
     display: inline-flex;
     align-items: center;
-    padding: clamp(1px, 0.19vw, 5px) clamp(4px, 0.56vw, 15px);
+    padding: clamp(1px, 0.19vw, 7px) clamp(4px, 0.56vw, 21px);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: clamp(3px, 0.37vw, 10px);
-    font-size: clamp(0.44rem, 0.96vw, 1.66rem);
+    border-radius: clamp(3px, 0.37vw, 14px);
+    font-size: clamp(0.44rem, 0.96vw, 2.31rem);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     pointer-events: none; /* Disables mouse interaction */
@@ -1849,8 +1849,8 @@ body.hide-cursor * {
 .pbar-autotune-row {
     display: flex;
     align-items: center;
-    gap: clamp(8px, 1.11vw, 31px);
-    margin-top: clamp(4px, 0.56vw, 15px);
+    gap: clamp(8px, 1.11vw, 43px);
+    margin-top: clamp(4px, 0.56vw, 21px);
 }
 
 .pbar-autotune-indicator {
@@ -1862,15 +1862,15 @@ body.hide-cursor * {
 
 .pbar-autotune-indicator i,
 .pbar-autotune-indicator svg {
-    width: clamp(12px, 1.67vw, 46px);
-    height: clamp(12px, 1.67vw, 46px);
+    width: clamp(12px, 1.67vw, 64px);
+    height: clamp(12px, 1.67vw, 64px);
 }
 
 .pbar-source-toggle-btn {
     display: none;
     background: none;
     border: none;
-    padding: clamp(1px, 0.19vw, 5px);
+    padding: clamp(1px, 0.19vw, 7px);
     color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     transition: all 0.2s;
@@ -1880,39 +1880,39 @@ body.hide-cursor * {
 
 .pbar-source-toggle-btn i,
 .pbar-source-toggle-btn svg {
-    width: clamp(12px, 1.67vw, 46px);
-    height: clamp(12px, 1.67vw, 46px);
+    width: clamp(12px, 1.67vw, 64px);
+    height: clamp(12px, 1.67vw, 64px);
 }
 
 /* Sources Selection Row */
 .pbar-sources-row {
     display: flex;
     align-items: center;
-    gap: clamp(8px, 1.11vw, 31px);
+    gap: clamp(8px, 1.11vw, 43px);
 }
 
 .pbar-sources-row .sources-label {
-    font-size: clamp(0.47rem, 1.04vw, 1.79rem);
+    font-size: clamp(0.47rem, 1.04vw, 2.49rem);
     font-weight: 700;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: clamp(1px, 0.09vw, 3px);
+    letter-spacing: clamp(1px, 0.09vw, 4px);
 }
 
 .pbar-sources-row .pbar-source-buttons {
     display: flex;
     align-items: center;
-    gap: clamp(4px, 0.56vw, 15px);
+    gap: clamp(4px, 0.56vw, 21px);
 }
 
 .pbar-sources-row .pbar-source-btn {
-    width: clamp(15px, 2.13vw, 59px);
-    height: clamp(15px, 2.13vw, 59px);
+    width: clamp(15px, 2.13vw, 82px);
+    height: clamp(15px, 2.13vw, 82px);
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: transparent;
     color: rgba(255, 255, 255, 0.7);
-    font-size: clamp(0.54rem, 1.19vw, 2.05rem);
+    font-size: clamp(0.54rem, 1.19vw, 2.85rem);
     font-weight: 600;
     cursor: pointer;
     display: flex;
@@ -1940,7 +1940,7 @@ body.hide-cursor * {
     position: relative;
     display: flex;
     align-items: center;
-    gap: clamp(5px, 0.74vw, 20px);
+    gap: clamp(5px, 0.74vw, 28px);
     margin-left: auto;
     flex-shrink: 0;
 }
@@ -1948,14 +1948,14 @@ body.hide-cursor * {
 .pbar-action-stack {
     display: flex;
     flex-direction: column;
-    gap: clamp(2px, 0.28vw, 8px);
+    gap: clamp(2px, 0.28vw, 11px);
     justify-content: center;
 }
 
 .pbar-action-btn {
     position: relative;
-    width: clamp(20px, 2.78vw, 77px);
-    height: clamp(20px, 2.78vw, 77px);
+    width: clamp(20px, 2.78vw, 107px);
+    height: clamp(20px, 2.78vw, 107px);
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1969,21 +1969,21 @@ body.hide-cursor * {
 
 .pbar-action-stack .pbar-action-btn,
 .pbar-center-row .pbar-action-btn {
-    width: clamp(21px, 2.96vw, 82px);
-    height: clamp(21px, 2.96vw, 82px);
+    width: clamp(21px, 2.96vw, 114px);
+    height: clamp(21px, 2.96vw, 114px);
 }
 
 .pbar-action-btn i,
 .pbar-action-btn svg {
-    width: clamp(12px, 1.67vw, 46px);
-    height: clamp(12px, 1.67vw, 46px);
+    width: clamp(12px, 1.67vw, 64px);
+    height: clamp(12px, 1.67vw, 64px);
     stroke-width: 2px;
 }
 
 .pbar-action-stack .pbar-action-btn i,
 .pbar-action-stack .pbar-action-btn svg {
-    width: clamp(12px, 1.67vw, 46px);
-    height: clamp(12px, 1.67vw, 46px);
+    width: clamp(12px, 1.67vw, 64px);
+    height: clamp(12px, 1.67vw, 64px);
 }
 
 .pbar-action-btn:hover {
@@ -3926,13 +3926,13 @@ body:not(.dev-mode) .dev-indicator {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(3px, 0.37vw, 10px);
+    gap: clamp(3px, 0.37vw, 14px);
 }
 
 .pbar-center-row {
     display: flex;
     align-items: center;
-    gap: clamp(3px, 0.37vw, 10px);
+    gap: clamp(3px, 0.37vw, 14px);
 }
 
 /* Top row of the center column: Fav (left) — channel up (center) — Pin (right) */
@@ -3949,15 +3949,15 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .pbar-mini-btn {
-    width: clamp(16px, 2.22vw, 61px) !important;
-    height: clamp(16px, 2.22vw, 61px) !important;
+    width: clamp(16px, 2.22vw, 85px) !important;
+    height: clamp(16px, 2.22vw, 85px) !important;
     border-radius: 50% !important;
 }
 
 .pbar-mini-btn i,
 .pbar-mini-btn svg {
-    width: clamp(8px, 1.11vw, 31px) !important;
-    height: clamp(8px, 1.11vw, 31px) !important;
+    width: clamp(8px, 1.11vw, 43px) !important;
+    height: clamp(8px, 1.11vw, 43px) !important;
 }
 
 /* Compact Volume Icons */
@@ -3965,8 +3965,8 @@ body:not(.dev-mode) .dev-indicator {
 .pbar-vol-icon {
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    width: clamp(20px, 2.78vw, 77px);
-    height: clamp(20px, 2.78vw, 77px);
+    width: clamp(20px, 2.78vw, 107px);
+    height: clamp(20px, 2.78vw, 107px);
     color: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
@@ -3979,8 +3979,8 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .pbar-vol-icon svg {
-    width: clamp(12px, 1.67vw, 46px);
-    height: clamp(12px, 1.67vw, 46px);
+    width: clamp(12px, 1.67vw, 64px);
+    height: clamp(12px, 1.67vw, 64px);
 }
 
 .pbar-vol-icon:hover {
@@ -4039,13 +4039,13 @@ body:not(.dev-mode) .dev-indicator {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: clamp(9px, 1.30vw, 36px) clamp(16px, 2.22vw, 61px);
-    gap: clamp(13px, 1.85vw, 51px);
+    padding: clamp(9px, 1.30vw, 50px) clamp(16px, 2.22vw, 85px);
+    gap: clamp(13px, 1.85vw, 71px);
 
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border-radius: 0 0 clamp(16px, 2.22vw, 61px) clamp(16px, 2.22vw, 61px) !important;
+    border-radius: 0 0 clamp(16px, 2.22vw, 85px) clamp(16px, 2.22vw, 85px) !important;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: none !important;
     box-shadow: 0 20px 20px 5px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
@@ -4064,21 +4064,21 @@ body:not(.dev-mode) .dev-indicator {
 
 .tnav-buttons {
     display: flex;
-    gap: clamp(8px, 1.11vw, 31px) !important;
+    gap: clamp(8px, 1.11vw, 43px) !important;
 }
 
 .tnav-buttons .tnav-btn {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.7);
-    padding: clamp(5px, 0.74vw, 20px) clamp(11px, 1.48vw, 41px) !important;
-    border-radius: clamp(7px, 0.93vw, 26px) !important;
+    padding: clamp(5px, 0.74vw, 28px) clamp(11px, 1.48vw, 57px) !important;
+    border-radius: clamp(7px, 0.93vw, 36px) !important;
     cursor: pointer;
-    font-size: clamp(0.67rem, 1.48vw, 2.56rem) !important;
+    font-size: clamp(0.67rem, 1.48vw, 3.56rem) !important;
     font-weight: 600;
     display: flex;
     align-items: center;
-    gap: clamp(5px, 0.74vw, 20px) !important;
+    gap: clamp(5px, 0.74vw, 28px) !important;
     transition: all 0.2s ease;
     white-space: nowrap;
     flex-shrink: 0;
@@ -4100,8 +4100,8 @@ body:not(.dev-mode) .dev-indicator {
 
 .tnav-buttons .tnav-btn i,
 .tnav-buttons .tnav-btn svg {
-    width: clamp(13px, 1.85vw, 51px) !important;
-    height: clamp(13px, 1.85vw, 51px) !important;
+    width: clamp(13px, 1.85vw, 71px) !important;
+    height: clamp(13px, 1.85vw, 71px) !important;
 }
 
 .corner-fs-zone {
