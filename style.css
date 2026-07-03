@@ -1714,19 +1714,19 @@ body.hide-cursor * {
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 1000;
-    width: clamp(389px, max(clamp(389px, 53.70vw, 580px), calc(580px + 0.82609 * (100vw - 2046px))), 2062px);
+    width: clamp(389px, max(clamp(389px, 53.70vw, 580px), calc(580px + 0.44593 * (100vw - 2046px))), 1380px);
 
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px) clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px) clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px) clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.02843 * (100vw - 2046px))), 71px);
-    gap: clamp(9px, max(clamp(9px, 1.85vw, 20px), calc(20px + 0.02843 * (100vw - 2046px))), 71px);
+    padding: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00892 * (100vw - 2046px))), 32px) clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00892 * (100vw - 2046px))), 32px) clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00892 * (100vw - 2046px))), 32px) clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+    gap: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px);
 
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border-radius: clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px) clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px) 0 0 !important;
+    border-radius: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.00780 * (100vw - 2046px))), 30px) clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.00780 * (100vw - 2046px))), 30px) 0 0 !important;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: none !important;
     box-shadow: 0 20px 15px 15px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.15);
@@ -1749,8 +1749,8 @@ body.hide-cursor * {
 }
 
 .pbar-logo-container {
-    width: clamp(48px, max(clamp(48px, 6.67vw, 72px), calc(72px + 0.10256 * (100vw - 2046px))), 256px);
-    height: clamp(48px, max(clamp(48px, 6.67vw, 72px), calc(72px + 0.10256 * (100vw - 2046px))), 256px);
+    width: clamp(40px, max(clamp(40px, 5.56vw, 60px), calc(60px + 0.06689 * (100vw - 2046px))), 180px);
+    height: clamp(40px, max(clamp(40px, 5.56vw, 60px), calc(60px + 0.06689 * (100vw - 2046px))), 180px);
     background: transparent;
     border: none;
     display: flex;
@@ -1767,10 +1767,10 @@ body.hide-cursor * {
 }
 
 .pbar-logo-container .placeholder-circle {
-    width: clamp(43px, max(clamp(43px, 5.93vw, 64px), calc(64px + 0.09142 * (100vw - 2046px))), 228px);
-    height: clamp(43px, max(clamp(43px, 5.93vw, 64px), calc(64px + 0.09142 * (100vw - 2046px))), 228px);
-    border-radius: clamp(11px, max(clamp(11px, 1.48vw, 16px), calc(16px + 0.02285 * (100vw - 2046px))), 57px);
-    font-size: clamp(17.12px, max(clamp(17.12px, 2.37vw, 25.6px), calc(25.6px + 0.03648 * (100vw - 2046px))), 91.04px);
+    width: clamp(40px, max(clamp(40px, 5.56vw, 60px), calc(60px + 0.05574 * (100vw - 2046px))), 160px);
+    height: clamp(40px, max(clamp(40px, 5.56vw, 60px), calc(60px + 0.05574 * (100vw - 2046px))), 160px);
+    border-radius: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.00780 * (100vw - 2046px))), 30px);
+    font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px);
 }
 
 /* Program Info & Sources Area */
@@ -1778,7 +1778,7 @@ body.hide-cursor * {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
+    gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00223 * (100vw - 2046px))), 8px);
     text-align: left;
     overflow: visible;
     min-width: 0;
@@ -1790,7 +1790,7 @@ body.hide-cursor * {
 }
 
 #pbar-channel-text {
-    font-size: clamp(13.44px, max(clamp(13.44px, 1.85vw, 20px), calc(20px + 0.01739 * (100vw - 2046px))), 51.2px);
+    font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01338 * (100vw - 2046px))), 44px);
     font-weight: 700;
     color: #fff;
     margin: 0;
@@ -1801,10 +1801,10 @@ body.hide-cursor * {
 }
 
 .pbar-epg-text {
-    font-size: clamp(9.6px, max(clamp(9.6px, 1.33vw, 14.4px), calc(14.4px + 0.02042 * (100vw - 2046px))), 51.04px);
+    font-size: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01226 * (100vw - 2046px))), 36px);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.55);
-    margin: 0 0 clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px) 0;
+    margin: 0 0 clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00223 * (100vw - 2046px))), 8px) 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1815,7 +1815,7 @@ body.hide-cursor * {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00279 * (100vw - 2046px))), 7px);
+    gap: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00334 * (100vw - 2046px))), 8px);
     flex-wrap: wrap;
     flex-grow: 1;
     width: 100%;
@@ -1825,11 +1825,11 @@ body.hide-cursor * {
 .pbar-filter-badge {
     display: inline-flex;
     align-items: center;
-    padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00279 * (100vw - 2046px))), 7px) clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00836 * (100vw - 2046px))), 21px);
+    padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00223 * (100vw - 2046px))), 6px) clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00446 * (100vw - 2046px))), 14px);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
-    font-size: clamp(7.04px, max(clamp(7.04px, 0.96vw, 10.4px), calc(10.4px + 0.01480 * (100vw - 2046px))), 36.96px);
+    border-radius: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
+    font-size: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00446 * (100vw - 2046px))), 18px);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     pointer-events: none; /* Disables mouse interaction */
@@ -1842,8 +1842,8 @@ body.hide-cursor * {
 .pbar-autotune-row {
     display: flex;
     align-items: center;
-    gap: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px);
-    margin-top: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00836 * (100vw - 2046px))), 21px);
+    gap: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+    margin-top: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px);
 }
 
 .pbar-autotune-indicator {
@@ -1855,8 +1855,8 @@ body.hide-cursor * {
 
 .pbar-autotune-indicator i,
 .pbar-autotune-indicator svg {
-    width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
-    height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
+    width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01003 * (100vw - 2046px))), 36px);
+    height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01003 * (100vw - 2046px))), 36px);
 }
 
 .pbar-source-toggle-btn {
@@ -1873,39 +1873,39 @@ body.hide-cursor * {
 
 .pbar-source-toggle-btn i,
 .pbar-source-toggle-btn svg {
-    width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
-    height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
+    width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01003 * (100vw - 2046px))), 36px);
+    height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01003 * (100vw - 2046px))), 36px);
 }
 
 /* Sources Selection Row */
 .pbar-sources-row {
     display: flex;
     align-items: center;
-    gap: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px);
+    gap: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
 }
 
 .pbar-sources-row .sources-label {
-    font-size: clamp(7.52px, max(clamp(7.52px, 1.04vw, 11.2px), calc(11.2px + 0.01596 * (100vw - 2046px))), 39.84px);
+    font-size: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
     font-weight: 700;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: clamp(1px, max(clamp(1px, 0.09vw, 1px), calc(1px + 0.00167 * (100vw - 2046px))), 4px);
+    letter-spacing: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
 }
 
 .pbar-sources-row .pbar-source-buttons {
     display: flex;
     align-items: center;
-    gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00836 * (100vw - 2046px))), 21px);
+    gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px);
 }
 
 .pbar-sources-row .pbar-source-btn {
-    width: clamp(15px, max(clamp(15px, 2.13vw, 23px), calc(23px + 0.03289 * (100vw - 2046px))), 82px);
-    height: clamp(15px, max(clamp(15px, 2.13vw, 23px), calc(23px + 0.03289 * (100vw - 2046px))), 82px);
+    width: clamp(12px, max(clamp(12px, 2.22vw, 24px), calc(24px + 0.01003 * (100vw - 2046px))), 42px);
+    height: clamp(12px, max(clamp(12px, 2.22vw, 24px), calc(24px + 0.01003 * (100vw - 2046px))), 42px);
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: transparent;
     color: rgba(255, 255, 255, 0.7);
-    font-size: clamp(8.64px, max(clamp(8.64px, 1.19vw, 12.8px), calc(12.8px + 0.01828 * (100vw - 2046px))), 45.6px);
+    font-size: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
     font-weight: 600;
     cursor: pointer;
     display: flex;
@@ -1933,7 +1933,7 @@ body.hide-cursor * {
     position: relative;
     display: flex;
     align-items: center;
-    gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.01115 * (100vw - 2046px))), 28px);
+    gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
     margin-left: auto;
     flex-shrink: 0;
 }
@@ -1941,14 +1941,14 @@ body.hide-cursor * {
 .pbar-action-stack {
     display: flex;
     flex-direction: column;
-    gap: clamp(2px, max(clamp(2px, 0.28vw, 3px), calc(3px + 0.00446 * (100vw - 2046px))), 11px);
+    gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
     justify-content: center;
 }
 
 .pbar-action-btn {
     position: relative;
-    width: clamp(21px, max(clamp(21px, 2.96vw, 32px), calc(32px + 0.04571 * (100vw - 2046px))), 114px);
-    height: clamp(21px, max(clamp(21px, 2.96vw, 32px), calc(32px + 0.04571 * (100vw - 2046px))), 114px);
+    width: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
+    height: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1962,21 +1962,21 @@ body.hide-cursor * {
 
 .pbar-action-stack .pbar-action-btn,
 .pbar-center-row .pbar-action-btn {
-    width: clamp(21px, max(clamp(21px, 2.96vw, 32px), calc(32px + 0.04571 * (100vw - 2046px))), 114px);
-    height: clamp(21px, max(clamp(21px, 2.96vw, 32px), calc(32px + 0.04571 * (100vw - 2046px))), 114px);
+    width: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
+    height: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
 }
 
 .pbar-action-btn i,
 .pbar-action-btn svg {
-    width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
-    height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
+    width: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
+    height: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
     stroke-width: 2px;
 }
 
 .pbar-action-stack .pbar-action-btn i,
 .pbar-action-stack .pbar-action-btn svg {
-    width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
-    height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
+    width: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
+    height: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
 }
 
 .pbar-action-btn:hover {
@@ -3923,13 +3923,13 @@ body:not(.dev-mode) .dev-indicator {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
+    gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
 }
 
 .pbar-center-row {
     display: flex;
     align-items: center;
-    gap: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
+    gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
 }
 
 /* Top row of the center column: Fav (left) — channel up (center) — Pin (right) */
@@ -3954,15 +3954,15 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .pbar-mini-btn {
-    width: clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px) !important;
-    height: clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px) !important;
+    width: clamp(4px, max(clamp(4px, 1.85vw, 20px), calc(20px + 0.01338 * (100vw - 2046px))), 44px) !important;
+    height: clamp(4px, max(clamp(4px, 1.85vw, 20px), calc(20px + 0.01338 * (100vw - 2046px))), 44px) !important;
     border-radius: 50% !important;
 }
 
 .pbar-mini-btn i,
 .pbar-mini-btn svg {
-    width: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px) !important;
-    height: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px) !important;
+    width: clamp(2px, max(clamp(2px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px) !important;
+    height: clamp(2px, max(clamp(2px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px) !important;
 }
 
 /* Compact Volume Icons */
@@ -3970,8 +3970,8 @@ body:not(.dev-mode) .dev-indicator {
 .pbar-vol-icon {
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    width: clamp(21px, max(clamp(21px, 2.96vw, 32px), calc(32px + 0.04571 * (100vw - 2046px))), 114px);
-    height: clamp(21px, max(clamp(21px, 2.96vw, 32px), calc(32px + 0.04571 * (100vw - 2046px))), 114px);
+    width: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
+    height: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
     color: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
@@ -3984,8 +3984,8 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .pbar-vol-icon svg {
-    width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
-    height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
+    width: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
+    height: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
 }
 
 .pbar-vol-icon:hover {
@@ -4037,8 +4037,8 @@ body:not(.dev-mode) .dev-indicator {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: clamp(400px, max(clamp(400px, 60.19vw, 650px), calc(650px + 0.92586 * (100vw - 2046px))), 2311px);
-    height: clamp(110px, max(clamp(110px, 16.67vw, 180px), calc(180px + 0.25641 * (100vw - 2046px))), 640px);
+    width: clamp(400px, max(clamp(400px, 60.19vw, 650px), calc(650px + 0.47380 * (100vw - 2046px))), 1500px);
+    height: clamp(110px, max(clamp(110px, 16.67vw, 180px), calc(180px + 0.06689 * (100vw - 2046px))), 300px);
 }
 
 /* Top Navigation HUD */

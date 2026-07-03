@@ -449,17 +449,17 @@ const PBAR_GROUPS = [
       `  border-radius: ${f('radius')} ${f('radius')} 0 0 !important;`,
     ].join('\n'),
     items: [
-      { id: 'width',  label: 'width',              base: 580, min: 389, max: 2062, unit: 'px' },
-      { id: 'padTRB', label: 'padding T / R / B',  base: 14,  min: 9,   max: 50,   unit: 'px' },
-      { id: 'padL',   label: 'padding Left',        base: 20,  min: 13,  max: 71,   unit: 'px' },
-      { id: 'gap',    label: 'gap',                 base: 20,  min: 9,   max: 71,   unit: 'px' },
-      { id: 'radius', label: 'border-radius TL/TR', base: 24,  min: 16,  max: 85,   unit: 'px' },
+      { id: 'width',  label: 'width',              base: 580, min: 389, max: 1380, unit: 'px' },
+      { id: 'padTRB', label: 'padding T / R / B',  base: 16,  min: 8,   max: 32,   unit: 'px' },
+      { id: 'padL',   label: 'padding Left',        base: 20,  min: 13,  max: 40,   unit: 'px' },
+      { id: 'gap',    label: 'gap',                 base: 20,  min: 10,  max: 30,   unit: 'px' },
+      { id: 'radius', label: 'border-radius TL/TR', base: 16,  min: 10,  max: 30,   unit: 'px' },
     ]
   },
   {
     selector: '.pbar-logo-container', comment: 'Channel logo wrapper',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 72, min: 48, max: 256, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 60, min: 40, max: 180, unit: 'px' }]
   },
   {
     selector: '.pbar-logo-container .placeholder-circle', comment: 'Fallback logo circle',
@@ -468,33 +468,33 @@ const PBAR_GROUPS = [
       `  border-radius: ${f('radius')};`, `  font-size: ${f('fontSize')};`,
     ].join('\n'),
     items: [
-      { id: 'size',     label: 'width / height', base: 64,   min: 43,    max: 228,   unit: 'px'  },
-      { id: 'radius',   label: 'border-radius',  base: 16,   min: 11,    max: 57,    unit: 'px'  },
-      { id: 'fontSize', label: 'font-size',       base: 25.6, min: 17.12, max: 91.04, unit: 'px' },
+      { id: 'size',     label: 'width / height', base: 60, min: 40, max: 160, unit: 'px' },
+      { id: 'radius',   label: 'border-radius',  base: 16, min: 10, max: 30,  unit: 'px' },
+      { id: 'fontSize', label: 'font-size',       base: 20, min: 10, max: 60,  unit: 'px' },
     ]
   },
   {
     selector: '.pbar-info-area', comment: 'Channel info column',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 4, min: 3, max: 14, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 4, min: 2, max: 8, unit: 'px' }]
   },
   {
     selector: '#pbar-channel-text', comment: 'Channel name heading',
     template: (f) => `  font-size: ${f('fontSize')};`,
-    items: [{ id: 'fontSize', label: 'font-size', base: 20, min: 13.44, max: 51.2, unit: 'px' }]
+    items: [{ id: 'fontSize', label: 'font-size', base: 20, min: 10, max: 44, unit: 'px' }]
   },
   {
     selector: '.pbar-epg-text', comment: 'EPG / programme name',
     template: (f) => [`  font-size: ${f('fontSize')};`, `  margin: 0 0 ${f('marginB')} 0;`].join('\n'),
     items: [
-      { id: 'fontSize', label: 'font-size',     base: 14.4, min: 9.6, max: 51.04, unit: 'px' },
-      { id: 'marginB',  label: 'margin-bottom', base: 4,    min: 3,   max: 14,    unit: 'px'  },
+      { id: 'fontSize', label: 'font-size',     base: 14, min: 8, max: 36, unit: 'px' },
+      { id: 'marginB',  label: 'margin-bottom', base: 4,  min: 2, max: 8,  unit: 'px' },
     ]
   },
   {
     selector: '.pbar-channel-filters', comment: 'Filter badges row',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 2, min: 1, max: 7, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 2, min: 1, max: 8, unit: 'px' }]
   },
   {
     selector: '.pbar-filter-badge', comment: 'Category chip (English, Sport…)',
@@ -504,42 +504,42 @@ const PBAR_GROUPS = [
       `  font-size: ${f('fontSize')};`,
     ].join('\n'),
     items: [
-      { id: 'padV',     label: 'padding V',     base: 2,    min: 1,    max: 7,     unit: 'px'  },
-      { id: 'padH',     label: 'padding H',     base: 6,    min: 4,    max: 21,    unit: 'px'  },
-      { id: 'radius',   label: 'border-radius', base: 4,    min: 3,    max: 14,    unit: 'px'  },
-      { id: 'fontSize', label: 'font-size',      base: 10.4, min: 7.04, max: 36.96, unit: 'px' },
+      { id: 'padV',     label: 'padding V',     base: 2,  min: 1, max: 6,  unit: 'px' },
+      { id: 'padH',     label: 'padding H',     base: 6,  min: 4, max: 14, unit: 'px' },
+      { id: 'radius',   label: 'border-radius', base: 4,  min: 3, max: 6,  unit: 'px' },
+      { id: 'fontSize', label: 'font-size',      base: 10, min: 6, max: 18, unit: 'px' },
     ]
   },
   {
     selector: '.pbar-autotune-row', comment: 'Autotuner + source toggle row',
     template: (f) => [`  gap: ${f('gap')};`, `  margin-top: ${f('marginTop')};`].join('\n'),
     items: [
-      { id: 'gap',       label: 'gap',        base: 12, min: 8, max: 43, unit: 'px' },
-      { id: 'marginTop', label: 'margin-top', base: 6,  min: 4, max: 21, unit: 'px' },
+      { id: 'gap',       label: 'gap',        base: 12, min: 8, max: 24, unit: 'px' },
+      { id: 'marginTop', label: 'margin-top', base: 6,  min: 4, max: 12, unit: 'px' },
     ]
   },
   {
     selector: '.pbar-autotune-indicator svg,\n.pbar-source-toggle-btn svg', comment: 'Autotune / source-toggle icons',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 18, min: 12, max: 64, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 18, min: 12, max: 36, unit: 'px' }]
   },
   {
     selector: '.pbar-sources-row', comment: 'Source buttons row',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 12, min: 8, max: 43, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 12, min: 6, max: 24, unit: 'px' }]
   },
   {
     selector: '.pbar-sources-row .sources-label', comment: 'Sources label',
     template: (f) => [`  font-size: ${f('fontSize')};`, `  letter-spacing: ${f('letterSpacing')};`].join('\n'),
     items: [
-      { id: 'fontSize',      label: 'font-size',      base: 11.2, min: 7.52, max: 39.84, unit: 'px' },
-      { id: 'letterSpacing', label: 'letter-spacing', base: 1,    min: 1,    max: 4,     unit: 'px'  },
+      { id: 'fontSize',      label: 'font-size',      base: 12, min: 6, max: 24, unit: 'px' },
+      { id: 'letterSpacing', label: 'letter-spacing', base: 2,  min: 1, max: 4,  unit: 'px' },
     ]
   },
   {
     selector: '.pbar-sources-row .pbar-source-buttons', comment: 'Source number buttons container',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 6, min: 4, max: 21, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 6, min: 4, max: 12, unit: 'px' }]
   },
   {
     selector: '.pbar-sources-row .pbar-source-btn', comment: 'Source number button (1, 2, 3…)',
@@ -547,70 +547,70 @@ const PBAR_GROUPS = [
       `  width: ${f('size')};`, `  height: ${f('size')};`, `  font-size: ${f('fontSize')};`,
     ].join('\n'),
     items: [
-      { id: 'size',     label: 'width / height', base: 23,   min: 15,   max: 82,   unit: 'px'  },
-      { id: 'fontSize', label: 'font-size',       base: 12.8, min: 8.64, max: 45.6, unit: 'px' },
+      { id: 'size',     label: 'width / height', base: 24, min: 12, max: 42, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',       base: 12, min: 6,  max: 24, unit: 'px' },
     ]
   },
   {
     selector: '.pbar-actions-container', comment: 'Action buttons container',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 8, min: 5, max: 28, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 4, min: 2, max: 6, unit: 'px' }]
   },
   {
     selector: '.pbar-action-stack', comment: 'Vertical stack (vol ↑ / nav / vol ↓)',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 3, min: 2, max: 11, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 4, min: 2, max: 6, unit: 'px' }]
   },
   {
     selector: '.pbar-action-btn,\n.pbar-action-stack .pbar-action-btn,\n.pbar-center-row .pbar-action-btn', comment: 'Action button (vol, nav, mute…)',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 32, min: 21, max: 114, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 32, min: 12, max: 64, unit: 'px' }]
   },
   {
     selector: '.pbar-action-btn svg,\n.pbar-action-btn i', comment: 'Action button icon',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 18, min: 12, max: 64, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 20, min: 6, max: 34, unit: 'px' }]
   },
   {
     selector: '.pbar-center-block', comment: 'Center column (vol ↑ | nav row | vol ↓)',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 4, min: 3, max: 14, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 4, min: 2, max: 6, unit: 'px' }]
   },
   {
     selector: '.pbar-center-row', comment: 'Center row (prev | mute | next)',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 4, min: 3, max: 14, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 4, min: 2, max: 6, unit: 'px' }]
   },
   {
     selector: '.pbar-mini-btn', comment: 'Mini buttons (Fav, Pin)',
     template: (f) => [
       `  width: ${f('size')} !important;`, `  height: ${f('size')} !important;`,
     ].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 24, min: 16, max: 85, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 20, min: 4, max: 44, unit: 'px' }]
   },
   {
     selector: '.pbar-mini-btn svg,\n.pbar-mini-btn i', comment: 'Mini button icon',
     template: (f) => [
       `  width: ${f('size')} !important;`, `  height: ${f('size')} !important;`,
     ].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 12, min: 8, max: 43, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 10, min: 2, max: 20, unit: 'px' }]
   },
   {
     selector: '.pbar-vol-icon', comment: 'Vol up / down button',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 32, min: 21, max: 114, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 32, min: 12, max: 64, unit: 'px' }]
   },
   {
     selector: '.pbar-vol-icon svg', comment: 'Vol icon SVG',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 18, min: 12, max: 64, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 20, min: 6, max: 34, unit: 'px' }]
   },
   {
     selector: '.hover-trigger.bottom', comment: 'Player Bar hover trigger',
     template: (f) => [`  width: ${f('width')};`, `  height: ${f('height')};`].join('\n'),
     items: [
-      { id: 'width',  label: 'width',  base: 650, min: 400, max: 2311, unit: 'px' },
-      { id: 'height', label: 'height', base: 180, min: 110, max: 640,  unit: 'px' },
+      { id: 'width',  label: 'width',  base: 650, min: 400, max: 1500, unit: 'px' },
+      { id: 'height', label: 'height', base: 180, min: 110, max: 300,  unit: 'px' },
     ]
   },
 ];
