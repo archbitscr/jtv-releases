@@ -1,0 +1,29 @@
+/* JTV Component Sizer — Live TV › .tnav-* */
+/* Base: 1080px  |  Threshold: 2046px  |  4K: 3840px */
+
+/* Top Nav container */
+.tnav-menu {
+  padding: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px) clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px);
+  gap: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+  border-radius: 0 0 clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px) clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px) !important;
+}
+
+/* Nav buttons row */
+.tnav-buttons {
+  gap: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) !important;
+}
+
+/* Nav button (Home, Live TV…) */
+.tnav-buttons .tnav-btn {
+  padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) !important;
+  border-radius: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00446 * (100vw - 2046px))), 20px) !important;
+  font-size: clamp(0.38rem, max(clamp(0.38rem, 1.11vw, 0.75rem), calc(0.75rem + 0.01338 * (100vw - 2046px))), 2.25rem) !important;
+  gap: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) !important;
+}
+
+/* Nav button icon */
+.tnav-buttons .tnav-btn i,
+.tnav-buttons .tnav-btn svg {
+  width: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.01561 * (100vw - 2046px))), 40px) !important;
+  height: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.01561 * (100vw - 2046px))), 40px) !important;
+}

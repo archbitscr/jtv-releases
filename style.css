@@ -4053,13 +4053,13 @@ body:not(.dev-mode) .dev-indicator {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px) clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px);
-    gap: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.02843 * (100vw - 2046px))), 71px);
+    padding: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px) clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px);
+    gap: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
 
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border-radius: 0 0 clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px) clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px) !important;
+    border-radius: 0 0 clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px) clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px) !important;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: none !important;
     box-shadow: 0 20px 20px 5px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
@@ -4078,21 +4078,21 @@ body:not(.dev-mode) .dev-indicator {
 
 .tnav-buttons {
     display: flex;
-    gap: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px) !important;
+    gap: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) !important;
 }
 
 .tnav-buttons .tnav-btn {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.7);
-    padding: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.01115 * (100vw - 2046px))), 28px) clamp(11px, max(clamp(11px, 1.48vw, 16px), calc(16px + 0.02286 * (100vw - 2046px))), 57px) !important;
-    border-radius: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.01450 * (100vw - 2046px))), 36px) !important;
+    padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) !important;
+    border-radius: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00446 * (100vw - 2046px))), 20px) !important;
     cursor: pointer;
-    font-size: clamp(0.77rem, max(clamp(0.77rem, 1.70vw, 1.15rem), calc(1.15rem + 0.02620 * (100vw - 2046px))), 4.09rem) !important;
+    font-size: clamp(0.38rem, max(clamp(0.38rem, 1.11vw, 0.75rem), calc(0.75rem + 0.01338 * (100vw - 2046px))), 2.25rem) !important;
     font-weight: 600;
     display: flex;
     align-items: center;
-    gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.01115 * (100vw - 2046px))), 28px) !important;
+    gap: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) !important;
     transition: all 0.2s ease;
     white-space: nowrap;
     flex-shrink: 0;
@@ -4114,8 +4114,8 @@ body:not(.dev-mode) .dev-indicator {
 
 .tnav-buttons .tnav-btn i,
 .tnav-buttons .tnav-btn svg {
-    width: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.02843 * (100vw - 2046px))), 71px) !important;
-    height: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.02843 * (100vw - 2046px))), 71px) !important;
+    width: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.01561 * (100vw - 2046px))), 40px) !important;
+    height: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.01561 * (100vw - 2046px))), 40px) !important;
 }
 
 .corner-fs-zone {
