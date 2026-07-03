@@ -403,16 +403,16 @@
 const SECTIONS = [
   {
     id: 'home', label: 'Home',
-    components: [{ id: 'home', label: '.home-*', populated: false }]
+    components: [{ id: 'home', label: '.home-*', populated: true }]
   },
   {
     id: 'livetv', label: 'Live TV',
     components: [
-      { id: 'pbar',   label: '.pbar-*',   populated: true  },
-      { id: 'tnav',   label: '.tnav-*',   populated: true  },
+      { id: 'pbar',   label: '.pbar-*',   populated: true },
+      { id: 'tnav',   label: '.tnav-*',   populated: true },
       { id: 'side',   label: '.side-*',   populated: true },
-      { id: 'land',   label: '.land-*',   populated: false },
-      { id: 'fbar',   label: '.fbar-*',   populated: false },
+      { id: 'land',   label: '.land-*',   populated: true },
+      { id: 'fbar',   label: '.fbar-*',   populated: true },
       { id: 'player', label: '.player-*', populated: false },
     ]
   },
@@ -422,16 +422,16 @@ const SECTIONS = [
   },
   {
     id: 'settings', label: 'Settings',
-    components: [{ id: 'settings', label: '.settings-*', populated: false }]
+    components: [{ id: 'settings', label: '.settings-*', populated: true }]
   },
   {
     id: 'transversal', label: 'Transversals',
     components: [
-      { id: 'volosd',  label: '.volosd-*',  populated: true  },
-      { id: 'corner',  label: '.corner-*',  populated: true  },
-      { id: 'tooltip', label: '.tooltip-*', populated: false },
-      { id: 'search',  label: '.search-*',  populated: false },
-      { id: 'modal',   label: '.modal-*',   populated: false },
+      { id: 'volosd',  label: '.volosd-*',  populated: true },
+      { id: 'corner',  label: '.corner-*',  populated: true },
+      { id: 'tooltip', label: '.tooltip-*', populated: true },
+      { id: 'search',  label: '.search-*',  populated: true },
+      { id: 'modal',   label: '.modal-*',   populated: true },
     ]
   },
 ];
@@ -979,7 +979,671 @@ const SIDE_GROUPS = [
   },
 ];
 
-const COMPONENT_DATA = { pbar: PBAR_GROUPS, tnav: TNAV_GROUPS, side: SIDE_GROUPS, corner: CORNER_GROUPS, volosd: VOLOSD_GROUPS };
+// ─────────────────────────────────────────────────────────────────────────────
+// HOME DATA
+// ─────────────────────────────────────────────────────────────────────────────
+const HOME_GROUPS = [
+  {
+    selector: '.home-cards-container', comment: 'Cards container',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 24, min: 14, max: 57, unit: 'px' }]
+  },
+  {
+    selector: '.home-card', comment: 'Channel card',
+    template: (f) => [`  flex: 0 0 ${f('size')};`, `  width: ${f('size')};`, `  border-radius: ${f('radius')};`].join('\n'),
+    items: [
+      { id: 'size',   label: 'width',         base: 180, min: 107, max: 427, unit: 'px' },
+      { id: 'radius', label: 'border-radius', base: 20,  min: 13,  max: 51,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.home-card-header', comment: 'Card header overlay',
+    template: (f) => [
+      `  top: ${f('top')};`,
+      `  left: ${f('side')}; right: ${f('side')};`,
+      `  padding: ${f('padV')} ${f('padH')};`,
+      `  gap: ${f('gap')};`,
+    ].join('\n'),
+    items: [
+      { id: 'top',  label: 'top',        base: 100, min: 59, max: 237, unit: 'px' },
+      { id: 'side', label: 'left / right', base: 16, min: 10, max: 38,  unit: 'px' },
+      { id: 'padV', label: 'padding V',   base: 6,  min: 4,  max: 15,  unit: 'px' },
+      { id: 'padH', label: 'padding H',   base: 10, min: 7,  max: 26,  unit: 'px' },
+      { id: 'gap',  label: 'gap',         base: 8,  min: 5,  max: 20,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.home-card h2', comment: 'Card title',
+    template: (f) => `  font-size: ${f('fontSize')};`,
+    items: [{ id: 'fontSize', label: 'font-size', base: 19, min: 11, max: 45, unit: 'px' }]
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LAND DATA
+// ─────────────────────────────────────────────────────────────────────────────
+const LAND_GROUPS = [
+  {
+    selector: '.land-dashboard', comment: 'Dashboard wrapper',
+    template: (f) => `  padding: ${f('padT')} ${f('padS')} ${f('padS')} ${f('padS')};`,
+    items: [
+      { id: 'padT', label: 'padding Top',        base: 100, min: 67, max: 256, unit: 'px' },
+      { id: 'padS', label: 'padding R / B / L',  base: 40,  min: 27, max: 102, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.land-grid', comment: 'Channel grid',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 10, min: 7, max: 26, unit: 'px' }]
+  },
+  {
+    selector: '.land-carousel-wrapper', comment: 'Carousel wrapper',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 30, min: 20, max: 77, unit: 'px' }]
+  },
+  {
+    selector: '.land-nav', comment: 'Section nav row',
+    template: (f) => [`  gap: ${f('gap')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
+    items: [
+      { id: 'gap',     label: 'gap',           base: 10, min: 7,  max: 26, unit: 'px' },
+      { id: 'marginB', label: 'margin-bottom', base: 20, min: 13, max: 51, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.land-nav button', comment: 'Nav filter button',
+    template: (f) => [
+      `  padding: ${f('padV')} ${f('padH')};`,
+      `  border-radius: ${f('radius')};`,
+      `  font-size: ${f('fontSize')};`,
+    ].join('\n'),
+    items: [
+      { id: 'padV',     label: 'padding V',     base: 8,  min: 5,  max: 20, unit: 'px' },
+      { id: 'padH',     label: 'padding H',     base: 18, min: 12, max: 46, unit: 'px' },
+      { id: 'radius',   label: 'border-radius', base: 20, min: 13, max: 51, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',     base: 13, min: 9,  max: 33, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.land-nav-btn i', comment: 'Prev / Next nav icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 48, min: 32, max: 123, unit: 'px' }]
+  },
+  {
+    selector: '.land-top-row', comment: 'Top row (title + exit)',
+    template: (f) => [`  column-gap: ${f('gap')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
+    items: [
+      { id: 'gap',     label: 'column-gap',    base: 40, min: 27, max: 102, unit: 'px' },
+      { id: 'marginB', label: 'margin-bottom', base: 12, min: 8,  max: 31,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.land-title', comment: 'Section title',
+    template: (f) => `  font-size: ${f('fontSize')} !important;`,
+    items: [{ id: 'fontSize', label: 'font-size', base: 42, min: 28, max: 107, unit: 'px' }]
+  },
+  {
+    selector: '.land-title-block', comment: 'Title block',
+    template: (f) => `  padding-top: ${f('padT')};`,
+    items: [{ id: 'padT', label: 'padding-top', base: 6, min: 4, max: 15, unit: 'px' }]
+  },
+  {
+    selector: '.land-exit-block', comment: 'Exit button block',
+    template: (f) => `  padding-top: ${f('padT')};`,
+    items: [{ id: 'padT', label: 'padding-top', base: 10, min: 7, max: 26, unit: 'px' }]
+  },
+  {
+    selector: '.land-exit-btn', comment: 'Exit button',
+    template: (f) => [`  margin-top: ${f('marginT')} !important;`, `  font-size: ${f('fontSize')} !important;`].join('\n'),
+    items: [
+      { id: 'marginT',  label: 'margin-top', base: 6,  min: 4,  max: 15, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',  base: 15, min: 10, max: 39, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.land-item', comment: 'Channel list item',
+    template: (f) => `  border-radius: ${f('radius')};`,
+    items: [{ id: 'radius', label: 'border-radius', base: 15, min: 10, max: 38, unit: 'px' }]
+  },
+  {
+    selector: '.land-item .land-logo', comment: 'Channel logo',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`, `  margin-right: ${f('marginR')};`].join('\n'),
+    items: [
+      { id: 'size',    label: 'width / height', base: 50, min: 34, max: 128, unit: 'px' },
+      { id: 'marginR', label: 'margin-right',   base: 15, min: 10, max: 38,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.land-item h4', comment: 'Channel name',
+    template: (f) => `  font-size: ${f('fontSize')};`,
+    items: [{ id: 'fontSize', label: 'font-size', base: 16, min: 11, max: 41, unit: 'px' }]
+  },
+  {
+    selector: '.land-epg', comment: 'EPG text',
+    template: (f) => [`  font-size: ${f('fontSize')};`, `  margin-top: ${f('marginT')};`].join('\n'),
+    items: [
+      { id: 'fontSize', label: 'font-size',  base: 12, min: 8, max: 31, unit: 'px' },
+      { id: 'marginT',  label: 'margin-top', base: 4,  min: 3, max: 10, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.land-channel-id', comment: 'Channel ID badge',
+    template: (f) => [
+      `  top: ${f('top')}; right: ${f('right')};`,
+      `  padding: ${f('padV')} ${f('padH')};`,
+      `  border-radius: ${f('radius')};`,
+      `  font-size: ${f('fontSize')};`,
+    ].join('\n'),
+    items: [
+      { id: 'top',      label: 'top',           base: 8,  min: 5, max: 20, unit: 'px' },
+      { id: 'right',    label: 'right',          base: 12, min: 8, max: 31, unit: 'px' },
+      { id: 'padV',     label: 'padding V',      base: 2,  min: 1, max: 5,  unit: 'px' },
+      { id: 'padH',     label: 'padding H',      base: 6,  min: 4, max: 15, unit: 'px' },
+      { id: 'radius',   label: 'border-radius',  base: 4,  min: 3, max: 10, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',       base: 10, min: 7, max: 27, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.land-content', comment: 'Content area',
+    template: (f) => `  padding-top: ${f('padT')};`,
+    items: [{ id: 'padT', label: 'padding-top', base: 12, min: 8, max: 31, unit: 'px' }]
+  },
+  {
+    selector: '.land-dots-container', comment: 'Dots container',
+    template: (f) => [
+      `  height: ${f('height')};`,
+      `  border-radius: ${f('radius')};`,
+      `  margin-top: ${f('marginT')};`,
+    ].join('\n'),
+    items: [
+      { id: 'height',  label: 'height',         base: 40, min: 27, max: 102, unit: 'px' },
+      { id: 'radius',  label: 'border-radius',  base: 6,  min: 4,  max: 15,  unit: 'px' },
+      { id: 'marginT', label: 'margin-top',     base: 12, min: 8,  max: 31,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.land-dots', comment: 'Dots row',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 12, min: 8, max: 31, unit: 'px' }]
+  },
+  {
+    selector: '.land-dot', comment: 'Individual dot',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 9, min: 6, max: 23, unit: 'px' }]
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FBAR DATA
+// ─────────────────────────────────────────────────────────────────────────────
+const FBAR_GROUPS = [
+  {
+    selector: '.fbar-select-btn', comment: 'Filter select button',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 6, min: 4, max: 15, unit: 'px' }]
+  },
+  {
+    selector: '.fbar-chevron', comment: 'Chevron icon',
+    template: (f) => [`  width: ${f('size')} !important;`, `  height: ${f('size')} !important;`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 12, min: 8, max: 31, unit: 'px' }]
+  },
+  {
+    selector: '.fbar-select-menu', comment: 'Dropdown menu',
+    template: (f) => [`  border-radius: ${f('radius')};`, `  max-height: ${f('maxH')};`].join('\n'),
+    items: [
+      { id: 'radius', label: 'border-radius', base: 8,   min: 5,   max: 20,  unit: 'px' },
+      { id: 'maxH',   label: 'max-height',    base: 200, min: 134, max: 512, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.fbar-select-option', comment: 'Dropdown option',
+    template: (f) => [`  padding: ${f('padV')} ${f('padH')};`, `  font-size: ${f('fontSize')};`].join('\n'),
+    items: [
+      { id: 'padV',     label: 'padding V', base: 8,  min: 5, max: 20, unit: 'px' },
+      { id: 'padH',     label: 'padding H', base: 14, min: 9, max: 36, unit: 'px' },
+      { id: 'fontSize', label: 'font-size', base: 13, min: 9, max: 33, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.fbar-select-option:hover', comment: 'Option hover indent',
+    template: (f) => `  padding-left: ${f('padL')};`,
+    items: [{ id: 'padL', label: 'padding-left', base: 20, min: 13, max: 51, unit: 'px' }]
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SETTINGS DATA
+// ─────────────────────────────────────────────────────────────────────────────
+const SETTINGS_GROUPS = [
+  {
+    selector: '.settings-sidebar', comment: 'Settings sidebar',
+    template: (f) => [`  width: ${f('width')};`, `  padding: ${f('padV')} ${f('padH')};`].join('\n'),
+    items: [
+      { id: 'width', label: 'width',      base: 180, min: 107, max: 427, unit: 'px' },
+      { id: 'padV',  label: 'padding V',  base: 20,  min: 12,  max: 47,  unit: 'px' },
+      { id: 'padH',  label: 'padding H',  base: 10,  min: 6,   max: 24,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-sidebar h2', comment: 'Sidebar heading',
+    template: (f) => [
+      `  font-size: ${f('fontSize')};`,
+      `  margin-bottom: ${f('marginB')};`,
+      `  padding-left: ${f('padL')};`,
+    ].join('\n'),
+    items: [
+      { id: 'fontSize', label: 'font-size',     base: 24, min: 14, max: 57, unit: 'px' },
+      { id: 'marginB',  label: 'margin-bottom', base: 25, min: 15, max: 59, unit: 'px' },
+      { id: 'padL',     label: 'padding-left',  base: 10, min: 6,  max: 24, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-sidebar-footer', comment: 'Sidebar footer',
+    template: (f) => `  padding-top: ${f('padT')};`,
+    items: [{ id: 'padT', label: 'padding-top', base: 18, min: 11, max: 43, unit: 'px' }]
+  },
+  {
+    selector: '.settings-version-info', comment: 'Version info text',
+    template: (f) => [
+      `  font-size: ${f('fontSize')};`,
+      `  padding-left: ${f('padL')};`,
+      `  gap: ${f('gap')};`,
+    ].join('\n'),
+    items: [
+      { id: 'fontSize', label: 'font-size',    base: 12, min: 7, max: 28, unit: 'px' },
+      { id: 'padL',     label: 'padding-left', base: 10, min: 6, max: 24, unit: 'px' },
+      { id: 'gap',      label: 'gap',          base: 2,  min: 1, max: 5,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-tabs', comment: 'Tab list',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 8, min: 5, max: 19, unit: 'px' }]
+  },
+  {
+    selector: '.settings-tab-btn', comment: 'Tab button',
+    template: (f) => [
+      `  padding: ${f('padV')} ${f('padH')};`,
+      `  font-size: ${f('fontSize')};`,
+      `  border-radius: ${f('radius')};`,
+      `  gap: ${f('gap')};`,
+    ].join('\n'),
+    items: [
+      { id: 'padV',     label: 'padding V',     base: 10, min: 6,  max: 24, unit: 'px' },
+      { id: 'padH',     label: 'padding H',     base: 12, min: 7,  max: 28, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',     base: 14, min: 8,  max: 34, unit: 'px' },
+      { id: 'radius',   label: 'border-radius', base: 12, min: 7,  max: 28, unit: 'px' },
+      { id: 'gap',      label: 'gap',           base: 8,  min: 5,  max: 19, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-tab-btn svg', comment: 'Tab button icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 18, min: 11, max: 43, unit: 'px' }]
+  },
+  {
+    selector: '.settings-subnav', comment: 'Sub-nav row',
+    template: (f) => [
+      `  gap: ${f('gap')};`,
+      `  margin-bottom: ${f('marginB')};`,
+      `  padding-bottom: ${f('padB')};`,
+    ].join('\n'),
+    items: [
+      { id: 'gap',     label: 'gap',           base: 8,  min: 5,  max: 19, unit: 'px' },
+      { id: 'marginB', label: 'margin-bottom', base: 22, min: 13, max: 52, unit: 'px' },
+      { id: 'padB',    label: 'padding-bottom',base: 10, min: 6,  max: 24, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-subnav-btn', comment: 'Sub-nav button',
+    template: (f) => [
+      `  padding: ${f('padV')} ${f('padH')};`,
+      `  font-size: ${f('fontSize')};`,
+      `  gap: ${f('gap')};`,
+    ].join('\n'),
+    items: [
+      { id: 'padV',     label: 'padding V', base: 7,  min: 4, max: 17, unit: 'px' },
+      { id: 'padH',     label: 'padding H', base: 14, min: 8, max: 33, unit: 'px' },
+      { id: 'fontSize', label: 'font-size', base: 13, min: 8, max: 31, unit: 'px' },
+      { id: 'gap',      label: 'gap',       base: 6,  min: 4, max: 14, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-subnav-btn svg', comment: 'Sub-nav button icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 14, min: 8, max: 33, unit: 'px' }]
+  },
+  {
+    selector: '.settings-main-content', comment: 'Main content area',
+    template: (f) => `  padding: ${f('padV')} ${f('padH')};`,
+    items: [
+      { id: 'padV', label: 'padding V', base: 15, min: 9,  max: 36, unit: 'px' },
+      { id: 'padH', label: 'padding H', base: 25, min: 15, max: 59, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-sect-pane h3', comment: 'Section heading',
+    template: (f) => [`  font-size: ${f('fontSize')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
+    items: [
+      { id: 'fontSize', label: 'font-size',     base: 22, min: 13, max: 53, unit: 'px' },
+      { id: 'marginB',  label: 'margin-bottom', base: 6,  min: 4,  max: 14, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-sect-pane .settings-page-title', comment: 'Page title',
+    template: (f) => [`  font-size: ${f('fontSize')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
+    items: [
+      { id: 'fontSize', label: 'font-size',     base: 20, min: 12, max: 47, unit: 'px' },
+      { id: 'marginB',  label: 'margin-bottom', base: 8,  min: 5,  max: 19, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-sect-pane .setting-item', comment: 'Setting row',
+    template: (f) => [`  gap: ${f('gap')};`, `  padding: ${f('padV')} 0;`].join('\n'),
+    items: [
+      { id: 'gap',  label: 'gap',       base: 32, min: 19, max: 76, unit: 'px' },
+      { id: 'padV', label: 'padding V', base: 18, min: 11, max: 43, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-sect-pane .setting-item-info', comment: 'Setting info column',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 4, min: 2, max: 9, unit: 'px' }]
+  },
+  {
+    selector: '.settings-sect-pane .setting-title', comment: 'Setting title text',
+    template: (f) => `  font-size: ${f('fontSize')};`,
+    items: [{ id: 'fontSize', label: 'font-size', base: 15, min: 9, max: 36, unit: 'px' }]
+  },
+  {
+    selector: '.settings-sect-pane .setting-desc', comment: 'Setting description text',
+    template: (f) => `  font-size: ${f('fontSize')};`,
+    items: [{ id: 'fontSize', label: 'font-size', base: 13, min: 8, max: 31, unit: 'px' }]
+  },
+  {
+    selector: '.settings-sect-pane .setting-item-actions', comment: 'Setting actions row',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 8, min: 5, max: 19, unit: 'px' }]
+  },
+  {
+    selector: '.settings-sect-pane .settings-action-btn', comment: 'Action button',
+    template: (f) => [`  padding: ${f('padV')} ${f('padH')};`, `  font-size: ${f('fontSize')};`].join('\n'),
+    items: [
+      { id: 'padV',     label: 'padding V', base: 8,  min: 5, max: 19, unit: 'px' },
+      { id: 'padH',     label: 'padding H', base: 16, min: 10, max: 38, unit: 'px' },
+      { id: 'fontSize', label: 'font-size', base: 13, min: 8,  max: 31, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-sect-pane .settings-action-btn svg', comment: 'Action button icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 16, min: 10, max: 38, unit: 'px' }]
+  },
+  {
+    selector: '.settings-select', comment: 'Select dropdown',
+    template: (f) => [`  padding: ${f('padV')} ${f('padH')};`, `  font-size: ${f('fontSize')};`].join('\n'),
+    items: [
+      { id: 'padV',     label: 'padding V', base: 8,  min: 5, max: 19, unit: 'px' },
+      { id: 'padH',     label: 'padding H', base: 16, min: 9, max: 38, unit: 'px' },
+      { id: 'fontSize', label: 'font-size', base: 13, min: 8, max: 31, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-sect-pane .settings-switch', comment: 'Toggle switch',
+    template: (f) => [`  width: ${f('width')};`, `  height: ${f('height')};`].join('\n'),
+    items: [
+      { id: 'width',  label: 'width',  base: 44, min: 26, max: 104, unit: 'px' },
+      { id: 'height', label: 'height', base: 24, min: 14, max: 57,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-sect-pane .settings-switch-slider::before', comment: 'Switch thumb',
+    template: (f) => [
+      `  width: ${f('size')};`, `  height: ${f('size')};`,
+      `  left: ${f('offset')}; bottom: ${f('offset')};`,
+    ].join('\n'),
+    items: [
+      { id: 'size',   label: 'width / height', base: 18, min: 11, max: 43, unit: 'px' },
+      { id: 'offset', label: 'left / bottom',  base: 3,  min: 2,  max: 7,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-sect-pane .settings-switch input:checked + .settings-switch-slider::before',
+    comment: 'Switch thumb (checked)',
+    template: (f) => `  transform: translateX(${f('tx')});`,
+    items: [{ id: 'tx', label: 'translateX', base: 20, min: 12, max: 47, unit: 'px' }]
+  },
+  {
+    selector: '.settings-list', comment: 'Settings list',
+    template: (f) => [`  gap: ${f('gap')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
+    items: [
+      { id: 'gap',     label: 'gap',           base: 6,  min: 4,  max: 15, unit: 'px' },
+      { id: 'marginB', label: 'margin-bottom', base: 15, min: 10, max: 38, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-chip', comment: 'Chip tag',
+    template: (f) => [
+      `  padding: ${f('padV')} ${f('padH')};`,
+      `  border-radius: ${f('radius')};`,
+      `  font-size: ${f('fontSize')};`,
+      `  gap: ${f('gap')};`,
+    ].join('\n'),
+    items: [
+      { id: 'padV',     label: 'padding V',     base: 6,  min: 4,  max: 15, unit: 'px' },
+      { id: 'padH',     label: 'padding H',     base: 12, min: 8,  max: 31, unit: 'px' },
+      { id: 'radius',   label: 'border-radius', base: 15, min: 10, max: 38, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',     base: 16, min: 11, max: 41, unit: 'px' },
+      { id: 'gap',      label: 'gap',           base: 6,  min: 4,  max: 15, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-chip svg', comment: 'Chip icon',
+    template: (f) => [`  max-width: ${f('size')};`, `  max-height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'max-width / max-height', base: 18, min: 12, max: 46, unit: 'px' }]
+  },
+  {
+    selector: '.settings-close', comment: 'Close button',
+    template: (f) => [`  top: ${f('offset')};`, `  right: ${f('offset')};`, `  font-size: ${f('fontSize')};`].join('\n'),
+    items: [
+      { id: 'offset',   label: 'top / right', base: 20, min: 12, max: 47, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',   base: 29, min: 17, max: 68, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.settings-close svg', comment: 'Close icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 29, min: 17, max: 68, unit: 'px' }]
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TOOLTIP DATA
+// ─────────────────────────────────────────────────────────────────────────────
+const TOOLTIP_GROUPS = [
+  {
+    selector: '.tooltip-popup', comment: 'Tooltip popup',
+    template: (f) => [
+      `  padding: ${f('padV')} ${f('padH')};`,
+      `  border-radius: ${f('radius')};`,
+      `  font-size: ${f('fontSize')};`,
+    ].join('\n'),
+    items: [
+      { id: 'padV',     label: 'padding V',     base: 6,  min: 4, max: 15, unit: 'px' },
+      { id: 'padH',     label: 'padding H',     base: 10, min: 7, max: 26, unit: 'px' },
+      { id: 'radius',   label: 'border-radius', base: 6,  min: 4, max: 15, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',     base: 12, min: 8, max: 29, unit: 'px' },
+    ]
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SEARCH DATA
+// ─────────────────────────────────────────────────────────────────────────────
+const SEARCH_GROUPS = [
+  {
+    selector: '.search-container', comment: 'Search bar',
+    template: (f) => [
+      `  border-radius: ${f('radius')};`,
+      `  padding: ${f('padV')} ${f('padH')};`,
+      `  gap: ${f('gap')};`,
+    ].join('\n'),
+    items: [
+      { id: 'radius', label: 'border-radius', base: 12, min: 8, max: 31, unit: 'px' },
+      { id: 'padV',   label: 'padding V',     base: 6,  min: 4, max: 15, unit: 'px' },
+      { id: 'padH',   label: 'padding H',     base: 12, min: 8, max: 31, unit: 'px' },
+      { id: 'gap',    label: 'gap',           base: 10, min: 7, max: 26, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.search-container input', comment: 'Search input',
+    template: (f) => `  font-size: ${f('fontSize')};`,
+    items: [{ id: 'fontSize', label: 'font-size', base: 16, min: 11, max: 41, unit: 'px' }]
+  },
+  {
+    selector: '.search-container i', comment: 'Search icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 20, min: 13, max: 51, unit: 'px' }]
+  },
+  {
+    selector: '.search-clear-btn', comment: 'Clear button',
+    template: (f) => `  padding: ${f('pad')};`,
+    items: [{ id: 'pad', label: 'padding', base: 2, min: 1, max: 5, unit: 'px' }]
+  },
+  {
+    selector: '.search-clear-btn i', comment: 'Clear icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 16, min: 11, max: 41, unit: 'px' }]
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MODAL DATA
+// ─────────────────────────────────────────────────────────────────────────────
+const MODAL_GROUPS = [
+  {
+    selector: '.modal-backdrop', comment: 'Backdrop blur',
+    template: (f) => [`  backdrop-filter: blur(${f('blur')});`, `  -webkit-backdrop-filter: blur(${f('blur')});`].join('\n'),
+    items: [{ id: 'blur', label: 'blur', base: 15, min: 10, max: 38, unit: 'px' }]
+  },
+  {
+    selector: '.modal-content', comment: 'Modal card',
+    template: (f) => [`  padding: ${f('pad')};`, `  border-radius: ${f('radius')};`].join('\n'),
+    items: [
+      { id: 'pad',    label: 'padding',       base: 30, min: 20, max: 77, unit: 'px' },
+      { id: 'radius', label: 'border-radius', base: 16, min: 11, max: 41, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.modal-content h2', comment: 'Modal title',
+    template: (f) => [`  font-size: ${f('fontSize')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
+    items: [
+      { id: 'fontSize', label: 'font-size',     base: 20, min: 13, max: 51, unit: 'px' },
+      { id: 'marginB',  label: 'margin-bottom', base: 8,  min: 5,  max: 20, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.modal-content p', comment: 'Modal body text',
+    template: (f) => [`  font-size: ${f('fontSize')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
+    items: [
+      { id: 'fontSize', label: 'font-size',     base: 14, min: 9,  max: 35, unit: 'px' },
+      { id: 'marginB',  label: 'margin-bottom', base: 20, min: 13, max: 51, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.modal-blocker-content', comment: 'Blocker modal card',
+    template: (f) => [
+      `  padding: ${f('pad')};`,
+      `  gap: ${f('gap')};`,
+      `  border-radius: ${f('radius')};`,
+    ].join('\n'),
+    items: [
+      { id: 'pad',    label: 'padding',       base: 45, min: 30, max: 115, unit: 'px' },
+      { id: 'gap',    label: 'gap',           base: 24, min: 16, max: 61,  unit: 'px' },
+      { id: 'radius', label: 'border-radius', base: 24, min: 16, max: 61,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.modal-blocker-content svg', comment: 'Blocker icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 64, min: 43, max: 164, unit: 'px' }]
+  },
+  {
+    selector: '.modal-blocker-content h2', comment: 'Blocker title',
+    template: (f) => `  font-size: ${f('fontSize')};`,
+    items: [{ id: 'fontSize', label: 'font-size', base: 29, min: 19, max: 74, unit: 'px' }]
+  },
+  {
+    selector: '.modal-blocker-content p', comment: 'Blocker body text',
+    template: (f) => `  font-size: ${f('fontSize')};`,
+    items: [{ id: 'fontSize', label: 'font-size', base: 16, min: 11, max: 41, unit: 'px' }]
+  },
+  {
+    selector: '.modal-blocker-icon', comment: 'Blocker icon wrapper',
+    template: (f) => `  margin: 0 auto ${f('marginB')} auto;`,
+    items: [{ id: 'marginB', label: 'margin-bottom', base: 20, min: 13, max: 51, unit: 'px' }]
+  },
+  {
+    selector: '.modal-blocker-btn', comment: 'Blocker action button',
+    template: (f) => `  margin: ${f('marginT')} auto 0 auto;`,
+    items: [{ id: 'marginT', label: 'margin-top', base: 20, min: 13, max: 51, unit: 'px' }]
+  },
+  {
+    selector: '.modal-parental-card', comment: 'Parental card',
+    template: (f) => [`  padding: ${f('pad')} !important;`].join('\n'),
+    items: [{ id: 'pad', label: 'padding', base: 30, min: 18, max: 71, unit: 'px' }]
+  },
+  {
+    selector: '.modal-parental-icon', comment: 'Parental icon',
+    template: (f) => [
+      `  width: ${f('size')} !important;`, `  height: ${f('size')} !important;`,
+      `  margin: 0 auto ${f('marginB')} auto;`,
+    ].join('\n'),
+    items: [
+      { id: 'size',    label: 'width / height', base: 48, min: 28, max: 114, unit: 'px' },
+      { id: 'marginB', label: 'margin-bottom',  base: 15, min: 9,  max: 36,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.modal-parental-input-container', comment: 'PIN input row',
+    template: (f) => [`  gap: ${f('gap')};`, `  margin: ${f('marginV')} 0;`].join('\n'),
+    items: [
+      { id: 'gap',     label: 'gap',              base: 8,  min: 5,  max: 19, unit: 'px' },
+      { id: 'marginV', label: 'margin V',         base: 20, min: 12, max: 47, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.modal-parental-input', comment: 'PIN input field',
+    template: (f) => [
+      `  font-size: ${f('fontSize')} !important;`,
+      `  letter-spacing: ${f('letterSpacing')} !important;`,
+    ].join('\n'),
+    items: [
+      { id: 'fontSize',      label: 'font-size',      base: 24, min: 14, max: 57, unit: 'px' },
+      { id: 'letterSpacing', label: 'letter-spacing', base: 6,  min: 4,  max: 14, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.modal-parental-error', comment: 'PIN error message',
+    template: (f) => `  font-size: ${f('fontSize')};`,
+    items: [{ id: 'fontSize', label: 'font-size', base: 13, min: 8, max: 31, unit: 'px' }]
+  },
+  {
+    selector: '.modal-parental-actions', comment: 'Parental action buttons row',
+    template: (f) => [`  gap: ${f('gap')};`, `  margin-top: ${f('marginT')};`].join('\n'),
+    items: [
+      { id: 'gap',     label: 'gap',         base: 10, min: 6,  max: 24, unit: 'px' },
+      { id: 'marginT', label: 'margin-top',  base: 20, min: 12, max: 47, unit: 'px' },
+    ]
+  },
+];
+
+const COMPONENT_DATA = {
+  pbar: PBAR_GROUPS, tnav: TNAV_GROUPS, side: SIDE_GROUPS,
+  corner: CORNER_GROUPS, volosd: VOLOSD_GROUPS,
+  home: HOME_GROUPS, land: LAND_GROUPS, fbar: FBAR_GROUPS,
+  settings: SETTINGS_GROUPS, tooltip: TOOLTIP_GROUPS,
+  search: SEARCH_GROUPS, modal: MODAL_GROUPS,
+};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STATE
