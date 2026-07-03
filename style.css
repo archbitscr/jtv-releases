@@ -4053,7 +4053,7 @@ body:not(.dev-mode) .dev-indicator {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px) clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px);
+    padding: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01115 * (100vw - 2046px))), 32px) clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px);
     gap: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
 
     background: rgba(0, 0, 0, 0.3);
@@ -4088,7 +4088,7 @@ body:not(.dev-mode) .dev-indicator {
     padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) !important;
     border-radius: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00446 * (100vw - 2046px))), 20px) !important;
     cursor: pointer;
-    font-size: clamp(0.38rem, max(clamp(0.38rem, 1.11vw, 0.75rem), calc(0.75rem + 0.01338 * (100vw - 2046px))), 2.25rem) !important;
+    font-size: clamp(6px, max(clamp(6px, 1.30vw, 14px), calc(14px + 0.01449 * (100vw - 2046px))), 40px) !important;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -4114,8 +4114,8 @@ body:not(.dev-mode) .dev-indicator {
 
 .tnav-buttons .tnav-btn i,
 .tnav-buttons .tnav-btn svg {
-    width: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.01561 * (100vw - 2046px))), 40px) !important;
-    height: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.01561 * (100vw - 2046px))), 40px) !important;
+    width: clamp(6px, max(clamp(6px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px) !important;
+    height: clamp(6px, max(clamp(6px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px) !important;
 }
 
 .corner-fs-zone {
@@ -4261,8 +4261,8 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: clamp(400px, max(clamp(400px, 60.19vw, 650px), calc(650px + 0.13936 * (100vw - 2046px))), 2311px);
-    height: clamp(60px, max(clamp(60px, 9.26vw, 100px), calc(100px + 0.02229 * (100vw - 2046px))), 356px);
+    width: clamp(300px, max(clamp(300px, 46.30vw, 500px), calc(500px + 0.39019 * (100vw - 2046px))), 1200px);
+    height: clamp(60px, max(clamp(60px, 9.26vw, 100px), calc(100px + 0.08361 * (100vw - 2046px))), 250px);
 }
 
 /* Tuning Hint message in sidebar menu */

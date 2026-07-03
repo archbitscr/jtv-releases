@@ -470,7 +470,7 @@ const PBAR_GROUPS = [
     items: [
       { id: 'size',     label: 'width / height', base: 64,   min: 43,    max: 228,   unit: 'px'  },
       { id: 'radius',   label: 'border-radius',  base: 16,   min: 11,    max: 57,    unit: 'px'  },
-      { id: 'fontSize', label: 'font-size',       base: 25.6, min: 17.12, max: 91.04, unit: 'rem' },
+      { id: 'fontSize', label: 'font-size',       base: 25.6, min: 17.12, max: 91.04, unit: 'px' },
     ]
   },
   {
@@ -481,13 +481,13 @@ const PBAR_GROUPS = [
   {
     selector: '#pbar-channel-text', comment: 'Channel name heading',
     template: (f) => `  font-size: ${f('fontSize')};`,
-    items: [{ id: 'fontSize', label: 'font-size', base: 20, min: 13.44, max: 51.2, unit: 'rem' }]
+    items: [{ id: 'fontSize', label: 'font-size', base: 20, min: 13.44, max: 51.2, unit: 'px' }]
   },
   {
     selector: '.pbar-epg-text', comment: 'EPG / programme name',
     template: (f) => [`  font-size: ${f('fontSize')};`, `  margin: 0 0 ${f('marginB')} 0;`].join('\n'),
     items: [
-      { id: 'fontSize', label: 'font-size',     base: 14.4, min: 9.6, max: 51.04, unit: 'rem' },
+      { id: 'fontSize', label: 'font-size',     base: 14.4, min: 9.6, max: 51.04, unit: 'px' },
       { id: 'marginB',  label: 'margin-bottom', base: 4,    min: 3,   max: 14,    unit: 'px'  },
     ]
   },
@@ -507,7 +507,7 @@ const PBAR_GROUPS = [
       { id: 'padV',     label: 'padding V',     base: 2,    min: 1,    max: 7,     unit: 'px'  },
       { id: 'padH',     label: 'padding H',     base: 6,    min: 4,    max: 21,    unit: 'px'  },
       { id: 'radius',   label: 'border-radius', base: 4,    min: 3,    max: 14,    unit: 'px'  },
-      { id: 'fontSize', label: 'font-size',      base: 10.4, min: 7.04, max: 36.96, unit: 'rem' },
+      { id: 'fontSize', label: 'font-size',      base: 10.4, min: 7.04, max: 36.96, unit: 'px' },
     ]
   },
   {
@@ -532,7 +532,7 @@ const PBAR_GROUPS = [
     selector: '.pbar-sources-row .sources-label', comment: 'Sources label',
     template: (f) => [`  font-size: ${f('fontSize')};`, `  letter-spacing: ${f('letterSpacing')};`].join('\n'),
     items: [
-      { id: 'fontSize',      label: 'font-size',      base: 11.2, min: 7.52, max: 39.84, unit: 'rem' },
+      { id: 'fontSize',      label: 'font-size',      base: 11.2, min: 7.52, max: 39.84, unit: 'px' },
       { id: 'letterSpacing', label: 'letter-spacing', base: 1,    min: 1,    max: 4,     unit: 'px'  },
     ]
   },
@@ -548,7 +548,7 @@ const PBAR_GROUPS = [
     ].join('\n'),
     items: [
       { id: 'size',     label: 'width / height', base: 23,   min: 15,   max: 82,   unit: 'px'  },
-      { id: 'fontSize', label: 'font-size',       base: 12.8, min: 8.64, max: 45.6, unit: 'rem' },
+      { id: 'fontSize', label: 'font-size',       base: 12.8, min: 8.64, max: 45.6, unit: 'px' },
     ]
   },
   {
@@ -624,7 +624,7 @@ const TNAV_GROUPS = [
       `  border-radius: 0 0 ${f('radius')} ${f('radius')} !important;`,
     ].join('\n'),
     items: [
-      { id: 'padV',   label: 'padding V',          base: 14, min: 8,  max: 32, unit: 'px' },
+      { id: 'padV',   label: 'padding V',          base: 12, min: 8,  max: 32, unit: 'px' },
       { id: 'padH',   label: 'padding H',          base: 14, min: 8,  max: 32, unit: 'px' },
       { id: 'gap',    label: 'gap',                base: 20, min: 10, max: 40, unit: 'px' },
       { id: 'radius', label: 'border-radius BL/BR', base: 20, min: 10, max: 30, unit: 'px' },
@@ -649,7 +649,7 @@ const TNAV_GROUPS = [
       { id: 'padV',     label: 'padding V',       base: 8,    min: 4,   max: 20,   unit: 'px'  },
       { id: 'padH',     label: 'padding H',       base: 8,    min: 4,   max: 20,   unit: 'px'  },
       { id: 'radius',   label: 'border-radius',   base: 12,   min: 6,   max: 20,   unit: 'px'  },
-      { id: 'fontSize', label: 'font-size',       base: 0.75, min: 0.38, max: 2.25, unit: 'rem' },
+      { id: 'fontSize', label: 'font-size',       base: 14,   min: 6,    max: 40,   unit: 'px' },
       { id: 'gap',      label: 'gap (icon+text)', base: 8,    min: 4,   max: 16,   unit: 'px'  },
     ]
   },
@@ -660,15 +660,15 @@ const TNAV_GROUPS = [
       `  height: ${f('size')} !important;`,
     ].join('\n'),
     items: [
-      { id: 'size', label: 'width / height', base: 12, min: 6, max: 40, unit: 'px' },
+      { id: 'size', label: 'width / height', base: 16, min: 6, max: 40, unit: 'px' },
     ]
   },
   {
     selector: '.hover-trigger.top', comment: 'Top Nav hover trigger',
     template: (f) => [`  width: ${f('width')};`, `  height: ${f('height')};`].join('\n'),
     items: [
-      { id: 'width',  label: 'width',  base: 650, min: 400, max: 2311, unit: 'px' },
-      { id: 'height', label: 'height', base: 100, min: 60,  max: 356,  unit: 'px' },
+      { id: 'width',  label: 'width',  base: 500, min: 300, max: 1200, unit: 'px' },
+      { id: 'height', label: 'height', base: 100, min: 60,  max: 250,  unit: 'px' },
     ]
   },
 ];

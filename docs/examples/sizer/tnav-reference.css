@@ -3,7 +3,7 @@
 
 /* Top Nav container */
 .tnav-menu {
-  padding: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px) clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px);
+  padding: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01115 * (100vw - 2046px))), 32px) clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px);
   gap: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
   border-radius: 0 0 clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px) clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px) !important;
 }
@@ -17,13 +17,19 @@
 .tnav-buttons .tnav-btn {
   padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) !important;
   border-radius: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00446 * (100vw - 2046px))), 20px) !important;
-  font-size: clamp(0.38rem, max(clamp(0.38rem, 1.11vw, 0.75rem), calc(0.75rem + 0.01338 * (100vw - 2046px))), 2.25rem) !important;
+  font-size: clamp(6px, max(clamp(6px, 1.30vw, 14px), calc(14px + 0.01449 * (100vw - 2046px))), 40px) !important;
   gap: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) !important;
 }
 
 /* Nav button icon */
 .tnav-buttons .tnav-btn i,
 .tnav-buttons .tnav-btn svg {
-  width: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.01561 * (100vw - 2046px))), 40px) !important;
-  height: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.01561 * (100vw - 2046px))), 40px) !important;
+  width: clamp(6px, max(clamp(6px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px) !important;
+  height: clamp(6px, max(clamp(6px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px) !important;
+}
+
+/* Top Nav hover trigger */
+.hover-trigger.top {
+  width: clamp(300px, max(clamp(300px, 46.30vw, 500px), calc(500px + 0.39019 * (100vw - 2046px))), 1200px);
+  height: clamp(60px, max(clamp(60px, 9.26vw, 100px), calc(100px + 0.08361 * (100vw - 2046px))), 250px);
 }
