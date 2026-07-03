@@ -1,0 +1,46 @@
+/* JTV Component Sizer — Transversals › .corner-* */
+/* Base: 1080px  |  Threshold: 2046px  |  4K: 3840px */
+
+/* Fullscreen zone (hit area) */
+.corner-fs-zone {
+  top: clamp(12px, max(clamp(12px, 2.22vw, 24px), calc(24px + 0.01003 * (100vw - 2046px))), 42px);
+  right: clamp(12px, max(clamp(12px, 2.22vw, 24px), calc(24px + 0.01003 * (100vw - 2046px))), 42px);
+  width: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
+  height: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
+}
+
+/* Fullscreen button */
+.corner-fs-btn {
+  width: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
+  height: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
+  border-radius: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+}
+
+/* Fullscreen icon */
+.corner-fs-btn i,
+.corner-fs-btn svg {
+  width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px);
+  height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px);
+}
+
+/* Power zone (hit area) */
+.corner-power-zone {
+  bottom: clamp(12px, max(clamp(12px, 2.22vw, 24px), calc(24px + 0.01003 * (100vw - 2046px))), 42px);
+  right: clamp(12px, max(clamp(12px, 2.22vw, 24px), calc(24px + 0.01003 * (100vw - 2046px))), 42px);
+  width: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
+  height: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
+}
+
+/* Power button */
+.corner-power-btn {
+  width: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
+  height: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
+  border-radius: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+}
+
+/* Power icon */
+.corner-power-btn i,
+.corner-power-btn svg {
+  width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px);
+  height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px);
+}

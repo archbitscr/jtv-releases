@@ -4118,10 +4118,10 @@ body:not(.dev-mode) .dev-indicator {
 
 .corner-fs-zone {
     position: fixed;
-    top: clamp(16px, 2.22vw, 61px);
-    right: clamp(16px, 2.22vw, 61px);
-    width: clamp(36px, 5.00vw, 138px);
-    height: clamp(36px, 5.00vw, 138px);
+    top: clamp(12px, max(clamp(12px, 2.22vw, 24px), calc(24px + 0.01003 * (100vw - 2046px))), 42px);
+    right: clamp(12px, max(clamp(12px, 2.22vw, 24px), calc(24px + 0.01003 * (100vw - 2046px))), 42px);
+    width: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
+    height: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
     z-index: 1200;
     display: flex;
     align-items: flex-start;
@@ -4130,10 +4130,10 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .corner-fs-btn {
-    width: clamp(36px, 5.00vw, 138px);
-    height: clamp(36px, 5.00vw, 138px);
+    width: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
+    height: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: clamp(11px, 1.48vw, 41px);
+    border-radius: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
     background: rgba(10, 10, 10, 0.25);
     backdrop-filter: blur(60px);
     -webkit-backdrop-filter: blur(60px);
@@ -4164,8 +4164,8 @@ body:not(.dev-mode) .dev-indicator {
 
 .corner-fs-btn i,
 .corner-fs-btn svg {
-    width: clamp(18px, 2.50vw, 69px);
-    height: clamp(18px, 2.50vw, 69px);
+    width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px);
+    height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px);
     transition: transform 0.22s ease;
     transform: scale(1);
 }
@@ -4180,10 +4180,10 @@ body:not(.dev-mode) .dev-indicator {
 
 .corner-power-zone {
     position: fixed;
-    bottom: clamp(16px, 2.22vw, 61px);
-    right: clamp(16px, 2.22vw, 61px);
-    width: clamp(36px, 5.00vw, 138px);
-    height: clamp(36px, 5.00vw, 138px);
+    bottom: clamp(12px, max(clamp(12px, 2.22vw, 24px), calc(24px + 0.01003 * (100vw - 2046px))), 42px);
+    right: clamp(12px, max(clamp(12px, 2.22vw, 24px), calc(24px + 0.01003 * (100vw - 2046px))), 42px);
+    width: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
+    height: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
     z-index: 1200;
     display: flex;
     align-items: flex-end;
@@ -4192,10 +4192,10 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .corner-power-btn {
-    width: clamp(36px, 5.00vw, 138px);
-    height: clamp(36px, 5.00vw, 138px);
+    width: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
+    height: clamp(24px, max(clamp(24px, 3.89vw, 42px), calc(42px + 0.02341 * (100vw - 2046px))), 84px);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: clamp(11px, 1.48vw, 41px);
+    border-radius: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
     background: rgba(10, 10, 10, 0.25);
     backdrop-filter: blur(60px);
     -webkit-backdrop-filter: blur(60px);
@@ -4226,8 +4226,8 @@ body:not(.dev-mode) .dev-indicator {
 
 .corner-power-btn i,
 .corner-power-btn svg {
-    width: clamp(18px, 2.50vw, 69px);
-    height: clamp(18px, 2.50vw, 69px);
+    width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px);
+    height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px);
     stroke-width: 2.5;
     transition: transform 0.22s ease;
     transform: scale(1);

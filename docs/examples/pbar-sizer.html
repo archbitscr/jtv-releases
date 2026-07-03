@@ -119,8 +119,8 @@
     font-weight: 600;
     border-bottom-color: var(--accent);
   }
-  .tab-r1-btn.empty { color: var(--text-mute); cursor: default; }
-  .tab-r1-btn.empty:hover { color: var(--text-mute); }
+  .tab-r1-btn.empty { color: var(--text-mute); }
+  .tab-r1-btn.empty:hover { color: var(--text-dim); }
 
   /* ── Tab row 2 — components ── */
   .tab-row-2 {
@@ -153,8 +153,8 @@
     font-weight: 700;
     border-bottom-color: var(--accent);
   }
-  .tab-r2-btn.empty { color: var(--text-mute); cursor: default; }
-  .tab-r2-btn.empty:hover { color: var(--text-mute); }
+  .tab-r2-btn.empty { color: var(--text-mute); }
+  .tab-r2-btn.empty:hover { color: var(--text-dim); }
 
   /* ══ CONTENT ══════════════════════════════════════════════════ */
   .content {
@@ -428,7 +428,7 @@ const SECTIONS = [
     id: 'transversal', label: 'Transversals',
     components: [
       { id: 'volosd',  label: '.volosd-*',  populated: false },
-      { id: 'corner',  label: '.corner-*',  populated: false },
+      { id: 'corner',  label: '.corner-*',  populated: true  },
       { id: 'tooltip', label: '.tooltip-*', populated: false },
       { id: 'search',  label: '.search-*',  populated: false },
       { id: 'modal',   label: '.modal-*',   populated: false },
@@ -657,7 +657,77 @@ const TNAV_GROUPS = [
   },
 ];
 
-const COMPONENT_DATA = { pbar: PBAR_GROUPS, tnav: TNAV_GROUPS };
+// ─────────────────────────────────────────────────────────────────────────────
+// CORNER DATA  (.corner-fs-zone, .corner-fs-btn, .corner-power-zone, .corner-power-btn)
+// ─────────────────────────────────────────────────────────────────────────────
+const CORNER_GROUPS = [
+  {
+    selector: '.corner-fs-zone', comment: 'Fullscreen zone (hit area)',
+    template: (f) => [
+      `  top: ${f('pos')};`,
+      `  right: ${f('pos')};`,
+      `  width: ${f('size')};`,
+      `  height: ${f('size')};`,
+    ].join('\n'),
+    items: [
+      { id: 'pos',  label: 'top / right',   base: 24, min: 12, max: 42, unit: 'px' },
+      { id: 'size', label: 'width / height', base: 42, min: 24, max: 84, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.corner-fs-btn', comment: 'Fullscreen button',
+    template: (f) => [
+      `  width: ${f('size')};`,
+      `  height: ${f('size')};`,
+      `  border-radius: ${f('radius')};`,
+    ].join('\n'),
+    items: [
+      { id: 'size',   label: 'width / height', base: 42, min: 24, max: 84, unit: 'px' },
+      { id: 'radius', label: 'border-radius',  base: 12, min: 6,  max: 24, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.corner-fs-btn i,\n.corner-fs-btn svg', comment: 'Fullscreen icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [
+      { id: 'size', label: 'width / height', base: 20, min: 10, max: 30, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.corner-power-zone', comment: 'Power zone (hit area)',
+    template: (f) => [
+      `  bottom: ${f('pos')};`,
+      `  right: ${f('pos')};`,
+      `  width: ${f('size')};`,
+      `  height: ${f('size')};`,
+    ].join('\n'),
+    items: [
+      { id: 'pos',  label: 'bottom / right',  base: 24, min: 12, max: 42, unit: 'px' },
+      { id: 'size', label: 'width / height',  base: 42, min: 24, max: 84, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.corner-power-btn', comment: 'Power button',
+    template: (f) => [
+      `  width: ${f('size')};`,
+      `  height: ${f('size')};`,
+      `  border-radius: ${f('radius')};`,
+    ].join('\n'),
+    items: [
+      { id: 'size',   label: 'width / height', base: 42, min: 24, max: 84, unit: 'px' },
+      { id: 'radius', label: 'border-radius',  base: 12, min: 6,  max: 24, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.corner-power-btn i,\n.corner-power-btn svg', comment: 'Power icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [
+      { id: 'size', label: 'width / height', base: 20, min: 10, max: 30, unit: 'px' },
+    ]
+  },
+];
+
+const COMPONENT_DATA = { pbar: PBAR_GROUPS, tnav: TNAV_GROUPS, corner: CORNER_GROUPS };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STATE
@@ -715,7 +785,6 @@ function renderTabs() {
     btn.className = 'tab-r1-btn' + (sec.id === activeSection ? ' active' : '') + (!hasContent ? ' empty' : '');
     btn.textContent = sec.label;
     btn.onclick = () => {
-      if (!hasContent) return;
       activeSection = sec.id;
       const first = sec.components.find(c => c.populated) || sec.components[0];
       activeComponent = first.id;
@@ -735,10 +804,8 @@ function renderTabs() {
         + (comp.id === activeComponent ? ' active' : '')
         + (!comp.populated ? ' empty' : '');
       btn.textContent = comp.label;
-      btn.title = comp.populated ? comp.label : 'Coming soon';
-      if (comp.populated) {
-        btn.onclick = () => { activeComponent = comp.id; renderTabs(); renderContent(); };
-      }
+      btn.title = comp.label;
+      btn.onclick = () => { activeComponent = comp.id; renderTabs(); renderContent(); };
       r2.appendChild(btn);
     });
   }
