@@ -85,7 +85,7 @@ JTV.app/
 ## 5. Estándares de Desarrollo y Guías de Estilo
 - **Reglas de Codificación:** ES Modules (`type: "module"`), promesas nativas para async, manipulación directa del DOM.
 - **UI:** Interfaz construida con Vanilla CSS (`style.css`), estilo OTT con glassmorphism y acentos neon (`--accent: #00ffcc`).
-- **Escalado Responsivo (Tarea 37):** Todos los valores dimensionales deben usar `clamp(min, vw, max)` donde: min = original × 0.67, vw = original/1080×100, max = original × 2.56. Verificar tipo de elemento (HTML text vs SVG) y ausencia de reglas CSS que sobreescriban.
+- **Escalado Responsivo (Tarea 37):** Se usa fórmula **meseta**: `clamp(MIN, max(clamp(MIN, VW, BASE), calc(BASE + PENDIENTE×(100vw - 2046px))), MAX)` — valor fijo hasta 2046px, crece linealmente hasta MAX en 4K (3840px). Herramienta de calibración: `docs/examples/sizer/component-sizer.html` (abre vía `http://localhost:5173/docs/examples/sizer/component-sizer.html`). Referencias CSS generadas en `docs/examples/sizer/`. Pestañas ya calibradas: `.pbar-*`, `.tnav-*`, `.corner-*`.
 - **Preloads:** CommonJS obligatorio (`.cjs`) por requisito de Electron.
 
 ## 6. Workflow y Comandos Útiles
@@ -181,16 +181,18 @@ JTV.app/
 │   │ .modal-*   │ │ .volosd-*  │ │ .corner-*  │ │ .tooltip-* │                   │
 │   │· PIN parent│ │· Indicator │ │· Fullscreen│ │· Popup tip │                   │
 │   │· Trial exp.│ │· Bar + text│ │· Power btn │ │· Positioning│                  │
-│   │· Res.block │ │· Icon      │ │· Hover zone│ │· Animation │                   │
+│   │· Res.block │ │· Icon      │ │            │ │· Animation │                   │
 │   └────────────┘ └────────────┘ └────────────┘ └────────────┘                   │
 │   ┌────────────┐ ┌────────────┐ ┌──────────────────────────┐                    │
 │   │ Search     │ │▣ Dev Float │ │ Scrollbars               │                    │
 │   │ .search-*  │ │ .floating-*│ │  ::-webkit-scrollbar*    │                    │
-│   │· Search box│ │ (Opus, no  │ │  global pseudo-elements  │                    │
-│   │· Clear btn │ │  modificar)│ │  Ubicados en zona        │                    │
-│   │· Search ico│ │· Glass Tun.│ │  Settings del CSS        │                    │
-│   └────────────┘ │· Reload btn│ └──────────────────────────┘                    │
+│   │· Search box│ │ pill horiz.│ │  global pseudo-elements  │                    │
+│   │· Clear btn │ │· Glass Tun.│ │  Ubicados en zona        │                    │
+│   │· Search ico│ │· Reload btn│ │  Settings del CSS        │                    │
+│   └────────────┘ │· Power Off │ └──────────────────────────┘                    │
 │                   └────────────┘                                                  │
+│   Nota: .hover-trigger → cada trigger junto a su componente en CSS:             │
+│   .top (Top Nav) / .bottom (Player Bar) / .left (Sidebar)                       │
 │                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -205,9 +207,9 @@ JTV.app/
 **Live TV** — Reproducción en vivo con sidebar, grid y controles
 | Componente | Prefijo | Sub-elementos |
 |---|---|---|
-| Player Bar (panel inferior) | `.pbar-*` | `.pbar-logo-*`, `.pbar-info-*`, `.pbar-channel-text`, `.pbar-epg-text`, `.pbar-filter-badge`, `.pbar-zap-btn`, `.pbar-vol-icon`, `.pbar-mute-btn`, `.pbar-source-btn`, `.pbar-sources-row`, `.pbar-mini-*`, `.pbar-fav-btn`, `.pbar-pin-btn`, `.pbar-autotune`, `.pbar-action-btn`, `.pbar-action-stack`, `.pbar-center-*` |
-| Top Nav (barra superior) | `.tnav-*` | `.tnav-menu`, `.tnav-buttons`, `.tnav-btn`, `.tnav-btn i/svg` |
-| Sidebar (menú lateral) | `.side-*` | `.side-menu`, `.side-tabs`, `.side-tabs-center`, `.side-tab-btn`, `.side-close-btn`, `.side-channel-item`, `.side-channel-logo`, `.side-channel-info`, `.side-channel-id`, `.side-channel-name-row`, `.side-channel-meta-row`, `.side-epg-text`, `.side-channel-actions`, `.side-action-btn`, `.side-scroll-area` |
+| Player Bar (panel inferior) | `.pbar-*` | `.pbar-logo-*`, `.pbar-info-*`, `.pbar-channel-text`, `.pbar-epg-text`, `.pbar-filter-badge`, `.pbar-zap-btn`, `.pbar-vol-icon`, `.pbar-mute-btn`, `.pbar-source-btn`, `.pbar-sources-row`, `.pbar-mini-*`, `.pbar-fav-btn`, `.pbar-pin-btn` (top-row, siempre visible), `.pbar-autotune`, `.pbar-action-btn`, `.pbar-action-stack`, `.pbar-center-*`, `.pbar-bottom-row` (ch-down + autotune-toggle + settings btn), `.pbar-autotune-toggle-btn` (dev-only); `.hover-trigger.bottom` (trigger de activación) |
+| Top Nav (barra superior) | `.tnav-*` | `.tnav-menu`, `.tnav-buttons`, `.tnav-btn`, `.tnav-btn i/svg`; `.hover-trigger.top` (trigger de activación) |
+| Sidebar (menú lateral) | `.side-*` | `.side-menu`, `.side-tabs`, `.side-tabs-center`, `.side-tab-btn`, `.side-close-btn`, `.side-channel-item`, `.side-channel-logo`, `.side-channel-info`, `.side-channel-id`, `.side-channel-name-row`, `.side-channel-meta-row`, `.side-epg-text`, `.side-channel-actions`, `.side-action-btn`, `.side-scroll-area`; `.hover-trigger.left` (trigger de activación) |
 | Landing (dashboard/grid) | `.land-*` | `.land-dashboard`, `.land-content`, `.land-top-row`, `.land-title-block`, `.land-title`, `.land-controls-block`, `.land-exit-block`, `.land-exit-btn`, `.land-nav`, `.land-grid`, `.land-carousel-wrapper`, `.land-nav-btn`, `.land-item`, `.land-badge`, `.land-logo`, `.land-text-content`, `.land-item h4`, `.land-epg`, `.land-dots-container`, `.land-dots`, `.land-dot` |
 | Filter Bar (dropdowns landing) | `.fbar-*` | `.fbar-select`, `.fbar-select-btn`, `.fbar-select-menu`, `.fbar-select-option`, `.fbar-select-label`, `.fbar-chevron`, `.fbar-filter-btn` |
 | Player (webview/overlays) | `.player-*` | `#player-container`, `.player-barrier`, `.edge-mask`, `#no-signal-overlay` |
@@ -242,7 +244,7 @@ JTV.app/
 | Fullscreen/Power buttons | `.corner-*` | `.corner-fs-zone`, `.corner-fs-btn`, `.corner-power-zone`, `.corner-power-btn` |
 | Tooltips | `.tooltip-*` | `.tooltip-popup` |
 | Search | `.search-*` | `.search-container`, `.search-clear-btn`, `.search-icon` |
-| Floating Dev Controls | ▣ `.floating-*` | `.floating-controls-container`, `.floating-reload-btn` — Opus, dev-only, eliminados en prod. |
+| Floating Dev Controls | ▣ `.floating-*` | `.floating-controls-container` (bloque horizontal compacto pill, `right:120px bottom:20px`), `.floating-reload-btn` — Glass Tuner btn, Reload, Power Off. Glass Tuner modal es flotante y arrastrable. Dev-only, eliminados en prod. |
 | Scrollbars | global | `::-webkit-scrollbar*`, `.scrollbar-active` — pseudo-elementos. Ubicados en zona Settings del CSS. |
 
 ---
