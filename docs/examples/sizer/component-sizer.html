@@ -884,6 +884,18 @@ const SIDE_GROUPS = [
     ]
   },
   {
+    selector: '.side-channel-logo .placeholder-circle', comment: 'Fallback logo circle',
+    template: (f) => [
+      `  width: ${f('size')};`, `  height: ${f('size')};`,
+      `  border-radius: ${f('radius')};`, `  font-size: ${f('fontSize')};`,
+    ].join('\n'),
+    items: [
+      { id: 'size',     label: 'width / height', base: 40, min: 20, max: 100, unit: 'px' },
+      { id: 'radius',   label: 'border-radius',  base: 6,  min: 4,  max: 16,  unit: 'px' },
+      { id: 'fontSize', label: 'font-size',       base: 16, min: 8,  max: 40,  unit: 'px' },
+    ]
+  },
+  {
     selector: '.side-channel-info h4', comment: 'Channel name text',
     template: (f) => [`  font-size: ${f('fontSize')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
     items: [

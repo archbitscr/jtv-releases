@@ -444,6 +444,13 @@ body.player-active .edge-mask {
     object-fit: contain;
 }
 
+.side-channel-logo .placeholder-circle {
+    width: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.03344 * (100vw - 2046px))), 100px);
+    height: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.03344 * (100vw - 2046px))), 100px);
+    border-radius: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00557 * (100vw - 2046px))), 16px);
+    font-size: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px);
+}
+
 .side-channel-info { flex: 1; min-width: 0; overflow: hidden; }
 .side-channel-name-row {
     display: flex;
