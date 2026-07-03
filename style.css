@@ -5202,15 +5202,15 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 /* Floating dev controls — compact horizontal pill group */
 .floating-controls-container {
     position: fixed;
-    bottom: 20px;
-    right: 120px;
+    bottom: clamp(12px, 1.85vw, 51px);
+    right: clamp(70px, 11.11vw, 307px);
     display: flex;
     flex-direction: row;
     gap: 0;
     z-index: 2147483647 !important;
     background: rgba(10, 10, 20, 0.88);
     border: 1px solid rgba(0, 255, 204, 0.28);
-    border-radius: 8px;
+    border-radius: clamp(5px, 0.74vw, 20px);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
@@ -5219,8 +5219,8 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 
 .floating-reload-btn {
     position: relative;
-    width: 34px;
-    height: 30px;
+    width: clamp(20px, 3.15vw, 87px);
+    height: clamp(18px, 2.78vw, 77px);
     border-radius: 0;
     background: transparent;
     border: none;
@@ -5239,8 +5239,8 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 
 .floating-reload-btn i,
 .floating-reload-btn svg {
-    width: 14px;
-    height: 14px;
+    width: clamp(8px, 1.30vw, 36px);
+    height: clamp(8px, 1.30vw, 36px);
     display: flex;
     align-items: center;
     justify-content: center;
