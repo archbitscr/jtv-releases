@@ -4059,7 +4059,7 @@ body:not(.dev-mode) .dev-indicator {
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border-radius: 0 0 clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px) clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px) !important;
+    border-radius: 0 0 clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px) clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px) !important;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: none !important;
     box-shadow: 0 20px 20px 5px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
@@ -4086,9 +4086,9 @@ body:not(.dev-mode) .dev-indicator {
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.7);
     padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) !important;
-    border-radius: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00446 * (100vw - 2046px))), 20px) !important;
+    border-radius: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px) !important;
     cursor: pointer;
-    font-size: clamp(6px, max(clamp(6px, 1.30vw, 14px), calc(14px + 0.01449 * (100vw - 2046px))), 40px) !important;
+    font-size: clamp(6px, max(clamp(6px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px) !important;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -4114,8 +4114,8 @@ body:not(.dev-mode) .dev-indicator {
 
 .tnav-buttons .tnav-btn i,
 .tnav-buttons .tnav-btn svg {
-    width: clamp(6px, max(clamp(6px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px) !important;
-    height: clamp(6px, max(clamp(6px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px) !important;
+    width: clamp(6px, max(clamp(6px, 1.48vw, 16px), calc(16px + 0.01226 * (100vw - 2046px))), 38px) !important;
+    height: clamp(6px, max(clamp(6px, 1.48vw, 16px), calc(16px + 0.01226 * (100vw - 2046px))), 38px) !important;
 }
 
 .corner-fs-zone {
@@ -4261,8 +4261,8 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: clamp(300px, max(clamp(300px, 46.30vw, 500px), calc(500px + 0.39019 * (100vw - 2046px))), 1200px);
-    height: clamp(60px, max(clamp(60px, 9.26vw, 100px), calc(100px + 0.08361 * (100vw - 2046px))), 250px);
+    width: clamp(200px, max(clamp(200px, 46.30vw, 500px), calc(500px + 0.33445 * (100vw - 2046px))), 1100px);
+    height: clamp(60px, max(clamp(60px, 9.26vw, 100px), calc(100px + 0.05574 * (100vw - 2046px))), 200px);
 }
 
 /* Tuning Hint message in sidebar menu */

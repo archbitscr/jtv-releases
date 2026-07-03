@@ -627,7 +627,7 @@ const TNAV_GROUPS = [
       { id: 'padV',   label: 'padding V',          base: 12, min: 8,  max: 32, unit: 'px' },
       { id: 'padH',   label: 'padding H',          base: 14, min: 8,  max: 32, unit: 'px' },
       { id: 'gap',    label: 'gap',                base: 20, min: 10, max: 40, unit: 'px' },
-      { id: 'radius', label: 'border-radius BL/BR', base: 20, min: 10, max: 30, unit: 'px' },
+      { id: 'radius', label: 'border-radius BL/BR', base: 20, min: 10, max: 40, unit: 'px' },
     ]
   },
   {
@@ -648,8 +648,8 @@ const TNAV_GROUPS = [
     items: [
       { id: 'padV',     label: 'padding V',       base: 8,    min: 4,   max: 20,   unit: 'px'  },
       { id: 'padH',     label: 'padding H',       base: 8,    min: 4,   max: 20,   unit: 'px'  },
-      { id: 'radius',   label: 'border-radius',   base: 12,   min: 6,   max: 20,   unit: 'px'  },
-      { id: 'fontSize', label: 'font-size',       base: 14,   min: 6,    max: 40,   unit: 'px' },
+      { id: 'radius',   label: 'border-radius',   base: 12,   min: 6,   max: 24,   unit: 'px'  },
+      { id: 'fontSize', label: 'font-size',       base: 14,   min: 6,    max: 32,   unit: 'px' },
       { id: 'gap',      label: 'gap (icon+text)', base: 8,    min: 4,   max: 16,   unit: 'px'  },
     ]
   },
@@ -660,15 +660,15 @@ const TNAV_GROUPS = [
       `  height: ${f('size')} !important;`,
     ].join('\n'),
     items: [
-      { id: 'size', label: 'width / height', base: 16, min: 6, max: 40, unit: 'px' },
+      { id: 'size', label: 'width / height', base: 16, min: 6, max: 38, unit: 'px' },
     ]
   },
   {
     selector: '.hover-trigger.top', comment: 'Top Nav hover trigger',
     template: (f) => [`  width: ${f('width')};`, `  height: ${f('height')};`].join('\n'),
     items: [
-      { id: 'width',  label: 'width',  base: 500, min: 300, max: 1200, unit: 'px' },
-      { id: 'height', label: 'height', base: 100, min: 60,  max: 250,  unit: 'px' },
+      { id: 'width',  label: 'width',  base: 500, min: 200, max: 1100, unit: 'px' },
+      { id: 'height', label: 'height', base: 100, min: 60,  max: 200,  unit: 'px' },
     ]
   },
 ];
