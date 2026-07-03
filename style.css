@@ -418,16 +418,6 @@ body.player-active .edge-mask {
     gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00223 * (100vw - 2046px))), 8px);
 }
 
-/* Compact spacing for Favorites Tab */
-#tab-favorites .carousel {
-    gap: clamp(4px, 0.56vw, 15px);
-}
-
-#tab-favorites .side-channel-item {
-    padding: clamp(4px, 0.56vw, 15px) clamp(7px, 0.93vw, 26px);
-    gap: clamp(7px, 0.93vw, 26px);
-    border-radius: clamp(7px, 0.93vw, 26px);
-}
 
 .side-channel-logo {
     width: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.03344 * (100vw - 2046px))), 100px);
