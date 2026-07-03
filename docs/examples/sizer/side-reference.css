@@ -1,0 +1,90 @@
+/* JTV Component Sizer — Live TV › .side-* */
+/* Base: 1080px  |  Threshold: 2046px  |  4K: 3840px */
+
+/* Sidebar panel */
+.glass-menu {
+  width: clamp(255px, max(clamp(255px, 35.19vw, 380px), calc(380px + 0.40134 * (100vw - 2046px))), 1100px);
+  padding: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px) clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.01449 * (100vw - 2046px))), 36px) clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px) clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px);
+}
+
+/* Tabs header row */
+.side-tabs {
+  margin: 0 0 clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.01115 * (100vw - 2046px))), 30px) 0;
+  padding-bottom: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.01226 * (100vw - 2046px))), 30px);
+}
+
+/* Center tab group */
+.side-tabs-center {
+  gap: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.01115 * (100vw - 2046px))), 30px);
+}
+
+/* Nav tab button (Channels, Favs…) */
+.side-tab-btn {
+  padding: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+  font-size: clamp(10px, max(clamp(10px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px);
+  border-radius: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00892 * (100vw - 2046px))), 24px);
+  gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px);
+}
+
+/* Tab button icon */
+.side-tab-btn i,
+.side-tab-btn svg {
+  width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+  height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+}
+
+/* Close button icon */
+.side-close-btn i,
+.side-close-btn svg {
+  width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px);
+  height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px);
+}
+
+/* Channel card row */
+.side-channel-item {
+  padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00557 * (100vw - 2046px))), 16px) clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+  margin-bottom: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00223 * (100vw - 2046px))), 8px);
+  border-radius: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+  gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00780 * (100vw - 2046px))), 20px);
+}
+
+/* Channel logo */
+.side-channel-logo {
+  width: clamp(29px, max(clamp(29px, 4.07vw, 44px), calc(44px + 0.06299 * (100vw - 2046px))), 157px);
+  height: clamp(29px, max(clamp(29px, 4.07vw, 44px), calc(44px + 0.06299 * (100vw - 2046px))), 157px);
+}
+
+/* Channel name text */
+.side-channel-info h4 {
+  font-size: clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01394 * (100vw - 2046px))), 40px);
+  margin-bottom: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+}
+
+/* Name + actions row */
+.side-channel-name-row {
+  gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px);
+}
+
+/* Action buttons column */
+.side-channel-actions {
+  gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.01115 * (100vw - 2046px))), 28px);
+}
+
+/* Favorite icon */
+.side-action-btn.favorite i,
+.side-action-btn.favorite svg {
+  width: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01561 * (100vw - 2046px))), 44px);
+  height: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01561 * (100vw - 2046px))), 44px);
+}
+
+/* Edit icon */
+.side-action-btn.edit-btn i,
+.side-action-btn.edit-btn svg {
+  width: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01561 * (100vw - 2046px))), 44px);
+  height: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01561 * (100vw - 2046px))), 44px);
+}
+
+/* Sidebar hover trigger */
+.hover-trigger.left {
+  width: clamp(120px, max(clamp(120px, 18.52vw, 200px), calc(200px + 0.28484 * (100vw - 2046px))), 711px);
+}

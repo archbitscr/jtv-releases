@@ -259,7 +259,7 @@ body.player-active .edge-mask {
     position: fixed;
     top: 0;
     left: 0;
-    width: clamp(255px, 35.19vw, 1351px);
+    width: clamp(255px, max(clamp(255px, 35.19vw, 380px), calc(380px + 0.40134 * (100vw - 2046px))), 1100px);
     height: 100vh;
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(8px);
@@ -269,7 +269,7 @@ body.player-active .edge-mask {
     transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s;
     display: flex;
     flex-direction: column;
-    padding: clamp(8px, 1.11vw, 43px) clamp(7px, 0.93vw, 36px) clamp(8px, 1.11vw, 43px) clamp(9px, 1.30vw, 50px);
+    padding: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px) clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.01449 * (100vw - 2046px))), 36px) clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px) clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px);
     box-shadow: 0 20px 20px 8px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
     overflow: hidden;
 }
@@ -316,9 +316,9 @@ body.player-active .edge-mask {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    margin: 0 0 clamp(7px, 0.93vw, 36px) 0;
+    margin: 0 0 clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.01115 * (100vw - 2046px))), 30px) 0;
     position: relative;
-    padding-bottom: clamp(5px, 0.74vw, 28px);
+    padding-bottom: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.01226 * (100vw - 2046px))), 30px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -326,7 +326,7 @@ body.player-active .edge-mask {
     grid-column: 2;
     display: flex;
     align-items: center;
-    gap: clamp(7px, 0.93vw, 36px);
+    gap: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.01115 * (100vw - 2046px))), 30px);
     min-width: 0;
 }
 
@@ -334,15 +334,15 @@ body.player-active .edge-mask {
     background: none;
     border: 1px solid transparent;
     color: rgba(255, 255, 255, 0.78);
-    padding: clamp(5px, 0.74vw, 28px) clamp(7px, 0.93vw, 36px);
+    padding: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
     cursor: pointer;
-    font-size: clamp(0.60rem, 1.33vw, 3.19rem);
+    font-size: clamp(10px, max(clamp(10px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px);
     font-weight: 700;
     transition: var(--transition);
-    border-radius: clamp(5px, 0.74vw, 28px);
+    border-radius: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00892 * (100vw - 2046px))), 24px);
     display: flex;
     align-items: center;
-    gap: clamp(4px, 0.56vw, 21px);
+    gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px);
 }
 
 .side-tab-btn:hover {
@@ -354,8 +354,8 @@ body.player-active .edge-mask {
 
 .side-tab-btn i,
 .side-tab-btn svg {
-    width: clamp(13px, 1.85vw, 71px);
-    height: clamp(13px, 1.85vw, 71px);
+    width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+    height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
     flex-shrink: 0;
 }
 
@@ -386,8 +386,8 @@ body.player-active .edge-mask {
 
 .side-close-btn i,
 .side-close-btn svg {
-    width: clamp(12px, 1.67vw, 64px);
-    height: clamp(12px, 1.67vw, 64px);
+    width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px);
+    height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px);
 }
 
 /* Vertical divider between home btn and channel tabs */
@@ -430,8 +430,8 @@ body.player-active .edge-mask {
 }
 
 .side-channel-logo {
-    width: clamp(29px, 4.07vw, 157px);
-    height: clamp(29px, 4.07vw, 157px);
+    width: clamp(29px, max(clamp(29px, 4.07vw, 44px), calc(44px + 0.06299 * (100vw - 2046px))), 157px);
+    height: clamp(29px, max(clamp(29px, 4.07vw, 44px), calc(44px + 0.06299 * (100vw - 2046px))), 157px);
     background: transparent;
     overflow: hidden;
     flex-shrink: 0;
@@ -448,12 +448,12 @@ body.player-active .edge-mask {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: clamp(5px, 0.74vw, 28px);
+    gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px);
 }
 .side-channel-actions {
     display: flex;
     flex-direction: column;
-    gap: clamp(5px, 0.74vw, 28px);
+    gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.01115 * (100vw - 2046px))), 28px);
     align-items: center;
 }
 
@@ -470,8 +470,8 @@ body.player-active .edge-mask {
 
 .side-action-btn.favorite i,
 .side-action-btn.favorite svg {
-    width: clamp(11px, 1.48vw, 57px);
-    height: clamp(11px, 1.48vw, 57px);
+    width: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01561 * (100vw - 2046px))), 44px);
+    height: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01561 * (100vw - 2046px))), 44px);
     fill: transparent;
     transition: 0.3s;
 }
@@ -497,8 +497,8 @@ body.player-active .edge-mask {
 
 .side-action-btn.edit-btn i,
 .side-action-btn.edit-btn svg {
-    width: clamp(13px, 1.85vw, 71px);
-    height: clamp(13px, 1.85vw, 71px);
+    width: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01561 * (100vw - 2046px))), 44px);
+    height: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01561 * (100vw - 2046px))), 44px);
 }
 
 .side-action-btn.edit-btn:hover {
@@ -1415,12 +1415,12 @@ body.player-active .edge-mask {
 /* Compact Menu Items */
 .side-channel-item {
     position: relative;
-    padding: clamp(4px, 0.56vw, 21px) clamp(7px, 0.93vw, 36px);
-    margin-bottom: clamp(3px, 0.37vw, 14px);
-    border-radius: clamp(7px, 0.93vw, 36px);
+    padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00557 * (100vw - 2046px))), 16px) clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+    margin-bottom: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00223 * (100vw - 2046px))), 8px);
+    border-radius: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
     display: flex;
     align-items: center;
-    gap: clamp(4px, 0.56vw, 21px);
+    gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00780 * (100vw - 2046px))), 20px);
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.1);
     cursor: pointer;
@@ -1439,7 +1439,7 @@ body.player-active .edge-mask {
     box-shadow: inset 3px 0 0 var(--accent) !important;
 }
 
-.side-channel-info h4 { font-size: clamp(0.62rem, 1.36vw, 3.28rem); font-weight: 500; color: #fff; margin-bottom: clamp(1px, 0.19vw, 7px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.side-channel-info h4 { font-size: clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01394 * (100vw - 2046px))), 40px); font-weight: 500; color: #fff; margin-bottom: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .side-channel-info .side-channel-meta-row {
     display: flex;
     align-items: center;
@@ -1698,7 +1698,7 @@ body.hide-cursor * {
     top: 0;
     bottom: 0;
     left: 0;
-    width: clamp(120px, max(clamp(120px, 18.52vw, 200px), calc(200px + 0.04459 * (100vw - 2046px))), 711px);
+    width: clamp(120px, max(clamp(120px, 18.52vw, 200px), calc(200px + 0.28484 * (100vw - 2046px))), 711px);
 }
 
 /* Source Switcher HUD */
