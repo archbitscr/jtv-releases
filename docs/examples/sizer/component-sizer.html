@@ -749,23 +749,23 @@ const CORNER_GROUPS = [
       `  border-radius: ${f('radius')};`,
     ].join('\n'),
     items: [
-      { id: 'bottom', label: 'bottom',        base: 20,  min: 12, max: 51,  unit: 'px' },
-      { id: 'right',  label: 'right',          base: 120, min: 70, max: 307, unit: 'px' },
-      { id: 'radius', label: 'border-radius', base: 8,   min: 5,  max: 20,  unit: 'px' },
+      { id: 'bottom', label: 'bottom',        base: 20,  min: 10, max: 40,  unit: 'px' },
+      { id: 'right',  label: 'right',          base: 120, min: 70, max: 200, unit: 'px' },
+      { id: 'radius', label: 'border-radius', base: 10,  min: 5,  max: 20,  unit: 'px' },
     ]
   },
   {
     selector: '.floating-reload-btn', comment: 'Dev button (reload / power / tuner)',
     template: (f) => [`  width: ${f('width')};`, `  height: ${f('height')};`].join('\n'),
     items: [
-      { id: 'width',  label: 'width',  base: 34, min: 20, max: 87, unit: 'px' },
-      { id: 'height', label: 'height', base: 30, min: 18, max: 77, unit: 'px' },
+      { id: 'width',  label: 'width',  base: 40, min: 20, max: 80, unit: 'px' },
+      { id: 'height', label: 'height', base: 30, min: 18, max: 60, unit: 'px' },
     ]
   },
   {
     selector: '.floating-reload-btn i,\n.floating-reload-btn svg', comment: 'Dev button icon',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 14, min: 8, max: 36, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 14, min: 8, max: 30, unit: 'px' }]
   },
 ];
 

@@ -5202,15 +5202,15 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 /* Floating dev controls — compact horizontal pill group */
 .floating-controls-container {
     position: fixed;
-    bottom: clamp(12px, 1.85vw, 51px);
-    right: clamp(70px, 11.11vw, 307px);
+    bottom: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+    right: clamp(70px, max(clamp(70px, 11.11vw, 120px), calc(120px + 0.04459 * (100vw - 2046px))), 200px);
     display: flex;
     flex-direction: row;
     gap: 0;
     z-index: 2147483647 !important;
     background: rgba(10, 10, 20, 0.88);
     border: 1px solid rgba(0, 255, 204, 0.28);
-    border-radius: clamp(5px, 0.74vw, 20px);
+    border-radius: clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
@@ -5219,8 +5219,8 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 
 .floating-reload-btn {
     position: relative;
-    width: clamp(20px, 3.15vw, 87px);
-    height: clamp(18px, 2.78vw, 77px);
+    width: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
+    height: clamp(18px, max(clamp(18px, 2.78vw, 30px), calc(30px + 0.01672 * (100vw - 2046px))), 60px);
     border-radius: 0;
     background: transparent;
     border: none;
@@ -5239,8 +5239,8 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 
 .floating-reload-btn i,
 .floating-reload-btn svg {
-    width: clamp(8px, 1.30vw, 36px);
-    height: clamp(8px, 1.30vw, 36px);
+    width: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.00892 * (100vw - 2046px))), 30px);
+    height: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.00892 * (100vw - 2046px))), 30px);
     display: flex;
     align-items: center;
     justify-content: center;
