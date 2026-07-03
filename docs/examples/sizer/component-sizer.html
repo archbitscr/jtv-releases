@@ -877,8 +877,11 @@ const SIDE_GROUPS = [
   },
   {
     selector: '.side-channel-logo', comment: 'Channel logo',
-    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 40, min: 20, max: 100, unit: 'px' }]
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`, `  border-radius: ${f('radius')};`].join('\n'),
+    items: [
+      { id: 'size',   label: 'width / height', base: 40, min: 20, max: 100, unit: 'px' },
+      { id: 'radius', label: 'border-radius',  base: 6,  min: 4,  max: 16,  unit: 'px' },
+    ]
   },
   {
     selector: '.side-channel-info h4', comment: 'Channel name text',
