@@ -1504,12 +1504,6 @@ body.player-active .edge-mask {
     padding: 0 2px;
 }
 
-/* Maximized Window Adaptations */
-@media (min-width: 1600px) {
-    #side-menu {
-        width: 450px;
-    }
-}
 
 /* Compact mode for small windows (split-screen, laptops) */
 @media (max-width: 900px) {
