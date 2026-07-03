@@ -1721,19 +1721,19 @@ body.hide-cursor * {
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 1000;
-    width: clamp(389px, 53.70vw, 2062px);
+    width: clamp(389px, max(clamp(389px, 53.70vw, 580px), calc(580px + 0.82609 * (100vw - 2046px))), 2062px);
 
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: clamp(9px, 1.30vw, 50px) clamp(9px, 1.30vw, 50px) clamp(9px, 1.30vw, 50px) clamp(13px, 1.85vw, 71px);
-    gap: clamp(9px, 1.30vw, 50px);
+    padding: clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px) clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px) clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px) clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.02843 * (100vw - 2046px))), 71px);
+    gap: clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px);
 
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border-radius: clamp(16px, 2.22vw, 85px) clamp(16px, 2.22vw, 85px) 0 0 !important;
+    border-radius: clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px) clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px) 0 0 !important;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: none !important;
     box-shadow: 0 20px 15px 15px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.15);
@@ -1756,8 +1756,8 @@ body.hide-cursor * {
 }
 
 .pbar-logo-container {
-    width: clamp(48px, 6.67vw, 256px);
-    height: clamp(48px, 6.67vw, 256px);
+    width: clamp(48px, max(clamp(48px, 6.67vw, 72px), calc(72px + 0.10256 * (100vw - 2046px))), 256px);
+    height: clamp(48px, max(clamp(48px, 6.67vw, 72px), calc(72px + 0.10256 * (100vw - 2046px))), 256px);
     background: transparent;
     border: none;
     display: flex;
@@ -1774,10 +1774,10 @@ body.hide-cursor * {
 }
 
 .pbar-logo-container .placeholder-circle {
-    width: clamp(43px, 5.93vw, 228px);
-    height: clamp(43px, 5.93vw, 228px);
-    border-radius: clamp(11px, 1.48vw, 57px);
-    font-size: clamp(1.07rem, 2.37vw, 5.69rem);
+    width: clamp(43px, max(clamp(43px, 5.93vw, 64px), calc(64px + 0.09142 * (100vw - 2046px))), 228px);
+    height: clamp(43px, max(clamp(43px, 5.93vw, 64px), calc(64px + 0.09142 * (100vw - 2046px))), 228px);
+    border-radius: clamp(11px, max(clamp(11px, 1.48vw, 16px), calc(16px + 0.02285 * (100vw - 2046px))), 57px);
+    font-size: clamp(1.07rem, max(clamp(1.07rem, 2.37vw, 1.60rem), calc(1.60rem + 0.00228 * (100vw - 2046px))), 5.69rem);
 }
 
 /* Program Info & Sources Area */
@@ -1785,7 +1785,7 @@ body.hide-cursor * {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: clamp(3px, 0.37vw, 14px);
+    gap: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
     text-align: left;
     overflow: visible;
     min-width: 0;
@@ -1808,10 +1808,10 @@ body.hide-cursor * {
 }
 
 .pbar-epg-text {
-    font-size: clamp(0.60rem, 1.33vw, 3.19rem);
+    font-size: clamp(0.60rem, max(clamp(0.60rem, 1.33vw, 0.90rem), calc(0.90rem + 0.00128 * (100vw - 2046px))), 3.19rem);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.55);
-    margin: 0 0 clamp(3px, 0.37vw, 14px) 0;
+    margin: 0 0 clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px) 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1822,7 +1822,7 @@ body.hide-cursor * {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: clamp(1px, 0.19vw, 7px);
+    gap: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00279 * (100vw - 2046px))), 7px);
     flex-wrap: wrap;
     flex-grow: 1;
     width: 100%;
@@ -1832,25 +1832,25 @@ body.hide-cursor * {
 .pbar-filter-badge {
     display: inline-flex;
     align-items: center;
-    padding: clamp(1px, 0.19vw, 7px) clamp(4px, 0.56vw, 21px);
+    padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00279 * (100vw - 2046px))), 7px) clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00836 * (100vw - 2046px))), 21px);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: clamp(3px, 0.37vw, 14px);
-    font-size: clamp(0.44rem, 0.96vw, 2.31rem);
+    border-radius: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
+    font-size: clamp(0.44rem, max(clamp(0.44rem, 0.96vw, 0.65rem), calc(0.65rem + 0.00093 * (100vw - 2046px))), 2.31rem);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     pointer-events: none; /* Disables mouse interaction */
     white-space: nowrap;
     text-transform: uppercase;
-    letter-spacing: clamp(0px, 0.05vw, 1px);
+    letter-spacing: clamp(0px, max(clamp(0px, 0.05vw, 1px), calc(1px + 0.00000 * (100vw - 2046px))), 1px);
 }
 
 /* Autotuner Indicators & Source Toggle Row (was inline style in HTML) */
 .pbar-autotune-row {
     display: flex;
     align-items: center;
-    gap: clamp(8px, 1.11vw, 43px);
-    margin-top: clamp(4px, 0.56vw, 21px);
+    gap: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px);
+    margin-top: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00836 * (100vw - 2046px))), 21px);
 }
 
 .pbar-autotune-indicator {
@@ -1862,15 +1862,15 @@ body.hide-cursor * {
 
 .pbar-autotune-indicator i,
 .pbar-autotune-indicator svg {
-    width: clamp(12px, 1.67vw, 64px);
-    height: clamp(12px, 1.67vw, 64px);
+    width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
+    height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
 }
 
 .pbar-source-toggle-btn {
     display: none;
     background: none;
     border: none;
-    padding: clamp(1px, 0.19vw, 7px);
+    padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00279 * (100vw - 2046px))), 7px);
     color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     transition: all 0.2s;
@@ -1880,39 +1880,39 @@ body.hide-cursor * {
 
 .pbar-source-toggle-btn i,
 .pbar-source-toggle-btn svg {
-    width: clamp(12px, 1.67vw, 64px);
-    height: clamp(12px, 1.67vw, 64px);
+    width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
+    height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
 }
 
 /* Sources Selection Row */
 .pbar-sources-row {
     display: flex;
     align-items: center;
-    gap: clamp(8px, 1.11vw, 43px);
+    gap: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px);
 }
 
 .pbar-sources-row .sources-label {
-    font-size: clamp(0.47rem, 1.04vw, 2.49rem);
+    font-size: clamp(0.47rem, max(clamp(0.47rem, 1.04vw, 0.70rem), calc(0.70rem + 0.00100 * (100vw - 2046px))), 2.49rem);
     font-weight: 700;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: clamp(1px, 0.09vw, 4px);
+    letter-spacing: clamp(1px, max(clamp(1px, 0.09vw, 1px), calc(1px + 0.00167 * (100vw - 2046px))), 4px);
 }
 
 .pbar-sources-row .pbar-source-buttons {
     display: flex;
     align-items: center;
-    gap: clamp(4px, 0.56vw, 21px);
+    gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00836 * (100vw - 2046px))), 21px);
 }
 
 .pbar-sources-row .pbar-source-btn {
-    width: clamp(15px, 2.13vw, 82px);
-    height: clamp(15px, 2.13vw, 82px);
+    width: clamp(15px, max(clamp(15px, 2.13vw, 23px), calc(23px + 0.03289 * (100vw - 2046px))), 82px);
+    height: clamp(15px, max(clamp(15px, 2.13vw, 23px), calc(23px + 0.03289 * (100vw - 2046px))), 82px);
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: transparent;
     color: rgba(255, 255, 255, 0.7);
-    font-size: clamp(0.54rem, 1.19vw, 2.85rem);
+    font-size: clamp(0.54rem, max(clamp(0.54rem, 1.19vw, 0.80rem), calc(0.80rem + 0.00114 * (100vw - 2046px))), 2.85rem);
     font-weight: 600;
     cursor: pointer;
     display: flex;
@@ -1940,7 +1940,7 @@ body.hide-cursor * {
     position: relative;
     display: flex;
     align-items: center;
-    gap: clamp(5px, 0.74vw, 28px);
+    gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.01115 * (100vw - 2046px))), 28px);
     margin-left: auto;
     flex-shrink: 0;
 }
@@ -1948,14 +1948,14 @@ body.hide-cursor * {
 .pbar-action-stack {
     display: flex;
     flex-direction: column;
-    gap: clamp(2px, 0.28vw, 11px);
+    gap: clamp(2px, max(clamp(2px, 0.28vw, 3px), calc(3px + 0.00446 * (100vw - 2046px))), 11px);
     justify-content: center;
 }
 
 .pbar-action-btn {
     position: relative;
-    width: clamp(20px, 2.78vw, 107px);
-    height: clamp(20px, 2.78vw, 107px);
+    width: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.04292 * (100vw - 2046px))), 107px);
+    height: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.04292 * (100vw - 2046px))), 107px);
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1969,21 +1969,21 @@ body.hide-cursor * {
 
 .pbar-action-stack .pbar-action-btn,
 .pbar-center-row .pbar-action-btn {
-    width: clamp(21px, 2.96vw, 114px);
-    height: clamp(21px, 2.96vw, 114px);
+    width: clamp(21px, max(clamp(21px, 2.96vw, 32px), calc(32px + 0.04571 * (100vw - 2046px))), 114px);
+    height: clamp(21px, max(clamp(21px, 2.96vw, 32px), calc(32px + 0.04571 * (100vw - 2046px))), 114px);
 }
 
 .pbar-action-btn i,
 .pbar-action-btn svg {
-    width: clamp(12px, 1.67vw, 64px);
-    height: clamp(12px, 1.67vw, 64px);
+    width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
+    height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
     stroke-width: 2px;
 }
 
 .pbar-action-stack .pbar-action-btn i,
 .pbar-action-stack .pbar-action-btn svg {
-    width: clamp(12px, 1.67vw, 64px);
-    height: clamp(12px, 1.67vw, 64px);
+    width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
+    height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
 }
 
 .pbar-action-btn:hover {
@@ -3926,13 +3926,13 @@ body:not(.dev-mode) .dev-indicator {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(3px, 0.37vw, 14px);
+    gap: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
 }
 
 .pbar-center-row {
     display: flex;
     align-items: center;
-    gap: clamp(3px, 0.37vw, 14px);
+    gap: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
 }
 
 /* Top row of the center column: Fav (left) — channel up (center) — Pin (right) */
@@ -3949,15 +3949,15 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .pbar-mini-btn {
-    width: clamp(16px, 2.22vw, 85px) !important;
-    height: clamp(16px, 2.22vw, 85px) !important;
+    width: clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px) !important;
+    height: clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px) !important;
     border-radius: 50% !important;
 }
 
 .pbar-mini-btn i,
 .pbar-mini-btn svg {
-    width: clamp(8px, 1.11vw, 43px) !important;
-    height: clamp(8px, 1.11vw, 43px) !important;
+    width: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px) !important;
+    height: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px) !important;
 }
 
 /* Compact Volume Icons */
@@ -3965,8 +3965,8 @@ body:not(.dev-mode) .dev-indicator {
 .pbar-vol-icon {
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    width: clamp(20px, 2.78vw, 107px);
-    height: clamp(20px, 2.78vw, 107px);
+    width: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.04292 * (100vw - 2046px))), 107px);
+    height: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.04292 * (100vw - 2046px))), 107px);
     color: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
@@ -3979,8 +3979,8 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .pbar-vol-icon svg {
-    width: clamp(12px, 1.67vw, 64px);
-    height: clamp(12px, 1.67vw, 64px);
+    width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
+    height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.02564 * (100vw - 2046px))), 64px);
 }
 
 .pbar-vol-icon:hover {
