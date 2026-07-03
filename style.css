@@ -1770,7 +1770,7 @@ body.hide-cursor * {
     width: clamp(43px, max(clamp(43px, 5.93vw, 64px), calc(64px + 0.09142 * (100vw - 2046px))), 228px);
     height: clamp(43px, max(clamp(43px, 5.93vw, 64px), calc(64px + 0.09142 * (100vw - 2046px))), 228px);
     border-radius: clamp(11px, max(clamp(11px, 1.48vw, 16px), calc(16px + 0.02285 * (100vw - 2046px))), 57px);
-    font-size: clamp(1.07rem, max(clamp(1.07rem, 2.37vw, 1.60rem), calc(1.60rem + 0.00228 * (100vw - 2046px))), 5.69rem);
+    font-size: clamp(17.12px, max(clamp(17.12px, 2.37vw, 25.6px), calc(25.6px + 0.03648 * (100vw - 2046px))), 91.04px);
 }
 
 /* Program Info & Sources Area */
@@ -1790,7 +1790,7 @@ body.hide-cursor * {
 }
 
 #pbar-channel-text {
-    font-size: clamp(0.84rem, max(clamp(0.84rem, 1.85vw, 1.25rem), calc(1.25rem + 0.01739 * (100vw - 2046px))), 3.20rem);
+    font-size: clamp(13.44px, max(clamp(13.44px, 1.85vw, 20px), calc(20px + 0.01739 * (100vw - 2046px))), 51.2px);
     font-weight: 700;
     color: #fff;
     margin: 0;
@@ -1801,7 +1801,7 @@ body.hide-cursor * {
 }
 
 .pbar-epg-text {
-    font-size: clamp(0.60rem, max(clamp(0.60rem, 1.33vw, 0.90rem), calc(0.90rem + 0.00128 * (100vw - 2046px))), 3.19rem);
+    font-size: clamp(9.6px, max(clamp(9.6px, 1.33vw, 14.4px), calc(14.4px + 0.02042 * (100vw - 2046px))), 51.04px);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.55);
     margin: 0 0 clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px) 0;
@@ -1829,7 +1829,7 @@ body.hide-cursor * {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
-    font-size: clamp(0.44rem, max(clamp(0.44rem, 0.96vw, 0.65rem), calc(0.65rem + 0.01480 * (100vw - 2046px))), 2.31rem);
+    font-size: clamp(7.04px, max(clamp(7.04px, 0.96vw, 10.4px), calc(10.4px + 0.01480 * (100vw - 2046px))), 36.96px);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     pointer-events: none; /* Disables mouse interaction */
@@ -1885,7 +1885,7 @@ body.hide-cursor * {
 }
 
 .pbar-sources-row .sources-label {
-    font-size: clamp(0.47rem, max(clamp(0.47rem, 1.04vw, 0.70rem), calc(0.70rem + 0.00100 * (100vw - 2046px))), 2.49rem);
+    font-size: clamp(7.52px, max(clamp(7.52px, 1.04vw, 11.2px), calc(11.2px + 0.01596 * (100vw - 2046px))), 39.84px);
     font-weight: 700;
     color: var(--accent);
     text-transform: uppercase;
@@ -1905,7 +1905,7 @@ body.hide-cursor * {
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: transparent;
     color: rgba(255, 255, 255, 0.7);
-    font-size: clamp(0.54rem, max(clamp(0.54rem, 1.19vw, 0.80rem), calc(0.80rem + 0.00114 * (100vw - 2046px))), 2.85rem);
+    font-size: clamp(8.64px, max(clamp(8.64px, 1.19vw, 12.8px), calc(12.8px + 0.01828 * (100vw - 2046px))), 45.6px);
     font-weight: 600;
     cursor: pointer;
     display: flex;
@@ -4037,8 +4037,8 @@ body:not(.dev-mode) .dev-indicator {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: clamp(400px, max(clamp(400px, 60.19vw, 650px), calc(650px + 0.13936 * (100vw - 2046px))), 2311px);
-    height: clamp(110px, max(clamp(110px, 16.67vw, 180px), calc(180px + 0.03902 * (100vw - 2046px))), 640px);
+    width: clamp(400px, max(clamp(400px, 60.19vw, 650px), calc(650px + 0.92586 * (100vw - 2046px))), 2311px);
+    height: clamp(110px, max(clamp(110px, 16.67vw, 180px), calc(180px + 0.25641 * (100vw - 2046px))), 640px);
 }
 
 /* Top Navigation HUD */

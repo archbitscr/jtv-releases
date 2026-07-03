@@ -427,7 +427,7 @@ const SECTIONS = [
   {
     id: 'transversal', label: 'Transversals',
     components: [
-      { id: 'volosd',  label: '.volosd-*',  populated: false },
+      { id: 'volosd',  label: '.volosd-*',  populated: true  },
       { id: 'corner',  label: '.corner-*',  populated: true  },
       { id: 'tooltip', label: '.tooltip-*', populated: false },
       { id: 'search',  label: '.search-*',  populated: false },
@@ -562,7 +562,7 @@ const PBAR_GROUPS = [
     items: [{ id: 'gap', label: 'gap', base: 3, min: 2, max: 11, unit: 'px' }]
   },
   {
-    selector: '.pbar-action-btn', comment: 'Action button (vol, nav, mute…)',
+    selector: '.pbar-action-btn,\n.pbar-action-stack .pbar-action-btn,\n.pbar-center-row .pbar-action-btn', comment: 'Action button (vol, nav, mute…)',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
     items: [{ id: 'size', label: 'width / height', base: 32, min: 21, max: 114, unit: 'px' }]
   },
@@ -743,7 +743,64 @@ const CORNER_GROUPS = [
   },
 ];
 
-const COMPONENT_DATA = { pbar: PBAR_GROUPS, tnav: TNAV_GROUPS, corner: CORNER_GROUPS };
+// ─────────────────────────────────────────────────────────────────────────────
+// VOLOSD DATA  (.volosd-indicator, .volosd-bar-container, .volosd-bar, span)
+// ─────────────────────────────────────────────────────────────────────────────
+const VOLOSD_GROUPS = [
+  {
+    selector: '.volosd-indicator', comment: 'Vol OSD container',
+    template: (f) => [
+      `  bottom: ${f('bottom')};`,
+      `  gap: ${f('gap')};`,
+      `  padding: ${f('padV')} ${f('padH')};`,
+      `  border-radius: ${f('radius')};`,
+    ].join('\n'),
+    items: [
+      { id: 'bottom', label: 'bottom',        base: 150, min: 101, max: 384, unit: 'px' },
+      { id: 'gap',    label: 'gap',            base: 15,  min: 10,  max: 38,  unit: 'px' },
+      { id: 'padV',   label: 'padding V',      base: 12,  min: 8,   max: 31,  unit: 'px' },
+      { id: 'padH',   label: 'padding H',      base: 24,  min: 16,  max: 61,  unit: 'px' },
+      { id: 'radius', label: 'border-radius',  base: 20,  min: 13,  max: 51,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.volosd-indicator i,\n.volosd-indicator svg', comment: 'Vol icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [
+      { id: 'size', label: 'width / height', base: 18, min: 12, max: 46, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.volosd-bar-container', comment: 'Progress bar track',
+    template: (f) => [
+      `  width: ${f('width')};`,
+      `  height: ${f('height')};`,
+      `  border-radius: ${f('radius')};`,
+    ].join('\n'),
+    items: [
+      { id: 'width',  label: 'width',         base: 120, min: 80, max: 307, unit: 'px' },
+      { id: 'height', label: 'height',         base: 6,   min: 4,  max: 15,  unit: 'px' },
+      { id: 'radius', label: 'border-radius',  base: 3,   min: 2,  max: 8,   unit: 'px' },
+    ]
+  },
+  {
+    selector: '.volosd-bar', comment: 'Progress bar fill',
+    template: (f) => `  border-radius: ${f('radius')};`,
+    items: [
+      { id: 'radius', label: 'border-radius', base: 3, min: 2, max: 8, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.volosd-indicator span', comment: 'Vol percentage text',
+    template: (f) => [`  font-size: ${f('fontSize')};`, `  min-width: ${f('minWidth')};`].join('\n'),
+    items: [
+      { id: 'fontSize', label: 'font-size', base: 15, min: 10, max: 39, unit: 'px' },
+      { id: 'minWidth', label: 'min-width', base: 45, min: 30, max: 115, unit: 'px' },
+    ]
+  },
+];
+
+const COMPONENT_DATA = { pbar: PBAR_GROUPS, tnav: TNAV_GROUPS, corner: CORNER_GROUPS, volosd: VOLOSD_GROUPS };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STATE
