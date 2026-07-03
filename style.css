@@ -6180,9 +6180,7 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
     .tnav-menu {
         padding: clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px) !important;
     }
-    .glass-menu {
-        width: clamp(180px, 38vw, 280px);
-    }
+
     .glass-menu .side-tab-btn {
         font-size: clamp(0.65rem, 1.8vw, 0.9rem);
         padding: clamp(4px, 0.8vw, 6px) clamp(5px, 1vw, 8px);
