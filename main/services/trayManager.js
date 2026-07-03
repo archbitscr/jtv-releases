@@ -12,7 +12,9 @@ export function createTrayManager(context) {
       minimizeToTrayEnabled = !!persisted?.minimizeToTray;
 
       // Icon path
-      const iconPath = path.join(context.__dirname, 'assets', 'images', 'JTV.ico');
+      const iconPath = context.flags.isPackaged
+        ? path.join(context.__dirname, 'dist', 'assets', 'images', 'JTV.ico')
+        : path.join(context.__dirname, 'public', 'assets', 'images', 'JTV.ico');
       try {
         tray = new Tray(iconPath);
         tray.setToolTip('JTV');

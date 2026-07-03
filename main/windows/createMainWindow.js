@@ -16,7 +16,9 @@ export function createMainWindow(context) {
     show: false,
     autoHideMenuBar: true,
     backgroundColor: '#080808',
-    icon: path.join(context.__dirname, 'assets', 'images', 'JTV.ico'),
+    icon: context.flags.isPackaged
+      ? path.join(context.__dirname, 'dist', 'assets', 'images', 'JTV.ico')
+      : path.join(context.__dirname, 'public', 'assets', 'images', 'JTV.ico'),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
