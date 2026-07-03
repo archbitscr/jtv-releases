@@ -1,0 +1,154 @@
+/* JTV Component Sizer — Live TV › .pbar-* */
+/* Base: 1080px  |  Threshold: 2046px  |  4K: 3840px */
+
+/* Player Bar container */
+.pbar {
+  width: clamp(389px, max(clamp(389px, 53.70vw, 580px), calc(580px + 0.40134 * (100vw - 2046px))), 1300px);
+  padding: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00892 * (100vw - 2046px))), 32px) clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00892 * (100vw - 2046px))), 32px) clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00892 * (100vw - 2046px))), 32px) clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+  gap: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px);
+  border-radius: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.00780 * (100vw - 2046px))), 30px) clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.00780 * (100vw - 2046px))), 30px) 0 0 !important;
+}
+
+/* Channel logo wrapper */
+.pbar-logo-container {
+  width: clamp(40px, max(clamp(40px, 5.56vw, 60px), calc(60px + 0.06689 * (100vw - 2046px))), 180px);
+  height: clamp(40px, max(clamp(40px, 5.56vw, 60px), calc(60px + 0.06689 * (100vw - 2046px))), 180px);
+}
+
+/* Fallback logo circle */
+.pbar-logo-container .placeholder-circle {
+  width: clamp(40px, max(clamp(40px, 5.56vw, 60px), calc(60px + 0.05574 * (100vw - 2046px))), 160px);
+  height: clamp(40px, max(clamp(40px, 5.56vw, 60px), calc(60px + 0.05574 * (100vw - 2046px))), 160px);
+  border-radius: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.00780 * (100vw - 2046px))), 30px);
+  font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px);
+}
+
+/* Channel info column */
+.pbar-info-area {
+  gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00223 * (100vw - 2046px))), 8px);
+}
+
+/* Channel name heading */
+#pbar-channel-text {
+  font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01338 * (100vw - 2046px))), 44px);
+}
+
+/* EPG / programme name */
+.pbar-epg-text {
+  font-size: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01226 * (100vw - 2046px))), 36px);
+  margin: 0 0 clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00223 * (100vw - 2046px))), 8px) 0;
+}
+
+/* Filter badges row */
+.pbar-channel-filters {
+  gap: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00334 * (100vw - 2046px))), 8px);
+}
+
+/* Category chip (English, Sport…) */
+.pbar-filter-badge {
+  padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00223 * (100vw - 2046px))), 6px) clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00446 * (100vw - 2046px))), 14px);
+  border-radius: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
+  font-size: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px);
+}
+
+/* Autotuner + source toggle row */
+.pbar-autotune-row {
+  gap: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+  margin-top: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px);
+}
+
+/* Autotune / source-toggle icons */
+.pbar-autotune-indicator svg,
+.pbar-source-toggle-btn svg {
+  width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01003 * (100vw - 2046px))), 36px);
+  height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01003 * (100vw - 2046px))), 36px);
+}
+
+/* Source buttons row */
+.pbar-sources-row {
+  gap: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+}
+
+/* Sources label */
+.pbar-sources-row .sources-label {
+  font-size: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+  letter-spacing: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+}
+
+/* Source number buttons container */
+.pbar-sources-row .pbar-source-buttons {
+  gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px);
+}
+
+/* Source number button (1, 2, 3…) */
+.pbar-sources-row .pbar-source-btn {
+  width: clamp(12px, max(clamp(12px, 2.22vw, 24px), calc(24px + 0.01003 * (100vw - 2046px))), 42px);
+  height: clamp(12px, max(clamp(12px, 2.22vw, 24px), calc(24px + 0.01003 * (100vw - 2046px))), 42px);
+  font-size: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+}
+
+/* Action buttons container */
+.pbar-actions-container {
+  gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
+}
+
+/* Vertical stack (vol ↑ / nav / vol ↓) */
+.pbar-action-stack {
+  gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
+}
+
+/* Action button (vol, nav, mute…) */
+.pbar-action-btn,
+.pbar-action-stack .pbar-action-btn,
+.pbar-center-row .pbar-action-btn {
+  width: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
+  height: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
+}
+
+/* Action button icon */
+.pbar-action-btn svg,
+.pbar-action-btn i {
+  width: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
+  height: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
+}
+
+/* Center column (vol ↑ | nav row | vol ↓) */
+.pbar-center-block {
+  gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
+}
+
+/* Center row (prev | mute | next) */
+.pbar-center-row {
+  gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
+}
+
+/* Mini buttons (Fav, Pin) */
+.pbar-mini-btn {
+  width: clamp(4px, max(clamp(4px, 1.85vw, 20px), calc(20px + 0.01338 * (100vw - 2046px))), 44px) !important;
+  height: clamp(4px, max(clamp(4px, 1.85vw, 20px), calc(20px + 0.01338 * (100vw - 2046px))), 44px) !important;
+}
+
+/* Mini button icon */
+.pbar-mini-btn svg,
+.pbar-mini-btn i {
+  width: clamp(2px, max(clamp(2px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px) !important;
+  height: clamp(2px, max(clamp(2px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px) !important;
+}
+
+/* Vol up / down button */
+.pbar-vol-icon {
+  width: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
+  height: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
+}
+
+/* Vol icon SVG */
+.pbar-vol-icon svg {
+  width: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
+  height: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
+}
+
+/* Player Bar hover trigger */
+.hover-trigger.bottom {
+  width: clamp(400px, max(clamp(400px, 60.19vw, 650px), calc(650px + 0.47380 * (100vw - 2046px))), 1500px);
+  height: clamp(110px, max(clamp(110px, 16.67vw, 180px), calc(180px + 0.06689 * (100vw - 2046px))), 300px);
+}

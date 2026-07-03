@@ -3,14 +3,14 @@
 
 /* Sidebar panel */
 .glass-menu {
-  width: clamp(255px, max(clamp(255px, 35.19vw, 380px), calc(380px + 0.40134 * (100vw - 2046px))), 1100px);
-  padding: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px) clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.01449 * (100vw - 2046px))), 36px) clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px) clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px);
+  width: clamp(255px, max(clamp(255px, 35.19vw, 380px), calc(380px + 0.28986 * (100vw - 2046px))), 900px);
+  padding: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01003 * (100vw - 2046px))), 30px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01003 * (100vw - 2046px))), 30px) clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01003 * (100vw - 2046px))), 30px);
 }
 
 /* Tabs header row */
 .side-tabs {
-  margin: 0 0 clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.01115 * (100vw - 2046px))), 30px) 0;
-  padding-bottom: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.01226 * (100vw - 2046px))), 30px);
+  margin: 0 0 clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px) 0;
+  padding-bottom: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px);
 }
 
 /* Center tab group */
@@ -20,7 +20,7 @@
 
 /* Nav tab button (Channels, Favs…) */
 .side-tab-btn {
-  padding: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+  padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
   font-size: clamp(10px, max(clamp(10px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px);
   border-radius: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00892 * (100vw - 2046px))), 24px);
   gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px);
@@ -42,49 +42,86 @@
 
 /* Channel card row */
 .side-channel-item {
-  padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00557 * (100vw - 2046px))), 16px) clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
-  margin-bottom: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00223 * (100vw - 2046px))), 8px);
-  border-radius: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+  padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px) clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+  margin-bottom: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+  border-radius: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00780 * (100vw - 2046px))), 20px);
   gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00780 * (100vw - 2046px))), 20px);
 }
 
 /* Channel logo */
 .side-channel-logo {
-  width: clamp(29px, max(clamp(29px, 4.07vw, 44px), calc(44px + 0.06299 * (100vw - 2046px))), 157px);
-  height: clamp(29px, max(clamp(29px, 4.07vw, 44px), calc(44px + 0.06299 * (100vw - 2046px))), 157px);
+  width: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.03344 * (100vw - 2046px))), 100px);
+  height: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.03344 * (100vw - 2046px))), 100px);
 }
 
 /* Channel name text */
 .side-channel-info h4 {
-  font-size: clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01394 * (100vw - 2046px))), 40px);
-  margin-bottom: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+  font-size: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px);
+  margin-bottom: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00056 * (100vw - 2046px))), 3px);
 }
 
 /* Name + actions row */
 .side-channel-name-row {
-  gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px);
+  gap: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00334 * (100vw - 2046px))), 8px);
 }
 
 /* Action buttons column */
 .side-channel-actions {
-  gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.01115 * (100vw - 2046px))), 28px);
+  gap: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
 }
 
 /* Favorite icon */
 .side-action-btn.favorite i,
 .side-action-btn.favorite svg {
-  width: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01561 * (100vw - 2046px))), 44px);
-  height: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01561 * (100vw - 2046px))), 44px);
+  width: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px);
+  height: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px);
 }
 
 /* Edit icon */
 .side-action-btn.edit-btn i,
 .side-action-btn.edit-btn svg {
-  width: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01561 * (100vw - 2046px))), 44px);
-  height: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01561 * (100vw - 2046px))), 44px);
+  width: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px);
+  height: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px);
 }
 
 /* Sidebar hover trigger */
 .hover-trigger.left {
-  width: clamp(120px, max(clamp(120px, 18.52vw, 200px), calc(200px + 0.28484 * (100vw - 2046px))), 711px);
+  width: clamp(120px, max(clamp(120px, 18.52vw, 200px), calc(200px + 0.27871 * (100vw - 2046px))), 700px);
+}
+
+/* Channel list gap */
+.carousel {
+  gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00223 * (100vw - 2046px))), 8px);
+}
+
+/* EPG meta row */
+.side-channel-info .side-channel-meta-row {
+  gap: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+  margin-top: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+}
+
+/* EPG programme text */
+.side-channel-info .side-epg-text {
+  font-size: clamp(6px, max(clamp(6px, 1.30vw, 14px), calc(14px + 0.00892 * (100vw - 2046px))), 30px);
+}
+
+/* Channel ID badge */
+.side-channel-id {
+  padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px) clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px);
+  border-radius: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00446 * (100vw - 2046px))), 12px);
+  font-size: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
+}
+
+/* Filter toggle button */
+.sidebar-filter-toggle-btn {
+  width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+  height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+  border-radius: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+}
+
+/* Filter toggle icon */
+.sidebar-filter-toggle-btn i,
+.sidebar-filter-toggle-btn svg {
+  width: clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01282 * (100vw - 2046px))), 38px);
+  height: clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01282 * (100vw - 2046px))), 38px);
 }

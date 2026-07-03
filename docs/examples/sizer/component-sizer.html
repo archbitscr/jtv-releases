@@ -449,7 +449,7 @@ const PBAR_GROUPS = [
       `  border-radius: ${f('radius')} ${f('radius')} 0 0 !important;`,
     ].join('\n'),
     items: [
-      { id: 'width',  label: 'width',              base: 580, min: 389, max: 1380, unit: 'px' },
+      { id: 'width',  label: 'width',              base: 580, min: 389, max: 1300, unit: 'px' },
       { id: 'padTRB', label: 'padding T / R / B',  base: 16,  min: 8,   max: 32,   unit: 'px' },
       { id: 'padL',   label: 'padding Left',        base: 20,  min: 13,  max: 40,   unit: 'px' },
       { id: 'gap',    label: 'gap',                 base: 20,  min: 10,  max: 30,   unit: 'px' },
@@ -507,7 +507,7 @@ const PBAR_GROUPS = [
       { id: 'padV',     label: 'padding V',     base: 2,  min: 1, max: 6,  unit: 'px' },
       { id: 'padH',     label: 'padding H',     base: 6,  min: 4, max: 14, unit: 'px' },
       { id: 'radius',   label: 'border-radius', base: 4,  min: 3, max: 6,  unit: 'px' },
-      { id: 'fontSize', label: 'font-size',      base: 10, min: 6, max: 18, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',      base: 10, min: 6, max: 24, unit: 'px' },
     ]
   },
   {
@@ -811,10 +811,10 @@ const SIDE_GROUPS = [
       `  padding: ${f('padTB')} ${f('padR')} ${f('padTB')} ${f('padL')};`,
     ].join('\n'),
     items: [
-      { id: 'width', label: 'width',         base: 380, min: 255, max: 1100, unit: 'px' },
-      { id: 'padTB', label: 'padding T / B', base: 12,  min: 8,   max: 43,   unit: 'px' },
-      { id: 'padR',  label: 'padding Right', base: 10,  min: 7,   max: 36,   unit: 'px' },
-      { id: 'padL',  label: 'padding Left',  base: 14,  min: 9,   max: 50,   unit: 'px' },
+      { id: 'width', label: 'width',         base: 380, min: 255, max: 900, unit: 'px' },
+      { id: 'padTB', label: 'padding T / B', base: 12,  min: 8,   max: 30,  unit: 'px' },
+      { id: 'padR',  label: 'padding Right', base: 8,   min: 4,   max: 16,  unit: 'px' },
+      { id: 'padL',  label: 'padding Left',  base: 12,  min: 8,   max: 30,  unit: 'px' },
     ]
   },
   {
@@ -824,8 +824,8 @@ const SIDE_GROUPS = [
       `  padding-bottom: ${f('padB')};`,
     ].join('\n'),
     items: [
-      { id: 'marginB', label: 'margin-bottom',  base: 10, min: 7, max: 30, unit: 'px' },
-      { id: 'padB',    label: 'padding-bottom', base: 8,  min: 5, max: 30, unit: 'px' },
+      { id: 'marginB', label: 'margin-bottom',  base: 10, min: 5, max: 20, unit: 'px' },
+      { id: 'padB',    label: 'padding-bottom', base: 8,  min: 4, max: 20, unit: 'px' },
     ]
   },
   {
@@ -868,68 +868,68 @@ const SIDE_GROUPS = [
       `  gap: ${f('gap')};`,
     ].join('\n'),
     items: [
-      { id: 'padV',    label: 'padding V',     base: 6,  min: 4, max: 16, unit: 'px' },
+      { id: 'padV',    label: 'padding V',     base: 6,  min: 4, max: 12, unit: 'px' },
       { id: 'padH',    label: 'padding H',     base: 10, min: 6, max: 20, unit: 'px' },
-      { id: 'marginB', label: 'margin-bottom', base: 4,  min: 2, max: 8,  unit: 'px' },
-      { id: 'radius',  label: 'border-radius', base: 10, min: 6, max: 20, unit: 'px' },
+      { id: 'marginB', label: 'margin-bottom', base: 2,  min: 1, max: 4,  unit: 'px' },
+      { id: 'radius',  label: 'border-radius', base: 6,  min: 4, max: 20, unit: 'px' },
       { id: 'gap',     label: 'gap',           base: 6,  min: 4, max: 20, unit: 'px' },
     ]
   },
   {
     selector: '.side-channel-logo', comment: 'Channel logo',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 44, min: 29, max: 157, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 40, min: 20, max: 100, unit: 'px' }]
   },
   {
     selector: '.side-channel-info h4', comment: 'Channel name text',
     template: (f) => [`  font-size: ${f('fontSize')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
     items: [
-      { id: 'fontSize', label: 'font-size',     base: 15, min: 10, max: 40, unit: 'px' },
-      { id: 'marginB',  label: 'margin-bottom', base: 2,  min: 1,  max: 4,  unit: 'px' },
+      { id: 'fontSize', label: 'font-size',     base: 16, min: 8, max: 40, unit: 'px' },
+      { id: 'marginB',  label: 'margin-bottom', base: 2,  min: 1, max: 3,  unit: 'px' },
     ]
   },
   {
     selector: '.side-channel-name-row', comment: 'Name + actions row',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 8, min: 5, max: 16, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 2, min: 1, max: 8, unit: 'px' }]
   },
   {
     selector: '.side-channel-actions', comment: 'Action buttons column',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 8, min: 5, max: 28, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 2, min: 1, max: 4, unit: 'px' }]
   },
   {
     selector: '.side-action-btn.favorite i,\n.side-action-btn.favorite svg', comment: 'Favorite icon',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 16, min: 10, max: 44, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 16, min: 10, max: 40, unit: 'px' }]
   },
   {
     selector: '.side-action-btn.edit-btn i,\n.side-action-btn.edit-btn svg', comment: 'Edit icon',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 16, min: 10, max: 44, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 16, min: 10, max: 40, unit: 'px' }]
   },
   {
     selector: '.hover-trigger.left', comment: 'Sidebar hover trigger',
     template: (f) => `  width: ${f('width')};`,
-    items: [{ id: 'width', label: 'width', base: 200, min: 120, max: 711, unit: 'px' }]
+    items: [{ id: 'width', label: 'width', base: 200, min: 120, max: 700, unit: 'px' }]
   },
   {
     selector: '.carousel', comment: 'Channel list gap',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 2, min: 1, max: 5, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 4, min: 2, max: 8, unit: 'px' }]
   },
   {
     selector: '.side-channel-info .side-channel-meta-row', comment: 'EPG meta row',
     template: (f) => [`  gap: ${f('gap')};`, `  margin-top: ${f('marginTop')};`].join('\n'),
     items: [
-      { id: 'gap',       label: 'gap',        base: 8, min: 5, max: 28, unit: 'px' },
-      { id: 'marginTop', label: 'margin-top', base: 2, min: 1, max: 7,  unit: 'px' },
+      { id: 'gap',       label: 'gap',        base: 2, min: 1, max: 4, unit: 'px' },
+      { id: 'marginTop', label: 'margin-top', base: 2, min: 1, max: 4, unit: 'px' },
     ]
   },
   {
     selector: '.side-channel-info .side-epg-text', comment: 'EPG programme text',
     template: (f) => `  font-size: ${f('fontSize')};`,
-    items: [{ id: 'fontSize', label: 'font-size', base: 13, min: 9, max: 46, unit: 'px' }]
+    items: [{ id: 'fontSize', label: 'font-size', base: 14, min: 6, max: 30, unit: 'px' }]
   },
   {
     selector: '.side-channel-id', comment: 'Channel ID badge',
@@ -939,10 +939,10 @@ const SIDE_GROUPS = [
       `  font-size: ${f('fontSize')};`,
     ].join('\n'),
     items: [
-      { id: 'padV',     label: 'padding V',     base: 2,  min: 1, max: 7,  unit: 'px' },
-      { id: 'padH',     label: 'padding H',     base: 6,  min: 4, max: 21, unit: 'px' },
-      { id: 'radius',   label: 'border-radius', base: 4,  min: 3, max: 14, unit: 'px' },
-      { id: 'fontSize', label: 'font-size',      base: 10, min: 7, max: 37, unit: 'px' },
+      { id: 'padV',     label: 'padding V',     base: 2,  min: 1, max: 4,  unit: 'px' },
+      { id: 'padH',     label: 'padding H',     base: 6,  min: 4, max: 12, unit: 'px' },
+      { id: 'radius',   label: 'border-radius', base: 4,  min: 2, max: 12, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',      base: 10, min: 7, max: 26, unit: 'px' },
     ]
   },
   {
@@ -953,8 +953,8 @@ const SIDE_GROUPS = [
       `  border-radius: ${f('radius')};`,
     ].join('\n'),
     items: [
-      { id: 'size',   label: 'width / height', base: 34, min: 24, max: 86,  unit: 'px' },
-      { id: 'radius', label: 'border-radius',  base: 10, min: 7,  max: 25,  unit: 'px' },
+      { id: 'size',   label: 'width / height', base: 20, min: 10, max: 40, unit: 'px' },
+      { id: 'radius', label: 'border-radius',  base: 10, min: 6,  max: 20, unit: 'px' },
     ]
   },
   {
