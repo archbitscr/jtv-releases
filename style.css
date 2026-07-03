@@ -6215,12 +6215,6 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
     }
 }
 
-/* ====== Responsive: Extra-large screens (4K ≥2500px) ====== */
-@media (min-width: 2500px) {
-    #side-menu {
-        width: 600px;
-    }
-}
 
 /* Event Assigner - fluid clamp values and layout details */
 #assigner-selection-count {
