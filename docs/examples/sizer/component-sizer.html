@@ -410,7 +410,7 @@ const SECTIONS = [
     components: [
       { id: 'pbar',   label: '.pbar-*',   populated: true  },
       { id: 'tnav',   label: '.tnav-*',   populated: true  },
-      { id: 'side',   label: '.side-*',   populated: false },
+      { id: 'side',   label: '.side-*',   populated: true },
       { id: 'land',   label: '.land-*',   populated: false },
       { id: 'fbar',   label: '.fbar-*',   populated: false },
       { id: 'player', label: '.player-*', populated: false },
@@ -800,7 +800,122 @@ const VOLOSD_GROUPS = [
   },
 ];
 
-const COMPONENT_DATA = { pbar: PBAR_GROUPS, tnav: TNAV_GROUPS, corner: CORNER_GROUPS, volosd: VOLOSD_GROUPS };
+// ─────────────────────────────────────────────────────────────────────────────
+// SIDEBAR DATA  (.glass-menu, .side-tab-btn, .side-channel-item, …)
+// ─────────────────────────────────────────────────────────────────────────────
+const SIDE_GROUPS = [
+  {
+    selector: '.glass-menu', comment: 'Sidebar panel',
+    template: (f) => [
+      `  width: ${f('width')};`,
+      `  padding: ${f('padTB')} ${f('padR')} ${f('padTB')} ${f('padL')};`,
+    ].join('\n'),
+    items: [
+      { id: 'width', label: 'width',         base: 380, min: 255, max: 1351, unit: 'px' },
+      { id: 'padTB', label: 'padding T / B', base: 12,  min: 8,   max: 43,   unit: 'px' },
+      { id: 'padR',  label: 'padding Right', base: 10,  min: 7,   max: 36,   unit: 'px' },
+      { id: 'padL',  label: 'padding Left',  base: 14,  min: 9,   max: 50,   unit: 'px' },
+    ]
+  },
+  {
+    selector: '.side-tabs', comment: 'Tabs header row',
+    template: (f) => [
+      `  margin: 0 0 ${f('marginB')} 0;`,
+      `  padding-bottom: ${f('padB')};`,
+    ].join('\n'),
+    items: [
+      { id: 'marginB', label: 'margin-bottom',  base: 10, min: 7, max: 36, unit: 'px' },
+      { id: 'padB',    label: 'padding-bottom', base: 8,  min: 5, max: 28, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.side-tabs-center', comment: 'Center tab group',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 10, min: 7, max: 36, unit: 'px' }]
+  },
+  {
+    selector: '.side-tab-btn', comment: 'Nav tab button (Channels, Favs…)',
+    template: (f) => [
+      `  padding: ${f('padV')} ${f('padH')};`,
+      `  font-size: ${f('fontSize')};`,
+      `  border-radius: ${f('radius')};`,
+      `  gap: ${f('gap')};`,
+    ].join('\n'),
+    items: [
+      { id: 'padV',     label: 'padding V',     base: 8,    min: 5,    max: 28,    unit: 'px' },
+      { id: 'padH',     label: 'padding H',     base: 10,   min: 7,    max: 36,    unit: 'px' },
+      { id: 'fontSize', label: 'font-size',      base: 14,   min: 10,   max: 51,    unit: 'px' },
+      { id: 'radius',   label: 'border-radius', base: 8,    min: 5,    max: 28,    unit: 'px' },
+      { id: 'gap',      label: 'gap (icon+text)', base: 6,  min: 4,    max: 21,    unit: 'px' },
+    ]
+  },
+  {
+    selector: '.side-tab-btn i,\n.side-tab-btn svg', comment: 'Tab button icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 20, min: 13, max: 71, unit: 'px' }]
+  },
+  {
+    selector: '.side-close-btn i,\n.side-close-btn svg', comment: 'Close button icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 18, min: 12, max: 64, unit: 'px' }]
+  },
+  {
+    selector: '.side-channel-item', comment: 'Channel card row',
+    template: (f) => [
+      `  padding: ${f('padV')} ${f('padH')};`,
+      `  margin-bottom: ${f('marginB')};`,
+      `  border-radius: ${f('radius')};`,
+      `  gap: ${f('gap')};`,
+    ].join('\n'),
+    items: [
+      { id: 'padV',    label: 'padding V',     base: 6,  min: 4, max: 21, unit: 'px' },
+      { id: 'padH',    label: 'padding H',     base: 10, min: 7, max: 36, unit: 'px' },
+      { id: 'marginB', label: 'margin-bottom', base: 4,  min: 3, max: 14, unit: 'px' },
+      { id: 'radius',  label: 'border-radius', base: 10, min: 7, max: 36, unit: 'px' },
+      { id: 'gap',     label: 'gap',           base: 6,  min: 4, max: 21, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.side-channel-logo', comment: 'Channel logo',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 44, min: 29, max: 157, unit: 'px' }]
+  },
+  {
+    selector: '.side-channel-info h4', comment: 'Channel name text',
+    template: (f) => [`  font-size: ${f('fontSize')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
+    items: [
+      { id: 'fontSize', label: 'font-size',     base: 15, min: 10, max: 52, unit: 'px' },
+      { id: 'marginB',  label: 'margin-bottom', base: 2,  min: 1,  max: 7,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.side-channel-name-row', comment: 'Name + actions row',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 8, min: 5, max: 28, unit: 'px' }]
+  },
+  {
+    selector: '.side-channel-actions', comment: 'Action buttons column',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 8, min: 5, max: 28, unit: 'px' }]
+  },
+  {
+    selector: '.side-action-btn.favorite i,\n.side-action-btn.favorite svg', comment: 'Favorite icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 16, min: 11, max: 57, unit: 'px' }]
+  },
+  {
+    selector: '.side-action-btn.edit-btn i,\n.side-action-btn.edit-btn svg', comment: 'Edit icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 20, min: 13, max: 71, unit: 'px' }]
+  },
+  {
+    selector: '.hover-trigger.left', comment: 'Sidebar hover trigger',
+    template: (f) => `  width: ${f('width')};`,
+    items: [{ id: 'width', label: 'width', base: 200, min: 120, max: 711, unit: 'px' }]
+  },
+];
+
+const COMPONENT_DATA = { pbar: PBAR_GROUPS, tnav: TNAV_GROUPS, side: SIDE_GROUPS, corner: CORNER_GROUPS, volosd: VOLOSD_GROUPS };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STATE
