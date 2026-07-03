@@ -2,9 +2,9 @@ let glassTunerOpen = false;
 let glassTunerEnabled = false;
 
 const TARGETS = [
-    { key: 'hud', label: 'HUD (Source Switcher)', selector: '.pbar' },
-    { key: 'sidebar', label: 'Sidebar (Menu)', selector: '.glass-menu' },
-    { key: 'topnav', label: 'Top Nav', selector: '.tnav-menu' },
+    { key: 'hud', label: 'Player Bar', selector: '.pbar', borderSide: 'borderColor' },
+    { key: 'sidebar', label: 'Sidebar', selector: '.glass-menu', borderSide: 'borderRightColor' },
+    { key: 'topnav', label: 'Top Nav', selector: '.tnav-menu', borderSide: 'borderColor' },
 ];
 
 const PARAMS = [
@@ -44,19 +44,21 @@ function copyToClipboard(text) {
     document.body.removeChild(ta);
 }
 
-function applyValues(el, values) {
+function applyValues(el, values, target) {
+    const borderProp = target.borderSide || 'borderColor';
     el.style.background = `rgba(${values.bgR}, ${values.bgG}, ${values.bgB}, ${values.bgA})`;
     el.style.backdropFilter = `blur(${values.blur}px)`;
     el.style.webkitBackdropFilter = `blur(${values.blur}px)`;
-    el.style.borderColor = `rgba(${values.borderR}, ${values.borderG}, ${values.borderB}, ${values.borderA})`;
+    el.style[borderProp] = `rgba(${values.borderR}, ${values.borderG}, ${values.borderB}, ${values.borderA})`;
     el.style.boxShadow = `0 20px ${values.shadowBlur}px ${values.shadowSpread}px rgba(0, 0, 0, ${values.shadowA}), inset 0 1px 1px rgba(255, 255, 255, ${values.insetA})`;
 }
 
-function clearInlineStyles(el) {
+function clearInlineStyles(el, target) {
+    const borderProp = target ? (target.borderSide || 'borderColor') : 'borderColor';
     el.style.background = '';
     el.style.backdropFilter = '';
     el.style.webkitBackdropFilter = '';
-    el.style.borderColor = '';
+    el.style[borderProp] = '';
     el.style.boxShadow = '';
 }
 
@@ -113,7 +115,7 @@ function buildModal() {
     function applyAll() {
         TARGETS.forEach(t => {
             const el = document.querySelector(t.selector);
-            if (el) applyValues(el, state[t.key]);
+            if (el) applyValues(el, state[t.key], t);
         });
     }
 
@@ -129,8 +131,9 @@ function buildModal() {
             ? modal.querySelector(`.glass-tuner-number[data-target="${target}"][data-param="${param}"]`)
             : modal.querySelector(`.glass-tuner-range[data-target="${target}"][data-param="${param}"]`);
         if (sibling) sibling.value = val;
-        const el = document.querySelector(TARGETS.find(t => t.key === target).selector);
-        if (el) applyValues(el, state[target]);
+        const tObj = TARGETS.find(t => t.key === target);
+        const el = document.querySelector(tObj.selector);
+        if (el) applyValues(el, state[target], tObj);
     });
 
     // Tabs
@@ -151,9 +154,7 @@ function buildModal() {
         TARGETS.forEach(t => {
             state[t.key] = getDefaults(t.key);
             const el = document.querySelector(t.selector);
-            if (el) {
-                clearInlineStyles(el);
-            }
+            if (el) clearInlineStyles(el, t);
         });
         syncUI();
     });
@@ -179,12 +180,47 @@ function buildModal() {
         setTimeout(() => btn.textContent = original, 1500);
     });
 
+    makeDraggable(modal);
     return modal;
+}
+
+function makeDraggable(modal) {
+    const header = modal.querySelector('.glass-tuner-header');
+    let isDragging = false, startX, startY;
+
+    header.addEventListener('mousedown', (e) => {
+        if (e.target.closest('button')) return;
+        isDragging = true;
+        const rect = modal.getBoundingClientRect();
+        // Convert to left/top if currently anchored by right
+        modal.style.left = rect.left + 'px';
+        modal.style.top = rect.top + 'px';
+        modal.style.right = '';
+        modal.style.transform = 'none';
+        startX = e.clientX - rect.left;
+        startY = e.clientY - rect.top;
+        e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        let newLeft = Math.max(0, Math.min(e.clientX - startX, window.innerWidth - modal.offsetWidth));
+        let newTop = Math.max(0, Math.min(e.clientY - startY, window.innerHeight - modal.offsetHeight));
+        modal.style.left = newLeft + 'px';
+        modal.style.top = newTop + 'px';
+    });
+
+    document.addEventListener('mouseup', () => { isDragging = false; });
 }
 
 function toggleGlassTuner() {
     let modal = document.getElementById('glass-tuner-modal');
-    if (!modal) modal = buildModal();
+    if (!modal) {
+        modal = buildModal();
+        // Default position: near top-right, clear of floating controls
+        modal.style.top = '80px';
+        modal.style.right = '140px';
+    }
     glassTunerOpen = !glassTunerOpen;
     modal.classList.toggle('show', glassTunerOpen);
 }
@@ -211,7 +247,7 @@ export function initGlassTuner() {
                 }
                 TARGETS.forEach(t => {
                     const el = document.querySelector(t.selector);
-                    if (el) clearInlineStyles(el);
+                    if (el) clearInlineStyles(el, t);
                 });
             }
         });

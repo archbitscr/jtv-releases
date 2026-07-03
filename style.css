@@ -5205,65 +5205,75 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 }
 
 /* === DEV-ONLY START === */
-/* Floating reload button for developer tools */
+/* Floating dev controls — compact horizontal pill group */
 .floating-controls-container {
     position: fixed;
     bottom: 20px;
     right: 120px;
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row;
+    gap: 0;
     z-index: 2147483647 !important;
+    background: rgba(10, 10, 20, 0.88);
+    border: 1px solid rgba(0, 255, 204, 0.28);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
 }
 
 .floating-reload-btn {
     position: relative;
-    width: clamp(28px, 3.9vw, 96px);
-    height: clamp(28px, 3.9vw, 96px);
-    border-radius: 50%;
-    background: rgba(0, 255, 204, 0.15);
-    border: 1px solid rgba(0, 255, 204, 0.4);
+    width: 34px;
+    height: 30px;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    border-right: 1px solid rgba(0, 255, 204, 0.15);
     color: #00ffcc;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background 0.15s ease;
+}
+
+.floating-reload-btn:last-child {
+    border-right: none;
 }
 
 .floating-reload-btn i,
 .floating-reload-btn svg {
-    width: clamp(12px, 1.7vw, 42px);
-    height: clamp(12px, 1.7vw, 42px);
+    width: 14px;
+    height: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .floating-reload-btn:hover {
-    transform: scale(1.1);
-    background: rgba(0, 255, 204, 0.3);
-    border-color: rgba(0, 255, 204, 0.7);
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+    background: rgba(0, 255, 204, 0.18);
 }
 
-#reload-window-btn:hover {
-    transform: scale(1.1) rotate(180deg);
+#reload-window-btn:hover svg,
+#reload-window-btn:hover i {
+    animation: spin-once 0.4s ease;
+}
+
+@keyframes spin-once {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(180deg); }
 }
 
 .floating-reload-btn:active {
-    transform: scale(0.95);
+    background: rgba(0, 255, 204, 0.28);
 }
 
 /* Glass Tuner Modal */
 .glass-tuner-modal {
     position: fixed;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%) scale(0.95);
+    transform: scale(0.95);
     z-index: 2147483646;
     width: 340px;
     max-height: 85vh;
@@ -5284,7 +5294,7 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 .glass-tuner-modal.show {
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(-50%) scale(1);
+    transform: scale(1);
 }
 
 .glass-tuner-header {
@@ -5293,6 +5303,12 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     align-items: center;
     padding: 12px 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    cursor: grab;
+    user-select: none;
+}
+
+.glass-tuner-header:active {
+    cursor: grabbing;
 }
 
 .glass-tuner-title {
@@ -5457,15 +5473,14 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 
 /* Neon-white state for the dev floating Power Off button */
 .floating-reload-btn.neon-white {
-    background: rgba(255, 255, 255, 0.15);
-    border: 2px solid #ffffff;
+    background: rgba(255, 255, 255, 0.12);
     color: #ffffff;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), inset 0 0 5px rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.25);
     animation: neon-white-pulse 2s infinite alternate;
 }
 
 .floating-reload-btn.neon-white:hover {
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.28);
     border-color: #ffffff;
     box-shadow: 0 0 25px rgba(255, 255, 255, 0.95), inset 0 0 8px rgba(255, 255, 255, 0.5);
     transform: scale(1.1);
