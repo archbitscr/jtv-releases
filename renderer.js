@@ -1,4 +1,21 @@
 import { state } from './renderer/state/appState.js';
+
+if (import.meta.hot) {
+  const _devOverrides = new Map()
+  import.meta.hot.on('jtv:css', css => {
+    const stripped = css.replace(/\/\*[\s\S]*?\*\//g, '')
+    const ruleRe = /([^{}]+)\{([^{}]*)\}/g
+    let m
+    while ((m = ruleRe.exec(stripped)) !== null) {
+      const sel = m[1].trim()
+      if (!sel) continue
+      _devOverrides.set(sel, m[2].trim())
+    }
+    let el = document.getElementById('__jtv-dev-css')
+    if (!el) { el = document.createElement('style'); el.id = '__jtv-dev-css'; document.head.appendChild(el) }
+    el.textContent = [..._devOverrides.entries()].map(([s, b]) => `${s} { ${b} }`).join('\n')
+  })
+}
 import defaultChannels from './data/defaultChannels.json';
 import { initWatchTimer } from './renderer/player/watchTimer.js';
 import { initFailover } from './renderer/player/failover.js';
@@ -457,6 +474,10 @@ async function init() {
                 window.setDeveloperState(savedData);
             }
             await devModule.initDeveloperFeatures();
+            const autotuneToggleBtn = document.getElementById('pbar-autotune-toggle-btn');
+            if (autotuneToggleBtn) {
+                autotuneToggleBtn.onclick = () => devModule.toggleAutotuneControls();
+            }
             const { initGlassTuner } = await import('./renderer/utils/glassTuner.js');
             initGlassTuner();
         } catch (err) {

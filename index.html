@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=17">
+    <link rel="stylesheet" href="./style.css?v=23">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen (Tarea 11) -->
@@ -130,20 +130,13 @@
                         <!-- Channel/Mute/Volume center block -->
                         <div class="pbar-center-block">
                             <div class="pbar-top-row">
-                                <!-- Fav (left corner of column) -->
                                 <button id="pbar-fav-btn" class="pbar-action-btn pbar-mini-btn pbar-mini-fav pbar-fav-btn" title="Favorite">
                                     <i data-lucide="heart" id="pbar-fav-heart"></i>
                                 </button>
                                 <button id="pbar-up" class="pbar-action-btn pbar-zap-btn" title="Previous channel"><i data-lucide="chevron-up"></i></button>
-                                <!-- Pin (right corner of column) -->
-                                <div class="pbar-mini-float">
-                                    <button id="pbar-pin-btn" class="pbar-action-btn pbar-mini-btn pbar-pin-btn" title="Pin HUD">
-                                        <i data-lucide="pin"></i>
-                                    </button>
-                                    <button id="pbar-settings-btn" class="pbar-action-btn pbar-mini-btn pbar-settings-btn" title="Edit channel" style="display:none">
-                                        <i data-lucide="sliders"></i>
-                                    </button>
-                                </div>
+                                <button id="pbar-pin-btn" class="pbar-action-btn pbar-mini-btn pbar-pin-btn" title="Pin HUD">
+                                    <i data-lucide="pin"></i>
+                                </button>
                             </div>
                             <div class="pbar-center-row">
                                 <button id="pbar-vol-down" class="pbar-vol-icon" title="Volume down" tabindex="0" aria-label="Volume down"><i data-lucide="minus"></i></button>
@@ -152,7 +145,15 @@
                                 </button>
                                 <button id="pbar-vol-up" class="pbar-vol-icon" title="Volume up" tabindex="0" aria-label="Volume up"><i data-lucide="plus"></i></button>
                             </div>
-                            <button id="pbar-down" class="pbar-action-btn pbar-zap-btn" title="Next channel"><i data-lucide="chevron-down"></i></button>
+                            <div class="pbar-bottom-row">
+                                <button id="pbar-autotune-toggle-btn" class="pbar-action-btn pbar-mini-btn pbar-autotune-toggle-btn" title="Toggle signal controls">
+                                    <i data-lucide="app-window"></i>
+                                </button>
+                                <button id="pbar-down" class="pbar-action-btn pbar-zap-btn" title="Next channel"><i data-lucide="chevron-down"></i></button>
+                                <button id="pbar-settings-btn" class="pbar-action-btn pbar-mini-btn pbar-settings-btn" title="Edit channel" style="display:none">
+                                    <i data-lucide="sliders"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1320,7 +1321,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
             </button>
         </div>
 
-        <div id="corner-power-zone" class="corner-power-zone" style="display:none">
+        <div id="corner-power-zone" class="corner-power-zone">
             <button id="corner-power-btn" class="corner-power-btn" title="Shut Down Application" data-tooltip-pos="left">
                 <i data-lucide="power"></i>
             </button>
@@ -1393,10 +1394,10 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
         <button id="glass-tuner-btn" class="floating-reload-btn" title="Glass Tuner" style="display: none;">
             <i data-lucide="palette"></i>
         </button>
-        <button id="reload-window-btn" class="floating-reload-btn" title="Reload Window" data-tooltip-pos="left" style="display: none;">
+        <button id="reload-window-btn" class="floating-reload-btn" title="Reload Window" data-tooltip-pos="right" style="display: none;">
             <i data-lucide="refresh-cw">↻</i>
         </button>
-        <button id="power-off-btn" class="floating-reload-btn" title="Shut Down Application" data-tooltip-pos="left" style="display: none;">
+        <button id="power-off-btn" class="floating-reload-btn" title="Shut Down Application" data-tooltip-pos="right" style="display: none;">
             <i data-lucide="power"></i>
         </button>
     </div>

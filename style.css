@@ -1037,15 +1037,15 @@ body.player-active .edge-mask {
 /* Channel ID tag (same chip used in sidebar, .side-channel-id) — replaces the old list-number badge */
 .land-channel-id {
     position: absolute;
-    top: clamp(5px, 0.74vw, 20px);
-    right: clamp(8px, 1.11vw, 31px);
+    top: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px);
+    right: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px);
     display: inline-flex;
     align-items: center;
-    padding: clamp(1px, 0.19vw, 5px) clamp(4px, 0.56vw, 15px);
+    padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00167 * (100vw - 2046px))), 5px) clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: clamp(3px, 0.37vw, 10px);
-    font-size: clamp(0.44rem, 0.96vw, 1.66rem);
+    border-radius: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00334 * (100vw - 2046px))), 10px);
+    font-size: clamp(0.44rem, max(clamp(0.44rem, 0.96vw, 0.65rem), calc(0.65rem + 0.00901 * (100vw - 2046px))), 1.66rem);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     pointer-events: none;
@@ -1479,11 +1479,11 @@ body.player-active .edge-mask {
 .side-channel-id {
     display: inline-flex;
     align-items: center;
-    padding: clamp(1px, 0.19vw, 7px) clamp(4px, 0.56vw, 21px);
+    padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00279 * (100vw - 2046px))), 7px) clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00836 * (100vw - 2046px))), 21px);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: clamp(3px, 0.37vw, 14px);
-    font-size: clamp(0.44rem, 0.96vw, 2.31rem);
+    border-radius: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
+    font-size: clamp(0.44rem, max(clamp(0.44rem, 0.96vw, 0.65rem), calc(0.65rem + 0.01481 * (100vw - 2046px))), 2.31rem);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     pointer-events: none;
@@ -1728,7 +1728,7 @@ body.hide-cursor * {
     align-items: flex-start;
     justify-content: flex-start;
     padding: clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px) clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px) clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px) clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.02843 * (100vw - 2046px))), 71px);
-    gap: clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px);
+    gap: clamp(9px, max(clamp(9px, 1.85vw, 20px), calc(20px + 0.02843 * (100vw - 2046px))), 71px);
 
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);
@@ -1797,7 +1797,7 @@ body.hide-cursor * {
 }
 
 #pbar-channel-text {
-    font-size: clamp(0.84rem, 1.85vw, 3.20rem);
+    font-size: clamp(0.84rem, max(clamp(0.84rem, 1.85vw, 1.25rem), calc(1.25rem + 0.01739 * (100vw - 2046px))), 3.20rem);
     font-weight: 700;
     color: #fff;
     margin: 0;
@@ -1836,7 +1836,7 @@ body.hide-cursor * {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
-    font-size: clamp(0.44rem, max(clamp(0.44rem, 0.96vw, 0.65rem), calc(0.65rem + 0.00093 * (100vw - 2046px))), 2.31rem);
+    font-size: clamp(0.44rem, max(clamp(0.44rem, 0.96vw, 0.65rem), calc(0.65rem + 0.01480 * (100vw - 2046px))), 2.31rem);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     pointer-events: none; /* Disables mouse interaction */
@@ -1954,8 +1954,8 @@ body.hide-cursor * {
 
 .pbar-action-btn {
     position: relative;
-    width: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.04292 * (100vw - 2046px))), 107px);
-    height: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.04292 * (100vw - 2046px))), 107px);
+    width: clamp(21px, max(clamp(21px, 2.96vw, 32px), calc(32px + 0.04571 * (100vw - 2046px))), 114px);
+    height: clamp(21px, max(clamp(21px, 2.96vw, 32px), calc(32px + 0.04571 * (100vw - 2046px))), 114px);
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -2006,7 +2006,9 @@ body.hide-cursor * {
 }
 
 .pbar-action-btn.pbar-pin-btn i,
-.pbar-action-btn.pbar-pin-btn svg {
+.pbar-action-btn.pbar-pin-btn svg,
+.pbar-action-btn.pbar-autotune-toggle-btn i,
+.pbar-action-btn.pbar-autotune-toggle-btn svg {
     fill: transparent;
     transition: 0.3s;
 }
@@ -2018,7 +2020,9 @@ body.hide-cursor * {
 }
 
 .pbar-action-btn.pbar-pin-btn.active i,
-.pbar-action-btn.pbar-pin-btn.active svg {
+.pbar-action-btn.pbar-pin-btn.active svg,
+.pbar-action-btn.pbar-autotune-toggle-btn.active i,
+.pbar-action-btn.pbar-autotune-toggle-btn.active svg {
     fill: #ffffff !important;
     filter: drop-shadow(0 0 8px #ffffff);
 }
@@ -3943,6 +3947,14 @@ body:not(.dev-mode) .dev-indicator {
     width: 100%;
 }
 
+/* Bottom row: autotune toggle (left) — settings (right) */
+.pbar-bottom-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+}
+
 /* Mini buttons (Fav & Pin) */
 .pbar-mini-float {
     display: flex;
@@ -3965,8 +3977,8 @@ body:not(.dev-mode) .dev-indicator {
 .pbar-vol-icon {
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    width: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.04292 * (100vw - 2046px))), 107px);
-    height: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.04292 * (100vw - 2046px))), 107px);
+    width: clamp(21px, max(clamp(21px, 2.96vw, 32px), calc(32px + 0.04571 * (100vw - 2046px))), 114px);
+    height: clamp(21px, max(clamp(21px, 2.96vw, 32px), calc(32px + 0.04571 * (100vw - 2046px))), 114px);
     color: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
@@ -3990,15 +4002,15 @@ body:not(.dev-mode) .dev-indicator {
     transform: scale(1.1);
 }
 
-/* White active state for non-favorite, non-pin buttons */
-.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn) {
+/* White active state for non-favorite, non-pin, non-autotune-toggle buttons */
+.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn):not(.pbar-autotune-toggle-btn) {
     background: #ffffff !important;
     color: #131313 !important;
     border-color: #ffffff !important;
 }
 
-.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn) i,
-.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn) svg {
+.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn):not(.pbar-autotune-toggle-btn) i,
+.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn):not(.pbar-autotune-toggle-btn) svg {
     color: #131313 !important;
     stroke: #131313 !important;
 }
@@ -4039,13 +4051,13 @@ body:not(.dev-mode) .dev-indicator {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: clamp(9px, 1.30vw, 50px) clamp(16px, 2.22vw, 85px);
-    gap: clamp(13px, 1.85vw, 71px);
+    padding: clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.02007 * (100vw - 2046px))), 50px) clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px);
+    gap: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.02843 * (100vw - 2046px))), 71px);
 
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border-radius: 0 0 clamp(16px, 2.22vw, 85px) clamp(16px, 2.22vw, 85px) !important;
+    border-radius: 0 0 clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px) clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.03400 * (100vw - 2046px))), 85px) !important;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: none !important;
     box-shadow: 0 20px 20px 5px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
@@ -4064,21 +4076,21 @@ body:not(.dev-mode) .dev-indicator {
 
 .tnav-buttons {
     display: flex;
-    gap: clamp(8px, 1.11vw, 43px) !important;
+    gap: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01728 * (100vw - 2046px))), 43px) !important;
 }
 
 .tnav-buttons .tnav-btn {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.7);
-    padding: clamp(5px, 0.74vw, 28px) clamp(11px, 1.48vw, 57px) !important;
-    border-radius: clamp(7px, 0.93vw, 36px) !important;
+    padding: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.01115 * (100vw - 2046px))), 28px) clamp(11px, max(clamp(11px, 1.48vw, 16px), calc(16px + 0.02286 * (100vw - 2046px))), 57px) !important;
+    border-radius: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.01450 * (100vw - 2046px))), 36px) !important;
     cursor: pointer;
-    font-size: clamp(0.67rem, 1.48vw, 3.56rem) !important;
+    font-size: clamp(0.77rem, max(clamp(0.77rem, 1.70vw, 1.15rem), calc(1.15rem + 0.02620 * (100vw - 2046px))), 4.09rem) !important;
     font-weight: 600;
     display: flex;
     align-items: center;
-    gap: clamp(5px, 0.74vw, 28px) !important;
+    gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.01115 * (100vw - 2046px))), 28px) !important;
     transition: all 0.2s ease;
     white-space: nowrap;
     flex-shrink: 0;
@@ -4100,8 +4112,8 @@ body:not(.dev-mode) .dev-indicator {
 
 .tnav-buttons .tnav-btn i,
 .tnav-buttons .tnav-btn svg {
-    width: clamp(13px, 1.85vw, 71px) !important;
-    height: clamp(13px, 1.85vw, 71px) !important;
+    width: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.02843 * (100vw - 2046px))), 71px) !important;
+    height: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.02843 * (100vw - 2046px))), 71px) !important;
 }
 
 .corner-fs-zone {
@@ -5197,7 +5209,7 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 .floating-controls-container {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    right: 120px;
     display: flex;
     flex-direction: column;
     gap: 12px;

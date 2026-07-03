@@ -809,9 +809,7 @@ export function updateDeveloperUI() {
 
     if (devToggle) devToggle.checked = !!developerModeEnabled;
 
-    const hudPinBtn = document.getElementById('pbar-pin-btn');
     const hudSettingsBtn = document.getElementById('pbar-settings-btn');
-    if (hudPinBtn) hudPinBtn.style.display = developerModeEnabled ? 'none' : '';
     if (hudSettingsBtn) hudSettingsBtn.style.display = developerModeEnabled ? '' : 'none';
 
     const hudDevToggle = document.getElementById('hud-dev-controls-toggle');
@@ -837,7 +835,6 @@ export function updateDeveloperUI() {
     if (isLoaderVisible || isOnboardingVisible) {
         if (reloadWindowBtn) reloadWindowBtn.style.display = 'none';
         if (powerOffBtn) powerOffBtn.style.display = 'none';
-        if (powerHoverZone) powerHoverZone.style.display = 'none';
     } else {
         if (developerModeEnabled) {
             if (reloadWindowBtn) reloadWindowBtn.style.display = 'flex';
@@ -845,11 +842,9 @@ export function updateDeveloperUI() {
                 powerOffBtn.style.display = 'flex';
                 powerOffBtn.classList.remove('neon-white');
             }
-            if (powerHoverZone) powerHoverZone.style.display = 'none';
         } else {
             if (reloadWindowBtn) reloadWindowBtn.style.display = 'none';
             if (powerOffBtn) powerOffBtn.style.display = 'none';
-            if (powerHoverZone) powerHoverZone.style.display = 'flex';
         }
     }
 
@@ -1003,5 +998,19 @@ export function updateDeveloperUI() {
             });
         }
     }
+    syncAutotuneToggleBtn();
 }
 window.updateDeveloperUI = updateDeveloperUI;
+
+export function toggleAutotuneControls() {
+    hudDevControlsEnabled = !hudDevControlsEnabled;
+    updateDeveloperUI();
+    if (window.saveAppState) window.saveAppState();
+}
+
+function syncAutotuneToggleBtn() {
+    const btn = document.getElementById('pbar-autotune-toggle-btn');
+    if (!btn) return;
+    const active = developerModeEnabled && hudDevControlsEnabled;
+    btn.classList.toggle('active', active);
+}

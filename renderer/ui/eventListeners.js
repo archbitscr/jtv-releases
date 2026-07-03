@@ -1707,7 +1707,6 @@ export function setupEventListeners() {
 
     const devStateForHud = window.getDeveloperState ? window.getDeveloperState() : null;
     const isDevModeForHud = devStateForHud && devStateForHud.developerModeEnabled;
-    if (hudPinBtn) hudPinBtn.style.display = isDevModeForHud ? 'none' : '';
     if (hudSettingsBtn) hudSettingsBtn.style.display = isDevModeForHud ? '' : 'none';
 
     if (hudPinBtn) {

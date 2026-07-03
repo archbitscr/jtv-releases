@@ -81,9 +81,31 @@ function stripDevOnly() {
   }
 }
 
+function jtvCssInjector() {
+  return {
+    name: 'jtv-css-injector',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use('/__jtv/inject-css', (req, res) => {
+        res.setHeader('Access-Control-Allow-Origin', '*')
+        res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+        if (req.method === 'OPTIONS') { res.end(); return }
+        let body = ''
+        req.on('data', chunk => body += chunk)
+        req.on('end', () => {
+          server.ws.send({ type: 'custom', event: 'jtv:css', data: body })
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify({ ok: true }))
+        })
+      })
+    }
+  }
+}
+
 export default defineConfig({
   base: './',
-  plugins: [stripDevOnly()],
+  plugins: [stripDevOnly(), jtvCssInjector()],
   server: {
     port: 5173
   }
