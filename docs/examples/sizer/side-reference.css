@@ -20,7 +20,7 @@
 
 /* Nav tab button (Channels, Favs…) */
 .side-tab-btn {
-  padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+  padding: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
   font-size: clamp(10px, max(clamp(10px, 1.30vw, 14px), calc(14px + 0.01003 * (100vw - 2046px))), 32px);
   border-radius: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00892 * (100vw - 2046px))), 24px);
   gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px);
@@ -52,6 +52,15 @@
 .side-channel-logo {
   width: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.03344 * (100vw - 2046px))), 100px);
   height: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.03344 * (100vw - 2046px))), 100px);
+  border-radius: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00780 * (100vw - 2046px))), 20px);
+}
+
+/* Fallback logo circle */
+.side-channel-logo .placeholder-circle {
+  width: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.03344 * (100vw - 2046px))), 100px);
+  height: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.03344 * (100vw - 2046px))), 100px);
+  border-radius: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00780 * (100vw - 2046px))), 20px);
+  font-size: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px);
 }
 
 /* Channel name text */
