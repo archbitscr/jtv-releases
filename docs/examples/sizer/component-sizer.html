@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Component Sizer — JTV</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #1a1b26;
+    --bg-2:      #1f2133;
+    --bg-3:      #252840;
+    --border:    rgba(255,255,255,0.08);
+    --border-2:  rgba(255,255,255,0.12);
+    --text:      #c8ccd8;
+    --text-dim:  #6b7280;
+    --text-mute: #3d4152;
+    --accent:    #7c6af7;
+    --accent-bg: rgba(124,106,247,0.10);
+    --accent-bd: rgba(124,106,247,0.22);
+    --green:     #4ade80;
+    --green-bg:  rgba(74,222,128,0.12);
+    --red:       #f87171;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+  }
+
+  /* ══ HEADER ══════════════════════════════════════════════════ */
+  .app-header {
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .app-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+  }
+  .app-title span { color: var(--accent); }
+
+  .globals {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+  }
+  .g-field {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 8px;
+  }
+  .g-field label {
+    font-size: 11px;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+  .g-field input {
+    width: 60px;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 600;
+    outline: none;
+    text-align: right;
+  }
+  .g-field input:focus { color: #fff; }
+
+  /* ── Tab row 1 — sections ── */
+  .tab-row-1 {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tab-r1-btn {
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-dim);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+    position: relative;
+    bottom: -1px;
+  }
+  .tab-r1-btn:hover { color: var(--text); }
+  .tab-r1-btn.active {
+    color: #fff;
+    font-weight: 600;
+    border-bottom-color: var(--accent);
+  }
+  .tab-r1-btn.empty { color: var(--text-mute); }
+  .tab-r1-btn.empty:hover { color: var(--text-dim); }
+
+  /* ── Tab row 2 — components ── */
+  .tab-row-2 {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0 24px;
+    background: var(--bg);
+    min-height: 34px;
+  }
+
+  .tab-r2-btn {
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-mute);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+    position: relative;
+    bottom: -1px;
+    font-family: monospace;
+  }
+  .tab-r2-btn:hover { color: var(--text-dim); }
+  .tab-r2-btn.active {
+    color: var(--accent);
+    font-weight: 700;
+    border-bottom-color: var(--accent);
+  }
+  .tab-r2-btn.empty { color: var(--text-mute); }
+  .tab-r2-btn.empty:hover { color: var(--text-dim); }
+
+  /* ══ CONTENT ══════════════════════════════════════════════════ */
+  .content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 24px 80px;
+  }
+
+  .content-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    font-size: 11px;
+    color: var(--text-mute);
+  }
+  .breadcrumb span { color: var(--text-dim); }
+  .breadcrumb .sep { color: var(--text-mute); }
+
+  .col-headers {
+    display: grid;
+    grid-template-columns: 170px 88px 88px 88px 36px 24px 24px 24px;
+    gap: 6px;
+    padding: 0 10px 8px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4px;
+  }
+  .col-headers span {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+  .col-headers span:first-child { text-align: left; }
+
+  .group { margin-bottom: 6px; }
+
+  .group-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 10px 5px;
+  }
+  .group-selector {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: monospace;
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-bd);
+    border-radius: 4px;
+    padding: 2px 7px;
+  }
+  .group-comment { font-size: 11px; color: var(--text-mute); }
+
+  .row {
+    display: grid;
+    grid-template-columns: 170px 88px 88px 88px 36px 24px 24px 24px;
+    gap: 6px;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 5px;
+    transition: background 0.1s;
+  }
+  .row:hover { background: rgba(255,255,255,0.025); }
+  .row + .row { border-top: 1px solid rgba(255,255,255,0.03); }
+
+  .row-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-family: monospace;
+  }
+
+  .row input {
+    width: 100%;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text);
+    font-size: 12px;
+    padding: 4px 6px;
+    outline: none;
+    text-align: center;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .row input:focus {
+    border-color: var(--accent);
+    background: var(--bg-2);
+    color: #fff;
+  }
+  .row input.invalid { border-color: var(--red) !important; }
+
+  .row input.input-base {
+    background: var(--accent-bg);
+    border-color: var(--accent-bd);
+    color: #fff;
+    font-weight: 700;
+  }
+  .row input.input-base:focus {
+    background: rgba(124,106,247,0.15);
+    border-color: var(--accent);
+  }
+
+  .unit-badge {
+    font-size: 10px;
+    color: var(--text-mute);
+    font-family: monospace;
+    text-align: center;
+  }
+
+  .row-btn {
+    width: 24px; height: 24px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: var(--bg-3);
+    color: var(--text-mute);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .row-btn svg { width: 11px; height: 11px; }
+  .row-btn:hover { background: var(--accent-bg); border-color: var(--accent-bd); color: var(--accent); }
+  .row-btn.copied { background: var(--green-bg); border-color: var(--green); color: var(--green); }
+  .row-btn.injected { background: rgba(250,180,50,0.15); border-color: rgba(250,180,50,0.4); color: #f5b731; }
+  .row-btn.reset-btn:hover { background: rgba(248,113,113,0.1); border-color: var(--red); color: var(--red); }
+
+  .empty-tab-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 80px 20px;
+    text-align: center;
+  }
+  .empty-tab-msg .tag {
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--text-mute);
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 3px 10px;
+  }
+  .empty-tab-msg p { font-size: 12px; color: var(--text-mute); }
+
+  /* ══ FOOTER ══════════════════════════════════════════════════ */
+  .footer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(26,27,38,0.97);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-info { font-size: 11px; color: var(--text-mute); flex: 1; }
+
+  .btn {
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #9280ff; }
+  .btn-inject { display: none; }
+  .btn-ghost {
+    background: var(--bg-3);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { background: var(--bg-2); color: var(--text); }
+
+  #toast {
+    position: fixed; top: 14px; right: 14px;
+    background: var(--green-bg);
+    color: var(--green);
+    border: 1px solid var(--green);
+    padding: 6px 14px; border-radius: 6px;
+    font-size: 12px; font-weight: 600;
+    opacity: 0; transform: translateY(-6px);
+    transition: all 0.2s; pointer-events: none; z-index: 9999;
+  }
+  #toast.show { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-top">
+    <div class="app-title"><span>JTV</span> Component Sizer</div>
+    <div class="globals">
+      <div class="g-field">
+        <label>Base res.</label>
+        <input type="number" id="g-base-res" value="1080">
+      </div>
+      <div class="g-field">
+        <label>Threshold</label>
+        <input type="number" id="g-threshold" value="2046">
+      </div>
+      <div class="g-field">
+        <label>Max (4K)</label>
+        <input type="number" id="g-max-res" value="3840">
+      </div>
+      <div class="g-sep"></div>
+      <div class="g-field">
+        <label>Vite port</label>
+        <input type="number" id="vite-port" value="5173">
+      </div>
+    </div>
+  </div>
+  <div class="tab-row-1" id="tab-row-1"></div>
+  <div class="tab-row-2" id="tab-row-2"></div>
+</header>
+
+<div class="content">
+  <div class="content-inner" id="content"></div>
+</div>
+
+<div class="footer">
+  <span class="footer-info">Base values from pre-Task37 backup · All inputs in px · Meseta clamp formula</span>
+  <button class="btn btn-ghost" onclick="copyAll()">Copy CSS</button>
+  <button class="btn btn-primary" onclick="generateCSS()">⬇ Generate CSS File</button>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// STRUCTURE
+// ─────────────────────────────────────────────────────────────────────────────
+const SECTIONS = [
+  {
+    id: 'home', label: 'Home',
+    components: [{ id: 'home', label: '.home-*', populated: false }]
+  },
+  {
+    id: 'livetv', label: 'Live TV',
+    components: [
+      { id: 'pbar',   label: '.pbar-*',   populated: true  },
+      { id: 'tnav',   label: '.tnav-*',   populated: true  },
+      { id: 'side',   label: '.side-*',   populated: false },
+      { id: 'land',   label: '.land-*',   populated: false },
+      { id: 'fbar',   label: '.fbar-*',   populated: false },
+      { id: 'player', label: '.player-*', populated: false },
+    ]
+  },
+  {
+    id: 'vod', label: 'VOD',
+    components: [{ id: 'vod', label: '.vod-*', populated: false }]
+  },
+  {
+    id: 'settings', label: 'Settings',
+    components: [{ id: 'settings', label: '.settings-*', populated: false }]
+  },
+  {
+    id: 'transversal', label: 'Transversals',
+    components: [
+      { id: 'volosd',  label: '.volosd-*',  populated: false },
+      { id: 'corner',  label: '.corner-*',  populated: true  },
+      { id: 'tooltip', label: '.tooltip-*', populated: false },
+      { id: 'search',  label: '.search-*',  populated: false },
+      { id: 'modal',   label: '.modal-*',   populated: false },
+    ]
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PBAR DATA
+// ─────────────────────────────────────────────────────────────────────────────
+const PBAR_GROUPS = [
+  {
+    selector: '.pbar', comment: 'Player Bar container',
+    template: (f) => [
+      `  width: ${f('width')};`,
+      `  padding: ${f('padTRB')} ${f('padTRB')} ${f('padTRB')} ${f('padL')};`,
+      `  gap: ${f('gap')};`,
+      `  border-radius: ${f('radius')} ${f('radius')} 0 0 !important;`,
+    ].join('\n'),
+    items: [
+      { id: 'width',  label: 'width',              base: 580, min: 389, max: 2062, unit: 'px' },
+      { id: 'padTRB', label: 'padding T / R / B',  base: 14,  min: 9,   max: 50,   unit: 'px' },
+      { id: 'padL',   label: 'padding Left',        base: 20,  min: 13,  max: 71,   unit: 'px' },
+      { id: 'gap',    label: 'gap',                 base: 20,  min: 9,   max: 71,   unit: 'px' },
+      { id: 'radius', label: 'border-radius TL/TR', base: 24,  min: 16,  max: 85,   unit: 'px' },
+    ]
+  },
+  {
+    selector: '.pbar-logo-container', comment: 'Channel logo wrapper',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 72, min: 48, max: 256, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-logo-container .placeholder-circle', comment: 'Fallback logo circle',
+    template: (f) => [
+      `  width: ${f('size')};`, `  height: ${f('size')};`,
+      `  border-radius: ${f('radius')};`, `  font-size: ${f('fontSize')};`,
+    ].join('\n'),
+    items: [
+      { id: 'size',     label: 'width / height', base: 64,   min: 43,    max: 228,   unit: 'px'  },
+      { id: 'radius',   label: 'border-radius',  base: 16,   min: 11,    max: 57,    unit: 'px'  },
+      { id: 'fontSize', label: 'font-size',       base: 25.6, min: 17.12, max: 91.04, unit: 'rem' },
+    ]
+  },
+  {
+    selector: '.pbar-info-area', comment: 'Channel info column',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 4, min: 3, max: 14, unit: 'px' }]
+  },
+  {
+    selector: '#pbar-channel-text', comment: 'Channel name heading',
+    template: (f) => `  font-size: ${f('fontSize')};`,
+    items: [{ id: 'fontSize', label: 'font-size', base: 20, min: 13.44, max: 51.2, unit: 'rem' }]
+  },
+  {
+    selector: '.pbar-epg-text', comment: 'EPG / programme name',
+    template: (f) => [`  font-size: ${f('fontSize')};`, `  margin: 0 0 ${f('marginB')} 0;`].join('\n'),
+    items: [
+      { id: 'fontSize', label: 'font-size',     base: 14.4, min: 9.6, max: 51.04, unit: 'rem' },
+      { id: 'marginB',  label: 'margin-bottom', base: 4,    min: 3,   max: 14,    unit: 'px'  },
+    ]
+  },
+  {
+    selector: '.pbar-channel-filters', comment: 'Filter badges row',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 2, min: 1, max: 7, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-filter-badge', comment: 'Category chip (English, Sport…)',
+    template: (f) => [
+      `  padding: ${f('padV')} ${f('padH')};`,
+      `  border-radius: ${f('radius')};`,
+      `  font-size: ${f('fontSize')};`,
+    ].join('\n'),
+    items: [
+      { id: 'padV',     label: 'padding V',     base: 2,    min: 1,    max: 7,     unit: 'px'  },
+      { id: 'padH',     label: 'padding H',     base: 6,    min: 4,    max: 21,    unit: 'px'  },
+      { id: 'radius',   label: 'border-radius', base: 4,    min: 3,    max: 14,    unit: 'px'  },
+      { id: 'fontSize', label: 'font-size',      base: 10.4, min: 7.04, max: 36.96, unit: 'rem' },
+    ]
+  },
+  {
+    selector: '.pbar-autotune-row', comment: 'Autotuner + source toggle row',
+    template: (f) => [`  gap: ${f('gap')};`, `  margin-top: ${f('marginTop')};`].join('\n'),
+    items: [
+      { id: 'gap',       label: 'gap',        base: 12, min: 8, max: 43, unit: 'px' },
+      { id: 'marginTop', label: 'margin-top', base: 6,  min: 4, max: 21, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.pbar-autotune-indicator svg,\n.pbar-source-toggle-btn svg', comment: 'Autotune / source-toggle icons',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 18, min: 12, max: 64, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-sources-row', comment: 'Source buttons row',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 12, min: 8, max: 43, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-sources-row .sources-label', comment: 'Sources label',
+    template: (f) => [`  font-size: ${f('fontSize')};`, `  letter-spacing: ${f('letterSpacing')};`].join('\n'),
+    items: [
+      { id: 'fontSize',      label: 'font-size',      base: 11.2, min: 7.52, max: 39.84, unit: 'rem' },
+      { id: 'letterSpacing', label: 'letter-spacing', base: 1,    min: 1,    max: 4,     unit: 'px'  },
+    ]
+  },
+  {
+    selector: '.pbar-sources-row .pbar-source-buttons', comment: 'Source number buttons container',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 6, min: 4, max: 21, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-sources-row .pbar-source-btn', comment: 'Source number button (1, 2, 3…)',
+    template: (f) => [
+      `  width: ${f('size')};`, `  height: ${f('size')};`, `  font-size: ${f('fontSize')};`,
+    ].join('\n'),
+    items: [
+      { id: 'size',     label: 'width / height', base: 23,   min: 15,   max: 82,   unit: 'px'  },
+      { id: 'fontSize', label: 'font-size',       base: 12.8, min: 8.64, max: 45.6, unit: 'rem' },
+    ]
+  },
+  {
+    selector: '.pbar-actions-container', comment: 'Action buttons container',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 8, min: 5, max: 28, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-action-stack', comment: 'Vertical stack (vol ↑ / nav / vol ↓)',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 3, min: 2, max: 11, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-action-btn', comment: 'Action button (vol, nav, mute…)',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 32, min: 21, max: 114, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-action-btn svg,\n.pbar-action-btn i', comment: 'Action button icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 18, min: 12, max: 64, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-center-block', comment: 'Center column (vol ↑ | nav row | vol ↓)',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 4, min: 3, max: 14, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-center-row', comment: 'Center row (prev | mute | next)',
+    template: (f) => `  gap: ${f('gap')};`,
+    items: [{ id: 'gap', label: 'gap', base: 4, min: 3, max: 14, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-mini-btn', comment: 'Mini buttons (Fav, Pin)',
+    template: (f) => [
+      `  width: ${f('size')} !important;`, `  height: ${f('size')} !important;`,
+    ].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 24, min: 16, max: 85, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-mini-btn svg,\n.pbar-mini-btn i', comment: 'Mini button icon',
+    template: (f) => [
+      `  width: ${f('size')} !important;`, `  height: ${f('size')} !important;`,
+    ].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 12, min: 8, max: 43, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-vol-icon', comment: 'Vol up / down button',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 32, min: 21, max: 114, unit: 'px' }]
+  },
+  {
+    selector: '.pbar-vol-icon svg', comment: 'Vol icon SVG',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 18, min: 12, max: 64, unit: 'px' }]
+  },
+  {
+    selector: '.hover-trigger.bottom', comment: 'Player Bar hover trigger',
+    template: (f) => [`  width: ${f('width')};`, `  height: ${f('height')};`].join('\n'),
+    items: [
+      { id: 'width',  label: 'width',  base: 650, min: 400, max: 2311, unit: 'px' },
+      { id: 'height', label: 'height', base: 180, min: 110, max: 640,  unit: 'px' },
+    ]
+  },
+];
+
+const TNAV_GROUPS = [
+  {
+    selector: '.tnav-menu', comment: 'Top Nav container',
+    template: (f) => [
+      `  padding: ${f('padV')} ${f('padH')};`,
+      `  gap: ${f('gap')};`,
+      `  border-radius: 0 0 ${f('radius')} ${f('radius')} !important;`,
+    ].join('\n'),
+    items: [
+      { id: 'padV',   label: 'padding V',       base: 14, min: 9,  max: 50,  unit: 'px' },
+      { id: 'padH',   label: 'padding H',        base: 24, min: 16, max: 85,  unit: 'px' },
+      { id: 'gap',    label: 'gap',              base: 20, min: 13, max: 71,  unit: 'px' },
+      { id: 'radius', label: 'border-radius BL/BR', base: 24, min: 16, max: 85, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.tnav-buttons', comment: 'Nav buttons row',
+    template: (f) => `  gap: ${f('gap')} !important;`,
+    items: [
+      { id: 'gap', label: 'gap', base: 12, min: 8, max: 43, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.tnav-buttons .tnav-btn', comment: 'Nav button (Home, Live TV…)',
+    template: (f) => [
+      `  padding: ${f('padV')} ${f('padH')} !important;`,
+      `  border-radius: ${f('radius')} !important;`,
+      `  font-size: ${f('fontSize')} !important;`,
+      `  gap: ${f('gap')} !important;`,
+    ].join('\n'),
+    items: [
+      { id: 'padV',     label: 'padding V',     base: 8,    min: 5,    max: 28,   unit: 'px'  },
+      { id: 'padH',     label: 'padding H',     base: 16,   min: 11,   max: 57,   unit: 'px'  },
+      { id: 'radius',   label: 'border-radius', base: 10,   min: 7,    max: 36,   unit: 'px'  },
+      { id: 'fontSize', label: 'font-size',     base: 18.4, min: 12.3, max: 65.4, unit: 'rem' },
+      { id: 'gap',      label: 'gap (icon+text)', base: 8,  min: 5,    max: 28,   unit: 'px'  },
+    ]
+  },
+  {
+    selector: '.tnav-buttons .tnav-btn i,\n.tnav-buttons .tnav-btn svg', comment: 'Nav button icon',
+    template: (f) => [
+      `  width: ${f('size')} !important;`,
+      `  height: ${f('size')} !important;`,
+    ].join('\n'),
+    items: [
+      { id: 'size', label: 'width / height', base: 20, min: 13, max: 71, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.hover-trigger.top', comment: 'Top Nav hover trigger',
+    template: (f) => [`  width: ${f('width')};`, `  height: ${f('height')};`].join('\n'),
+    items: [
+      { id: 'width',  label: 'width',  base: 650, min: 400, max: 2311, unit: 'px' },
+      { id: 'height', label: 'height', base: 100, min: 60,  max: 356,  unit: 'px' },
+    ]
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CORNER DATA  (.corner-fs-zone, .corner-fs-btn, .corner-power-zone, .corner-power-btn)
+// ─────────────────────────────────────────────────────────────────────────────
+const CORNER_GROUPS = [
+  {
+    selector: '.corner-fs-zone', comment: 'Fullscreen zone (hit area)',
+    template: (f) => [
+      `  top: ${f('pos')};`,
+      `  right: ${f('pos')};`,
+      `  width: ${f('size')};`,
+      `  height: ${f('size')};`,
+    ].join('\n'),
+    items: [
+      { id: 'pos',  label: 'top / right',   base: 24, min: 12, max: 42, unit: 'px' },
+      { id: 'size', label: 'width / height', base: 42, min: 24, max: 84, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.corner-fs-btn', comment: 'Fullscreen button',
+    template: (f) => [
+      `  width: ${f('size')};`,
+      `  height: ${f('size')};`,
+      `  border-radius: ${f('radius')};`,
+    ].join('\n'),
+    items: [
+      { id: 'size',   label: 'width / height', base: 42, min: 24, max: 84, unit: 'px' },
+      { id: 'radius', label: 'border-radius',  base: 12, min: 6,  max: 24, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.corner-fs-btn i,\n.corner-fs-btn svg', comment: 'Fullscreen icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [
+      { id: 'size', label: 'width / height', base: 20, min: 10, max: 30, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.corner-power-zone', comment: 'Power zone (hit area)',
+    template: (f) => [
+      `  bottom: ${f('pos')};`,
+      `  right: ${f('pos')};`,
+      `  width: ${f('size')};`,
+      `  height: ${f('size')};`,
+    ].join('\n'),
+    items: [
+      { id: 'pos',  label: 'bottom / right',  base: 24, min: 12, max: 42, unit: 'px' },
+      { id: 'size', label: 'width / height',  base: 42, min: 24, max: 84, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.corner-power-btn', comment: 'Power button',
+    template: (f) => [
+      `  width: ${f('size')};`,
+      `  height: ${f('size')};`,
+      `  border-radius: ${f('radius')};`,
+    ].join('\n'),
+    items: [
+      { id: 'size',   label: 'width / height', base: 42, min: 24, max: 84, unit: 'px' },
+      { id: 'radius', label: 'border-radius',  base: 12, min: 6,  max: 24, unit: 'px' },
+    ]
+  },
+  {
+    selector: '.corner-power-btn i,\n.corner-power-btn svg', comment: 'Power icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [
+      { id: 'size', label: 'width / height', base: 20, min: 10, max: 30, unit: 'px' },
+    ]
+  },
+];
+
+const COMPONENT_DATA = { pbar: PBAR_GROUPS, tnav: TNAV_GROUPS, corner: CORNER_GROUPS };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────────────────────────────────────
+let activeSection   = 'livetv';
+let activeComponent = 'pbar';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FORMULA ENGINE
+// ─────────────────────────────────────────────────────────────────────────────
+function getGlobals() {
+  return {
+    baseRes:   parseFloat(document.getElementById('g-base-res').value)  || 1080,
+    threshold: parseFloat(document.getElementById('g-threshold').value) || 2046,
+    maxRes:    parseFloat(document.getElementById('g-max-res').value)   || 3840,
+  };
+}
+
+function buildFormula(minPx, basePx, maxPx, unit, globals) {
+  const { baseRes, threshold, maxRes } = globals;
+  const vw  = ((basePx / baseRes) * 100).toFixed(2);
+  const pen = ((maxPx - basePx) / (maxRes - threshold)).toFixed(5);
+  if (unit === 'rem') {
+    const r     = 16;
+    const minR  = (minPx  / r).toFixed(2) + 'rem';
+    const baseR = (basePx / r).toFixed(2) + 'rem';
+    const maxR  = (maxPx  / r).toFixed(2) + 'rem';
+    return `clamp(${minR}, max(clamp(${minR}, ${vw}vw, ${baseR}), calc(${baseR} + ${pen} * (100vw - ${threshold}px))), ${maxR})`;
+  }
+  return `clamp(${minPx}px, max(clamp(${minPx}px, ${vw}vw, ${basePx}px), calc(${basePx}px + ${pen} * (100vw - ${threshold}px))), ${maxPx}px)`;
+}
+
+function getItemFormula(gi, itemId, groups) {
+  const minEl  = document.getElementById(`min-${gi}-${itemId}`);
+  const baseEl = document.getElementById(`base-${gi}-${itemId}`);
+  const maxEl  = document.getElementById(`max-${gi}-${itemId}`);
+  if (!minEl || !baseEl || !maxEl) return null;
+  const min  = parseFloat(minEl.value);
+  const base = parseFloat(baseEl.value);
+  const max  = parseFloat(maxEl.value);
+  if (isNaN(min) || isNaN(base) || isNaN(max) || min >= base || max <= base) return null;
+  const item = groups[gi].items.find(i => i.id === itemId);
+  return buildFormula(min, base, max, item.unit, getGlobals());
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RENDER
+// ─────────────────────────────────────────────────────────────────────────────
+function renderTabs() {
+  const r1 = document.getElementById('tab-row-1');
+  r1.innerHTML = '';
+  SECTIONS.forEach(sec => {
+    const hasContent = sec.components.some(c => c.populated);
+    const btn = document.createElement('button');
+    btn.className = 'tab-r1-btn' + (sec.id === activeSection ? ' active' : '') + (!hasContent ? ' empty' : '');
+    btn.textContent = sec.label;
+    btn.onclick = () => {
+      activeSection = sec.id;
+      const first = sec.components.find(c => c.populated) || sec.components[0];
+      activeComponent = first.id;
+      renderTabs();
+      renderContent();
+    };
+    r1.appendChild(btn);
+  });
+
+  const r2 = document.getElementById('tab-row-2');
+  r2.innerHTML = '';
+  const sec = SECTIONS.find(s => s.id === activeSection);
+  if (sec) {
+    sec.components.forEach(comp => {
+      const btn = document.createElement('button');
+      btn.className = 'tab-r2-btn'
+        + (comp.id === activeComponent ? ' active' : '')
+        + (!comp.populated ? ' empty' : '');
+      btn.textContent = comp.label;
+      btn.title = comp.label;
+      btn.onclick = () => { activeComponent = comp.id; renderTabs(); renderContent(); };
+      r2.appendChild(btn);
+    });
+  }
+}
+
+const COPY_ICON   = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+const RESET_ICON  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>`;
+const INJECT_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m13 2-2 2.5h3L12 7"/><path d="M10 14c.5 1 1.5 2 3 2s3-1 3-3-1-3-3-3-3 1-3 3"/><path d="M6 20v-4"/><path d="M6 6v4"/><path d="M6 12H4"/><path d="M6 12h2"/></svg>`;
+
+function renderContent() {
+  const content = document.getElementById('content');
+  const groups  = COMPONENT_DATA[activeComponent];
+  const sec     = SECTIONS.find(s => s.id === activeSection);
+  const comp    = sec?.components.find(c => c.id === activeComponent);
+
+  if (!groups) {
+    content.innerHTML = `
+      <div class="empty-tab-msg">
+        <span class="tag">${comp?.label || activeComponent}</span>
+        <p>Content coming soon</p>
+      </div>`;
+    return;
+  }
+
+  let html = `
+    <div class="breadcrumb">
+      <span>${sec?.label}</span><span class="sep">/</span><span>${comp?.label}</span>
+    </div>
+    <div class="col-headers">
+      <span>Property</span>
+      <span>Min (px)</span>
+      <span>Base (px)</span>
+      <span>Max (px)</span>
+      <span>Unit</span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>`;
+
+  groups.forEach((group, gi) => {
+    html += `<div class="group">
+      <div class="group-header">
+        <span class="group-selector">${group.selector.replace(/\n/g, ' ')}</span>
+        <span class="group-comment">${group.comment}</span>
+      </div>`;
+    group.items.forEach(item => {
+      html += `
+        <div class="row">
+          <span class="row-label">${item.label}</span>
+          <input type="number" id="min-${gi}-${item.id}"  value="${item.min}"  step="0.1" oninput="validateRow(${gi},'${item.id}')">
+          <input type="number" id="base-${gi}-${item.id}" class="input-base" value="${item.base}" step="0.1" oninput="validateRow(${gi},'${item.id}')">
+          <input type="number" id="max-${gi}-${item.id}"  value="${item.max}"  step="0.1" oninput="validateRow(${gi},'${item.id}')">
+          <span class="unit-badge">${item.unit}</span>
+          <button class="row-btn reset-btn" title="Reset to original" onclick="resetRow(${gi},'${item.id}')">${RESET_ICON}</button>
+          <button class="row-btn" id="cb-${gi}-${item.id}" title="Copy clamp() formula" onclick="copyFormula(${gi},'${item.id}')">${COPY_ICON}</button>
+          <button class="row-btn" id="inj-${gi}-${item.id}" title="Inject to App" onclick="injectRow(${gi},'${item.id}')">${INJECT_ICON}</button>
+        </div>`;
+    });
+    html += `</div>`;
+  });
+
+  content.innerHTML = html;
+}
+
+function validateRow(gi, itemId) {
+  const groups = COMPONENT_DATA[activeComponent];
+  const item   = groups[gi].items.find(i => i.id === itemId);
+  const minEl  = document.getElementById(`min-${gi}-${itemId}`);
+  const baseEl = document.getElementById(`base-${gi}-${itemId}`);
+  const maxEl  = document.getElementById(`max-${gi}-${itemId}`);
+  const min    = parseFloat(minEl.value);
+  const base   = parseFloat(baseEl.value);
+  const max    = parseFloat(maxEl.value);
+  minEl.classList.toggle('invalid',  isNaN(min)  || min  >= base);
+  baseEl.classList.toggle('invalid', isNaN(base) || base <= min || base >= max);
+  maxEl.classList.toggle('invalid',  isNaN(max)  || max  <= base);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// COPY / GENERATE
+// ─────────────────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+function copyFormula(gi, itemId) {
+  const formula = getItemFormula(gi, itemId, COMPONENT_DATA[activeComponent]);
+  if (!formula) { showToast('⚠ Invalid values'); return; }
+  navigator.clipboard.writeText(formula).then(() => {
+    const btn = document.getElementById(`cb-${gi}-${itemId}`);
+    btn.classList.add('copied');
+    setTimeout(() => btn.classList.remove('copied'), 1200);
+    showToast('Formula copied!');
+  });
+}
+
+function buildCSS(groups) {
+  const g    = getGlobals();
+  const sec  = SECTIONS.find(s => s.id === activeSection);
+  const comp = sec?.components.find(c => c.id === activeComponent);
+  const lines = [
+    `/* JTV Component Sizer — ${sec?.label} › ${comp?.label} */`,
+    `/* Base: ${g.baseRes}px  |  Threshold: ${g.threshold}px  |  4K: ${g.maxRes}px */`,
+    ``
+  ];
+  groups.forEach((group, gi) => {
+    const fMap = {};
+    group.items.forEach(item => {
+      fMap[item.id] = getItemFormula(gi, item.id, groups) || `/* ERROR: ${item.id} */`;
+    });
+    lines.push(`/* ${group.comment} */`);
+    lines.push(`${group.selector} {`);
+    lines.push(group.template(id => fMap[id]));
+    lines.push(`}`);
+    lines.push(``);
+  });
+  return lines.join('\n');
+}
+
+function copyAll() {
+  const groups = COMPONENT_DATA[activeComponent];
+  if (!groups) { showToast('No content to copy'); return; }
+  navigator.clipboard.writeText(buildCSS(groups)).then(() => showToast('All CSS copied!'));
+}
+
+function generateCSS() {
+  const groups = COMPONENT_DATA[activeComponent];
+  if (!groups) { showToast('No content to generate'); return; }
+  const blob = new Blob([buildCSS(groups)], { type: 'text/css' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = `${activeComponent}-reference.css`;
+  a.click(); URL.revokeObjectURL(url);
+  showToast('CSS file downloaded!');
+}
+
+function resetRow(gi, itemId) {
+  const groups = COMPONENT_DATA[activeComponent];
+  const item   = groups[gi].items.find(i => i.id === itemId);
+  document.getElementById(`min-${gi}-${itemId}`).value  = item.min;
+  document.getElementById(`base-${gi}-${itemId}`).value = item.base;
+  document.getElementById(`max-${gi}-${itemId}`).value  = item.max;
+  validateRow(gi, itemId);
+}
+
+async function injectCSS(css, btnEl) {
+  const port = document.getElementById('vite-port').value || '5173';
+  if (btnEl) btnEl.style.opacity = '0.4';
+  try {
+    const res = await fetch(`http://localhost:${port}/__jtv/inject-css`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/css' },
+      body: css
+    });
+    if (res.ok) {
+      showToast('⚡ Injected!');
+      if (btnEl) { btnEl.classList.add('injected'); setTimeout(() => btnEl.classList.remove('injected'), 1200); }
+    } else showToast('⚠ Server error');
+  } catch {
+    showToast('⚠ Vite not reachable');
+  } finally {
+    if (btnEl) btnEl.style.opacity = '';
+  }
+}
+
+async function injectRow(gi, itemId) {
+  const groups = COMPONENT_DATA[activeComponent];
+  const formula = getItemFormula(gi, itemId, groups);
+  if (!formula) { showToast('⚠ Invalid values'); return; }
+  await injectCSS(buildCSS(groups), document.getElementById(`inj-${gi}-${itemId}`));
+}
+
+async function injectToApp() {
+  const groups = COMPONENT_DATA[activeComponent];
+  if (!groups) { showToast('No content to inject'); return; }
+  await injectCSS(buildCSS(groups), null);
+}
+
+['g-base-res','g-threshold','g-max-res'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => {
+    const groups = COMPONENT_DATA[activeComponent];
+    if (groups) groups.forEach((g, gi) => g.items.forEach(item => validateRow(gi, item.id)));
+  });
+});
+
+renderTabs();
+renderContent();
+</script>
+</body>
+</html>

@@ -254,21 +254,6 @@ body.player-active .edge-mask {
     pointer-events: none;
 }
 
-.hover-trigger.left {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 200px;
-}
-
-.hover-trigger.bottom {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 650px;
-    height: 180px;
-}
-
 /* Glass Menus */
 .glass-menu {
     position: fixed;
@@ -1712,6 +1697,14 @@ body.hide-cursor {
 
 body.hide-cursor * {
     cursor: none !important;
+}
+
+/* Sidebar Hover Trigger */
+.hover-trigger.left {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: clamp(120px, max(clamp(120px, 18.52vw, 200px), calc(200px + 0.04459 * (100vw - 2046px))), 711px);
 }
 
 /* Source Switcher HUD */
@@ -4039,6 +4032,15 @@ body:not(.dev-mode) .dev-indicator {
     stroke: #131313 !important;
 }
 
+/* Player Bar Hover Trigger */
+.hover-trigger.bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(400px, max(clamp(400px, 60.19vw, 650px), calc(650px + 0.13936 * (100vw - 2046px))), 2311px);
+    height: clamp(110px, max(clamp(110px, 16.67vw, 180px), calc(180px + 0.03902 * (100vw - 2046px))), 640px);
+}
+
 /* Top Navigation HUD */
 .tnav-menu {
     position: fixed;
@@ -4254,13 +4256,13 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     opacity: 1;
 }
 
-/* Hover Trigger Top */
+/* Top Nav Hover Trigger */
 .hover-trigger.top {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 650px;
-    height: 100px;
+    width: clamp(400px, max(clamp(400px, 60.19vw, 650px), calc(650px + 0.13936 * (100vw - 2046px))), 2311px);
+    height: clamp(60px, max(clamp(60px, 9.26vw, 100px), calc(100px + 0.02229 * (100vw - 2046px))), 356px);
 }
 
 /* Tuning Hint message in sidebar menu */
