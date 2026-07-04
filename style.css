@@ -2059,6 +2059,129 @@ body.hide-cursor * {
     filter: drop-shadow(0 0 8px #ffffff);
 }
 
+/* HUD Center Block (Vol up / Prev-Mute-Next row / Vol down) */
+.pbar-center-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
+}
+
+.pbar-center-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
+}
+
+/* Top row of the center column: Fav (left) — channel up (center) — Pin (right) */
+.pbar-top-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Bottom row: autotune toggle (left) — settings (right) */
+.pbar-bottom-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Mini buttons (Fav & Pin) */
+.pbar-mini-float {
+    display: flex;
+}
+
+.pbar-mini-btn {
+    width: clamp(4px, max(clamp(4px, 1.85vw, 20px), calc(20px + 0.01338 * (100vw - 2046px))), 44px) !important;
+    height: clamp(4px, max(clamp(4px, 1.85vw, 20px), calc(20px + 0.01338 * (100vw - 2046px))), 44px) !important;
+    border-radius: 50% !important;
+}
+
+.pbar-mini-btn i,
+.pbar-mini-btn svg {
+    width: clamp(2px, max(clamp(2px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px) !important;
+    height: clamp(2px, max(clamp(2px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px) !important;
+}
+
+/* Compact Volume Icons */
+
+.pbar-vol-icon {
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    width: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
+    height: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
+    color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    outline: none;
+    padding: 0;
+}
+
+.pbar-vol-icon svg {
+    width: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
+    height: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
+}
+
+.pbar-vol-icon:hover {
+    background: #ffffff;
+    color: #131313;
+    border-color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* White active state for non-favorite, non-pin, non-autotune-toggle buttons */
+.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn):not(.pbar-autotune-toggle-btn) {
+    background: #ffffff !important;
+    color: #131313 !important;
+    border-color: #ffffff !important;
+}
+
+.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn):not(.pbar-autotune-toggle-btn) i,
+.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn):not(.pbar-autotune-toggle-btn) svg {
+    color: #131313 !important;
+    stroke: #131313 !important;
+}
+
+#pbar-mute.active {
+    background: #ffffff !important;
+    color: #131313 !important;
+    border-color: #ffffff !important;
+}
+
+#pbar-mute.active i,
+#pbar-mute.active svg {
+    color: #131313 !important;
+    stroke: #131313 !important;
+}
+
+.pbar-zap-btn:hover {
+    background: #ffffff !important;
+    color: #131313 !important;
+    border-color: #ffffff !important;
+}
+
+.pbar-zap-btn:hover i,
+.pbar-zap-btn:hover svg {
+    color: #131313 !important;
+    stroke: #131313 !important;
+}
+
+/* Player Bar Hover Trigger */
+.hover-trigger.bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(400px, max(clamp(400px, 60.19vw, 650px), calc(650px + 0.47380 * (100vw - 2046px))), 1500px);
+    height: clamp(110px, max(clamp(110px, 16.67vw, 180px), calc(180px + 0.06689 * (100vw - 2046px))), 300px);
+}
+
 /* --- JTV v2.0 VOD Layout & Styling --- */
 
 /* Dashboard Header Row: nav buttons only — X is absolute on card */
@@ -3947,129 +4070,6 @@ body:not(.dev-mode) .dev-indicator {
 /* Volume HUD Pill Badge */
 .volume-badge {
     display: none !important;
-}
-
-/* HUD Center Block (Vol up / Prev-Mute-Next row / Vol down) */
-.pbar-center-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
-}
-
-.pbar-center-row {
-    display: flex;
-    align-items: center;
-    gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00111 * (100vw - 2046px))), 6px);
-}
-
-/* Top row of the center column: Fav (left) — channel up (center) — Pin (right) */
-.pbar-top-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 100%;
-}
-
-/* Bottom row: autotune toggle (left) — settings (right) */
-.pbar-bottom-row {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: 100%;
-}
-
-/* Mini buttons (Fav & Pin) */
-.pbar-mini-float {
-    display: flex;
-}
-
-.pbar-mini-btn {
-    width: clamp(4px, max(clamp(4px, 1.85vw, 20px), calc(20px + 0.01338 * (100vw - 2046px))), 44px) !important;
-    height: clamp(4px, max(clamp(4px, 1.85vw, 20px), calc(20px + 0.01338 * (100vw - 2046px))), 44px) !important;
-    border-radius: 50% !important;
-}
-
-.pbar-mini-btn i,
-.pbar-mini-btn svg {
-    width: clamp(2px, max(clamp(2px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px) !important;
-    height: clamp(2px, max(clamp(2px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px) !important;
-}
-
-/* Compact Volume Icons */
-
-.pbar-vol-icon {
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    width: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
-    height: clamp(12px, max(clamp(12px, 2.96vw, 32px), calc(32px + 0.01784 * (100vw - 2046px))), 64px);
-    color: rgba(255, 255, 255, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 50%;
-    outline: none;
-    padding: 0;
-}
-
-.pbar-vol-icon svg {
-    width: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
-    height: clamp(6px, max(clamp(6px, 1.85vw, 20px), calc(20px + 0.00780 * (100vw - 2046px))), 34px);
-}
-
-.pbar-vol-icon:hover {
-    background: #ffffff;
-    color: #131313;
-    border-color: #ffffff;
-    transform: scale(1.1);
-}
-
-/* White active state for non-favorite, non-pin, non-autotune-toggle buttons */
-.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn):not(.pbar-autotune-toggle-btn) {
-    background: #ffffff !important;
-    color: #131313 !important;
-    border-color: #ffffff !important;
-}
-
-.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn):not(.pbar-autotune-toggle-btn) i,
-.pbar-action-btn.active:not(.pbar-fav-btn):not(.pbar-pin-btn):not(.pbar-autotune-toggle-btn) svg {
-    color: #131313 !important;
-    stroke: #131313 !important;
-}
-
-#pbar-mute.active {
-    background: #ffffff !important;
-    color: #131313 !important;
-    border-color: #ffffff !important;
-}
-
-#pbar-mute.active i,
-#pbar-mute.active svg {
-    color: #131313 !important;
-    stroke: #131313 !important;
-}
-
-.pbar-zap-btn:hover {
-    background: #ffffff !important;
-    color: #131313 !important;
-    border-color: #ffffff !important;
-}
-
-.pbar-zap-btn:hover i,
-.pbar-zap-btn:hover svg {
-    color: #131313 !important;
-    stroke: #131313 !important;
-}
-
-/* Player Bar Hover Trigger */
-.hover-trigger.bottom {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: clamp(400px, max(clamp(400px, 60.19vw, 650px), calc(650px + 0.47380 * (100vw - 2046px))), 1500px);
-    height: clamp(110px, max(clamp(110px, 16.67vw, 180px), calc(180px + 0.06689 * (100vw - 2046px))), 300px);
 }
 
 /* Top Navigation HUD */
