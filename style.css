@@ -762,7 +762,8 @@ body.player-active .edge-mask {
     display: none !important;
 }
 
-.filters-header i {
+.filters-header i,
+.filters-header svg {
     width: 16px;
     height: 16px;
     color: #ffffff;
@@ -988,7 +989,8 @@ body.player-active .edge-mask {
     border-radius: 50%;
 }
 
-.side-action-btn.favorite.edit-mode i {
+.side-action-btn.favorite.edit-mode i,
+.side-action-btn.favorite.edit-mode svg {
     width: 28px;
     height: 28px;
 }
@@ -1584,7 +1586,8 @@ body.player-active .edge-mask {
     background: #111;
 }
 
-.guide-channel i {
+.guide-channel i,
+.guide-channel svg {
     width: 16px;
     height: 16px;
     opacity: 0.5;
@@ -2065,7 +2068,8 @@ body.hide-cursor * {
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.dash-nav-btn i {
+.dash-nav-btn i,
+.dash-nav-btn svg {
     width: 18px;
     height: 18px;
 }
@@ -2119,7 +2123,8 @@ body.hide-cursor * {
     font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
 }
 
-.search-container i {
+.search-container i,
+.search-container svg {
     width: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
     height: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
     color: rgba(255, 255, 255, 0.5);
