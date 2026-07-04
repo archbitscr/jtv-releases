@@ -1522,6 +1522,10 @@ body.player-active .edge-mask {
     border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 
+/* Nota: .settings-list tenia una segunda regla ~2400 lineas mas abajo
+   que solo redefinia margin-bottom (sin selector mas especifico) --
+   fusionada aqui conservando el orden para que la cascada de
+   margin-bottom no cambie. */
 .settings-list {
     display: flex;
     flex-wrap: wrap;
@@ -1529,6 +1533,7 @@ body.player-active .edge-mask {
     background: transparent;
     padding: 0;
     margin-bottom: clamp(10px, 1.39vw, 38px);
+    margin-bottom: clamp(12px, 1.85vw, 47px);
 }
 
 .settings-chip {
@@ -3980,10 +3985,6 @@ body:not(.dev-mode) .dev-indicator {
     font-size: clamp(0.5rem, 1.26vw, 2.02rem);
     color: rgba(255, 255, 255, 0.5);
     margin-bottom: clamp(15px, 2.31vw, 59px);
-}
-
-.settings-list {
-    margin-bottom: clamp(12px, 1.85vw, 47px);
 }
 
 /* Wallpaper Selection Grid */
