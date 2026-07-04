@@ -1134,8 +1134,13 @@ const LAND_GROUPS = [
   },
   {
     selector: '.land-item', comment: 'Channel list item',
-    template: (f) => `  border-radius: ${f('radius')};`,
-    items: [{ id: 'radius', label: 'border-radius', base: 15, min: 7, max: 20, unit: 'px' }]
+    template: (f) => [`  border-radius: ${f('radius')};`, `  padding: ${f('padV')} ${f('padR')} ${f('padV')} ${f('padL')};`].join('\n'),
+    items: [
+      { id: 'radius', label: 'border-radius',   base: 15, min: 7,  max: 20,  unit: 'px' },
+      { id: 'padV',   label: 'padding top/bot', base: 8,  min: 4,  max: 16,  unit: 'px' },
+      { id: 'padR',   label: 'padding right',   base: 36, min: 18, max: 72,  unit: 'px' },
+      { id: 'padL',   label: 'padding left',    base: 8,  min: 4,  max: 16,  unit: 'px' },
+    ]
   },
   {
     selector: '.land-item .land-logo', comment: 'Channel logo',

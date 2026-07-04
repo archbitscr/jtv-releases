@@ -916,7 +916,7 @@ body.player-active .edge-mask {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    padding: 8px 36px 8px 8px;
+    padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(18px, max(clamp(18px, 3.33vw, 36px), calc(36px + 0.02007 * (100vw - 2046px))), 72px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px);
     cursor: pointer;
     transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

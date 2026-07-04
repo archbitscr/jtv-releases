@@ -65,6 +65,7 @@
 /* Channel list item */
 .land-item {
   border-radius: clamp(7px, max(clamp(7px, 1.39vw, 15px), calc(15px + 0.00279 * (100vw - 2046px))), 20px);
+  padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(18px, max(clamp(18px, 3.33vw, 36px), calc(36px + 0.02007 * (100vw - 2046px))), 72px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px);
 }
 
 /* Channel logo */
