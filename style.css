@@ -508,6 +508,102 @@ body.player-active .edge-mask {
     transform: scale(1.2);
 }
 
+.side-action-btn.favorite.edit-mode {
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+}
+
+.side-action-btn.favorite.edit-mode i,
+.side-action-btn.favorite.edit-mode svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* Enhanced Scrollbars */
+.side-scroll-area {
+    flex: 1;
+    overflow-y: overlay;
+    padding-right: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Compact Menu Items */
+.side-channel-item {
+    position: relative;
+    padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px) clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+    margin-bottom: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+    border-radius: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00780 * (100vw - 2046px))), 20px);
+    display: flex;
+    align-items: center;
+    gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00780 * (100vw - 2046px))), 20px);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.side-channel-item:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.11);
+    transform: translateX(4px);
+}
+
+.side-channel-item.active {
+    background: rgba(0, 255, 204, 0.13) !important;
+    border-color: rgba(0, 255, 204, 0.35) !important;
+    box-shadow: inset 3px 0 0 var(--accent) !important;
+}
+
+.side-channel-info h4 { font-size: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px); font-weight: 500; color: #fff; margin-bottom: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00056 * (100vw - 2046px))), 3px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.side-channel-info .side-channel-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+    margin-top: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+    overflow: hidden;
+}
+.side-channel-info .side-epg-text {
+    font-size: clamp(6px, max(clamp(6px, 1.30vw, 14px), calc(14px + 0.00892 * (100vw - 2046px))), 30px);
+    color: rgba(255, 255, 255, 0.72);
+    font-weight: 500;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    flex: 1;
+}
+
+/* Sidebar channel ID tag (antes reutilizaba .pbar-filter-badge) */
+.side-channel-id {
+    display: inline-flex;
+    align-items: center;
+    padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px) clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00446 * (100vw - 2046px))), 12px);
+    font-size: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: clamp(0px, 0.05vw, 1px);
+}
+
+.side-channel-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
 /* Modal Overlay */
 .input-error {
     border-color: #ff4b4b !important;
@@ -981,31 +1077,6 @@ body.player-active .edge-mask {
 
 .fav-config h3 { margin-bottom: 0; }
 
-.side-action-btn.favorite.edit-mode {
-    width: 60px;
-    height: 60px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 50%;
-}
-
-.side-action-btn.favorite.edit-mode i,
-.side-action-btn.favorite.edit-mode svg {
-    width: 28px;
-    height: 28px;
-}
-
-/* Enhanced Scrollbars */
-.side-scroll-area {
-    flex: 1;
-    overflow-y: overlay;
-    padding-right: 5px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-
 .land-text-content {
     flex: 1;
     text-align: left;
@@ -1447,78 +1518,6 @@ body.player-active .edge-mask {
 }
 
 /* Card Enhancements */
-/* Compact Menu Items */
-.side-channel-item {
-    position: relative;
-    padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px) clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
-    margin-bottom: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
-    border-radius: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00780 * (100vw - 2046px))), 20px);
-    display: flex;
-    align-items: center;
-    gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00780 * (100vw - 2046px))), 20px);
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.side-channel-item:hover {
-    border-color: rgba(255, 255, 255, 0.18);
-    background: rgba(255, 255, 255, 0.11);
-    transform: translateX(4px);
-}
-
-.side-channel-item.active {
-    background: rgba(0, 255, 204, 0.13) !important;
-    border-color: rgba(0, 255, 204, 0.35) !important;
-    box-shadow: inset 3px 0 0 var(--accent) !important;
-}
-
-.side-channel-info h4 { font-size: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.01338 * (100vw - 2046px))), 40px); font-weight: 500; color: #fff; margin-bottom: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00056 * (100vw - 2046px))), 3px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.side-channel-info .side-channel-meta-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
-    margin-top: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
-    overflow: hidden;
-}
-.side-channel-info .side-epg-text {
-    font-size: clamp(6px, max(clamp(6px, 1.30vw, 14px), calc(14px + 0.00892 * (100vw - 2046px))), 30px);
-    color: rgba(255, 255, 255, 0.72);
-    font-weight: 500;
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0;
-    flex: 1;
-}
-
-/* Sidebar channel ID tag (antes reutilizaba .pbar-filter-badge) */
-.side-channel-id {
-    display: inline-flex;
-    align-items: center;
-    padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px) clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px);
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00446 * (100vw - 2046px))), 12px);
-    font-size: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.7);
-    pointer-events: none;
-    white-space: nowrap;
-    text-transform: uppercase;
-    letter-spacing: clamp(0px, 0.05vw, 1px);
-}
-
-.side-channel-actions {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-}
-
 .placeholder-circle {
     width: clamp(29px, 4.07vw, 113px);
     height: clamp(29px, 4.07vw, 113px);
