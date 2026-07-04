@@ -3,7 +3,7 @@ import { state } from '../state/appState.js';
 import { selectChannel, zapChannel, mountRemotePlayer, playVod, updatePlayerActiveState } from '../player/playerController.js';
 import { showModule, switchTab, showLiveLanding, hideMenu, hideEditPane } from '../ui/navigation.js';
 import { syncMenuScroll } from '../render/channelList.js';
-import { startInactivityTimers, clearInactivityTimers } from '../ui/inactivity.js';
+import { startInactivityTimers, clearInactivityTimers, startCursorTimer } from '../ui/inactivity.js';
 import { refreshVodContent, showVodDetails } from '../vod/vodContent.js';
 import { warmupVodCache } from '../vod/vodCache.js';
 import { hashPIN, verifyPIN, promptParentalPIN, isParentalTimeLocked, getCurrentPinCallback } from '../settings/parental.js';
@@ -672,19 +672,18 @@ export function setupEventListeners() {
         settingsScreenEl.onmouseleave = () => startInactivityTimers();
     }
 
-    const userActivityEvents = [
-        'mousemove', 'mousedown', 'mouseup', 'click', 'wheel', 'scroll',
-        'pointermove', 'pointerdown', 'pointerup',
-        'touchstart', 'touchmove', 'touchend',
-        'keydown', 'keypress', 'keyup'
-    ];
-    userActivityEvents.forEach(evtName => {
-        document.addEventListener(evtName, () => {
-            startInactivityTimers();
-            if ((evtName === 'mousemove' || evtName === 'pointermove') && !state.isHomeActive && !mainMenu.matches(':hover')) {
-                sourceSwitcher.classList.remove('hidden');
-            }
-        });
+    // Mouse movement un-hides the cursor and restarts only the cursor hide timer.
+    // Panel timers (pbar, topnav, sidebar) are NOT reset — panels activate via their trigger zones only.
+    document.addEventListener('mousemove', () => { document.body.classList.remove('hide-cursor'); startCursorTimer(); });
+    document.addEventListener('pointermove', () => { document.body.classList.remove('hide-cursor'); startCursorTimer(); });
+
+    // All other activity events reset all inactivity timers (panels + cursor).
+    ['mousedown', 'mouseup', 'click', 'wheel', 'scroll',
+     'pointerdown', 'pointerup',
+     'touchstart', 'touchmove', 'touchend',
+     'keydown', 'keypress', 'keyup'
+    ].forEach(evtName => {
+        document.addEventListener(evtName, () => startInactivityTimers());
     });
 
     // Top HUD navigation button clicks

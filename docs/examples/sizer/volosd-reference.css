@@ -1,0 +1,35 @@
+/* JTV Component Sizer — Transversals › .volosd-* */
+/* Base: 1080px  |  Threshold: 2046px  |  4K: 3840px */
+
+/* Vol OSD container */
+.volosd-indicator {
+  bottom: clamp(101px, max(clamp(101px, 13.89vw, 150px), calc(150px + 0.13043 * (100vw - 2046px))), 384px);
+  gap: clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01282 * (100vw - 2046px))), 38px);
+  padding: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px) clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.02062 * (100vw - 2046px))), 61px);
+  border-radius: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01728 * (100vw - 2046px))), 51px);
+}
+
+/* Vol icon */
+.volosd-indicator i,
+.volosd-indicator svg {
+  width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01561 * (100vw - 2046px))), 46px);
+  height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01561 * (100vw - 2046px))), 46px);
+}
+
+/* Progress bar track */
+.volosd-bar-container {
+  width: clamp(80px, max(clamp(80px, 11.11vw, 120px), calc(120px + 0.10424 * (100vw - 2046px))), 307px);
+  height: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
+  border-radius: clamp(2px, max(clamp(2px, 0.28vw, 3px), calc(3px + 0.00279 * (100vw - 2046px))), 8px);
+}
+
+/* Progress bar fill */
+.volosd-bar {
+  border-radius: clamp(2px, max(clamp(2px, 0.28vw, 3px), calc(3px + 0.00279 * (100vw - 2046px))), 8px);
+}
+
+/* Vol percentage text */
+.volosd-indicator span {
+  font-size: clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01338 * (100vw - 2046px))), 39px);
+  min-width: clamp(30px, max(clamp(30px, 4.17vw, 45px), calc(45px + 0.03902 * (100vw - 2046px))), 115px);
+}

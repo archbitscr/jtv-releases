@@ -48,7 +48,7 @@
 /* Dev controls container */
 .floating-controls-container {
   bottom: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
-  right: clamp(70px, max(clamp(70px, 11.11vw, 120px), calc(120px + 0.04459 * (100vw - 2046px))), 200px);
+  right: clamp(50px, max(clamp(50px, 11.11vw, 120px), calc(120px + 0.04459 * (100vw - 2046px))), 200px);
   border-radius: clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
 }
 

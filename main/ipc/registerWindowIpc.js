@@ -21,4 +21,12 @@ export function registerWindowIpc({ ipcMain, context }) {
     const win = context.windowManager.getMainWindow();
     return win ? win.isFullScreen() : false;
   });
+
+  ipcMain.handle(IPC.RESET_WINDOW_SIZE, () => {
+    const win = context.windowManager.getMainWindow();
+    if (!win) return;
+    if (win.isFullScreen()) win.setFullScreen(false);
+    win.setContentSize(1080, 720);
+    win.center();
+  });
 }

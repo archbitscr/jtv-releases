@@ -1,0 +1,94 @@
+/* JTV Component Sizer — Transversals › .modal-* */
+/* Base: 1080px  |  Threshold: 2046px  |  4K: 3840px */
+
+/* Backdrop blur */
+.modal-backdrop {
+  backdrop-filter: blur(clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01282 * (100vw - 2046px))), 38px));
+  -webkit-backdrop-filter: blur(clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01282 * (100vw - 2046px))), 38px));
+}
+
+/* Modal card */
+.modal-content {
+  padding: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.02620 * (100vw - 2046px))), 77px);
+  border-radius: clamp(11px, max(clamp(11px, 1.48vw, 16px), calc(16px + 0.01394 * (100vw - 2046px))), 41px);
+}
+
+/* Modal title */
+.modal-content h2 {
+  font-size: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01728 * (100vw - 2046px))), 51px);
+  margin-bottom: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px);
+}
+
+/* Modal body text */
+.modal-content p {
+  font-size: clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.01171 * (100vw - 2046px))), 35px);
+  margin-bottom: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01728 * (100vw - 2046px))), 51px);
+}
+
+/* Blocker modal card */
+.modal-blocker-content {
+  padding: clamp(30px, max(clamp(30px, 4.17vw, 45px), calc(45px + 0.03902 * (100vw - 2046px))), 115px);
+  gap: clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.02062 * (100vw - 2046px))), 61px);
+  border-radius: clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.02062 * (100vw - 2046px))), 61px);
+}
+
+/* Blocker icon */
+.modal-blocker-content svg {
+  width: clamp(43px, max(clamp(43px, 5.93vw, 64px), calc(64px + 0.05574 * (100vw - 2046px))), 164px);
+  height: clamp(43px, max(clamp(43px, 5.93vw, 64px), calc(64px + 0.05574 * (100vw - 2046px))), 164px);
+}
+
+/* Blocker title */
+.modal-blocker-content h2 {
+  font-size: clamp(19px, max(clamp(19px, 2.69vw, 29px), calc(29px + 0.02508 * (100vw - 2046px))), 74px);
+}
+
+/* Blocker body text */
+.modal-blocker-content p {
+  font-size: clamp(11px, max(clamp(11px, 1.48vw, 16px), calc(16px + 0.01394 * (100vw - 2046px))), 41px);
+}
+
+/* Blocker icon wrapper */
+.modal-blocker-icon {
+  margin: 0 auto clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01728 * (100vw - 2046px))), 51px) auto;
+}
+
+/* Blocker action button */
+.modal-blocker-btn {
+  margin: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01728 * (100vw - 2046px))), 51px) auto 0 auto;
+}
+
+/* Parental card */
+.modal-parental-card {
+  padding: clamp(18px, max(clamp(18px, 2.78vw, 30px), calc(30px + 0.02285 * (100vw - 2046px))), 71px) !important;
+}
+
+/* Parental icon */
+.modal-parental-icon {
+  width: clamp(28px, max(clamp(28px, 4.44vw, 48px), calc(48px + 0.03679 * (100vw - 2046px))), 114px) !important;
+  height: clamp(28px, max(clamp(28px, 4.44vw, 48px), calc(48px + 0.03679 * (100vw - 2046px))), 114px) !important;
+  margin: 0 auto clamp(9px, max(clamp(9px, 1.39vw, 15px), calc(15px + 0.01171 * (100vw - 2046px))), 36px) auto;
+}
+
+/* PIN input row */
+.modal-parental-input-container {
+  gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px);
+  margin: clamp(12px, max(clamp(12px, 1.85vw, 20px), calc(20px + 0.01505 * (100vw - 2046px))), 47px) 0;
+}
+
+/* PIN input field */
+.modal-parental-input {
+  font-size: clamp(14px, max(clamp(14px, 2.22vw, 24px), calc(24px + 0.01839 * (100vw - 2046px))), 57px) !important;
+  letter-spacing: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00446 * (100vw - 2046px))), 14px) !important;
+}
+
+/* PIN error message */
+.modal-parental-error {
+  font-size: clamp(8px, max(clamp(8px, 1.20vw, 13px), calc(13px + 0.01003 * (100vw - 2046px))), 31px);
+}
+
+/* Parental action buttons row */
+.modal-parental-actions {
+  gap: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px);
+  margin-top: clamp(12px, max(clamp(12px, 1.85vw, 20px), calc(20px + 0.01505 * (100vw - 2046px))), 47px);
+}

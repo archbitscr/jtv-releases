@@ -1,0 +1,178 @@
+/* JTV Component Sizer — Settings › .settings-* */
+/* Base: 1080px  |  Threshold: 2046px  |  4K: 3840px */
+
+/* Settings sidebar */
+.settings-sidebar {
+  width: clamp(107px, max(clamp(107px, 16.67vw, 180px), calc(180px + 0.13768 * (100vw - 2046px))), 427px);
+  padding: clamp(12px, max(clamp(12px, 1.85vw, 20px), calc(20px + 0.01505 * (100vw - 2046px))), 47px) clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px);
+}
+
+/* Sidebar heading */
+.settings-sidebar h2 {
+  font-size: clamp(14px, max(clamp(14px, 2.22vw, 24px), calc(24px + 0.01839 * (100vw - 2046px))), 57px);
+  margin-bottom: clamp(15px, max(clamp(15px, 2.31vw, 25px), calc(25px + 0.01895 * (100vw - 2046px))), 59px);
+  padding-left: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px);
+}
+
+/* Sidebar footer */
+.settings-sidebar-footer {
+  padding-top: clamp(11px, max(clamp(11px, 1.67vw, 18px), calc(18px + 0.01394 * (100vw - 2046px))), 43px);
+}
+
+/* Version info text */
+.settings-version-info {
+  font-size: clamp(7px, max(clamp(7px, 1.11vw, 12px), calc(12px + 0.00892 * (100vw - 2046px))), 28px);
+  padding-left: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px);
+  gap: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00167 * (100vw - 2046px))), 5px);
+}
+
+/* Tab list */
+.settings-tabs {
+  gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px);
+}
+
+/* Tab button */
+.settings-tab-btn {
+  padding: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px) clamp(7px, max(clamp(7px, 1.11vw, 12px), calc(12px + 0.00892 * (100vw - 2046px))), 28px);
+  font-size: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01115 * (100vw - 2046px))), 34px);
+  border-radius: clamp(7px, max(clamp(7px, 1.11vw, 12px), calc(12px + 0.00892 * (100vw - 2046px))), 28px);
+  gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px);
+}
+
+/* Tab button icon */
+.settings-tab-btn svg {
+  width: clamp(11px, max(clamp(11px, 1.67vw, 18px), calc(18px + 0.01394 * (100vw - 2046px))), 43px);
+  height: clamp(11px, max(clamp(11px, 1.67vw, 18px), calc(18px + 0.01394 * (100vw - 2046px))), 43px);
+}
+
+/* Sub-nav row */
+.settings-subnav {
+  gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px);
+  margin-bottom: clamp(13px, max(clamp(13px, 2.04vw, 22px), calc(22px + 0.01672 * (100vw - 2046px))), 52px);
+  padding-bottom: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px);
+}
+
+/* Sub-nav button */
+.settings-subnav-btn {
+  padding: clamp(4px, max(clamp(4px, 0.65vw, 7px), calc(7px + 0.00557 * (100vw - 2046px))), 17px) clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01059 * (100vw - 2046px))), 33px);
+  font-size: clamp(8px, max(clamp(8px, 1.20vw, 13px), calc(13px + 0.01003 * (100vw - 2046px))), 31px);
+  gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00446 * (100vw - 2046px))), 14px);
+}
+
+/* Sub-nav button icon */
+.settings-subnav-btn svg {
+  width: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01059 * (100vw - 2046px))), 33px);
+  height: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01059 * (100vw - 2046px))), 33px);
+}
+
+/* Main content area */
+.settings-main-content {
+  padding: clamp(9px, max(clamp(9px, 1.39vw, 15px), calc(15px + 0.01171 * (100vw - 2046px))), 36px) clamp(15px, max(clamp(15px, 2.31vw, 25px), calc(25px + 0.01895 * (100vw - 2046px))), 59px);
+}
+
+/* Section heading */
+.settings-sect-pane h3 {
+  font-size: clamp(13px, max(clamp(13px, 2.04vw, 22px), calc(22px + 0.01728 * (100vw - 2046px))), 53px);
+  margin-bottom: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00446 * (100vw - 2046px))), 14px);
+}
+
+/* Page title */
+.settings-sect-pane .settings-page-title {
+  font-size: clamp(12px, max(clamp(12px, 1.85vw, 20px), calc(20px + 0.01505 * (100vw - 2046px))), 47px);
+  margin-bottom: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px);
+}
+
+/* Setting row */
+.settings-sect-pane .setting-item {
+  gap: clamp(19px, max(clamp(19px, 2.96vw, 32px), calc(32px + 0.02453 * (100vw - 2046px))), 76px);
+  padding: clamp(11px, max(clamp(11px, 1.67vw, 18px), calc(18px + 0.01394 * (100vw - 2046px))), 43px) 0;
+}
+
+/* Setting info column */
+.settings-sect-pane .setting-item-info {
+  gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00279 * (100vw - 2046px))), 9px);
+}
+
+/* Setting title text */
+.settings-sect-pane .setting-title {
+  font-size: clamp(9px, max(clamp(9px, 1.39vw, 15px), calc(15px + 0.01171 * (100vw - 2046px))), 36px);
+}
+
+/* Setting description text */
+.settings-sect-pane .setting-desc {
+  font-size: clamp(8px, max(clamp(8px, 1.20vw, 13px), calc(13px + 0.01003 * (100vw - 2046px))), 31px);
+}
+
+/* Setting actions row */
+.settings-sect-pane .setting-item-actions {
+  gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px);
+}
+
+/* Action button */
+.settings-sect-pane .settings-action-btn {
+  padding: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px) clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01226 * (100vw - 2046px))), 38px);
+  font-size: clamp(8px, max(clamp(8px, 1.20vw, 13px), calc(13px + 0.01003 * (100vw - 2046px))), 31px);
+}
+
+/* Action button icon */
+.settings-sect-pane .settings-action-btn svg {
+  width: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01226 * (100vw - 2046px))), 38px);
+  height: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01226 * (100vw - 2046px))), 38px);
+}
+
+/* Select dropdown */
+.settings-select {
+  padding: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px) clamp(9px, max(clamp(9px, 1.48vw, 16px), calc(16px + 0.01226 * (100vw - 2046px))), 38px);
+  font-size: clamp(8px, max(clamp(8px, 1.20vw, 13px), calc(13px + 0.01003 * (100vw - 2046px))), 31px);
+}
+
+/* Toggle switch */
+.settings-sect-pane .settings-switch {
+  width: clamp(26px, max(clamp(26px, 4.07vw, 44px), calc(44px + 0.03344 * (100vw - 2046px))), 104px);
+  height: clamp(14px, max(clamp(14px, 2.22vw, 24px), calc(24px + 0.01839 * (100vw - 2046px))), 57px);
+}
+
+/* Switch thumb */
+.settings-sect-pane .settings-switch-slider::before {
+  width: clamp(11px, max(clamp(11px, 1.67vw, 18px), calc(18px + 0.01394 * (100vw - 2046px))), 43px);
+  height: clamp(11px, max(clamp(11px, 1.67vw, 18px), calc(18px + 0.01394 * (100vw - 2046px))), 43px);
+  left: clamp(2px, max(clamp(2px, 0.28vw, 3px), calc(3px + 0.00223 * (100vw - 2046px))), 7px); bottom: clamp(2px, max(clamp(2px, 0.28vw, 3px), calc(3px + 0.00223 * (100vw - 2046px))), 7px);
+}
+
+/* Switch thumb (checked) */
+.settings-sect-pane .settings-switch input:checked + .settings-switch-slider::before {
+  transform: translateX(clamp(12px, max(clamp(12px, 1.85vw, 20px), calc(20px + 0.01505 * (100vw - 2046px))), 47px));
+}
+
+/* Settings list */
+.settings-list {
+  gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
+  margin-bottom: clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01282 * (100vw - 2046px))), 38px);
+}
+
+/* Chip tag */
+.settings-chip {
+  padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px) clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px);
+  border-radius: clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01282 * (100vw - 2046px))), 38px);
+  font-size: clamp(11px, max(clamp(11px, 1.48vw, 16px), calc(16px + 0.01394 * (100vw - 2046px))), 41px);
+  gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
+}
+
+/* Chip icon */
+.settings-chip svg {
+  max-width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01561 * (100vw - 2046px))), 46px);
+  max-height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01561 * (100vw - 2046px))), 46px);
+}
+
+/* Close button */
+.settings-close {
+  top: clamp(12px, max(clamp(12px, 1.85vw, 20px), calc(20px + 0.01505 * (100vw - 2046px))), 47px);
+  right: clamp(12px, max(clamp(12px, 1.85vw, 20px), calc(20px + 0.01505 * (100vw - 2046px))), 47px);
+  font-size: clamp(17px, max(clamp(17px, 2.69vw, 29px), calc(29px + 0.02174 * (100vw - 2046px))), 68px);
+}
+
+/* Close icon */
+.settings-close svg {
+  width: clamp(17px, max(clamp(17px, 2.69vw, 29px), calc(29px + 0.02174 * (100vw - 2046px))), 68px);
+  height: clamp(17px, max(clamp(17px, 2.69vw, 29px), calc(29px + 0.02174 * (100vw - 2046px))), 68px);
+}

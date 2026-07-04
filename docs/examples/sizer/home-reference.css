@@ -1,0 +1,27 @@
+/* JTV Component Sizer — Home › .home-* */
+/* Base: 1080px  |  Threshold: 2046px  |  4K: 3840px */
+
+/* Cards container */
+.home-cards-container {
+  gap: clamp(14px, max(clamp(14px, 2.22vw, 24px), calc(24px + 0.01839 * (100vw - 2046px))), 57px);
+}
+
+/* Channel card */
+.home-card {
+  flex: 0 0 clamp(107px, max(clamp(107px, 16.67vw, 180px), calc(180px + 0.13768 * (100vw - 2046px))), 427px);
+  width: clamp(107px, max(clamp(107px, 16.67vw, 180px), calc(180px + 0.13768 * (100vw - 2046px))), 427px);
+  border-radius: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01728 * (100vw - 2046px))), 51px);
+}
+
+/* Card header overlay */
+.home-card-header {
+  top: clamp(59px, max(clamp(59px, 9.26vw, 100px), calc(100px + 0.07637 * (100vw - 2046px))), 237px);
+  left: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01226 * (100vw - 2046px))), 38px); right: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01226 * (100vw - 2046px))), 38px);
+  padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px) clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
+  gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px);
+}
+
+/* Card title */
+.home-card h2 {
+  font-size: clamp(11px, max(clamp(11px, 1.76vw, 19px), calc(19px + 0.01449 * (100vw - 2046px))), 45px);
+}

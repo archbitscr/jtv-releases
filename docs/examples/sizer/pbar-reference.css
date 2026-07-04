@@ -3,7 +3,7 @@
 
 /* Player Bar container */
 .pbar {
-  width: clamp(389px, max(clamp(389px, 53.70vw, 580px), calc(580px + 0.40134 * (100vw - 2046px))), 1300px);
+  width: clamp(344px, max(clamp(344px, 53.70vw, 580px), calc(580px + 0.40134 * (100vw - 2046px))), 1300px);
   padding: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00892 * (100vw - 2046px))), 32px) clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00892 * (100vw - 2046px))), 32px) clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00892 * (100vw - 2046px))), 32px) clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
   gap: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.00557 * (100vw - 2046px))), 30px);
   border-radius: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.00780 * (100vw - 2046px))), 30px) clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.00780 * (100vw - 2046px))), 30px) 0 0 !important;

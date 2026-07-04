@@ -41,5 +41,6 @@
   "GET_DIAGNOSTICS_ENABLED": "get-diagnostics-enabled",
   "SET_DIAGNOSTICS_ENABLED": "set-diagnostics-enabled",
   "OPEN_DEVTOOLS": "open-devtools",
-  "RELOAD_WINDOW": "reload-window"
+  "RELOAD_WINDOW": "reload-window",
+  "RESET_WINDOW_SIZE": "reset-window-size"
 }

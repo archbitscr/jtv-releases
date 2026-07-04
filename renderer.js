@@ -12,8 +12,11 @@ if (import.meta.hot) {
       _devOverrides.set(sel, m[2].trim())
     }
     let el = document.getElementById('__jtv-dev-css')
-    if (!el) { el = document.createElement('style'); el.id = '__jtv-dev-css'; document.head.appendChild(el) }
+    if (!el) { el = document.createElement('style'); el.id = '__jtv-dev-css'; }
+    else { el.remove(); }
     el.textContent = [..._devOverrides.entries()].map(([s, b]) => `${s} { ${b} }`).join('\n')
+    document.head.appendChild(el)
+    console.log('[JTV] jtv:css applied —', _devOverrides.size, 'rule(s)')
   })
 }
 import defaultChannels from './data/defaultChannels.json';

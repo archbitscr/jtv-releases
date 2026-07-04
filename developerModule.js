@@ -333,6 +333,18 @@ export async function initDeveloperFeatures() {
         };
     }
 
+    const resetWindowSizeBtn = document.getElementById('reset-window-size-btn');
+    if (resetWindowSizeBtn) {
+        resetWindowSizeBtn.onclick = async () => {
+            if (!devModeAvailable || !developerModeEnabled) return;
+            try {
+                await nativeApi.resetWindowSize();
+            } catch (e) {
+                console.error('[DeveloperModule] Failed calling resetWindowSize:', e);
+            }
+        };
+    }
+
     const reloadWindowBtn = document.getElementById('reload-window-btn');
     if (reloadWindowBtn) {
         reloadWindowBtn.onclick = async () => {
@@ -802,6 +814,7 @@ export function updateDeveloperUI() {
     const diagToggle = document.getElementById('diagnostics-toggle');
     const clickDiagToggle = document.getElementById('diagnostic-clicks-toggle');
     const openDevtoolsBtn = document.getElementById('open-devtools-btn');
+    const resetWindowSizeBtnUI = document.getElementById('reset-window-size-btn');
     const reloadWindowBtn = document.getElementById('reload-window-btn');
     const powerOffBtn = document.getElementById('power-off-btn');
     const powerHoverZone = document.getElementById('corner-power-zone');
@@ -837,16 +850,19 @@ export function updateDeveloperUI() {
     const isOnboardingVisible = onboardingModal && !onboardingModal.classList.contains('hidden');
 
     if (isLoaderVisible || isOnboardingVisible) {
+        if (resetWindowSizeBtnUI) resetWindowSizeBtnUI.style.display = 'none';
         if (reloadWindowBtn) reloadWindowBtn.style.display = 'none';
         if (powerOffBtn) powerOffBtn.style.display = 'none';
     } else {
         if (developerModeEnabled) {
+            if (resetWindowSizeBtnUI) resetWindowSizeBtnUI.style.display = 'flex';
             if (reloadWindowBtn) reloadWindowBtn.style.display = 'flex';
             if (powerOffBtn) {
                 powerOffBtn.style.display = 'flex';
                 powerOffBtn.classList.remove('neon-white');
             }
         } else {
+            if (resetWindowSizeBtnUI) resetWindowSizeBtnUI.style.display = 'none';
             if (reloadWindowBtn) reloadWindowBtn.style.display = 'none';
             if (powerOffBtn) powerOffBtn.style.display = 'none';
         }

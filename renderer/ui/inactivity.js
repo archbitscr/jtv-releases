@@ -119,3 +119,23 @@ export function startInactivityTimers() {
         }
     }
 }
+
+// Resets only the cursor hide timer — safe to call on mousemove without disturbing panel timers.
+export function startCursorTimer() {
+    if (!timeouts) return;
+    timeouts.clear('cursor');
+    const mainMenu = document.getElementById('side-menu');
+    const sourceSwitcher = document.getElementById('pbar');
+    const hasChannel = !!(state.activeChannelId && !state.isVodPlaying);
+    const cfg = window.timeoutsConfig || {};
+    const cursorEnabled = hasChannel ? cfg.cursorActiveEnabled : cfg.cursorInactiveEnabled;
+    if (!cursorEnabled) return;
+    const rawCursorDelay = hasChannel ? cfg.cursorActive : cfg.cursorInactive;
+    const zappingDelay = (cfg.zappingHUDEnabled && sourceSwitcher && !sourceSwitcher.classList.contains('hidden')) ? (cfg.zappingHUD || 0) : 0;
+    const cursorDelay = Math.max(rawCursorDelay, zappingDelay + 100);
+    timeouts.set('cursor', () => {
+        if (!state.isHomeActive && mainMenu && mainMenu.classList.contains('hidden') && (!sourceSwitcher || sourceSwitcher.classList.contains('hidden'))) {
+            document.body.classList.add('hide-cursor');
+        }
+    }, cursorDelay);
+}

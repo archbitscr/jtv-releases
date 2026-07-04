@@ -30,7 +30,8 @@ const IPC = {
     GET_DIAGNOSTICS_ENABLED: 'get-diagnostics-enabled',
     SET_DIAGNOSTICS_ENABLED: 'set-diagnostics-enabled',
     OPEN_DEVTOOLS: 'open-devtools',
-    RELOAD_WINDOW: 'reload-window'
+    RELOAD_WINDOW: 'reload-window',
+    RESET_WINDOW_SIZE: 'reset-window-size'
 };
 
 function subscribe(channel, callback) {
@@ -72,6 +73,7 @@ contextBridge.exposeInMainWorld('jtvAPI', {
     setDiagnosticsEnabled: (enabled) => ipcRenderer.invoke(IPC.SET_DIAGNOSTICS_ENABLED, enabled),
     openDevtools: () => ipcRenderer.invoke(IPC.OPEN_DEVTOOLS),
     reloadWindow: () => ipcRenderer.invoke(IPC.RELOAD_WINDOW),
+    resetWindowSize: () => ipcRenderer.invoke(IPC.RESET_WINDOW_SIZE),
     relaunch: () => ipcRenderer.invoke('relaunch'),
     googleLogin: () => ipcRenderer.invoke('google-login'),
     getNetworkDate: (streamUrl) => ipcRenderer.invoke('get-network-date', streamUrl),

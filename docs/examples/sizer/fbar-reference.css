@@ -1,0 +1,30 @@
+/* JTV Component Sizer — Live TV › .fbar-* */
+/* Base: 1080px  |  Threshold: 2046px  |  4K: 3840px */
+
+/* Filter select button */
+.fbar-select-btn {
+  gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
+}
+
+/* Chevron icon */
+.fbar-chevron {
+  width: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px) !important;
+  height: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px) !important;
+}
+
+/* Dropdown menu */
+.fbar-select-menu {
+  border-radius: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px);
+  max-height: clamp(134px, max(clamp(134px, 18.52vw, 200px), calc(200px + 0.17391 * (100vw - 2046px))), 512px);
+}
+
+/* Dropdown option */
+.fbar-select-option {
+  padding: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.01226 * (100vw - 2046px))), 36px);
+  font-size: clamp(9px, max(clamp(9px, 1.20vw, 13px), calc(13px + 0.01115 * (100vw - 2046px))), 33px);
+}
+
+/* Option hover indent */
+.fbar-select-option:hover {
+  padding-left: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01728 * (100vw - 2046px))), 51px);
+}

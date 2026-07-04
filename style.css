@@ -927,24 +927,6 @@ body.player-active .edge-mask {
     accent-color: var(--accent);
 }
 
-/* Live TV Landing/Grid Dashboard */
-.land-dashboard {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: clamp(60px, max(clamp(60px, 9.26vw, 100px), calc(100px + 0.05574 * (100vw - 2046px))), 200px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
-    background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
-    
-    /* Smooth Transition */
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-    opacity: 1;
-    transform: scale(1);
-    pointer-events: auto;
-}
-
 .land-dashboard.hidden {
     display: flex !important;
     opacity: 0;
@@ -1159,11 +1141,12 @@ body.player-active .edge-mask {
 
 .land-fav-indicator i,
 .land-fav-indicator svg {
-    width: clamp(8px, max(clamp(8px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 18px);
-    height: clamp(8px, max(clamp(8px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 18px);
+    width: clamp(8px, max(clamp(8px, 0.93vw, 10px), calc(10px + 0.01003 * (100vw - 2046px))), 28px);
+    height: clamp(8px, max(clamp(8px, 0.93vw, 10px), calc(10px + 0.01003 * (100vw - 2046px))), 28px);
     fill: currentColor;
 }
 
+/* Live TV Landing/Grid Dashboard */
 /* Nota: .land-dashboard tenia dos reglas separadas (una de layout base,
    otra de posicionamiento absoluto+fondo) que se fusionaron aqui en una
    sola conservando el mismo orden de declaraciones -- por eso hay
@@ -1176,7 +1159,7 @@ body.player-active .edge-mask {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: clamp(60px, max(clamp(60px, 9.26vw, 100px), calc(100px + 0.05574 * (100vw - 2046px))), 200px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
+    padding: clamp(60px, max(clamp(60px, 9.26vw, 100px), calc(100px + 0.02787 * (100vw - 2046px))), 150px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
     background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
     transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     opacity: 1;
@@ -1203,10 +1186,10 @@ body.player-active .edge-mask {
 .land-top-row {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr var(--center-nav-width) 1fr;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     column-gap: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
     align-items: flex-start;
-    margin-bottom: clamp(4px, max(clamp(4px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px);
+    margin-bottom: clamp(4px, max(clamp(4px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
 }
 
 .land-title-block {
@@ -1285,6 +1268,10 @@ body.player-active .edge-mask {
     font-family: 'Outfit', sans-serif !important;
     letter-spacing: -0.8px !important;
     margin: 0 !important;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .land-title.hidden {
@@ -1302,6 +1289,7 @@ body.player-active .edge-mask {
     cursor: pointer !important;
     align-self: flex-end;
     transition: transform 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
 }
 
 .land-exit-btn:hover {
@@ -1425,7 +1413,7 @@ body.player-active .edge-mask {
 .fbar-select-btn {
     display: flex;
     align-items: center;
-    gap: clamp(4px, 0.56vw, 15px);
+    gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
     white-space: nowrap;
 }
 
@@ -1436,8 +1424,8 @@ body.player-active .edge-mask {
 }
 
 .fbar-chevron {
-    width: clamp(8px, 1.11vw, 31px) !important;
-    height: clamp(8px, 1.11vw, 31px) !important;
+    width: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px) !important;
+    height: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px) !important;
     transition: transform 0.2s ease;
     flex-shrink: 0;
 }
@@ -1448,17 +1436,17 @@ body.player-active .edge-mask {
 
 .fbar-select-menu {
     position: absolute;
-    top: calc(100% + clamp(4px, 0.56vw, 15px));
+    top: calc(100% + clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px));
     left: 0;
     min-width: 100%;
     background: rgba(15, 15, 15, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: clamp(5px, 0.74vw, 20px);
+    border-radius: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     z-index: 10000;
-    max-height: clamp(134px, 18.52vw, 512px);
+    max-height: clamp(134px, max(clamp(134px, 18.52vw, 200px), calc(200px + 0.17391 * (100vw - 2046px))), 512px);
     overflow-y: auto;
     animation: dropdownFadeIn 0.15s ease;
 }
@@ -1474,10 +1462,10 @@ body.player-active .edge-mask {
 }
 
 .fbar-select-option {
-    padding: clamp(5px, 0.74vw, 20px) clamp(9px, 1.30vw, 36px);
+    padding: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.01226 * (100vw - 2046px))), 36px);
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
-    font-size: clamp(0.54rem, 1.20vw, 2.08rem);
+    font-size: clamp(9px, max(clamp(9px, 1.20vw, 13px), calc(13px + 0.01115 * (100vw - 2046px))), 33px);
     font-weight: 400;
     font-family: inherit;
     transition: background 0.18s ease, color 0.18s ease, padding-left 0.18s ease;
@@ -1488,7 +1476,7 @@ body.player-active .edge-mask {
 .fbar-select-option:hover {
     background: rgba(255, 255, 255, 0.07);
     color: rgba(255, 255, 255, 0.95);
-    padding-left: clamp(13px, 1.85vw, 51px);
+    padding-left: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01728 * (100vw - 2046px))), 51px);
 }
 
 .fbar-select-option.selected {
@@ -1814,7 +1802,7 @@ body.hide-cursor * {
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 1000;
-    width: clamp(389px, max(clamp(389px, 53.70vw, 580px), calc(580px + 0.40134 * (100vw - 2046px))), 1300px);
+    width: clamp(344px, max(clamp(344px, 53.70vw, 580px), calc(580px + 0.40134 * (100vw - 2046px))), 1300px);
 
     display: flex;
     flex-direction: row;
@@ -5262,7 +5250,7 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 .floating-controls-container {
     position: fixed;
     bottom: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
-    right: clamp(70px, max(clamp(70px, 11.11vw, 120px), calc(120px + 0.04459 * (100vw - 2046px))), 200px);
+    right: clamp(50px, max(clamp(50px, 11.11vw, 120px), calc(120px + 0.04459 * (100vw - 2046px))), 200px);
     display: flex;
     flex-direction: row;
     gap: 0;

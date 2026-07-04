@@ -451,7 +451,7 @@ const PBAR_GROUPS = [
       `  border-radius: ${f('radius')} ${f('radius')} 0 0 !important;`,
     ].join('\n'),
     items: [
-      { id: 'width',  label: 'width',              base: 580, min: 389, max: 1300, unit: 'px' },
+      { id: 'width',  label: 'width',              base: 580, min: 344, max: 1300, unit: 'px' },
       { id: 'padTRB', label: 'padding T / R / B',  base: 16,  min: 8,   max: 32,   unit: 'px' },
       { id: 'padL',   label: 'padding Left',        base: 20,  min: 13,  max: 40,   unit: 'px' },
       { id: 'gap',    label: 'gap',                 base: 20,  min: 10,  max: 30,   unit: 'px' },
@@ -752,7 +752,7 @@ const CORNER_GROUPS = [
     ].join('\n'),
     items: [
       { id: 'bottom', label: 'bottom',        base: 20,  min: 10, max: 40,  unit: 'px' },
-      { id: 'right',  label: 'right',          base: 120, min: 70, max: 200, unit: 'px' },
+      { id: 'right',  label: 'right',          base: 120, min: 50, max: 200, unit: 'px' },
       { id: 'radius', label: 'border-radius', base: 10,  min: 5,  max: 20,  unit: 'px' },
     ]
   },
@@ -1055,7 +1055,7 @@ const LAND_GROUPS = [
     selector: '.land-dashboard', comment: 'Dashboard wrapper',
     template: (f) => `  padding: ${f('padT')} ${f('padS')} ${f('padS')} ${f('padS')};`,
     items: [
-      { id: 'padT', label: 'padding Top',        base: 100, min: 60, max: 200, unit: 'px' },
+      { id: 'padT', label: 'padding Top',        base: 100, min: 60, max: 150, unit: 'px' },
       { id: 'padS', label: 'padding R / B / L',  base: 40,  min: 20, max: 80,  unit: 'px' },
     ]
   },
@@ -1106,7 +1106,7 @@ const LAND_GROUPS = [
     template: (f) => [`  column-gap: ${f('gap')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
     items: [
       { id: 'gap',     label: 'column-gap',    base: 40, min: 20, max: 80, unit: 'px' },
-      { id: 'marginB', label: 'margin-bottom', base: 20, min: 4,  max: 60, unit: 'px' },
+      { id: 'marginB', label: 'margin-bottom', base: 20, min: 4,  max: 40, unit: 'px' },
     ]
   },
   {
@@ -1202,7 +1202,7 @@ const LAND_GROUPS = [
   {
     selector: '.land-fav-indicator i,\n.land-fav-indicator svg', comment: 'Fav heart icon',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 10, min: 8, max: 18, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 10, min: 8, max: 28, unit: 'px' }]
   },
   {
     selector: '.land-content', comment: 'Content area',
@@ -2125,6 +2125,28 @@ function handleImportFile(e) {
 
 renderTabs();
 renderContent();
+
+// Auto-import all *-reference.css files from the same directory on startup
+async function autoImportAll() {
+  const base = window.location.href.replace(/[^/]*$/, '');
+  let total = 0;
+  for (const tabId of Object.keys(COMPONENT_DATA)) {
+    if (!COMPONENT_DATA[tabId]) continue;
+    try {
+      const res = await fetch(`${base}${tabId}-reference.css`, { cache: 'no-store' });
+      if (!res.ok) continue;
+      const css = await res.text();
+      const blocks = parseCssBlocks(css);
+      const n = applyImportedBlocks(blocks, tabId);
+      total += n;
+    } catch { /* no reference file for this tab */ }
+  }
+  if (total > 0) {
+    renderContent(); // re-render active tab with loaded values
+    showToast(`✓ ${total} valores cargados desde reference files`);
+  }
+}
+autoImportAll();
 </script>
 </body>
 </html>

@@ -94,6 +94,8 @@ function jtvCssInjector() {
         let body = ''
         req.on('data', chunk => body += chunk)
         req.on('end', () => {
+          const clients = server.ws.clients?.size ?? '?'
+          console.log(`[jtv-css-injector] broadcasting jtv:css to ${clients} client(s), ${body.length} bytes`)
           server.ws.send({ type: 'custom', event: 'jtv:css', data: body })
           res.setHeader('Content-Type', 'application/json')
           res.end(JSON.stringify({ ok: true }))

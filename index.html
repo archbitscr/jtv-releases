@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=42">
+    <link rel="stylesheet" href="./style.css?v=46">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen (Tarea 11) -->
@@ -237,29 +237,29 @@
                         </div>
 
                         <div id="dashboard-filters" class="land-filter-row">
-                            <button id="land-nav-all" class="vod-filter-btn land-filter-btn">All</button>
-                            <button id="land-nav-favorites" class="vod-filter-btn land-filter-btn">Favorites</button>
+                            <button id="land-nav-all" class="land-filter-btn">All</button>
+                            <button id="land-nav-favorites" class="land-filter-btn">Favorites</button>
 
                             <!-- Unified filter dropdowns (shared by sidebar and landing) -->
                             <div class="fbar-select" data-for="filter-select-language">
                                 <select id="filter-select-language" aria-label="Language" data-label="Language" style="display:none;">
                                     <option value="all">All</option>
                                 </select>
-                                <button class="vod-filter-btn fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Language</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
+                                <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Language</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
                                 <div class="fbar-select-menu hidden"></div>
                             </div>
                             <div class="fbar-select" data-for="filter-select-genre">
                                 <select id="filter-select-genre" aria-label="Genre" data-label="Genre" style="display:none;">
                                     <option value="all">All</option>
                                 </select>
-                                <button class="vod-filter-btn fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Genre</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
+                                <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Genre</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
                                 <div class="fbar-select-menu hidden"></div>
                             </div>
                             <div class="fbar-select" data-for="filter-select-event">
                                 <select id="filter-select-event" aria-label="Event" data-label="Event" style="display:none;">
                                     <option value="all">All</option>
                                 </select>
-                                <button class="vod-filter-btn fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Event</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
+                                <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Event</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
                                 <div class="fbar-select-menu hidden"></div>
                             </div>
                         </div>
@@ -1412,6 +1412,9 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
     <div id="floating-controls-container" class="floating-controls-container" data-dev="true">
         <button id="glass-tuner-btn" class="floating-reload-btn" title="Glass Tuner" data-tooltip-pos="left" style="display: none;">
             <i data-lucide="palette"></i>
+        </button>
+        <button id="reset-window-size-btn" class="floating-reload-btn" title="Reset to 1080×720" data-tooltip-pos="left" style="display: none;">
+            <i data-lucide="expand"></i>
         </button>
         <button id="reload-window-btn" class="floating-reload-btn" title="Reload Window" data-tooltip-pos="left" style="display: none;">
             <i data-lucide="refresh-cw">↻</i>
