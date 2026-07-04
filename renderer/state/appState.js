@@ -167,7 +167,7 @@ export const state = {
     dashboardCategory: "All",
     isHomeActive: true,
     favPage: 0,
-    FAVS_PER_PAGE: 10,
+    FAVS_PER_PAGE: (() => { const h = window.innerHeight; return h <= 500 ? 8 : h > 1200 ? 20 : 10; })(),
 
     // UI & Flags
     activeSettingsFilterTab: "tv",

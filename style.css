@@ -6206,6 +6206,13 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
     }
 }
 
+/* ====== Responsive: Tall windows (>1200px height) ====== */
+@media (min-height: 1201px) {
+    .land-grid {
+        grid-template-rows: repeat(10, 1fr);
+    }
+}
+
 
 /* Event Assigner - fluid clamp values and layout details */
 #assigner-selection-count {

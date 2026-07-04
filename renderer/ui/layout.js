@@ -104,7 +104,7 @@ export async function handleResizeDimensions() {
     checkResolution();
     updatePlayerVideoBox();
 
-    const rows = window.innerHeight <= 500 ? 4 : 5;
+    const rows = window.innerHeight <= 500 ? 4 : window.innerHeight > 1200 ? 10 : 5;
     const newFavsPerPage = 2 * rows;
     if (state.FAVS_PER_PAGE !== newFavsPerPage) {
         state.FAVS_PER_PAGE = newFavsPerPage;
