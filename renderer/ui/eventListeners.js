@@ -1704,10 +1704,12 @@ export function setupEventListeners() {
 
     const hudPinBtn = document.getElementById('pbar-pin-btn');
     const hudSettingsBtn = document.getElementById('pbar-settings-btn');
+    const hudAutotuneToggleBtn = document.getElementById('pbar-autotune-toggle-btn');
 
     const devStateForHud = window.getDeveloperState ? window.getDeveloperState() : null;
     const isDevModeForHud = devStateForHud && devStateForHud.developerModeEnabled;
-    if (hudSettingsBtn) hudSettingsBtn.style.display = isDevModeForHud ? '' : 'none';
+    if (hudSettingsBtn) hudSettingsBtn.classList.toggle('dev-visible', !!isDevModeForHud);
+    if (hudAutotuneToggleBtn) hudAutotuneToggleBtn.classList.toggle('dev-visible', !!isDevModeForHud);
 
     if (hudPinBtn) {
         hudPinBtn.onclick = (e) => {

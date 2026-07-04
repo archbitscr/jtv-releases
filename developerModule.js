@@ -811,7 +811,10 @@ export function updateDeveloperUI() {
     if (devToggle) devToggle.checked = !!developerModeEnabled;
 
     const hudSettingsBtn = document.getElementById('pbar-settings-btn');
-    if (hudSettingsBtn) hudSettingsBtn.style.display = developerModeEnabled ? '' : 'none';
+    if (hudSettingsBtn) hudSettingsBtn.classList.toggle('dev-visible', !!developerModeEnabled);
+
+    const hudAutotuneToggleBtnVis = document.getElementById('pbar-autotune-toggle-btn');
+    if (hudAutotuneToggleBtnVis) hudAutotuneToggleBtnVis.classList.toggle('dev-visible', !!developerModeEnabled);
 
     const hudDevToggle = document.getElementById('hud-dev-controls-toggle');
     if (hudDevToggle) {

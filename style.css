@@ -1946,9 +1946,13 @@ body.hide-cursor * {
     margin-top: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px);
 }
 
+/* Hidden by default (only revealed by the dev module's inline style when
+   dev controls are toggled on) -- otherwise these audio/video indicators
+   overlap the channel filter badges in production, where the dev module
+   that normally manages this never runs. */
 .pbar-autotune-indicator {
     color: rgba(255, 255, 255, 0.25);
-    display: flex;
+    display: none;
     align-items: center;
     transition: all 0.2s;
 }
@@ -2127,6 +2131,23 @@ body.hide-cursor * {
 .pbar-action-btn.pbar-settings-btn:hover i,
 .pbar-action-btn.pbar-settings-btn:hover svg {
     filter: drop-shadow(0 0 8px #ffffff);
+}
+
+/* Dev-only bottom-row buttons: hidden via visibility (not display) so pbar-down
+   (channel down) keeps its centered position in the space-between row regardless
+   of which side buttons are shown. Revealed only when JS adds .dev-visible
+   (developer mode enabled) -- default state covers production, where the dev
+   module never runs to set this. */
+.pbar-autotune-toggle-btn,
+.pbar-settings-btn {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.pbar-autotune-toggle-btn.dev-visible,
+.pbar-settings-btn.dev-visible {
+    visibility: visible;
+    pointer-events: auto;
 }
 
 /* HUD Center Block (Vol up / Prev-Mute-Next row / Vol down) */
