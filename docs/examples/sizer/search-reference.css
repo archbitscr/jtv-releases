@@ -4,9 +4,8 @@
 /* Search bar */
 .search-container {
   border-radius: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01003 * (100vw - 2046px))), 30px);
-  padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00446 * (100vw - 2046px))), 14px) clamp(4px, max(clamp(4px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+  padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(4px, max(clamp(4px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
   gap: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
-  width: 100%;
 }
 
 /* Search input */
@@ -17,8 +16,8 @@
 /* Search icon */
 .search-container i,
 .search-container svg {
-  width: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
-  height: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+  width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+  height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
 }
 
 /* Clear button */

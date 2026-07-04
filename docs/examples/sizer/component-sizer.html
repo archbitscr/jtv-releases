@@ -1553,7 +1553,7 @@ const SEARCH_GROUPS = [
   {
     selector: '.search-container i,\n.search-container svg', comment: 'Search icon',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 20, min: 13, max: 40, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 20, min: 10, max: 40, unit: 'px' }]
   },
   {
     selector: '.search-clear-btn', comment: 'Clear button',
