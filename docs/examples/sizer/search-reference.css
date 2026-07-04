@@ -1,0 +1,31 @@
+/* JTV Component Sizer — Transversals › .search-* */
+/* Base: 1080px  |  Threshold: 2046px  |  4K: 3840px */
+
+/* Search bar */
+.search-container {
+  border-radius: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01003 * (100vw - 2046px))), 30px);
+  padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00446 * (100vw - 2046px))), 14px) clamp(4px, max(clamp(4px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+  gap: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
+}
+
+/* Search input */
+.search-container input {
+  font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+}
+
+/* Search icon */
+.search-container i {
+  width: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+  height: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+}
+
+/* Clear button */
+.search-clear-btn {
+  padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+}
+
+/* Clear icon */
+.search-clear-btn i {
+  width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+  height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+}

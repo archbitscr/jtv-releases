@@ -2098,9 +2098,9 @@ body.hide-cursor * {
     align-items: center;
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: clamp(8px, 1.11vw, 31px);
-    padding: clamp(4px, 0.56vw, 15px) clamp(8px, 1.11vw, 31px);
-    gap: clamp(7px, 0.93vw, 26px);
+    border-radius: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01003 * (100vw - 2046px))), 30px);
+    padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00446 * (100vw - 2046px))), 14px) clamp(4px, max(clamp(4px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+    gap: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
     width: 100%;
     max-width: none;
     margin: 0 auto;
@@ -2112,12 +2112,12 @@ body.hide-cursor * {
     color: white;
     outline: none;
     width: 100%;
-    font-size: clamp(0.67rem, 1.48vw, 2.56rem);
+    font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
 }
 
 .search-container i {
-    width: clamp(13px, 1.85vw, 51px);
-    height: clamp(13px, 1.85vw, 51px);
+    width: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+    height: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
     color: rgba(255, 255, 255, 0.5);
 }
 
@@ -2494,7 +2494,7 @@ body.hide-cursor * {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: clamp(1px, 0.19vw, 5px);
+    padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
     transition: color 0.2s;
 }
 
@@ -2504,8 +2504,8 @@ body.hide-cursor * {
 
 .search-clear-btn svg,
 .search-clear-btn i {
-    width: clamp(11px, 1.48vw, 41px);
-    height: clamp(11px, 1.48vw, 41px);
+    width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+    height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
 }
 
 /* Filter header changes */
@@ -6135,22 +6135,8 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
         max-width: 100%;
         min-width: 0;
     }
-    .land-title {
-        font-size: clamp(1.2rem, 4vw, 2rem) !important;
-    }
     .vod-controls {
         max-width: 100%;
-    }
-    .search-container {
-        padding: clamp(6px, 1.2vw, 12px) clamp(8px, 1.5vw, 18px);
-        border-radius: 8px;
-    }
-    .search-container input {
-        font-size: clamp(0.75rem, 2vw, 1rem);
-    }
-    .search-container i {
-        width: clamp(14px, 2.5vw, 20px);
-        height: clamp(14px, 2.5vw, 20px);
     }
     .land-content {
         max-width: 95vw;
