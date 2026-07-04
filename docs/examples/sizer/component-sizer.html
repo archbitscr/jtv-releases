@@ -1062,29 +1062,29 @@ const LAND_GROUPS = [
   {
     selector: '.land-grid', comment: 'Channel grid',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 10, min: 7, max: 26, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 10, min: 4, max: 16, unit: 'px' }]
   },
   {
     selector: '.land-carousel-wrapper', comment: 'Carousel wrapper',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 30, min: 20, max: 60, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 30, min: 15, max: 60, unit: 'px' }]
   },
   {
     selector: '.land-nav-btn', comment: '← → Flecha de paginación (botón)',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 40, min: 20, max: 80, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 40, min: 20, max: 60, unit: 'px' }]
   },
   {
     selector: '.land-nav-btn i,\n.land-nav-btn svg', comment: '← → Flecha de paginación (ícono)',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 40, min: 20, max: 80, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 40, min: 20, max: 60, unit: 'px' }]
   },
   {
     selector: '.land-nav', comment: 'Filter tab row (All / Favorites)',
     template: (f) => [`  gap: ${f('gap')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
     items: [
       { id: 'gap',     label: 'gap',           base: 10, min: 5,  max: 20, unit: 'px' },
-      { id: 'marginB', label: 'margin-bottom', base: 20, min: 5,  max: 50, unit: 'px' },
+      { id: 'marginB', label: 'margin-bottom', base: 20, min: 5,  max: 60, unit: 'px' },
     ]
   },
   {
@@ -1112,12 +1112,12 @@ const LAND_GROUPS = [
   {
     selector: '.land-title', comment: 'Section title',
     template: (f) => `  font-size: ${f('fontSize')} !important;`,
-    items: [{ id: 'fontSize', label: 'font-size', base: 40, min: 20, max: 80, unit: 'px' }]
+    items: [{ id: 'fontSize', label: 'font-size', base: 20, min: 10, max: 60, unit: 'px' }]
   },
   {
     selector: '.land-title-block', comment: 'Title block',
     template: (f) => `  padding-top: ${f('padT')};`,
-    items: [{ id: 'padT', label: 'padding-top', base: 2, min: 1, max: 4, unit: 'px' }]
+    items: [{ id: 'padT', label: 'padding-top', base: 4, min: 1, max: 8, unit: 'px' }]
   },
   {
     selector: '.land-exit-block', comment: 'Exit button block',
@@ -1136,8 +1136,8 @@ const LAND_GROUPS = [
     selector: '.land-item', comment: 'Channel list item',
     template: (f) => [`  border-radius: ${f('radius')};`, `  padding: ${f('padV')} ${f('padR')} ${f('padV')} ${f('padL')};`].join('\n'),
     items: [
-      { id: 'radius', label: 'border-radius',   base: 15, min: 7,  max: 20,  unit: 'px' },
-      { id: 'padV',   label: 'padding top/bot', base: 8,  min: 4,  max: 16,  unit: 'px' },
+      { id: 'radius', label: 'border-radius',   base: 16, min: 8,  max: 24,  unit: 'px' },
+      { id: 'padV',   label: 'padding top/bot', base: 8,  min: 4,  max: 12,  unit: 'px' },
       { id: 'padR',   label: 'padding right',   base: 36, min: 18, max: 72,  unit: 'px' },
       { id: 'padL',   label: 'padding left',    base: 8,  min: 4,  max: 16,  unit: 'px' },
     ]
@@ -1146,7 +1146,7 @@ const LAND_GROUPS = [
     selector: '.land-item .land-logo', comment: 'Channel logo',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`, `  margin-right: ${f('marginR')};`].join('\n'),
     items: [
-      { id: 'size',    label: 'width / height', base: 50, min: 30, max: 100, unit: 'px' },
+      { id: 'size',    label: 'width / height', base: 50, min: 30, max: 110, unit: 'px' },
       { id: 'marginR', label: 'margin-right',   base: 15, min: 7,  max: 30,  unit: 'px' },
     ]
   },
@@ -1532,12 +1532,14 @@ const SEARCH_GROUPS = [
       `  border-radius: ${f('radius')};`,
       `  padding: ${f('padV')} ${f('padH')};`,
       `  gap: ${f('gap')};`,
+      `  max-width: ${f('maxW')};`,
     ].join('\n'),
     items: [
-      { id: 'radius', label: 'border-radius', base: 12, min: 8,  max: 30, unit: 'px' },
-      { id: 'padV',   label: 'padding V',     base: 6,  min: 4,  max: 14, unit: 'px' },
-      { id: 'padH',   label: 'padding H',     base: 12, min: 4,  max: 24, unit: 'px' },
-      { id: 'gap',    label: 'gap',           base: 10, min: 7,  max: 26, unit: 'px' },
+      { id: 'radius', label: 'border-radius', base: 12,  min: 8,   max: 30,   unit: 'px' },
+      { id: 'padV',   label: 'padding V',     base: 6,   min: 4,   max: 14,   unit: 'px' },
+      { id: 'padH',   label: 'padding H',     base: 12,  min: 4,   max: 24,   unit: 'px' },
+      { id: 'gap',    label: 'gap',           base: 10,  min: 7,   max: 26,   unit: 'px' },
+      { id: 'maxW',   label: 'max-width',     base: 500, min: 300, max: 1000, unit: 'px' },
     ]
   },
   {
@@ -1546,7 +1548,7 @@ const SEARCH_GROUPS = [
     items: [{ id: 'fontSize', label: 'font-size', base: 20, min: 10, max: 40, unit: 'px' }]
   },
   {
-    selector: '.search-container i', comment: 'Search icon',
+    selector: '.search-container i,\n.search-container svg', comment: 'Search icon',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
     items: [{ id: 'size', label: 'width / height', base: 20, min: 13, max: 40, unit: 'px' }]
   },

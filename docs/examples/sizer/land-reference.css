@@ -8,18 +8,31 @@
 
 /* Channel grid */
 .land-grid {
-  gap: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
+  gap: clamp(4px, max(clamp(4px, 0.93vw, 10px), calc(10px + 0.00334 * (100vw - 2046px))), 16px);
 }
 
 /* Carousel wrapper */
 .land-carousel-wrapper {
-  gap: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.01672 * (100vw - 2046px))), 60px);
+  gap: clamp(15px, max(clamp(15px, 2.78vw, 30px), calc(30px + 0.01672 * (100vw - 2046px))), 60px);
 }
 
-/* Filter tab row */
+/* ← → Flecha de paginación (botón) */
+.land-nav-btn {
+  width: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.01115 * (100vw - 2046px))), 60px);
+  height: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.01115 * (100vw - 2046px))), 60px);
+}
+
+/* ← → Flecha de paginación (ícono) */
+.land-nav-btn i,
+.land-nav-btn svg {
+  width: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.01115 * (100vw - 2046px))), 60px);
+  height: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.01115 * (100vw - 2046px))), 60px);
+}
+
+/* Filter tab row (All / Favorites) */
 .land-nav {
   gap: clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
-  margin-bottom: clamp(5px, max(clamp(5px, 1.85vw, 20px), calc(20px + 0.01672 * (100vw - 2046px))), 50px);
+  margin-bottom: clamp(5px, max(clamp(5px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px);
 }
 
 /* Filter tab button (All / Favorites) */
@@ -27,12 +40,6 @@
   padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
   border-radius: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01672 * (100vw - 2046px))), 50px);
   font-size: clamp(7px, max(clamp(7px, 1.67vw, 18px), calc(18px + 0.00669 * (100vw - 2046px))), 30px);
-}
-
-/* Prev / Next arrow icon */
-.land-nav-btn i {
-  width: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
-  height: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
 }
 
 /* Top row (title + exit) */
@@ -43,12 +50,12 @@
 
 /* Section title */
 .land-title {
-  font-size: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) !important;
+  font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px) !important;
 }
 
 /* Title block */
 .land-title-block {
-  padding-top: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+  padding-top: clamp(1px, max(clamp(1px, 0.37vw, 4px), calc(4px + 0.00223 * (100vw - 2046px))), 8px);
 }
 
 /* Exit button block */
@@ -64,14 +71,14 @@
 
 /* Channel list item */
 .land-item {
-  border-radius: clamp(7px, max(clamp(7px, 1.39vw, 15px), calc(15px + 0.00279 * (100vw - 2046px))), 20px);
-  padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(18px, max(clamp(18px, 3.33vw, 36px), calc(36px + 0.02007 * (100vw - 2046px))), 72px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px);
+  border-radius: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00446 * (100vw - 2046px))), 24px);
+  padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00223 * (100vw - 2046px))), 12px) clamp(18px, max(clamp(18px, 3.33vw, 36px), calc(36px + 0.02007 * (100vw - 2046px))), 72px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00223 * (100vw - 2046px))), 12px) clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px);
 }
 
 /* Channel logo */
 .land-item .land-logo {
-  width: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.02787 * (100vw - 2046px))), 100px);
-  height: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.02787 * (100vw - 2046px))), 100px);
+  width: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.03344 * (100vw - 2046px))), 110px);
+  height: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.03344 * (100vw - 2046px))), 110px);
   margin-right: clamp(7px, max(clamp(7px, 1.39vw, 15px), calc(15px + 0.00836 * (100vw - 2046px))), 30px);
 }
 
