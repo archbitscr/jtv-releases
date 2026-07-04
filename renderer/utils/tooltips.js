@@ -169,7 +169,7 @@ export function initCustomTooltips() {
         if (!target) return;
 
         if (state.currentModule === 'live' && target.closest('#tnav-menu')) return;
-        if (state.currentModule === 'live' && target.closest('.land-nav')) return;
+        if (state.currentModule === 'live' && target.closest('.land-filter-row')) return;
 
         const text = getOrGenerateTooltip(target);
         if (!text || text.trim() === '') return;

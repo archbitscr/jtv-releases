@@ -30,13 +30,13 @@
 }
 
 /* Filter tab row (All / Favorites) */
-.land-nav {
+.land-filter-row {
   gap: clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
   margin-bottom: clamp(5px, max(clamp(5px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px);
 }
 
 /* Filter tab button (All / Favorites) */
-.land-nav button {
+.land-filter-btn {
   padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
   border-radius: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01672 * (100vw - 2046px))), 50px);
   font-size: clamp(7px, max(clamp(7px, 1.67vw, 18px), calc(18px + 0.00669 * (100vw - 2046px))), 30px);

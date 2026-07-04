@@ -4737,8 +4737,8 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     border-color: #00ffcc !important;
 }
 
-/* Home landing nav and dropdowns */
-.land-nav {
+/* Home landing filter row and dropdowns */
+.land-filter-row {
     display: flex;
     align-items: center;
     gap: clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
@@ -4746,7 +4746,7 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     flex-wrap: wrap;
 }
 
-.land-nav button {
+.land-filter-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.05);
     color: rgba(255, 255, 255, 0.7);
@@ -4758,14 +4758,14 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     transition: all 0.2s ease;
 }
 
-.land-nav button.active {
+.land-filter-btn.active {
     background: #ffffff;
     color: #000000;
     border-color: #ffffff;
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
-.land-nav button:hover:not(.active) {
+.land-filter-btn:hover:not(.active) {
     background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
 }

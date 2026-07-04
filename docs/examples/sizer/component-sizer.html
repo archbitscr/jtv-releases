@@ -1080,7 +1080,7 @@ const LAND_GROUPS = [
     items: [{ id: 'size', label: 'width / height', base: 40, min: 20, max: 60, unit: 'px' }]
   },
   {
-    selector: '.land-nav', comment: 'Filter tab row (All / Favorites)',
+    selector: '.land-filter-row', comment: 'Filter tab row (All / Favorites)',
     template: (f) => [`  gap: ${f('gap')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
     items: [
       { id: 'gap',     label: 'gap',           base: 10, min: 5,  max: 20, unit: 'px' },
@@ -1088,7 +1088,7 @@ const LAND_GROUPS = [
     ]
   },
   {
-    selector: '.land-nav button', comment: 'Filter tab button (All / Favorites)',
+    selector: '.land-filter-btn', comment: 'Filter tab button (All / Favorites)',
     template: (f) => [
       `  padding: ${f('padV')} ${f('padH')};`,
       `  border-radius: ${f('radius')};`,
