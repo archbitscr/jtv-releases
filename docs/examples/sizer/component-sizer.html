@@ -1068,7 +1068,17 @@ const LAND_GROUPS = [
     items: [{ id: 'gap', label: 'gap', base: 30, min: 20, max: 77, unit: 'px' }]
   },
   {
-    selector: '.land-nav', comment: 'Filter tab row',
+    selector: '.land-nav-btn', comment: '← → Flecha de paginación (botón)',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 40, min: 20, max: 80, unit: 'px' }]
+  },
+  {
+    selector: '.land-nav-btn i', comment: '← → Flecha de paginación (ícono)',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 40, min: 20, max: 80, unit: 'px' }]
+  },
+  {
+    selector: '.land-nav', comment: 'Filter tab row (All / Favorites)',
     template: (f) => [`  gap: ${f('gap')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
     items: [
       { id: 'gap',     label: 'gap',           base: 10, min: 5,  max: 20, unit: 'px' },
@@ -1088,11 +1098,6 @@ const LAND_GROUPS = [
       { id: 'radius',   label: 'border-radius', base: 20, min: 10, max: 50, unit: 'px' },
       { id: 'fontSize', label: 'font-size',     base: 18, min: 7,  max: 30, unit: 'px' },
     ]
-  },
-  {
-    selector: '.land-nav-btn i', comment: 'Prev / Next arrow icon',
-    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 40, min: 20, max: 80, unit: 'px' }]
   },
   {
     selector: '.land-top-row', comment: 'Top row (title + exit)',
