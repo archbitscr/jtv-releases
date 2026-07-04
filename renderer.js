@@ -78,7 +78,9 @@ window.timeoutsConfig = {
     failoverAltEnabled: true,
     watchdogFreeze: 2000,
     watchdogFreezeEnabled: true,
-    watchdogSilence: 10000
+    watchdogSilence: 10000,
+    landAutoHide: 8000,
+    landAutoHideEnabled: true
 };
 
 class TimeoutManager {

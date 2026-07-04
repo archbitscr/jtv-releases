@@ -547,6 +547,7 @@ export async function initDeveloperFeatures() {
     bindTimeoutInput('timeout-zappinghud', 'timeout-zappinghud-enabled', 'zappingHUD');
     bindTimeoutInput('timeout-cursor-active', 'timeout-cursor-active-enabled', 'cursorActive');
     bindTimeoutInput('timeout-cursor-inactive', 'timeout-cursor-inactive-enabled', 'cursorInactive');
+    bindTimeoutInput('timeout-land-auto-hide', 'timeout-land-auto-hide-enabled', 'landAutoHide');
     bindTimeoutInput('timeout-failover-main', 'timeout-failover-main-enabled', 'failoverMain');
     bindTimeoutInput('timeout-failover-alt', 'timeout-failover-alt-enabled', 'failoverAlt');
     bindTimeoutInput('timeout-watchdog-freeze', 'timeout-watchdog-freeze-enabled', 'watchdogFreeze');

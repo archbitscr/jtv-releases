@@ -12,6 +12,7 @@ export function clearInactivityTimers() {
     if (!timeouts) return;
     timeouts.clear('menu');
     timeouts.clear('home');
+    timeouts.clear('land');
     timeouts.clear('cursor');
     timeouts.clear('settings');
     timeouts.clear('zappingHUD');
@@ -105,5 +106,16 @@ export function startInactivityTimers() {
                 if (ext.showModule) ext.showModule('live');
             }
         }, homeDelay);
+    }
+
+    // 7. Live TV landing auto-hide when channel is playing
+    if (homeDashboard && !homeDashboard.classList.contains('hidden') && hasChannel) {
+        if (cfg.landAutoHideEnabled) {
+            timeouts.set('land', () => {
+                if (!homeDashboard.matches(':hover')) {
+                    homeDashboard.classList.add('hidden');
+                }
+            }, cfg.landAutoHide);
+        }
     }
 }
