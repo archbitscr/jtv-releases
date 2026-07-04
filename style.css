@@ -915,7 +915,7 @@ body.player-active .edge-mask {
     accent-color: var(--accent);
 }
 
-/* Home Dashboard */
+/* Live TV Landing/Grid Dashboard */
 .land-dashboard {
     width: 100%;
     height: 100%;
@@ -1152,36 +1152,28 @@ body.player-active .edge-mask {
     fill: currentColor;
 }
 
-/* Search Bar Upgrade */
-/* Video & Player Layering */
-#video-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: transparent;
-}
-
-#player-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
+/* Nota: .land-dashboard tenia dos reglas separadas (una de layout base,
+   otra de posicionamiento absoluto+fondo) que se fusionaron aqui en una
+   sola conservando el mismo orden de declaraciones -- por eso hay
+   propiedades repetidas (width, height, display, etc.): la segunda
+   tanda gana la cascada exactamente igual que antes de consolidar. */
 .land-dashboard {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(15,15,15,0.7), #050505);
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    padding: clamp(60px, max(clamp(60px, 9.26vw, 100px), calc(100px + 0.05574 * (100vw - 2046px))), 200px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
+    background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at center, rgba(15,15,15,0.7), #050505);
     z-index: 10;
     transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -1228,6 +1220,133 @@ body.player-active .edge-mask {
     justify-content: flex-end;
     padding-top: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
     justify-self: start;
+}
+
+/* .land-item used to have backdrop-filter (glass effect). Animating opacity
+   on an element with backdrop-filter made Chromium skip/delay the blur
+   compositing until the animation settled (~1s flat dark tint before the
+   glass effect "kicked in"). Root cause turned out to be backdrop-filter
+   itself, not the animation — removed from .land-item. No fade/slide-in for
+   these cards anymore to avoid reintroducing the issue. */
+.land-item.stagger-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+}
+
+.land-dot {
+    width: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+    height: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.land-dot:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.land-dot.active {
+    background: #fff;
+    transform: scale(1.25);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.land-item.empty {
+    background: transparent;
+    border: 1px dashed rgba(255,255,255,0.1);
+    box-shadow: none;
+}
+
+.land-item.empty:hover {
+    border-color: var(--accent);
+    background: rgba(0,255,255,0.02);
+}
+
+/* Modern Minimalist Section Title */
+.land-title {
+    position: static !important;
+    font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px) !important;
+    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-family: 'Outfit', sans-serif !important;
+    letter-spacing: -0.8px !important;
+    margin: 0 !important;
+}
+
+.land-title.hidden {
+    display: none !important;
+}
+
+.land-exit-btn {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-top: clamp(1px, max(clamp(1px, 0.46vw, 5px), calc(5px + 0.00279 * (100vw - 2046px))), 10px) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: 700 !important;
+    font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px) !important;
+    cursor: pointer !important;
+    align-self: flex-end;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.land-exit-btn:hover {
+    transform: scale(1.18);
+    color: #fff !important;
+}
+
+/* Home landing filter row and dropdowns */
+.land-filter-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+    margin-bottom: clamp(5px, max(clamp(5px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px);
+    flex-wrap: wrap;
+}
+
+.land-filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
+    padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+    border-radius: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01672 * (100vw - 2046px))), 50px);
+    cursor: pointer;
+    font-size: clamp(7px, max(clamp(7px, 1.67vw, 18px), calc(18px + 0.00669 * (100vw - 2046px))), 30px);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.land-filter-btn.active {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.land-filter-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+/* Search Bar Upgrade */
+/* Video & Player Layering */
+#video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+}
+
+#player-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 .vod-filters-row {
@@ -1634,44 +1753,12 @@ body.player-active .edge-mask {
     opacity: 0;
 }
 
-/* .land-item used to have backdrop-filter (glass effect). Animating opacity
-   on an element with backdrop-filter made Chromium skip/delay the blur
-   compositing until the animation settled (~1s flat dark tint before the
-   glass effect "kicked in"). Root cause turned out to be backdrop-filter
-   itself, not the animation — removed from .land-item. No fade/slide-in for
-   these cards anymore to avoid reintroducing the issue. */
-.land-item.stagger-reveal {
-    animation: none;
-    opacity: 1;
-    transform: none;
-}
-
-/* Home Dashboard Refinement */
 body.hide-cursor {
     cursor: none;
 }
 
 body.hide-cursor * {
     cursor: none !important;
-}
-
-.land-dot {
-    width: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
-    height: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.land-dot:hover {
-    background: rgba(255, 255, 255, 0.5);
-}
-
-.land-dot.active {
-    background: #fff;
-    transform: scale(1.25);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
 .chip {
@@ -1687,17 +1774,6 @@ body.hide-cursor * {
     white-space: nowrap;
     border: 1px solid transparent;
     transition: 0.3s;
-}
-
-.land-item.empty {
-    background: transparent;
-    border: 1px dashed rgba(255,255,255,0.1);
-    box-shadow: none;
-}
-
-.land-item.empty:hover {
-    border-color: var(--accent);
-    background: rgba(0,255,255,0.02);
 }
 
 /* Inputs & Forms */
@@ -2292,6 +2368,18 @@ body.hide-cursor * {
     overflow-x: hidden !important;
     justify-content: center !important;
     padding-bottom: 40px !important;
+}
+
+/* Widescreen Main Card Expansion for VOD */
+.land-dashboard:has(.vod-active) .land-content {
+    max-width: 95vw !important;
+    width: 95vw !important;
+    transition: max-width 0.4s ease, width 0.4s ease;
+}
+
+.land-dashboard:has(.vod-active) .land-carousel-wrapper {
+    max-width: 100% !important;
+    width: 100% !important;
 }
 
 /* VOD Grid Item Card */
@@ -4380,18 +4468,6 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
 }
 
-/* Widescreen Main Card Expansion for VOD */
-.land-dashboard:has(.vod-active) .land-content {
-    max-width: 95vw !important;
-    width: 95vw !important;
-    transition: max-width 0.4s ease, width 0.4s ease;
-}
-
-.land-dashboard:has(.vod-active) .land-carousel-wrapper {
-    max-width: 100% !important;
-    width: 100% !important;
-}
-
 /* Screen Resolution Blocker */
 .modal-blocker {
     position: fixed;
@@ -4463,39 +4539,6 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 .modal-blocker-btn {
     margin: clamp(13px, 1.85vw, 51px) auto 0 auto;
     display: block;
-}
-
-/* Modern Minimalist Section Title */
-.land-title {
-    position: static !important;
-    font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px) !important;
-    font-weight: 600 !important;
-    color: rgba(255, 255, 255, 0.95) !important;
-    font-family: 'Outfit', sans-serif !important;
-    letter-spacing: -0.8px !important;
-    margin: 0 !important;
-}
-
-.land-title.hidden {
-    display: none !important;
-}
-
-.land-exit-btn {
-    background: none !important;
-    border: none !important;
-    padding: 0 !important;
-    margin-top: clamp(1px, max(clamp(1px, 0.46vw, 5px), calc(5px + 0.00279 * (100vw - 2046px))), 10px) !important;
-    color: rgba(255, 255, 255, 0.7) !important;
-    font-weight: 700 !important;
-    font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px) !important;
-    cursor: pointer !important;
-    align-self: flex-end;
-    transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.land-exit-btn:hover {
-    transform: scale(1.18);
-    color: #fff !important;
 }
 
 /* Top Nav Menu Dashboard Integration (Positioned above search bar, touching top) */
@@ -4734,39 +4777,6 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 
 .filter-dropdown:focus {
     border-color: #00ffcc !important;
-}
-
-/* Home landing filter row and dropdowns */
-.land-filter-row {
-    display: flex;
-    align-items: center;
-    gap: clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
-    margin-bottom: clamp(5px, max(clamp(5px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px);
-    flex-wrap: wrap;
-}
-
-.land-filter-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.7);
-    padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
-    border-radius: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01672 * (100vw - 2046px))), 50px);
-    cursor: pointer;
-    font-size: clamp(7px, max(clamp(7px, 1.67vw, 18px), calc(18px + 0.00669 * (100vw - 2046px))), 30px);
-    font-weight: 600;
-    transition: all 0.2s ease;
-}
-
-.land-filter-btn.active {
-    background: #ffffff;
-    color: #000000;
-    border-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
-}
-
-.land-filter-btn:hover:not(.active) {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
 }
 
 .dashboard-dropdowns-row {
