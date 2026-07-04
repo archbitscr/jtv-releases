@@ -2,6 +2,8 @@
 
 Este documento unifica de forma cronológica todas las mejoras, características de usabilidad, correcciones de errores, refactorizaciones y planes de seguridad implementados en el proyecto JTV.app, así como la hoja de ruta de tareas pendientes de desarrollo solicitadas por el usuario.
 
+**Política de versionado (desde v2.3.9):** cada tarea de la hoja de ruta que se completa incluye como subtarea un bump del patch version (`package.json`, `package-lock.json`, `<title>` de `index.html`, footer "JTV Version" en Settings) y build de verificación. La versión asignada a cada tarea se anota en su entrada al completarse — no se reserva de antemano, ya que el orden de ejecución lo decide el usuario. Última versión: **v2.3.9** (Tarea 41). Próxima disponible: **v2.3.10**.
+
 ---
 
 ## I. Historial Cronológico de Mejoras Implementadas
@@ -319,7 +321,7 @@ Este documento unifica de forma cronológica todas las mejoras, características
 *   **Impacto estimado:** ~200+ selectores CSS, ~50+ IDs HTML, ~30+ referencias JS.
 *   **Nota:** No mezclar con aplicación de clamp() — esta tarea es exclusivamente de renombrado.
 
-#### 8. Tarea 41: Reordenamiento Estructural de HTML y CSS según los 4 Pilares
+#### ~~8. Tarea 41: Reordenamiento Estructural de HTML y CSS según los 4 Pilares~~ ✅ (completada v2.3.9)
 *   **Componente:** `index.html`, `style.css`.
 *   **Objetivo:** Hacer que el orden físico de los bloques en `index.html` y `style.css` siga consistentemente el esquema de 4 pilares (Home, Live TV, VOD, Settings + transversales) y la jerarquía visual definida en `contexto_de_perfil.md` (sección 8), de modo que ambos archivos comparen el mismo orden entre sí y cada componente quede agrupado junto a los demás de su pilar.
 *   **Prerequisito:** Depende del renombrado por prefijo de la Tarea 38 (ya completada) para identificar qué bloque pertenece a qué pilar.
@@ -359,7 +361,10 @@ Este documento unifica de forma cronológica todas las mejoras, características
     12. ✅ `.settings-*` principal ya era contiguo (L2921-3670+). Duplicado `.settings-list` (segunda regla solo redefinía `margin-bottom` sin selector más específico) fusionado preservando orden.
     13. ✅ Bloque `DEV-ONLY` de Sensors/Diagnostics (aislado entre `.dashboard-nav` y el 2º bloque `.pbar-*`) reubicado junto a Developer Timeouts, dentro de la zona de Settings.
     14. ⏳ **Dejado intencionalmente sin tocar** (acoplamiento funcional legítimo, no es fragmentación real): sección "VOD Grid Item Card" (entrelazada con `.vod-*`), `.modal-parental-*` (junto a `#settings-sect-parental`), bloque `DEV-ONLY` grande de `.floating-controls-container` (L5239+, componente transversal propio).
-    *   Cada paso validado con build + prueba visual en la app (Home, Live TV, grid VOD, Player Bar, Sidebar, Settings/Wallpaper) antes de commitear. 13 commits incrementales en `master`. Con esto, el reordenamiento estructural de `index.html`/`style.css` según los 4 pilares queda **sustancialmente completo**; lo pendiente son casos de acoplamiento deliberado ya documentados, no desorden real.
+    15. ✅ **Subtarea de versión:** bump a **v2.3.9** completado y sincronizado en `package.json`, `package-lock.json`, `<title>` de `index.html` y el footer "JTV Version" del sidebar de Settings (habían quedado en 2.3.7 tras el bump inicial). También corregido en `contexto_de_perfil.md`.
+    *   Cada paso validado con build + prueba visual en la app (Home, Live TV, grid VOD, Player Bar, Sidebar, Settings/Wallpaper) antes de commitear. 14 commits incrementales en `master`. Con esto, el reordenamiento estructural de `index.html`/`style.css` según los 4 pilares queda **sustancialmente completo**; lo pendiente son casos de acoplamiento deliberado ya documentados, no desorden real.
+    *   **Bugfix adicional en esta sesión (no parte del alcance original de Tarea 41, pero corregido tras verificar el build empaquetado real):** controles dev-only del Player Bar (autotune-toggle, sources-toggle, indicadores audio/video) quedaban visibles/rotos en producción porque su lógica de ocultamiento vivía únicamente en `developerModule.js` (eliminado por tree-shaking). Ver commit `f275066`.
+    *   **Versión de build en la que se completó esta tarea: v2.3.9.**
 
 ---
 
