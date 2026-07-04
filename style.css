@@ -1057,6 +1057,25 @@ body.player-active .edge-mask {
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
+.land-fav-indicator {
+    position: absolute;
+    top: calc(clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) + clamp(14px, max(clamp(14px, 1.67vw, 18px), calc(18px + 0.00669 * (100vw - 2046px))), 34px) + 4px);
+    right: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00446 * (100vw - 2046px))), 20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    color: #ff4d6d;
+    filter: drop-shadow(0 0 4px rgba(255, 77, 109, 0.5));
+}
+
+.land-fav-indicator i,
+.land-fav-indicator svg {
+    width: clamp(8px, max(clamp(8px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 18px);
+    height: clamp(8px, max(clamp(8px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 18px);
+    fill: currentColor;
+}
+
 /* Search Bar Upgrade */
 /* Video & Player Layering */
 #video-container {
