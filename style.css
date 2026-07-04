@@ -108,9 +108,16 @@ textarea,
     background: transparent;
 }
 
+/* Nota: #video-container y #player-container tenian cada uno dos reglas
+   separadas (layout base + posicionamiento/overflow) que se fusionaron
+   aqui en una sola conservando el mismo orden de declaraciones -- la
+   segunda tanda gana la cascada exactamente igual que antes. */
 #video-container {
     width: 100%;
     height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
 }
 
 #player-container {
@@ -118,6 +125,10 @@ textarea,
     width: 100%;
     height: 100%;
     background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 iframe {
@@ -128,6 +139,7 @@ iframe {
 
 #player-container iframe {
     pointer-events: none;
+    /* We will use executeJavaScript to hide elements inside (Hide Junk in Iframe) */
 }
 
 .player-loading-curtain {
@@ -1332,23 +1344,6 @@ body.player-active .edge-mask {
 
 /* Search Bar Upgrade */
 /* Video & Player Layering */
-#video-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: transparent;
-}
-
-#player-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
 .vod-filters-row {
     display: flex;
     align-items: center;
@@ -1789,11 +1784,6 @@ body.hide-cursor * {
 .placeholder-msg { font-size: 1.5rem; color: #333; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
 .logo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #1a1a1a; color: #444; }
 .logo-placeholder svg { width: 24px; height: 24px; }
-
-/* Hide Junk in Iframe */
-#player-container iframe {
-    /* We will use executeJavaScript to hide elements inside */
-}
 
 /* Hide cursor when watching */
 body.hide-cursor {
@@ -2351,6 +2341,29 @@ body.hide-cursor * {
     color: rgba(255, 255, 255, 0.5);
 }
 
+/* Search Bar Clear Button and Gap */
+.search-clear-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+    transition: color 0.2s;
+}
+
+.search-clear-btn:hover {
+    color: #ff4b4b;
+}
+
+.search-clear-btn svg,
+.search-clear-btn i {
+    width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+    height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+}
+
 /* Dynamic Grid Layout for VOD */
 .land-grid.vod-active {
     grid-template-columns: repeat(var(--vod-cols, 5), minmax(0, 1fr)) !important;
@@ -2724,30 +2737,6 @@ body.hide-cursor * {
 .header-nav-btn.active {
     color: var(--accent);
     background: var(--accent-dim);
-}
-
-/* Search Bar Clear Button and Gap */
-
-.search-clear-btn {
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
-    transition: color 0.2s;
-}
-
-.search-clear-btn:hover {
-    color: #ff4b4b;
-}
-
-.search-clear-btn svg,
-.search-clear-btn i {
-    width: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
-    height: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
 }
 
 /* Filter header changes */
