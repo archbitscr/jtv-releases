@@ -373,6 +373,34 @@
             </div>
         </aside>
 
+        <!-- VOD Details Modal -->
+        <div id="vod-details-modal" class="vod-details-modal hidden">
+            <div class="vod-details-backdrop" id="vod-details-backdrop"></div>
+            <div class="vod-details-container glass-card">
+                <button id="close-details" class="close-btn vod-details-close"><i data-lucide="x"></i></button>
+                <div class="vod-details-body">
+                    <div class="vod-details-poster">
+                        <!-- High-res poster from TMDB or fallback -->
+                        <div id="vod-details-poster-placeholder"></div>
+                        <img id="vod-details-poster-img" src="" alt="Poster" class="hidden">
+                    </div>
+                    <div class="vod-details-info">
+                        <h2 id="vod-details-title">Movie Title</h2>
+                        <div class="vod-details-meta">
+                            <span id="vod-details-year" class="vod-meta-badge">2026</span>
+                            <span id="vod-details-quality" class="vod-meta-badge quality">HD</span>
+                            <span id="vod-details-rating" class="vod-meta-badge rating">★ 0.0</span>
+                            <span id="vod-details-imdb-rating" class="vod-meta-badge imdb-rating hidden">IMDb: 0.0</span>
+                        </div>
+                        <p id="vod-details-overview">Plot overview goes here. Fetching details from TMDB...</p>
+                        <div class="vod-details-actions">
+                            <button id="play-vod-btn" class="primary-btn play-btn"><i data-lucide="play"></i> Watch Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- closes vod-details-container -->
+        </div> <!-- closes vod-details-modal -->
+
         <!-- Full Screen Settings Screen -->
         <div id="settings-screen" class="settings-screen hidden">
             <div class="settings-container glass-card">
@@ -1349,34 +1377,6 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
         <!-- Hidden elements for processing -->
         <input type="file" id="logo-upload-input" accept="image/*" style="display: none;">
         <canvas id="logo-canvas" width="256" height="256" style="display: none;"></canvas>
-
-        <!-- VOD Details Modal -->
-        <div id="vod-details-modal" class="vod-details-modal hidden">
-            <div class="vod-details-backdrop" id="vod-details-backdrop"></div>
-            <div class="vod-details-container glass-card">
-                <button id="close-details" class="close-btn vod-details-close"><i data-lucide="x"></i></button>
-                <div class="vod-details-body">
-                    <div class="vod-details-poster">
-                        <!-- High-res poster from TMDB or fallback -->
-                        <div id="vod-details-poster-placeholder"></div>
-                        <img id="vod-details-poster-img" src="" alt="Poster" class="hidden">
-                    </div>
-                    <div class="vod-details-info">
-                        <h2 id="vod-details-title">Movie Title</h2>
-                        <div class="vod-details-meta">
-                            <span id="vod-details-year" class="vod-meta-badge">2026</span>
-                            <span id="vod-details-quality" class="vod-meta-badge quality">HD</span>
-                            <span id="vod-details-rating" class="vod-meta-badge rating">★ 0.0</span>
-                            <span id="vod-details-imdb-rating" class="vod-meta-badge imdb-rating hidden">IMDb: 0.0</span>
-                        </div>
-                        <p id="vod-details-overview">Plot overview goes here. Fetching details from TMDB...</p>
-                        <div class="vod-details-actions">
-                            <button id="play-vod-btn" class="primary-btn play-btn"><i data-lucide="play"></i> Watch Now</button>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- closes vod-details-container -->
-        </div> <!-- closes vod-details-modal -->
 
         <!-- Onboarding/Welcome Modal (Tarea 18, 21) -->
         <!-- Parental PIN Modal -->
