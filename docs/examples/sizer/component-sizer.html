@@ -390,6 +390,8 @@
 
 <div class="footer">
   <span class="footer-info">Base values from pre-Task37 backup · All inputs in px · Meseta clamp formula</span>
+  <input type="file" id="import-css-input" accept=".css" style="display:none" onchange="handleImportFile(event)">
+  <button class="btn btn-ghost" onclick="document.getElementById('import-css-input').click()">⬆ Import Reference CSS</button>
   <button class="btn btn-ghost" onclick="copyAll()">Copy CSS</button>
   <button class="btn btn-primary" onclick="generateCSS()">⬇ Generate CSS File</button>
 </div>
@@ -1053,8 +1055,8 @@ const LAND_GROUPS = [
     selector: '.land-dashboard', comment: 'Dashboard wrapper',
     template: (f) => `  padding: ${f('padT')} ${f('padS')} ${f('padS')} ${f('padS')};`,
     items: [
-      { id: 'padT', label: 'padding Top',        base: 100, min: 67, max: 256, unit: 'px' },
-      { id: 'padS', label: 'padding R / B / L',  base: 40,  min: 27, max: 102, unit: 'px' },
+      { id: 'padT', label: 'padding Top',        base: 100, min: 60, max: 200, unit: 'px' },
+      { id: 'padS', label: 'padding R / B / L',  base: 40,  min: 20, max: 80,  unit: 'px' },
     ]
   },
   {
@@ -1065,7 +1067,7 @@ const LAND_GROUPS = [
   {
     selector: '.land-carousel-wrapper', comment: 'Carousel wrapper',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 30, min: 20, max: 77, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 30, min: 20, max: 60, unit: 'px' }]
   },
   {
     selector: '.land-nav-btn', comment: '← → Flecha de paginación (botón)',
@@ -1139,7 +1141,7 @@ const LAND_GROUPS = [
     selector: '.land-item .land-logo', comment: 'Channel logo',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`, `  margin-right: ${f('marginR')};`].join('\n'),
     items: [
-      { id: 'size',    label: 'width / height', base: 50, min: 30, max: 120, unit: 'px' },
+      { id: 'size',    label: 'width / height', base: 50, min: 30, max: 100, unit: 'px' },
       { id: 'marginR', label: 'margin-right',   base: 15, min: 7,  max: 30,  unit: 'px' },
     ]
   },
@@ -1148,7 +1150,7 @@ const LAND_GROUPS = [
     template: (f) => [`  border-radius: ${f('radius')};`, `  font-size: ${f('fontSize')};`].join('\n'),
     items: [
       { id: 'radius',   label: 'border-radius', base: 8,  min: 4,  max: 20, unit: 'px' },
-      { id: 'fontSize', label: 'font-size',     base: 20, min: 10, max: 50, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',     base: 20, min: 10, max: 40, unit: 'px' },
     ]
   },
   {
@@ -1948,6 +1950,157 @@ async function injectToApp() {
     if (groups) groups.forEach((g, gi) => g.items.forEach(item => validateRow(gi, item.id)));
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// IMPORT REFERENCE CSS
+// ─────────────────────────────────────────────────────────────────────────────
+
+function splitBalanced(str) {
+  // Split by comma respecting nested parentheses
+  const args = []; let depth = 0, start = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === '(') depth++;
+    else if (str[i] === ')') depth--;
+    else if (str[i] === ',' && depth === 0) { args.push(str.slice(start, i).trim()); start = i + 1; }
+  }
+  args.push(str.slice(start).trim());
+  return args;
+}
+
+function extractClamps(text) {
+  // Extract all top-level clamp(...) expressions handling nested parens
+  const clamps = []; let i = 0;
+  while (i < text.length) {
+    const idx = text.indexOf('clamp(', i);
+    if (idx === -1) break;
+    let depth = 0, j = idx;
+    while (j < text.length) {
+      if (text[j] === '(') depth++;
+      else if (text[j] === ')') { depth--; if (depth === 0) { j++; break; } }
+      j++;
+    }
+    clamps.push(text.slice(idx, j));
+    i = j;
+  }
+  return clamps;
+}
+
+function parseMesetaClamp(clampStr) {
+  // Extract min and max from outer clamp: clamp(MIN, ..., MAX)
+  const inner = clampStr.slice(6, -1); // strip 'clamp(' and ')'
+  const args = splitBalanced(inner);
+  if (args.length < 3) return null;
+  const minVal = parseFloat(args[0]);
+  const maxVal = parseFloat(args[args.length - 1]);
+  if (isNaN(minVal) || isNaN(maxVal)) return null;
+  // Extract BASE from inner clamp: max(clamp(MIN, VW, BASE), calc(...))
+  const baseMatch = args[1].match(/clamp\([^,]+,[^,]+,\s*([\d.]+)px\)/);
+  const baseVal = baseMatch ? parseFloat(baseMatch[1]) : minVal;
+  return { min: minVal, base: baseVal, max: maxVal };
+}
+
+function parseCssBlocks(cssText) {
+  // Returns map: normalizedSelector → declarationBody
+  const blocks = {};
+  const clean = cssText.replace(/\/\*[\s\S]*?\*\//g, ''); // strip comments
+  const re = /([^{]+)\{([^{}]+)\}/g;
+  let m;
+  while ((m = re.exec(clean)) !== null) {
+    // Normalize selector: collapse whitespace
+    const sel = m[1].trim().replace(/\s+/g, ' ');
+    blocks[sel] = m[2];
+  }
+  return blocks;
+}
+
+function detectTab(blocks) {
+  // Find the tab whose groups have the most selector matches
+  let bestTab = null, bestScore = 0;
+  for (const [tabId, groups] of Object.entries(COMPONENT_DATA)) {
+    if (!groups) continue;
+    let score = 0;
+    for (const g of groups) {
+      const normSel = g.selector.trim().replace(/\s+/g, ' ');
+      if (blocks[normSel] !== undefined) score++;
+    }
+    if (score > bestScore) { bestScore = score; bestTab = tabId; }
+  }
+  return bestScore > 0 ? bestTab : null;
+}
+
+function switchToTab(tabId) {
+  // Find the section and component for this tabId and activate them
+  for (const sec of SECTIONS) {
+    const comp = sec.components.find(c => c.id === tabId);
+    if (comp) { activeSection = sec.id; activeComponent = tabId; break; }
+  }
+  renderTabs();
+  renderContent();
+}
+
+function applyImportedBlocks(blocks, tabId) {
+  const groups = COMPONENT_DATA[tabId];
+  let updated = 0;
+  groups.forEach((group, gi) => {
+    const normSel = group.selector.trim().replace(/\s+/g, ' ');
+    const body = blocks[normSel];
+    if (!body) return;
+
+    // Determine item call order from template (with repeats)
+    const callOrder = [];
+    group.template(id => { callOrder.push(id); return '0px'; });
+
+    // Extract clamp() values from the rule body
+    const clamps = extractClamps(body);
+
+    // Match by position, first occurrence per item id wins
+    const assigned = {};
+    for (let i = 0; i < Math.min(callOrder.length, clamps.length); i++) {
+      const id = callOrder[i];
+      if (assigned[id] !== undefined) continue;
+      const parsed = parseMesetaClamp(clamps[i]);
+      if (!parsed) continue;
+      assigned[id] = parsed;
+    }
+
+    // Write values into group items and DOM inputs
+    group.items.forEach(item => {
+      const parsed = assigned[item.id];
+      if (!parsed) return;
+      item.min  = parsed.min;
+      item.base = parsed.base;
+      item.max  = parsed.max;
+      // Update DOM if rendered
+      const minEl  = document.getElementById(`min-${gi}-${item.id}`);
+      const baseEl = document.getElementById(`base-${gi}-${item.id}`);
+      const maxEl  = document.getElementById(`max-${gi}-${item.id}`);
+      if (minEl)  { minEl.value  = item.min;  }
+      if (baseEl) { baseEl.value = item.base; }
+      if (maxEl)  { maxEl.value  = item.max;  }
+      if (minEl)  validateRow(gi, item.id);
+      updated++;
+    });
+  });
+  return updated;
+}
+
+function handleImportFile(e) {
+  const file = e.target.files[0];
+  e.target.value = ''; // reset so same file triggers again
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const cssText = ev.target.result;
+    const blocks  = parseCssBlocks(cssText);
+    const tabId   = detectTab(blocks);
+    if (!tabId) { showToast('⚠ No matching tab found'); return; }
+    // Switch to the detected tab first so DOM inputs exist
+    switchToTab(tabId);
+    const updated = applyImportedBlocks(blocks, tabId);
+    showToast(`✓ ${updated} valores importados → ${tabId}`);
+  };
+  reader.readAsText(file);
+}
 
 renderTabs();
 renderContent();

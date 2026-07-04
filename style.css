@@ -826,7 +826,7 @@ body.player-active .edge-mask {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: clamp(67px, max(clamp(67px, 9.26vw, 100px), calc(100px + 0.08696 * (100vw - 2046px))), 256px) clamp(27px, max(clamp(27px, 3.70vw, 40px), calc(40px + 0.03456 * (100vw - 2046px))), 102px) clamp(27px, max(clamp(27px, 3.70vw, 40px), calc(40px + 0.03456 * (100vw - 2046px))), 102px) clamp(27px, max(clamp(27px, 3.70vw, 40px), calc(40px + 0.03456 * (100vw - 2046px))), 102px);
+    padding: clamp(60px, max(clamp(60px, 9.26vw, 100px), calc(100px + 0.05574 * (100vw - 2046px))), 200px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
     background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
     
     /* Smooth Transition */
@@ -856,7 +856,7 @@ body.player-active .edge-mask {
 .land-carousel-wrapper {
     display: flex;
     align-items: center;
-    gap: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.02620 * (100vw - 2046px))), 77px);
+    gap: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.01672 * (100vw - 2046px))), 60px);
     width: 100%;
     max-width: clamp(737px, 101.85vw, 2816px);
     justify-content: center;
@@ -933,8 +933,8 @@ body.player-active .edge-mask {
 }
 
 .land-item .land-logo {
-    width: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.03902 * (100vw - 2046px))), 120px);
-    height: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.03902 * (100vw - 2046px))), 120px);
+    width: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.02787 * (100vw - 2046px))), 100px);
+    height: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.02787 * (100vw - 2046px))), 100px);
     margin-bottom: 0;
     margin-right: clamp(7px, max(clamp(7px, 1.39vw, 15px), calc(15px + 0.00836 * (100vw - 2046px))), 30px);
     display: flex;
@@ -954,7 +954,7 @@ body.player-active .edge-mask {
     width: 100%;
     height: 100%;
     border-radius: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px);
-    font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01672 * (100vw - 2046px))), 50px);
+    font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
 }
 
 .land-item h4 {
