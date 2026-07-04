@@ -3678,6 +3678,71 @@ body:not(.dev-mode) .dev-indicator {
     margin-bottom: clamp(7px, 1.11vw, 28px);
 }
 
+/* === DEV-ONLY START === */
+/* Sensors and Diagnostics Styles */
+.sensors-status-card {
+    padding: clamp(13px, 1.85vw, 51px);
+    margin-bottom: clamp(17px, 2.31vw, 64px);
+    border-radius: clamp(11px, 1.48vw, 41px);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sensors-status-card h4 {
+    margin-top: 0;
+    margin-bottom: clamp(10px, 1.39vw, 38px);
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: clamp(0.60rem, 1.33vw, 2.30rem);
+    letter-spacing: clamp(1px, 0.09vw, 3px);
+}
+
+.sensor-info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: clamp(7px, 0.93vw, 26px) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.sensor-info-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.sensor-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: clamp(0.64rem, 1.41vw, 2.43rem);
+}
+
+.sensor-value {
+    color: #fff;
+    font-weight: 600;
+    font-family: monospace;
+    background: rgba(255, 255, 255, 0.05);
+    padding: clamp(1px, 0.19vw, 5px) clamp(5px, 0.74vw, 20px);
+    border-radius: clamp(4px, 0.56vw, 15px);
+    font-size: clamp(0.60rem, 1.33vw, 2.30rem);
+}
+
+.api-code-block {
+    background: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: clamp(8px, 1.11vw, 31px);
+    padding: clamp(10px, 1.39vw, 38px);
+    overflow-x: auto;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: clamp(0.60rem, 1.33vw, 2.30rem);
+    line-height: 1.5;
+    color: #a9b7c6;
+}
+
+.api-code-block code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+}
+/* === DEV-ONLY END === */
+
 /* Developer Timeouts tab */
 .timeout-desc {
     font-size: clamp(0.50rem, 1.11vw, 1.78rem);
@@ -4077,71 +4142,6 @@ body:not(.dev-mode) .dev-indicator {
 .dashboard-nav {
     display: flex;
 }
-
-/* === DEV-ONLY START === */
-/* Sensors and Diagnostics Styles */
-.sensors-status-card {
-    padding: clamp(13px, 1.85vw, 51px);
-    margin-bottom: clamp(17px, 2.31vw, 64px);
-    border-radius: clamp(11px, 1.48vw, 41px);
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.sensors-status-card h4 {
-    margin-top: 0;
-    margin-bottom: clamp(10px, 1.39vw, 38px);
-    color: var(--accent);
-    text-transform: uppercase;
-    font-size: clamp(0.60rem, 1.33vw, 2.30rem);
-    letter-spacing: clamp(1px, 0.09vw, 3px);
-}
-
-.sensor-info-row {
-    display: flex;
-    justify-content: space-between;
-    padding: clamp(7px, 0.93vw, 26px) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.sensor-info-row:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.sensor-label {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: clamp(0.64rem, 1.41vw, 2.43rem);
-}
-
-.sensor-value {
-    color: #fff;
-    font-weight: 600;
-    font-family: monospace;
-    background: rgba(255, 255, 255, 0.05);
-    padding: clamp(1px, 0.19vw, 5px) clamp(5px, 0.74vw, 20px);
-    border-radius: clamp(4px, 0.56vw, 15px);
-    font-size: clamp(0.60rem, 1.33vw, 2.30rem);
-}
-
-.api-code-block {
-    background: rgba(0, 0, 0, 0.5) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: clamp(8px, 1.11vw, 31px);
-    padding: clamp(10px, 1.39vw, 38px);
-    overflow-x: auto;
-    font-family: 'Consolas', 'Courier New', monospace;
-    font-size: clamp(0.60rem, 1.33vw, 2.30rem);
-    line-height: 1.5;
-    color: #a9b7c6;
-}
-
-.api-code-block code {
-    background: transparent;
-    color: inherit;
-    padding: 0;
-}
-/* === DEV-ONLY END === */
 
 
 /* Volume HUD Pill Badge */
