@@ -1075,7 +1075,7 @@ const LAND_GROUPS = [
     items: [{ id: 'size', label: 'width / height', base: 40, min: 20, max: 80, unit: 'px' }]
   },
   {
-    selector: '.land-nav-btn i', comment: '← → Flecha de paginación (ícono)',
+    selector: '.land-nav-btn i,\n.land-nav-btn svg', comment: '← → Flecha de paginación (ícono)',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
     items: [{ id: 'size', label: 'width / height', base: 40, min: 20, max: 80, unit: 'px' }]
   },
