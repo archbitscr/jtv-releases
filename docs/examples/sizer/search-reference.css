@@ -6,7 +6,7 @@
   border-radius: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01003 * (100vw - 2046px))), 30px);
   padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00446 * (100vw - 2046px))), 14px) clamp(4px, max(clamp(4px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
   gap: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
-  max-width: clamp(300px, max(clamp(300px, 46.30vw, 500px), calc(500px + 0.27897 * (100vw - 2046px))), 1000px);
+  width: clamp(280px, max(clamp(280px, 41.67vw, 450px), calc(450px + 0.25084 * (100vw - 2046px))), 900px);
 }
 
 /* Search input */

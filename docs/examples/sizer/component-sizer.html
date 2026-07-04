@@ -1532,14 +1532,14 @@ const SEARCH_GROUPS = [
       `  border-radius: ${f('radius')};`,
       `  padding: ${f('padV')} ${f('padH')};`,
       `  gap: ${f('gap')};`,
-      `  max-width: ${f('maxW')};`,
+      `  width: ${f('width')};`,
     ].join('\n'),
     items: [
-      { id: 'radius', label: 'border-radius', base: 12,  min: 8,   max: 30,   unit: 'px' },
-      { id: 'padV',   label: 'padding V',     base: 6,   min: 4,   max: 14,   unit: 'px' },
-      { id: 'padH',   label: 'padding H',     base: 12,  min: 4,   max: 24,   unit: 'px' },
-      { id: 'gap',    label: 'gap',           base: 10,  min: 7,   max: 26,   unit: 'px' },
-      { id: 'maxW',   label: 'max-width',     base: 500, min: 300, max: 1000, unit: 'px' },
+      { id: 'radius', label: 'border-radius', base: 12,  min: 8,   max: 30,  unit: 'px' },
+      { id: 'padV',   label: 'padding V',     base: 6,   min: 4,   max: 14,  unit: 'px' },
+      { id: 'padH',   label: 'padding H',     base: 12,  min: 4,   max: 24,  unit: 'px' },
+      { id: 'gap',    label: 'gap',           base: 10,  min: 7,   max: 26,  unit: 'px' },
+      { id: 'width',  label: 'width',         base: 450, min: 280, max: 900, unit: 'px' },
     ]
   },
   {
