@@ -75,7 +75,7 @@ JTV.app/
 ├── temp/                      # CSS de referencia pre-Task 37
 ├── scratch/                   # Scripts experimentales
 ├── vite.config.js             # Configuración de Vite
-└── package.json               # v2.3.7
+└── package.json               # v2.3.9
 ```
 
 ## 4. Modelo y Estructura de Datos
