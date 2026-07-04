@@ -1123,7 +1123,7 @@ body.player-active .edge-mask {
 .land-controls-block {
     display: flex;
     justify-content: center;
-    width: clamp(355px, max(clamp(355px, 49.07vw, 530px), calc(530px + 0.46153 * (100vw - 2046px))), 1357px);
+    width: clamp(200px, max(clamp(200px, 41.67vw, 450px), calc(450px + 0.25084 * (100vw - 2046px))), 900px);
     justify-self: center;
 }
 

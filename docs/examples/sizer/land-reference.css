@@ -69,6 +69,11 @@
   font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px) !important;
 }
 
+/* Search bar column width */
+.land-controls-block {
+  width: clamp(200px, max(clamp(200px, 41.67vw, 450px), calc(450px + 0.25084 * (100vw - 2046px))), 900px);
+}
+
 /* Channel list item */
 .land-item {
   border-radius: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00446 * (100vw - 2046px))), 24px);
