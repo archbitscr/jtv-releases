@@ -935,8 +935,8 @@ body.player-active .edge-mask {
 }
 
 .land-item .land-logo {
-    width: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.03344 * (100vw - 2046px))), 110px);
-    height: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.03344 * (100vw - 2046px))), 110px);
+    width: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.02787 * (100vw - 2046px))), 100px);
+    height: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.02787 * (100vw - 2046px))), 100px);
     margin-bottom: 0;
     margin-right: clamp(7px, max(clamp(7px, 1.39vw, 15px), calc(15px + 0.00836 * (100vw - 2046px))), 30px);
     display: flex;
