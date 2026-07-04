@@ -1177,21 +1177,31 @@ const LAND_GROUPS = [
     ]
   },
   {
+    selector: '.land-corner', comment: 'Channel ID + fav corner (position)',
+    template: (f) => `  top: ${f('top')}; right: ${f('right')};`,
+    items: [
+      { id: 'top',   label: 'top',   base: 8,  min: 5, max: 20, unit: 'px' },
+      { id: 'right', label: 'right', base: 12, min: 8, max: 20, unit: 'px' },
+    ]
+  },
+  {
     selector: '.land-channel-id', comment: 'Channel ID badge',
     template: (f) => [
-      `  top: ${f('top')}; right: ${f('right')};`,
       `  padding: ${f('padV')} ${f('padH')};`,
       `  border-radius: ${f('radius')};`,
       `  font-size: ${f('fontSize')};`,
     ].join('\n'),
     items: [
-      { id: 'top',      label: 'top',           base: 8,  min: 5, max: 20, unit: 'px' },
-      { id: 'right',    label: 'right',          base: 12, min: 8, max: 20, unit: 'px' },
-      { id: 'padV',     label: 'padding V',      base: 2,  min: 1, max: 5,  unit: 'px' },
-      { id: 'padH',     label: 'padding H',      base: 6,  min: 4, max: 15, unit: 'px' },
-      { id: 'radius',   label: 'border-radius',  base: 4,  min: 3, max: 14, unit: 'px' },
-      { id: 'fontSize', label: 'font-size',       base: 10, min: 7, max: 24, unit: 'px' },
+      { id: 'padV',     label: 'padding V',     base: 2,  min: 1, max: 5,  unit: 'px' },
+      { id: 'padH',     label: 'padding H',     base: 6,  min: 4, max: 15, unit: 'px' },
+      { id: 'radius',   label: 'border-radius', base: 4,  min: 3, max: 14, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',     base: 10, min: 7, max: 24, unit: 'px' },
     ]
+  },
+  {
+    selector: '.land-fav-indicator i,\n.land-fav-indicator svg', comment: 'Fav heart icon',
+    template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
+    items: [{ id: 'size', label: 'width / height', base: 10, min: 8, max: 18, unit: 'px' }]
   },
   {
     selector: '.land-content', comment: 'Content area',

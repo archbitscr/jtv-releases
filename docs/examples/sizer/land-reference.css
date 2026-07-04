@@ -104,12 +104,23 @@
   margin-top: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00334 * (100vw - 2046px))), 10px);
 }
 
+/* Channel ID + fav corner (position) */
+.land-corner {
+  top: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px); right: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00446 * (100vw - 2046px))), 20px);
+}
+
 /* Channel ID badge */
 .land-channel-id {
-  top: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px); right: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00446 * (100vw - 2046px))), 20px);
   padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00167 * (100vw - 2046px))), 5px) clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
   border-radius: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
   font-size: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px);
+}
+
+/* Fav heart icon */
+.land-fav-indicator i,
+.land-fav-indicator svg {
+  width: clamp(8px, max(clamp(8px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 18px);
+  height: clamp(8px, max(clamp(8px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 18px);
 }
 
 /* Content area */
