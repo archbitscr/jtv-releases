@@ -107,6 +107,7 @@
 /* Channel ID + fav corner (position) */
 .land-corner {
   top: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px); right: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00446 * (100vw - 2046px))), 20px);
+  gap: clamp(4px, max(clamp(4px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
 }
 
 /* Channel ID badge */

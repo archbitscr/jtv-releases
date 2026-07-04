@@ -1178,10 +1178,11 @@ const LAND_GROUPS = [
   },
   {
     selector: '.land-corner', comment: 'Channel ID + fav corner (position)',
-    template: (f) => `  top: ${f('top')}; right: ${f('right')};`,
+    template: (f) => [`  top: ${f('top')}; right: ${f('right')};`, `  gap: ${f('gap')};`].join('\n'),
     items: [
       { id: 'top',   label: 'top',   base: 8,  min: 5, max: 20, unit: 'px' },
       { id: 'right', label: 'right', base: 12, min: 8, max: 20, unit: 'px' },
+      { id: 'gap',   label: 'gap',   base: 10, min: 4, max: 20, unit: 'px' },
     ]
   },
   {

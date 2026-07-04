@@ -1038,7 +1038,7 @@ body.player-active .edge-mask {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 4px;
+    gap: clamp(4px, max(clamp(4px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
     pointer-events: none;
 }
 
