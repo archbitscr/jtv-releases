@@ -1,0 +1,117 @@
+/* JTV Component Sizer — Live TV › .land-* */
+/* Base: 1080px  |  Threshold: 2046px  |  4K: 3840px */
+
+/* Dashboard wrapper */
+.land-dashboard {
+  padding: clamp(67px, max(clamp(67px, 9.26vw, 100px), calc(100px + 0.08696 * (100vw - 2046px))), 256px) clamp(27px, max(clamp(27px, 3.70vw, 40px), calc(40px + 0.03456 * (100vw - 2046px))), 102px) clamp(27px, max(clamp(27px, 3.70vw, 40px), calc(40px + 0.03456 * (100vw - 2046px))), 102px) clamp(27px, max(clamp(27px, 3.70vw, 40px), calc(40px + 0.03456 * (100vw - 2046px))), 102px);
+}
+
+/* Channel grid */
+.land-grid {
+  gap: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
+}
+
+/* Carousel wrapper */
+.land-carousel-wrapper {
+  gap: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.02620 * (100vw - 2046px))), 77px);
+}
+
+/* Section nav row */
+.land-nav {
+  gap: clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+  margin-bottom: clamp(5px, max(clamp(5px, 1.85vw, 20px), calc(20px + 0.01672 * (100vw - 2046px))), 50px);
+}
+
+/* Nav filter button */
+.land-nav button {
+  padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+  border-radius: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01672 * (100vw - 2046px))), 50px);
+  font-size: clamp(7px, max(clamp(7px, 1.67vw, 18px), calc(18px + 0.00669 * (100vw - 2046px))), 30px);
+}
+
+/* Prev / Next nav icon */
+.land-nav-btn i {
+  width: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
+  height: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
+}
+
+/* Top row (title + exit) */
+.land-top-row {
+  column-gap: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
+  margin-bottom: clamp(4px, max(clamp(4px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px);
+}
+
+/* Section title */
+.land-title {
+  font-size: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) !important;
+}
+
+/* Title block */
+.land-title-block {
+  padding-top: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+}
+
+/* Exit button block */
+.land-exit-block {
+  padding-top: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
+}
+
+/* Exit button */
+.land-exit-btn {
+  margin-top: clamp(1px, max(clamp(1px, 0.46vw, 5px), calc(5px + 0.00279 * (100vw - 2046px))), 10px) !important;
+  font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px) !important;
+}
+
+/* Channel list item */
+.land-item {
+  border-radius: clamp(7px, max(clamp(7px, 1.39vw, 15px), calc(15px + 0.00279 * (100vw - 2046px))), 20px);
+}
+
+/* Channel logo */
+.land-item .land-logo {
+  width: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.03902 * (100vw - 2046px))), 120px);
+  height: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.03902 * (100vw - 2046px))), 120px);
+  margin-right: clamp(7px, max(clamp(7px, 1.39vw, 15px), calc(15px + 0.00836 * (100vw - 2046px))), 30px);
+}
+
+/* Channel name */
+.land-item h4 {
+  font-size: clamp(11px, max(clamp(11px, 1.48vw, 16px), calc(16px + 0.01115 * (100vw - 2046px))), 36px);
+}
+
+/* EPG text */
+.land-epg {
+  font-size: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00892 * (100vw - 2046px))), 28px);
+  margin-top: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00334 * (100vw - 2046px))), 10px);
+}
+
+/* Channel ID badge */
+.land-channel-id {
+  top: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px); right: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00446 * (100vw - 2046px))), 20px);
+  padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00167 * (100vw - 2046px))), 5px) clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
+  border-radius: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
+  font-size: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px);
+}
+
+/* Content area */
+.land-content {
+  padding-top: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px);
+}
+
+/* Dots container */
+.land-dots-container {
+  height: clamp(27px, max(clamp(27px, 3.70vw, 40px), calc(40px + 0.03344 * (100vw - 2046px))), 100px);
+  border-radius: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
+  margin-top: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01003 * (100vw - 2046px))), 30px);
+}
+
+/* Dots row */
+.land-dots {
+  gap: clamp(8px, max(clamp(8px, 1.39vw, 15px), calc(15px + 0.00836 * (100vw - 2046px))), 30px);
+}
+
+/* Individual dot */
+.land-dot {
+  width: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+  height: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+}

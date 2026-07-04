@@ -826,7 +826,7 @@ body.player-active .edge-mask {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: clamp(67px, 9.26vw, 256px) clamp(27px, 3.70vw, 102px) clamp(27px, 3.70vw, 102px) clamp(27px, 3.70vw, 102px);
+    padding: clamp(67px, max(clamp(67px, 9.26vw, 100px), calc(100px + 0.08696 * (100vw - 2046px))), 256px) clamp(27px, max(clamp(27px, 3.70vw, 40px), calc(40px + 0.03456 * (100vw - 2046px))), 102px) clamp(27px, max(clamp(27px, 3.70vw, 40px), calc(40px + 0.03456 * (100vw - 2046px))), 102px) clamp(27px, max(clamp(27px, 3.70vw, 40px), calc(40px + 0.03456 * (100vw - 2046px))), 102px);
     background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
     
     /* Smooth Transition */
@@ -848,7 +848,7 @@ body.player-active .edge-mask {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(5, 1fr);
     grid-auto-flow: column;
-    gap: clamp(7px, 0.93vw, 26px);
+    gap: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
     width: 100%;
     max-width: clamp(503px, 69.44vw, 1920px);
 }
@@ -856,7 +856,7 @@ body.player-active .edge-mask {
 .land-carousel-wrapper {
     display: flex;
     align-items: center;
-    gap: clamp(20px, 2.78vw, 77px);
+    gap: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.02620 * (100vw - 2046px))), 77px);
     width: 100%;
     max-width: clamp(737px, 101.85vw, 2816px);
     justify-content: center;
@@ -881,32 +881,32 @@ body.player-active .edge-mask {
 }
 
 .land-nav-btn i {
-    width: clamp(32px, 4.44vw, 123px);
-    height: clamp(32px, 4.44vw, 123px);
+    width: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
+    height: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
 }
 
 .land-dots-container {
     background: transparent;
     width: 100%;
     max-width: clamp(603px, 83.33vw, 2304px);
-    height: clamp(27px, 3.70vw, 102px);
-    border-radius: clamp(4px, 0.56vw, 15px);
+    height: clamp(27px, max(clamp(27px, 3.70vw, 40px), calc(40px + 0.03344 * (100vw - 2046px))), 100px);
+    border-radius: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: clamp(8px, 1.11vw, 31px);
+    margin-top: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01003 * (100vw - 2046px))), 30px);
 }
 
 .land-dots {
     display: flex;
-    gap: clamp(8px, 1.11vw, 31px);
+    gap: clamp(8px, max(clamp(8px, 1.39vw, 15px), calc(15px + 0.00836 * (100vw - 2046px))), 30px);
 }
 
 .land-item {
     position: relative;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
-    border-radius: clamp(10px, 1.39vw, 38px);
+    border-radius: clamp(7px, max(clamp(7px, 1.39vw, 15px), calc(15px + 0.00279 * (100vw - 2046px))), 20px);
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -930,25 +930,32 @@ body.player-active .edge-mask {
 }
 
 .land-item .land-logo {
-    width: clamp(34px, 4.63vw, 128px);
-    height: clamp(34px, 4.63vw, 128px);
+    width: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.03902 * (100vw - 2046px))), 120px);
+    height: clamp(30px, max(clamp(30px, 4.63vw, 50px), calc(50px + 0.03902 * (100vw - 2046px))), 120px);
     margin-bottom: 0;
-    margin-right: clamp(10px, 1.39vw, 38px);
+    margin-right: clamp(7px, max(clamp(7px, 1.39vw, 15px), calc(15px + 0.00836 * (100vw - 2046px))), 30px);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
 }
 
-.land-item .land-logo img, 
+.land-item .land-logo img,
 .land-item .land-logo svg {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
 
+.land-item .land-logo .placeholder-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px);
+    font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01672 * (100vw - 2046px))), 50px);
+}
+
 .land-item h4 {
-    font-size: clamp(0.67rem, 1.48vw, 2.56rem);
+    font-size: clamp(11px, max(clamp(11px, 1.48vw, 16px), calc(16px + 0.01115 * (100vw - 2046px))), 36px);
     color: white;
     text-align: left;
     margin: 0;
@@ -1003,10 +1010,10 @@ body.player-active .edge-mask {
 }
 
 .land-epg {
-    font-size: clamp(0.50rem, 1.11vw, 1.92rem);
+    font-size: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00892 * (100vw - 2046px))), 28px);
     color: var(--accent);
     opacity: 0.6;
-    margin-top: clamp(3px, 0.37vw, 10px);
+    margin-top: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00334 * (100vw - 2046px))), 10px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1021,14 +1028,14 @@ body.player-active .edge-mask {
 .land-channel-id {
     position: absolute;
     top: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px);
-    right: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px);
+    right: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00446 * (100vw - 2046px))), 20px);
     display: inline-flex;
     align-items: center;
     padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00167 * (100vw - 2046px))), 5px) clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00334 * (100vw - 2046px))), 10px);
-    font-size: clamp(0.44rem, max(clamp(0.44rem, 0.96vw, 0.65rem), calc(0.65rem + 0.00901 * (100vw - 2046px))), 1.66rem);
+    border-radius: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00557 * (100vw - 2046px))), 14px);
+    font-size: clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     pointer-events: none;
@@ -1085,16 +1092,16 @@ body.player-active .edge-mask {
     align-items: center;
     max-width: clamp(938px, 129.63vw, 3584px);
     width: 100%;
-    padding-top: clamp(8px, 1.11vw, 31px);
+    padding-top: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px);
 }
 
 .land-top-row {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr var(--center-nav-width) 1fr;
-    column-gap: clamp(27px, 3.70vw, 102px);
+    column-gap: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
     align-items: flex-start;
-    margin-bottom: clamp(8px, 1.11vw, 31px);
+    margin-bottom: clamp(4px, max(clamp(4px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px);
 }
 
 .land-title-block {
@@ -1103,7 +1110,7 @@ body.player-active .edge-mask {
     align-items: flex-start;
     justify-content: flex-start;
     min-width: 0;
-    padding-top: clamp(4px, 0.56vw, 15px);
+    padding-top: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
     justify-self: end;
 }
 
@@ -1118,7 +1125,7 @@ body.player-active .edge-mask {
     min-width: 0;
     display: flex;
     justify-content: flex-end;
-    padding-top: clamp(7px, 0.93vw, 26px);
+    padding-top: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00111 * (100vw - 2046px))), 4px);
     justify-self: start;
 }
 
@@ -1619,8 +1626,8 @@ body.hide-cursor * {
 }
 
 .land-dot {
-    width: clamp(6px, 0.83vw, 23px);
-    height: clamp(6px, 0.83vw, 23px);
+    width: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+    height: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     cursor: pointer;
@@ -4430,7 +4437,7 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 /* Modern Minimalist Section Title */
 .land-title {
     position: static !important;
-    font-size: clamp(1.74rem, 3.85vw, 6.66rem) !important;
+    font-size: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) !important;
     font-weight: 600 !important;
     color: rgba(255, 255, 255, 0.95) !important;
     font-family: 'Outfit', sans-serif !important;
@@ -4446,10 +4453,10 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     background: none !important;
     border: none !important;
     padding: 0 !important;
-    margin-top: clamp(4px, 0.56vw, 15px) !important;
+    margin-top: clamp(1px, max(clamp(1px, 0.46vw, 5px), calc(5px + 0.00279 * (100vw - 2046px))), 10px) !important;
     color: rgba(255, 255, 255, 0.7) !important;
     font-weight: 700 !important;
-    font-size: clamp(0.64rem, 1.41vw, 2.43rem) !important;
+    font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px) !important;
     cursor: pointer !important;
     align-self: flex-end;
     transition: transform 0.2s ease, color 0.2s ease;
@@ -4702,8 +4709,8 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 .land-nav {
     display: flex;
     align-items: center;
-    gap: clamp(7px, 0.93vw, 26px);
-    margin-bottom: clamp(13px, 1.85vw, 51px);
+    gap: clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+    margin-bottom: clamp(5px, max(clamp(5px, 1.85vw, 20px), calc(20px + 0.01672 * (100vw - 2046px))), 50px);
     flex-wrap: wrap;
 }
 
@@ -4711,10 +4718,10 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.05);
     color: rgba(255, 255, 255, 0.7);
-    padding: clamp(5px, 0.74vw, 20px) clamp(12px, 1.67vw, 46px);
-    border-radius: clamp(13px, 1.85vw, 51px);
+    padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+    border-radius: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01672 * (100vw - 2046px))), 50px);
     cursor: pointer;
-    font-size: clamp(0.54rem, 1.20vw, 2.08rem);
+    font-size: clamp(7px, max(clamp(7px, 1.67vw, 18px), calc(18px + 0.00669 * (100vw - 2046px))), 30px);
     font-weight: 600;
     transition: all 0.2s ease;
 }
@@ -6152,10 +6159,7 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
         max-width: 95vw;
         gap: 8px;
     }
-    .land-nav-btn i {
-        width: 28px;
-        height: 28px;
-    }
+
     .tnav-buttons {
         gap: clamp(4px, 1vw, 12px) !important;
     }

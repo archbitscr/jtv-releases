@@ -1068,86 +1068,94 @@ const LAND_GROUPS = [
     items: [{ id: 'gap', label: 'gap', base: 30, min: 20, max: 77, unit: 'px' }]
   },
   {
-    selector: '.land-nav', comment: 'Section nav row',
+    selector: '.land-nav', comment: 'Filter tab row',
     template: (f) => [`  gap: ${f('gap')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
     items: [
-      { id: 'gap',     label: 'gap',           base: 10, min: 7,  max: 26, unit: 'px' },
-      { id: 'marginB', label: 'margin-bottom', base: 20, min: 13, max: 51, unit: 'px' },
+      { id: 'gap',     label: 'gap',           base: 10, min: 5,  max: 20, unit: 'px' },
+      { id: 'marginB', label: 'margin-bottom', base: 20, min: 5,  max: 50, unit: 'px' },
     ]
   },
   {
-    selector: '.land-nav button', comment: 'Nav filter button',
+    selector: '.land-nav button', comment: 'Filter tab button (All / Favorites)',
     template: (f) => [
       `  padding: ${f('padV')} ${f('padH')};`,
       `  border-radius: ${f('radius')};`,
       `  font-size: ${f('fontSize')};`,
     ].join('\n'),
     items: [
-      { id: 'padV',     label: 'padding V',     base: 8,  min: 5,  max: 20, unit: 'px' },
-      { id: 'padH',     label: 'padding H',     base: 18, min: 12, max: 46, unit: 'px' },
-      { id: 'radius',   label: 'border-radius', base: 20, min: 13, max: 51, unit: 'px' },
-      { id: 'fontSize', label: 'font-size',     base: 13, min: 9,  max: 33, unit: 'px' },
+      { id: 'padV',     label: 'padding V',     base: 8,  min: 4,  max: 16, unit: 'px' },
+      { id: 'padH',     label: 'padding H',     base: 20, min: 10, max: 40, unit: 'px' },
+      { id: 'radius',   label: 'border-radius', base: 20, min: 10, max: 50, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',     base: 18, min: 7,  max: 30, unit: 'px' },
     ]
   },
   {
-    selector: '.land-nav-btn i', comment: 'Prev / Next nav icon',
+    selector: '.land-nav-btn i', comment: 'Prev / Next arrow icon',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 48, min: 32, max: 123, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 40, min: 20, max: 80, unit: 'px' }]
   },
   {
     selector: '.land-top-row', comment: 'Top row (title + exit)',
     template: (f) => [`  column-gap: ${f('gap')};`, `  margin-bottom: ${f('marginB')};`].join('\n'),
     items: [
-      { id: 'gap',     label: 'column-gap',    base: 40, min: 27, max: 102, unit: 'px' },
-      { id: 'marginB', label: 'margin-bottom', base: 12, min: 8,  max: 31,  unit: 'px' },
+      { id: 'gap',     label: 'column-gap',    base: 40, min: 20, max: 80, unit: 'px' },
+      { id: 'marginB', label: 'margin-bottom', base: 20, min: 4,  max: 60, unit: 'px' },
     ]
   },
   {
     selector: '.land-title', comment: 'Section title',
     template: (f) => `  font-size: ${f('fontSize')} !important;`,
-    items: [{ id: 'fontSize', label: 'font-size', base: 42, min: 28, max: 107, unit: 'px' }]
+    items: [{ id: 'fontSize', label: 'font-size', base: 40, min: 20, max: 80, unit: 'px' }]
   },
   {
     selector: '.land-title-block', comment: 'Title block',
     template: (f) => `  padding-top: ${f('padT')};`,
-    items: [{ id: 'padT', label: 'padding-top', base: 6, min: 4, max: 15, unit: 'px' }]
+    items: [{ id: 'padT', label: 'padding-top', base: 2, min: 1, max: 4, unit: 'px' }]
   },
   {
     selector: '.land-exit-block', comment: 'Exit button block',
     template: (f) => `  padding-top: ${f('padT')};`,
-    items: [{ id: 'padT', label: 'padding-top', base: 10, min: 7, max: 26, unit: 'px' }]
+    items: [{ id: 'padT', label: 'padding-top', base: 2, min: 1, max: 4, unit: 'px' }]
   },
   {
     selector: '.land-exit-btn', comment: 'Exit button',
     template: (f) => [`  margin-top: ${f('marginT')} !important;`, `  font-size: ${f('fontSize')} !important;`].join('\n'),
     items: [
-      { id: 'marginT',  label: 'margin-top', base: 6,  min: 4,  max: 15, unit: 'px' },
-      { id: 'fontSize', label: 'font-size',  base: 15, min: 10, max: 39, unit: 'px' },
+      { id: 'marginT',  label: 'margin-top', base: 5,  min: 1,  max: 10, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',  base: 20, min: 10, max: 40, unit: 'px' },
     ]
   },
   {
     selector: '.land-item', comment: 'Channel list item',
     template: (f) => `  border-radius: ${f('radius')};`,
-    items: [{ id: 'radius', label: 'border-radius', base: 15, min: 10, max: 38, unit: 'px' }]
+    items: [{ id: 'radius', label: 'border-radius', base: 15, min: 7, max: 20, unit: 'px' }]
   },
   {
     selector: '.land-item .land-logo', comment: 'Channel logo',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`, `  margin-right: ${f('marginR')};`].join('\n'),
     items: [
-      { id: 'size',    label: 'width / height', base: 50, min: 34, max: 128, unit: 'px' },
-      { id: 'marginR', label: 'margin-right',   base: 15, min: 10, max: 38,  unit: 'px' },
+      { id: 'size',    label: 'width / height', base: 50, min: 30, max: 120, unit: 'px' },
+      { id: 'marginR', label: 'margin-right',   base: 15, min: 7,  max: 30,  unit: 'px' },
+    ]
+  },
+  {
+    selector: '.land-item .land-logo .placeholder-circle', comment: 'Fallback logo circle',
+    template: (f) => [`  border-radius: ${f('radius')};`, `  font-size: ${f('fontSize')};`].join('\n'),
+    items: [
+      { id: 'radius',   label: 'border-radius', base: 8,  min: 4,  max: 20, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',     base: 20, min: 10, max: 50, unit: 'px' },
     ]
   },
   {
     selector: '.land-item h4', comment: 'Channel name',
     template: (f) => `  font-size: ${f('fontSize')};`,
-    items: [{ id: 'fontSize', label: 'font-size', base: 16, min: 11, max: 41, unit: 'px' }]
+    items: [{ id: 'fontSize', label: 'font-size', base: 16, min: 11, max: 36, unit: 'px' }]
   },
   {
     selector: '.land-epg', comment: 'EPG text',
     template: (f) => [`  font-size: ${f('fontSize')};`, `  margin-top: ${f('marginT')};`].join('\n'),
     items: [
-      { id: 'fontSize', label: 'font-size',  base: 12, min: 8, max: 31, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',  base: 12, min: 8, max: 28, unit: 'px' },
       { id: 'marginT',  label: 'margin-top', base: 4,  min: 3, max: 10, unit: 'px' },
     ]
   },
@@ -1161,11 +1169,11 @@ const LAND_GROUPS = [
     ].join('\n'),
     items: [
       { id: 'top',      label: 'top',           base: 8,  min: 5, max: 20, unit: 'px' },
-      { id: 'right',    label: 'right',          base: 12, min: 8, max: 31, unit: 'px' },
+      { id: 'right',    label: 'right',          base: 12, min: 8, max: 20, unit: 'px' },
       { id: 'padV',     label: 'padding V',      base: 2,  min: 1, max: 5,  unit: 'px' },
       { id: 'padH',     label: 'padding H',      base: 6,  min: 4, max: 15, unit: 'px' },
-      { id: 'radius',   label: 'border-radius',  base: 4,  min: 3, max: 10, unit: 'px' },
-      { id: 'fontSize', label: 'font-size',       base: 10, min: 7, max: 27, unit: 'px' },
+      { id: 'radius',   label: 'border-radius',  base: 4,  min: 3, max: 14, unit: 'px' },
+      { id: 'fontSize', label: 'font-size',       base: 10, min: 7, max: 24, unit: 'px' },
     ]
   },
   {
@@ -1181,20 +1189,20 @@ const LAND_GROUPS = [
       `  margin-top: ${f('marginT')};`,
     ].join('\n'),
     items: [
-      { id: 'height',  label: 'height',         base: 40, min: 27, max: 102, unit: 'px' },
+      { id: 'height',  label: 'height',         base: 40, min: 27, max: 100, unit: 'px' },
       { id: 'radius',  label: 'border-radius',  base: 6,  min: 4,  max: 15,  unit: 'px' },
-      { id: 'marginT', label: 'margin-top',     base: 12, min: 8,  max: 31,  unit: 'px' },
+      { id: 'marginT', label: 'margin-top',     base: 12, min: 8,  max: 30,  unit: 'px' },
     ]
   },
   {
     selector: '.land-dots', comment: 'Dots row',
     template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 12, min: 8, max: 31, unit: 'px' }]
+    items: [{ id: 'gap', label: 'gap', base: 15, min: 8, max: 30, unit: 'px' }]
   },
   {
     selector: '.land-dot', comment: 'Individual dot',
     template: (f) => [`  width: ${f('size')};`, `  height: ${f('size')};`].join('\n'),
-    items: [{ id: 'size', label: 'width / height', base: 9, min: 6, max: 23, unit: 'px' }]
+    items: [{ id: 'size', label: 'width / height', base: 12, min: 6, max: 24, unit: 'px' }]
   },
 ];
 
