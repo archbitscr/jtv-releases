@@ -1030,11 +1030,20 @@ body.player-active .edge-mask {
     opacity: 1;
 }
 
-/* Channel ID tag (same chip used in sidebar, .side-channel-id) — replaces the old list-number badge */
-.land-channel-id {
+/* Absolute corner wrapper: stacks channel-id + fav indicator vertically */
+.land-corner {
     position: absolute;
     top: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px);
     right: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00446 * (100vw - 2046px))), 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    pointer-events: none;
+}
+
+/* Channel ID tag (same chip used in sidebar, .side-channel-id) — replaces the old list-number badge */
+.land-channel-id {
     display: inline-flex;
     align-items: center;
     padding: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00167 * (100vw - 2046px))), 5px) clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
@@ -1058,13 +1067,9 @@ body.player-active .edge-mask {
 }
 
 .land-fav-indicator {
-    position: absolute;
-    top: calc(clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px) + clamp(14px, max(clamp(14px, 1.67vw, 18px), calc(18px + 0.00669 * (100vw - 2046px))), 34px) + 4px);
-    right: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00446 * (100vw - 2046px))), 20px);
     display: flex;
     align-items: center;
-    justify-content: center;
-    pointer-events: none;
+    justify-content: flex-end;
     color: #ff4d6d;
     filter: drop-shadow(0 0 4px rgba(255, 77, 109, 0.5));
 }

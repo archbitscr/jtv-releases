@@ -189,8 +189,10 @@ export function renderFavoritesGrid() {
 
                 const logoHtml = getSafeLogoHtml(channel.name, channel.logo);
                 gridItem.innerHTML = `
-                    <span class="land-channel-id">${escapeHtml(String(channel.id))}</span>
-                    ${channel.favorite ? `<span class="land-fav-indicator"><i data-lucide="heart"></i></span>` : ''}
+                    <div class="land-corner">
+                        <span class="land-channel-id">${escapeHtml(String(channel.id))}</span>
+                        ${channel.favorite ? `<span class="land-fav-indicator"><i data-lucide="heart"></i></span>` : ''}
+                    </div>
                     <div class="land-logo">${logoHtml}</div>
                     <div class="land-text-content">
                         <h4>${escapeHtml(channel.name)}</h4>
