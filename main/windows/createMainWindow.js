@@ -187,6 +187,16 @@ export function createMainWindow(context) {
 
   win.webContents.on('before-input-event', (event, input) => {
     if (input.type !== 'keyDown') return;
+
+    if (context.flags.isPackaged) {
+      const isDevTools =
+        input.key === 'F12' ||
+        (input.control && input.shift && (input.key === 'I' || input.key === 'i')) ||
+        (input.control && input.shift && (input.key === 'J' || input.key === 'j')) ||
+        (input.control && input.shift && (input.key === 'C' || input.key === 'c'));
+      if (isDevTools) { event.preventDefault(); return; }
+    }
+
     if (context.windowManager.getTypingState()) return;
 
     const k = input.key;
