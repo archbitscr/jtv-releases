@@ -428,6 +428,56 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ---
 
+#### 6. Tarea 42: Soporte de Streams Directos (HLS / m3u8)
+*   **Componentes:** `renderer/player/playerController.js`, `index.html`, `style.css`, `renderer/player/` (nuevo módulo `hlsPlayer.js`), `renderer/services/channelSync.js` (parser m3u).
+*   **Objetivo:** Permitir sintonizar canales cuya URL es un stream directo (`.m3u8`, `.m3u`, `.ts`, `rtmp://`, `rtsp://`) usando un `<video>` + hls.js en lugar del `<webview>` actual. El usuario no nota diferencia — mismos controles, mismo Player Bar, mismo comportamiento.
+
+##### A. Detección de tipo de canal
+*   Función utilitaria `isDirectStream(url)` en `renderer/utils/streamUtils.js`:
+    ```js
+    /\.(m3u8|m3u|ts|mp4|mkv)(\?|$)/i.test(url) ||
+    /^(rtmp|rtsp|udp|rtp):\/\//i.test(url)
+    ```
+*   `selectChannel` en `playerController.js` llama `isDirectStream(channel.path)` y enruta a `mountHlsPlayer` o al `mountRemotePlayer` existente (webview).
+
+##### B. Estructura del DOM
+*   `#video-container` ya existe. Se le agrega `<video id="hls-player" style="display:none">` como hermano del `<webview>`.
+*   Al tunear: si stream directo → `webview.style.display = 'none'`, `hlsPlayer.style.display = 'block'`. Al tunear canal webview → inverso.
+*   El `<video>` recibe los mismos estilos de posicionamiento que el webview (100% width/height, `object-fit: contain`).
+
+##### C. Módulo hlsPlayer.js
+*   Inicializa una instancia de `Hls` (hls.js) en el arranque y la reutiliza entre canales (no crear/destruir en cada tune).
+*   `mountHlsPlayer(url)` — llama `hls.loadSource(url)` + `hls.attachMedia(videoEl)` + `videoEl.play()`.
+*   `destroyHlsPlayer()` — llama `hls.destroy()` al cerrar la app.
+*   Expone `setVolume(v)` y `setMuted(bool)` para que `volumeController.js` no necesite saber el tipo de player activo.
+
+##### D. Adaptaciones del sistema existente
+*   **Volumen/Mute:** `volumeController.js` detecta el modo activo y llama `videoEl.volume` / `videoEl.muted` en lugar de `webContents.setAudioMuted()`.
+*   **Watchdog de freeze/silencio:** escucha eventos `waiting`, `stalled` y `error` del `<video>` en lugar de los eventos del webview. Mismos timeouts, misma lógica de failover.
+*   **`guest-preload.cjs`:** no aplica a streams directos — se omite completamente para ese tipo.
+*   **Autoplay policy:** `videoEl.play()` puede ser bloqueado por Chromium si no hay gesto previo. Mitigado con `--autoplay-policy=no-user-gesture-required` ya presente en el bootstrap.
+
+##### E. Importación de listas m3u (parser)
+*   Función `parseM3U(text)` en `renderer/services/m3uParser.js` — lee el formato `#EXTINF` y retorna array de objetos `{ name, logo, categories, path, type: 'stream' }`.
+*   En la UI de Ajustes → Channels: nuevo botón "Import M3U" que acepta una URL o un archivo local. La app descarga/lee el contenido, lo parsea y agrega los canales al array existente sin duplicados (comparación por URL).
+*   Los canales importados se distinguen con `source: 'imported'` para poder filtrarlos o eliminarlos en lote si el usuario quiere.
+
+##### F. Campo `type` en el modelo de canal
+*   Se agrega `type: "web" | "stream"` al esquema de canal en `appState.js`.
+*   Canales existentes sin `type` se tratan como `"web"` (retrocompatibilidad total con `jtv_data.json` existente).
+*   El CRUD de canales muestra el tipo y permite cambiarlo manualmente si una URL fue mal detectada.
+
+##### G. Acción requerida (orden de implementación)
+1.  Instalar hls.js: `npm install hls.js`.
+2.  Crear `renderer/utils/streamUtils.js` con `isDirectStream()`.
+3.  Agregar `<video id="hls-player">` en `index.html` y sus estilos en `style.css`.
+4.  Crear `renderer/player/hlsPlayer.js` con el módulo de reproducción.
+5.  Adaptar `playerController.js` para enrutar según tipo.
+6.  Adaptar `volumeController.js` y watchdog para operar sobre el player activo.
+7.  Crear `renderer/services/m3uParser.js` y agregar botón "Import M3U" en Settings → Channels.
+
+---
+
 ### ⏳ Dificultad Alta — 🧠 Recomendado Opus 4.8
 
 #### 8. Tarea 24: Licenciamiento, Trial Lock y Pasarela de Pago 🧠
