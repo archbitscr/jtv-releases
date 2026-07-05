@@ -396,6 +396,8 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 *   **Fix: texto de UI "HUD" en settings (`index.html`):** la descripción del setting "Glass Tuner" decía "Visual tool to adjust HUD, Sidebar, and Top Nav..." — actualizado a "Player Bar, Sidebar, and Top Nav...".
 
+*   **Fix: scroll del grid de Live TV se trababa en página 5** — `handleWheel` en `eventListeners.js` calculaba `totalPages` filtrando `state.channels.filter(c => c.favorite)` (solo favoritos) sin importar el tab activo. Con ~50 favoritos / 10 por página = tope duro en página 5, incluso en modo "All Channels" con 150+ canales. Fix: reemplazada la línea con `getFilteredLiveChannels()` (ya importada), la misma fuente de verdad que usa `renderFavoritesGrid`. Ahora el scroll navega todas las páginas sin límite en ambos modos ("All" y "Favorites").
+
 ---
 
 ### ⏳ Dificultad Alta — 🧠 Recomendado Opus 4.8
