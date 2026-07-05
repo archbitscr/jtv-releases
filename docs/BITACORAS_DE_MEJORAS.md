@@ -153,6 +153,12 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ---
 
+### [2026-07-05] - Migración Movies DB: librería persistente en disco
+
+*   ✅ **Migración Movies Library:** Sistema de base de datos persistente para películas migrado del prototipo `movies-explorer.html` a la app Electron. Arquitectura completa: (1) **IPC main process** — `registerMoviesDbIpc.js` maneja `userData/movies/movies-db.json` y `userData/movies/posters/` con merge-by-ID, 5 canales nuevos en `ipcChannels.json`. (2) **Preload** — `window.jtvAPI.moviesDb.*` expone get/save/delete/savePoster/getPoster. (3) **Renderer** — `renderer/vod/moviesDb.js` con API IPC + TMDB enrichment + poster download/resize a 185×314px vía Canvas. (4) **vodCache.js** — `loadMoviesFromDb()` reemplaza el scraping SFlix para movies (fallback a SFlix si DB vacía); warmupVodCache carga desde disco en lugar de hacer crawl. (5) **CSS** — badge quality top-left, badge rating top-right, fav-btn bottom-right; aspect-ratio 184/314. Sin límite de 100 items: soporta 1440+ títulos. Build v52, commit `1448c29`.
+
+---
+
 ## III. Plan de Tareas Pendientes (Hoja de Ruta)
 
 *Ordenadas por dificultad ascendente. Tareas marcadas con 🧠 requieren Opus 4.8 por complejidad.*
