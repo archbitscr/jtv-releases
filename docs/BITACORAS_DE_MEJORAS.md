@@ -263,59 +263,41 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ### ⏳ Dificultad Media-Alta
 
-#### 5. Tarea 30: Soporte Multi-idioma (i18n) con Dynamic Locale Loading
-*   **Componentes:** `renderer/`, `main/`, `app-preload.cjs`, `shared/ipcChannels.json`, Supabase Storage, `AppData\jtv\locales\`.
-*   **Objetivo:** UI completamente traducible, con inglés y español incluidos en el bundle y cualquier idioma adicional descargable desde dentro de la app sin salir a ninguna página web ni reiniciar.
+#### 5. Tarea 30: Soporte Multi-idioma (i18n) — Bundle-first
+*   **Componentes:** `renderer/`, `app-preload.cjs`, `locales/`, `shared/ipcChannels.json`.
+*   **Objetivo:** UI completamente traducible. Todos los idiomas incluidos en el bundle — sin servidor, sin descargas, sin infraestructura extra.
 *   **Subtarea completada:** Traducción de toda la UI de español a inglés como base.
+*   **Decisión de arquitectura:** cada archivo de idioma pesa ~24 KB en disco. 10 idiomas = ~240 KB = 0.15% del tamaño instalado (~160 MB). El impacto es imperceptible, por lo que no hay justificación técnica para un sistema de descarga dinámica. Si en el futuro se necesitan contribuciones externas de traductores sin publicar nueva versión, se puede añadir carga desde `AppData` como capa opcional encima de esta base.
 
-##### A. Arquitectura de archivos de traducción
-*   `locales/en.json` y `locales/es.json` se empaquetan en el bundle (presentes en el `.exe`).
-*   Idiomas adicionales viven en `AppData\jtv\locales\{lang}.json` — descargados bajo demanda.
-*   El loader i18n busca en este orden: (1) `AppData\jtv\locales\{lang}.json`, (2) bundle empaquetado. Esto permite actualizar traducciones sin nueva versión de la app.
-*   Estructura del archivo de traducción: JSON plano de clave → string. Las claves son identificadores semánticos en inglés (ej. `"settings.general.title": "General"`, `"pbar.pin": "Pin Player"`). Ningún string de lógica (logs, IDs, URLs, nombres de filtros) se incluye.
+##### A. Archivos de traducción
+*   Carpeta `locales/` en la raíz del proyecto, empaquetada en el bundle por electron-builder.
+*   Un archivo JSON por idioma: `en.json`, `es.json`, `pt.json`, `fr.json`, `de.json`, etc.
+*   Estructura: JSON plano de clave semántica → string. Las claves usan dot-notation por sección (`"settings.system.language": "App Language"`, `"pbar.pin": "Pin Player"`).
+*   **Excluir siempre:** nombres de canales, categorías/filtros, logs de consola, IDs, URLs, valores numéricos.
+*   Idiomas incluidos en v1: English, Español, Português, Français, Deutsch (los más relevantes para la base de usuarios IPTV).
 
-##### B. Servidor de idiomas (Supabase Storage)
-*   Bucket público `jtv-locales` en el proyecto Supabase existente (Tarea 24).
-*   Archivo de manifiesto: `locales/manifest.json` — lista todos los idiomas disponibles con código, nombre nativo, nombre en inglés y tamaño en bytes. La app lo descarga al abrir la pantalla de idiomas para mostrar qué hay disponible.
-*   Ejemplo de manifiesto:
-    ```json
-    [
-      { "code": "pt", "name": "Português",  "nameEn": "Portuguese", "size": 11800 },
-      { "code": "fr", "name": "Français",   "nameEn": "French",     "size": 12100 },
-      { "code": "de", "name": "Deutsch",    "nameEn": "German",     "size": 12300 }
-    ]
-    ```
-*   Cada archivo `{lang}.json` se sube manualmente por el desarrollador tras revisar la traducción.
+##### B. Módulo i18n en el renderer (`renderer/i18n/i18n.js`)
+*   `loadLocale(langCode)` — lee `locales/{langCode}.json` vía IPC (el renderer no puede leer archivos directamente con `sandbox: true`), cachea el objeto en memoria.
+*   `t(key, fallback?)` — devuelve la traducción activa. Fallback chain: idioma activo → `en.json` → clave literal. Nunca devuelve string vacío.
+*   `applyLocale(langCode)` — llama `loadLocale`, luego hace un único `querySelectorAll('[data-i18n]')` y actualiza el `textContent` de cada elemento en lote. También actualiza `placeholder` y `title` donde aplique.
+*   Se llama en el arranque de `renderer.js` antes de mostrar cualquier UI, usando `state.appLanguage` guardado en `jtv_data.json`.
 
 ##### C. UX dentro de la app (Settings → System → App Language)
-*   El dropdown `#app-language-select` ya existe en la pestaña System como placeholder. Se puebla al abrir Settings con los idiomas del manifiesto (bundle + disponibles en servidor), todos en un solo listado sin distinción de "instalado vs disponible" — eso es un detalle de implementación, no algo que el usuario deba ver.
-*   Al seleccionar un idioma distinto al activo, aparece un botón **Apply & Restart** junto al dropdown (oculto por defecto).
-*   Al hacer clic en Apply & Restart: (1) spinner/estado "Applying..." mientras la app descarga el `.json` si aún no está en `AppData\jtv\locales\`, (2) guarda `appLanguage: "{code}"` en `jtv_data.json`, (3) llama `app.relaunch()` + `app.exit()`.
-*   Al arrancar tras el reinicio, el loader de i18n aplica el idioma guardado antes de que cualquier UI sea visible. El usuario ve la app directamente en el nuevo idioma.
-*   Si la descarga falla (sin internet, servidor caído): se muestra un error inline junto al botón, no se guarda el cambio ni se reinicia. El dropdown vuelve al idioma activo.
+*   El dropdown `#app-language-select` ya existe como placeholder. Se puebla con los idiomas del bundle al abrir Settings.
+*   Al cambiar la selección, aparece un botón **Apply & Restart** junto al dropdown (oculto por defecto con `display: none`).
+*   Al hacer clic: guarda `appLanguage: "{code}"` en `jtv_data.json` → llama `app.relaunch()` + `app.exit()`. Sin descarga, sin espera — el reinicio es inmediato.
+*   Al arrancar tras el reinicio, `applyLocale` corre antes del primer render. El usuario ve la app directamente en el nuevo idioma.
 
-##### D. IPC y seguridad
-*   El renderer no escribe a disco directamente (`sandbox: true`). Toda descarga y escritura pasa por IPC:
-    *   `ipc: 'fetch-locale-manifest'` → main descarga el manifiesto de Supabase y lo devuelve como objeto JS (nunca una URL cruda al renderer).
-    *   `ipc: 'download-locale'` → main descarga `{lang}.json`, valida que sea JSON válido y lo guarda en `AppData\jtv\locales\{lang}.json`. Retorna `{ ok: true }` o `{ error: string }`.
-    *   `ipc: 'list-installed-locales'` → main lee el directorio `AppData\jtv\locales\` y retorna los códigos instalados.
-*   El renderer solo envía el código de idioma (ej. `"pt"`), nunca una URL — el main construye la URL de Supabase internamente.
+##### D. IPC requerido
+*   `ipc: 'read-locale-file'` → main lee `locales/{langCode}.json` del bundle y lo devuelve como string JSON. El renderer lo parsea y cachea. Un solo canal IPC, sin escritura a disco.
 
-##### E. Módulo i18n en el renderer
-*   Función `t(key, fallback?)` — busca la clave en el locale activo, si no existe devuelve `fallback` o la propia clave (nunca string vacío en producción).
-*   Función `applyLocale(langCode)` — carga el archivo JSON (vía IPC si no está en memoria), reemplaza todos los elementos con `data-i18n="key"` en el DOM, actualiza tooltips y placeholders.
-*   Los elementos del DOM usan `data-i18n="clave"` como atributo; `applyLocale` hace un único `querySelectorAll('[data-i18n]')` y actualiza en lote.
-*   Fallback chain: idioma activo → inglés → clave literal. Así un idioma parcialmente traducido nunca muestra strings vacíos.
-
-##### F. Acción requerida (orden de implementación)
-1.  Auditar toda la UI y extraer strings hardcodeados a `locales/en.json`. (Punto de partida más laborioso — ~300–500 keys estimadas.)
-2.  Crear `locales/es.json` traduciendo todas las keys al español.
-3.  Implementar módulo `renderer/i18n/i18n.js` con `t()` y `applyLocale(langCode)`.
-4.  Reemplazar strings en HTML con `data-i18n` y en JS con llamadas `t()`.
-5.  Agregar IPC `fetch-locale-manifest`, `download-locale` en main. (`list-installed-locales` no necesario — la descarga es transparente al usuario.)
-6.  Dar vida al dropdown `#app-language-select` existente en Settings → System: poblar con manifiesto, mostrar/ocultar botón "Apply & Restart", manejar descarga + relaunch + error inline.
-7.  Subir `manifest.json` y los primeros archivos adicionales a Supabase Storage.
-8.  **Excluir siempre:** nombres de canales, categorías/filtros, logs de consola, IDs, URLs, valores numéricos.
+##### E. Acción requerida (orden de implementación)
+1.  Auditar toda la UI y extraer strings a `locales/en.json` (~295 keys estimadas).
+2.  Crear `locales/es.json` y los demás idiomas del lote inicial.
+3.  Implementar `renderer/i18n/i18n.js` con `loadLocale`, `t` y `applyLocale`.
+4.  Agregar atributos `data-i18n` en `index.html` y reemplazar strings dinámicos en JS con `t()`.
+5.  Agregar IPC `read-locale-file` en main.
+6.  Dar vida al dropdown `#app-language-select`: poblar opciones, mostrar/ocultar botón Apply & Restart, guardar y relanzar.
 
 #### ~~6. Tarea 23 / Item 12: Build de Producción sin Modo Dev (Tree Shaking + Strip de HTML/CSS)~~ ✅ (ver Tareas Completadas)
 *   **Componente:** `vite.config.js`, `renderer.js`, `renderer/ui/eventListeners.js`, `developerModule.js`, `main/context/createAppContext.js`.
