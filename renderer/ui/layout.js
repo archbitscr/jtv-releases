@@ -70,33 +70,76 @@ export function isEditableElement(element) {
     return tag === 'INPUT' || tag === 'TEXTAREA' || element.isContentEditable;
 }
 
+const VOD_ASPECT    = 184 / 314;
+const VOD_GAP       = 10;
+const VOD_PADDING   = 10;
+const VOD_MIN_CELL_H = 100;
+
+let _vodResizeObserver = null;
+
 export function updateVodGridDimensions() {
-    const wrapper = document.querySelector('.land-carousel-wrapper');
-    const grid = document.getElementById('land-grid');
+    const wrapper  = document.querySelector('.land-carousel-wrapper');
+    const grid     = document.getElementById('land-grid');
     if (!wrapper || !grid) return null;
 
-    const isVodActive = grid.classList.contains('vod-active') || state.currentModule === 'movies' || state.currentModule === 'series';
+    const isVodActive = grid.classList.contains('vod-active');
     if (!isVodActive) return null;
-    const navSpace = Math.min(120, window.innerWidth * 0.1);
-    const gridWidth = (window.innerWidth * 0.95) - navSpace; // Subtract space for nav buttons
-    const gridHeight = window.innerHeight - 280;
 
-    const rowHeight = gridHeight / 3;
-    const posterHeight = Math.max(100, rowHeight - 45); // Account for card padding and vod-info text
-    const posterWidth = (2 / 3) * posterHeight;
-    const cardWidth = Math.floor(posterWidth * 0.56);
+    // Measure available height by subtracting sibling elements from dashboard height
+    const dashboard = document.getElementById('land-dashboard');
+    const topRow    = document.querySelector('.land-top-row');
+    const filterRow = document.getElementById('dashboard-filters');
+    const dotsEl    = document.querySelector('.land-dots-container');
 
-    const gap = 20;
-    let cols = Math.floor((gridWidth + gap) / (cardWidth + gap));
-    const minCols = window.innerWidth < 900 ? 2 : window.innerWidth < 1400 ? 3 : 5;
-    if (cols < minCols) cols = minCols;
+    const dashH  = dashboard ? dashboard.clientHeight : window.innerHeight;
+    const dStyle = dashboard ? getComputedStyle(dashboard) : null;
+    const padTop = dStyle ? parseFloat(dStyle.paddingTop)    : 60;
+    const padBot = dStyle ? parseFloat(dStyle.paddingBottom) : 40;
+    const topH   = topRow  ? topRow.offsetHeight  + (parseFloat(getComputedStyle(topRow).marginBottom)  || 0) : 0;
+    const filtH  = filterRow && !filterRow.classList.contains('hidden')
+        ? filterRow.offsetHeight + (parseFloat(getComputedStyle(filterRow).marginBottom) || 8)
+        : 0;
+    const dotsH  = dotsEl ? dotsEl.offsetHeight : 30;
 
-    const itemsPerPage = cols * 3;
+    const availH = Math.max(VOD_MIN_CELL_H * 2, dashH - padTop - padBot - topH - filtH - dotsH - 10);
+    const innerH = availH - VOD_PADDING * 2;
 
-    grid.style.setProperty('--vod-cols', cols);
-    grid.style.setProperty('--vod-card-width', `${cardWidth}px`);
+    const navPrevW = document.getElementById('land-prev')?.offsetWidth || 0;
+    const navNextW = document.getElementById('land-next')?.offsetWidth || 0;
+    const innerW   = (wrapper.clientWidth - navPrevW - navNextW - VOD_PADDING * 2) || (window.innerWidth * 0.8);
 
-    return { cols, itemsPerPage };
+    const maxRows = Math.max(1, Math.floor((innerH + VOD_GAP) / (VOD_MIN_CELL_H + VOD_GAP)));
+    let bestRows = 1, bestCols = 1, bestArea = 0;
+    for (let rows = 1; rows <= maxRows; rows++) {
+        const cellH = (innerH - (rows - 1) * VOD_GAP) / rows;
+        const cellW = cellH * VOD_ASPECT;
+        const cols  = Math.max(1, Math.floor((innerW + VOD_GAP) / (cellW + VOD_GAP)));
+        const area  = cellH * cellW * rows * cols;
+        if (area > bestArea) { bestArea = area; bestRows = rows; bestCols = cols; }
+    }
+
+    grid.style.height               = availH + 'px';
+    grid.style.width                = '100%';
+    grid.style.gridTemplateRows    = `repeat(${bestRows}, 1fr)`;
+    grid.style.gridTemplateColumns = `repeat(${bestCols}, auto)`;
+
+    return { cols: bestCols, rows: bestRows, itemsPerPage: bestRows * bestCols };
+}
+
+export function initVodGridResizeObserver() {
+    if (_vodResizeObserver) return;
+    const wrapper = document.querySelector('.land-carousel-wrapper');
+    if (!wrapper) return;
+    _vodResizeObserver = new ResizeObserver(() => {
+        const grid = document.getElementById('land-grid');
+        if (!grid || !grid.classList.contains('vod-active')) return;
+        const dims = updateVodGridDimensions();
+        if (dims && state.VOD_ITEMS_PER_PAGE !== dims.itemsPerPage) {
+            state.VOD_ITEMS_PER_PAGE = dims.itemsPerPage;
+            refreshVodContent();
+        }
+    });
+    _vodResizeObserver.observe(wrapper);
 }
 
 export async function handleResizeDimensions() {

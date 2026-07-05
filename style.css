@@ -2376,13 +2376,11 @@ body.hide-cursor * {
 
 /* Dynamic Grid Layout for VOD */
 .land-grid.vod-active {
-    grid-template-columns: repeat(var(--vod-cols, 5), minmax(0, 1fr)) !important;
-    grid-template-rows: repeat(3, 1fr) !important;
     grid-auto-flow: row !important;
     width: 100% !important;
     max-width: none !important;
-    height: calc(100vh - 280px) !important;
-    gap: 20px !important;
+    gap: 10px !important;
+    /* height, grid-template-rows, grid-template-columns set dynamically by fitGrid */
 }
 
 /* Disable scrolling when VOD active tab is selected */
@@ -2415,8 +2413,8 @@ body.hide-cursor * {
     background: rgba(10, 10, 10, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 10px;
-    height: 100% !important; /* Scale to fill grid row */
-    width: var(--vod-card-width, auto) !important; /* Set width matching poster exactly! */
+    height: 100% !important;
+    width: auto !important;
     margin: 0 auto;
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s, box-shadow 0.3s;
 }
@@ -2432,7 +2430,7 @@ body.hide-cursor * {
     position: relative;
     flex: 1 !important;
     height: 0 !important;
-    width: var(--vod-card-width, auto) !important;
+    width: 100% !important;
     aspect-ratio: 184 / 314 !important;
     background: #111;
     overflow: hidden;

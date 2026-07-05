@@ -48,7 +48,7 @@ import { checkValidity, updateEditLogo } from './renderer/ui/editPane.js';
 import { adjustVolume, toggleMute, updateVolumeUI } from './renderer/ui/volumeController.js';
 import { setSettingsFilterTab, setConnectivityTab, setChannelsTab } from './renderer/settings/settingsTabs.js';
 import { ensurePlayerCurtain, showPlayerCurtain, hidePlayerCurtain, updateWebviewPointerEvents, updateHudChannelFilters } from './renderer/ui/playerUI.js';
-import { syncCenterNavWidth, checkResolution, updateFullscreenButton, toggleAppFullscreen, handleResizeDimensions, updateVodGridDimensions, updatePlayerVideoBox } from './renderer/ui/layout.js';
+import { syncCenterNavWidth, checkResolution, updateFullscreenButton, toggleAppFullscreen, handleResizeDimensions, updateVodGridDimensions, initVodGridResizeObserver, updatePlayerVideoBox } from './renderer/ui/layout.js';
 // sensors.js is dev-only: loaded dynamically in the dev block below (see import.meta.env.PROD gate)
 import { updateTriggersVisibility } from './renderer/ui/triggersVisibility.js';
 import { setupEventListeners } from './renderer/ui/eventListeners.js';
@@ -59,24 +59,24 @@ import { sanitizeMediaUrl } from './renderer/utils/sanitize.js';
 const nativeApi = window.jtvAPI;
 
 window.timeoutsConfig = {
-    settingsActive: 5000,
+    settingsActive: 6000,
     settingsActiveEnabled: true,
-    menuActive: 5000,
+    menuActive: 2500,
     menuActiveEnabled: true,
-    topNav: 2000,
+    topNav: 2500,
     topNavEnabled: true,
-    zappingHUD: 4900,
+    zappingHUD: 2500,
     zappingHUDEnabled: true,
-    cursorActive: 5000,
+    cursorActive: 3000,
     cursorActiveEnabled: true,
-    failoverMain: 4000,
+    failoverMain: 3000,
     failoverMainEnabled: true,
     failoverAlt: 3000,
     failoverAltEnabled: true,
-    watchdogFreeze: 2000,
+    watchdogFreeze: 3000,
     watchdogFreezeEnabled: true,
     watchdogSilence: 10000,
-    landAutoHide: 8000,
+    landAutoHide: 6000,
     landAutoHideEnabled: true
 };
 
@@ -618,6 +618,7 @@ async function init() {
 window.addEventListener('load', () => {
     checkResolution();
     syncCenterNavWidth();
+    initVodGridResizeObserver();
     if (state.currentModule === 'movies' || state.currentModule === 'series') {
         const dims = updateVodGridDimensions();
         if (dims) state.VOD_ITEMS_PER_PAGE = dims.itemsPerPage;
