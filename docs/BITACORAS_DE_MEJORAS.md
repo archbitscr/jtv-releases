@@ -396,6 +396,8 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 *   **Fix: texto de UI "HUD" en settings (`index.html`):** la descripción del setting "Glass Tuner" decía "Visual tool to adjust HUD, Sidebar, and Top Nav..." — actualizado a "Player Bar, Sidebar, and Top Nav...".
 
+*   **Security: bloqueo de DevTools por teclado en build de producción** — Electron no bloquea F12 / Ctrl+Shift+I / J / C por defecto; en el `.exe` empaquetado esos atajos abrían el inspector de Chromium exponiendo `window.jtvAPI` a la consola aunque todo el código dev ya estaba eliminado del bundle. Agregado bloqueo explícito en `createMainWindow.js` vía `before-input-event`: cuando `isPackaged = true` los 4 atajos de DevTools son interceptados y cancelados antes de llegar al renderer. En dev mode no hay efecto.
+
 *   **Fix: scroll del grid de Live TV se trababa en página 5** — `handleWheel` en `eventListeners.js` calculaba `totalPages` filtrando `state.channels.filter(c => c.favorite)` (solo favoritos) sin importar el tab activo. Con ~50 favoritos / 10 por página = tope duro en página 5, incluso en modo "All Channels" con 150+ canales. Fix: reemplazada la línea con `getFilteredLiveChannels()` (ya importada), la misma fuente de verdad que usa `renderFavoritesGrid`. Ahora el scroll navega todas las páginas sin límite en ambos modos ("All" y "Favorites").
 
 ---
