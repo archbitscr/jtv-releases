@@ -42,5 +42,10 @@
   "SET_DIAGNOSTICS_ENABLED": "set-diagnostics-enabled",
   "OPEN_DEVTOOLS": "open-devtools",
   "RELOAD_WINDOW": "reload-window",
-  "RESET_WINDOW_SIZE": "reset-window-size"
+  "RESET_WINDOW_SIZE": "reset-window-size",
+  "MOVIES_DB_GET": "movies-db-get",
+  "MOVIES_DB_SAVE": "movies-db-save",
+  "MOVIES_DB_DELETE": "movies-db-delete",
+  "MOVIES_DB_SAVE_POSTER": "movies-db-save-poster",
+  "MOVIES_DB_GET_POSTER": "movies-db-get-poster"
 }

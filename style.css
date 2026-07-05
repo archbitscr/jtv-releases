@@ -2433,7 +2433,7 @@ body.hide-cursor * {
     flex: 1 !important;
     height: 0 !important;
     width: var(--vod-card-width, auto) !important;
-    aspect-ratio: 2 / 3 !important; /* Force exact 2:3 aspect ratio */
+    aspect-ratio: 184 / 314 !important;
     background: #111;
     overflow: hidden;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
@@ -2442,8 +2442,10 @@ body.hide-cursor * {
 
 .vod-fav-btn {
     position: absolute;
-    top: 8px;
-    left: 8px;
+    bottom: 7px;
+    right: 7px;
+    top: auto;
+    left: auto;
     width: 32px;
     height: 32px;
     display: flex;
@@ -2487,8 +2489,10 @@ body.hide-cursor * {
 
 .vod-badge {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 7px;
+    left: 7px;
+    right: auto;
+    bottom: auto;
     background: rgba(0, 0, 0, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: #fff;
@@ -2500,9 +2504,9 @@ body.hide-cursor * {
 }
 
 .vod-badge.rating {
-    bottom: 8px;
-    right: 8px;
-    top: auto;
+    top: 7px;
+    right: 7px;
+    bottom: auto;
     left: auto;
     background: rgba(0, 0, 0, 0.85);
     border-color: var(--accent);

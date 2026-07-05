@@ -31,7 +31,12 @@ const IPC = {
     SET_DIAGNOSTICS_ENABLED: 'set-diagnostics-enabled',
     OPEN_DEVTOOLS: 'open-devtools',
     RELOAD_WINDOW: 'reload-window',
-    RESET_WINDOW_SIZE: 'reset-window-size'
+    RESET_WINDOW_SIZE: 'reset-window-size',
+    MOVIES_DB_GET: 'movies-db-get',
+    MOVIES_DB_SAVE: 'movies-db-save',
+    MOVIES_DB_DELETE: 'movies-db-delete',
+    MOVIES_DB_SAVE_POSTER: 'movies-db-save-poster',
+    MOVIES_DB_GET_POSTER: 'movies-db-get-poster'
 };
 
 function subscribe(channel, callback) {
@@ -74,6 +79,13 @@ contextBridge.exposeInMainWorld('jtvAPI', {
     openDevtools: () => ipcRenderer.invoke(IPC.OPEN_DEVTOOLS),
     reloadWindow: () => ipcRenderer.invoke(IPC.RELOAD_WINDOW),
     resetWindowSize: () => ipcRenderer.invoke(IPC.RESET_WINDOW_SIZE),
+    moviesDb: {
+        get: () => ipcRenderer.invoke(IPC.MOVIES_DB_GET),
+        save: (payload) => ipcRenderer.invoke(IPC.MOVIES_DB_SAVE, payload),
+        delete: () => ipcRenderer.invoke(IPC.MOVIES_DB_DELETE),
+        savePoster: (payload) => ipcRenderer.invoke(IPC.MOVIES_DB_SAVE_POSTER, payload),
+        getPoster: (payload) => ipcRenderer.invoke(IPC.MOVIES_DB_GET_POSTER, payload)
+    },
     relaunch: () => ipcRenderer.invoke('relaunch'),
     googleLogin: () => ipcRenderer.invoke('google-login'),
     getNetworkDate: (streamUrl) => ipcRenderer.invoke('get-network-date', streamUrl),

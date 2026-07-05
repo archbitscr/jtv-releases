@@ -272,15 +272,18 @@ export function renderFavoritesGrid() {
             gridItem.style.animationDelay = `${(i % 10) * 0.03}s`;
 
             if (item) {
-                const badgeHtml = item.rating && item.rating !== "N/A" ? `<div class="vod-badge rating">★ ${escapeHtml(item.rating)}</div>` : '';
                 const qualityHtml = item.quality ? `<div class="vod-badge">${escapeHtml(item.quality)}</div>` : '';
+                const badgeHtml = item.rating && item.rating !== "N/A" ? `<div class="vod-badge rating">★ ${escapeHtml(item.rating)}</div>` : '';
                 const favActive = isVodFavorite(item);
-                const safePosterUrl = sanitizeMediaUrl(item.posterUrl, { fallback: 'https://images.unsplash.com/photo-1594909122845-11baa439b7bf?q=80&w=240&auto=format&fit=crop' });
+                const posterSrc = item.posterHD || item.posterUrl || '';
+                const safePosterUrl = posterSrc
+                    ? sanitizeMediaUrl(posterSrc, { fallback: 'https://images.unsplash.com/photo-1594909122845-11baa439b7bf?q=80&w=240&auto=format&fit=crop' })
+                    : 'https://images.unsplash.com/photo-1594909122845-11baa439b7bf?q=80&w=240&auto=format&fit=crop';
                 const safeTitle = escapeHtml(item.title);
                 gridItem.innerHTML = `
                     <div class="vod-poster-container">
-                        ${badgeHtml}
                         ${qualityHtml}
+                        ${badgeHtml}
                         <button class="vod-fav-btn ${favActive ? 'active' : ''}" type="button" title="Favorito">
                             <i data-lucide="heart"></i>
                         </button>

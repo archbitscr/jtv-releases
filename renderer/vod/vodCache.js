@@ -1,5 +1,6 @@
 import { state } from '../state/appState.js';
 import { parseSFlixHtml } from './vodContent.js';
+import { moviesDbGet } from './moviesDb.js';
 
 let ext = {};
 
@@ -62,11 +63,31 @@ export async function prefetchVodType(type, targetCount = 100) {
 export function warmupVodCache() {
     const runWarmup = () => {
         prefetchVodType('series', 100);
-        prefetchVodType('movies', 100);
+        loadMoviesFromDb();
     };
     if (typeof window.requestIdleCallback === 'function') {
         window.requestIdleCallback(() => runWarmup(), { timeout: 2000 });
     } else {
         setTimeout(runWarmup, 1000);
     }
+}
+
+// Load movies from the persistent disk DB instead of SFlix
+export async function loadMoviesFromDb() {
+    try {
+        const db = await moviesDbGet();
+        if (db.movies && db.movies.length > 0) {
+            const items = db.movies.map(m => ({ ...m, type: 'movies' }));
+            state.vodCache.movies = { items, updatedAt: db.updatedAt ? new Date(db.updatedAt).getTime() : Date.now() };
+            state.fetchedMovies = items;
+            state.vodTotalPages = Math.ceil(items.length / state.VOD_ITEMS_PER_PAGE);
+            if (ext.renderFavoritesGrid) ext.renderFavoritesGrid();
+            return items;
+        }
+    } catch (e) {
+        console.warn('[vodCache] loadMoviesFromDb failed, falling back to SFlix:', e.message);
+    }
+    // Fallback: fetch from SFlix if DB is empty
+    await prefetchVodType('movies', 100);
+    return state.fetchedMovies;
 }
