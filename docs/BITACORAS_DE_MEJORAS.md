@@ -287,12 +287,12 @@ Este documento unifica de forma cronológica todas las mejoras, características
     ```
 *   Cada archivo `{lang}.json` se sube manualmente por el desarrollador tras revisar la traducción.
 
-##### C. UX dentro de la app (Settings → General → Language)
-*   Lista de idiomas en dos secciones: **Installed** (en/es del bundle + los descargados) y **Available** (del manifiesto, aún no descargados).
-*   Cada idioma disponible muestra su nombre y el tamaño estimado con un botón **Download**.
-*   Al hacer clic en Download: spinner inline → descarga silenciosa vía IPC → botón cambia a checkmark "Installed" → idioma seleccionable de inmediato.
-*   El idioma activo se persiste en `jtv_data.json` (`state.appLanguage`). Al arrancar, la app carga ese idioma antes de renderizar cualquier UI.
-*   Sin reinicio requerido — el cambio de idioma aplica al instante recargando todos los strings traducibles activos.
+##### C. UX dentro de la app (Settings → System → App Language)
+*   El dropdown `#app-language-select` ya existe en la pestaña System como placeholder. Se puebla al abrir Settings con los idiomas del manifiesto (bundle + disponibles en servidor), todos en un solo listado sin distinción de "instalado vs disponible" — eso es un detalle de implementación, no algo que el usuario deba ver.
+*   Al seleccionar un idioma distinto al activo, aparece un botón **Apply & Restart** junto al dropdown (oculto por defecto).
+*   Al hacer clic en Apply & Restart: (1) spinner/estado "Applying..." mientras la app descarga el `.json` si aún no está en `AppData\jtv\locales\`, (2) guarda `appLanguage: "{code}"` en `jtv_data.json`, (3) llama `app.relaunch()` + `app.exit()`.
+*   Al arrancar tras el reinicio, el loader de i18n aplica el idioma guardado antes de que cualquier UI sea visible. El usuario ve la app directamente en el nuevo idioma.
+*   Si la descarga falla (sin internet, servidor caído): se muestra un error inline junto al botón, no se guarda el cambio ni se reinicia. El dropdown vuelve al idioma activo.
 
 ##### D. IPC y seguridad
 *   El renderer no escribe a disco directamente (`sandbox: true`). Toda descarga y escritura pasa por IPC:
@@ -310,10 +310,10 @@ Este documento unifica de forma cronológica todas las mejoras, características
 ##### F. Acción requerida (orden de implementación)
 1.  Auditar toda la UI y extraer strings hardcodeados a `locales/en.json`. (Punto de partida más laborioso — ~300–500 keys estimadas.)
 2.  Crear `locales/es.json` traduciendo todas las keys al español.
-3.  Implementar módulo `renderer/i18n/i18n.js` con `t()` y `applyLocale()`.
+3.  Implementar módulo `renderer/i18n/i18n.js` con `t()` y `applyLocale(langCode)`.
 4.  Reemplazar strings en HTML con `data-i18n` y en JS con llamadas `t()`.
-5.  Agregar IPC `fetch-locale-manifest`, `download-locale`, `list-installed-locales` en main.
-6.  Agregar UI de selector de idioma en Settings → General.
+5.  Agregar IPC `fetch-locale-manifest`, `download-locale` en main. (`list-installed-locales` no necesario — la descarga es transparente al usuario.)
+6.  Dar vida al dropdown `#app-language-select` existente en Settings → System: poblar con manifiesto, mostrar/ocultar botón "Apply & Restart", manejar descarga + relaunch + error inline.
 7.  Subir `manifest.json` y los primeros archivos adicionales a Supabase Storage.
 8.  **Excluir siempre:** nombres de canales, categorías/filtros, logs de consola, IDs, URLs, valores numéricos.
 
