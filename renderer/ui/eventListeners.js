@@ -1174,7 +1174,7 @@ export function setupEventListeners() {
         if (!state.isHomeActive) return;
 
         if (state.activeDashTab === "live") {
-            const allFavs = state.channels.filter(c => c.favorite).filter(c => state.dashboardCategory === "All" || (c.categories && c.categories.includes(state.dashboardCategory)));
+            const allFavs = getFilteredLiveChannels();
             const totalPages = Math.ceil(allFavs.length / state.FAVS_PER_PAGE);
             if (totalPages <= 1) return;
 
