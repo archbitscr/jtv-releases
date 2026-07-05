@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=46">
+    <link rel="stylesheet" href="./style.css?v=47">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen (Tarea 11) -->
@@ -1157,26 +1157,13 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                     <div class="timeout-group-items">
                         <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title">Settings active (With Stream)</span>
-                                <span class="setting-desc">Closes settings during playback.</span>
+                                <span class="setting-title">Auto-close Settings</span>
+                                <span class="setting-desc">Closes the settings panel after inactivity during playback.</span>
                             </div>
                             <div class="timeout-controls">
                                 <input type="number" id="timeout-settings-active" class="dark-input timeout-input">
                                 <label class="settings-switch">
                                     <input type="checkbox" id="timeout-settings-active-enabled">
-                                    <span class="settings-switch-slider"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="setting-item timeout-item">
-                            <div class="setting-item-info">
-                                <span class="setting-title">Settings inactive (No Stream)</span>
-                                <span class="setting-desc">Closes settings when idle.</span>
-                            </div>
-                            <div class="timeout-controls">
-                                <input type="number" id="timeout-settings-inactive" class="dark-input timeout-input">
-                                <label class="settings-switch">
-                                    <input type="checkbox" id="timeout-settings-inactive-enabled">
                                     <span class="settings-switch-slider"></span>
                                 </label>
                             </div>
@@ -1190,8 +1177,8 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                     <div class="timeout-group-items">
                         <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title">Auto-hide landing (With Stream)</span>
-                                <span class="setting-desc">Dismisses the Live TV landing dashboard during playback.</span>
+                                <span class="setting-title">Auto-hide Dashboard</span>
+                                <span class="setting-desc">Dismisses the channel dashboard after inactivity during playback.</span>
                             </div>
                             <div class="timeout-controls">
                                 <input type="number" id="timeout-land-auto-hide" class="dark-input timeout-input">
@@ -1210,8 +1197,8 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                     <div class="timeout-group-items">
                         <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title">Side menu active (With Stream)</span>
-                                <span class="setting-desc">Closes menu during playback.</span>
+                                <span class="setting-title">Auto-close Channel List</span>
+                                <span class="setting-desc">Closes the sidebar after inactivity during playback.</span>
                             </div>
                             <div class="timeout-controls">
                                 <input type="number" id="timeout-menu-active" class="dark-input timeout-input">
@@ -1221,30 +1208,17 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                                 </label>
                             </div>
                         </div>
-                        <div class="setting-item timeout-item">
-                            <div class="setting-item-info">
-                                <span class="setting-title">Side menu inactive (No Stream)</span>
-                                <span class="setting-desc">Closes menu when idle.</span>
-                            </div>
-                            <div class="timeout-controls">
-                                <input type="number" id="timeout-menu-inactive" class="dark-input timeout-input">
-                                <label class="settings-switch">
-                                    <input type="checkbox" id="timeout-menu-inactive-enabled">
-                                    <span class="settings-switch-slider"></span>
-                                </label>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Grupo 3: Bottom Menu (HUD) -->
+                <!-- Grupo 3: Player Bar -->
                 <div class="timeout-group-card">
-                    <h5 class="timeout-group-title">Bottom Menu (HUD)</h5>
+                    <h5 class="timeout-group-title">Player Bar</h5>
                     <div class="timeout-group-items">
                         <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title">Hide Zapping HUD</span>
-                                <span class="setting-desc">Hides bottom info and source bar.</span>
+                                <span class="setting-title">Auto-hide Player Bar</span>
+                                <span class="setting-desc">Hides the player bar after inactivity.</span>
                             </div>
                             <div class="timeout-controls">
                                 <input type="number" id="timeout-zappinghud" class="dark-input timeout-input">
@@ -1257,14 +1231,14 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                     </div>
                 </div>
 
-                <!-- Grupo 4: Top Menu (Navigation) -->
+                <!-- Grupo 4: Top Navigation -->
                 <div class="timeout-group-card">
-                    <h5 class="timeout-group-title">Top Menu (Navigation)</h5>
+                    <h5 class="timeout-group-title">Top Navigation</h5>
                     <div class="timeout-group-items">
                         <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title">Hide Top Menu</span>
-                                <span class="setting-desc">Hides top navigation bar.</span>
+                                <span class="setting-title">Auto-hide Top Nav</span>
+                                <span class="setting-desc">Hides the top navigation bar after inactivity.</span>
                             </div>
                             <div class="timeout-controls">
                                 <input type="number" id="timeout-topnav" class="dark-input timeout-input">
@@ -1283,26 +1257,13 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                     <div class="timeout-group-items">
                         <div class="setting-item timeout-item">
                             <div class="setting-item-info">
-                                <span class="setting-title">Hide Cursor (With Stream)</span>
-                                <span class="setting-desc">Hides cursor during playback.</span>
+                                <span class="setting-title">Auto-hide Cursor</span>
+                                <span class="setting-desc">Hides the cursor after inactivity during playback.</span>
                             </div>
                             <div class="timeout-controls">
                                 <input type="number" id="timeout-cursor-active" class="dark-input timeout-input">
                                 <label class="settings-switch">
                                     <input type="checkbox" id="timeout-cursor-active-enabled">
-                                    <span class="settings-switch-slider"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="setting-item timeout-item">
-                            <div class="setting-item-info">
-                                <span class="setting-title">Hide Cursor (No Stream)</span>
-                                <span class="setting-desc">Hides cursor when idle.</span>
-                            </div>
-                            <div class="timeout-controls">
-                                <input type="number" id="timeout-cursor-inactive" class="dark-input timeout-input">
-                                <label class="settings-switch">
-                                    <input type="checkbox" id="timeout-cursor-inactive-enabled">
                                     <span class="settings-switch-slider"></span>
                                 </label>
                             </div>
@@ -1317,7 +1278,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                         <div class="setting-item timeout-item">
                             <div class="setting-item-info">
                                 <span class="setting-title">Main Source Failover</span>
-                                <span class="setting-desc">Grace time before first retry.</span>
+                                <span class="setting-desc">Time before switching to an alternate source.</span>
                             </div>
                             <div class="timeout-controls">
                                 <input type="number" id="timeout-failover-main" class="dark-input timeout-input">
@@ -1330,7 +1291,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                         <div class="setting-item timeout-item">
                             <div class="setting-item-info">
                                 <span class="setting-title">Alternate Sources Failover</span>
-                                <span class="setting-desc">Grace time per alternate source.</span>
+                                <span class="setting-desc">Time allowed per alternate source before retrying.</span>
                             </div>
                             <div class="timeout-controls">
                                 <input type="number" id="timeout-failover-alt" class="dark-input timeout-input">
@@ -1343,7 +1304,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                         <div class="setting-item timeout-item">
                             <div class="setting-item-info">
                                 <span class="setting-title">Video Freeze Watchdog</span>
-                                <span class="setting-desc">Detects frozen currentTime in the player.</span>
+                                <span class="setting-desc">Triggers a retry when the video stops progressing.</span>
                             </div>
                             <div class="timeout-controls">
                                 <input type="number" id="timeout-watchdog-freeze" class="dark-input timeout-input">

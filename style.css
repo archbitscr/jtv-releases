@@ -3814,9 +3814,18 @@ body:not(.dev-mode) .dev-indicator {
 
 /* Hotkey card grid */
 .hotkey-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: clamp(6px, 0.93vw, 24px);
+}
+
+.hotkey-row {
+    display: flex;
+    gap: clamp(6px, 0.93vw, 24px);
+}
+
+.hotkey-row .hotkey-card {
+    flex: 1;
 }
 
 .hotkey-card {

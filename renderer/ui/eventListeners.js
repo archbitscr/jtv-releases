@@ -686,6 +686,15 @@ export function setupEventListeners() {
         document.addEventListener(evtName, () => startInactivityTimers());
     });
 
+    // When JTV loses window focus, start the cursor timer so it hides over JTV's area
+    // even while the user is interacting with another app side by side.
+    // On refocus, show cursor and restart the timer fresh.
+    window.addEventListener('blur', () => startCursorTimer());
+    window.addEventListener('focus', () => {
+        document.body.classList.remove('hide-cursor');
+        startCursorTimer();
+    });
+
     // Top HUD navigation button clicks
     document.querySelectorAll('.tnav-menu .tnav-btn').forEach(btn => {
         btn.onclick = (e) => {
@@ -1522,16 +1531,14 @@ export function setupEventListeners() {
     };
 
     const HOTKEY_DEFS = [
-        { action: 'fullscreen', title: 'Toggle Fullscreen', desc: 'Enter or exit fullscreen mode.' },
-        { action: 'toggleHUD', title: 'Toggle HUD / Pin', desc: 'Show HUD and toggle pin state.' },
-        { action: 'volumeUp', title: 'Volume Up', desc: 'Increase the volume level.' },
-        { action: 'volumeDown', title: 'Volume Down', desc: 'Decrease the volume level.' },
-        { action: 'toggleMute', title: 'Toggle Mute', desc: 'Mute or unmute audio.' },
-        { action: 'prevChannel', title: 'Channel Up', desc: 'Zap to the previous channel.' },
-        { action: 'nextChannel', title: 'Channel Down', desc: 'Zap to the next channel.' },
-        { action: 'escape', title: 'Close / Go Back', desc: 'Close modals or return to previous view.' },
-        { action: 'prevSource', title: 'Previous Source', desc: 'Switch to the previous video source.' },
-        { action: 'nextSource', title: 'Next Source', desc: 'Switch to the next video source.' }
+        { action: 'fullscreen',  title: 'Toggle Fullscreen', desc: 'Enter or exit fullscreen mode.',            group: 'player'  },
+        { action: 'toggleHUD',   title: 'Player Pin',        desc: 'Show HUD and toggle pin state.',            group: 'player'  },
+        { action: 'prevChannel', title: 'Channel Up',        desc: 'Zap to the previous channel.',              group: 'channel' },
+        { action: 'nextChannel', title: 'Channel Down',      desc: 'Zap to the next channel.',                  group: 'channel' },
+        { action: 'volumeUp',    title: 'Volume Up',         desc: 'Increase the volume level.',                group: 'volume'  },
+        { action: 'volumeDown',  title: 'Volume Down',       desc: 'Decrease the volume level.',                group: 'volume'  },
+        { action: 'toggleMute',  title: 'Toggle Mute',       desc: 'Mute or unmute audio.',                     group: 'misc'    },
+        { action: 'escape',      title: 'Close / Go Back',   desc: 'Close modals or return to previous view.',  group: 'misc'    },
     ];
 
     function keyToDisplay(key) {
@@ -1564,62 +1571,74 @@ export function setupEventListeners() {
         if (!grid) return;
         grid.innerHTML = '';
 
+        // Build ordered group list preserving HOTKEY_DEFS order
+        const groupMap = new Map();
         HOTKEY_DEFS.forEach(def => {
-            const card = document.createElement('div');
-            card.className = 'hotkey-card';
+            if (!groupMap.has(def.group)) groupMap.set(def.group, []);
+            groupMap.get(def.group).push(def);
+        });
 
-            const header = document.createElement('div');
-            header.className = 'hotkey-card-header';
-            header.innerHTML = `<span class="setting-title">${def.title}</span><span class="setting-desc">${def.desc}</span>`;
+        groupMap.forEach(defs => {
+            const row = document.createElement('div');
+            row.className = 'hotkey-row';
 
-            const controls = document.createElement('div');
-            controls.className = 'hotkey-card-controls';
+            defs.forEach(def => {
+                const card = document.createElement('div');
+                card.className = 'hotkey-card';
 
-            const keys = state.hotkeyMap[def.action] || [];
+                const header = document.createElement('div');
+                header.className = 'hotkey-card-header';
+                header.innerHTML = `<span class="setting-title">${def.title}</span><span class="setting-desc">${def.desc}</span>`;
 
-            keys.forEach((key, idx) => {
-                const chip = document.createElement('div');
-                chip.className = 'hotkey-chip';
-                chip.textContent = keyToDisplay(key);
+                const controls = document.createElement('div');
+                controls.className = 'hotkey-card-controls';
 
-                const conflict = findConflicts(def.action, key);
-                if (conflict) {
-                    chip.classList.add('conflict');
-                    chip.title = `Conflict: already used by "${conflict}"`;
-                }
+                const keys = state.hotkeyMap[def.action] || [];
 
-                const delBtn = document.createElement('button');
-                delBtn.className = 'hotkey-chip-delete';
-                delBtn.title = 'Delete';
-                delBtn.textContent = '×';
-                delBtn.onclick = (e) => {
+                keys.forEach((key, idx) => {
+                    const chip = document.createElement('div');
+                    chip.className = 'hotkey-chip';
+                    chip.textContent = keyToDisplay(key);
+
+                    const conflict = findConflicts(def.action, key);
+                    if (conflict) {
+                        chip.classList.add('conflict');
+                        chip.title = `Conflict: already used by "${conflict}"`;
+                    }
+
+                    const delBtn = document.createElement('button');
+                    delBtn.className = 'hotkey-chip-delete';
+                    delBtn.title = 'Delete';
+                    delBtn.textContent = '×';
+                    delBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        state.hotkeyMap[def.action] = keys.filter((_, i) => i !== idx);
+                        saveAppState();
+                        renderHotkeyCards();
+                    };
+                    chip.appendChild(delBtn);
+                    controls.appendChild(chip);
+                });
+
+                const addBtn = document.createElement('button');
+                addBtn.className = 'hotkey-add-btn';
+                addBtn.title = 'Add hotkey';
+                addBtn.innerHTML = '<i data-lucide="plus"></i>';
+                if (keys.length >= 2) addBtn.disabled = true;
+                addBtn.onclick = (e) => {
                     e.stopPropagation();
-                    state.hotkeyMap[def.action] = keys.filter((_, i) => i !== idx);
-                    saveAppState();
-                    renderHotkeyCards();
+                    if (keys.length >= 2) return;
+                    stopHotkeyListening();
+                    startListening(def.action, controls, addBtn);
                 };
-                chip.appendChild(delBtn);
-                controls.appendChild(chip);
+                controls.appendChild(addBtn);
+
+                card.appendChild(header);
+                card.appendChild(controls);
+                row.appendChild(card);
             });
 
-            const addBtn = document.createElement('button');
-            addBtn.className = 'hotkey-add-btn';
-            addBtn.title = 'Add hotkey';
-            addBtn.innerHTML = '<i data-lucide="plus"></i>';
-            if (keys.length >= 2) {
-                addBtn.disabled = true;
-            }
-            addBtn.onclick = (e) => {
-                e.stopPropagation();
-                if (keys.length >= 2) return;
-                stopHotkeyListening();
-                startListening(def.action, controls, addBtn);
-            };
-            controls.appendChild(addBtn);
-
-            card.appendChild(header);
-            card.appendChild(controls);
-            grid.appendChild(card);
+            grid.appendChild(row);
         });
 
         if (window.lucide) window.lucide.createIcons();

@@ -380,22 +380,37 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ### ⏳ Dificultad Alta — 🧠 Recomendado Opus 4.8
 
-#### 8. Tarea 11 / Item 11: Pantalla de Carga y Flujo de Expiración/Login 🧠
-*   **Componente:** Pantalla de carga inicial (`index.html`/`renderer.js`), proceso de inicio de Electron (`main.js`) y sección de Ajustes.
-*   **Acción Requerida:**
-    1.  **Redimensión Dinámica:** Al iniciar, establecer alto mínimo de `720px` (resolución base `1280x720`) y redimensionar la ventana para ocupar como máximo el `80%` del monitor del usuario.
-    2.  **Pantalla de Carga:** Mostrar logotipo de JTV animado con barra de progreso blanca (grosor de `10px`). Duración mínima de 2 segundos. Transición final suave mediante desvanecimiento lento.
-    3.  **Pestaña "Mi cuenta" en Ajustes:** Crear una pestaña llamada "Mi cuenta" debajo de "General" con botón de login con Google (diseño premium y borde animado estilo arcoíris) e indicar: *"Período de Prueba por 3 días. Inicia sesión para desbloquear la aplicación una vez concluido este período"*.
-    4.  **Bloqueo y Expiración:** Al iniciar la app empaquetada (Production `.exe`), si expira el trial de 3 días, detener la carga, mostrar un mensaje de expiración y botones para Iniciar Sesión (Google Login realiza bypass para desbloquear en esta fase) o Desinstalar. El modo de desarrollo evade este bloqueo por defecto.
+#### 8. Tarea 24: Licenciamiento, Trial Lock y Pasarela de Pago 🧠
+*   **Componentes:** `main.js`, interceptores del webview, Registro de Windows, Supabase (proyecto nuevo), PayPal Webhook, `jtv_data.json`.
 
-#### 9. Tarea 24: Protección en Compilado de Producción (Trial Lock y HTTP Server Time) 🧠
-*   **Componente:** `main.js`, interceptores del webview y Registro de Windows.
-*   **Acción Requerida:**
-    1.  **Inicio del Período de Prueba:** El trial de 31 días se activa únicamente en la primera sintonía de un canal. El proceso principal obtiene la fecha UTC real de la cabecera HTTP `Date` de red (inmune a cambios de reloj local).
-    2.  **Cifrado y Persistencia:** Guardar la fecha encriptada con AES-256 en el Registro de Windows (`HKEY_CURRENT_USER\Software\prnt` bajo el valor `driver_config`).
-    3.  **Validación:** Comprobar la diferencia de fecha contra la cabecera HTTP de red en cada inicio/sintonía. Si expira o se altera/elimina la clave del registro, bloquear el acceso.
+##### A. Trial local (doble verificación)
+1.  **Inicio del trial:** se activa en la primera sintonía de un canal. La fecha UTC real se obtiene de la cabecera HTTP `Date` de red (inmune a cambios de reloj local).
+2.  **Capa 1 — Registro de Windows:** fecha encriptada con AES-256 en `HKEY_CURRENT_USER\Software\prnt` → `driver_config`.
+3.  **Capa 2 — `jtv_data.json`:** campo cifrado adicional en el archivo de datos local.
+4.  **Capa 3 (opcional):** `birthtime` del propio `jtv_data.json` como verificación pasiva de antigüedad.
+5.  **Validación en cada inicio/sintonía:** comparar diferencia de fecha contra cabecera HTTP. Si expiró o alguna capa fue alterada/eliminada → bloquear acceso.
 
-#### 10. Tarea 40: AutoUpdater 🧠
+##### B. Identificador de máquina
+*   UUID de placa base obtenido vía `wmic csproduct get UUID`. Se envía a Supabase y se embebe en el link de PayPal (`custom`).
+
+##### C. Servicio de licencias — Supabase
+*   Proyecto nuevo por crear.
+*   Tabla: `licenses(uuid, email, paypal_txn, created_at)`.
+*   Edge Function: recibe webhook de PayPal → valida la transacción → inserta el registro.
+*   La app consulta Supabase con su UUID al arrancar → si existe registro → se desbloquea automáticamente.
+*   Flujo manual (emergencia): el usuario ingresa su email; la app envía `{email, uuid}` a Supabase para cruce contra el pago recibido.
+
+##### D. UX de pago — opciones evaluadas
+*   **Opción A** — Botón abre el browser externo del sistema en la pasarela de PayPal.
+*   **Opción B (preferida)** — `BrowserWindow` de Electron embebida apuntando al URL de PayPal con UUID en el parámetro `custom`. El usuario paga sin salir de la app; se detecta la redirección a la URL `return` para cerrar la ventana y verificar la licencia de inmediato.
+*   **Opción C (más simple)** — Solo se muestra el botón de pago. Tras pagar, el usuario ingresa su email manualmente; la app cruza `{email, uuid}` contra el webhook de Supabase.
+
+##### E. Link de PayPal de referencia
+```
+https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=juanhidgo@gmail.com&item_name=JTV%20App%20Licencia&amount=9.99&currency_code=USD&custom=<UUID>&return=https://tu-dominio.com/gracias&notify_url=https://tu-proyecto.supabase.co/functions/v1/paypal-webhook
+```
+
+#### 9. Tarea 40: AutoUpdater 🧠
 *   **Componente:** Main process (`bootstrap.js`), `electron-updater`.
 *   **Acción Requerida:**
     1.  Integrar `electron-updater` para verificar y descargar actualizaciones automáticamente.
@@ -403,13 +418,3 @@ Este documento unifica de forma cronológica todas las mejoras, características
     3.  Implementar descarga en segundo plano e instalación al reiniciar.
     4.  Configurar publicación de releases (GitHub Releases o servidor propio).
 
----
-
-### ⏳ Dificultad Muy Alta — 🧠 Recomendado Opus 4.8
-
-#### 10. Tarea 39: Multi-Fuentes de Canales 🧠
-*   **Componente:** `channelSync.js`, `playerController.js`, Ajustes de Conectividad.
-*   **Acción Requerida:**
-    1.  Explorar implementación de soporte para múltiples proveedores de canales (no solo DaddyLive).
-    2.  Permitir al usuario agregar URLs y listas personalizadas (M3U, XTREAM, URLs directas).
-    3.  Unificar las fuentes en una sola lista de canales con indicador de origen.

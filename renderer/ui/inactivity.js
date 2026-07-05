@@ -34,23 +34,18 @@ export function startInactivityTimers() {
 
     const cfg = window.timeoutsConfig || {};
 
-    // 1. Settings inactivity timer
-    if (settingsVisible && settingsScreen) {
-        const settingsEnabled = hasChannel ? cfg.settingsActiveEnabled : cfg.settingsInactiveEnabled;
-        if (settingsEnabled) {
-            const settingsDelay = hasChannel ? cfg.settingsActive : cfg.settingsInactive;
-            timeouts.set('settings', () => {
-                if (!settingsScreen.matches(':hover')) {
-                    if (ext.showModule) ext.showModule(state.previousModule || 'home');
-                }
-            }, settingsDelay);
-        }
+    // 1. Settings inactivity timer (only while a stream is active)
+    if (settingsVisible && settingsScreen && hasChannel && cfg.settingsActiveEnabled) {
+        timeouts.set('settings', () => {
+            if (!settingsScreen.matches(':hover')) {
+                if (ext.showModule) ext.showModule(state.previousModule || 'home');
+            }
+        }, cfg.settingsActive);
     }
 
-    // 2. Overlays / Menus (Sidebar menu, details modal)
-    const menuEnabled = hasChannel ? cfg.menuActiveEnabled : cfg.menuInactiveEnabled;
-    if (menuEnabled && mainMenu) {
-        const menuDelay = hasChannel ? cfg.menuActive : cfg.menuInactive;
+    // 2. Overlays / Menus (Sidebar menu, details modal — only while a stream is active)
+    if (hasChannel && cfg.menuActiveEnabled && mainMenu) {
+        const menuDelay = cfg.menuActive;
         timeouts.set('menu', () => {
             if (!mainMenu.matches(':hover')) {
                 if (ext.hideMenu) ext.hideMenu();
@@ -84,10 +79,9 @@ export function startInactivityTimers() {
         }
     }
 
-    // 5. Hide Cursor
-    const cursorEnabled = hasChannel ? cfg.cursorActiveEnabled : cfg.cursorInactiveEnabled;
-    if (cursorEnabled) {
-        const rawCursorDelay = hasChannel ? cfg.cursorActive : cfg.cursorInactive;
+    // 5. Hide Cursor (only while a stream is active)
+    if (hasChannel && cfg.cursorActiveEnabled) {
+        const rawCursorDelay = cfg.cursorActive;
         const zappingDelay = (cfg.zappingHUDEnabled && sourceSwitcher && !sourceSwitcher.classList.contains('hidden')) ? (cfg.zappingHUD || 0) : 0;
         const cursorDelay = Math.max(rawCursorDelay, zappingDelay + 100);
         timeouts.set('cursor', () => {
@@ -128,9 +122,8 @@ export function startCursorTimer() {
     const sourceSwitcher = document.getElementById('pbar');
     const hasChannel = !!(state.activeChannelId && !state.isVodPlaying);
     const cfg = window.timeoutsConfig || {};
-    const cursorEnabled = hasChannel ? cfg.cursorActiveEnabled : cfg.cursorInactiveEnabled;
-    if (!cursorEnabled) return;
-    const rawCursorDelay = hasChannel ? cfg.cursorActive : cfg.cursorInactive;
+    if (!hasChannel || !cfg.cursorActiveEnabled) return;
+    const rawCursorDelay = cfg.cursorActive;
     const zappingDelay = (cfg.zappingHUDEnabled && sourceSwitcher && !sourceSwitcher.classList.contains('hidden')) ? (cfg.zappingHUD || 0) : 0;
     const cursorDelay = Math.max(rawCursorDelay, zappingDelay + 100);
     timeouts.set('cursor', () => {

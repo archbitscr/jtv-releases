@@ -552,13 +552,10 @@ export async function initDeveloperFeatures() {
     };
 
     bindTimeoutInput('timeout-settings-active', 'timeout-settings-active-enabled', 'settingsActive');
-    bindTimeoutInput('timeout-settings-inactive', 'timeout-settings-inactive-enabled', 'settingsInactive');
     bindTimeoutInput('timeout-menu-active', 'timeout-menu-active-enabled', 'menuActive');
-    bindTimeoutInput('timeout-menu-inactive', 'timeout-menu-inactive-enabled', 'menuInactive');
     bindTimeoutInput('timeout-topnav', 'timeout-topnav-enabled', 'topNav');
     bindTimeoutInput('timeout-zappinghud', 'timeout-zappinghud-enabled', 'zappingHUD');
     bindTimeoutInput('timeout-cursor-active', 'timeout-cursor-active-enabled', 'cursorActive');
-    bindTimeoutInput('timeout-cursor-inactive', 'timeout-cursor-inactive-enabled', 'cursorInactive');
     bindTimeoutInput('timeout-land-auto-hide', 'timeout-land-auto-hide-enabled', 'landAutoHide');
     bindTimeoutInput('timeout-failover-main', 'timeout-failover-main-enabled', 'failoverMain');
     bindTimeoutInput('timeout-failover-alt', 'timeout-failover-alt-enabled', 'failoverAlt');
