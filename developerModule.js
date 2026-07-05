@@ -846,6 +846,10 @@ export function updateDeveloperUI() {
     const isLoaderVisible = appLoader && !appLoader.classList.contains('hidden');
     const isOnboardingVisible = onboardingModal && !onboardingModal.classList.contains('hidden');
 
+    const floatingContainer = document.getElementById('floating-controls-container');
+    const showFloating = developerModeEnabled && !isLoaderVisible && !isOnboardingVisible;
+    if (floatingContainer) floatingContainer.style.display = showFloating ? 'flex' : 'none';
+
     if (isLoaderVisible || isOnboardingVisible) {
         if (resetWindowSizeBtnUI) resetWindowSizeBtnUI.style.display = 'none';
         if (reloadWindowBtn) reloadWindowBtn.style.display = 'none';
@@ -865,7 +869,7 @@ export function updateDeveloperUI() {
         }
     }
 
-    // Show/hide dev tabs (Tarea 27 + Filtros)
+    // Show/hide dev tabs
     const devTab = document.getElementById('settings-tab-developer');
     const connectivityTab = document.getElementById('settings-tab-connectivity');
     const sensorsTab = document.querySelector('[data-settings-tab="sensors"]');
@@ -893,7 +897,7 @@ export function updateDeveloperUI() {
         }
     }
 
-    // Show/hide filter CRUD groups depending on developerModeEnabled (Tarea 29)
+    // Show/hide filter CRUD groups depending on developerModeEnabled
     const langCard = document.getElementById('group-card-language');
     const genreCard = document.getElementById('group-card-genre');
     const eventCard = document.getElementById('group-card-event');
@@ -955,7 +959,7 @@ export function updateDeveloperUI() {
         }
     }
 
-    // Show/hide HUD toggle sources button and indicators (Tarea 28)
+    // Show/hide Player Bar toggle sources button and dev indicators
     const showDevControls = developerModeEnabled && hudDevControlsEnabled;
     const hudToggleSourcesBtn = document.getElementById('pbar-toggle-sources-btn');
     const hudSourcesRow = document.getElementById('pbar-sources-row');

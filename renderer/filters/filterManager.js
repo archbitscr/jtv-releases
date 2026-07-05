@@ -125,7 +125,7 @@ export function getFilteredChannelsList(mode = 'channels', opts = {}) {
     let list = state.channels.filter(channel => {
         if (isFavoritesMode && !channel.favorite) return false;
 
-        // Onboarding languages check (Tarea 18, 21)
+        // Onboarding languages check
         if (!matchesOnboardingLanguages(channel)) return false;
 
         // Block XXX channels unless explicitly unlocked
@@ -134,14 +134,14 @@ export function getFilteredChannelsList(mode = 'channels', opts = {}) {
             if (cats.includes('xxx')) return false;
         }
 
-        // Parental Lock automatic check (Tarea 19, 25)
+        // Parental Lock automatic check
         if (ext.isParentalTimeLocked && ext.isParentalTimeLocked()) {
             const cats = (channel.categories || []).map(c => c.toLowerCase());
             const isKids = cats.includes('kids') || cats.includes('children');
             if (!isKids && !channel.kidsAllowed) return false;
         }
 
-        // Search engine multicriterio (Tarea 16, EPG / ID / Name)
+        // Multi-criteria search (EPG event / ID / Name)
         const nameLower = (channel.name || "").toLowerCase();
         const idStr = (channel.id || "").toString().toLowerCase();
         const epg = ext.getActiveEpg ? ext.getActiveEpg(channel.id) : null;
@@ -150,7 +150,7 @@ export function getFilteredChannelsList(mode = 'channels', opts = {}) {
         const matchesSearch = nameLower.includes(term) || idStr.includes(term) || epgEvent.includes(term);
         if (!matchesSearch) return false;
 
-        // Dynamic select dropdown categories check (Tarea 29)
+        // Dynamic select dropdown categories check
         const cats = channel.categories || [];
         if (selLanguage !== 'all' && !cats.includes(selLanguage)) return false;
         if (selGenre !== 'all' && !cats.includes(selGenre)) return false;

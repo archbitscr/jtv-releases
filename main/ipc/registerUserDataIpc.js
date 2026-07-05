@@ -75,7 +75,7 @@ export function registerUserDataIpc({ ipcMain, context }) {
     }
     const result = context.services.userDataStore.save(data);
 
-    // Update tray and power managers immediately (Tarea 33)
+    // Update tray and power managers immediately
     if (context.services.trayManager) {
       context.services.trayManager.setMinimizeToTray(data?.minimizeToTray);
     }
@@ -90,7 +90,7 @@ export function registerUserDataIpc({ ipcMain, context }) {
     return context.services.userDataStore.load();
   });
 
-  // Relaunch the application (Danger Zone - Tarea 21)
+  // Relaunch the application (Danger Zone)
   ipcMain.handle('relaunch', async () => {
     app.relaunch();
     app.exit(0);
@@ -107,7 +107,7 @@ export function registerUserDataIpc({ ipcMain, context }) {
     return { success: true };
   });
 
-  // Registry-backed Trial Period Verification (Tarea 24)
+  // Registry-backed Trial Period Verification
   ipcMain.handle('get-network-date', async (_event, streamUrl) => {
     let networkTime = await fetchNetworkTime(streamUrl);
     const isNetworkSecure = !!networkTime;

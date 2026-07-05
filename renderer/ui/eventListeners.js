@@ -695,7 +695,7 @@ export function setupEventListeners() {
         startCursorTimer();
     });
 
-    // Top HUD navigation button clicks
+    // Top Navigation Bar button clicks
     document.querySelectorAll('.tnav-menu .tnav-btn').forEach(btn => {
         btn.onclick = (e) => {
             e.stopPropagation();
@@ -1371,7 +1371,7 @@ export function setupEventListeners() {
         saveAppState();
     };
 
-    // Anti-Hotkeys Global Capturer (Tarea 32)
+    // Anti-Hotkeys Global Capturer
     document.addEventListener('keydown', (e) => {
         const active = document.activeElement;
         if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable)) {
@@ -1476,7 +1476,7 @@ export function setupEventListeners() {
                 const pinBtn = document.getElementById('pbar-pin-btn');
                 if (pinBtn) {
                     pinBtn.classList.toggle('active', state.hudPinned);
-                    pinBtn.title = state.hudPinned ? 'Unpin HUD' : 'Pin HUD';
+                    pinBtn.title = state.hudPinned ? 'Unpin Player' : 'Pin Player';
                 }
                 return true;
             }
@@ -1486,7 +1486,7 @@ export function setupEventListeners() {
     }
 
     document.addEventListener('keydown', async (e) => {
-        // Ctrl+F shortcut when sidebar is open to focus search (Tarea UI/UX)
+        // Ctrl+F shortcut when sidebar is open to focus search
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'f') {
             const isSidebarOpen = !mainMenu.classList.contains('hidden');
             if (isSidebarOpen) {
@@ -1696,7 +1696,7 @@ export function setupEventListeners() {
         zapChannel('down');
     };
 
-    // HUD Quick Actions Listeners
+    // Player Bar Quick Actions Listeners
     const hudFavBtn = document.getElementById('pbar-fav-btn');
     if (hudFavBtn) {
         hudFavBtn.onclick = (e) => {

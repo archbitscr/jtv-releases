@@ -113,7 +113,7 @@ export function initEventAssigner() {
             await saveChannelsAndFilters();
             renderSettingsFilters();
 
-            // Update HUD chips if the active channel was modified
+            // Update Player Bar filter chips if the active channel was modified
             const activeId = state.activeChannelId;
             if (activeId) {
                 const activeChannel = channels.find(c => String(c.id) === String(activeId));

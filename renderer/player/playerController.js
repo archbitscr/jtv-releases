@@ -295,7 +295,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     const tunerChannelText = document.getElementById('pbar-channel-text');
     const tunerFavHeart = document.getElementById('pbar-fav-heart');
 
-    // Verify trial period expiration on channel tune (Tarea 24)
+    // Verify trial period expiration on channel tune
     const check = await nativeApi.getNetworkDate(channel.path).catch(() => ({ expired: false }));
     if (check && check.expired) {
         playerContainer.innerHTML = '';
@@ -352,7 +352,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     const epgText = epg ? epg.event : "Live Stream";
     document.title = `${channel.name} - ${channel.id}`;
 
-    // Update Tuned Info HUD
+    // Update Player Bar tuned channel info
     tunerChannelText.textContent = `${channel.name} - ${channel.id}`;
     const tunerEpgText = document.getElementById('pbar-epg-text');
     if (tunerEpgText) {
@@ -364,7 +364,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
         hudLogoContainer.innerHTML = getSafeLogoHtml(channel.name, channel.logo);
     }
 
-    // Update HUD channel filters (Tarea 28)
+    // Update Player Bar channel filters
     if (ext.updateHudChannelFilters) ext.updateHudChannelFilters(channel);
 
     const hudFavBtn = document.getElementById('pbar-fav-btn');
@@ -390,7 +390,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
         });
     }
 
-    // Force show HUD elements immediately
+    // Force show Player Bar immediately
     sourceSwitcher.classList.remove('hidden');
     
     // Hide landing overlay and home screens only on manual channel change
@@ -406,7 +406,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     if (ext.syncMenuScroll) ext.syncMenuScroll();
     if (ext.startInactivityTimers) ext.startInactivityTimers();
 
-    // Update hover-trigger visibility early so the sidebar/HUD triggers are enabled
+    // Update hover-trigger visibility early so sidebar triggers are enabled
     // even if a later call (e.g. switchTab on first tune) throws. (Fixes sidebar not
     // appearing on the first channel tune from the home dashboard.)
     if (ext.updateTriggersVisibility) ext.updateTriggersVisibility();
@@ -426,7 +426,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     mountRemotePlayer(playerPath);
     if (ext.updateTriggersVisibility) ext.updateTriggersVisibility();
 
-    // Update the autotune indicators in the Zapping HUD
+    // Update the autotune indicators in the Source Switcher
     updateHudAutotuneIndicators(channel.path);
 
     if (ext.saveAppState) ext.saveAppState();
@@ -514,7 +514,7 @@ export function playVod(item) {
     state.watchStartTime = Date.now();
     state.isVodPlaying = true;
 
-    // Show source switcher and channel tuner info HUD
+    // Show source switcher and channel tuner info
     tunerChannelText.innerText = item.title;
     if (tunerFavHeart) tunerFavHeart.classList.add('hidden');
     

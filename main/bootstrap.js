@@ -45,7 +45,7 @@ export function registerAppBootstrap({ appRootDir }) {
     // Initialize Cloudflare secure DNS service
     initCloudflareNetworkService(context);
 
-    // Initialize managers (Tarea 33)
+    // Initialize managers
     if (context.services.trayManager) {
       context.services.trayManager.init();
     }
