@@ -153,6 +153,16 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ---
 
+### [2026-07-05] - VOD Layout: copia fiel del explorer + fitGrid desde wrapper.clientHeight
+
+*   ✅ **VOD layout — flex chain completo:** Reemplazada la estructura de VOD en `style.css` para ser copia fiel de `movies-explorer.html`. Cadena flex: `land-dashboard:has(.vod-active)` → `justify-content: flex-start; padding: 42px 30px 30px` → `land-content`: `flex:1; min-height:0` → `land-carousel-wrapper`: `flex:1; min-height:0; overflow:hidden; gap:20px`. El wrapper ahora tiene altura renderizada por el layout, no calculada a mano.
+*   ✅ **fitGrid mejorado:** `updateVodGridDimensions()` en `renderer/ui/layout.js` ahora lee `wrapper.clientHeight` directamente (flex layout lo calcula). Fallback matemático solo si el wrapper aún no tiene altura (primera llamada sincrónica). Eliminada la resta manual de paddings/topRow/filterRow.
+*   ✅ **VOD card y poster:** `land-item.vod-card` tiene `aspect-ratio: 184/314` (el ancho deriva del alto); `vod-poster-container` usa `flex:1; min-height:0` sin aspect-ratio propio. `land-grid.vod-active` añade `padding:10px; flex-shrink:0; overflow:hidden`.
+*   ✅ **Detalles del layout:** filter-row `gap:8px; margin-bottom:0`; filter-btn y fbar-select-btn `padding:6px 18px; font-size:14px; border-radius:50px`; dots-container `margin-top:14px; flex-shrink:0`; nav btn SVG `34×34px`.
+*   ✅ **CSS cache-buster v54.** Commit `6d21ede`.
+
+---
+
 ### [2026-07-05] - Migración Movies DB: librería persistente en disco
 
 *   ✅ **Migración Movies Library:** Sistema de base de datos persistente para películas migrado del prototipo `movies-explorer.html` a la app Electron. Arquitectura completa: (1) **IPC main process** — `registerMoviesDbIpc.js` maneja `userData/movies/movies-db.json` y `userData/movies/posters/` con merge-by-ID, 5 canales nuevos en `ipcChannels.json`. (2) **Preload** — `window.jtvAPI.moviesDb.*` expone get/save/delete/savePoster/getPoster. (3) **Renderer** — `renderer/vod/moviesDb.js` con API IPC + TMDB enrichment + poster download/resize a 185×314px vía Canvas. (4) **vodCache.js** — `loadMoviesFromDb()` reemplaza el scraping SFlix para movies (fallback a SFlix si DB vacía); warmupVodCache carga desde disco en lugar de hacer crawl. (5) **CSS** — badge quality top-left, badge rating top-right, fav-btn bottom-right; aspect-ratio 184/314. Sin límite de 100 items: soporta 1440+ títulos. Build v52, commit `1448c29`.
