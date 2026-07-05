@@ -2380,27 +2380,68 @@ body.hide-cursor * {
     width: 100% !important;
     max-width: none !important;
     gap: 10px !important;
+    padding: 10px !important;
+    flex-shrink: 0 !important;
+    overflow: hidden !important;
     /* height, grid-template-rows, grid-template-columns set dynamically by fitGrid */
 }
 
-/* Disable scrolling when VOD active tab is selected */
+/* Full-height column layout when VOD is active */
 .land-dashboard:has(.vod-active) {
     overflow-y: hidden !important;
     overflow-x: hidden !important;
-    justify-content: center !important;
-    padding-bottom: 40px !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding: 42px 30px 30px !important;
 }
 
-/* Widescreen Main Card Expansion for VOD */
+/* land-content fills remaining height so carousel-wrapper can flex:1 */
 .land-dashboard:has(.vod-active) .land-content {
+    flex: 1 !important;
+    min-height: 0 !important;
+    height: auto !important;
     max-width: 95vw !important;
     width: 95vw !important;
-    transition: max-width 0.4s ease, width 0.4s ease;
+    padding-top: 10px !important;
 }
 
+/* carousel-wrapper fills remaining height after top-row and filter-row */
 .land-dashboard:has(.vod-active) .land-carousel-wrapper {
+    flex: 1 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
     max-width: 100% !important;
     width: 100% !important;
+    gap: 20px !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Compact filter row and buttons for VOD (no wasted vertical space) */
+.land-dashboard:has(.vod-active) .land-filter-row {
+    gap: 8px !important;
+    margin-bottom: 0 !important;
+}
+
+.land-dashboard:has(.vod-active) .land-filter-btn,
+.land-dashboard:has(.vod-active) .fbar-select-btn {
+    padding: 6px 18px !important;
+    font-size: 14px !important;
+    border-radius: 50px !important;
+    gap: 8px !important;
+}
+
+/* Dots below the grid */
+.land-dashboard:has(.vod-active) .land-dots-container {
+    margin-top: 14px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Nav button SVG size matches explorer */
+.land-dashboard:has(.vod-active) .land-nav-btn svg,
+.land-dashboard:has(.vod-active) .land-nav-btn i {
+    width: 34px !important;
+    height: 34px !important;
 }
 
 /* VOD Grid Item Card */
@@ -2415,7 +2456,7 @@ body.hide-cursor * {
     border-radius: 10px;
     height: 100% !important;
     width: auto !important;
-    margin: 0 auto;
+    aspect-ratio: 184 / 314;
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -2429,13 +2470,11 @@ body.hide-cursor * {
 .vod-poster-container {
     position: relative;
     flex: 1 !important;
-    height: 0 !important;
+    min-height: 0 !important;
     width: 100% !important;
-    aspect-ratio: 184 / 314 !important;
     background: #111;
     overflow: hidden;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    margin: 0 auto;
 }
 
 .vod-fav-btn {
@@ -4546,24 +4585,6 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     display: block;
 }
 
-/* Top Nav Menu Dashboard Integration (Positioned above search bar, touching top) */
-#land-dashboard:not(.hidden) ~ #tnav-menu {
-    position: absolute !important;
-    top: 0 !important; /* Touch top window border */
-    left: 50% !important;
-    transform: translate(-50%, 0) !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    z-index: 3000 !important;
-    background: rgba(255, 255, 255, 0.02) !important;
-    backdrop-filter: blur(4px) !important;
-    -webkit-backdrop-filter: blur(4px) !important;
-    border-radius: 0 0 24px 24px !important; /* Top corners square, bottom corners rounded */
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-top: none !important; /* Touch top border */
-    box-shadow: none !important;
-    padding: 14px 24px !important;
-}
 
 /* App Loading Screen */
 .app-loader {

@@ -78,40 +78,46 @@ const VOD_MIN_CELL_H = 100;
 let _vodResizeObserver = null;
 
 export function updateVodGridDimensions() {
-    const wrapper  = document.querySelector('.land-carousel-wrapper');
-    const grid     = document.getElementById('land-grid');
+    const wrapper = document.querySelector('.land-carousel-wrapper');
+    const grid    = document.getElementById('land-grid');
     if (!wrapper || !grid) return null;
+    if (!grid.classList.contains('vod-active')) return null;
 
-    const isVodActive = grid.classList.contains('vod-active');
-    if (!isVodActive) return null;
+    // wrapper has flex:1; min-height:0 in VOD mode — its clientHeight is the
+    // available area for the grid (the flex layout already subtracted top-row,
+    // filter-row and dots).  Fall back to math derivation if layout hasn't
+    // rendered yet (wrapper still 0-height on the very first synchronous call).
+    let availH = wrapper.clientHeight;
+    if (availH < VOD_MIN_CELL_H * 2) {
+        const dashboard = document.getElementById('land-dashboard');
+        const topRow    = document.querySelector('.land-top-row');
+        const filterRow = document.getElementById('dashboard-filters');
+        const dotsEl    = document.querySelector('.land-dots-container');
+        const dashH  = dashboard ? dashboard.clientHeight : window.innerHeight;
+        const dStyle = dashboard ? getComputedStyle(dashboard) : null;
+        const padTop = dStyle ? parseFloat(dStyle.paddingTop)    : 42;
+        const padBot = dStyle ? parseFloat(dStyle.paddingBottom) : 30;
+        const topH   = topRow  ? topRow.offsetHeight  + (parseFloat(getComputedStyle(topRow).marginBottom)  || 0) : 0;
+        const filtH  = filterRow && !filterRow.classList.contains('hidden')
+            ? filterRow.offsetHeight + (parseFloat(getComputedStyle(filterRow).marginBottom) || 0)
+            : 0;
+        const dotsH  = dotsEl ? dotsEl.offsetHeight + 14 : 30;
+        availH = Math.max(VOD_MIN_CELL_H * 2, dashH - padTop - padBot - topH - filtH - dotsH);
+    }
 
-    // Measure available height by subtracting sibling elements from dashboard height
-    const dashboard = document.getElementById('land-dashboard');
-    const topRow    = document.querySelector('.land-top-row');
-    const filterRow = document.getElementById('dashboard-filters');
-    const dotsEl    = document.querySelector('.land-dots-container');
-
-    const dashH  = dashboard ? dashboard.clientHeight : window.innerHeight;
-    const dStyle = dashboard ? getComputedStyle(dashboard) : null;
-    const padTop = dStyle ? parseFloat(dStyle.paddingTop)    : 60;
-    const padBot = dStyle ? parseFloat(dStyle.paddingBottom) : 40;
-    const topH   = topRow  ? topRow.offsetHeight  + (parseFloat(getComputedStyle(topRow).marginBottom)  || 0) : 0;
-    const filtH  = filterRow && !filterRow.classList.contains('hidden')
-        ? filterRow.offsetHeight + (parseFloat(getComputedStyle(filterRow).marginBottom) || 8)
-        : 0;
-    const dotsH  = dotsEl ? dotsEl.offsetHeight : 30;
-
-    const availH = Math.max(VOD_MIN_CELL_H * 2, dashH - padTop - padBot - topH - filtH - dotsH - 10);
-    const innerH = availH - VOD_PADDING * 2;
-
+    const innerH   = availH - VOD_PADDING * 2;
     const navPrevW = document.getElementById('land-prev')?.offsetWidth || 0;
     const navNextW = document.getElementById('land-next')?.offsetWidth || 0;
     const innerW   = (wrapper.clientWidth - navPrevW - navNextW - VOD_PADDING * 2) || (window.innerWidth * 0.8);
 
-    const maxRows = Math.max(1, Math.floor((innerH + VOD_GAP) / (VOD_MIN_CELL_H + VOD_GAP)));
+    // maxCellH caps at 1/3 of innerH — without this, area math always picks 1 tall row
+    const maxCellH = Math.round(innerH / 3);
+    const maxRows  = Math.max(1, Math.floor((innerH + VOD_GAP) / (VOD_MIN_CELL_H + VOD_GAP)));
     let bestRows = 1, bestCols = 1, bestArea = 0;
     for (let rows = 1; rows <= maxRows; rows++) {
         const cellH = (innerH - (rows - 1) * VOD_GAP) / rows;
+        if (cellH > maxCellH) continue;
+        if (cellH < VOD_MIN_CELL_H) break;
         const cellW = cellH * VOD_ASPECT;
         const cols  = Math.max(1, Math.floor((innerW + VOD_GAP) / (cellW + VOD_GAP)));
         const area  = cellH * cellW * rows * cols;
