@@ -13,10 +13,10 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=47">
+    <link rel="stylesheet" href="./style.css?v=51">
 </head>
 <body class="theme-dark">
-    <!-- App Loading Screen (Tarea 11) -->
+    <!-- App Loading Screen -->
     <div id="app-loader" class="app-loader">
         <div class="loader-content">
             <img src="./public/assets/images/JTV_loading.png" alt="JTV" class="loader-logo-img">
@@ -98,7 +98,7 @@
                 <div class="edge-mask bottom"></div>
                 <div id="player-barrier" class="player-barrier"></div>
                 
-                <!-- Volume HUD Indicator -->
+                <!-- Volume OSD Overlay -->
                 <div id="volosd-indicator" class="volosd-indicator glass-panel hidden">
                     <i data-lucide="volume-2" id="volosd-icon"></i>
                     <div class="volosd-bar-container">
@@ -107,7 +107,7 @@
                     <span id="volosd-text">100%</span>
                 </div>
                 
-                <!-- Source Switcher HUD -->
+                <!-- Player Bar -->
                 <div id="pbar" class="pbar glass-panel hidden">
                     <!-- Channel Identity (Logo/Icon) -->
                     <div class="pbar-logo-wrapper">
@@ -155,7 +155,7 @@
                         </div>
                     </div>
 
-                    <!-- HUD Actions -->
+                    <!-- Player Bar Actions -->
                     <div class="pbar-actions-container">
                         <!-- Channel/Mute/Volume center block -->
                         <div class="pbar-center-block">
@@ -164,7 +164,7 @@
                                     <i data-lucide="heart" id="pbar-fav-heart"></i>
                                 </button>
                                 <button id="pbar-up" class="pbar-action-btn pbar-zap-btn" title="Previous channel"><i data-lucide="chevron-up"></i></button>
-                                <button id="pbar-pin-btn" class="pbar-action-btn pbar-mini-btn pbar-pin-btn" title="Pin HUD">
+                                <button id="pbar-pin-btn" class="pbar-action-btn pbar-mini-btn pbar-pin-btn" title="Pin Player">
                                     <i data-lucide="pin"></i>
                                 </button>
                             </div>
@@ -275,7 +275,7 @@
                     </div>
                 </div>
 
-                <!-- Top Navigation HUD -->
+                <!-- Top Navigation Bar -->
                 <div id="tnav-menu" class="tnav-menu glass-panel hidden">
                     <div class="tnav-buttons">
                         <button class="tnav-btn" data-nav="live" id="tnav-btn-live"><i data-lucide="tv"></i> Live TV</button>
@@ -656,7 +656,7 @@
                         <!-- Subtab Content: Live TV (Channels Live) -->
                         <div id="filters-content-tv" class="filters-subsect-pane">
                             <div class="filters-groups-container">
-                                <!-- Grupo 1: Language -->
+                                <!-- Group 1: Language -->
                                 <div class="filter-group-card" id="group-card-language">
                                     <div class="filter-group-header">
                                         <h4>Languages</h4>
@@ -673,7 +673,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Grupo 2: Genre (read-only for users; add-form is dev-only) -->
+                                <!-- Group 2: Genre (read-only for users; add form is dev-only) -->
                                 <div class="filter-group-card readonly-filter-group" id="group-card-genre">
                                     <div class="filter-group-header">
                                         <h4>Genres</h4>
@@ -695,7 +695,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Grupo 3: Event -->
+                                <!-- Group 3: Event -->
                                 <div class="filter-group-card" id="group-card-event">
                                     <div class="filter-group-header">
                                         <h4>Events</h4>
@@ -852,7 +852,7 @@
                     </div>
 
 
-                    <!-- Section: Fondo -->
+                    <!-- Section: Background -->
                     <div id="settings-sect-background" class="settings-sect-pane">
                         <h3>Wallpaper</h3>
                         <p class="section-desc">Select a wallpaper for the main home screen.</p>
@@ -1151,7 +1151,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
             <p class="timeout-desc">Manually configure or disable system timeouts and watchdog (in milliseconds).</p>
 
             <div class="timeout-groups">
-                <!-- Grupo 1: Settings Panel -->
+                <!-- Group 1: Settings Panel -->
                 <div class="timeout-group-card">
                     <h5 class="timeout-group-title">Settings Panel</h5>
                     <div class="timeout-group-items">
@@ -1171,7 +1171,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                     </div>
                 </div>
 
-                <!-- Grupo 1b: Live TV Landing -->
+                <!-- Group 1b: Live TV Landing -->
                 <div class="timeout-group-card">
                     <h5 class="timeout-group-title">Live TV Landing</h5>
                     <div class="timeout-group-items">
@@ -1191,7 +1191,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                     </div>
                 </div>
 
-                <!-- Grupo 2: Side Menu -->
+                <!-- Group 2: Side Menu -->
                 <div class="timeout-group-card">
                     <h5 class="timeout-group-title">Side Menu</h5>
                     <div class="timeout-group-items">
@@ -1211,7 +1211,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                     </div>
                 </div>
 
-                <!-- Grupo 3: Player Bar -->
+                <!-- Group 3: Player Bar -->
                 <div class="timeout-group-card">
                     <h5 class="timeout-group-title">Player Bar</h5>
                     <div class="timeout-group-items">
@@ -1231,7 +1231,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                     </div>
                 </div>
 
-                <!-- Grupo 4: Top Navigation -->
+                <!-- Group 4: Top Navigation -->
                 <div class="timeout-group-card">
                     <h5 class="timeout-group-title">Top Navigation</h5>
                     <div class="timeout-group-items">
@@ -1251,7 +1251,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                     </div>
                 </div>
 
-                <!-- Grupo 5: Mouse Cursor -->
+                <!-- Group 5: Mouse Cursor -->
                 <div class="timeout-group-card">
                     <h5 class="timeout-group-title">Mouse Cursor</h5>
                     <div class="timeout-group-items">
@@ -1271,7 +1271,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                     </div>
                 </div>
 
-                <!-- Grupo 6: Failover & Watchdog -->
+                <!-- Group 6: Failover & Watchdog -->
                 <div class="timeout-group-card">
                     <h5 class="timeout-group-title">Failover & Watchdog</h5>
                     <div class="timeout-group-items">
@@ -1339,7 +1339,6 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
         <input type="file" id="logo-upload-input" accept="image/*" style="display: none;">
         <canvas id="logo-canvas" width="256" height="256" style="display: none;"></canvas>
 
-        <!-- Onboarding/Welcome Modal (Tarea 18, 21) -->
         <!-- Parental PIN Modal -->
         <div id="parental-pin-modal" class="modal-overlay hidden">
             <div class="modal-backdrop" id="parental-pin-backdrop"></div>
