@@ -378,6 +378,26 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ---
 
+### [2026-07-04] — Sesión de continuación: Land Reference v5, fixes de UX y limpieza global de comentarios
+
+*   **Land Reference v5 — sincronización sizer ↔ style.css:** actualización completa de los valores `min`/`base`/`max` en `docs/examples/sizer/component-sizer.html` (tab `land`) para que los arrays `items` reflejen exactamente los clamp() vigentes en `style.css`. Propiedades actualizadas: `.land-grid` gap (min 2, base 4, max 8), `.land-nav-btn i/svg` size (min 15, base 25, max 60), `.land-dots-container` height-min (27→20), `.land-fav-indicator i/svg` size (min 8, base 16, max 30), `.land-title` font-size (min 15, base 30, max 60), `.land-title-block` padding-top (min 1, base 2, max 3), `.land-dot` size (min 5, base 10, max 20), `.land-filter-row` margin-bottom (min 15, base 30, max 60), `.land-filter-btn` padV (base 6, min 3, max 12) y fontSize (min 7, base 15, max 30). Cache-buster bumpeado a `v=51`.
+
+*   **Pin Player tooltip rename:** todas las ocurrencias de "Pin HUD" / "Unpin HUD" reemplazadas por "Pin Player" / "Unpin Player" en `renderer/utils/tooltips.js` (línea dinámica de tooltip), `renderer/ui/eventListeners.js` (2 ocurrencias via `replace_all`) e `index.html` (`title=""` del `#pbar-pin-btn`).
+
+*   **Fix: punto verde en área de video (floating-controls-container):** el contenedor `#floating-controls-container` (posición `fixed`, border teal redondeado) rendereaba un punto verde de 0×0 cuando todos sus botones estaban `display: none` pero el contenedor seguía en `display: flex`. Solución aplicada en dos capas: (1) CSS default cambiado de `display: flex` a `display: none` en `style.css` para que sea invisible si el módulo dev nunca corre (producción); (2) `developerModule.js` ahora controla el `display` del contenedor directamente en función de `developerModeEnabled && !isLoaderVisible && !isOnboardingVisible`, antes del bloque de lógica de botones individuales.
+
+*   **Factory timeout defaults:** los valores de `window.timeoutsConfig` en `renderer.js` se sincronizaron con los datos reales de AppData (`jtv_data.json`). Cambios: `settingsActive` 5000→6000, `menuActive` 5000→2500, `topNav` 2000→2500, `zappingHUD` 4900→2500, `cursorActive` 5000→3000, `failoverMain` 4000→3000, `watchdogFreeze` 2000→3000, `landAutoHide` 8000→6000. Claves obsoletas (`menuInactive`, `cursorInactive`, `settingsInactive`) no añadidas a los defaults.
+
+*   **Limpieza de comentarios en HTML (`index.html`):** eliminados todos los comentarios en español, referencias a "Tarea #" y nombres de componentes obsoletos como "HUD". Reescritos en inglés con nombres actuales (Player Bar, Volume OSD Overlay, Top Navigation Bar, etc.). 18 comentarios modificados.
+
+*   **Limpieza de comentarios en CSS (`style.css`):** mismas reglas aplicadas. 18 cambios: 3 bloques multi-línea en español traducidos al inglés (`#video-container`, `.land-dashboard`, `.settings-list`), 3 referencias a Tarea eliminadas (`App Loading Screen`, `Onboarding / Welcome Modal`, bloque dev-only "Tree Shaking"), 8 ocurrencias de "HUD" renombradas a "Player Bar" / "Volume OSD" / "Top Navigation Bar", 2 comentarios inline en español corregidos (`Tono violeta moderno`→`violet`, `antes reutilizaba .pbar-filter-badge` eliminado). Cache-buster `v=51`.
+
+*   **Limpieza de comentarios en JS (8 archivos):** mismas reglas aplicadas a `developerModule.js`, `renderer/filters/filterAssigner.js`, `renderer/filters/filterManager.js`, `renderer/ui/eventListeners.js`, `renderer/ui/inactivity.js`, `renderer/player/playerController.js`, `main/bootstrap.js`, `main/ipc/registerUserDataIpc.js`. Total 24 comentarios corregidos: referencias a Tarea eliminadas, "HUD" → "Player Bar" / "Source Switcher" / "Top Navigation Bar", `multicriterio` → `multi-criteria`.
+
+*   **Fix: texto de UI "HUD" en settings (`index.html`):** la descripción del setting "Glass Tuner" decía "Visual tool to adjust HUD, Sidebar, and Top Nav..." — actualizado a "Player Bar, Sidebar, and Top Nav...".
+
+---
+
 ### ⏳ Dificultad Alta — 🧠 Recomendado Opus 4.8
 
 #### 8. Tarea 24: Licenciamiento, Trial Lock y Pasarela de Pago 🧠
