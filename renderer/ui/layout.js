@@ -91,7 +91,7 @@ export function updateVodGridDimensions() {
     if (availH < VOD_MIN_CELL_H * 2) {
         const dashboard = document.getElementById('land-dashboard');
         const topRow    = document.querySelector('.land-top-row');
-        const filterRow = document.getElementById('dashboard-filters');
+        const filterRow = document.getElementById('vod-filter-row') || document.getElementById('dashboard-filters');
         const dotsEl    = document.querySelector('.land-dots-container');
         const dashH  = dashboard ? dashboard.clientHeight : window.innerHeight;
         const dStyle = dashboard ? getComputedStyle(dashboard) : null;
