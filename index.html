@@ -190,16 +190,6 @@
 
 
 
-                <!-- Top Navigation Bar -->
-                <div id="tnav-menu" class="tnav-menu glass-panel hidden">
-                    <div class="tnav-buttons">
-                        <button class="tnav-btn" data-nav="live" id="tnav-btn-live"><i data-lucide="tv"></i> Live TV</button>
-                        <button class="tnav-btn" data-nav="series" id="tnav-btn-series"><i data-lucide="clapperboard"></i> Series</button>
-                        <button class="tnav-btn" data-nav="movies" id="tnav-btn-movies"><i data-lucide="film"></i> Movies</button>
-                        <button class="tnav-btn" data-nav="settings" id="tnav-btn-settings"><i data-lucide="settings"></i> Settings</button>
-                    </div>
-                </div>
-
                 <!-- Menu Triggers -->
                 <div id="trigger-top" class="hover-trigger top"></div>
                 <div id="trigger-left" class="hover-trigger left"></div>
@@ -286,6 +276,16 @@
             </div>
         </aside>
         </main> <!-- closes #live-tv -->
+
+        <!-- Top Navigation Bar (outside live-tv to avoid stacking context burial) -->
+        <div id="tnav-menu" class="tnav-menu glass-panel hidden">
+            <div class="tnav-buttons">
+                <button class="tnav-btn" data-nav="live" id="tnav-btn-live"><i data-lucide="tv"></i> Live TV</button>
+                <button class="tnav-btn" data-nav="series" id="tnav-btn-series"><i data-lucide="clapperboard"></i> Series</button>
+                <button class="tnav-btn" data-nav="movies" id="tnav-btn-movies"><i data-lucide="film"></i> Movies</button>
+                <button class="tnav-btn" data-nav="settings" id="tnav-btn-settings"><i data-lucide="settings"></i> Settings</button>
+            </div>
+        </div>
 
         <!-- VOD Library Module (Live TV landing + Series + Movies) -->
         <div id="vod-library" class="vod-library hidden">
