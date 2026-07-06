@@ -190,10 +190,6 @@
 
 
 
-                <!-- Menu Triggers -->
-                <div id="trigger-top" class="hover-trigger top"></div>
-                <div id="trigger-left" class="hover-trigger left"></div>
-                <div id="trigger-bottom" class="hover-trigger bottom"></div>
             </div>
 
             <!-- Unified Left Menu -->
@@ -398,6 +394,12 @@
                 </div>
             </div>
         </div> <!-- closes #vod-library -->
+
+        <!-- Hover Triggers — after vod-library so #vod-library ~ #trigger-* selector works;
+             outside live-tv/vod-library to avoid stacking context burial (z-index 600 at root) -->
+        <div id="trigger-top" class="hover-trigger top"></div>
+        <div id="trigger-left" class="hover-trigger left"></div>
+        <div id="trigger-bottom" class="hover-trigger bottom"></div>
 
         <!-- Full Screen Settings Screen -->
         <div id="settings-screen" class="settings-screen hidden">
