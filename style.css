@@ -261,7 +261,8 @@ body.player-active .edge-mask {
     background: transparent;
 }
 
-#land-dashboard:not(.hidden) ~ .hover-trigger {
+#land-dashboard:not(.hidden) ~ #trigger-left,
+#land-dashboard:not(.hidden) ~ #trigger-bottom {
     pointer-events: none;
 }
 
@@ -1333,10 +1334,10 @@ body.player-active .edge-mask {
 .vod-filters-row {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 8px;
-    flex-wrap: nowrap;
-    overflow: hidden;
+    flex-wrap: wrap;
+    overflow: visible;
     width: 100%;
 }
 
@@ -2377,11 +2378,11 @@ body.hide-cursor * {
 /* Dynamic Grid Layout for VOD */
 .land-grid.vod-active {
     grid-auto-flow: row !important;
-    width: 100% !important;
+    flex: 1 !important;
+    min-width: 0 !important;
     max-width: none !important;
     gap: 10px !important;
     padding: 10px !important;
-    flex-shrink: 0 !important;
     overflow: hidden !important;
     /* height, grid-template-rows, grid-template-columns set dynamically by fitGrid */
 }
