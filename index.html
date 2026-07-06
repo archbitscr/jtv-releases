@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=56">
+    <link rel="stylesheet" href="./style.css?v=57">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen -->
@@ -212,28 +212,26 @@
                                         <input type="text" id="vod-search-input" placeholder="Search movies and series...">
                                         <button id="clear-vod-search" class="search-clear-btn hidden" title="Clear"><i data-lucide="x"></i></button>
                                     </div>
-
-                                    <div class="vod-filters-row">
-                                        <span class="vod-filters-label">Filters:</span>
-                                        <button id="vod-filter-all" class="vod-filter-btn active" type="button">All</button>
-                                        <button id="vod-filter-favs" class="vod-filter-btn" type="button">Favorites</button>
-
-                                        <select id="vod-genre-select" class="vod-filter-select" aria-label="Genre">
-                                            <option value="All">Genre</option>
-                                        </select>
-                                        <select id="vod-rating-select" class="vod-filter-select" aria-label="Rating">
-                                            <option value="all">Rating</option>
-                                        </select>
-                                        <select id="vod-year-select" class="vod-filter-select" aria-label="Year">
-                                            <option value="all">Year</option>
-                                        </select>
-                                    </div>
                                 </div>
                             </div>
 
                             <div class="land-exit-block">
                                 <button id="close-home" class="land-exit-btn" title="Exit">Exit</button>
                             </div>
+                        </div>
+
+                        <div id="vod-filter-row" class="land-filter-row hidden">
+                            <button id="vod-filter-all" class="land-filter-btn vod-filter-btn active" type="button">All</button>
+                            <button id="vod-filter-favs" class="land-filter-btn vod-filter-btn" type="button">Favorites</button>
+                            <select id="vod-genre-select" class="vod-filter-select" aria-label="Genre">
+                                <option value="All">Genre</option>
+                            </select>
+                            <select id="vod-rating-select" class="vod-filter-select" aria-label="Rating">
+                                <option value="all">Rating</option>
+                            </select>
+                            <select id="vod-year-select" class="vod-filter-select" aria-label="Year">
+                                <option value="all">Year</option>
+                            </select>
                         </div>
 
                         <div id="dashboard-filters" class="land-filter-row">

@@ -1331,22 +1331,6 @@ body.player-active .edge-mask {
 
 /* Search Bar Upgrade */
 /* Video & Player Layering */
-.vod-filters-row {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-    flex-wrap: wrap;
-    overflow: visible;
-    width: 100%;
-}
-
-.vod-filters-label {
-    color: rgba(255, 255, 255, 0.65);
-    font-weight: 600;
-    font-size: 0.95rem;
-    margin-right: 4px;
-}
 
 .vod-filter-btn {
     background: rgba(255, 255, 255, 0.05);
@@ -2316,7 +2300,7 @@ body.hide-cursor * {
     max-width: none;
     align-items: center;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 0;
     transition: all 0.3s ease;
 }
 

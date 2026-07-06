@@ -108,8 +108,10 @@ export function renderVodControls() {
     if (yearSelect && ext.syncCustomSelect) ext.syncCustomSelect(yearSelect);
 
     const vodControls = document.getElementById('vod-controls');
-    if (window.lucide && vodControls) {
-        window.lucide.createIcons({ nodes: [vodControls] });
+    const vodFilterRow = document.getElementById('vod-filter-row');
+    if (window.lucide) {
+        if (vodControls) window.lucide.createIcons({ nodes: [vodControls] });
+        if (vodFilterRow) window.lucide.createIcons({ nodes: [vodFilterRow] });
     }
 }
 
@@ -160,9 +162,11 @@ export function renderFavoritesGrid() {
     const vodControls = document.getElementById('vod-controls');
     const liveSearchContainer = document.getElementById('live-search-container');
     const dashboardFilters = document.getElementById('dashboard-filters');
+    const vodFilterRow = document.getElementById('vod-filter-row');
 
     if (state.activeDashTab === "live") {
         if (vodControls) vodControls.classList.add('hidden');
+        if (vodFilterRow) vodFilterRow.classList.add('hidden');
         if (liveSearchContainer) liveSearchContainer.classList.remove('hidden');
         if (dashboardFilters) dashboardFilters.classList.remove('hidden');
         favoritesGrid.classList.remove('vod-active');
@@ -215,6 +219,7 @@ export function renderFavoritesGrid() {
         }
     } else {
         if (vodControls) vodControls.classList.remove('hidden');
+        if (vodFilterRow) vodFilterRow.classList.remove('hidden');
         if (liveSearchContainer) liveSearchContainer.classList.add('hidden');
         if (dashboardFilters) dashboardFilters.classList.add('hidden');
         favoritesGrid.classList.add('vod-active');
