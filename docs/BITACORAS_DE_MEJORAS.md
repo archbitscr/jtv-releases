@@ -218,18 +218,26 @@ Este documento unifica de forma cronológica todas las mejoras, características
 #### ~~3. Tarea 3 / Item 10: Optimización del Caché VOD y Paginación~~ ✅ (resuelta por rediseño completo)
 *   **Resolución:** El problema original (fetching HTTP masivo en cada resize/paginación) quedó obsoleto por el rediseño completo del módulo Movies durante la sesión 2026-07-05. Movies ya no consulta SFlix en cada render: carga desde una base de datos local en disco (`userData/movies/movies-db.json`), el layout es manejado por `fitGrid()` que recalcula localmente, y la paginación opera sobre el cache en memoria sin tocar la red. No hay HTTP en ningún ciclo de render. Objetivo original cumplido por arquitectura, no por parche.
 
-#### ~~5. Tarea 43: Movies Layout — Paridad Visual con el Explorer~~ ✅ (completada v2.3.10)
-*   **Componente:** `style.css`, `index.html`.
+#### 5. Tarea 43: Movies Layout — Paridad Visual con el Explorer ⏳ (EN PROGRESO)
+*   **Componente:** `style.css`, `index.html`, `renderer/ui/layout.js`.
 *   **Referencia:** `docs/examples/movies/movies-explorer.html` — fuente de verdad.
-*   **Progreso (2026-07-05):**
-    *   ✅ Flex chain: `land-content` + `land-carousel-wrapper` ambos `flex:1; min-height:0` — `wrapper.clientHeight` válido para fitGrid.
+*   **⚠️ PENDIENTE DE AUTORIZACIÓN DEL USUARIO PARA CIERRE** — no marcar completa sin confirmación explícita del dev.
+*   **Avances aplicados (2026-07-05):**
+    *   ✅ Flex chain: `land-content` + `land-carousel-wrapper` ambos `flex:1; min-height:0`.
     *   ✅ `.land-item.vod-card`: `display:flex; min-height:0`; hover `scale(1.06) translateY(-4px)`.
-    *   ✅ `.vod-badge`: `font-size:10px; backdrop-filter:blur(4px); letter-spacing:0.04em; color:rgba(255,255,255,0.85)`; sin border. `.vod-badge.rating`: sin override de background.
-    *   ✅ `.vod-fav-btn`: 30×30px; `border-radius:7px`; `bg:rgba(0,0,0,0.55)`; `border:rgba(255,255,255,0.1)`; `color:rgba(255,255,255,0.55)`; svg 14×14px.
+    *   ✅ `.vod-badge`: `font-size:10px; backdrop-filter:blur(4px); letter-spacing:0.04em; color:rgba(255,255,255,0.85)`; sin border.
+    *   ✅ `.vod-fav-btn`: 30×30px; `border-radius:7px`; bg/border/color semitransparentes; svg 14px.
     *   ✅ `.vod-info`: `padding:8px 10px; gap:2px`.
     *   ✅ `.vod-info h4`: `font-size:12px; color:rgba(255,255,255,0.85)`.
-    *   ✅ Dots VOD override: `height:auto; max-width:none`; `.land-dot` 8×8px; `.land-dots` gap 10px.
-    *   ✅ CSS cache-buster v54 → v55. Commits: `6d21ede`, `d032cc3`.
+    *   ✅ Dots VOD override: `height:auto; max-width:none`; dot 8×8px; gap 10px.
+*   **Errores detectados por el usuario (verificación de interfaz 2026-07-05):**
+    *   ❌ Top nav trigger zone no funciona en la sección Movies/Series.
+    *   ❌ Botones de navegación del grid (prev/next) no se muestran.
+    *   ❌ Contenedor de botones de filtro corta la visual del renglón — botón "Año" bloqueado visualmente, texto "Filters" apenas visible.
+*   **Acción Requerida:**
+    1.  Investigar y corregir el trigger zone del top nav en contexto VOD.
+    2.  Restaurar visibilidad de los botones de navegación del grid (`.land-nav-btn`).
+    3.  Corregir el contenedor de la filter bar para que no corte el renglón completo.
 
 #### ~~4. Tarea 37: Soporte Multi-Resolución (PC)~~ ✅ (completada v2.3.10)
 *   **Objetivo:** Escalado proporcional completo — la app debe funcionar desde 600×500 hasta 4K, con todos los elementos escalando proporcionalmente. Resolución mínima de ventana: 600×500.
