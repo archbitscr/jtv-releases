@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { app, webContents } from 'electron';
+import { app } from 'electron';
 import IPC from '../../shared/ipcChannels.json' with { type: 'json' };
 
 export function registerDiagnosticsIpc({ ipcMain, context }) {
@@ -78,31 +78,6 @@ export function registerDiagnosticsIpc({ ipcMain, context }) {
   ipcMain.handle(IPC.GET_AUDIO_STATE, () => {
     const win = context.windowManager.getMainWindow();
     return win ? win.webContents.isCurrentlyAudible() : false;
-  });
-
-  ipcMain.handle(IPC.SET_AUDIO_MUTED, (_event, muted) => {
-    const win = context.windowManager.getMainWindow();
-    if (!win) return false;
-    win.webContents.setAudioMuted(muted);
-    
-    // Also mute all guest webviews
-    try {
-      const allWebContents = webContents.getAllWebContents();
-      allWebContents.forEach(wc => {
-        if (wc !== win.webContents) {
-          try {
-            wc.setAudioMuted(muted);
-          } catch (e) {}
-        }
-      });
-    } catch (e) {}
-    
-    return win.webContents.isAudioMuted();
-  });
-
-  ipcMain.handle(IPC.IS_AUDIO_MUTED, () => {
-    const win = context.windowManager.getMainWindow();
-    return win ? win.webContents.isAudioMuted() : false;
   });
 
   ipcMain.handle(IPC.REPORT_SPEAKER_COORDS, (_event, coords) => {
