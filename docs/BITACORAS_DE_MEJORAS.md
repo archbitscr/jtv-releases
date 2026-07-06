@@ -215,13 +215,17 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ### ⏳ Dificultad Media
 
-#### 3. Tarea 3 / Item 10: Optimización del Caché VOD y Paginación
-*   **Componente:** `refreshVodContent()` e interacciones de redimensionado de ventana.
-*   **Problema:** Al redimensionar la ventana o paginar, se destruye el contenedor y se lanzan peticiones HTTP masivas al servidor de películas, causando parpadeos de carga y consumo excesivo de red.
+#### ~~3. Tarea 3 / Item 10: Optimización del Caché VOD y Paginación~~ ✅ (resuelta por rediseño completo)
+*   **Resolución:** El problema original (fetching HTTP masivo en cada resize/paginación) quedó obsoleto por el rediseño completo del módulo Movies durante la sesión 2026-07-05. Movies ya no consulta SFlix en cada render: carga desde una base de datos local en disco (`userData/movies/movies-db.json`), el layout es manejado por `fitGrid()` que recalcula localmente, y la paginación opera sobre el cache en memoria sin tocar la red. No hay HTTP en ningún ciclo de render. Objetivo original cumplido por arquitectura, no por parche.
+
+#### 5. Tarea 43: Movies Layout — Paridad Visual con el Explorer
+*   **Componente:** `style.css`, `index.html`, `renderer/ui/layout.js`.
+*   **Referencia:** `docs/examples/movies/movies-explorer.html` es la fuente de verdad del diseño.
+*   **Problema:** Aunque se aplicó el flex chain correcto (2026-07-05), puede haber diferencias visuales residuales entre la app y el explorer en proporciones de tarjetas, espaciados, comportamiento de fitGrid en distintos tamaños de ventana, o elementos del pbar/filtros que no coinciden exactamente.
 *   **Acción Requerida:**
-    1.  Refactorizar para consultar el objeto en memoria `vodCache` como fuente principal de verdad.
-    2.  Si los datos ya existen (caché caliente), la paginación y el ajuste de grilla al redimensionar deben hacerse de forma local (offline DOM manipulation).
-    3.  Disparar peticiones HTTP *únicamente* en búsquedas nuevas o en la carga inicial.
+    1.  Comparar visualmente la app contra el explorer en distintas resoluciones.
+    2.  Identificar diferencias específicas (tarjetas, gaps, filtros, nav buttons, dots).
+    3.  Ajustar `style.css` hasta lograr paridad pixel con el explorer sin afectar el módulo live.
 
 #### ~~4. Tarea 37: Soporte Multi-Resolución (PC)~~ ✅ (completada v2.3.10)
 *   **Objetivo:** Escalado proporcional completo — la app debe funcionar desde 600×500 hasta 4K, con todos los elementos escalando proporcionalmente. Resolución mínima de ventana: 600×500.
