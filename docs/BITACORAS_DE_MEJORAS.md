@@ -236,6 +236,16 @@ Este documento unifica de forma cronológica todas las mejoras, características
     *   ✅ Filter bar — reestructuración del DOM: `vod-filters-row` movido fuera de `land-controls-block` a su propio `div#vod-filter-row.land-filter-row` al nivel de `land-content`, igual que en el explorer. Label "Filters:" eliminado. `vod-controls margin-bottom:0`.
     *   ✅ `favoritesGrid.js`: mostrar/ocultar `vod-filter-row` junto con `vodControls`.
     *   ✅ `layout.js` fallback math: usa `vod-filter-row` en lugar de `dashboard-filters` (que está oculto en VOD).
+*   **Cambios estructurales DOM aplicados (2026-07-05, sesión 3):**
+    *   ✅ `main#tv-screen` → `main#live-tv` (módulo LiveTV unificado).
+    *   ✅ `div#land-dashboard` extraído de `#video-container` → `div#vod-library` como sibling de `#live-tv` (módulo VOD Library).
+    *   ✅ `aside#side-menu` movido dentro de `#live-tv` (pertenece al módulo de LiveTV).
+    *   ✅ `#vod-details-modal` movido dentro de `#vod-library`.
+    *   ✅ `div#app-home-screen` / `.app-home-screen` → `#main-home` / `.main-home` en HTML y CSS.
+    *   ✅ `.land-dashboard` → `.vod-library` renombrado en CSS (13 ocurrencias).
+    *   ✅ `#trial-expired-blocker` eliminado del HTML, CSS y JS (lógica de licencias pendiente de implementación en Tarea 24).
+    *   ✅ Regla de cierre de LiveTV al navegar a VOD: cancelar failover activo aunque no haya canal sintonizado.
+    *   ✅ `.land-filter-row margin-bottom: 10px` y `.vod-library padding: 30px` simplificados a valores fijos.
 *   **⏳ Pendiente verificación del usuario** — enviado a dev para revisión en sesión 2026-07-05.
 
 #### ~~4. Tarea 37: Soporte Multi-Resolución (PC)~~ ✅ (completada v2.3.10)
