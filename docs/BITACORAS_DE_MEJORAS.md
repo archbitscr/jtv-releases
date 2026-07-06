@@ -153,6 +153,14 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ---
 
+### [2026-07-05] - Fix: volumen e IPC de audio no funcionaban en app instalable
+
+*   ✅ **Root cause:** `IS_AUDIO_MUTED` y `SET_AUDIO_MUTED` estaban en `registerDiagnosticsIpc.js`, que solo se carga con `devModeAvailable=true`. En producción nunca se registraban → `nativeApi.isAudioMuted()` rechazaba en la primera línea de `adjustVolume`/`toggleMute` → fallo silencioso (sin OSD, sin mute, sin respuesta de controles).
+*   ✅ **Fix:** Ambos handlers movidos a `registerAudioIpc.js` (siempre registrado). Se añade propagación de mute a todos los webviews guest. Import `webContents` limpiado de diagnostics. Commit `11db422`.
+*   ✅ **Fix adicional (prevención):** `guest-preload.cjs` ahora intercepta teclas de volumen/mute (`+`, `-`, `=`, `m`, `*`, `Add`, `Subtract`, `Multiply`) en fase de captura y las reenvía vía `guest-hotkey` IPC al main, que las relay como `APP_HOTKEY` al renderer. Soluciona el caso donde el webview tiene el foco y `before-input-event` del host no dispara. Commit `43a149c`.
+
+---
+
 ### [2026-07-05] - VOD Layout: copia fiel del explorer + fitGrid desde wrapper.clientHeight
 
 *   ✅ **VOD layout — flex chain completo:** Reemplazada la estructura de VOD en `style.css` para ser copia fiel de `movies-explorer.html`. Cadena flex: `land-dashboard:has(.vod-active)` → `justify-content: flex-start; padding: 42px 30px 30px` → `land-content`: `flex:1; min-height:0` → `land-carousel-wrapper`: `flex:1; min-height:0; overflow:hidden; gap:20px`. El wrapper ahora tiene altura renderizada por el layout, no calculada a mano.
