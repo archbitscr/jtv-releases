@@ -3,8 +3,10 @@
   "version": "2.3.9",
   "main": "main.js",
   "type": "module",
-  "description": "JTV - Personal Stream Dashboard",
-  "author": "JHGARQ",
+  "description": "JTV - Your Personal Stream Dashboard",
+  "author": "ARCHBITS",
+  "license": "MIT",
+  "homepage": "https://ARCHBITS.XYZ",
   "scripts": {
     "dev": "vite",
     "dev:app": "concurrently -n vite,electron -c cyan,yellow \"vite\" \"cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .\"",

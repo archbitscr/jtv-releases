@@ -328,6 +328,17 @@ async function init() {
     if (loaderProgressBar) loaderProgressBar.style.width = '0%';
     if (loaderMessage) loaderMessage.innerText = 'Initializing local database...';
 
+    // En modo browser (Vite dev sin Electron) no hay IPC — mostrar la app directamente
+    if (!nativeApi) {
+        setTimeout(() => {
+            if (appLoader) {
+                appLoader.classList.add('fade-out');
+                setTimeout(() => appLoader.classList.add('hidden'), 600);
+            }
+        }, 800);
+        return;
+    }
+
     // Verify trial period on startup
     const trialCheck = await nativeApi.getNetworkDate().catch(() => ({ expired: false }));
     const savedDataLocal = await nativeApi.loadUserData().catch(() => null);

@@ -53,7 +53,7 @@ export function getOrGenerateTooltip(el) {
         return 'Edit channel';
     }
     if (iconName === 'pin') {
-        return el.classList.contains('active') ? 'Unpin HUD' : 'Pin HUD';
+        return el.classList.contains('active') ? 'Unpin Player' : 'Pin Player';
     }
 
     let tooltip = el.getAttribute('data-tooltip');

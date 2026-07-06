@@ -8,7 +8,7 @@
 
 /* Channel grid */
 .land-grid {
-  gap: clamp(4px, max(clamp(4px, 0.93vw, 10px), calc(10px + 0.00334 * (100vw - 2046px))), 16px);
+  gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00223 * (100vw - 2046px))), 8px);
 }
 
 /* Carousel wrapper */
@@ -18,28 +18,28 @@
 
 /* ← → Flecha de paginación (botón) */
 .land-nav-btn {
-  width: clamp(10px, max(clamp(10px, 2.78vw, 30px), calc(30px + 0.01672 * (100vw - 2046px))), 60px);
-  height: clamp(10px, max(clamp(10px, 2.78vw, 30px), calc(30px + 0.01672 * (100vw - 2046px))), 60px);
+  width: clamp(15px, max(clamp(15px, 2.31vw, 25px), calc(25px + 0.01951 * (100vw - 2046px))), 60px);
+  height: clamp(15px, max(clamp(15px, 2.31vw, 25px), calc(25px + 0.01951 * (100vw - 2046px))), 60px);
 }
 
 /* ← → Flecha de paginación (ícono) */
 .land-nav-btn i,
 .land-nav-btn svg {
-  width: clamp(10px, max(clamp(10px, 2.78vw, 30px), calc(30px + 0.01672 * (100vw - 2046px))), 60px);
-  height: clamp(10px, max(clamp(10px, 2.78vw, 30px), calc(30px + 0.01672 * (100vw - 2046px))), 60px);
+  width: clamp(15px, max(clamp(15px, 2.31vw, 25px), calc(25px + 0.01951 * (100vw - 2046px))), 60px);
+  height: clamp(15px, max(clamp(15px, 2.31vw, 25px), calc(25px + 0.01951 * (100vw - 2046px))), 60px);
 }
 
 /* Filter tab row (All / Favorites) */
 .land-filter-row {
   gap: clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
-  margin-bottom: clamp(10px, max(clamp(10px, 2.78vw, 30px), calc(30px + 0.01672 * (100vw - 2046px))), 60px);
+  margin-bottom: clamp(15px, max(clamp(15px, 2.78vw, 30px), calc(30px + 0.01672 * (100vw - 2046px))), 60px);
 }
 
 /* Filter tab button (All / Favorites) */
 .land-filter-btn {
-  padding: clamp(4px, max(clamp(4px, 0.74vw, 8px), calc(8px + 0.00446 * (100vw - 2046px))), 16px) clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
-  border-radius: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
-  font-size: clamp(7px, max(clamp(7px, 1.30vw, 14px), calc(14px + 0.00892 * (100vw - 2046px))), 30px);
+  padding: clamp(3px, max(clamp(3px, 0.56vw, 6px), calc(6px + 0.00334 * (100vw - 2046px))), 12px) clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01115 * (100vw - 2046px))), 40px);
+  border-radius: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.01672 * (100vw - 2046px))), 50px);
+  font-size: clamp(7px, max(clamp(7px, 1.39vw, 15px), calc(15px + 0.00836 * (100vw - 2046px))), 30px);
 }
 
 /* Top row (title + exit) */
@@ -50,12 +50,12 @@
 
 /* Section title */
 .land-title {
-  font-size: clamp(10px, max(clamp(10px, 1.85vw, 20px), calc(20px + 0.02230 * (100vw - 2046px))), 60px) !important;
+  font-size: clamp(15px, max(clamp(15px, 2.78vw, 30px), calc(30px + 0.01672 * (100vw - 2046px))), 60px) !important;
 }
 
 /* Title block */
 .land-title-block {
-  padding-top: clamp(1px, max(clamp(1px, 0.37vw, 4px), calc(4px + 0.00223 * (100vw - 2046px))), 8px);
+  padding-top: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00056 * (100vw - 2046px))), 3px);
 }
 
 /* Exit button block */
@@ -120,8 +120,8 @@
 /* Fav heart icon */
 .land-fav-indicator i,
 .land-fav-indicator svg {
-  width: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00892 * (100vw - 2046px))), 32px);
-  height: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00892 * (100vw - 2046px))), 32px);
+  width: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00780 * (100vw - 2046px))), 30px) !important;
+  height: clamp(8px, max(clamp(8px, 1.48vw, 16px), calc(16px + 0.00780 * (100vw - 2046px))), 30px) !important;
 }
 
 /* Content area */
@@ -131,7 +131,7 @@
 
 /* Dots container */
 .land-dots-container {
-  height: clamp(27px, max(clamp(27px, 3.70vw, 40px), calc(40px + 0.03344 * (100vw - 2046px))), 100px);
+  height: clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.03344 * (100vw - 2046px))), 100px);
   border-radius: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
   margin-top: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01003 * (100vw - 2046px))), 30px);
 }
@@ -143,6 +143,6 @@
 
 /* Individual dot */
 .land-dot {
-  width: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
-  height: clamp(6px, max(clamp(6px, 1.11vw, 12px), calc(12px + 0.00669 * (100vw - 2046px))), 24px);
+  width: clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
+  height: clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
 }
