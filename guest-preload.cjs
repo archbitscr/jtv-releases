@@ -310,9 +310,18 @@ window.addEventListener('load', () => {
     autoClickOK();
 });
 
+// Volume/mute hotkeys that are safe to intercept (don't conflict with player seek controls).
+// Arrow keys are intentionally excluded — they control player seeking.
+const GUEST_VOLUME_KEYS = new Set(['+', '=', '-', 'm', 'M', '*', 'Add', 'Subtract', 'Multiply']);
+
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         ipcRenderer.send(IPC.ESCAPE_PRESSED);
+        return;
+    }
+    if (GUEST_VOLUME_KEYS.has(e.key)) {
+        e.preventDefault();
+        ipcRenderer.send('guest-hotkey', { key: e.key, repeat: e.repeat });
     }
 }, true);
 

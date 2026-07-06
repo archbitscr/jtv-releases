@@ -47,5 +47,6 @@
   "MOVIES_DB_SAVE": "movies-db-save",
   "MOVIES_DB_DELETE": "movies-db-delete",
   "MOVIES_DB_SAVE_POSTER": "movies-db-save-poster",
-  "MOVIES_DB_GET_POSTER": "movies-db-get-poster"
+  "MOVIES_DB_GET_POSTER": "movies-db-get-poster",
+  "GUEST_HOTKEY": "guest-hotkey"
 }
