@@ -230,14 +230,13 @@ Este documento unifica de forma cronológica todas las mejoras, características
     *   ✅ `.vod-info`: `padding:8px 10px; gap:2px`.
     *   ✅ `.vod-info h4`: `font-size:12px; color:rgba(255,255,255,0.85)`.
     *   ✅ Dots VOD override: `height:auto; max-width:none`; dot 8×8px; gap 10px.
-*   **Errores detectados por el usuario (verificación de interfaz 2026-07-05):**
-    *   ❌ Top nav trigger zone no funciona en la sección Movies/Series.
-    *   ❌ Botones de navegación del grid (prev/next) no se muestran.
-    *   ❌ Contenedor de botones de filtro corta la visual del renglón — botón "Año" bloqueado visualmente, texto "Filters" apenas visible.
-*   **Acción Requerida:**
-    1.  Investigar y corregir el trigger zone del top nav en contexto VOD.
-    2.  Restaurar visibilidad de los botones de navegación del grid (`.land-nav-btn`).
-    3.  Corregir el contenedor de la filter bar para que no corte el renglón completo.
+*   **Correcciones aplicadas (2026-07-05, sesión 2):**
+    *   ✅ Top nav trigger zone: `#land-dashboard:not(.hidden)` ahora solo deshabilita `#trigger-left` y `#trigger-bottom`, no `#trigger-top`.
+    *   ✅ Nav buttons grid: `.land-grid.vod-active` cambia de `width:100%+flex-shrink:0` a `flex:1+min-width:0`.
+    *   ✅ Filter bar — reestructuración del DOM: `vod-filters-row` movido fuera de `land-controls-block` a su propio `div#vod-filter-row.land-filter-row` al nivel de `land-content`, igual que en el explorer. Label "Filters:" eliminado. `vod-controls margin-bottom:0`.
+    *   ✅ `favoritesGrid.js`: mostrar/ocultar `vod-filter-row` junto con `vodControls`.
+    *   ✅ `layout.js` fallback math: usa `vod-filter-row` en lugar de `dashboard-filters` (que está oculto en VOD).
+*   **⏳ Pendiente verificación del usuario** — enviado a dev para revisión en sesión 2026-07-05.
 
 #### ~~4. Tarea 37: Soporte Multi-Resolución (PC)~~ ✅ (completada v2.3.10)
 *   **Objetivo:** Escalado proporcional completo — la app debe funcionar desde 600×500 hasta 4K, con todos los elementos escalando proporcionalmente. Resolución mínima de ventana: 600×500.
