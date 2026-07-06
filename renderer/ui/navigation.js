@@ -1,5 +1,6 @@
 import { state } from '../state/appState.js';
 import { resetAntiBlackScreen } from '../player/playerController.js';
+import { resetFailoverState, showNoSignalOverlay } from '../player/failover.js';
 
 let ext = {};
 
@@ -128,11 +129,26 @@ export function showModule(moduleName) {
         state.previousModule = state.currentModule;
     }
 
-    if (isChannelPlaying && (moduleName === 'series' || moduleName === 'movies')) {
-        const activeChan = state.channels.find(c => String(c.id) === String(state.activeChannelId));
-        if (activeChan) {
-            state.lastTunedChannel = activeChan;
-            state.shouldRestoreTunedChannel = true;
+    const enteringVod = moduleName === 'series' || moduleName === 'movies';
+
+    if (enteringVod && (isChannelPlaying || state.failoverInProgress)) {
+        // Save channel for restore when returning to Live (only if we had one)
+        if (state.activeChannelId) {
+            const activeChan = state.channels.find(c => String(c.id) === String(state.activeChannelId));
+            if (activeChan) {
+                state.lastTunedChannel = activeChan;
+                state.shouldRestoreTunedChannel = true;
+            }
+        }
+        // Cancel any active failover/autotuner cycle
+        if (state.failoverInProgress) {
+            resetFailoverState();
+            if (state.failoverTimeoutId) {
+                clearTimeout(state.failoverTimeoutId);
+                state.failoverTimeoutId = null;
+            }
+            state.failoverInProgress = false;
+            showNoSignalOverlay(false);
         }
         if (playerContainer) playerContainer.innerHTML = '';
         resetAntiBlackScreen();
