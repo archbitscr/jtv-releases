@@ -99,7 +99,7 @@ textarea,
 }
 
 /* TV Screen Area */
-#tv-screen {
+#live-tv {
     position: relative;
     z-index: 3;
     width: 100%;
@@ -261,8 +261,8 @@ body.player-active .edge-mask {
     background: transparent;
 }
 
-#land-dashboard:not(.hidden) ~ #trigger-left,
-#land-dashboard:not(.hidden) ~ #trigger-bottom {
+#vod-library:not(.hidden) ~ #trigger-left,
+#vod-library:not(.hidden) ~ #trigger-bottom {
     pointer-events: none;
 }
 
@@ -927,7 +927,7 @@ body.player-active .edge-mask {
     accent-color: var(--accent);
 }
 
-.land-dashboard.hidden {
+.vod-library.hidden {
     display: flex !important;
     opacity: 0;
     transform: scale(0.98);
@@ -1147,18 +1147,18 @@ body.player-active .edge-mask {
 }
 
 /* Live TV Landing/Grid Dashboard */
-/* Note: .land-dashboard had two separate rules (one for base layout, one for
+/* Note: .vod-library had two separate rules (one for base layout, one for
    absolute positioning and background) that were merged into one, preserving
    declaration order — repeated properties (width, height, display, etc.) are
    intentional: the second set wins the cascade as before. */
-.land-dashboard {
+.vod-library {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: clamp(60px, max(clamp(60px, 9.26vw, 100px), calc(100px + 0.02787 * (100vw - 2046px))), 150px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px) clamp(20px, max(clamp(20px, 3.70vw, 40px), calc(40px + 0.02230 * (100vw - 2046px))), 80px);
+    padding: 30px;
     background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
     transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     opacity: 1;
@@ -1301,7 +1301,7 @@ body.player-active .edge-mask {
     display: flex;
     align-items: center;
     gap: clamp(5px, max(clamp(5px, 0.93vw, 10px), calc(10px + 0.00557 * (100vw - 2046px))), 20px);
-    margin-bottom: clamp(15px, max(clamp(15px, 2.78vw, 30px), calc(30px + 0.01672 * (100vw - 2046px))), 60px);
+    margin-bottom: 10px;
     flex-wrap: wrap;
 }
 
@@ -2372,7 +2372,7 @@ body.hide-cursor * {
 }
 
 /* Full-height column layout when VOD is active */
-.land-dashboard:has(.vod-active) {
+.vod-library:has(.vod-active) {
     overflow-y: hidden !important;
     overflow-x: hidden !important;
     justify-content: flex-start !important;
@@ -2381,7 +2381,7 @@ body.hide-cursor * {
 }
 
 /* land-content fills remaining height so carousel-wrapper can flex:1 */
-.land-dashboard:has(.vod-active) .land-content {
+.vod-library:has(.vod-active) .land-content {
     flex: 1 !important;
     min-height: 0 !important;
     height: auto !important;
@@ -2391,7 +2391,7 @@ body.hide-cursor * {
 }
 
 /* carousel-wrapper fills remaining height after top-row and filter-row */
-.land-dashboard:has(.vod-active) .land-carousel-wrapper {
+.vod-library:has(.vod-active) .land-carousel-wrapper {
     flex: 1 !important;
     min-height: 0 !important;
     overflow: hidden !important;
@@ -2403,13 +2403,13 @@ body.hide-cursor * {
 }
 
 /* Compact filter row and buttons for VOD (no wasted vertical space) */
-.land-dashboard:has(.vod-active) .land-filter-row {
+.vod-library:has(.vod-active) .land-filter-row {
     gap: 8px !important;
     margin-bottom: 0 !important;
 }
 
-.land-dashboard:has(.vod-active) .land-filter-btn,
-.land-dashboard:has(.vod-active) .fbar-select-btn {
+.vod-library:has(.vod-active) .land-filter-btn,
+.vod-library:has(.vod-active) .fbar-select-btn {
     padding: 6px 18px !important;
     font-size: 14px !important;
     border-radius: 50px !important;
@@ -2417,25 +2417,25 @@ body.hide-cursor * {
 }
 
 /* Dots below the grid */
-.land-dashboard:has(.vod-active) .land-dots-container {
+.vod-library:has(.vod-active) .land-dots-container {
     margin-top: 14px !important;
     flex-shrink: 0 !important;
     height: auto !important;
     max-width: none !important;
 }
 
-.land-dashboard:has(.vod-active) .land-dot {
+.vod-library:has(.vod-active) .land-dot {
     width: 8px !important;
     height: 8px !important;
 }
 
-.land-dashboard:has(.vod-active) .land-dots {
+.vod-library:has(.vod-active) .land-dots {
     gap: 10px !important;
 }
 
 /* Nav button SVG size matches explorer */
-.land-dashboard:has(.vod-active) .land-nav-btn svg,
-.land-dashboard:has(.vod-active) .land-nav-btn i {
+.vod-library:has(.vod-active) .land-nav-btn svg,
+.vod-library:has(.vod-active) .land-nav-btn i {
     width: 34px !important;
     height: 34px !important;
 }
@@ -2820,7 +2820,7 @@ body.hide-cursor * {
 }
 
 /* App Home Screen Landing Page */
-.app-home-screen {
+.main-home {
     position: absolute;
     top: 0;
     left: 0;
@@ -2836,7 +2836,7 @@ body.hide-cursor * {
     padding: clamp(27px, 3.70vw, 102px);
 }
 
-.app-home-screen.hidden {
+.main-home.hidden {
     display: flex !important;
     opacity: 0;
     pointer-events: none;
@@ -6117,8 +6117,6 @@ body:has(#parental-pin-modal:not(.hidden)) webview,
 body:has(#parental-pin-modal:not(.hidden)) #player-container,
 body:has(#vod-details-modal:not(.hidden)) webview,
 body:has(#vod-details-modal:not(.hidden)) #player-container,
-body:has(#trial-expired-blocker:not(.hidden)) webview,
-body:has(#trial-expired-blocker:not(.hidden)) #player-container,
 body:has(#no-signal-overlay:not(.hidden)) webview,
 body:has(#no-signal-overlay:not(.hidden)) #player-container {
     pointer-events: none !important;
@@ -6181,7 +6179,7 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
 
 /* ====== Responsive: Small windows (split-screen ≤800px) ====== */
 @media (max-width: 800px) {
-    .land-dashboard {
+    .vod-library {
         padding-top: 20px !important;
         padding-left: 10px !important;
         padding-right: 10px !important;

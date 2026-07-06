@@ -842,7 +842,7 @@ export function setupEventListeners() {
         closeHomeBtn.onclick = (e) => {
             e.stopPropagation();
             if (state.activeChannelId && !state.isVodPlaying) {
-                document.getElementById('land-dashboard').classList.add('hidden');
+                document.getElementById('vod-library').classList.add('hidden');
                 state.isHomeActive = false;
                 sourceSwitcher.classList.remove('hidden');
                 updateTriggersVisibility();

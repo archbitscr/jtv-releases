@@ -31,9 +31,7 @@ export function updateWebviewPointerEvents() {
     const parentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
     const detailsOpen = !document.getElementById('vod-details-modal').classList.contains('hidden');
     const noSignalOpen = !document.getElementById('no-signal-overlay').classList.contains('hidden');
-    const trialExpiredOpen = !document.getElementById('trial-expired-blocker').classList.contains('hidden');
-
-    if (settingsOpen || parentalOpen || detailsOpen || noSignalOpen || trialExpiredOpen) {
+    if (settingsOpen || parentalOpen || detailsOpen || noSignalOpen) {
         webview.style.pointerEvents = 'none';
     } else {
         webview.style.pointerEvents = 'auto';
@@ -45,8 +43,7 @@ export function initWebviewPointerEventsObserver() {
         'settings-screen',
         'parental-pin-modal',
         'vod-details-modal',
-        'no-signal-overlay',
-        'trial-expired-blocker'
+        'no-signal-overlay'
     ];
     
     const observer = new MutationObserver(() => {

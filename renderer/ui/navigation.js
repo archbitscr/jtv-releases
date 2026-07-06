@@ -82,7 +82,7 @@ export function showLiveLanding() {
         sectionTitle.classList.remove('hidden');
     }
 
-    const homeDashboard = document.getElementById('land-dashboard');
+    const homeDashboard = document.getElementById('vod-library');
     if (homeDashboard) homeDashboard.classList.remove('hidden');
 
     if (ext.applyWallpaper) ext.applyWallpaper(state.selectedWallpaper);
@@ -182,8 +182,8 @@ export function showModule(moduleName) {
         }
     }
 
-    document.getElementById('app-home-screen').classList.add('hidden');
-    document.getElementById('land-dashboard').classList.add('hidden');
+    document.getElementById('main-home').classList.add('hidden');
+    document.getElementById('vod-library').classList.add('hidden');
     document.getElementById('settings-screen').classList.add('hidden');
     
     document.querySelectorAll('.header-nav-btn').forEach(btn => btn.classList.remove('active'));
@@ -200,7 +200,7 @@ export function showModule(moduleName) {
 
     if (moduleName === 'home') {
         if (ext.applyWallpaper) ext.applyWallpaper(state.selectedWallpaper);
-        document.getElementById('app-home-screen').classList.remove('hidden');
+        document.getElementById('main-home').classList.remove('hidden');
         document.querySelector('.header-nav-btn[data-nav="home"]')?.classList.add('active');
         state.isHomeActive = true;
         document.title = "JTV";
@@ -218,7 +218,7 @@ export function showModule(moduleName) {
             return;
         } else {
             if (ext.applyWallpaper) ext.applyWallpaper(state.selectedWallpaper);
-            document.getElementById('land-dashboard').classList.remove('hidden');
+            document.getElementById('vod-library').classList.remove('hidden');
             state.isHomeActive = true;
             const liveSearchInput = document.getElementById('live-landing-search');
             if (liveSearchInput) liveSearchInput.value = "";
@@ -227,7 +227,7 @@ export function showModule(moduleName) {
             document.title = "JTV - Live TV";
         }
     } else if (moduleName === 'series') {
-        document.getElementById('land-dashboard').classList.remove('hidden');
+        document.getElementById('vod-library').classList.remove('hidden');
         state.isHomeActive = true;
         document.querySelector('.header-nav-btn[data-nav="series"]')?.classList.add('active');
         hideMenu();
@@ -251,7 +251,7 @@ export function showModule(moduleName) {
         if (ext.refreshVodContent) ext.refreshVodContent();
         document.title = "JTV - Series";
     } else if (moduleName === 'movies') {
-        document.getElementById('land-dashboard').classList.remove('hidden');
+        document.getElementById('vod-library').classList.remove('hidden');
         state.isHomeActive = true;
         document.querySelector('.header-nav-btn[data-nav="movies"]')?.classList.add('active');
         hideMenu();

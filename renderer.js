@@ -346,9 +346,7 @@ async function init() {
 
     if (!isDevMode && trialCheck && trialCheck.expired) {
         if (appLoader) appLoader.classList.add('hidden');
-        const expiredBlocker = document.getElementById('trial-expired-blocker');
-        if (expiredBlocker) expiredBlocker.classList.remove('hidden');
-        return; // Halt app boot
+        return; // Halt app boot — license check pending implementation
     }
 
     // Update trial status in settings pane

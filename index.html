@@ -41,7 +41,7 @@
         <div id="app-wallpaper" class="app-wallpaper"></div>
 
         <!-- App Home Screen Landing Page -->
-        <div id="app-home-screen" class="app-home-screen">
+        <div id="main-home" class="app-home-screen">
             <div class="home-cards-container">
                 <div class="home-card" id="card-live-tv">
                     <div class="home-card-header">
@@ -70,8 +70,8 @@
             </div>
         </div>
 
-        <!-- TV Screen Area -->
-        <main id="tv-screen">
+        <!-- LiveTV Module -->
+        <main id="live-tv">
             <div id="video-container">
                 <div id="player-container"></div>
                 
@@ -190,89 +190,6 @@
 
 
 
-                <div id="land-dashboard" class="land-dashboard hidden">
-                    <div class="land-content">
-                        <div class="land-top-row">
-                            <div class="land-title-block">
-                                <h2 id="land-title" class="land-title">Movies</h2>
-                            </div>
-
-                            <div class="land-controls-block">
-                                <div id="live-search-container" class="vod-controls hidden">
-                                    <div class="search-container">
-                                        <i data-lucide="search"></i>
-                                        <input type="text" id="live-landing-search" placeholder="Search live channels...">
-                                        <button id="clear-live-landing-search" class="search-clear-btn hidden" title="Clear"><i data-lucide="x"></i></button>
-                                    </div>
-                                </div>
-
-                                <div id="vod-controls" class="vod-controls hidden">
-                                    <div class="search-container">
-                                        <i data-lucide="search"></i>
-                                        <input type="text" id="vod-search-input" placeholder="Search movies and series...">
-                                        <button id="clear-vod-search" class="search-clear-btn hidden" title="Clear"><i data-lucide="x"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="land-exit-block">
-                                <button id="close-home" class="land-exit-btn" title="Exit">Exit</button>
-                            </div>
-                        </div>
-
-                        <div id="vod-filter-row" class="land-filter-row hidden">
-                            <button id="vod-filter-all" class="land-filter-btn vod-filter-btn active" type="button">All</button>
-                            <button id="vod-filter-favs" class="land-filter-btn vod-filter-btn" type="button">Favorites</button>
-                            <select id="vod-genre-select" class="vod-filter-select" aria-label="Genre">
-                                <option value="All">Genre</option>
-                            </select>
-                            <select id="vod-rating-select" class="vod-filter-select" aria-label="Rating">
-                                <option value="all">Rating</option>
-                            </select>
-                            <select id="vod-year-select" class="vod-filter-select" aria-label="Year">
-                                <option value="all">Year</option>
-                            </select>
-                        </div>
-
-                        <div id="dashboard-filters" class="land-filter-row">
-                            <button id="land-nav-all" class="land-filter-btn">All</button>
-                            <button id="land-nav-favorites" class="land-filter-btn">Favorites</button>
-
-                            <!-- Unified filter dropdowns (shared by sidebar and landing) -->
-                            <div class="fbar-select" data-for="filter-select-language">
-                                <select id="filter-select-language" aria-label="Language" data-label="Language" style="display:none;">
-                                    <option value="all">All</option>
-                                </select>
-                                <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Language</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
-                                <div class="fbar-select-menu hidden"></div>
-                            </div>
-                            <div class="fbar-select" data-for="filter-select-genre">
-                                <select id="filter-select-genre" aria-label="Genre" data-label="Genre" style="display:none;">
-                                    <option value="all">All</option>
-                                </select>
-                                <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Genre</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
-                                <div class="fbar-select-menu hidden"></div>
-                            </div>
-                            <div class="fbar-select" data-for="filter-select-event">
-                                <select id="filter-select-event" aria-label="Event" data-label="Event" style="display:none;">
-                                    <option value="all">All</option>
-                                </select>
-                                <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Event</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
-                                <div class="fbar-select-menu hidden"></div>
-                            </div>
-                        </div>
-                        <div class="land-carousel-wrapper">
-                            <button id="land-prev" class="land-nav-btn"><i data-lucide="arrow-left-circle"></i></button>
-                            <div id="land-grid" class="land-grid"></div>
-                            <button id="land-next" class="land-nav-btn"><i data-lucide="arrow-right-circle"></i></button>
-                        </div>
-                        
-                        <div class="land-dots-container">
-                            <div id="land-dots" class="land-dots"></div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Top Navigation Bar -->
                 <div id="tnav-menu" class="tnav-menu glass-panel hidden">
                     <div class="tnav-buttons">
@@ -288,11 +205,9 @@
                 <div id="trigger-left" class="hover-trigger left"></div>
                 <div id="trigger-bottom" class="hover-trigger bottom"></div>
             </div>
-        </main>
 
-
-        <!-- Unified Left Menu -->
-        <aside id="side-menu" class="glass-menu left hidden">
+            <!-- Unified Left Menu -->
+            <aside id="side-menu" class="glass-menu left hidden">
             <!-- Combined tab row with close button -->
             <div class="side-tabs">
                 <div class="side-tabs-center">
@@ -370,34 +285,119 @@
                 </div>
             </div>
         </aside>
+        </main> <!-- closes #live-tv -->
 
-        <!-- VOD Details Modal -->
-        <div id="vod-details-modal" class="vod-details-modal hidden">
-            <div class="vod-details-backdrop" id="vod-details-backdrop"></div>
-            <div class="vod-details-container glass-card">
-                <button id="close-details" class="close-btn vod-details-close"><i data-lucide="x"></i></button>
-                <div class="vod-details-body">
-                    <div class="vod-details-poster">
-                        <!-- High-res poster from TMDB or fallback -->
-                        <div id="vod-details-poster-placeholder"></div>
-                        <img id="vod-details-poster-img" src="" alt="Poster" class="hidden">
+        <!-- VOD Library Module (Live TV landing + Series + Movies) -->
+        <div id="vod-library" class="land-dashboard hidden">
+            <div class="land-content">
+                <div class="land-top-row">
+                    <div class="land-title-block">
+                        <h2 id="land-title" class="land-title">Movies</h2>
                     </div>
-                    <div class="vod-details-info">
-                        <h2 id="vod-details-title">Movie Title</h2>
-                        <div class="vod-details-meta">
-                            <span id="vod-details-year" class="vod-meta-badge">2026</span>
-                            <span id="vod-details-quality" class="vod-meta-badge quality">HD</span>
-                            <span id="vod-details-rating" class="vod-meta-badge rating">★ 0.0</span>
-                            <span id="vod-details-imdb-rating" class="vod-meta-badge imdb-rating hidden">IMDb: 0.0</span>
+
+                    <div class="land-controls-block">
+                        <div id="live-search-container" class="vod-controls hidden">
+                            <div class="search-container">
+                                <i data-lucide="search"></i>
+                                <input type="text" id="live-landing-search" placeholder="Search live channels...">
+                                <button id="clear-live-landing-search" class="search-clear-btn hidden" title="Clear"><i data-lucide="x"></i></button>
+                            </div>
                         </div>
-                        <p id="vod-details-overview">Plot overview goes here. Fetching details from TMDB...</p>
-                        <div class="vod-details-actions">
-                            <button id="play-vod-btn" class="primary-btn play-btn"><i data-lucide="play"></i> Watch Now</button>
+
+                        <div id="vod-controls" class="vod-controls hidden">
+                            <div class="search-container">
+                                <i data-lucide="search"></i>
+                                <input type="text" id="vod-search-input" placeholder="Search movies and series...">
+                                <button id="clear-vod-search" class="search-clear-btn hidden" title="Clear"><i data-lucide="x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="land-exit-block">
+                        <button id="close-home" class="land-exit-btn" title="Exit">Exit</button>
+                    </div>
+                </div>
+
+                <div id="vod-filter-row" class="land-filter-row hidden">
+                    <button id="vod-filter-all" class="land-filter-btn vod-filter-btn active" type="button">All</button>
+                    <button id="vod-filter-favs" class="land-filter-btn vod-filter-btn" type="button">Favorites</button>
+                    <select id="vod-genre-select" class="vod-filter-select" aria-label="Genre">
+                        <option value="All">Genre</option>
+                    </select>
+                    <select id="vod-rating-select" class="vod-filter-select" aria-label="Rating">
+                        <option value="all">Rating</option>
+                    </select>
+                    <select id="vod-year-select" class="vod-filter-select" aria-label="Year">
+                        <option value="all">Year</option>
+                    </select>
+                </div>
+
+                <div id="dashboard-filters" class="land-filter-row">
+                    <button id="land-nav-all" class="land-filter-btn">All</button>
+                    <button id="land-nav-favorites" class="land-filter-btn">Favorites</button>
+
+                    <!-- Unified filter dropdowns (shared by sidebar and landing) -->
+                    <div class="fbar-select" data-for="filter-select-language">
+                        <select id="filter-select-language" aria-label="Language" data-label="Language" style="display:none;">
+                            <option value="all">All</option>
+                        </select>
+                        <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Language</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
+                        <div class="fbar-select-menu hidden"></div>
+                    </div>
+                    <div class="fbar-select" data-for="filter-select-genre">
+                        <select id="filter-select-genre" aria-label="Genre" data-label="Genre" style="display:none;">
+                            <option value="all">All</option>
+                        </select>
+                        <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Genre</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
+                        <div class="fbar-select-menu hidden"></div>
+                    </div>
+                    <div class="fbar-select" data-for="filter-select-event">
+                        <select id="filter-select-event" aria-label="Event" data-label="Event" style="display:none;">
+                            <option value="all">All</option>
+                        </select>
+                        <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Event</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
+                        <div class="fbar-select-menu hidden"></div>
+                    </div>
+                </div>
+
+                <div class="land-carousel-wrapper">
+                    <button id="land-prev" class="land-nav-btn"><i data-lucide="arrow-left-circle"></i></button>
+                    <div id="land-grid" class="land-grid"></div>
+                    <button id="land-next" class="land-nav-btn"><i data-lucide="arrow-right-circle"></i></button>
+                </div>
+
+                <div class="land-dots-container">
+                    <div id="land-dots" class="land-dots"></div>
+                </div>
+            </div>
+
+            <!-- VOD Details Modal -->
+            <div id="vod-details-modal" class="vod-details-modal hidden">
+                <div class="vod-details-backdrop" id="vod-details-backdrop"></div>
+                <div class="vod-details-container glass-card">
+                    <button id="close-details" class="close-btn vod-details-close"><i data-lucide="x"></i></button>
+                    <div class="vod-details-body">
+                        <div class="vod-details-poster">
+                            <div id="vod-details-poster-placeholder"></div>
+                            <img id="vod-details-poster-img" src="" alt="Poster" class="hidden">
+                        </div>
+                        <div class="vod-details-info">
+                            <h2 id="vod-details-title">Movie Title</h2>
+                            <div class="vod-details-meta">
+                                <span id="vod-details-year" class="vod-meta-badge">2026</span>
+                                <span id="vod-details-quality" class="vod-meta-badge quality">HD</span>
+                                <span id="vod-details-rating" class="vod-meta-badge rating">★ 0.0</span>
+                                <span id="vod-details-imdb-rating" class="vod-meta-badge imdb-rating hidden">IMDb: 0.0</span>
+                            </div>
+                            <p id="vod-details-overview">Plot overview goes here. Fetching details from TMDB...</p>
+                            <div class="vod-details-actions">
+                                <button id="play-vod-btn" class="primary-btn play-btn"><i data-lucide="play"></i> Watch Now</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div> <!-- closes vod-details-container -->
-        </div> <!-- closes vod-details-modal -->
+            </div>
+        </div> <!-- closes #vod-library -->
 
         <!-- Full Screen Settings Screen -->
         <div id="settings-screen" class="settings-screen hidden">
@@ -1355,16 +1355,6 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
             </div>
         </div>
 
-        <!-- Trial Expired Blocker Overlay -->
-        <div id="trial-expired-blocker" class="modal-blocker hidden">
-            <div class="modal-blocker-content glass-card" style="text-align: center;">
-                <i data-lucide="calendar-off" class="modal-blocker-icon"></i>
-                <h2>Trial Period Expired</h2>
-                <p>Your 3-day trial period for JTV has ended.</p>
-                <p>Please purchase a license or sign in to continue using the application.</p>
-                <button id="trial-close-app-btn" class="primary-btn modal-blocker-btn">Close Application</button>
-            </div>
-        </div>
     </div>
     <!-- Floating controls (dev-only): Glass Tuner, Reload Window, Shut Down -->
     <div id="floating-controls-container" class="floating-controls-container" data-dev="true">

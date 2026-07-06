@@ -305,8 +305,6 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
         if (ext.applyWallpaper) ext.applyWallpaper(state.selectedWallpaper);
         updatePlayerActiveState();
         
-        const expiredBlocker = document.getElementById('trial-expired-blocker');
-        if (expiredBlocker) expiredBlocker.classList.remove('hidden');
         return;
     }
 
@@ -395,8 +393,8 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     
     // Hide landing overlay and home screens only on manual channel change
     if (resetSource) {
-        document.getElementById('land-dashboard').classList.add('hidden');
-        document.getElementById('app-home-screen').classList.add('hidden');
+        document.getElementById('vod-library').classList.add('hidden');
+        document.getElementById('main-home').classList.add('hidden');
         document.getElementById('settings-screen').classList.add('hidden');
         state.isHomeActive = false;
     }

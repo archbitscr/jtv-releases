@@ -140,7 +140,7 @@ export function updateVodYearOptions(items) {
 }
 
 export function renderFavoritesGrid() {
-    const homeDashboard = document.getElementById('land-dashboard');
+    const homeDashboard = document.getElementById('vod-library');
     const favoritesGrid = document.getElementById('land-grid');
     if (!homeDashboard || !favoritesGrid) return;
 
