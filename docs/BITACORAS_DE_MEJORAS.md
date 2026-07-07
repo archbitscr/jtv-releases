@@ -477,7 +477,22 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ---
 
-#### 6. Tarea 42: Soporte de Streams Directos (HLS / m3u8)
+#### 6. Tarea 44: Auditoría y Mejoras de Red — Cloudflare DoH + Circuit Breaker
+
+*   **Componente:** `main/network/cloudflareNetworkService.js`.
+*   **Objetivo:** Hacer robusto el servicio DNS-over-HTTPS de Cloudflare para que fallos de conectividad con `1.1.1.2` no penalicen el startup ni el streaming con delays acumulados.
+*   **Investigación realizada (2026-07-06):** El servicio intercepta `dns.lookup()` de Node.js y redirige resoluciones vía `https://1.1.1.2/dns-query` con timeout de 4 s. Si `1.1.1.2` no es alcanzable (firewall corporativo, ISP bloqueando DoH), cada DNS lookup de la sesión esperaba hasta 4 s antes de hacer fallback al DNS del sistema. Con decenas de resoluciones por sesión de streaming, el efecto se multiplicaba.
+*   **Cambios aplicados (2026-07-06):**
+    *   ✅ Timeout reducido de 4000 ms → 2000 ms.
+    *   ✅ **Circuit breaker** implementado: tras 3 fallos consecutivos de DoH, el servicio entra en estado OPEN y pasa directamente al DNS del sistema sin intentar DoH (cero penalización por lookup).
+    *   ✅ **Redemption automático a los 10 min:** el circuit breaker pasa a estado HALF-OPEN y prueba DoH nuevamente. Si tiene éxito cierra el circuito; si falla vuelve a abrir. Completamente transparente al usuario — sin toggle en Settings.
+    *   ✅ **Reset al toggle manual:** `enableCloudflareProtection()` y `disableCloudflareProtection()` limpian el estado del circuit breaker para que el usuario pueda forzar un reintento inmediato.
+*   **Decisión de diseño:** el redemption time es interno y siempre activo junto al circuit breaker — no tiene sentido exponer un toggle separado en Settings para desactivar la recuperación automática sin desactivar todo el servicio. Si en el futuro se necesita hacer el intervalo configurable (ej. 5/10/30 min), la constante `CB_REDEMPTION_MS` está centralizada en la cabecera del archivo.
+*   **⏳ Pendiente verificación del usuario.**
+
+---
+
+#### 7. Tarea 42: Soporte de Streams Directos (HLS / m3u8)
 *   **Componentes:** `renderer/player/playerController.js`, `index.html`, `style.css`, `renderer/player/` (nuevo módulo `hlsPlayer.js`), `renderer/services/channelSync.js` (parser m3u).
 *   **Objetivo:** Permitir sintonizar canales cuya URL es un stream directo (`.m3u8`, `.m3u`, `.ts`, `rtmp://`, `rtsp://`) usando un `<video>` + hls.js en lugar del `<webview>` actual. El usuario no nota diferencia — mismos controles, mismo Player Bar, mismo comportamiento.
 

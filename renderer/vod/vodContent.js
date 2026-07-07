@@ -63,7 +63,7 @@ export async function refreshVodContent() {
 
     const token = ++state.vodRequestToken;
     favoritesGrid.innerHTML = `
-        <div style="grid-column: 1 / span var(--vod-cols, 5); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 300px; color: var(--accent); gap: 15px;">
+        <div style="grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 300px; color: var(--accent); gap: 15px;">
             <div class="loader-spinner"></div>
             <span>Loading SFlix Content...</span>
         </div>
@@ -133,7 +133,7 @@ export async function refreshVodContent() {
     } catch (e) {
         if (token !== state.vodRequestToken) return;
         favoritesGrid.innerHTML = `
-            <div style="grid-column: 1 / span var(--vod-cols, 5); display: flex; align-items: center; justify-content: center; height: 300px; color: #ff4b4b;">
+            <div style="grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; height: 300px; color: #ff4b4b;">
                 Error loading SFlix content: ${e.message}
             </div>
         `;

@@ -2377,7 +2377,7 @@ body.hide-cursor * {
     overflow-x: hidden !important;
     justify-content: flex-start !important;
     align-items: center !important;
-    padding: 42px 30px 30px !important;
+    padding: 30px;
 }
 
 /* land-content fills remaining height so carousel-wrapper can flex:1 */

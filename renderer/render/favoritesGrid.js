@@ -257,7 +257,7 @@ export function renderFavoritesGrid() {
 
         if (items.length === 0) {
             favoritesGrid.innerHTML = `
-                <div style="grid-column: 1 / span 5; display: flex; align-items: center; justify-content: center; height: 300px; color: var(--text-dim);">
+                <div style="grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; height: 300px; color: var(--text-dim);">
                     ${state.vodFilterMode === "favorites" ? "No favorites to show." : "No titles found. Try a different search or filters."}
                 </div>
             `;
