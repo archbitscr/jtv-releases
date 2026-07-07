@@ -574,7 +574,24 @@ Este documento unifica de forma cronológica todas las mejoras, características
 https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=juanhidgo@gmail.com&item_name=JTV%20App%20Licencia&amount=9.99&currency_code=USD&custom=<UUID>&return=https://tu-dominio.com/gracias&notify_url=https://tu-proyecto.supabase.co/functions/v1/paypal-webhook
 ```
 
-#### 9. Tarea 40: AutoUpdater 🧠
+#### ~~9. Tarea 45: Manual Técnico de la Aplicación~~ ✅
+
+*   **Componente:** `docs/TECHNICAL_MANUAL.md` (archivo nuevo).
+*   **Objetivo:** Documento de referencia técnica del comportamiento en tiempo de ejecución de JTV.app — complementa la bitácora (qué cambió) y el contexto de perfil (cómo está estructurado) con una tercera capa: *cómo funciona* cada módulo.
+*   **Audiencia:** Agentes de IA y desarrolladores en sesiones futuras. Permite derivar el comportamiento del sistema sin releer el código fuente en cada sesión.
+*   **Secciones propuestas:**
+    1.  **Boot sequence** — orden de inicialización: main process, bootstrap, IPC, renderer, state hydration, módulo inicial.
+    2.  **Estado global (`appState.js`)** — qué campos existen, cuáles se persisten a disco, cuáles son efímeros, convenciones de naming.
+    3.  **Sistema de navegación** — `showModule()`, `showLiveLanding()`, transiciones entre módulos, reglas de visibilidad de tnav/triggers.
+    4.  **Módulo VOD** — ciclo de vida: cache warm-up, fetch a SFlix, renderizado, paginación, favoritos, modal de detalles.
+    5.  **Módulo LiveTV** — selección de canal, webview lifecycle, failover/autotuner, watchdog de freeze/silencio, volume/mute chain.
+    6.  **Sistema de red** — DoH (Cloudflare), circuit breaker, request policy, ad-block, IPC main↔renderer.
+    7.  **Persistencia** — `jtv_data.json`: qué se guarda, cuándo, debounce, restauración al arranque.
+    8.  **Inactividad y timers** — todos los timers de la app, qué activan/desactivan, interacciones entre ellos.
+*   **Política de mantenimiento:** actualizar la sección relevante al completar cualquier tarea que cambie el comportamiento (no el código) de un módulo.
+*   **✅ Completada (2026-07-06).** Archivo: [`docs/TECHNICAL_MANUAL.md`](file:///d:/Projects/JTV.app/docs/TECHNICAL_MANUAL.md). Cubre: boot sequence, estado global, persistencia, navegación, módulo VOD, LiveTV, watchdog/failover, red (DoH + request policy + IPC), inactividad y timers.
+
+#### 10. Tarea 40: AutoUpdater 🧠
 *   **Componente:** Main process (`bootstrap.js`), `electron-updater`.
 *   **Acción Requerida:**
     1.  Integrar `electron-updater` para verificar y descargar actualizaciones automáticamente.
