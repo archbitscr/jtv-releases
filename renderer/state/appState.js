@@ -79,6 +79,7 @@ export const state = {
     vodSearchTerm: "",
     selectedVodGenre: "All",
     vodFilterMode: "all",
+    vodDetailOpen: false,
     selectedVodRating: "all",
     selectedVodYear: "all",
     vodTotalPages: 1,

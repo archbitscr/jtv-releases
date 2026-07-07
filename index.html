@@ -367,28 +367,79 @@
                 </div>
             </div>
 
-            <!-- VOD Details Modal -->
-            <div id="vod-details-modal" class="vod-details-modal hidden">
-                <div class="vod-details-backdrop" id="vod-details-backdrop"></div>
-                <div class="vod-details-container glass-card">
-                    <button id="close-details" class="close-btn vod-details-close"><i data-lucide="x"></i></button>
-                    <div class="vod-details-body">
-                        <div class="vod-details-poster">
-                            <div id="vod-details-poster-placeholder"></div>
-                            <img id="vod-details-poster-img" src="" alt="Poster" class="hidden">
+            <!-- VOD Detail Page -->
+            <div id="vod-detail-page" class="vdp hidden">
+                <!-- Header bar with back button + VOD filters -->
+                <div class="vdp-header">
+                    <button id="vdp-back-btn" class="vdp-back-btn"><i data-lucide="arrow-left"></i> Back</button>
+                    <div class="vdp-header-filters">
+                        <button id="vdp-filter-all" class="land-filter-btn vdp-filter-btn active" type="button">All</button>
+                        <button id="vdp-filter-favs" class="land-filter-btn vdp-filter-btn" type="button">Favorites</button>
+                        <select id="vdp-genre-select" class="vod-filter-select" aria-label="Genre">
+                            <option value="All">Genre</option>
+                        </select>
+                        <select id="vdp-rating-select" class="vod-filter-select" aria-label="Rating">
+                            <option value="all">Rating</option>
+                        </select>
+                        <select id="vdp-year-select" class="vod-filter-select" aria-label="Year">
+                            <option value="all">Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Hero backdrop -->
+                <div class="vdp-hero" id="vdp-hero">
+                    <div class="vdp-hero-overlay"></div>
+                    <button id="vdp-play-hero-btn" class="vdp-play-hero-btn" title="Watch Now">
+                        <i data-lucide="play"></i>
+                    </button>
+                </div>
+
+                <!-- Body: poster + info + rating -->
+                <div class="vdp-body">
+                    <div class="vdp-poster-col">
+                        <div class="vdp-poster-wrap">
+                            <div id="vdp-poster-placeholder" class="vdp-poster-ph"><div class="loader-spinner"></div></div>
+                            <img id="vdp-poster-img" src="" alt="Poster" class="hidden">
                         </div>
-                        <div class="vod-details-info">
-                            <h2 id="vod-details-title">Movie Title</h2>
-                            <div class="vod-details-meta">
-                                <span id="vod-details-year" class="vod-meta-badge">2026</span>
-                                <span id="vod-details-quality" class="vod-meta-badge quality">HD</span>
-                                <span id="vod-details-rating" class="vod-meta-badge rating">★ 0.0</span>
-                                <span id="vod-details-imdb-rating" class="vod-meta-badge imdb-rating hidden">IMDb: 0.0</span>
-                            </div>
-                            <p id="vod-details-overview">Plot overview goes here. Fetching details from TMDB...</p>
-                            <div class="vod-details-actions">
-                                <button id="play-vod-btn" class="primary-btn play-btn"><i data-lucide="play"></i> Watch Now</button>
-                            </div>
+                    </div>
+
+                    <div class="vdp-info-col">
+                        <h1 id="vdp-title" class="vdp-title">—</h1>
+                        <p id="vdp-tagline" class="vdp-tagline hidden"></p>
+                        <div class="vdp-meta-row" id="vdp-meta-row">
+                            <span id="vdp-year" class="vdp-badge"></span>
+                            <span id="vdp-quality" class="vdp-badge vdp-badge-quality"></span>
+                            <span id="vdp-runtime" class="vdp-badge hidden"></span>
+                            <span id="vdp-country" class="vdp-badge hidden"></span>
+                        </div>
+                        <div class="vdp-section">
+                            <div class="vdp-field-label">Synopsis</div>
+                            <p id="vdp-overview" class="vdp-overview">Loading…</p>
+                        </div>
+                        <div class="vdp-section" id="vdp-genre-wrap">
+                            <span class="vdp-field-label">Genre:</span>
+                            <span id="vdp-genres" class="vdp-inline-links"></span>
+                        </div>
+                        <div class="vdp-section" id="vdp-cast-wrap" style="display:none">
+                            <span class="vdp-field-label">Cast:</span>
+                            <span id="vdp-cast" class="vdp-inline-links"></span>
+                        </div>
+                        <div class="vdp-section" id="vdp-crew-wrap" style="display:none">
+                            <span class="vdp-field-label">Crew:</span>
+                            <span id="vdp-crew" class="vdp-inline-links"></span>
+                        </div>
+                        <div class="vdp-section" id="vdp-keywords-wrap" style="display:none">
+                            <span class="vdp-field-label">Keyword:</span>
+                            <span id="vdp-keywords" class="vdp-keywords"></span>
+                        </div>
+                    </div>
+
+                    <div class="vdp-rating-col" id="vdp-rating-col" style="display:none">
+                        <div class="vdp-imdb-score">
+                            <div class="vdp-imdb-badge">IMDb</div>
+                            <div class="vdp-imdb-number" id="vdp-imdb-score">—</div>
+                            <div class="vdp-stars" id="vdp-stars"></div>
                         </div>
                     </div>
                 </div>

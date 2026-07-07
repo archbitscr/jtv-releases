@@ -4,7 +4,7 @@ import { selectChannel, zapChannel, mountRemotePlayer, playVod, updatePlayerActi
 import { showModule, switchTab, showLiveLanding, hideMenu, hideEditPane } from '../ui/navigation.js';
 import { syncMenuScroll } from '../render/channelList.js';
 import { startInactivityTimers, clearInactivityTimers, startCursorTimer } from '../ui/inactivity.js';
-import { refreshVodContent, showVodDetails } from '../vod/vodContent.js';
+import { refreshVodContent, showVodDetails, closeVodDetail } from '../vod/vodContent.js';
 import { warmupVodCache } from '../vod/vodCache.js';
 import { hashPIN, verifyPIN, promptParentalPIN, isParentalTimeLocked, getCurrentPinCallback } from '../settings/parental.js';
 import { applyWallpaper } from '../settings/wallpaper.js';
@@ -1406,9 +1406,8 @@ export function setupEventListeners() {
         }
 
         if (matchesHotkey('escape', key, e)) {
-            const detailsModal = document.getElementById('vod-details-modal');
-            if (detailsModal && !detailsModal.classList.contains('hidden')) {
-                detailsModal.classList.add('hidden');
+            if (state.vodDetailOpen) {
+                closeVodDetail();
                 return true;
             }
             const settingsScreen = document.getElementById('settings-screen');
@@ -1433,7 +1432,7 @@ export function setupEventListeners() {
         }
 
         const isSettingsOpen = !document.getElementById('settings-screen').classList.contains('hidden');
-        const isDetailsOpen = !document.getElementById('vod-details-modal').classList.contains('hidden');
+        const isDetailsOpen = state.vodDetailOpen;
         const isParentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
 
         if (!state.isHomeActive && state.activeChannelId && !isSettingsOpen && !isDetailsOpen && !isParentalOpen) {
@@ -1913,19 +1912,9 @@ export function setupEventListeners() {
         };
     }
 
-    // Details Modal closing events
-    const closeDetailsBtn = document.getElementById('close-details');
-    if (closeDetailsBtn) {
-        closeDetailsBtn.onclick = () => {
-            document.getElementById('vod-details-modal').classList.add('hidden');
-        };
-    }
-    const detailsBackdrop = document.getElementById('vod-details-backdrop');
-    if (detailsBackdrop) {
-        detailsBackdrop.onclick = () => {
-            document.getElementById('vod-details-modal').classList.add('hidden');
-        };
-    }
+    // Detail page back button
+    const backBtn = document.getElementById('vdp-back-btn');
+    if (backBtn) backBtn.onclick = () => closeVodDetail();
 
     // Wallpaper option clicks
     document.querySelectorAll('.wallpaper-option').forEach(opt => {

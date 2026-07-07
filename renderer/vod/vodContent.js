@@ -140,108 +140,198 @@ export async function refreshVodContent() {
     }
 }
 
+export function closeVodDetail() {
+    const page = document.getElementById('vod-detail-page');
+    if (page) page.classList.add('hidden');
+    state.vodDetailOpen = false;
+}
+
 export async function showVodDetails(item) {
-    const modal = document.getElementById('vod-details-modal');
-    const titleEl = document.getElementById('vod-details-title');
-    const yearEl = document.getElementById('vod-details-year');
-    const qualityEl = document.getElementById('vod-details-quality');
-    const ratingEl = document.getElementById('vod-details-rating');
-    const imdbRatingEl = document.getElementById('vod-details-imdb-rating');
-    const overviewEl = document.getElementById('vod-details-overview');
-    const posterEl = document.getElementById('vod-details-poster-img');
-    const posterPlaceholder = document.getElementById('vod-details-poster-placeholder');
-    const playBtn = document.getElementById('play-vod-btn');
+    const page = document.getElementById('vod-detail-page');
+    if (!page) return;
 
-    if (!modal || !titleEl || !yearEl || !qualityEl || !ratingEl || !imdbRatingEl || !overviewEl || !posterEl || !posterPlaceholder || !playBtn) return;
+    state.vodDetailOpen = true;
 
-    // Reset details view
-    titleEl.innerText = item.title;
-    yearEl.innerText = item.extraInfo || "N/A";
-    qualityEl.innerText = item.quality || "HD";
-    ratingEl.innerText = item.rating && item.rating !== "N/A" ? `★ ${item.rating}` : "★ N/A";
-    imdbRatingEl.classList.add('hidden');
-    overviewEl.innerText = "Fetching details from TMDB...";
+    // -- Reset UI to loading state --
+    const titleEl        = document.getElementById('vdp-title');
+    const taglineEl      = document.getElementById('vdp-tagline');
+    const yearEl         = document.getElementById('vdp-year');
+    const qualityEl      = document.getElementById('vdp-quality');
+    const runtimeEl      = document.getElementById('vdp-runtime');
+    const countryEl      = document.getElementById('vdp-country');
+    const overviewEl     = document.getElementById('vdp-overview');
+    const posterEl       = document.getElementById('vdp-poster-img');
+    const posterPh       = document.getElementById('vdp-poster-placeholder');
+    const heroEl         = document.getElementById('vdp-hero');
+    const ratingCol      = document.getElementById('vdp-rating-col');
+    const imdbScore      = document.getElementById('vdp-imdb-score');
+    const starsEl        = document.getElementById('vdp-stars');
+    const genresEl       = document.getElementById('vdp-genres');
+    const castEl         = document.getElementById('vdp-cast');
+    const crewEl         = document.getElementById('vdp-crew');
+    const keywordsEl     = document.getElementById('vdp-keywords');
+    const castWrap       = document.getElementById('vdp-cast-wrap');
+    const crewWrap       = document.getElementById('vdp-crew-wrap');
+    const keywordsWrap   = document.getElementById('vdp-keywords-wrap');
+    const playHeroBtn    = document.getElementById('vdp-play-hero-btn');
+
+    titleEl.textContent  = item.title;
+    yearEl.textContent   = item.extraInfo || '';
+    qualityEl.textContent = item.quality || 'HD';
+    overviewEl.textContent = 'Fetching details…';
+    taglineEl.classList.add('hidden');
+    runtimeEl.classList.add('hidden');
+    countryEl.classList.add('hidden');
+    ratingCol.style.display = 'none';
+    castWrap.style.display = 'none';
+    crewWrap.style.display = 'none';
+    keywordsWrap.style.display = 'none';
+    genresEl.textContent = item.extraInfo || '—';
+
+    // Reset poster
     posterEl.classList.add('hidden');
-    posterPlaceholder.classList.remove('hidden');
-    posterPlaceholder.innerHTML = `<div class="loader-spinner"></div>`;
-    
-    modal.classList.remove('hidden');
+    posterPh.style.display = 'flex';
+    posterPh.innerHTML = '<div class="loader-spinner"></div>';
 
-    let posterUrl = item.posterUrl;
-    let overview = "No dynamic synopsis available.";
-    let hasDetails = false;
+    // Reset hero (remove old bg image)
+    const oldBg = heroEl.querySelector('.vdp-hero-bg');
+    if (oldBg) oldBg.remove();
 
-    // 1. Fetch TMDB Details if Key is Set
-    if (state.tmdbKey) {
-        try {
-            const tmdbRes = await ext.nativeApi.fetchTmdbMetadata({ 
-                query: item.title, 
-                apiKey: state.tmdbKey, 
-                type: state.activeDashTab 
-            });
-            if (tmdbRes && tmdbRes.result) {
-                const res = tmdbRes.result;
-                overview = res.overview || overview;
-                if (res.poster_path) {
-                    posterUrl = `https://image.tmdb.org/t/p/w500${res.poster_path}`;
-                }
-                if (res.release_date || res.first_air_date) {
-                    const dateStr = res.release_date || res.first_air_date;
-                    yearEl.innerText = dateStr.split('-')[0];
-                }
-                hasDetails = true;
-            }
-        } catch (e) {
-            console.error("TMDB fetch failed:", e);
-        }
-    }
+    page.classList.remove('hidden');
+    page.scrollTop = 0;
 
-    // 2. Fetch OMDb Ratings if Key is Set
-    if (state.omdbKey) {
-        try {
-            const omdbRes = await ext.nativeApi.fetchOmdbRatings({ 
-                query: item.title, 
-                apiKey: state.omdbKey 
-            });
-            if (omdbRes && !omdbRes.error) {
-                if (omdbRes.imdbRating && omdbRes.imdbRating !== "N/A") {
-                    imdbRatingEl.innerText = `IMDb: ${omdbRes.imdbRating}`;
-                    imdbRatingEl.classList.remove('hidden');
-                }
-                if (omdbRes.plot && omdbRes.plot !== "N/A" && !hasDetails) {
-                    overview = omdbRes.plot;
-                }
-            }
-        } catch (e) {
-            console.error("OMDb fetch failed:", e);
-        }
-    }
-
-    if (!hasDetails && !state.omdbKey) {
-        overview = `SFlix Title: ${item.title}. No API Keys configured for plot metadata.`;
-    }
-
-    overviewEl.innerText = overview;
-    
-    // Load poster image
-    const imgLoader = new Image();
-    imgLoader.onload = () => {
-        posterEl.src = posterUrl;
-        posterEl.classList.remove('hidden');
-        posterPlaceholder.classList.add('hidden');
-    };
-    imgLoader.onerror = () => {
-        posterPlaceholder.innerHTML = `<span style="font-size:3rem; opacity:0.1;">🎬</span>`;
-    };
-    imgLoader.src = posterUrl;
-
-    // Wire Play Button
-    playBtn.onclick = () => {
-        modal.classList.add('hidden');
+    // -- Wire play button --
+    playHeroBtn.onclick = () => {
+        closeVodDetail();
         state.isHomeActive = false;
         if (ext.renderAll) ext.renderAll();
         if (ext.playVod) ext.playVod(item);
     };
+
+    // -- Wire back button (once) --
+    const backBtn = document.getElementById('vdp-back-btn');
+    if (backBtn && !backBtn._wired) {
+        backBtn._wired = true;
+        backBtn.onclick = () => closeVodDetail();
+    }
+
+    let posterUrl = item.posterUrl;
+    let overview = 'No synopsis available.';
+    let hasDetails = false;
+
+    // 1. TMDB
+    if (state.tmdbKey) {
+        try {
+            const tmdbRes = await ext.nativeApi.fetchTmdbMetadata({
+                query: item.title,
+                apiKey: state.tmdbKey,
+                type: state.activeDashTab
+            });
+            if (tmdbRes && tmdbRes.result) {
+                const res = tmdbRes.result;
+                overview = res.overview || overview;
+
+                if (res.poster_path) posterUrl = `https://image.tmdb.org/t/p/w342${res.poster_path}`;
+
+                if (res.backdrop_path) {
+                    const bg = new Image();
+                    bg.className = 'vdp-hero-bg';
+                    bg.src = `https://image.tmdb.org/t/p/w1280${res.backdrop_path}`;
+                    heroEl.insertBefore(bg, heroEl.firstChild);
+                }
+
+                const dateStr = res.release_date || res.first_air_date || '';
+                if (dateStr) yearEl.textContent = dateStr.split('-')[0];
+
+                if (res.tagline) {
+                    taglineEl.textContent = res.tagline;
+                    taglineEl.classList.remove('hidden');
+                }
+
+                if (res.runtime) {
+                    runtimeEl.textContent = `${res.runtime} min`;
+                    runtimeEl.classList.remove('hidden');
+                }
+
+                if (res.production_countries && res.production_countries.length) {
+                    countryEl.textContent = res.production_countries.map(c => c.name).join(', ');
+                    countryEl.classList.remove('hidden');
+                }
+
+                if (res.genres && res.genres.length) {
+                    genresEl.textContent = res.genres.map(g => g.name).join(', ');
+                }
+
+                if (res.credits) {
+                    const cast = (res.credits.cast || []).slice(0, 8).map(a => a.name).join(', ');
+                    if (cast) {
+                        castEl.textContent = cast;
+                        castWrap.style.display = 'flex';
+                    }
+                    const director = (res.credits.crew || []).filter(c => c.job === 'Director');
+                    const writer   = (res.credits.crew || []).filter(c => c.job === 'Writer' || c.job === 'Screenplay');
+                    const producer = (res.credits.crew || []).filter(c => c.job === 'Producer').slice(0, 2);
+                    const crewParts = [];
+                    director.forEach(p => crewParts.push(`${p.name} (Director)`));
+                    writer.forEach(p => crewParts.push(`${p.name} (Writer)`));
+                    producer.forEach(p => crewParts.push(`${p.name} (Producer)`));
+                    if (crewParts.length) {
+                        crewEl.textContent = crewParts.join(', ');
+                        crewWrap.style.display = 'flex';
+                    }
+                }
+
+                if (res.keywords) {
+                    const words = (res.keywords.keywords || res.keywords.results || []).slice(0, 14);
+                    if (words.length) {
+                        keywordsEl.innerHTML = words.map(k => `<span class="vdp-keyword">#${k.name.replace(/ /g, '-')}</span>`).join(' ');
+                        keywordsWrap.style.display = 'flex';
+                    }
+                }
+
+                hasDetails = true;
+            }
+        } catch (e) {
+            console.error('TMDB fetch failed:', e);
+        }
+    }
+
+    // 2. OMDb ratings
+    if (state.omdbKey) {
+        try {
+            const omdbRes = await ext.nativeApi.fetchOmdbRatings({ query: item.title, apiKey: state.omdbKey });
+            if (omdbRes && !omdbRes.error && omdbRes.imdbRating && omdbRes.imdbRating !== 'N/A') {
+                const score = parseFloat(omdbRes.imdbRating);
+                imdbScore.textContent = omdbRes.imdbRating;
+                const filled = Math.round(score / 2);
+                starsEl.textContent = '★'.repeat(filled) + '☆'.repeat(5 - filled);
+                ratingCol.style.display = 'flex';
+            }
+            if (omdbRes && omdbRes.plot && omdbRes.plot !== 'N/A' && !hasDetails) {
+                overview = omdbRes.plot;
+            }
+        } catch (e) {
+            console.error('OMDb fetch failed:', e);
+        }
+    }
+
+    if (!hasDetails && !state.omdbKey) {
+        overview = `${item.title} — No API keys configured for metadata.`;
+    }
+
+    overviewEl.textContent = overview;
+
+    // Load poster
+    const imgLoader = new Image();
+    imgLoader.onload = () => {
+        posterEl.src = posterUrl;
+        posterEl.classList.remove('hidden');
+        posterPh.style.display = 'none';
+    };
+    imgLoader.onerror = () => {
+        posterPh.innerHTML = '<span style="font-size:2rem;opacity:0.15;">🎬</span>';
+    };
+    imgLoader.src = posterUrl;
 }
 
 export function renderVodGenreChips() {

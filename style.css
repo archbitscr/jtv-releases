@@ -2581,152 +2581,279 @@ body.hide-cursor * {
 }
 
 /* VOD Details Modal */
-.vod-details-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 3000;
+/* ══ VOD DETAIL PAGE ══════════════════════════════════════════════ */
+.vdp {
+    position: absolute;
+    inset: 0;
+    z-index: 500;
+    background: #0a0a0a;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.4s ease;
+    flex-direction: column;
+    overflow-y: auto;
+    opacity: 1;
+    transition: opacity 0.3s ease;
 }
 
-.vod-details-modal.hidden {
+.vdp.hidden {
     opacity: 0;
     pointer-events: none;
 }
 
-.vod-details-backdrop {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(15px);
-}
-
-.vod-details-container {
-    position: relative;
-    width: 90%;
-    max-width: 800px;
-    background: rgba(15, 15, 15, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
-    padding: 30px;
-    z-index: 3001;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    transform: translateY(20px);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    backdrop-filter: blur(30px);
-}
-
-.vod-details-modal:not(.hidden) .vod-details-container {
-    transform: translateY(0);
-}
-
-.vod-details-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
-.vod-details-body {
+/* ── Header ── */
+.vdp-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
-    gap: 30px;
-    align-items: flex-start;
-}
-
-.vod-details-poster {
-    width: 240px;
-    height: 360px;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #111;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px;
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
     flex-shrink: 0;
 }
 
-.vod-details-poster img {
+.vdp-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+.vdp-back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.1); }
+.vdp-back-btn svg { width: 13px; height: 13px; }
+
+.vdp-header-filters {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+/* ── Hero ── */
+.vdp-hero {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    background: #111;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.vdp-hero-bg {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
-#vod-details-poster-placeholder {
+.vdp-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(10,10,10,0.85) 100%);
+}
+
+.vdp-play-hero-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(30, 140, 255, 0.85);
+    border: 3px solid #fff;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+}
+.vdp-play-hero-btn:hover { transform: translate(-50%, -50%) scale(1.08); background: rgba(30,140,255,1); }
+.vdp-play-hero-btn svg { width: 26px; height: 26px; margin-left: 3px; }
+
+/* ── Body ── */
+.vdp-body {
+    display: grid;
+    grid-template-columns: 130px 1fr auto;
+    gap: 20px;
+    padding: 18px 20px 30px;
+    align-items: start;
+}
+
+/* ── Poster ── */
+.vdp-poster-wrap {
+    width: 130px;
+    height: 195px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.06);
+    flex-shrink: 0;
+    margin-top: -60px;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+}
+
+.vdp-poster-ph {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #1e1e1e 0%, #111 100%);
-    color: rgba(255, 255, 255, 0.15);
 }
 
-.vod-details-info {
-    flex: 1;
+.vdp-poster-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ── Info column ── */
+.vdp-info-col {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
+    min-width: 0;
 }
 
-.vod-details-info h2 {
-    font-size: 2rem;
+.vdp-title {
+    font-size: 1.5rem;
     font-weight: 700;
     color: #fff;
     margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
-.vod-details-meta {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.vod-meta-badge {
-    font-size: 0.8rem;
-    font-weight: 700;
-    padding: 4px 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
-}
-
-.vod-meta-badge.quality {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.15);
-    color: var(--accent);
-}
-
-.vod-meta-badge.rating {
-    background: rgba(255, 193, 7, 0.08);
-    border-color: rgba(255, 193, 7, 0.2);
-    color: #ffc107;
-}
-
-.vod-meta-badge.imdb-rating {
-    background: rgba(245, 197, 24, 0.15);
-    border-color: #f5c518;
-    color: #f5c518;
-}
-
-#vod-details-overview {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.6;
+.vdp-tagline {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    font-style: italic;
     margin: 0;
-    max-height: 180px;
+}
+
+.vdp-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.vdp-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.75);
+    border-radius: 5px;
+}
+
+.vdp-badge-quality {
+    background: rgba(255,255,255,0.04);
+    border-color: rgba(255,255,255,0.2);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.vdp-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: baseline;
+    font-size: 12px;
+}
+
+.vdp-field-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    margin-right: 2px;
+}
+
+.vdp-overview {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    margin: 0;
+    max-height: 90px;
     overflow-y: auto;
 }
 
-.vod-details-actions {
-    margin-top: 10px;
+.vdp-inline-links {
+    color: rgba(100,180,255,0.85);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.vdp-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.vdp-keyword {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+}
+
+/* ── Rating column ── */
+.vdp-rating-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+    padding-top: 4px;
+}
+
+.vdp-imdb-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.vdp-imdb-badge {
+    background: #f5c518;
+    color: #000;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+}
+
+.vdp-imdb-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+}
+
+.vdp-stars {
+    font-size: 11px;
+    color: #f5c518;
+    letter-spacing: -1px;
 }
 
 .play-btn {
@@ -6115,8 +6242,8 @@ body:has(#settings-screen:not(.hidden)) webview,
 body:has(#settings-screen:not(.hidden)) #player-container,
 body:has(#parental-pin-modal:not(.hidden)) webview,
 body:has(#parental-pin-modal:not(.hidden)) #player-container,
-body:has(#vod-details-modal:not(.hidden)) webview,
-body:has(#vod-details-modal:not(.hidden)) #player-container,
+body:has(#vod-detail-page:not(.hidden)) webview,
+body:has(#vod-detail-page:not(.hidden)) #player-container,
 body:has(#no-signal-overlay:not(.hidden)) webview,
 body:has(#no-signal-overlay:not(.hidden)) #player-container {
     pointer-events: none !important;
