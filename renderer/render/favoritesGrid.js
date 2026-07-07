@@ -170,6 +170,8 @@ export function renderFavoritesGrid() {
         if (liveSearchContainer) liveSearchContainer.classList.remove('hidden');
         if (dashboardFilters) dashboardFilters.classList.remove('hidden');
         favoritesGrid.classList.remove('vod-active');
+        favoritesGrid.style.gridTemplateColumns = '';
+        favoritesGrid.style.gridTemplateRows = '';
 
         const allFavs = getFilteredLiveChannels();
 
