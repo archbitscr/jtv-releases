@@ -1,0 +1,6 @@
+- [Build & commit per task](feedback_build_commit.md) — Always build and commit after each completed task
+- [Backup scope](feedback_backup_scope.md) — AppData backups must include channels, filters, AND toggle states
+- [Trial Lock plan](project_trial_lock_plan.md) — Licenciamiento con Supabase + PayPal, UUID de máquina, doble verificación
+- [CSS backup](project_css_backup.md) — temp/style.css has pre-Task 37 default CSS values; use to restore/check originals
+- [Clamp method](feedback_clamp_method.md) — Check HTML type (text vs SVG), calc vw correctly, verify no overriding rules
+- [Bitácora de mejoras](reference_bitacora.md) — docs/BITACORAS_DE_MEJORAS.md, actualizar al completar cada tarea con build+commit

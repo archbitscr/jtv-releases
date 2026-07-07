@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JTV Movies Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+/* ══ RESET & TOKENS ═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent:       #ffffff;
+  --accent-dim:   rgba(255,255,255,0.12);
+  --accent-bd:    rgba(255,255,255,0.25);
+  --glass-border: rgba(255,255,255,0.08);
+  --text-dim:     rgba(255,255,255,0.5);
+  --text-mute:    rgba(255,255,255,0.25);
+  --bg-card:      rgba(10,10,10,0.5);
+  --gold:         #f5c518;
+  --red:          #ff4b6e;
+  --vod-cols:     10;
+  --vod-card-width: auto;
+}
+
+body {
+  font-family: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+  background: #050505;
+  color: #fff;
+  min-height: 100vh;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+/* ══ SCROLLBAR ════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
+
+/* ══ PLANET BACKGROUND ════════════════════════════════════════════ */
+.planet-bg {
+  position: fixed; inset: 0; z-index: 0;
+  background: url('Planet.jpg') center center / cover no-repeat;
+  pointer-events: none;
+}
+
+/* ══ HEADER BAR ═══════════════════════════════════════════════════ */
+.header-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  background: rgba(5,5,5,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 5px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.header-brand {
+  font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;
+}
+.header-brand span { color: var(--accent); }
+.header-stats { display: flex; gap: 8px; align-items: center; }
+.stat-chip {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border);
+  border-radius: 6px; padding: 3px 9px;
+  font-size: 11px; color: rgba(255,255,255,0.45);
+}
+.stat-chip strong { color: var(--accent); font-weight: 700; }
+.header-actions { display: flex; gap: 6px; }
+.hdr-btn {
+  background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border);
+  border-radius: 8px; color: rgba(255,255,255,0.4);
+  width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.15s;
+}
+.hdr-btn:hover { color: var(--accent); border-color: var(--accent-bd); background: var(--accent-dim); }
+.hdr-btn.active { color: var(--accent); border-color: var(--accent-bd); background: var(--accent-dim); }
+.hdr-btn svg { width: 13px; height: 13px; }
+
+/* ══ CRAWL BAR ════════════════════════════════════════════════════ */
+.crawl-bar {
+  position: fixed; top: 47px; left: 0; right: 0; z-index: 49;
+  background: rgba(5,5,5,0.9); border-bottom: 1px solid var(--glass-border);
+  padding: 7px 20px; display: flex; align-items: center; gap: 12px;
+  font-size: 11px; color: rgba(255,255,255,0.4);
+}
+.crawl-bar.hidden { display: none; }
+.progress-track { flex: 1; background: rgba(255,255,255,0.06); border-radius: 3px; height: 3px; overflow: hidden; }
+.progress-fill  { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s ease; border-radius: 3px; }
+.crawl-label    { white-space: nowrap; min-width: 200px; }
+.btn-stop {
+  background: rgba(255,75,110,0.08); border: 1px solid rgba(255,75,110,0.25);
+  border-radius: 6px; color: var(--red); padding: 3px 10px; font-size: 11px;
+  cursor: pointer; transition: all 0.15s; white-space: nowrap;
+}
+.btn-stop:hover { background: rgba(255,75,110,0.15); }
+
+/* ══ LAND-DASHBOARD ═══════════════════════════════════════════════ */
+.land-dashboard {
+  position: fixed; inset: 0;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 42px 30px 30px;
+  z-index: 10;
+}
+
+.land-content {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  width: 100%; max-width: 95vw;
+  height: 100%; min-height: 0;
+  padding-top: 10px;
+}
+
+/* ── Top row: Movies title | search | Exit ─────────────────────── */
+.land-top-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
+  column-gap: 32px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.land-title-block { display: flex; flex-direction: column; align-items: flex-start; justify-self: end; min-width: 0; }
+
+.land-title {
+  font-size: 28px !important;
+  font-weight: 600 !important;
+  color: rgba(255,255,255,0.95) !important;
+  font-family: 'Outfit', sans-serif !important;
+  letter-spacing: -0.8px !important;
+  margin: 0 !important;
+  white-space: nowrap;
+}
+
+.land-controls-block {
+  display: flex; justify-content: center;
+  width: clamp(280px, 41.67vw, 550px);
+  justify-self: center;
+}
+
+.search-container {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; padding: 8px 14px; width: 100%;
+}
+.search-container input {
+  background: transparent; border: none; color: white; outline: none; width: 100%;
+  font-size: 14px; font-family: 'Outfit', sans-serif;
+}
+.search-container input::placeholder { color: rgba(255,255,255,0.25); }
+.search-container svg { width: 16px; height: 16px; color: rgba(255,255,255,0.4); flex-shrink: 0; }
+
+.land-exit-block {
+  min-width: 0; display: flex; justify-content: flex-end; justify-self: start;
+  padding-top: 4px;
+}
+.land-exit-btn {
+  background: none !important; border: none !important; padding: 0 !important;
+  color: rgba(255,255,255,0.5) !important; font-size: 15px !important;
+  font-weight: 600; cursor: default; letter-spacing: 0.01em;
+  font-family: 'Outfit', sans-serif;
+  transition: color 0.2s ease;
+}
+.land-exit-btn:hover { color: #fff !important; }
+
+/* ── Filter row ────────────────────────────────────────────────── */
+.land-filter-row {
+  display: flex; align-items: center;
+  gap: 8px; flex-wrap: wrap;
+}
+
+.land-filter-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.65);
+  padding: 6px 18px;
+  border-radius: 50px;
+  cursor: pointer; font-size: 14px; font-weight: 600;
+  transition: all 0.2s ease;
+  font-family: 'Outfit', sans-serif;
+  white-space: nowrap; user-select: none;
+}
+.land-filter-btn.active {
+  background: #ffffff; color: #000000; border-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+}
+.land-filter-btn:hover:not(.active) {
+  background: rgba(255,255,255,0.1); color: #ffffff;
+}
+
+/* ── fbar-select (dropdown) ─────────────────────────────────────── */
+.fbar-select { position: relative; display: inline-flex; flex-direction: column; }
+.fbar-select-btn {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.65); padding: 6px 18px; border-radius: 50px;
+  cursor: pointer; font-size: 14px; font-weight: 600; white-space: nowrap;
+  transition: all 0.2s ease; font-family: 'Outfit', sans-serif; user-select: none;
+}
+.fbar-select-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.fbar-select-btn.has-value { background: #fff; color: #000; border-color: #fff; box-shadow: 0 4px 12px rgba(255,255,255,0.2); }
+.fbar-chevron { width: 11px; height: 11px; transition: transform 0.18s; flex-shrink: 0; }
+.fbar-select.open .fbar-chevron { transform: rotate(180deg); }
+
+.fbar-select-menu {
+  position: absolute; top: calc(100% + 6px); left: 0; z-index: 200;
+  background: rgba(18,18,24,0.96); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 6px;
+  min-width: 160px; max-height: 280px; overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+  animation: dropFadeIn 0.13s ease;
+}
+.fbar-select-menu.hidden { display: none; }
+@keyframes dropFadeIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+.fbar-select-option {
+  padding: 7px 14px; border-radius: 8px;
+  color: rgba(255,255,255,0.6); cursor: pointer; font-size: 13px;
+  transition: all 0.1s; user-select: none; font-family: 'Outfit', sans-serif;
+}
+.fbar-select-option:hover { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.9); }
+.fbar-select-option.selected { color: var(--accent); font-weight: 600; }
+
+/* ── Carousel wrapper ──────────────────────────────────────────── */
+.land-carousel-wrapper {
+  display: flex; align-items: center;
+  gap: 20px; justify-content: center;
+  width: 100%; flex: 1; min-height: 0; overflow: hidden;
+}
+
+.land-nav-btn {
+  background: none; border: none; color: var(--accent);
+  opacity: 0.7; cursor: pointer; transition: all 0.2s ease;
+  flex-shrink: 0; padding: 0; align-self: center;
+}
+.land-nav-btn:hover { opacity: 1; transform: scale(1.15); filter: drop-shadow(0 0 8px var(--accent)); }
+.land-nav-btn svg { width: 34px; height: 34px; }
+
+/* ── land-grid (VOD mode) ──────────────────────────────────────── */
+.land-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--vod-cols,10), auto);
+  grid-template-rows: repeat(3, 1fr);
+  grid-auto-flow: row;
+  gap: 10px;
+  padding: 10px;
+  flex-shrink: 0;
+  overflow: hidden;
+  /* height fijado por fitGrid(); width se auto-calcula desde aspect-ratio de las tarjetas */
+}
+
+/* ── VOD cards ─────────────────────────────────────────────────── */
+.land-item.vod-card {
+  flex-direction: column; justify-content: flex-start; align-items: stretch;
+  padding: 0; display: flex;
+  background: rgba(10,10,10,0.5);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  height: 100%;
+  aspect-ratio: 184 / 314;
+  min-height: 0;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.25,0.8,0.25,1), border-color 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+.land-item.vod-card:hover {
+  transform: scale(1.06) translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 15px rgba(255,255,255,0.08);
+  z-index: 5;
+}
+
+.vod-poster-container {
+  position: relative; flex: 1; min-height: 0;
+  background: #111;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.vod-poster-container img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.land-item.vod-card:hover .vod-poster-container img { transform: scale(1.05); }
+
+.vod-badge {
+  position: absolute; top: 7px; left: 7px; right: auto; bottom: auto;
+  background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);
+  border-radius: 4px; padding: 2px 6px;
+  font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.85);
+  letter-spacing: 0.04em; z-index: 2;
+}
+.vod-badge.rating {
+  top: 7px; right: 7px; bottom: auto; left: auto;
+  color: var(--accent);
+}
+
+.vod-fav-btn {
+  position: absolute; bottom: 7px; right: 7px; top: auto; left: auto;
+  width: 30px; height: 30px; border-radius: 7px;
+  background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.55);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 3;
+  transition: all 0.2s cubic-bezier(0.16,1,0.3,1);
+}
+.vod-fav-btn svg { width: 14px; height: 14px; }
+.vod-fav-btn:hover { transform: scale(1.08); border-color: rgba(255,255,255,0.3); color: #fff; }
+.vod-fav-btn.active { border-color: var(--accent); color: var(--accent); }
+
+.vod-info {
+  padding: 8px 10px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 2px; overflow: hidden; background: rgba(0,0,0,0.2);
+}
+.vod-info h4 {
+  font-size: 12px !important; font-weight: 500 !important; margin: 0 !important;
+  width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  text-align: center; color: rgba(255,255,255,0.85);
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ── Dots ──────────────────────────────────────────────────────── */
+.land-dots-container {
+  width: 100%; display: flex; justify-content: center;
+  margin-top: 14px; flex-shrink: 0;
+}
+.land-dots { display: flex; gap: 10px; align-items: center; }
+.land-dot {
+  width: 8px; height: 8px;
+  background: rgba(255,255,255,0.2); border-radius: 50%;
+  cursor: pointer; transition: 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.land-dot:hover { background: rgba(255,255,255,0.5); }
+.land-dot.active { background: #fff; transform: scale(1.3); box-shadow: 0 0 8px rgba(255,255,255,0.4); }
+
+/* ── Empty state ───────────────────────────────────────────────── */
+.empty-state {
+  grid-column: 1 / -1;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 14px;
+  min-height: 300px; color: rgba(255,255,255,0.3);
+}
+.empty-state svg { width: 40px; height: 40px; opacity: 0.2; }
+.empty-state p { font-size: 14px; }
+
+/* ── Spinner ───────────────────────────────────────────────────── */
+.spinner { width: 28px; height: 28px; border: 2px solid rgba(255,255,255,0.1); border-top-color: var(--accent); border-radius: 50%; animation: spin .7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ══ MODAL OVERLAY ════════════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 40px 16px; overflow-y: auto;
+  animation: fadeIn .15s ease;
+}
+.modal-overlay.hidden { display: none; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+.modal-box {
+  background: rgba(14,14,20,0.98); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px; width: 100%; max-width: 720px;
+  animation: slideUp .18s ease; overflow: hidden; position: relative;
+}
+@keyframes slideUp { from{transform:translateY(14px);opacity:0} to{transform:translateY(0);opacity:1} }
+.modal-close {
+  position: absolute; top: 12px; right: 12px; z-index: 10;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; color: rgba(255,255,255,0.5); width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .15s;
+}
+.modal-close:hover { color: var(--red); border-color: rgba(255,75,110,.4); }
+.modal-close svg { width: 14px; height: 14px; }
+
+/* ── Movie detail ─────────────────────────────────────────────── */
+.movie-detail { display: grid; grid-template-columns: 200px 1fr; }
+.detail-poster-col { position: relative; background: #111; min-height: 300px; }
+.detail-poster-col img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.detail-poster-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.15); font-size: 40px; }
+.detail-info-col { padding: 24px 22px; display: flex; flex-direction: column; gap: 14px; overflow: hidden; }
+.detail-title { font-size: 19px; font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -.02em; font-family: 'Outfit', sans-serif; }
+.detail-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  border-radius: 6px; padding: 3px 8px;
+  font-size: 10px; font-weight: 700; letter-spacing: .03em;
+}
+.badge.year   { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); }
+.badge.qual   { background: rgba(0,255,204,0.1); color: var(--accent); border: 1px solid rgba(0,255,204,0.2); }
+.badge.rating { background: rgba(245,197,24,.1); color: var(--gold); border: 1px solid rgba(245,197,24,.2); }
+.badge.imdb   { background: rgba(245,197,24,.06); color: var(--gold); border: 1px solid rgba(245,197,24,.12); }
+.detail-section-title { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.3); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; }
+.detail-overview { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.7; max-height: 110px; overflow-y: auto; }
+.detail-crew { display: flex; flex-wrap: wrap; gap: 8px; }
+.crew-item {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; padding: 5px 10px; cursor: pointer; transition: all .15s;
+}
+.crew-item:hover { border-color: var(--accent-bd); color: var(--accent); }
+.crew-item .role { font-size: 9px; color: rgba(255,255,255,0.3); display: block; }
+.crew-item .name { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); }
+.cast-grid { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+.cast-grid::-webkit-scrollbar { display: none; }
+.cast-card { flex-shrink: 0; width: 64px; cursor: pointer; text-align: center; transition: opacity .15s; }
+.cast-card:hover { opacity: .7; }
+.cast-avatar { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.06); margin: 0 auto 5px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+.cast-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.cast-avatar-ph { width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.2);font-size:20px; }
+.cast-name { font-size: 9px; color: rgba(255,255,255,0.7); line-height: 1.3; word-break: break-word; }
+.cast-char { font-size: 9px; color: rgba(255,255,255,0.35); font-style: italic; }
+.detail-actions { display: flex; gap: 8px; margin-top: auto; }
+.btn-primary {
+  display: flex; align-items: center; gap: 7px;
+  background: var(--accent); color: #000; border: none; border-radius: 8px;
+  padding: 9px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+  transition: opacity .15s; font-family: 'Outfit', sans-serif;
+}
+.btn-primary:hover { opacity: .85; }
+.btn-primary svg { width: 14px; height: 14px; }
+.btn-secondary {
+  display: flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7); border-radius: 8px; padding: 9px 14px;
+  font-size: 13px; cursor: pointer; transition: all .15s; font-family: 'Outfit', sans-serif;
+}
+.btn-secondary:hover { border-color: var(--accent-bd); color: var(--accent); }
+.btn-secondary svg { width: 14px; height: 14px; }
+
+/* ══ WIKI MODAL ═══════════════════════════════════════════════════ */
+.wiki-box {
+  background: rgba(14,14,20,0.98); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px; width: 100%; max-width: 520px;
+  animation: slideUp .18s ease; overflow: hidden; position: relative;
+}
+.wiki-header { display: flex; align-items: center; gap: 16px; padding: 20px 22px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.wiki-avatar { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.06); overflow: hidden; flex-shrink: 0; border: 2px solid var(--accent-bd); }
+.wiki-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.wiki-avatar-ph { width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.2);font-size:28px; }
+.wiki-name { font-size: 17px; font-weight: 700; color: #fff; letter-spacing: -.02em; font-family: 'Outfit', sans-serif; }
+.wiki-sub  { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 3px; }
+.wiki-body { padding: 18px 22px; display: flex; flex-direction: column; gap: 14px; }
+.wiki-bio  { font-size: 12px; color: rgba(255,255,255,.5); line-height: 1.7; max-height: 130px; overflow-y: auto; }
+.wiki-films { display: flex; flex-wrap: wrap; gap: 6px; }
+.wiki-film-chip {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 7px; padding: 4px 10px; font-size: 12px; cursor: pointer; transition: all .15s;
+  color: rgba(255,255,255,0.7);
+}
+.wiki-film-chip:hover { border-color: var(--accent-bd); color: var(--accent); }
+
+/* ══ SETTINGS PANEL ═══════════════════════════════════════════════ */
+.settings-panel {
+  position: fixed; right: 0; top: 0; bottom: 0; z-index: 200;
+  width: 300px; background: rgba(12,12,18,0.98); border-left: 1px solid rgba(255,255,255,0.08);
+  display: flex; flex-direction: column;
+  transform: translateX(100%); transition: transform .22s ease;
+  backdrop-filter: blur(16px);
+}
+.settings-panel.open { transform: translateX(0); }
+.settings-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.settings-title { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.8); font-family: 'Outfit', sans-serif; }
+.settings-body { padding: 16px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; flex: 1; }
+.field-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.3); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; }
+.field-input {
+  width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; color: rgba(255,255,255,0.8); font-size: 12px;
+  padding: 8px 10px; outline: none; transition: border-color .2s; font-family: 'Outfit', sans-serif;
+}
+.field-input:focus { border-color: var(--accent); }
+.field-desc { font-size: 10px; color: rgba(255,255,255,0.25); margin-top: 4px; line-height: 1.5; }
+.settings-section-title { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.3); letter-spacing: .08em; text-transform: uppercase; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.settings-footer { padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.07); display: flex; gap: 8px; }
+
+/* ══ TOAST ════════════════════════════════════════════════════════ */
+.toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 400; display: flex; flex-direction: column; gap: 8px; }
+.toast {
+  background: rgba(18,18,24,0.95); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+  padding: 10px 14px; font-size: 12px; color: rgba(255,255,255,0.8);
+  animation: toastIn .2s ease; display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5); max-width: 280px; backdrop-filter: blur(12px);
+  font-family: 'Outfit', sans-serif;
+}
+.toast.success { border-color: rgba(0,255,204,0.25); }
+.toast.error   { border-color: rgba(255,75,110,0.3); }
+.toast svg { width: 14px; height: 14px; flex-shrink: 0; }
+@keyframes toastIn { from{transform:translateX(20px);opacity:0} to{transform:translateX(0);opacity:1} }
+
+/* ══ UTILS ════════════════════════════════════════════════════════ */
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- PLANET BACKGROUND -->
+<div class="planet-bg"></div>
+
+<!-- HEADER BAR (replaces top nav) -->
+<div class="header-bar">
+  <div class="header-brand">JTV <span>Explorer</span></div>
+  <div class="header-stats">
+    <div class="stat-chip"><strong id="stat-total">0</strong>&nbsp;movies</div>
+    <div class="stat-chip"><strong id="stat-shown">0</strong>&nbsp;shown</div>
+    <div class="stat-chip hidden" id="stat-cache"><strong id="stat-cache-val">—</strong>&nbsp;cache</div>
+  </div>
+  <div class="header-actions">
+    <div class="hdr-btn" id="btn-crawl" title="Crawl all pages from SFlix"><i data-lucide="database"></i></div>
+    <div class="hdr-btn" id="btn-clear" title="Clear local cache"><i data-lucide="trash-2"></i></div>
+    <div class="hdr-btn" id="btn-settings" title="Settings"><i data-lucide="settings"></i></div>
+  </div>
+</div>
+
+<!-- CRAWL PROGRESS -->
+<div class="crawl-bar hidden" id="crawl-bar">
+  <div class="crawl-label" id="crawl-label">Crawling SFlix…</div>
+  <div class="progress-track"><div class="progress-fill" id="crawl-fill"></div></div>
+  <button class="btn-stop" id="btn-stop">Stop</button>
+</div>
+
+<!-- MAIN DASHBOARD -->
+<div class="land-dashboard">
+  <div class="land-content">
+
+    <!-- Top row: title | search | exit -->
+    <div class="land-top-row">
+      <div class="land-title-block">
+        <h2 class="land-title">Movies</h2>
+      </div>
+      <div class="land-controls-block">
+        <div class="search-container">
+          <i data-lucide="search"></i>
+          <input id="search-input" type="text" placeholder="Search movies…" autocomplete="off">
+        </div>
+      </div>
+      <div class="land-exit-block">
+        <button class="land-exit-btn">Exit</button>
+      </div>
+    </div>
+
+    <!-- Filter row -->
+    <div class="land-filter-row">
+      <button class="land-filter-btn active" id="tab-all">All</button>
+      <button class="land-filter-btn" id="tab-favs">Favorites</button>
+
+      <!-- Genre dropdown -->
+      <div class="fbar-select" id="sel-genre">
+        <button class="fbar-select-btn" type="button">
+          <span class="fbar-select-label">Genre</span>
+          <i data-lucide="chevron-down" class="fbar-chevron"></i>
+        </button>
+        <div class="fbar-select-menu hidden" id="menu-genre"></div>
+      </div>
+
+      <!-- Rating dropdown -->
+      <div class="fbar-select" id="sel-rating">
+        <button class="fbar-select-btn" type="button">
+          <span class="fbar-select-label">Rating</span>
+          <i data-lucide="chevron-down" class="fbar-chevron"></i>
+        </button>
+        <div class="fbar-select-menu hidden" id="menu-rating"></div>
+      </div>
+
+      <!-- Year dropdown -->
+      <div class="fbar-select" id="sel-year">
+        <button class="fbar-select-btn" type="button">
+          <span class="fbar-select-label">Year</span>
+          <i data-lucide="chevron-down" class="fbar-chevron"></i>
+        </button>
+        <div class="fbar-select-menu hidden" id="menu-year"></div>
+      </div>
+    </div>
+
+    <!-- Carousel: ← grid → -->
+    <div class="land-carousel-wrapper">
+      <button id="land-prev" class="land-nav-btn"><i data-lucide="arrow-left-circle"></i></button>
+      <div id="land-grid" class="land-grid">
+        <div class="empty-state">
+          <i data-lucide="film"></i>
+          <p id="empty-msg">No movies loaded. Click the database icon to crawl SFlix.</p>
+        </div>
+      </div>
+      <button id="land-next" class="land-nav-btn"><i data-lucide="arrow-right-circle"></i></button>
+    </div>
+
+    <!-- Dots -->
+    <div class="land-dots-container">
+      <div id="land-dots" class="land-dots"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MOVIE DETAIL MODAL -->
+<div class="modal-overlay hidden" id="modal-detail">
+  <div class="modal-box">
+    <div class="modal-close" id="modal-detail-close"><i data-lucide="x"></i></div>
+    <div class="movie-detail">
+      <div class="detail-poster-col">
+        <img id="detail-poster-img" src="" alt="" style="display:none">
+        <div class="detail-poster-ph" id="detail-poster-ph">🎬</div>
+      </div>
+      <div class="detail-info-col">
+        <div class="detail-title" id="detail-title">—</div>
+        <div class="detail-badges" id="detail-badges"></div>
+        <div>
+          <div class="detail-section-title">Synopsis</div>
+          <div class="detail-overview" id="detail-overview">Loading…</div>
+        </div>
+        <div id="detail-crew-wrap" class="hidden">
+          <div class="detail-section-title">Director &amp; Crew</div>
+          <div class="detail-crew" id="detail-crew"></div>
+        </div>
+        <div id="detail-cast-wrap" class="hidden">
+          <div class="detail-section-title">Cast</div>
+          <div class="cast-grid" id="detail-cast"></div>
+        </div>
+        <div class="detail-actions">
+          <button class="btn-primary" id="detail-play-btn"><i data-lucide="play"></i> Watch on SFlix</button>
+          <button class="btn-secondary" id="detail-tmdb-btn"><i data-lucide="external-link"></i> TMDB</button>
+          <button class="btn-secondary" id="detail-fav-btn"><i data-lucide="heart"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WIKI MODAL -->
+<div class="modal-overlay hidden" id="modal-wiki">
+  <div class="wiki-box">
+    <div class="modal-close" id="modal-wiki-close"><i data-lucide="x"></i></div>
+    <div class="wiki-header">
+      <div class="wiki-avatar">
+        <div class="wiki-avatar-ph" id="wiki-avatar-ph">👤</div>
+        <img id="wiki-avatar-img" src="" alt="" style="display:none">
+      </div>
+      <div><div class="wiki-name" id="wiki-name">—</div><div class="wiki-sub" id="wiki-sub">—</div></div>
+    </div>
+    <div class="wiki-body">
+      <div><div class="detail-section-title">Biography</div><div class="wiki-bio" id="wiki-bio">Loading…</div></div>
+      <div><div class="detail-section-title">Known for</div><div class="wiki-films" id="wiki-films"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS PANEL -->
+<div class="settings-panel" id="settings-panel">
+  <div class="settings-header">
+    <div class="settings-title">Settings</div>
+    <div class="hdr-btn" id="btn-settings-close"><i data-lucide="x"></i></div>
+  </div>
+  <div class="settings-body">
+    <div class="settings-section-title">API Keys</div>
+    <div>
+      <div class="field-label">TMDB API Key</div>
+      <input class="field-input" id="cfg-tmdb" type="password" placeholder="your_tmdb_v3_key">
+      <div class="field-desc">Posters HD, sinopsis, cast. Free key at themoviedb.org</div>
+    </div>
+    <div>
+      <div class="field-label">OMDb API Key</div>
+      <input class="field-input" id="cfg-omdb" type="password" placeholder="your_omdb_key">
+      <div class="field-desc">Ratings IMDb. Free key at omdbapi.com</div>
+    </div>
+    <div class="settings-section-title">Source</div>
+    <div>
+      <div class="field-label">CORS Proxy URL</div>
+      <input class="field-input" id="cfg-proxy" type="text" placeholder="http://localhost:7655/?url=">
+      <div class="field-desc">Requerido para browser. No necesario en Electron.</div>
+    </div>
+    <div>
+      <div class="field-label">SFlix Base URL</div>
+      <input class="field-input" id="cfg-base" type="text" placeholder="https://sflix.win">
+    </div>
+    <div>
+      <div class="field-label">Max pages to crawl</div>
+      <input class="field-input" id="cfg-maxpages" type="number" min="1" max="999" placeholder="60">
+    </div>
+    <div class="settings-section-title">Display</div>
+    <div>
+      <div class="field-label">Columns</div>
+      <input class="field-input" id="cfg-cols" type="number" min="3" max="10" placeholder="5">
+    </div>
+    <div>
+      <div class="field-label">Rows</div>
+      <input class="field-input" id="cfg-rows" type="number" min="2" max="6" placeholder="3">
+    </div>
+  </div>
+  <div class="settings-footer">
+    <button class="btn-primary" id="btn-save-settings" style="flex:1;justify-content:center">Save</button>
+    <button class="btn-secondary" id="btn-cancel-settings">Cancel</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-container" id="toast-container"></div>
+
+<script>
+'use strict';
+
+/* ══ CONSTANTS ══════════════════════════════════════════════════ */
+const CACHE_KEY  = 'jtv_movies_v3';
+const FAV_KEY    = 'jtv_movies_favs_v2';
+const CFG_KEY    = 'jtv_movies_cfg_v3';
+
+const GENRES = [
+  'All','Action','Adventure','Animation','Comedy','Crime',
+  'Documentary','Drama','Family','Fantasy','History','Horror',
+  'Music','Mystery','Romance','Sci-Fi','Sport','Thriller','War','Western'
+];
+const RATINGS = ['All','9+','8+','7+','6+','5+'];
+const CY = new Date().getFullYear();
+const YEARS = ['All', ...Array.from({length: CY - 1979}, (_,i) => String(CY - i))];
+
+/* ══ STATE ══════════════════════════════════════════════════════ */
+let cfg = {
+  tmdbKey: '00668f1c19a3ecd2b364c88f4463b301', omdbKey: '',
+  proxy: 'http://localhost:7654/?url=',
+  base: 'https://sflix.win',
+  maxPages: 60, cols: 10, rows: 3,
+};
+let allMovies      = [];
+let favorites      = new Set();
+let filteredMovies = [];
+let currentPage    = 0;   // JTV-style page index
+let filterMode     = 'all';
+let activeGenre    = 'All';
+let activeRating   = 'All';
+let activeYear     = 'All';
+let searchTerm     = '';
+let crawling       = false;
+let crawlAbort     = false;
+let searchTimer    = null;
+
+function itemsPerPage() { return cfg.cols * cfg.rows; }
+
+/* ══ INIT ═══════════════════════════════════════════════════════ */
+async function init() {
+  loadConfig();
+  loadFavs();
+  buildDropdowns();
+  bindEvents();
+  applyGridDimensions();
+  lucide.createIcons();
+  applyConfig();
+  await loadCache();   // carga desde disco (async)
+  updateTabCounts();
+}
+
+/* ══ CONFIG ═════════════════════════════════════════════════════ */
+function loadConfig() {
+  try { Object.assign(cfg, JSON.parse(localStorage.getItem(CFG_KEY) || '{}')); } catch(e) {}
+}
+function saveConfig() { localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); }
+function applyConfig() {
+  document.getElementById('cfg-tmdb').value    = cfg.tmdbKey;
+  document.getElementById('cfg-omdb').value    = cfg.omdbKey;
+  document.getElementById('cfg-proxy').value   = cfg.proxy;
+  document.getElementById('cfg-base').value    = cfg.base;
+  document.getElementById('cfg-maxpages').value= cfg.maxPages;
+  document.getElementById('cfg-cols').value    = cfg.cols;
+  document.getElementById('cfg-rows').value    = cfg.rows;
+}
+function applyGridDimensions() {
+  document.documentElement.style.setProperty('--vod-cols', cfg.cols);
+  document.getElementById('land-grid').style.gridTemplateRows = `repeat(${cfg.rows}, 1fr)`;
+}
+
+/* ══ DB LOCAL (disco via server.cjs) ════════════════════════════ */
+const DB_URL = 'http://localhost:7654/db/movies';
+
+async function loadCache() {
+  try {
+    const res = await fetch(DB_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const db = await res.json();
+    if (db && Array.isArray(db.movies) && db.movies.length > 0) {
+      allMovies = db.movies;
+      if (db.updatedAt) updateCacheAge(new Date(db.updatedAt).getTime());
+      console.log(`[DB] Loaded ${allMovies.length} movies from disk`);
+    }
+  } catch(e) {
+    console.warn('[DB] Could not load from server:', e.message);
+  }
+  applyFilters();
+}
+
+async function saveCache(subset) {
+  // subset: array de películas a guardar/mergear (puede ser sólo las nuevas)
+  const movies = subset || allMovies;
+  try {
+    const res = await fetch(DB_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ movies }),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const r = await res.json();
+    console.log(`[DB] Saved: +${r.added} new, ~${r.updated} updated → ${r.total} total`);
+  } catch(e) {
+    toast('DB save failed: ' + e.message, 'error');
+  }
+}
+
+async function clearCache() {
+  try {
+    await fetch(DB_URL, { method: 'DELETE' });
+    allMovies = [];
+    applyFilters(); updateStats(); updateTabCounts();
+    toast('Local DB cleared');
+  } catch(e) { toast('Clear failed: ' + e.message, 'error'); }
+}
+function updateCacheAge(ts) {
+  const mins = Math.round((Date.now() - ts) / 60000);
+  const label = mins < 60 ? `${mins}m ago` : mins < 1440 ? `${Math.round(mins/60)}h ago` : `${Math.round(mins/1440)}d ago`;
+  document.getElementById('stat-cache-val').textContent = label;
+  document.getElementById('stat-cache').classList.remove('hidden');
+}
+
+/* ══ FAVORITES ══════════════════════════════════════════════════ */
+function loadFavs() {
+  try { favorites = new Set(JSON.parse(localStorage.getItem(FAV_KEY) || '[]')); } catch(e) {}
+}
+function saveFavs() { localStorage.setItem(FAV_KEY, JSON.stringify([...favorites])); }
+function toggleFav(id) {
+  if (favorites.has(id)) favorites.delete(id);
+  else favorites.add(id);
+  saveFavs(); updateTabCounts();
+  // Update any visible fav buttons for this card
+  document.querySelectorAll(`.land-item[data-id="${id}"] .vod-fav-btn`).forEach(b => b.classList.toggle('active', favorites.has(id)));
+  if (filterMode === 'favorites') { applyFilters(); }
+}
+function updateTabCounts() {
+  document.getElementById('tab-all').textContent  = `All (${allMovies.length.toLocaleString()})`;
+  document.getElementById('tab-favs').textContent = `Favorites (${favorites.size.toLocaleString()})`;
+  // Re-apply active class
+  document.getElementById('tab-all').classList.toggle('active', filterMode === 'all');
+  document.getElementById('tab-favs').classList.toggle('active', filterMode === 'favorites');
+}
+
+/* ══ DROPDOWNS ══════════════════════════════════════════════════ */
+function buildDropdowns() {
+  buildDrop('sel-genre',  'menu-genre',  GENRES,  v => { activeGenre  = v; currentPage = 0; applyFilters(); }, () => activeGenre,  'Genre');
+  buildDrop('sel-rating', 'menu-rating', RATINGS, v => { activeRating = v; currentPage = 0; applyFilters(); }, () => activeRating, 'Rating');
+  buildDrop('sel-year',   'menu-year',   YEARS,   v => { activeYear   = v; currentPage = 0; applyFilters(); }, () => activeYear,   'Year');
+}
+function buildDrop(wrId, menuId, options, onChange, getValue, baseLbl) {
+  const wr   = document.getElementById(wrId);
+  const menu = document.getElementById(menuId);
+  const btn  = wr.querySelector('.fbar-select-btn');
+  const lbl  = btn.querySelector('.fbar-select-label');
+  options.forEach(opt => {
+    const el = document.createElement('div');
+    el.className = 'fbar-select-option'; el.textContent = opt; el.dataset.val = opt;
+    el.addEventListener('click', e => {
+      e.stopPropagation(); onChange(opt);
+      lbl.textContent = opt === 'All' ? baseLbl : opt;
+      btn.classList.toggle('has-value', opt !== 'All');
+      menu.querySelectorAll('.fbar-select-option').forEach(o => o.classList.toggle('selected', o.dataset.val === opt));
+      closeDropdowns();
+    });
+    menu.appendChild(el);
+  });
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = wr.classList.contains('open');
+    closeDropdowns();
+    if (!open) {
+      wr.classList.add('open'); menu.classList.remove('hidden');
+      menu.querySelectorAll('.fbar-select-option').forEach(o => o.classList.toggle('selected', o.dataset.val === getValue()));
+    }
+  });
+}
+function closeDropdowns() {
+  document.querySelectorAll('.fbar-select.open').forEach(el => {
+    el.classList.remove('open'); el.querySelector('.fbar-select-menu').classList.add('hidden');
+  });
+}
+
+/* ══ PARSER ═════════════════════════════════════════════════════ */
+function parseSFlixHtml(html) {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  const items = [];
+  doc.querySelectorAll('.flw-item').forEach(elem => {
+    const pi = elem.querySelector('.film-poster-img');
+    const posterUrl = pi ? (pi.getAttribute('src') || pi.getAttribute('data-src') || '') : '';
+    const tl = elem.querySelector('.film-name > a');
+    const title = tl ? tl.textContent.trim() : '';
+    const href  = tl ? (tl.getAttribute('href') || '') : '';
+    const qEl   = elem.querySelector('.fd-infor strong');
+    const quality = qEl ? qEl.textContent.trim() : 'SD';
+    const rEl   = elem.querySelector('.fd-infor .fa-star');
+    const rating  = rEl ? rEl.parentNode.textContent.trim() : 'N/A';
+    let year = '';
+    elem.querySelectorAll('.fd-infor .fdi-item').forEach(it => {
+      const t = it.textContent.trim();
+      if (/^\d{4}$/.test(t)) year = t;
+      else if (!year && t && t !== rating && t !== quality) year = t;
+    });
+    if (!title) return;
+    const id = (href.split('/').filter(Boolean).pop() || title.toLowerCase().replace(/\s+/g,'-'));
+    items.push({ id, title, year, url: href.startsWith('http') ? href : `${cfg.base}${href}`, posterUrl, rating, quality });
+  });
+  return items;
+}
+function detectTotalPages(html) {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  const last = doc.querySelector('.pagination li:last-child a');
+  if (last) { const m = (last.getAttribute('href')||'').match(/page[\/=](\d+)/); if (m) return parseInt(m[1]); }
+  let max = 1;
+  doc.querySelectorAll('.pagination .page-item a').forEach(a => { const n=parseInt(a.textContent.trim()); if(!isNaN(n)&&n>max) max=n; });
+  return max;
+}
+
+/* ══ FETCH ══════════════════════════════════════════════════════ */
+async function fetchPage(pageNum) {
+  let url;
+  if (searchTerm)           url = `${cfg.base}/search?keyword=${encodeURIComponent(searchTerm)}&page=${pageNum}`;
+  else if (activeGenre !== 'All') {
+    const slug = activeGenre.toLowerCase().replace(/\s+&\s+/g,'-').replace(/\s+/g,'-');
+    url = `${cfg.base}/genre/${slug}/page/${pageNum}/`;
+  } else url = `${cfg.base}/movies/page/${pageNum}/`;
+  const target = cfg.proxy ? cfg.proxy + encodeURIComponent(url) : url;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 15000);
+  try {
+    const res = await fetch(target, { signal: ctrl.signal });
+    clearTimeout(timer);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    return typeof data === 'string' ? data : (data.contents || data.html || '');
+  } catch(e) {
+    clearTimeout(timer);
+    throw e;
+  }
+}
+
+/* ══ CRAWL ══════════════════════════════════════════════════════ */
+async function crawlAll() {
+  if (crawling) return;
+  crawling = true; crawlAbort = false;
+  document.getElementById('crawl-bar').classList.remove('hidden');
+  document.getElementById('btn-crawl').classList.add('active');
+  const seenIds = new Set(allMovies.map(m => m.id));
+  let added = 0; let totalPages = cfg.maxPages;
+  let batchNew = [];   // acumula nuevas para guardar en bloques
+
+  async function flushBatch() {
+    if (!batchNew.length) return;
+    await saveCache(batchNew);
+    updateCacheAge(Date.now());
+    batchNew = [];
+  }
+
+  try {
+    const html1 = await fetchPage(1);
+    if (crawlAbort) throw new Error('aborted');
+    const det = detectTotalPages(html1);
+    if (det > 1) totalPages = Math.min(det, cfg.maxPages);
+    parseSFlixHtml(html1).forEach(it => {
+      if (!seenIds.has(it.id)) { seenIds.add(it.id); allMovies.push(it); batchNew.push(it); added++; }
+    });
+    applyFilters(); updateTabCounts();
+    setCrawlUI(1, totalPages, added);
+    for (let p = 2; p <= totalPages; p++) {
+      if (crawlAbort) break;
+      try {
+        const html = await fetchPage(p);
+        parseSFlixHtml(html).forEach(it => {
+          if (!seenIds.has(it.id)) { seenIds.add(it.id); allMovies.push(it); batchNew.push(it); added++; }
+        });
+        applyFilters(); updateTabCounts();
+        setCrawlUI(p, totalPages, added);
+        // Guarda al disco cada 5 páginas para no perder nada
+        if (p % 5 === 0) await flushBatch();
+        await delay(320);
+      } catch(e) { console.warn(`page ${p}:`, e.message); await delay(1000); }
+    }
+    await flushBatch();
+    updateCacheAge(Date.now());
+    toast(`Crawl complete — ${added} new titles (total: ${allMovies.length})`, 'success');
+  } catch(e) {
+    if (e.message !== 'aborted') toast('Crawl error: ' + e.message, 'error');
+    else { await flushBatch(); toast(`Stopped — ${added} titles saved to disk`, 'success'); }
+  } finally {
+    crawling = false;
+    document.getElementById('crawl-bar').classList.add('hidden');
+    document.getElementById('btn-crawl').classList.remove('active');
+    updateStats();
+  }
+}
+function setCrawlUI(p, total, added) {
+  document.getElementById('crawl-fill').style.width = Math.round(p/total*100) + '%';
+  document.getElementById('crawl-label').textContent = `Page ${p}/${total} — ${added} new titles`;
+  updateStats();
+}
+
+/* ══ FILTERS ════════════════════════════════════════════════════ */
+function applyFilters() {
+  const q = searchTerm.toLowerCase().trim();
+  let pool = filterMode === 'favorites' ? allMovies.filter(m => favorites.has(m.id)) : allMovies;
+  filteredMovies = pool.filter(m => {
+    if (q && !m.title.toLowerCase().includes(q)) return false;
+    if (activeGenre  !== 'All' && !(m.genreList||[]).some(g => g.toLowerCase() === activeGenre.toLowerCase())) return false;
+    if (activeRating !== 'All') {
+      const minR = parseFloat(activeRating);
+      const r = parseFloat(m.imdbRating || m.rating || '0');
+      if (isNaN(r) || r < minR) return false;
+    }
+    if (activeYear !== 'All' && m.year !== activeYear) return false;
+    return true;
+  });
+  // Clamp page
+  const totalPages = Math.ceil(filteredMovies.length / itemsPerPage());
+  if (currentPage >= totalPages && totalPages > 0) currentPage = totalPages - 1;
+  if (currentPage < 0) currentPage = 0;
+  renderPage();
+  updateStats();
+}
+
+/* ══ RENDER PAGE ════════════════════════════════════════════════ */
+function renderPage() {
+  const grid = document.getElementById('land-grid');
+  const ipp  = itemsPerPage();
+  const start = currentPage * ipp;
+  const pageItems = filteredMovies.slice(start, start + ipp);
+  const totalPages = Math.ceil(filteredMovies.length / ipp);
+
+  grid.innerHTML = '';
+
+  if (filteredMovies.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'empty-state';
+    empty.innerHTML = `<i data-lucide="film"></i><p>${
+      allMovies.length === 0
+        ? 'No movies loaded. Click the database icon to crawl SFlix.'
+        : filterMode === 'favorites' && favorites.size === 0
+          ? 'No favorites yet. Click the ♥ on any movie.'
+          : 'No results match your filters.'
+    }</p>`;
+    grid.appendChild(empty);
+    renderDots(0);
+    lucide.createIcons();
+    return;
+  }
+
+  const frag = document.createDocumentFragment();
+  pageItems.forEach(m => frag.appendChild(buildCard(m)));
+  grid.appendChild(frag);
+  renderDots(totalPages);
+  requestAnimationFrame(fitGrid);
+  lucide.createIcons();
+  updateStats();
+}
+
+/* ══ BUILD CARD ═════════════════════════════════════════════════ */
+function buildCard(m) {
+  const isFav = favorites.has(m.id);
+  const hasHD = /HD|4K|FHD/i.test(m.quality || '');
+
+  const card = document.createElement('div');
+  card.className = 'land-item vod-card';
+  card.dataset.id = m.id;
+
+  const posterSrc = m.posterLocal || m.posterHD || m.posterUrl || '';
+
+  card.innerHTML = `
+    <div class="vod-poster-container">
+      ${m.quality ? `<div class="vod-badge">${esc(m.quality)}</div>` : ''}
+      ${m.rating && m.rating !== 'N/A' ? `<div class="vod-badge rating">★ ${esc(m.rating)}</div>` : ''}
+      <button class="vod-fav-btn ${isFav ? 'active' : ''}" type="button" title="Favorito">
+        <i data-lucide="heart"></i>
+      </button>
+      ${posterSrc ? `<img data-src="${esc(posterSrc)}" alt="${esc(m.title)}">` : ''}
+    </div>
+    <div class="vod-info"><h4>${esc(m.title)}</h4></div>
+  `;
+
+  // Lazy-load poster
+  const img = card.querySelector('img[data-src]');
+  if (img) {
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        img.src = img.dataset.src;
+        img.onerror = () => img.remove();
+        obs.disconnect();
+      }
+    }, { rootMargin: '100px' });
+    obs.observe(card);
+  }
+
+  card.querySelector('.vod-fav-btn').addEventListener('click', e => {
+    e.stopPropagation(); toggleFav(m.id);
+  });
+  card.addEventListener('click', () => openDetail(m));
+  return card;
+}
+
+/* ══ DOTS PAGINATION ════════════════════════════════════════════ */
+function renderDots(totalPages) {
+  const dotsEl = document.getElementById('land-dots');
+  dotsEl.innerHTML = '';
+  if (totalPages <= 1) return;
+
+  const maxDots = 9;
+  let start = Math.max(0, currentPage - Math.floor(maxDots/2));
+  let end   = Math.min(totalPages, start + maxDots);
+  if (end - start < maxDots) start = Math.max(0, end - maxDots);
+
+  if (start > 0) {
+    const d = mkDot('...'); d.style.cssText = 'display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(255,255,255,.3)';
+    dotsEl.appendChild(d);
+  }
+  for (let i = start; i < end; i++) {
+    const d = mkDot(); if (i === currentPage) d.classList.add('active');
+    d.addEventListener('click', () => { currentPage = i; renderPage(); });
+    dotsEl.appendChild(d);
+  }
+  if (end < totalPages) {
+    const d = mkDot('...'); d.style.cssText = 'display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(255,255,255,.3)';
+    dotsEl.appendChild(d);
+  }
+}
+function mkDot(txt) {
+  const d = document.createElement('div');
+  d.className = 'land-dot'; if (txt) d.textContent = txt; return d;
+}
+
+/* ══ PREV / NEXT ════════════════════════════════════════════════ */
+function goNext() {
+  const totalPages = Math.ceil(filteredMovies.length / itemsPerPage());
+  if (currentPage < totalPages - 1) { currentPage++; renderPage(); }
+}
+function goPrev() {
+  if (currentPage > 0) { currentPage--; renderPage(); }
+}
+
+/* ══ MOVIE DETAIL ═══════════════════════════════════════════════ */
+async function openDetail(m) {
+  const modal = document.getElementById('modal-detail');
+  modal.classList.remove('hidden');
+  document.getElementById('detail-title').textContent    = m.title;
+  document.getElementById('detail-overview').textContent = 'Loading details…';
+  document.getElementById('detail-badges').innerHTML     = '';
+  document.getElementById('detail-crew').innerHTML       = '';
+  document.getElementById('detail-cast').innerHTML       = '';
+  document.getElementById('detail-crew-wrap').classList.add('hidden');
+  document.getElementById('detail-cast-wrap').classList.add('hidden');
+  document.getElementById('detail-poster-img').style.display = 'none';
+  document.getElementById('detail-poster-ph').style.display  = '';
+  setBadges(m);
+  if (m.posterLocal || m.posterHD || m.posterUrl) loadDetailPoster(m.posterLocal || m.posterHD || m.posterUrl);
+  const favBtn = document.getElementById('detail-fav-btn');
+  const updFav = () => { favBtn.innerHTML = `<i data-lucide="${favorites.has(m.id) ? 'heart-off' : 'heart'}"></i>`; lucide.createIcons(); };
+  favBtn.onclick = () => { toggleFav(m.id); updFav(); };
+  updFav();
+  document.getElementById('detail-play-btn').onclick = () => window.open(m.url, '_blank');
+  document.getElementById('detail-tmdb-btn').onclick = () =>
+    window.open(m.tmdbId ? `https://www.themoviedb.org/movie/${m.tmdbId}` : `https://www.themoviedb.org/search?query=${encodeURIComponent(m.title)}`, '_blank');
+  if (!m._enriched) {
+    await enrichMovie(m);
+    const idx = allMovies.findIndex(x => x.id === m.id);
+    if (idx !== -1) allMovies[idx] = m;
+  }
+  renderDetail(m);
+  lucide.createIcons();
+}
+function setBadges(m) {
+  const b = [];
+  if (m.year)        b.push(`<div class="badge year">${esc(m.year)}</div>`);
+  if (m.quality)     b.push(`<div class="badge qual">${esc(m.quality)}</div>`);
+  if (m.rating && m.rating !== 'N/A') b.push(`<div class="badge rating">★ ${esc(m.rating)}</div>`);
+  if (m.imdbRating)  b.push(`<div class="badge imdb">IMDb ${esc(m.imdbRating)}</div>`);
+  if (m.runtime)     b.push(`<div class="badge year">${esc(String(m.runtime))} min</div>`);
+  document.getElementById('detail-badges').innerHTML = b.join('');
+}
+function loadDetailPoster(url) {
+  const img = document.getElementById('detail-poster-img');
+  const ph  = document.getElementById('detail-poster-ph');
+  const tmp = new Image();
+  tmp.onload = () => { img.src = url; img.style.display=''; ph.style.display='none'; };
+  tmp.src = url;
+}
+function renderDetail(m) {
+  document.getElementById('detail-title').textContent = m.title;
+  setBadges(m);
+  document.getElementById('detail-overview').textContent = m.overview || 'No synopsis available.';
+  if (m.posterLocal || m.posterHD) loadDetailPoster(m.posterLocal || m.posterHD);
+  const crewEl = document.getElementById('detail-crew');
+  crewEl.innerHTML = '';
+  if (m.crew && m.crew.length) {
+    m.crew.forEach(c => {
+      const d = document.createElement('div'); d.className = 'crew-item';
+      d.innerHTML = `<span class="role">${esc(c.role)}</span><span class="name">${esc(c.name)}</span>`;
+      d.addEventListener('click', () => openWiki(c.tmdbId, c.name));
+      crewEl.appendChild(d);
+    });
+    document.getElementById('detail-crew-wrap').classList.remove('hidden');
+  }
+  const castEl = document.getElementById('detail-cast');
+  castEl.innerHTML = '';
+  if (m.cast && m.cast.length) {
+    m.cast.slice(0,12).forEach(a => {
+      const c = document.createElement('div'); c.className = 'cast-card';
+      c.innerHTML = `<div class="cast-avatar">${a.photo ? `<img src="${esc(a.photo)}" alt="${esc(a.name)}" onerror="this.style.display='none'">` : ''}<div class="cast-avatar-ph" ${a.photo ? 'style="display:none"' : ''}>👤</div></div><div class="cast-name">${esc(a.name)}</div><div class="cast-char">${esc(a.character||'')}</div>`;
+      c.addEventListener('click', () => openWiki(a.tmdbId, a.name));
+      castEl.appendChild(c);
+    });
+    document.getElementById('detail-cast-wrap').classList.remove('hidden');
+  }
+}
+
+/* ══ TMDB ENRICHMENT ════════════════════════════════════════════ */
+async function enrichMovie(m) {
+  if (!cfg.tmdbKey) { m.overview = 'Add a TMDB API key in Settings for detailed info.'; m._enriched = true; return; }
+  try {
+    const s = await (await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${cfg.tmdbKey}&query=${encodeURIComponent(m.title)}&language=es-MX`)).json();
+    const r = s.results && s.results[0];
+    if (r) {
+      m.tmdbId = r.id; m.overview = r.overview || '';
+      m.year = m.year || (r.release_date||'').split('-')[0];
+      if (r.poster_path) m.posterHD = `https://image.tmdb.org/t/p/w500${r.poster_path}`;
+      const det = await (await fetch(`https://api.themoviedb.org/3/movie/${r.id}?api_key=${cfg.tmdbKey}&append_to_response=credits&language=es-MX`)).json();
+      if (det.runtime) m.runtime = det.runtime;
+      if (det.genres)  m.genreList = det.genres.map(g => g.name);
+      if (det.credits) {
+        m.cast = (det.credits.cast||[]).slice(0,12).map(a => ({ tmdbId:a.id, name:a.name, character:a.character, photo:a.profile_path?`https://image.tmdb.org/t/p/w185${a.profile_path}`:null }));
+        m.crew = (det.credits.crew||[]).filter(c=>['Director','Writer','Screenplay','Story'].includes(c.job)).slice(0,4).map(c=>({ tmdbId:c.id, name:c.name, role:c.job }));
+      }
+    } else { m.overview = 'No match found in TMDB.'; }
+  } catch(e) { m.overview = 'Could not fetch details: ' + e.message; }
+  if (cfg.omdbKey) {
+    try { const od = await (await fetch(`https://www.omdbapi.com/?apikey=${cfg.omdbKey}&t=${encodeURIComponent(m.title)}`)).json(); if (od.imdbRating && od.imdbRating !== 'N/A') m.imdbRating = od.imdbRating; } catch(e) {}
+  }
+  m._enriched = true;
+  // Persiste metadatos al disco inmediatamente
+  saveCache([m]).catch(() => {});
+  // Descarga y guarda el poster localmente si no existe
+  if (!m.posterLocal && (m.posterHD || m.posterUrl)) {
+    downloadPoster(m).catch(() => {});
+  }
+}
+
+/* ══ POSTER LOCAL — descarga, redimensiona y persiste en disco ══ */
+const POSTER_W = 185;
+const POSTER_H = 314;
+
+async function downloadPoster(m) {
+  const src = m.posterHD || m.posterUrl;
+  if (!src) return;
+  try {
+    // Fetch de la imagen (puede requerir proxy si hay CORS)
+    const res = await fetch(src);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const blob = await res.blob();
+
+    // Redimensionar con Canvas al aspect ratio exacto 185×314
+    const img = await createImageBitmap(blob);
+    const canvas = document.createElement('canvas');
+    canvas.width  = POSTER_W;
+    canvas.height = POSTER_H;
+    const ctx = canvas.getContext('2d');
+
+    // Recorte centrado (object-fit: cover)
+    const srcRatio = img.width / img.height;
+    const dstRatio = POSTER_W / POSTER_H;
+    let sx = 0, sy = 0, sw = img.width, sh = img.height;
+    if (srcRatio > dstRatio) {
+      sw = img.height * dstRatio;
+      sx = (img.width - sw) / 2;
+    } else {
+      sh = img.width / dstRatio;
+      sy = (img.height - sh) / 2;
+    }
+    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, POSTER_W, POSTER_H);
+
+    const base64 = canvas.toDataURL('image/jpeg', 0.88);
+
+    // Enviar al servidor para guardar en disco
+    const save = await fetch('http://localhost:7654/db/poster', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: m.id, data: base64 }),
+    });
+    if (!save.ok) throw new Error(`Save HTTP ${save.status}`);
+    const r = await save.json();
+    if (r.ok) {
+      m.posterLocal = r.path;
+      // Actualizar imagen visible si la card está en pantalla
+      const img$ = document.querySelector(`.land-item[data-id="${m.id}"] .vod-poster-container img`);
+      if (img$) img$.src = r.path;
+    }
+  } catch(e) {
+    console.warn(`[poster] ${m.title}:`, e.message);
+  }
+}
+
+/* ── Descarga masiva de todos los posters pendientes ─────────────── */
+async function downloadAllPosters() {
+  const pending = allMovies.filter(m => m._enriched && !m.posterLocal && (m.posterHD || m.posterUrl));
+  if (!pending.length) { toast('Todos los posters ya están en disco', 'success'); return; }
+  toast(`Descargando ${pending.length} posters...`);
+  let done = 0;
+  for (const m of pending) {
+    await downloadPoster(m);
+    done++;
+    if (done % 20 === 0) toast(`Posters: ${done}/${pending.length}`);
+    await delay(80);   // pequeña pausa para no saturar
+  }
+  toast(`${done} posters guardados en disco`, 'success');
+}
+
+/* ══ WIKI ═══════════════════════════════════════════════════════ */
+async function openWiki(tmdbId, name) {
+  const modal = document.getElementById('modal-wiki');
+  modal.classList.remove('hidden');
+  document.getElementById('wiki-name').textContent = name;
+  document.getElementById('wiki-sub').textContent  = '…';
+  document.getElementById('wiki-bio').textContent  = 'Loading…';
+  document.getElementById('wiki-films').innerHTML  = '';
+  document.getElementById('wiki-avatar-img').style.display = 'none';
+  document.getElementById('wiki-avatar-ph').style.display  = '';
+  if (!cfg.tmdbKey || !tmdbId) { document.getElementById('wiki-bio').textContent = 'TMDB API key required for biography.'; return; }
+  try {
+    const d = await (await fetch(`https://api.themoviedb.org/3/person/${tmdbId}?api_key=${cfg.tmdbKey}&append_to_response=movie_credits&language=es-MX`)).json();
+    document.getElementById('wiki-sub').textContent = d.known_for_department || 'Actor';
+    document.getElementById('wiki-bio').textContent = d.biography || 'No biography available.';
+    if (d.profile_path) { const img = document.getElementById('wiki-avatar-img'); img.src = `https://image.tmdb.org/t/p/w185${d.profile_path}`; img.style.display=''; document.getElementById('wiki-avatar-ph').style.display='none'; }
+    const known = [...(d.movie_credits&&(d.movie_credits.cast||d.movie_credits.crew)||[])];
+    const top = [...new Map(known.map(f=>[f.id,f])).values()].sort((a,b)=>(b.vote_count||0)-(a.vote_count||0)).slice(0,20);
+    const fe = document.getElementById('wiki-films');
+    top.forEach(f => {
+      const ch = document.createElement('div'); ch.className = 'wiki-film-chip';
+      ch.textContent = f.title||f.name||'—'; ch.title = (f.release_date||'').split('-')[0];
+      ch.addEventListener('click', () => {
+        const found = allMovies.find(m => m.tmdbId===f.id || m.title.toLowerCase()===(f.title||'').toLowerCase());
+        if (found) { closeWiki(); openDetail(found); }
+        else window.open(`https://www.themoviedb.org/movie/${f.id}`, '_blank');
+      });
+      fe.appendChild(ch);
+    });
+  } catch(e) { document.getElementById('wiki-bio').textContent = 'Error: ' + e.message; }
+  lucide.createIcons();
+}
+
+/* ══ EVENTS ═════════════════════════════════════════════════════ */
+function bindEvents() {
+  // Search
+  document.getElementById('search-input').addEventListener('input', e => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => { searchTerm = e.target.value; currentPage = 0; applyFilters(); }, 280);
+  });
+  // Tabs
+  document.getElementById('tab-all').addEventListener('click', () => { filterMode='all'; currentPage=0; updateTabCounts(); applyFilters(); });
+  document.getElementById('tab-favs').addEventListener('click', () => { filterMode='favorites'; currentPage=0; updateTabCounts(); applyFilters(); });
+  // Nav arrows
+  document.getElementById('land-prev').addEventListener('click', goPrev);
+  document.getElementById('land-next').addEventListener('click', goNext);
+  // Header buttons
+  document.getElementById('btn-crawl').addEventListener('click', crawlAll);
+  document.getElementById('btn-clear').addEventListener('click', () => { if (confirm('Clear all cached movies?')) clearCache(); });
+  document.getElementById('btn-settings').addEventListener('click', () => { applyConfig(); document.getElementById('settings-panel').classList.add('open'); });
+  document.getElementById('btn-stop').addEventListener('click', () => { crawlAbort = true; });
+  // Settings
+  document.getElementById('btn-settings-close').addEventListener('click', closeSettings);
+  document.getElementById('btn-cancel-settings').addEventListener('click', closeSettings);
+  document.getElementById('btn-save-settings').addEventListener('click', () => {
+    cfg.tmdbKey  = document.getElementById('cfg-tmdb').value.trim();
+    cfg.omdbKey  = document.getElementById('cfg-omdb').value.trim();
+    cfg.proxy    = document.getElementById('cfg-proxy').value.trim();
+    cfg.base     = document.getElementById('cfg-base').value.trim() || 'https://sflix.win';
+    cfg.maxPages = parseInt(document.getElementById('cfg-maxpages').value) || 60;
+    cfg.cols     = Math.max(3, Math.min(10, parseInt(document.getElementById('cfg-cols').value) || 10));
+    cfg.rows     = Math.max(2, Math.min(6,  parseInt(document.getElementById('cfg-rows').value) || 3));
+    saveConfig(); applyGridDimensions(); currentPage = 0; applyFilters();
+    closeSettings(); toast('Settings saved', 'success');
+  });
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeWiki(); document.getElementById('modal-detail').classList.add('hidden'); closeDropdowns(); }
+    if (e.key === 'ArrowRight' && !document.getElementById('modal-detail').classList.contains('hidden') === false) goNext();
+    if (e.key === 'ArrowLeft'  && !document.getElementById('modal-detail').classList.contains('hidden') === false) goPrev();
+  });
+  // Modal closes
+  document.getElementById('modal-detail-close').addEventListener('click', () => document.getElementById('modal-detail').classList.add('hidden'));
+  document.getElementById('modal-detail').addEventListener('click', e => { if (e.target===e.currentTarget) e.currentTarget.classList.add('hidden'); });
+  document.getElementById('modal-wiki-close').addEventListener('click', closeWiki);
+  document.getElementById('modal-wiki').addEventListener('click', e => { if (e.target===e.currentTarget) closeWiki(); });
+  // Outside click closes dropdowns
+  document.addEventListener('click', closeDropdowns);
+}
+function closeSettings() { document.getElementById('settings-panel').classList.remove('open'); }
+function closeWiki()     { document.getElementById('modal-wiki').classList.add('hidden'); }
+
+/* ══ STATS ══════════════════════════════════════════════════════ */
+function updateStats() {
+  const ipp = itemsPerPage();
+  const start = currentPage * ipp;
+  const shown = Math.min(filteredMovies.length - start, ipp);
+  document.getElementById('stat-total').textContent = allMovies.length.toLocaleString();
+  document.getElementById('stat-shown').textContent = Math.max(0, shown).toLocaleString();
+}
+
+/* ══ TOAST ══════════════════════════════════════════════════════ */
+function toast(msg, type='') {
+  const el = document.createElement('div'); el.className = `toast ${type}`;
+  const icons = {success:'check-circle', error:'alert-circle', '':'info'};
+  el.innerHTML = `<i data-lucide="${icons[type]||'info'}"></i><span>${esc(msg)}</span>`;
+  document.getElementById('toast-container').appendChild(el);
+  lucide.createIcons(); setTimeout(() => el.remove(), 4000);
+}
+
+/* ══ UTILS ══════════════════════════════════════════════════════ */
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function delay(ms) { return new Promise(r => setTimeout(r,ms)); }
+
+/* ══ FIT GRID — cols y rows dinámicos según espacio disponible ══ */
+const ASPECT    = 184 / 314;   // ratio fijo del poster (ancho/alto)
+const GAP       = 10;          // gap del grid (px)
+const PADDING   = 10;          // padding del grid cada lado (px)
+const MIN_CELL_H = 100;        // altura mínima de tarjeta (px)
+
+function fitGrid() {
+  const wrapper = document.querySelector('.land-carousel-wrapper');
+  const grid    = document.getElementById('land-grid');
+  if (!wrapper || !grid) return;
+
+  const availH = wrapper.clientHeight;
+  if (availH <= 10) { requestAnimationFrame(fitGrid); return; }
+
+  // Espacio útil descontando padding del grid
+  const innerH = availH - PADDING * 2;
+  const innerW = wrapper.clientWidth
+    - (document.getElementById('land-prev')?.offsetWidth || 0)
+    - (document.getElementById('land-next')?.offsetWidth || 0)
+    - 40   // gap entre botones y grid (2 × 20px)
+    - PADDING * 2;
+
+  // Calcular rows: máximo que permita tarjetas de al menos MIN_CELL_H
+  const maxRows = Math.max(1, Math.floor((innerH + GAP) / (MIN_CELL_H + GAP)));
+
+  // Para cada cantidad de rows, calcular cellH → cellW → cols
+  // Elegir la combinación que maximice el área total de tarjetas
+  let bestRows = 1, bestCols = 1, bestArea = 0;
+
+  for (let rows = 1; rows <= maxRows; rows++) {
+    const cellH = (innerH - (rows - 1) * GAP) / rows;
+    const cellW = cellH * ASPECT;
+    const cols  = Math.max(1, Math.floor((innerW + GAP) / (cellW + GAP)));
+    const area  = cellH * cellW * rows * cols;
+    if (area > bestArea) {
+      bestArea = area;
+      bestRows = rows;
+      bestCols = cols;
+    }
+  }
+
+  // Aplicar solo si cambió algo (evita re-renders innecesarios)
+  const changed = cfg.cols !== bestCols || cfg.rows !== bestRows;
+  cfg.cols = bestCols;
+  cfg.rows = bestRows;
+
+  grid.style.height = availH + 'px';
+  grid.style.width  = 'auto';
+  grid.style.gridTemplateRows    = `repeat(${bestRows}, 1fr)`;
+  grid.style.gridTemplateColumns = `repeat(${bestCols}, auto)`;
+
+  if (changed) { currentPage = 0; applyFilters(); }
+}
+
+/* ══ START ══════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  init();
+  lucide.createIcons();
+  // Doble rAF garantiza que el layout esté listo antes de medir
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    fitGrid();
+    new ResizeObserver(fitGrid).observe(document.querySelector('.land-carousel-wrapper'));
+  }));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+@echo off
+echo Starting CORS proxy on port 7655...
+start /B node "%~dp0proxy.cjs"
+timeout /t 1 /nobreak >nul
+echo Opening Movies Explorer...
+start "" "%~dp0movies-explorer.html"
