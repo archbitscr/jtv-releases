@@ -142,7 +142,7 @@ export function initVodGridResizeObserver() {
         const dims = updateVodGridDimensions();
         if (dims && state.VOD_ITEMS_PER_PAGE !== dims.itemsPerPage) {
             state.VOD_ITEMS_PER_PAGE = dims.itemsPerPage;
-            refreshVodContent();
+            renderFavoritesGrid();
         }
     });
     _vodResizeObserver.observe(wrapper);
