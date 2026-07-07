@@ -2690,7 +2690,7 @@ body.hide-cursor * {
 /* ── Body ── */
 .vdp-body {
     display: grid;
-    grid-template-columns: 130px 1fr auto;
+    grid-template-columns: 140px 1fr 130px;
     gap: 20px;
     padding: 18px 20px 30px;
     align-items: start;
@@ -2698,16 +2698,16 @@ body.hide-cursor * {
 
 /* ── Poster ── */
 .vdp-poster-wrap {
-    width: 130px;
-    height: 195px;
-    border-radius: 8px;
+    width: 140px;
+    height: 210px;
+    border-radius: 6px;
     overflow: hidden;
     background: #1a1a1a;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
     flex-shrink: 0;
-    margin-top: -60px;
+    margin-top: -50px;
     position: relative;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.7);
 }
 
 .vdp-poster-ph {
@@ -2729,12 +2729,19 @@ body.hide-cursor * {
 .vdp-info-col {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     min-width: 0;
 }
 
+.vdp-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
 .vdp-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: #fff;
     margin: 0;
@@ -2744,72 +2751,116 @@ body.hide-cursor * {
 
 .vdp-tagline {
     font-size: 12px;
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.4);
     font-style: italic;
     margin: 0;
+    line-height: 1.5;
 }
 
-.vdp-meta-row {
+/* ── Two-column metadata grid ── */
+.vdp-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 20px;
+    padding: 8px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.vdp-meta-left,
+.vdp-meta-right {
     display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.vdp-badge {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 8px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.75);
-    border-radius: 5px;
-}
-
-.vdp-badge-quality {
-    background: rgba(255,255,255,0.04);
-    border-color: rgba(255,255,255,0.2);
-    color: #fff;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-}
-
-.vdp-section {
-    display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 4px;
+}
+
+.vdp-field {
+    display: flex;
     align-items: baseline;
+    gap: 5px;
     font-size: 12px;
+    flex-wrap: wrap;
 }
 
 .vdp-field-label {
     font-size: 11px;
     font-weight: 700;
-    color: rgba(255,255,255,0.35);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.5);
     flex-shrink: 0;
-    margin-right: 2px;
 }
 
+.vdp-value {
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+}
+
+.vdp-badge-quality {
+    display: inline-block;
+    background: #f5c518;
+    color: #000;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 1px 5px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+}
+
+.vdp-imdb-badge {
+    display: inline-flex;
+    align-items: center;
+    background: #f5c518;
+    color: #000;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 1px 5px;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+}
+
+.vdp-imdb-number {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+}
+
+/* ── Synopsis ── */
 .vdp-overview {
     font-size: 12px;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.5);
     line-height: 1.7;
     margin: 0;
-    max-height: 90px;
-    overflow-y: auto;
+}
+
+.vdp-synopsis {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    font-style: italic;
+    line-height: 1.6;
+    margin: 0;
 }
 
 .vdp-inline-links {
-    color: rgba(100,180,255,0.85);
+    color: rgba(80,160,255,0.9);
     font-size: 12px;
     line-height: 1.5;
+}
+
+/* ── Keywords ── */
+.vdp-keywords-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: baseline;
+    font-size: 12px;
+    padding: 8px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 .vdp-keywords {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 5px;
 }
 
 .vdp-keyword {
@@ -2817,43 +2868,33 @@ body.hide-cursor * {
     color: rgba(255,255,255,0.35);
 }
 
-/* ── Rating column ── */
+/* ── Rating column (top-right) ── */
 .vdp-rating-col {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     flex-shrink: 0;
-    padding-top: 4px;
 }
 
-.vdp-imdb-score {
+.vdp-rating-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 4px;
 }
 
-.vdp-imdb-badge {
-    background: #f5c518;
-    color: #000;
-    font-size: 10px;
-    font-weight: 800;
-    padding: 2px 6px;
-    border-radius: 3px;
-    letter-spacing: 0.05em;
-}
-
-.vdp-imdb-number {
-    font-size: 1.6rem;
+.vdp-rating-score {
+    font-size: 1.8rem;
     font-weight: 700;
     color: #fff;
     line-height: 1;
 }
 
 .vdp-stars {
-    font-size: 11px;
+    font-size: 13px;
     color: #f5c518;
-    letter-spacing: -1px;
+    letter-spacing: 1px;
+    line-height: 1;
 }
 
 .play-btn {

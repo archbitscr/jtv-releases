@@ -16,6 +16,7 @@
   "SET_AUDIO_LEVELER": "set-audio-leveler",
   "FETCH_SFLIX_PAGE": "fetch-sflix-page",
   "FETCH_TMDB_METADATA": "fetch-tmdb-metadata",
+  "FETCH_TMDB_DETAIL": "fetch-tmdb-detail",
   "FETCH_OMDB_RATINGS": "fetch-omdb-ratings",
   "LOG_RENDERER": "log-renderer",
   "LOG_DIAGNOSTIC": "log-diagnostic",

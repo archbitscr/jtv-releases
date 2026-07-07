@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=57">
+    <link rel="stylesheet" href="./style.css?v=58">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen -->
@@ -395,8 +395,9 @@
                     </button>
                 </div>
 
-                <!-- Body: poster + info + rating -->
+                <!-- Body -->
                 <div class="vdp-body">
+                    <!-- Poster -->
                     <div class="vdp-poster-col">
                         <div class="vdp-poster-wrap">
                             <div id="vdp-poster-placeholder" class="vdp-poster-ph"><div class="loader-spinner"></div></div>
@@ -404,41 +405,64 @@
                         </div>
                     </div>
 
+                    <!-- Main info -->
                     <div class="vdp-info-col">
-                        <h1 id="vdp-title" class="vdp-title">—</h1>
+                        <div class="vdp-title-row">
+                            <h1 id="vdp-title" class="vdp-title">—</h1>
+                        </div>
                         <p id="vdp-tagline" class="vdp-tagline hidden"></p>
-                        <div class="vdp-meta-row" id="vdp-meta-row">
-                            <span id="vdp-year" class="vdp-badge"></span>
-                            <span id="vdp-quality" class="vdp-badge vdp-badge-quality"></span>
-                            <span id="vdp-runtime" class="vdp-badge hidden"></span>
-                            <span id="vdp-country" class="vdp-badge hidden"></span>
+
+                        <!-- Two-column metadata grid -->
+                        <div class="vdp-meta-grid">
+                            <div class="vdp-meta-left">
+                                <div class="vdp-field" id="vdp-genre-wrap">
+                                    <span class="vdp-field-label">Genre:</span>
+                                    <span id="vdp-genres" class="vdp-inline-links">—</span>
+                                </div>
+                                <div class="vdp-field" id="vdp-cast-wrap" style="display:none">
+                                    <span class="vdp-field-label">Cast:</span>
+                                    <span id="vdp-cast" class="vdp-inline-links"></span>
+                                </div>
+                            </div>
+                            <div class="vdp-meta-right">
+                                <div class="vdp-field" id="vdp-country-wrap" style="display:none">
+                                    <span class="vdp-field-label">Country:</span>
+                                    <span id="vdp-country" class="vdp-inline-links"></span>
+                                </div>
+                                <div class="vdp-field" id="vdp-runtime-wrap" style="display:none">
+                                    <span class="vdp-field-label">Runtime:</span>
+                                    <span id="vdp-runtime" class="vdp-value"></span>
+                                </div>
+                                <div class="vdp-field">
+                                    <span class="vdp-field-label">Quality:</span>
+                                    <span id="vdp-quality" class="vdp-badge-quality"></span>
+                                </div>
+                                <div class="vdp-field">
+                                    <span class="vdp-field-label">Release:</span>
+                                    <span id="vdp-year" class="vdp-inline-links"></span>
+                                </div>
+                                <div class="vdp-field" id="vdp-imdb-field" style="display:none">
+                                    <span class="vdp-imdb-badge">IMDb</span>
+                                    <span id="vdp-imdb-score" class="vdp-imdb-number"></span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="vdp-section">
-                            <div class="vdp-field-label">Synopsis</div>
-                            <p id="vdp-overview" class="vdp-overview">Loading…</p>
-                        </div>
-                        <div class="vdp-section" id="vdp-genre-wrap">
-                            <span class="vdp-field-label">Genre:</span>
-                            <span id="vdp-genres" class="vdp-inline-links"></span>
-                        </div>
-                        <div class="vdp-section" id="vdp-cast-wrap" style="display:none">
-                            <span class="vdp-field-label">Cast:</span>
-                            <span id="vdp-cast" class="vdp-inline-links"></span>
-                        </div>
-                        <div class="vdp-section" id="vdp-crew-wrap" style="display:none">
-                            <span class="vdp-field-label">Crew:</span>
-                            <span id="vdp-crew" class="vdp-inline-links"></span>
-                        </div>
-                        <div class="vdp-section" id="vdp-keywords-wrap" style="display:none">
+
+                        <!-- Synopsis below the grid -->
+                        <p id="vdp-tagline-synopsis" class="vdp-synopsis hidden"></p>
+                        <p id="vdp-overview" class="vdp-overview">Loading…</p>
+
+                        <!-- Keywords -->
+                        <div class="vdp-keywords-row" id="vdp-keywords-wrap" style="display:none">
                             <span class="vdp-field-label">Keyword:</span>
                             <span id="vdp-keywords" class="vdp-keywords"></span>
                         </div>
                     </div>
 
+                    <!-- IMDb rating column (top-right) -->
                     <div class="vdp-rating-col" id="vdp-rating-col" style="display:none">
-                        <div class="vdp-imdb-score">
-                            <div class="vdp-imdb-badge">IMDb</div>
-                            <div class="vdp-imdb-number" id="vdp-imdb-score">—</div>
+                        <div class="vdp-rating-inner">
+                            <div class="vdp-rating-score" id="vdp-rating-score">—</div>
                             <div class="vdp-stars" id="vdp-stars"></div>
                         </div>
                     </div>

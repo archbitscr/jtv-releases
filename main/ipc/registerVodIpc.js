@@ -1,5 +1,5 @@
 import IPC from '../../shared/ipcChannels.json' with { type: 'json' };
-import { fetchOmdbRatings, fetchSflixPage, fetchTmdbMetadata } from '../services/vodClient.js';
+import { fetchOmdbRatings, fetchSflixPage, fetchTmdbMetadata, fetchTmdbDetail } from '../services/vodClient.js';
 
 export function registerVodIpc({ ipcMain }) {
   ipcMain.handle(IPC.FETCH_SFLIX_PAGE, async (_event, url) => {
@@ -17,6 +17,15 @@ export function registerVodIpc({ ipcMain }) {
       return await fetchTmdbMetadata({ query, apiKey, type });
     } catch (e) {
       console.error(`Error calling TMDB API for query (${query}):`, e);
+      return { error: e.message };
+    }
+  });
+
+  ipcMain.handle(IPC.FETCH_TMDB_DETAIL, async (_event, { query, apiKey, type }) => {
+    try {
+      return await fetchTmdbDetail({ query, apiKey, type });
+    } catch (e) {
+      console.error(`Error calling TMDB detail for query (${query}):`, e);
       return { error: e.message };
     }
   });

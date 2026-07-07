@@ -30,6 +30,29 @@ export async function fetchTmdbMetadata({ query, apiKey, type }) {
   return { error: "No results found" };
 }
 
+export async function fetchTmdbDetail({ query, apiKey, type }) {
+  if (!apiKey) return { error: "No TMDB API Key provided" };
+  const searchType = type === 'series' ? 'tv' : 'movie';
+
+  const trySearch = async (lang) => {
+    const url = `https://api.themoviedb.org/3/search/${searchType}?api_key=${apiKey}&query=${encodeURIComponent(query)}&language=${lang}`;
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(`TMDB search error: ${r.status}`);
+    const d = await r.json();
+    return d.results && d.results.length > 0 ? d.results[0] : null;
+  };
+
+  let base = await trySearch('es-MX');
+  if (!base) base = await trySearch('en-US');
+  if (!base) return { error: 'No results found' };
+
+  const detailUrl = `https://api.themoviedb.org/3/${searchType}/${base.id}?api_key=${apiKey}&language=en-US&append_to_response=credits,keywords`;
+  const dr = await fetch(detailUrl);
+  if (!dr.ok) return { result: base };
+  const detail = await dr.json();
+  return { result: detail };
+}
+
 export async function fetchOmdbRatings({ query, apiKey, year }) {
   if (!apiKey) return { error: "No OMDb API Key provided" };
   let url = `https://www.omdbapi.com/?t=${encodeURIComponent(query)}&apikey=${apiKey}`;

@@ -84,7 +84,6 @@ export async function refreshVodContent() {
             ext.nativeApi.fetchSflixPage(url2),
             ext.nativeApi.fetchSflixPage(url3)
         ]);
-
         if (token !== state.vodRequestToken) return;
 
         const items1 = parseSFlixHtml(res1.html || '');
@@ -144,6 +143,7 @@ export function closeVodDetail() {
     const page = document.getElementById('vod-detail-page');
     if (page) page.classList.add('hidden');
     state.vodDetailOpen = false;
+    // tnav visibility is managed by its own inactivity/hover logic — no restore needed
 }
 
 export async function showVodDetails(item) {
@@ -152,55 +152,59 @@ export async function showVodDetails(item) {
 
     state.vodDetailOpen = true;
 
-    // -- Reset UI to loading state --
-    const titleEl        = document.getElementById('vdp-title');
-    const taglineEl      = document.getElementById('vdp-tagline');
-    const yearEl         = document.getElementById('vdp-year');
-    const qualityEl      = document.getElementById('vdp-quality');
-    const runtimeEl      = document.getElementById('vdp-runtime');
-    const countryEl      = document.getElementById('vdp-country');
-    const overviewEl     = document.getElementById('vdp-overview');
-    const posterEl       = document.getElementById('vdp-poster-img');
-    const posterPh       = document.getElementById('vdp-poster-placeholder');
-    const heroEl         = document.getElementById('vdp-hero');
-    const ratingCol      = document.getElementById('vdp-rating-col');
-    const imdbScore      = document.getElementById('vdp-imdb-score');
-    const starsEl        = document.getElementById('vdp-stars');
-    const genresEl       = document.getElementById('vdp-genres');
-    const castEl         = document.getElementById('vdp-cast');
-    const crewEl         = document.getElementById('vdp-crew');
-    const keywordsEl     = document.getElementById('vdp-keywords');
-    const castWrap       = document.getElementById('vdp-cast-wrap');
-    const crewWrap       = document.getElementById('vdp-crew-wrap');
-    const keywordsWrap   = document.getElementById('vdp-keywords-wrap');
-    const playHeroBtn    = document.getElementById('vdp-play-hero-btn');
+    const get = (id) => document.getElementById(id);
+    const titleEl      = get('vdp-title');
+    const taglineEl    = get('vdp-tagline');
+    const yearEl       = get('vdp-year');
+    const qualityEl    = get('vdp-quality');
+    const overviewEl   = get('vdp-overview');
+    const posterEl     = get('vdp-poster-img');
+    const posterPh     = get('vdp-poster-placeholder');
+    const heroEl       = get('vdp-hero');
+    const ratingCol    = get('vdp-rating-col');
+    const ratingScore  = get('vdp-rating-score');
+    const starsEl      = get('vdp-stars');
+    const genresEl     = get('vdp-genres');
+    const castEl       = get('vdp-cast');
+    const keywordsEl   = get('vdp-keywords');
+    const castWrap     = get('vdp-cast-wrap');
+    const keywordsWrap = get('vdp-keywords-wrap');
+    const countryEl    = get('vdp-country');
+    const countryWrap  = get('vdp-country-wrap');
+    const runtimeEl    = get('vdp-runtime');
+    const runtimeWrap  = get('vdp-runtime-wrap');
+    const imdbField    = get('vdp-imdb-field');
+    const imdbScore    = get('vdp-imdb-score');
+    const playHeroBtn  = get('vdp-play-hero-btn');
 
-    titleEl.textContent  = item.title;
-    yearEl.textContent   = item.extraInfo || '';
+    // Reset
+    titleEl.textContent   = item.title;
+    yearEl.textContent    = item.extraInfo || '';
     qualityEl.textContent = item.quality || 'HD';
     overviewEl.textContent = 'Fetching details…';
     taglineEl.classList.add('hidden');
-    runtimeEl.classList.add('hidden');
-    countryEl.classList.add('hidden');
+    genresEl.textContent  = '—';
     ratingCol.style.display = 'none';
     castWrap.style.display = 'none';
-    crewWrap.style.display = 'none';
     keywordsWrap.style.display = 'none';
-    genresEl.textContent = item.extraInfo || '—';
+    countryWrap.style.display = 'none';
+    runtimeWrap.style.display = 'none';
+    if (imdbField) imdbField.style.display = 'none';
 
-    // Reset poster
     posterEl.classList.add('hidden');
     posterPh.style.display = 'flex';
     posterPh.innerHTML = '<div class="loader-spinner"></div>';
 
-    // Reset hero (remove old bg image)
     const oldBg = heroEl.querySelector('.vdp-hero-bg');
     if (oldBg) oldBg.remove();
+
+    // Hide tnav while detail page is open
+    const tnav = document.getElementById('tnav-menu');
+    if (tnav) tnav.classList.add('hidden');
 
     page.classList.remove('hidden');
     page.scrollTop = 0;
 
-    // -- Wire play button --
     playHeroBtn.onclick = () => {
         closeVodDetail();
         state.isHomeActive = false;
@@ -208,8 +212,7 @@ export async function showVodDetails(item) {
         if (ext.playVod) ext.playVod(item);
     };
 
-    // -- Wire back button (once) --
-    const backBtn = document.getElementById('vdp-back-btn');
+    const backBtn = get('vdp-back-btn');
     if (backBtn && !backBtn._wired) {
         backBtn._wired = true;
         backBtn.onclick = () => closeVodDetail();
@@ -219,10 +222,10 @@ export async function showVodDetails(item) {
     let overview = 'No synopsis available.';
     let hasDetails = false;
 
-    // 1. TMDB
+    // 1. TMDB detail (search + detail with credits/keywords)
     if (state.tmdbKey) {
         try {
-            const tmdbRes = await ext.nativeApi.fetchTmdbMetadata({
+            const tmdbRes = await ext.nativeApi.fetchTmdbDetail({
                 query: item.title,
                 apiKey: state.tmdbKey,
                 type: state.activeDashTab
@@ -249,13 +252,13 @@ export async function showVodDetails(item) {
                 }
 
                 if (res.runtime) {
-                    runtimeEl.textContent = `${res.runtime} min`;
-                    runtimeEl.classList.remove('hidden');
+                    runtimeEl.textContent = `${res.runtime} minutes`;
+                    runtimeWrap.style.display = 'flex';
                 }
 
                 if (res.production_countries && res.production_countries.length) {
                     countryEl.textContent = res.production_countries.map(c => c.name).join(', ');
-                    countryEl.classList.remove('hidden');
+                    countryWrap.style.display = 'flex';
                 }
 
                 if (res.genres && res.genres.length) {
@@ -263,30 +266,29 @@ export async function showVodDetails(item) {
                 }
 
                 if (res.credits) {
-                    const cast = (res.credits.cast || []).slice(0, 8).map(a => a.name).join(', ');
+                    const cast = (res.credits.cast || []).slice(0, 10).map(a => a.name).join(', ');
                     if (cast) {
                         castEl.textContent = cast;
                         castWrap.style.display = 'flex';
                     }
-                    const director = (res.credits.crew || []).filter(c => c.job === 'Director');
-                    const writer   = (res.credits.crew || []).filter(c => c.job === 'Writer' || c.job === 'Screenplay');
-                    const producer = (res.credits.crew || []).filter(c => c.job === 'Producer').slice(0, 2);
-                    const crewParts = [];
-                    director.forEach(p => crewParts.push(`${p.name} (Director)`));
-                    writer.forEach(p => crewParts.push(`${p.name} (Writer)`));
-                    producer.forEach(p => crewParts.push(`${p.name} (Producer)`));
-                    if (crewParts.length) {
-                        crewEl.textContent = crewParts.join(', ');
-                        crewWrap.style.display = 'flex';
-                    }
                 }
 
                 if (res.keywords) {
-                    const words = (res.keywords.keywords || res.keywords.results || []).slice(0, 14);
+                    const words = (res.keywords.keywords || res.keywords.results || []).slice(0, 20);
                     if (words.length) {
                         keywordsEl.innerHTML = words.map(k => `<span class="vdp-keyword">#${k.name.replace(/ /g, '-')}</span>`).join(' ');
                         keywordsWrap.style.display = 'flex';
                     }
+                }
+
+                // TMDB vote_average as fallback IMDb display
+                if (res.vote_average && res.vote_average > 0 && imdbField) {
+                    imdbScore.textContent = res.vote_average.toFixed(1);
+                    imdbField.style.display = 'flex';
+                    const filled = Math.round(res.vote_average / 2);
+                    starsEl.textContent = '★'.repeat(filled) + '☆'.repeat(5 - filled);
+                    if (ratingScore) ratingScore.textContent = res.vote_average.toFixed(3);
+                    ratingCol.style.display = 'flex';
                 }
 
                 hasDetails = true;
@@ -296,13 +298,14 @@ export async function showVodDetails(item) {
         }
     }
 
-    // 2. OMDb ratings
+    // 2. OMDb — overrides rating with actual IMDb score
     if (state.omdbKey) {
         try {
             const omdbRes = await ext.nativeApi.fetchOmdbRatings({ query: item.title, apiKey: state.omdbKey });
             if (omdbRes && !omdbRes.error && omdbRes.imdbRating && omdbRes.imdbRating !== 'N/A') {
                 const score = parseFloat(omdbRes.imdbRating);
-                imdbScore.textContent = omdbRes.imdbRating;
+                if (imdbField) { imdbScore.textContent = omdbRes.imdbRating; imdbField.style.display = 'flex'; }
+                if (ratingScore) ratingScore.textContent = omdbRes.imdbRating;
                 const filled = Math.round(score / 2);
                 starsEl.textContent = '★'.repeat(filled) + '☆'.repeat(5 - filled);
                 ratingCol.style.display = 'flex';
@@ -316,7 +319,7 @@ export async function showVodDetails(item) {
     }
 
     if (!hasDetails && !state.omdbKey) {
-        overview = `${item.title} — No API keys configured for metadata.`;
+        overview = `${item.title}`;
     }
 
     overviewEl.textContent = overview;
