@@ -198,9 +198,7 @@ export async function showVodDetails(item) {
     const oldBg = heroEl.querySelector('.vdp-hero-bg');
     if (oldBg) oldBg.remove();
 
-    // Hide tnav while detail page is open
-    const tnav = document.getElementById('tnav-menu');
-    if (tnav) tnav.classList.add('hidden');
+
 
     page.classList.remove('hidden');
     page.scrollTop = 0;

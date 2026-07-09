@@ -191,9 +191,9 @@ export function showModule(moduleName) {
     updateTopNavVisibility(moduleName);
 
     if (topNavMenu) {
-        if (moduleName === 'series' || moduleName === 'movies' || (moduleName === 'live' && !state.activeChannelId)) {
+        if (moduleName === 'live' && !state.activeChannelId) {
             topNavMenu.classList.remove('hidden');
-        } else if (moduleName === 'home' || moduleName === 'settings' || (moduleName === 'live' && state.activeChannelId)) {
+        } else {
             topNavMenu.classList.add('hidden');
         }
     }
