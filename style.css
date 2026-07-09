@@ -266,6 +266,12 @@ body.player-active .edge-mask {
     pointer-events: none;
 }
 
+/* Disable top-trigger only in VOD modules so it doesn't block the search bar */
+body[data-module="movies"] #trigger-top,
+body[data-module="series"] #trigger-top {
+    pointer-events: none;
+}
+
 /* Glass Menus */
 .glass-menu {
     position: fixed;
@@ -2586,12 +2592,17 @@ body.hide-cursor * {
     position: absolute;
     inset: 0;
     z-index: 500;
-    background: #0a0a0a;
+    background: rgba(8,8,8,0.82);
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     opacity: 1;
     transition: opacity 0.3s ease;
+}
+
+/* vod-library must also be transparent while detail page is open */
+.vod-library:has(#vod-detail-page:not(.hidden)) {
+    background: transparent !important;
 }
 
 .vdp.hidden {
@@ -2827,7 +2838,8 @@ body.hide-cursor * {
 /* ── Synopsis ── */
 .vdp-overview {
     font-size: 12px;
-    color: rgba(255,255,255,0.5);
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
     line-height: 1.7;
     margin: 0;
 }
@@ -2846,52 +2858,60 @@ body.hide-cursor * {
     line-height: 1.5;
 }
 
-/* ── Keywords ── */
-.vdp-keywords-row {
+/* ── Keywords band (full-width, outside the 3-col grid) ── */
+.vdp-keywords-band {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 6px;
     align-items: baseline;
-    font-size: 12px;
-    padding: 8px 0;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255,255,255,0.07);
 }
 
 .vdp-keywords {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 6px;
 }
 
 .vdp-keyword {
     font-size: 11px;
-    color: rgba(255,255,255,0.35);
+    color: rgba(80,160,255,0.75);
 }
+.vdp-keyword:hover { color: rgba(80,160,255,1); }
 
 /* ── Rating column (top-right) ── */
 .vdp-rating-col {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     flex-shrink: 0;
+    padding-top: 4px;
 }
 
 .vdp-rating-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
+    background: rgba(220,30,20,0.85);
+    border-radius: 8px;
+    padding: 8px 14px 10px;
+    min-width: 80px;
 }
 
 .vdp-rating-score {
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 900;
     color: #fff;
     line-height: 1;
+    letter-spacing: -1px;
 }
 
 .vdp-stars {
-    font-size: 13px;
+    font-size: 10px;
     color: #f5c518;
     letter-spacing: 1px;
     line-height: 1;

@@ -390,7 +390,7 @@ async function init() {
         window.globalDomain = state.globalDomain;
         state.apiKey = savedData.apiKey || "";
         state.apiEndpoint = savedData.apiEndpoint || "";
-        state.tmdbKey = savedData.tmdbKey || "";
+        state.tmdbKey = savedData.tmdbKey || "00668f1c19a3ecd2b364c88f4463b301";
         state.omdbKey = savedData.omdbKey || "";
         state.autoUpdateDomain = savedData.autoUpdateDomain !== undefined ? savedData.autoUpdateDomain : true;
 
@@ -442,6 +442,9 @@ async function init() {
             };
             if (state.vodCache.movies.items.length) state.fetchedMovies = state.vodCache.movies.items.map(it => ({ ...it, type: 'movies' })).slice(0, 100);
             if (state.vodCache.series.items.length) state.fetchedSeries = state.vodCache.series.items.map(it => ({ ...it, type: 'series' })).slice(0, 100);
+        }
+        if (savedData.tmdbCache && typeof savedData.tmdbCache === 'object') {
+            state.tmdbCache = savedData.tmdbCache;
         }
         state.selectedWallpaper = normalizeWallpaperPath(savedData.selectedWallpaper || "assets/wallpapers/Planet.jpg");
         state.audioLevelerEnabled = savedData.audioLevelerEnabled !== undefined ? savedData.audioLevelerEnabled : false;

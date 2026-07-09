@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=58">
+    <link rel="stylesheet" href="./style.css?v=63">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen -->
@@ -412,6 +412,9 @@
                         </div>
                         <p id="vdp-tagline" class="vdp-tagline hidden"></p>
 
+                        <!-- Synopsis above the metadata grid -->
+                        <p id="vdp-overview" class="vdp-overview">Loading…</p>
+
                         <!-- Two-column metadata grid -->
                         <div class="vdp-meta-grid">
                             <div class="vdp-meta-left">
@@ -447,25 +450,21 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Synopsis below the grid -->
-                        <p id="vdp-tagline-synopsis" class="vdp-synopsis hidden"></p>
-                        <p id="vdp-overview" class="vdp-overview">Loading…</p>
-
-                        <!-- Keywords -->
-                        <div class="vdp-keywords-row" id="vdp-keywords-wrap" style="display:none">
-                            <span class="vdp-field-label">Keyword:</span>
-                            <span id="vdp-keywords" class="vdp-keywords"></span>
-                        </div>
                     </div>
 
-                    <!-- IMDb rating column (top-right) -->
+                    <!-- Rating column (top-right): big score badge + 10 stars -->
                     <div class="vdp-rating-col" id="vdp-rating-col" style="display:none">
                         <div class="vdp-rating-inner">
                             <div class="vdp-rating-score" id="vdp-rating-score">—</div>
                             <div class="vdp-stars" id="vdp-stars"></div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Keywords: full-width gray band below the 3-col body -->
+                <div class="vdp-keywords-band" id="vdp-keywords-wrap" style="display:none">
+                    <span class="vdp-field-label">Keyword:</span>
+                    <span id="vdp-keywords" class="vdp-keywords"></span>
                 </div>
             </div>
         </div> <!-- closes #vod-library -->

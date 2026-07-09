@@ -62,6 +62,7 @@ export async function actualSaveAppState() {
         moviesGenres: state.moviesGenres,
         vodFavorites: state.vodFavorites,
         vodCache: state.vodCache,
+        tmdbCache: state.tmdbCache,
         selectedWallpaper: state.selectedWallpaper,
         audioLevelerEnabled: state.audioLevelerEnabled,
         hwAccelEnabled: state.hwAccelEnabled,

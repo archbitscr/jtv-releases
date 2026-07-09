@@ -220,14 +220,24 @@ export async function showVodDetails(item) {
     let overview = 'No synopsis available.';
     let hasDetails = false;
 
-    // 1. TMDB detail (search + detail with credits/keywords)
-    if (state.tmdbKey) {
+    // 1. TMDB detail — check cache first, then fetch
+    const cacheKey = `${item.title}:${state.activeDashTab}`;
+    if (state.tmdbKey || state.tmdbCache[cacheKey]) {
         try {
-            const tmdbRes = await ext.nativeApi.fetchTmdbDetail({
-                query: item.title,
-                apiKey: state.tmdbKey,
-                type: state.activeDashTab
-            });
+            let tmdbRes;
+            if (state.tmdbCache[cacheKey]) {
+                tmdbRes = { result: state.tmdbCache[cacheKey] };
+            } else {
+                tmdbRes = await ext.nativeApi.fetchTmdbDetail({
+                    query: item.title,
+                    apiKey: state.tmdbKey,
+                    type: state.activeDashTab
+                });
+                if (tmdbRes && tmdbRes.result) {
+                    state.tmdbCache[cacheKey] = tmdbRes.result;
+                    if (ext.saveAppState) ext.saveAppState();
+                }
+            }
             if (tmdbRes && tmdbRes.result) {
                 const res = tmdbRes.result;
                 overview = res.overview || overview;
@@ -283,9 +293,9 @@ export async function showVodDetails(item) {
                 if (res.vote_average && res.vote_average > 0 && imdbField) {
                     imdbScore.textContent = res.vote_average.toFixed(1);
                     imdbField.style.display = 'flex';
-                    const filled = Math.round(res.vote_average / 2);
-                    starsEl.textContent = '★'.repeat(filled) + '☆'.repeat(5 - filled);
-                    if (ratingScore) ratingScore.textContent = res.vote_average.toFixed(3);
+                    const filled = Math.round(res.vote_average);
+                    starsEl.textContent = '★'.repeat(filled) + '☆'.repeat(10 - filled);
+                    if (ratingScore) ratingScore.textContent = res.vote_average.toFixed(2);
                     ratingCol.style.display = 'flex';
                 }
 
@@ -303,9 +313,9 @@ export async function showVodDetails(item) {
             if (omdbRes && !omdbRes.error && omdbRes.imdbRating && omdbRes.imdbRating !== 'N/A') {
                 const score = parseFloat(omdbRes.imdbRating);
                 if (imdbField) { imdbScore.textContent = omdbRes.imdbRating; imdbField.style.display = 'flex'; }
-                if (ratingScore) ratingScore.textContent = omdbRes.imdbRating;
-                const filled = Math.round(score / 2);
-                starsEl.textContent = '★'.repeat(filled) + '☆'.repeat(5 - filled);
+                if (ratingScore) ratingScore.textContent = score.toFixed(2);
+                const filled = Math.round(score);
+                starsEl.textContent = '★'.repeat(filled) + '☆'.repeat(10 - filled);
                 ratingCol.style.display = 'flex';
             }
             if (omdbRes && omdbRes.plot && omdbRes.plot !== 'N/A' && !hasDetails) {

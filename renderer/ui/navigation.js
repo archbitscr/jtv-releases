@@ -76,6 +76,7 @@ export function showLiveLanding() {
     state.activeDashTab = "live";
     state.isHomeActive = true;
     state.currentModule = "live";
+    document.body.setAttribute('data-module', 'live');
     
     if (sectionTitle) {
         sectionTitle.textContent = "Live TV";
