@@ -6,7 +6,7 @@ import { syncMenuScroll } from '../render/channelList.js';
 import { startInactivityTimers, clearInactivityTimers, startCursorTimer } from '../ui/inactivity.js';
 import { hashPIN, verifyPIN, promptParentalPIN, isParentalTimeLocked, getCurrentPinCallback } from '../settings/parental.js';
 import { applyWallpaper } from '../settings/wallpaper.js';
-import { syncFilterList, populateDropdowns, removeSettingsFilter, removeFilter, updateEventIconSelectBtnColor } from '../filters/filterManager.js';
+import { syncFilterList, populateDropdowns, removeSettingsFilter, updateEventIconSelectBtnColor } from '../filters/filterManager.js';
 import { emojiToHtml } from '../filters/filterState.js';
 import { syncCustomSelect, initDashCustomSelects } from '../utils/customSelect.js';
 import { initIconPickers } from '../utils/iconPicker.js';
@@ -964,9 +964,6 @@ export function setupEventListeners() {
                     if (type === 'language') defaultIcon = 'globe';
                     else if (type === 'genre') { defaultIcon = 'tag'; selectBtnId = 'genre-icon-select-btn'; }
                     else if (type === 'event') { defaultIcon = '🏁'; selectBtnId = 'event-icon-select-btn'; }
-                    else if (type === 'series') { defaultIcon = 'tag'; selectBtnId = 'series-icon-select-btn'; }
-                    else if (type === 'movies') { defaultIcon = 'tag'; selectBtnId = 'movies-icon-select-btn'; }
-
                     if (selectBtnId) {
                         const selectBtn = document.getElementById(selectBtnId);
                         if (selectBtn) {
@@ -1007,14 +1004,6 @@ export function setupEventListeners() {
                 listToCheck = state.filterEvents;
                 defaultIcon = '🏁';
                 selectBtnId = 'event-icon-select-btn';
-            } else if (type === 'series') {
-                listToCheck = state.seriesGenres;
-                defaultIcon = 'tag';
-                selectBtnId = 'series-icon-select-btn';
-            } else if (type === 'movies') {
-                listToCheck = state.moviesGenres;
-                defaultIcon = 'tag';
-                selectBtnId = 'movies-icon-select-btn';
             }
             
             let icon = defaultIcon;

@@ -109,8 +109,6 @@ export function getOrGenerateTooltip(el) {
         switch (iconName) {
             case 'x': tooltipText = 'Close'; break;
             case 'tv': tooltipText = 'Watch Live'; break;
-            case 'film': tooltipText = 'Movies'; break;
-            case 'clapperboard': tooltipText = 'Series'; break;
             case 'heart': tooltipText = 'Favorite'; break;
             case 'settings': case 'settings-2': case 'sliders': tooltipText = 'Settings & Filters'; break;
             case 'search': tooltipText = 'Search'; break;
@@ -165,7 +163,7 @@ export function initCustomTooltips() {
     let hideTimer = null;
 
     document.addEventListener('mouseover', (e) => {
-        const target = e.target.closest('button, input, select, textarea, a, .tnav-btn, .side-tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [title], [data-tooltip], [onclick], [role="button"]');
+        const target = e.target.closest('button, input, select, textarea, a, .tnav-btn, .side-tab-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [title], [data-tooltip], [onclick], [role="button"]');
         if (!target) return;
 
         if (state.currentModule === 'live' && target.closest('#tnav-menu')) return;
@@ -243,7 +241,7 @@ export function initCustomTooltips() {
     });
 
     document.addEventListener('mouseout', (e) => {
-        const target = e.target.closest('button, input, select, textarea, a, .tnav-btn, .side-tab-btn, .vod-filter-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [data-tooltip]');
+        const target = e.target.closest('button, input, select, textarea, a, .tnav-btn, .side-tab-btn, .crud-channel-item, .settings-tab-btn, .pbar-vol-icon, .settings-switch, .settings-switch-slider, [data-tooltip]');
         if (target) {
             clearTimeout(tooltipTimer);
             clearTimeout(hideTimer);

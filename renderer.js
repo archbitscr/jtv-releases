@@ -349,7 +349,7 @@ async function init() {
         if (loaderMessage) loaderMessage.innerText = 'Ready.';
     }, 600);
 
-    // Core Data Loading and sflix / Domain setups
+    // Core Data Loading
     const savedData = await nativeApi.loadUserData();
     if (savedData) {
         state.channels = (savedData.channels || []).filter(c => c.name && (c.path || c.customUrl));

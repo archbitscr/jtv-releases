@@ -31,13 +31,6 @@ export function syncFilterList() {
     if (Array.isArray(state.filterGenres)) {
         state.filterGenres.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'es', { sensitivity: 'base' }));
     }
-    if (Array.isArray(state.seriesGenres)) {
-        state.seriesGenres.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'es', { sensitivity: 'base' }));
-    }
-    if (Array.isArray(state.moviesGenres)) {
-        state.moviesGenres.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'es', { sensitivity: 'base' }));
-    }
-
     state.filterList = [
         { name: "All", icon: "layout-grid" },
         ...state.filterLanguages,
@@ -288,7 +281,7 @@ export function removeSettingsFilter(type, filterName) {
     const systemLanguages = ["Español / Latino", "English", "European", "Middle East"];
     const systemGenres = ["Movies", "Sports", "Comedy", "Reality", "Food", "News", "Documentary", "Kids", "Others"];
     const isSystem = (type === 'language' && systemLanguages.includes(filterName)) ||
-                     ((type === 'genre' || type === 'series' || type === 'movies') && systemGenres.includes(filterName));
+                     (type === 'genre' && systemGenres.includes(filterName));
 
     const devState = window.getDeveloperState ? window.getDeveloperState() : null;
     const isDevMode = devState ? !!devState.developerModeEnabled : false;
@@ -304,12 +297,8 @@ export function removeSettingsFilter(type, filterName) {
         state.filterGenres = state.filterGenres.filter(f => f.name !== filterName);
     } else if (type === 'event') {
         state.filterEvents = state.filterEvents.filter(f => f.name !== filterName);
-    } else if (type === 'series') {
-        state.seriesGenres = state.seriesGenres.filter(f => f.name !== filterName);
-    } else if (type === 'movies') {
-        state.moviesGenres = state.moviesGenres.filter(f => f.name !== filterName);
     }
-    
+
     // Deep cleanup of categories in local channels
     state.channels.forEach(channel => {
         if (channel.categories) {
@@ -325,15 +314,7 @@ export function removeSettingsFilter(type, filterName) {
     if (ext.saveAppState) ext.saveAppState(true);
 }
 
-export function removeFilter(filterName) {
-    if (state.activeSettingsFilterTab === "series") {
-        state.seriesGenres = state.seriesGenres.filter(g => g.name !== filterName);
-    } else if (state.activeSettingsFilterTab === "movies") {
-        state.moviesGenres = state.moviesGenres.filter(g => g.name !== filterName);
-    }
-    if (ext.renderAll) ext.renderAll();
-    if (ext.saveAppState) ext.saveAppState(true);
-}
+
 
 export function updateEventIconSelectBtnColor(btn, iconName) {
     if (!btn || btn.id !== 'event-icon-select-btn') return;
@@ -470,14 +451,6 @@ export function startEditingFilter(type, filter) {
         inputId = 'add-event-input';
         selectBtnId = 'event-icon-select-btn';
         addBtnId = 'add-event-btn';
-    } else if (type === 'series') {
-        inputId = 'add-series-input';
-        selectBtnId = 'series-icon-select-btn';
-        addBtnId = 'add-series-btn';
-    } else if (type === 'movies') {
-        inputId = 'add-movies-input';
-        selectBtnId = 'movies-icon-select-btn';
-        addBtnId = 'add-movies-btn';
     }
 
     const input = document.getElementById(inputId);

@@ -23,7 +23,7 @@ export function initIconPickers() {
         const dropdown = document.createElement('div');
         dropdown.className = 'filter-icon-dropdown';
         
-        const isEmojiPicker = btn.id === 'event-icon-select-btn' || btn.id === 'genre-icon-select-btn' || btn.id === 'series-icon-select-btn' || btn.id === 'movies-icon-select-btn';
+        const isEmojiPicker = btn.id === 'event-icon-select-btn' || btn.id === 'genre-icon-select-btn';
         const iconsToUse = isEmojiPicker ? eventIconsList.map(item => item.name) : iconsList;
         
         const currentSelected = btn.getAttribute('data-selected-icon') || btn.querySelector('i')?.getAttribute('data-lucide') || btn.querySelector('.emoji-icon')?.textContent || '';

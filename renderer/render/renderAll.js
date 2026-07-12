@@ -30,9 +30,6 @@ export function renderSettingsFilters() {
     const langContainer = document.getElementById('list-filter-languages');
     const genreContainer = document.getElementById('list-filter-genres');
     const eventContainer = document.getElementById('list-filter-events');
-    const seriesContainer = document.getElementById('list-filter-series');
-    const moviesContainer = document.getElementById('list-filter-movies');
-    
     const renderFilterGroupList = (container, list, type) => {
         if (!container) return;
         container.innerHTML = '';
@@ -56,7 +53,7 @@ export function renderSettingsFilters() {
             const systemLanguages = ["Español / Latino", "English", "European", "Middle East"];
             const systemGenres = ["Movies", "Sports", "Comedy", "Reality", "Food", "News", "Documentary", "Kids", "Others"];
             const isSystem = (type === 'language' && systemLanguages.includes(filter.name)) ||
-                             ((type === 'genre' || type === 'series' || type === 'movies') && systemGenres.includes(filter.name));
+                             (type === 'genre' && systemGenres.includes(filter.name));
 
             // Genre is read-only in user mode; language add/delete controls
             // are hidden at the card level but checkboxes remain functional.
@@ -115,9 +112,6 @@ export function renderSettingsFilters() {
     renderFilterGroupList(langContainer, state.filterLanguages, 'language');
     renderFilterGroupList(genreContainer, state.filterGenres, 'genre');
     renderFilterGroupList(eventContainer, state.filterEvents, 'event');
-    renderFilterGroupList(seriesContainer, state.seriesGenres, 'series');
-    renderFilterGroupList(moviesContainer, state.moviesGenres, 'movies');
-    
     if (ext.initIconPickers) ext.initIconPickers();
     
     const settingsScreen = document.getElementById('settings-screen');
