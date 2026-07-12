@@ -28,8 +28,6 @@ export const state = {
     globalDomain: "https://dlhd.pk/",
     apiKey: "",
     apiEndpoint: "",
-    tmdbKey: "00668f1c19a3ecd2b364c88f4463b301",
-    omdbKey: "",
     autoUpdateDomain: true,
     selectedWallpaper: "assets/wallpapers/Planet.jpg",
     isAppFullscreen: false,
@@ -37,7 +35,6 @@ export const state = {
 
     // Player State
     playerSource: "stream",
-    isVodPlaying: false,
     currentVolumeLevel: 10,
     lastVolumeLevelBeforeMute: 10,
     streamNetworkActive: false,
@@ -117,7 +114,6 @@ export const state = {
     selectedEventFilterIcon: "flag",
 
     // Dashboard State
-    activeDashTab: "live",
     searchTerm: "",
     activeCategory: "All",
     favActiveCategory: "All",

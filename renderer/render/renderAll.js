@@ -183,7 +183,7 @@ export function renderAll(force = false) {
 
     const menuTuningHint = document.getElementById('menu-tuning-hint');
     if (menuTuningHint) {
-        const hasTuned = state.activeChannelId && !state.isVodPlaying;
+        const hasTuned = !!state.activeChannelId;
         menuTuningHint.classList.toggle('hidden', !!hasTuned);
     }
 

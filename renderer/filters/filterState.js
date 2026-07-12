@@ -190,19 +190,6 @@ export function getGenreIcon(name) {
     return "tag";
 }
 
-export function getVodGenresForType(type) {
-    if (type === "movies") return state.moviesGenres;
-    if (type === "series") return state.seriesGenres;
-    return state.seriesGenres;
-}
-
-export function getActiveVodGenres() {
-    return getVodGenresForType(state.activeDashTab === "movies" ? "movies" : "series");
-}
-
 export function getSettingsFilterList() {
-    if (state.activeSettingsFilterTab === "tv") return state.filterList;
-    if (state.activeSettingsFilterTab === "series") return state.seriesGenres;
-    if (state.activeSettingsFilterTab === "movies") return state.moviesGenres;
     return state.filterList;
 }

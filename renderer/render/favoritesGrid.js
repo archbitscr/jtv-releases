@@ -9,7 +9,6 @@ export function initFavoritesGrid(dependencies) {
 }
 
 export function getFilteredLiveChannels() {
-    if (state.activeDashTab !== "live") return [];
 
     const liveSearchInput = document.getElementById('live-landing-search');
     const searchVal = liveSearchInput ? liveSearchInput.value.trim() : "";
@@ -152,7 +151,6 @@ export function syncGridPageToActiveChannel(channelId) {
     const id = channelId || state.activeChannelId;
     if (!id) return;
 
-    if (state.activeDashTab !== "live") return;
 
     const allFavs = getFilteredLiveChannels();
 

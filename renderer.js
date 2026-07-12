@@ -363,8 +363,6 @@ async function init() {
         window.globalDomain = state.globalDomain;
         state.apiKey = savedData.apiKey || "";
         state.apiEndpoint = savedData.apiEndpoint || "";
-        state.tmdbKey = savedData.tmdbKey || "00668f1c19a3ecd2b364c88f4463b301";
-        state.omdbKey = savedData.omdbKey || "";
         state.autoUpdateDomain = savedData.autoUpdateDomain !== undefined ? savedData.autoUpdateDomain : true;
 
         if (savedData.filterLanguages) {
@@ -466,8 +464,6 @@ async function init() {
     const globalDomainInput = document.getElementById('global-domain-input');
     const apiKeyInput = document.getElementById('api-key-input');
     const apiEndpointInput = document.getElementById('api-endpoint-input');
-    const tmdbKeyInput = document.getElementById('tmdb-key-input');
-    const omdbKeyInput = document.getElementById('omdb-key-input');
     const autoDomainToggle = document.getElementById('auto-domain-toggle');
     const audioLevelerToggle = document.getElementById('audio-leveler-toggle');
     const hwAccelToggle = document.getElementById('hw-accel-toggle');
@@ -478,8 +474,6 @@ async function init() {
     if (globalDomainInput) globalDomainInput.value = state.globalDomain;
     if (apiKeyInput) apiKeyInput.value = state.apiKey;
     if (apiEndpointInput) apiEndpointInput.value = state.apiEndpoint;
-    if (tmdbKeyInput) tmdbKeyInput.value = state.tmdbKey;
-    if (omdbKeyInput) omdbKeyInput.value = state.omdbKey;
     if (autoDomainToggle) autoDomainToggle.checked = state.autoUpdateDomain;
     if (audioLevelerToggle) audioLevelerToggle.checked = state.audioLevelerEnabled;
     if (hwAccelToggle) hwAccelToggle.checked = state.hwAccelEnabled;

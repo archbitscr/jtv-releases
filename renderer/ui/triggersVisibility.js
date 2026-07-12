@@ -5,7 +5,7 @@ export function updateTriggersVisibility() {
     const triggerBottom = document.getElementById('trigger-bottom');
     const triggerRight = document.getElementById('trigger-right');
 
-    const showTriggers = (state.currentModule === 'live' && state.activeChannelId && !state.isVodPlaying);
+    const showTriggers = (state.currentModule === 'live' && state.activeChannelId);
     const triggers = [triggerLeft, triggerBottom, triggerRight];
     triggers.forEach(t => {
         if (t) {

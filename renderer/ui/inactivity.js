@@ -29,7 +29,7 @@ export function startInactivityTimers() {
     const sourceSwitcher = document.getElementById('pbar');
     const settingsScreen = document.getElementById('settings-screen');
 
-    const hasChannel = !!(state.activeChannelId && !state.isVodPlaying);
+    const hasChannel = !!state.activeChannelId;
     const settingsVisible = settingsScreen && !settingsScreen.classList.contains('hidden');
 
     const cfg = window.timeoutsConfig || {};
@@ -117,7 +117,7 @@ export function startCursorTimer() {
     timeouts.clear('cursor');
     const mainMenu = document.getElementById('side-menu');
     const sourceSwitcher = document.getElementById('pbar');
-    const hasChannel = !!(state.activeChannelId && !state.isVodPlaying);
+    const hasChannel = !!state.activeChannelId;
     const cfg = window.timeoutsConfig || {};
     if (!hasChannel || !cfg.cursorActiveEnabled) return;
     const rawCursorDelay = cfg.cursorActive;

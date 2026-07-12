@@ -251,7 +251,7 @@
             </div>
         </div>
 
-        <!-- VOD Library Module (Live TV landing + Series + Movies) -->
+        <!-- Live TV Landing -->
         <div id="vod-library" class="vod-library hidden">
             <div class="land-content">
                 <div class="land-top-row">
@@ -260,7 +260,7 @@
                     </div>
 
                     <div class="land-controls-block">
-                        <div id="live-search-container" class="vod-controls hidden">
+                        <div id="live-search-container" class="hidden">
                             <div class="search-container">
                                 <i data-lucide="search"></i>
                                 <input type="text" id="live-landing-search" placeholder="Search live channels...">
@@ -316,8 +316,7 @@
 
         </div> <!-- closes #vod-library -->
 
-        <!-- Hover Triggers — after vod-library so #vod-library ~ #trigger-* selector works;
-             outside live-tv/vod-library to avoid stacking context burial (z-index 600 at root) -->
+        <!-- Hover Triggers — after vod-library so #vod-library ~ #trigger-* selector works -->
         <div id="trigger-top" class="hover-trigger top"></div>
         <div id="trigger-left" class="hover-trigger left"></div>
         <div id="trigger-bottom" class="hover-trigger bottom"></div>
@@ -539,10 +538,6 @@
                     <!-- Section: Connectivity -->
                     <div id="settings-sect-connectivity" class="settings-sect-pane" data-dev="true">
                         
-                        <nav class="connectivity-subnav" aria-label="Opciones de conectividad">
-                            <button class="connectivity-subnav-btn active" data-conn-tab="servers"><i data-lucide="globe"></i> Servers</button>
-                            <button class="connectivity-subnav-btn" data-conn-tab="apis"><i data-lucide="database"></i> APIs</button>
-                        </nav>
 
                         <!-- Sub-pane: Servers -->
                         <div id="conn-subsect-servers" class="connectivity-subsect-pane active">
@@ -553,12 +548,6 @@
                             <button id="apply-domain-btn" class="settings-action-btn" style="display: flex; align-items: center; justify-content: center; gap: clamp(5px, 0.74vw, 20px); font-weight: 600;"><i data-lucide="save"></i> Save &amp; Sync</button>
                         </div>
 
-                        <!-- Sub-pane: APIs -->
-                        <div id="conn-subsect-apis" class="connectivity-subsect-pane">
-                            <p class="section-desc">Configure optional keys to load movie posters and descriptions.</p>
-                            <input type="text" id="tmdb-key-input" class="dark-input" placeholder="TMDB API Key (Opcional)">
-                            <input type="text" id="omdb-key-input" class="dark-input" placeholder="OMDb API Key (Opcional)">
-                        </div>
                     </div>
 
                     <!-- Section: Filters (user-facing tab; specific edit controls are dev-only via data-dev) -->
@@ -926,10 +915,6 @@
                             <div class="sensor-info-row">
                                 <span class="sensor-label">Active Module:</span>
                                 <span id="sensor-module-value" class="sensor-value">home</span>
-                            </div>
-                            <div class="sensor-info-row">
-                                <span class="sensor-label">VOD Playback:</span>
-                                <span id="sensor-vod-value" class="sensor-value">false</span>
                             </div>
                             <div class="sensor-info-row">
                                 <span class="sensor-label">Tuned Channel:</span>

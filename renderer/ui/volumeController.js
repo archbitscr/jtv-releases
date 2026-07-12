@@ -2,7 +2,7 @@ import { state } from '../state/appState.js';
 import { saveAppState } from '../services/stateManager.js';
 
 export function showVolumeHUD(level, isMuted) {
-    const isChannelPlaying = state.activeChannelId && !state.isVodPlaying;
+    const isChannelPlaying = !!state.activeChannelId;
     if (!isChannelPlaying) return;
 
     const hud = document.getElementById('volosd-indicator');

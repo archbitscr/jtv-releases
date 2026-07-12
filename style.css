@@ -266,9 +266,8 @@ body.player-active .edge-mask {
     pointer-events: none;
 }
 
-/* Disable top-trigger only in VOD modules so it doesn't block the search bar */
-body[data-module="movies"] #trigger-top,
-body[data-module="series"] #trigger-top {
+/* Disable top-trigger in non-live modules so it doesn't block content */
+body[data-module="settings"] #trigger-top {
     pointer-events: none;
 }
 
@@ -2194,7 +2193,6 @@ body.hide-cursor * {
     height: clamp(110px, max(clamp(110px, 16.67vw, 180px), calc(180px + 0.06689 * (100vw - 2046px))), 300px);
 }
 
-/* --- JTV v2.0 VOD Layout & Styling --- */
 
 /* Dashboard Header Row: nav buttons only — X is absolute on card */
 .dashboard-header-row {

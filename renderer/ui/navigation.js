@@ -63,7 +63,6 @@ export function showLiveLanding() {
         topNavMenu.classList.remove('hidden');
     }
 
-    state.activeDashTab = "live";
     state.isHomeActive = true;
     state.currentModule = "live";
     document.body.setAttribute('data-module', 'live');
@@ -87,10 +86,6 @@ export function showLiveLanding() {
 export function showModule(moduleName) {
     // 'home' is now an alias for 'live'
     if (moduleName === 'home') moduleName = 'live';
-
-    if (moduleName === 'live') {
-        state.activeDashTab = 'live';
-    }
 
     const liveSearchContainer = document.getElementById('live-search-container');
     const dashboardFiltersEl = document.getElementById('dashboard-filters');
@@ -184,7 +179,7 @@ export function switchTab(tabId) {
     if (ext.validateAndCleanupCurrentEdit) ext.validateAndCleanupCurrentEdit();
     if (tabId === 'home') {
         hideMenu();
-        if (state.activeChannelId && !state.isVodPlaying) {
+        if (state.activeChannelId) {
             showLiveLanding();
         } else {
             showModule('live');

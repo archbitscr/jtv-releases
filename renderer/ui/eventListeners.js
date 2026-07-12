@@ -1,6 +1,6 @@
 /* global lucide */
 import { state } from '../state/appState.js';
-import { selectChannel, zapChannel, mountRemotePlayer, playVod, updatePlayerActiveState } from '../player/playerController.js';
+import { selectChannel, zapChannel, mountRemotePlayer, updatePlayerActiveState } from '../player/playerController.js';
 import { showModule, switchTab, showLiveLanding, hideMenu, hideEditPane } from '../ui/navigation.js';
 import { syncMenuScroll } from '../render/channelList.js';
 import { startInactivityTimers, clearInactivityTimers, startCursorTimer } from '../ui/inactivity.js';
@@ -701,7 +701,7 @@ export function setupEventListeners() {
             const dest = btn.dataset.nav;
             if (dest) {
                 if (dest === 'live' && state.currentModule === 'live') {
-                    if (state.activeChannelId && !state.isVodPlaying) {
+                    if (state.activeChannelId) {
                         showLiveLanding();
                     } else {
                         showModule('live');
@@ -811,10 +811,6 @@ export function setupEventListeners() {
 
     document.querySelectorAll('.settings-subnav-btn[data-filter-type]').forEach(btn => {
         btn.onclick = () => setSettingsFilterTab(btn.dataset.filterType);
-    });
-
-    document.querySelectorAll('.connectivity-subnav-btn').forEach(btn => {
-        btn.onclick = () => setConnectivityTab(btn.dataset.connTab);
     });
 
     document.querySelectorAll('.channels-subnav-btn').forEach(btn => {
@@ -1147,10 +1143,6 @@ export function setupEventListeners() {
         state.globalDomain = globalDomainInput.value;
         state.apiKey = apiKeyInput.value;
         state.apiEndpoint = apiEndpointInput.value;
-        const tmdbInput = document.getElementById('tmdb-key-input');
-        const omdbInput = document.getElementById('omdb-key-input');
-        if (tmdbInput) state.tmdbKey = tmdbInput.value.trim();
-        if (omdbInput) state.omdbKey = omdbInput.value.trim();
         if (!state.globalDomain.endsWith('/')) state.globalDomain += '/';
         window.globalDomain = state.globalDomain;
         saveAppState(); syncChannels(); alert('Settings saved. Syncing...');
@@ -1902,5 +1894,4 @@ function initGlobalScrollbarAutoHide() {
     });
 }
 
-// VOD Scraping, Detail and Cache functions have been moved to vodContent.js and vodCache.js
 

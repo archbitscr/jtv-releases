@@ -931,20 +931,6 @@ export function updateDeveloperUI() {
         assignerSection.style.display = 'block';
     }
 
-    // Show/hide VOD settings subtabs (Series and Movies)
-    const seriesSubnavBtn = document.querySelector('.settings-subnav-btn[data-filter-type="series"]');
-    const moviesSubnavBtn = document.querySelector('.settings-subnav-btn[data-filter-type="movies"]');
-    if (seriesSubnavBtn) seriesSubnavBtn.style.display = developerModeEnabled ? 'flex' : 'none';
-    if (moviesSubnavBtn) moviesSubnavBtn.style.display = developerModeEnabled ? 'flex' : 'none';
-
-    if (!developerModeEnabled) {
-        if (typeof window.activeSettingsFilterTab !== 'undefined' && (window.activeSettingsFilterTab === 'series' || window.activeSettingsFilterTab === 'movies')) {
-            if (typeof window.setSettingsFilterTab === 'function') {
-                window.setSettingsFilterTab('tv');
-            }
-        }
-    }
-
     // Show/hide Event Assigner developer-only subtabs (Languages, Genre)
     const tabLanguages = document.getElementById('assigner-tab-languages');
     const tabGenres = document.getElementById('assigner-tab-genres');

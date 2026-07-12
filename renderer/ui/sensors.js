@@ -3,11 +3,9 @@ import { showModule } from './navigation.js';
 
 export function updateSensorsUI() {
     const modEl = document.getElementById('sensor-module-value');
-    const vodEl = document.getElementById('sensor-vod-value');
     const chanEl = document.getElementById('sensor-channel-value');
-    
+
     if (modEl) modEl.textContent = state.currentModule;
-    if (vodEl) vodEl.textContent = String(state.isVodPlaying);
     if (chanEl) {
         if (!state.activeChannelId) {
             chanEl.textContent = "None";
@@ -25,17 +23,10 @@ window.JTV_SENSORS = {
         showModule(moduleName);
         return `Navigated to module: ${moduleName}`;
     },
-    isVodPlaying: () => state.isVodPlaying,
     getTunedChannel: () => {
         if (!state.activeChannelId) return null;
-        if (state.isVodPlaying) {
-            const tunerChannelText = document.getElementById('pbar-channel-text');
-            const title = tunerChannelText ? tunerChannelText.innerText : 'VOD';
-            return { id: state.activeChannelId, type: 'VOD', title };
-        } else {
-            const chan = state.channels.find(c => String(c.id) === String(state.activeChannelId));
-            return chan ? { ...chan, type: 'LiveTV' } : { id: state.activeChannelId, type: 'LiveTV' };
-        }
+        const chan = state.channels.find(c => String(c.id) === String(state.activeChannelId));
+        return chan ? { ...chan, type: 'LiveTV' } : { id: state.activeChannelId, type: 'LiveTV' };
     },
     isSidebarOpen: () => {
         const mainMenu = document.getElementById('side-menu');

@@ -29,9 +29,8 @@ export function updateWebviewPointerEvents() {
 
     const settingsOpen = !document.getElementById('settings-screen').classList.contains('hidden');
     const parentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
-    const detailsOpen = !document.getElementById('vod-detail-page').classList.contains('hidden');
     const noSignalOpen = !document.getElementById('no-signal-overlay').classList.contains('hidden');
-    if (settingsOpen || parentalOpen || detailsOpen || noSignalOpen) {
+    if (settingsOpen || parentalOpen || noSignalOpen) {
         webview.style.pointerEvents = 'none';
     } else {
         webview.style.pointerEvents = 'auto';
@@ -42,7 +41,6 @@ export function initWebviewPointerEventsObserver() {
     const targets = [
         'settings-screen',
         'parental-pin-modal',
-        'vod-detail-page',
         'no-signal-overlay'
     ];
     

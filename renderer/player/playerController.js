@@ -332,7 +332,6 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     state.currentlyWatchingId = channel.id;
     state.watchStartTime = Date.now();
     state.isHomeActive = false;
-    state.isVodPlaying = false;
     state.currentModule = 'live';
     document.body.setAttribute('data-module', 'live');
     state.shouldRestoreTunedChannel = false;
@@ -394,7 +393,6 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     // Hide landing overlay and home screens only on manual channel change
     if (resetSource) {
         document.getElementById('vod-library').classList.add('hidden');
-        document.getElementById('main-home').classList.add('hidden');
         document.getElementById('settings-screen').classList.add('hidden');
         state.isHomeActive = false;
     }
@@ -501,21 +499,4 @@ export function zapChannel(direction) {
     }
 }
 
-export function playVod(item) {
-    const tunerChannelText = document.getElementById('pbar-channel-text');
-    const tunerFavHeart = document.getElementById('pbar-fav-heart');
 
-    if (ext.applyWallpaper) ext.applyWallpaper('none');
-    if (ext.showPlayerCurtain) ext.showPlayerCurtain();
-    state.activeChannelId = item.id;
-    state.currentlyWatchingId = item.id;
-    state.watchStartTime = Date.now();
-    state.isVodPlaying = true;
-
-    // Show source switcher and channel tuner info
-    tunerChannelText.innerText = item.title;
-    if (tunerFavHeart) tunerFavHeart.classList.add('hidden');
-    
-    mountRemotePlayer(item.url);
-    if (ext.updateTriggersVisibility) ext.updateTriggersVisibility();
-}
