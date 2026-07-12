@@ -10,7 +10,6 @@ import { emojiToHtml } from '../filters/filterState.js';
 import { syncCustomSelect, initDashCustomSelects } from '../utils/customSelect.js';
 import { initIconPickers } from '../utils/iconPicker.js';
 import { initCustomTooltips } from '../utils/tooltips.js';
-import { attachTimePicker } from '../ui/timePicker.js';
 import { syncCenterNavWidth, checkResolution, updateFullscreenButton, toggleAppFullscreen, getActiveSidebarTab, getCurrentNavigationChannels, isEditableElement, handleResizeDimensions } from '../ui/layout.js';
 // sensors.js is dev-only: loaded dynamically in renderer.js dev block; called via window.updateSensorsUI?.()
 import { updateTriggersVisibility } from '../ui/triggersVisibility.js';
