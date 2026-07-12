@@ -5966,18 +5966,21 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
 .paypal-donate-btn {
     width: 160px;
     height: 40px;
-    padding: 0 !important;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    cursor: pointer;
     background-image: url('/assets/paypal-donate-btn.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: transparent;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    background-color: rgba(0, 0, 0, 0.45);
+    transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .paypal-donate-btn:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.3) !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .paypal-donate-img {
