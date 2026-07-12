@@ -215,13 +215,64 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ### ⏳ Dificultad Media
 
+#### 0. Tarea 47: Eliminar módulo VOD — App 100% Live TV ⏳ (PENDIENTE)
+
+*   **Versión objetivo:** v2.3.11
+*   **Contexto:** Se decide simplificar la app eliminando completamente el módulo VOD (Movies + Series + VOD Detail Page) y concentrando la experiencia en Live TV. Esta tarea vuelve obsoletas las Tareas 43, 46 y los sub-pendientes VOD de Tarea 37 (meseta clamp `.vod-*`, `.vdp-*`).
+
+##### Alcance de cambios
+
+1.  **Eliminar módulo VOD del HTML (`index.html`)**
+    *   Remover `#vod-library` y todo su contenido (carrusel, grid, filtros VOD, dots, controles de navegación VOD).
+    *   Remover `#vod-details-modal` / VOD Detail Page (`.vdp-*`).
+    *   Remover el botón `#topnav-vod-btn` (o equivalente) del Top Nav.
+
+2.  **Top Nav — reducir a dos botones**
+    *   **Botón Live TV** → renombrar a **"Home"** (`#topnav-home-btn` o el ID que corresponda).
+    *   **Botón Settings** → mantener sin cambios.
+    *   Eliminar cualquier otro botón de módulo (Movies, Series, VOD).
+
+3.  **Arranque directo a Live TV Landing**
+    *   Eliminar la pantalla `#main-home` (home screen con las tarjetas de módulos).
+    *   Al iniciar la app, cargar directamente el Live TV Landing (grid de canales), sin pasar por la home.
+    *   Limpiar la lógica de navegación en `renderer.js` / `favoritesGrid.js` / `showModule()` que gestiona la transición home → módulo.
+
+4.  **Settings — eliminar subpestañas VOD de la pestaña Filtros**
+    *   Dentro de Filters, remover las subpestañas "Series" y "Movies" (o equivalentes VOD).
+    *   Mantener solo las subpestañas de Live TV: idiomas, géneros, eventos, asignación de filtros.
+
+5.  **Eliminar código JS del módulo VOD**
+    *   `renderer/vod/` — remover o vaciar: `vodCache.js`, `moviesDb.js`, `seriesDb.js` y cualquier módulo auxiliar VOD.
+    *   `renderer/render/favoritesGrid.js` — eliminar ramas VOD (`vod-active`, `loadVod*`, `renderVodGrid`, `updateVodGridDimensions`).
+    *   `renderer/ui/layout.js` — eliminar ramas de cálculo VOD.
+    *   `renderer/ui/eventListeners.js` — remover listeners VOD (botones nav VOD, dots, filtros VOD).
+    *   `renderer.js` — eliminar import/init de VOD, limpiar `showModule('vod')`, `showModule('movies')`.
+    *   `main/ipc/registerMoviesDbIpc.js` — eliminar handler IPC de movies DB (y su entrada en `ipcChannels.json`).
+
+6.  **Eliminar selectores CSS VOD (`style.css`)**
+    *   Remover todas las reglas `.vod-*`, `.vdp-*`, `.land-item.vod-card`, `.land-grid.vod-active`, `#vod-library`, `#vod-filter-row`, `.vod-details-*`.
+    *   Remover media queries y overrides VOD que ya no apliquen.
+    *   Limpiar variables CSS relacionadas si las hubiera.
+
+7.  **Eliminar archivos de assets VOD**
+    *   `docs/examples/movies/` — obsoleto (referencia del explorador).
+    *   Cualquier poster/cache en `userData/movies/` (limpiar IPC de init si aplica).
+
+8.  **Bump de versión y build**
+    *   Actualizar `package.json`, `package-lock.json`, `<title>` de `index.html` y footer de Settings a `v2.3.11`.
+    *   Ejecutar `vite build` y verificar que no queden referencias VOD en el bundle.
+
+##### Componentes afectados
+`index.html`, `style.css`, `renderer.js`, `renderer/vod/*`, `renderer/render/favoritesGrid.js`, `renderer/ui/layout.js`, `renderer/ui/eventListeners.js`, `main/ipc/registerMoviesDbIpc.js`, `shared/ipcChannels.json`.
+
+---
+
 #### ~~3. Tarea 3 / Item 10: Optimización del Caché VOD y Paginación~~ ✅ (resuelta por rediseño completo)
 *   **Resolución:** El problema original (fetching HTTP masivo en cada resize/paginación) quedó obsoleto por el rediseño completo del módulo Movies durante la sesión 2026-07-05. Movies ya no consulta SFlix en cada render: carga desde una base de datos local en disco (`userData/movies/movies-db.json`), el layout es manejado por `fitGrid()` que recalcula localmente, y la paginación opera sobre el cache en memoria sin tocar la red. No hay HTTP en ningún ciclo de render. Objetivo original cumplido por arquitectura, no por parche.
 
-#### 5. Tarea 43: Movies Layout — Paridad Visual con el Explorer ⏳ (EN PROGRESO)
-*   **Componente:** `style.css`, `index.html`, `renderer/ui/layout.js`.
-*   **Referencia:** `docs/examples/movies/movies-explorer.html` — fuente de verdad.
-*   **⚠️ PENDIENTE DE AUTORIZACIÓN DEL USUARIO PARA CIERRE** — no marcar completa sin confirmación explícita del dev.
+#### ~~5. Tarea 43: Movies Layout — Paridad Visual con el Explorer~~ ❌ CANCELADA (obsoleta por Tarea 47)
+*   **Motivo de cancelación:** El módulo VOD completo (Movies + Series) será eliminado de la app. La Tarea 47 cubre la supresión de todo el módulo VOD, haciendo irrelevante cualquier ajuste visual de Movies.
+*   ~~**Componente:** `style.css`, `index.html`, `renderer/ui/layout.js`.~~
 *   **Avances aplicados (2026-07-05):**
     *   ✅ Flex chain: `land-content` + `land-carousel-wrapper` ambos `flex:1; min-height:0`.
     *   ✅ `.land-item.vod-card`: `display:flex; min-height:0`; hover `scale(1.06) translateY(-4px)`.
@@ -274,7 +325,7 @@ Este documento unifica de forma cronológica todas las mejoras, características
     *   ✅ Player (`#no-signal-overlay` y overlays) — clamp() completo, inline styles migrados a CSS. Eliminado bloque huérfano "Player Controls Overlay" (~75 líneas, reemplazado hace tiempo por `.pbar`).
     *   ✅ Transversales — Scrollbars, FS/Power y Modals/Tooltips ya estaban clampeados (trabajo previo de Settings); agregado Vol OSD (`.volosd-*`) y Search (`.search-*`). `.floating-*` (Dev-only) fuera de alcance a propósito.
     *   ✅ Home (`.home-*`) — completado lo pendiente (padding, border-radius, header). Limpieza de 3 selectores huérfanos (`.home-close`, `.home-brand-title`, `.home-card p`).
-    *   ⏳ **Pendiente:** VOD (`.vod-*`, `.vod-details-*`) — no abordado a propósito. Settings no fue re-auditado en esta pasada (se asume ya clampeado de trabajo previo, pero falta confirmar metódicamente).
+    *   ~~⏳ **Pendiente:** VOD (`.vod-*`, `.vod-details-*`) — no abordado a propósito. Settings no fue re-auditado en esta pasada (se asume ya clampeado de trabajo previo, pero falta confirmar metódicamente).~~ ❌ CANCELADO — el módulo VOD se elimina en Tarea 47; los selectores `.vod-*` serán removidos del CSS.
     *   ℹ️ Se reemplazó el límite dinámico de `FAVS_PER_PAGE` por ancho (1 col / 5 items en <800px) — el grid de Live TV ahora es fijo en 2×5, con un único breakpoint por alto (≤500px → 2×4), alineado con `minHeight:500` de la ventana. Las dos reglas CSS asociadas a la reducción por ancho quedaron huérfanas y se eliminaron.
     *   🔧 **Corrección de calibración del `max` de clamp() (2026-06-30):** el multiplicador original (`original × 2.56`) hacía que el valor `max` se alcanzara a los 2764.8px de ancho (1080×2.56), no a 3840px (4K) como se pretendía. Corregido el multiplicador a `original × 3840/1080` (≈×3.5556) — recalculado en **Sidebar (`.glass-menu`, `.side-*`), Top Nav (`.tnav-*`) y Player Bar (`.pbar-*`)** únicamente (47 reglas, 110 valores `max`); el resto de componentes (Filter Bar, Landing/Grid, Player, transversales, Home) **queda pendiente con el multiplicador viejo** hasta que se recalculen explícitamente. El `min` y el valor `vw` (preferred) no cambiaron — solo el techo superior se movió de 2764.8px a 3840px de ancho de viewport.
     *   🔧 **Fórmula de "meseta" (flat-until-threshold) para Player Bar (2026-07-02):** el `vw` (preferred) de todos los clamp() está anclado a 1080px de ancho — a cualquier ancho mayor el valor sigue creciendo linealmente sin techo intermedio, causando que en pantallas comunes (~1920–2000px) los componentes se vieran notablemente más grandes que su tamaño de diseño original (~1.8× a 1985px de ancho). Se detectó primero en `.pbar` (Player Bar) mostrándose "gigante". Solución aplicada **únicamente a `.pbar*` (57 clamp())**: se reemplazó `clamp(MIN, VW, MAX)` por `clamp(MIN, max(clamp(MIN, VW, BASE), calc(BASE + PENDIENTE * (100vw - 2046px))), MAX)`, donde `BASE` es el valor original (recuperado matemáticamente del término `vw` existente — para propiedades en `rem` hay que revertir la conversión rem→px×16 antes de despejar) y `PENDIENTE = (MAX - BASE) / (3840 - 2046)`. Resultado: el tamaño se achica normalmente hasta el `min` en pantallas angostas (sin cambios), se mantiene **plano en `BASE`** desde ~709px-equivalente hasta 2046px de ancho, y solo a partir de 2046px empieza a crecer hasta alcanzar `MAX` en 3840px. Verificado matemáticamente que a 2046px y a 3840px el valor es continuo (sin salto) con el segmento contiguo. **Pendiente:** aplicar la misma fórmula al resto de componentes (Sidebar, Top Nav, Filter Bar, Landing/Grid, Player, transversales, Home) si se confirma que tienen el mismo problema de "gigantismo" en resoluciones intermedias.
@@ -285,7 +336,7 @@ Este documento unifica de forma cronológica todas las mejoras, características
     *   ✅ **Landing/Grid — nuevas reglas:** se agregó `.land-item .land-logo .placeholder-circle` (border-radius + font-size meseta). Propiedades en `rem` convertidas a `px` (`h4`, `.land-epg`, `.land-title`, `.land-exit-btn`). Eliminado el override de media-query para `.land-nav-btn i` y `.land-title` (cubiertos por meseta).
     *   ✅ **Search — media queries obsoletos eliminados:** se eliminaron los overrides de media-query para `.search-container` (padding/border-radius), `.search-container input` y `.search-container i` al quedar cubiertos por la meseta.
     *   ✅ **Sidebar filter badge (.pbar-filter-badge):** max extendido de 18px → 24px para 4K; sincronizado en PBAR_GROUPS del sizer.
-    *   ⏳ **Pendiente:** VOD (`.vod-*`, `.vod-details-*`) — sin meseta aún. Vol OSD (`volosd-*`) — reference no generado aún (tab del sizer existe pero pendiente de calibración). Settings — no re-auditado metódicamente con meseta.
+    *   ~~⏳ **Pendiente:** VOD (`.vod-*`, `.vod-details-*`) — sin meseta aún.~~ ❌ CANCELADO por Tarea 47. Vol OSD (`volosd-*`) — pendiente. Settings — pendiente.
 *   **Progreso (2026-07-04) — grid altura dinámica, search bar, search-reference v2, land-reference v3/v4, indicador de corazón favorito:**
     *   ✅ **Grid de Live TV — soporte de ventanas altas (>1200px):** se agregó `@media (min-height: 1201px) { .land-grid { grid-template-rows: repeat(10, 1fr); } }` para mostrar 10 filas en lugar de 5 cuando la ventana supera 1200px de alto. Breakpoint de 3 niveles en `layout.js`: `rows = h ≤ 500 ? 4 : h > 1200 ? 10 : 5`. `FAVS_PER_PAGE` en `appState.js` migrado a IIFE dinámico (`h ≤ 500 → 8 / h > 1200 → 20 / else → 10`) — necesario porque `grid-auto-flow: column` rellena columnas completas antes de abrir la siguiente, y con un valor estático de 10 al arrancar en ventana normal todos los ítems caían en columna 1.
     *   ✅ **land-reference v3 aplicado a `style.css` y LAND_GROUPS del sizer:** ajustes de calibración en `.land-grid` gap (min 7→4, max 26→16), `.land-carousel-wrapper` gap (min 20→15), `.land-nav-btn` i/svg size (max 80→60), `.land-nav` margin-bottom (max 50→60), `.land-title` font-size (base 40→20, min 20→10, max 80→60), `.land-title-block` padding-top (base 2→4, max 4→8), `.land-item` border-radius (base 15→16, min 7→8, max 20→24) y padding (padV max 16→12). Se agregaron controles de padding a `LAND_GROUPS` del sizer (faltaban).
@@ -297,7 +348,7 @@ Este documento unifica de forma cronológica todas las mejoras, características
     *   ✅ **`.land-corner` con meseta completa en sizer y `style.css`:** se agregó grupo al sizer con top (base=8, min=5, max=20), right (base=12, min=8, max=20) y gap (base=10, min=4, max=20). Se limpiaron top/right del grupo `.land-channel-id` (ya no son propiedades de ese selector sino de `.land-corner`).
     *   ✅ **Sizer — `.land-fav-indicator i,\n.land-fav-indicator svg` group agregado:** size (base=10, min=8, max=18px).
     *   ✅ **Cache-buster bumpeado a v=42** (múltiples bumps durante la sesión); varios commits realizados.
-    *   ⏳ **Pendiente:** VOD (`.vod-*`, `.vod-details-*`), Vol OSD (`volosd-*`), Settings — sin meseta aún.
+    *   ~~⏳ **Pendiente:** VOD (`.vod-*`, `.vod-details-*`)~~ ❌ CANCELADO por Tarea 47. Vol OSD (`volosd-*`), Settings — pendiente de meseta.
 *   **Progreso (2026-07-04 — sesión de cierre) — sizer corrections, fixes de cursor e IPC, botón de reset de ventana:**
     *   ✅ **Botón de auto-redimensión en controles dev:** nuevo botón "auto-resize" en `.floating-controls-container` (ícono `scan`) en `developerModule.js`; llama `window.jtvAPI.resetWindowSize()`. IPC `reset-window-size` registrado en `registerWindowIpc.js` y en `shared/ipcChannels.json`. Fija la ventana a 1080×720 (tamaño de diseño base) sin fullscreen — útil para recalibrar el sizer.
     *   ✅ **Fix: `app-preload.cjs` IPC local sin `RESET_WINDOW_SIZE`** — el objeto `IPC` hardcodeado en el preload no incluía la clave → `ipcRenderer.invoke(undefined)` silencioso. Agregada `RESET_WINDOW_SIZE: 'reset-window-size'`. Requería reinicio completo de Electron (no recarga del renderer).

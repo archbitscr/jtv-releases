@@ -1,32 +1,10 @@
-export const DEFAULT_VOD_GENRES = [
-    { name: "All", icon: "layout-grid" },
-    { name: "Action", icon: "flame" },
-    { name: "Adventure", icon: "tag" },
-    { name: "Animation", icon: "tag" },
-    { name: "Comedy", icon: "smile" },
-    { name: "Crime", icon: "tag" },
-    { name: "Drama", icon: "clapperboard" },
-    { name: "Family", icon: "tag" },
-    { name: "Fantasy", icon: "tag" },
-    { name: "History", icon: "tag" },
-    { name: "Horror", icon: "ghost" },
-    { name: "Music", icon: "music" },
-    { name: "Romance", icon: "heart" },
-    { name: "War", icon: "tag" },
-    { name: "Western", icon: "tag" },
-    { name: "Thriller", icon: "zap" },
-    { name: "Sci-Fi", icon: "rocket" },
-    { name: "Mystery", icon: "search" },
-    { name: "Documentary", icon: "camera" }
-];
-
 export const state = {
     // App State / Lifecycle
     channels: [],
     scheduleData: [],
     activeChannelId: null,
-    currentModule: "home",
-    previousModule: "home",
+    currentModule: "live",
+    previousModule: "live",
     watchStartTime: null,
     currentlyWatchingId: null,
     lastTunedChannel: null,
@@ -67,26 +45,6 @@ export const state = {
     monitorInterval: null,
     lastFramePixels: null,
     detectedSpeakerCoords: null,
-
-    // VOD State & Cache
-    vodFavorites: [],
-    fetchedMovies: [],
-    fetchedSeries: [],
-    vodCache: { movies: { items: [], updatedAt: 0 }, series: { items: [], updatedAt: 0 } },
-    tmdbCache: {},
-    vodRequestToken: 0,
-    vodPage: 0,
-    vodFavPage: 0,
-    vodSearchTerm: "",
-    selectedVodGenre: "All",
-    vodFilterMode: "all",
-    vodDetailOpen: false,
-    selectedVodRating: "all",
-    selectedVodYear: "all",
-    vodTotalPages: 1,
-    VOD_ITEMS_PER_PAGE: 15,
-    seriesGenres: DEFAULT_VOD_GENRES.map(g => ({ ...g })),
-    moviesGenres: DEFAULT_VOD_GENRES.map(g => ({ ...g })),
 
     // Live Filters State
     filterLanguages: [

@@ -14,10 +14,6 @@
   "BROADCAST_AUDIO_LEVELER": "broadcast-audio-leveler",
   "SET_VOLUME_LEVEL": "set-volume-level",
   "SET_AUDIO_LEVELER": "set-audio-leveler",
-  "FETCH_SFLIX_PAGE": "fetch-sflix-page",
-  "FETCH_TMDB_METADATA": "fetch-tmdb-metadata",
-  "FETCH_TMDB_DETAIL": "fetch-tmdb-detail",
-  "FETCH_OMDB_RATINGS": "fetch-omdb-ratings",
   "LOG_RENDERER": "log-renderer",
   "LOG_DIAGNOSTIC": "log-diagnostic",
   "SIMULATE_MOVE": "simulate-move",
@@ -44,10 +40,5 @@
   "OPEN_DEVTOOLS": "open-devtools",
   "RELOAD_WINDOW": "reload-window",
   "RESET_WINDOW_SIZE": "reset-window-size",
-  "MOVIES_DB_GET": "movies-db-get",
-  "MOVIES_DB_SAVE": "movies-db-save",
-  "MOVIES_DB_DELETE": "movies-db-delete",
-  "MOVIES_DB_SAVE_POSTER": "movies-db-save-poster",
-  "MOVIES_DB_GET_POSTER": "movies-db-get-poster",
   "GUEST_HOTKEY": "guest-hotkey"
 }

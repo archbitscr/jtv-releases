@@ -4,8 +4,6 @@ import { selectChannel, zapChannel, mountRemotePlayer, playVod, updatePlayerActi
 import { showModule, switchTab, showLiveLanding, hideMenu, hideEditPane } from '../ui/navigation.js';
 import { syncMenuScroll } from '../render/channelList.js';
 import { startInactivityTimers, clearInactivityTimers, startCursorTimer } from '../ui/inactivity.js';
-import { refreshVodContent, showVodDetails, closeVodDetail } from '../vod/vodContent.js';
-import { warmupVodCache } from '../vod/vodCache.js';
 import { hashPIN, verifyPIN, promptParentalPIN, isParentalTimeLocked, getCurrentPinCallback } from '../settings/parental.js';
 import { applyWallpaper } from '../settings/wallpaper.js';
 import { syncFilterList, populateDropdowns, removeSettingsFilter, removeFilter, updateEventIconSelectBtnColor } from '../filters/filterManager.js';
@@ -14,7 +12,7 @@ import { syncCustomSelect, initDashCustomSelects } from '../utils/customSelect.j
 import { initIconPickers } from '../utils/iconPicker.js';
 import { initCustomTooltips } from '../utils/tooltips.js';
 import { attachTimePicker } from '../ui/timePicker.js';
-import { syncCenterNavWidth, checkResolution, updateFullscreenButton, toggleAppFullscreen, getActiveSidebarTab, getCurrentNavigationChannels, isEditableElement, updateVodGridDimensions, handleResizeDimensions } from '../ui/layout.js';
+import { syncCenterNavWidth, checkResolution, updateFullscreenButton, toggleAppFullscreen, getActiveSidebarTab, getCurrentNavigationChannels, isEditableElement, handleResizeDimensions } from '../ui/layout.js';
 // sensors.js is dev-only: loaded dynamically in renderer.js dev block; called via window.updateSensorsUI?.()
 import { updateTriggersVisibility } from '../ui/triggersVisibility.js';
 import { adjustVolume, toggleMute, updateVolumeUI } from '../ui/volumeController.js';
@@ -28,7 +26,7 @@ import { renderChannelFiltersManager, removeFilterFromChannel, bindAddFilterToCh
 import { selectAssignerChannelMultiple, renderAssignerChannelsList, renderAssignerEvents, initEventAssigner } from '../filters/filterAssigner.js';
 import { showNoSignalOverlay, triggerFailover, stopNoSignalRetryLoop } from '../player/failover.js';
 import { updateSourceSwitcherUI } from '../player/sourceSwitcher.js';
-import { renderVodControls, renderFavoritesGrid, toggleVodFavorite, getCurrentVodPageIndex, setCurrentVodPageIndex, getVodYear, getVodRatingNumber, getFilteredLiveChannels } from '../render/favoritesGrid.js';
+import { renderFavoritesGrid, getFilteredLiveChannels } from '../render/favoritesGrid.js';
 // developerModule.js is dev-only: loaded dynamically in renderer.js dev block; called via window.updateDeveloperUI?.()
 
 export function setupEventListeners() {
@@ -603,7 +601,7 @@ export function setupEventListeners() {
     }
 
     triggerLeft.onmouseenter = () => {
-        if (state.currentModule !== 'live' && (!state.activeChannelId || state.isVodPlaying)) return;
+        if (state.currentModule !== 'live' && !state.activeChannelId) return;
         switchTab(state.zapSourceTab || 'channels');
 
         mainMenu.classList.remove('hidden');
@@ -615,7 +613,7 @@ export function setupEventListeners() {
 
     if (triggerBottom) {
         triggerBottom.onmouseenter = () => {
-            if (state.currentModule !== 'live' && (!state.activeChannelId || state.isVodPlaying)) return;
+            if (state.currentModule !== 'live' && !state.activeChannelId) return;
             if (!state.isHomeActive) {
                 sourceSwitcher.classList.remove('hidden');
                 startInactivityTimers();
@@ -625,7 +623,7 @@ export function setupEventListeners() {
 
     if (triggerRight) {
         triggerRight.onmouseenter = () => {
-            if (state.currentModule !== 'live' && (!state.activeChannelId || state.isVodPlaying)) return;
+            if (state.currentModule !== 'live' && !state.activeChannelId) return;
             if (!state.isHomeActive) {
                 sourceSwitcher.classList.remove('hidden');
                 startInactivityTimers();
@@ -724,13 +722,7 @@ export function setupEventListeners() {
         };
     });
 
-    // Home landing page cards click events
-    const cardLive = document.getElementById('card-live-tv');
-    if (cardLive) cardLive.onclick = () => showModule('live');
-    const cardSeries = document.getElementById('card-series');
-    if (cardSeries) cardSeries.onclick = () => showModule('series');
-    const cardMovies = document.getElementById('card-movies');
-    if (cardMovies) cardMovies.onclick = () => showModule('movies');
+    // Home landing page cards click events (legacy, no longer rendered)
     const cardSettings = document.getElementById('card-settings');
     if (cardSettings) cardSettings.onclick = () => showModule('settings');
 
@@ -842,7 +834,7 @@ export function setupEventListeners() {
     if (closeHomeBtn) {
         closeHomeBtn.onclick = (e) => {
             e.stopPropagation();
-            if (state.activeChannelId && !state.isVodPlaying) {
+            if (state.activeChannelId) {
                 document.getElementById('vod-library').classList.add('hidden');
                 state.isHomeActive = false;
                 sourceSwitcher.classList.remove('hidden');
@@ -863,67 +855,21 @@ export function setupEventListeners() {
     });
 
     if (gridPrevBtn) {
-        gridPrevBtn.onclick = async () => {
-            if (state.activeDashTab === "live") {
-                if (state.favPage > 0) {
-                    state.favPage--;
-                    renderFavoritesGrid();
-                }
-                return;
-            }
-
-            const isFavMode = state.vodFilterMode === "favorites";
-            const pageIndex = getCurrentVodPageIndex();
-            if (pageIndex <= 0) return;
-
-            setCurrentVodPageIndex(pageIndex - 1);
-            if (isFavMode) {
+        gridPrevBtn.onclick = () => {
+            if (state.favPage > 0) {
+                state.favPage--;
                 renderFavoritesGrid();
-            } else {
-                await refreshVodContent();
             }
         };
     }
 
     if (gridNextBtn) {
-        gridNextBtn.onclick = async () => {
-            if (state.activeDashTab === "live") {
-                const allFavs = getFilteredLiveChannels();
-                const totalPages = Math.ceil(allFavs.length / state.FAVS_PER_PAGE);
-                if (state.favPage < totalPages - 1) {
-                    state.favPage++;
-                    renderFavoritesGrid();
-                }
-                return;
-            }
-
-            const isFavMode = state.vodFilterMode === "favorites";
-            let totalPages;
-            if (isFavMode) {
-                let items = state.vodFavorites.filter(i => i && i.type === state.activeDashTab);
-                if (state.selectedVodRating !== "all") {
-                    const minRating = parseInt(state.selectedVodRating);
-                    items = items.filter(it => {
-                        const r = getVodRatingNumber(it);
-                        return r !== null && r >= minRating;
-                    });
-                }
-                if (state.selectedVodYear !== "all") {
-                    items = items.filter(it => getVodYear(it) === state.selectedVodYear);
-                }
-                totalPages = Math.ceil(items.length / state.VOD_ITEMS_PER_PAGE);
-            } else {
-                totalPages = state.vodTotalPages;
-            }
-
-            const pageIndex = getCurrentVodPageIndex();
-            if (pageIndex >= totalPages - 1) return;
-
-            setCurrentVodPageIndex(pageIndex + 1);
-            if (isFavMode) {
+        gridNextBtn.onclick = () => {
+            const allFavs = getFilteredLiveChannels();
+            const totalPages = Math.ceil(allFavs.length / state.FAVS_PER_PAGE);
+            if (state.favPage < totalPages - 1) {
+                state.favPage++;
                 renderFavoritesGrid();
-            } else {
-                await refreshVodContent();
             }
         };
     }
@@ -1161,8 +1107,6 @@ export function setupEventListeners() {
     setupAddFilterInput('add-lang-input', 'clear-lang-input', 'add-lang-btn', 'language');
     setupAddFilterInput('add-genre-input', 'clear-genre-input', 'add-genre-btn', 'genre');
     setupAddFilterInput('add-event-input', 'clear-event-input', 'add-event-btn', 'event');
-    setupAddFilterInput('add-series-input', 'clear-series-input', 'add-series-btn', 'series');
-    setupAddFilterInput('add-movies-input', 'clear-movies-input', 'add-movies-btn', 'movies');
 
     bindAddFilterToChannel({
         getChannels: () => channels,
@@ -1171,65 +1115,22 @@ export function setupEventListeners() {
     });
 
     // Scroll Wheel Support for Favorites Grid
-    const handleWheel = async (e) => {
+    const handleWheel = (e) => {
         if (!state.isHomeActive) return;
 
-        if (state.activeDashTab === "live") {
-            const allFavs = getFilteredLiveChannels();
-            const totalPages = Math.ceil(allFavs.length / state.FAVS_PER_PAGE);
-            if (totalPages <= 1) return;
+        const allFavs = getFilteredLiveChannels();
+        const totalPages = Math.ceil(allFavs.length / state.FAVS_PER_PAGE);
+        if (totalPages <= 1) return;
 
-            if (e.deltaY > 0) {
-                if (state.favPage < totalPages - 1) {
-                    state.favPage++;
-                    renderFavoritesGrid();
-                }
-            } else {
-                if (state.favPage > 0) {
-                    state.favPage--;
-                    renderFavoritesGrid();
-                }
+        if (e.deltaY > 0) {
+            if (state.favPage < totalPages - 1) {
+                state.favPage++;
+                renderFavoritesGrid();
             }
         } else {
-            const isFavMode = state.vodFilterMode === "favorites";
-            let totalPages;
-            if (isFavMode) {
-                let items = state.vodFavorites.filter(i => i && i.type === state.activeDashTab);
-                if (state.selectedVodRating !== "all") {
-                    const minRating = parseInt(state.selectedVodRating);
-                    items = items.filter(it => {
-                        const r = getVodRatingNumber(it);
-                        return r !== null && r >= minRating;
-                    });
-                }
-                if (state.selectedVodYear !== "all") {
-                    items = items.filter(it => getVodYear(it) === state.selectedVodYear);
-                }
-                totalPages = Math.ceil(items.length / state.VOD_ITEMS_PER_PAGE);
-            } else {
-                totalPages = state.vodTotalPages;
-            }
-            if (totalPages <= 1) return;
-
-            const pageIndex = getCurrentVodPageIndex();
-            if (e.deltaY > 0) {
-                if (pageIndex < totalPages - 1) {
-                    setCurrentVodPageIndex(pageIndex + 1);
-                    if (isFavMode) {
-                        renderFavoritesGrid();
-                    } else {
-                        await refreshVodContent();
-                    }
-                }
-            } else {
-                if (pageIndex > 0) {
-                    setCurrentVodPageIndex(pageIndex - 1);
-                    if (isFavMode) {
-                        renderFavoritesGrid();
-                    } else {
-                        await refreshVodContent();
-                    }
-                }
+            if (state.favPage > 0) {
+                state.favPage--;
+                renderFavoritesGrid();
             }
         }
     };
@@ -1406,21 +1307,17 @@ export function setupEventListeners() {
         }
 
         if (matchesHotkey('escape', key, e)) {
-            if (state.vodDetailOpen) {
-                closeVodDetail();
-                return true;
-            }
             const settingsScreen = document.getElementById('settings-screen');
             if (settingsScreen && !settingsScreen.classList.contains('hidden')) {
-                showModule('home');
+                showModule('live');
                 return true;
             }
-            if (state.currentModule === 'live' && state.activeChannelId && !state.isVodPlaying) {
+            if (state.currentModule === 'live' && state.activeChannelId) {
                 showLiveLanding();
                 return true;
             }
-            if (state.currentModule === 'series' || state.currentModule === 'movies' || state.currentModule === 'settings') {
-                showModule('home');
+            if (state.currentModule === 'settings') {
+                showModule('live');
                 return true;
             }
             return true;
@@ -1432,10 +1329,9 @@ export function setupEventListeners() {
         }
 
         const isSettingsOpen = !document.getElementById('settings-screen').classList.contains('hidden');
-        const isDetailsOpen = state.vodDetailOpen;
         const isParentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
 
-        if (!state.isHomeActive && state.activeChannelId && !isSettingsOpen && !isDetailsOpen && !isParentalOpen) {
+        if (!state.isHomeActive && state.activeChannelId && !isSettingsOpen && !isParentalOpen) {
             if (matchesHotkey('prevChannel', key, e)) {
                 zapChannel('up');
                 return true;
@@ -1462,7 +1358,7 @@ export function setupEventListeners() {
         }
 
         if (matchesHotkey('toggleHUD', key, e)) {
-            if (!state.isHomeActive && state.activeChannelId && !state.isVodPlaying) {
+            if (!state.isHomeActive && state.activeChannelId) {
                 state.hudPinned = !state.hudPinned;
                 const sourceSwitcherEl = document.getElementById('pbar');
                 if (sourceSwitcherEl) {
@@ -1834,88 +1730,6 @@ export function setupEventListeners() {
         };
     });
 
-    // VOD Search Event
-    const vodSearchInput = document.getElementById('vod-search-input');
-    const clearVodSearch = document.getElementById('clear-vod-search');
-    if (vodSearchInput) {
-        vodSearchInput.oninput = (e) => {
-            if (clearVodSearch) {
-                clearVodSearch.classList.toggle('hidden', e.target.value.trim() === "");
-            }
-            window.timeouts.set('vodSearchDebounce', async () => {
-                state.vodSearchTerm = e.target.value.trim();
-                state.vodPage = 0;
-                await refreshVodContent();
-            }, 600);
-        };
-    }
-
-    if (clearVodSearch && vodSearchInput) {
-        clearVodSearch.onclick = async () => {
-            vodSearchInput.value = "";
-            clearVodSearch.classList.add('hidden');
-            state.vodSearchTerm = "";
-            state.vodPage = 0;
-            await refreshVodContent();
-            vodSearchInput.focus();
-        };
-    }
-
-    const vodAllBtn = document.getElementById('vod-filter-all');
-    if (vodAllBtn) {
-        vodAllBtn.onclick = () => {
-            state.vodFilterMode = "all";
-            state.vodFavPage = 0;
-            renderVodControls();
-            renderFavoritesGrid();
-        };
-    }
-    const vodFavBtn = document.getElementById('vod-filter-favs');
-    if (vodFavBtn) {
-        vodFavBtn.onclick = () => {
-            state.vodFilterMode = "favorites";
-            state.vodFavPage = 0;
-            renderVodControls();
-            renderFavoritesGrid();
-        };
-    }
-
-    const vodGenreSelect = document.getElementById('vod-genre-select');
-    if (vodGenreSelect) {
-        vodGenreSelect.onchange = async (e) => {
-            state.vodFilterMode = "all";
-            state.selectedVodGenre = e.target.value || "All";
-            state.vodPage = 0;
-            state.vodFavPage = 0;
-            renderVodControls();
-            await refreshVodContent();
-        };
-    }
-
-    const vodRatingSelect = document.getElementById('vod-rating-select');
-    if (vodRatingSelect) {
-        vodRatingSelect.onchange = (e) => {
-            state.selectedVodRating = e.target.value || "all";
-            state.vodFavPage = 0;
-            renderVodControls();
-            renderFavoritesGrid();
-        };
-    }
-
-    const vodYearSelect = document.getElementById('vod-year-select');
-    if (vodYearSelect) {
-        vodYearSelect.onchange = (e) => {
-            state.selectedVodYear = e.target.value || "all";
-            state.vodFavPage = 0;
-            renderVodControls();
-            renderFavoritesGrid();
-        };
-    }
-
-    // Detail page back button
-    const backBtn = document.getElementById('vdp-back-btn');
-    if (backBtn) backBtn.onclick = () => closeVodDetail();
-
     // Wallpaper option clicks
     document.querySelectorAll('.wallpaper-option').forEach(opt => {
         opt.onclick = () => {
@@ -2058,8 +1872,7 @@ function initGlobalScrollbarAutoHide() {
         '.compact-picker',
         '.filter-icon-dropdown',
         '#parental-allowed-channels-list',
-        '#assigner-metadata-content',
-        '#vod-details-overview'
+        '#assigner-metadata-content'
     ].join(', ');
 
     // 1. Mouse hover activity

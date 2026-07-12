@@ -22,17 +22,15 @@ if (import.meta.hot) {
 import defaultChannels from './data/defaultChannels.json';
 import { initWatchTimer } from './renderer/player/watchTimer.js';
 import { initFailover } from './renderer/player/failover.js';
-import { initPlayerController, selectChannel, zapChannel, mountRemotePlayer, playVod, updatePlayerActiveState } from './renderer/player/playerController.js';
+import { initPlayerController, selectChannel, zapChannel, mountRemotePlayer, updatePlayerActiveState } from './renderer/player/playerController.js';
 import { initNavigation, showModule, showLiveLanding, switchTab, hideMenu } from './renderer/ui/navigation.js';
 import { initInactivity, startInactivityTimers } from './renderer/ui/inactivity.js';
 import { initChannelList, renderList, syncMenuScroll } from './renderer/render/channelList.js';
 import { initGuide, renderGuide } from './renderer/render/guide.js';
 import { initFavoritesGrid, renderFavoritesGrid, syncGridPageToActiveChannel } from './renderer/render/favoritesGrid.js';
 import { initRenderAll, renderAll } from './renderer/render/renderAll.js';
-import { eventIconsList, getActiveVodGenres, mapIconToEmoji } from './renderer/filters/filterState.js';
+import { eventIconsList, mapIconToEmoji } from './renderer/filters/filterState.js';
 import { initFilterManager, populateDropdowns, matchesOnboardingLanguages, getFilteredChannelsList, syncFilterList, removeFilterFromChannel, startEditingFilter, removeSettingsFilter, autoCategorizeChannels } from './renderer/filters/filterManager.js';
-import { initVodContent, refreshVodContent, showVodDetails } from './renderer/vod/vodContent.js';
-import { initVodCache, warmupVodCache, scheduleVodCacheUpdate } from './renderer/vod/vodCache.js';
 import { hashPIN, verifyPIN, promptParentalPIN, isParentalTimeLocked } from './renderer/settings/parental.js';
 import { initEventAssigner, renderAssignerChannelsList, renderAssignerEvents, selectAssignerChannel, selectAssignerChannelMultiple } from './renderer/filters/filterAssigner.js';
 import { initIconPickers } from './renderer/utils/iconPicker.js';
@@ -48,7 +46,7 @@ import { checkValidity, updateEditLogo } from './renderer/ui/editPane.js';
 import { adjustVolume, toggleMute, updateVolumeUI } from './renderer/ui/volumeController.js';
 import { setSettingsFilterTab, setConnectivityTab, setChannelsTab } from './renderer/settings/settingsTabs.js';
 import { ensurePlayerCurtain, showPlayerCurtain, hidePlayerCurtain, updateWebviewPointerEvents, updateHudChannelFilters } from './renderer/ui/playerUI.js';
-import { syncCenterNavWidth, checkResolution, updateFullscreenButton, toggleAppFullscreen, handleResizeDimensions, updateVodGridDimensions, initVodGridResizeObserver, updatePlayerVideoBox } from './renderer/ui/layout.js';
+import { syncCenterNavWidth, checkResolution, updateFullscreenButton, toggleAppFullscreen, handleResizeDimensions, updatePlayerVideoBox } from './renderer/ui/layout.js';
 // sensors.js is dev-only: loaded dynamically in the dev block below (see import.meta.env.PROD gate)
 import { updateTriggersVisibility } from './renderer/ui/triggersVisibility.js';
 import { setupEventListeners } from './renderer/ui/eventListeners.js';
@@ -185,8 +183,6 @@ async function init() {
         updatePlayerActiveState,
         selectChannel,
         renderFavoritesGrid,
-        updateVodGridDimensions,
-        refreshVodContent,
         updateTriggersVisibility,
         updateWebviewPointerEvents,
         startInactivityTimers,
@@ -221,10 +217,6 @@ async function init() {
         matchesOnboardingLanguages,
         isParentalTimeLocked,
         selectChannel,
-        showVodDetails,
-        refreshVodContent,
-        getActiveVodGenres,
-        syncCustomSelect,
         getFilteredChannelsList
     });
 
@@ -251,22 +243,6 @@ async function init() {
         renderAssignerChannelsList
     });
 
-    // Initialize VOD Modules
-    initVodContent({
-        nativeApi,
-        scheduleVodCacheUpdate,
-        renderFavoritesGrid,
-        renderAll,
-        playVod
-    });
-
-    initVodCache({
-        timeouts,
-        saveAppState,
-        nativeApi,
-        renderFavoritesGrid
-    });
-
     // Initialize Event Assigner
     initEventAssigner();
 
@@ -274,9 +250,6 @@ async function init() {
     window.renderAll = renderAll;
     window.renderFavoritesGrid = renderFavoritesGrid;
     window.removeFilterFromChannel = removeFilterFromChannel;
-    window.refreshVodContent = refreshVodContent;
-    window.showVodDetails = showVodDetails;
-    window.warmupVodCache = warmupVodCache;
     window.isParentalTimeLocked = isParentalTimeLocked;
     window.promptParentalPIN = promptParentalPIN;
     window.initEventAssigner = initEventAssigner;
@@ -420,32 +393,6 @@ async function init() {
 
         saveAppState();
 
-        if (savedData.seriesGenres && savedData.seriesGenres.length > 0) {
-            state.seriesGenres = savedData.seriesGenres;
-        }
-        if (savedData.moviesGenres && savedData.moviesGenres.length > 0) {
-            state.moviesGenres = savedData.moviesGenres;
-        }
-        if (Array.isArray(savedData.vodFavorites)) {
-            state.vodFavorites = savedData.vodFavorites;
-        }
-        if (savedData.vodCache && typeof savedData.vodCache === 'object') {
-            state.vodCache = {
-                movies: {
-                    items: Array.isArray(savedData.vodCache.movies?.items) ? savedData.vodCache.movies.items : [],
-                    updatedAt: Number(savedData.vodCache.movies?.updatedAt) || 0
-                },
-                series: {
-                    items: Array.isArray(savedData.vodCache.series?.items) ? savedData.vodCache.series.items : [],
-                    updatedAt: Number(savedData.vodCache.series?.updatedAt) || 0
-                }
-            };
-            if (state.vodCache.movies.items.length) state.fetchedMovies = state.vodCache.movies.items.map(it => ({ ...it, type: 'movies' })).slice(0, 100);
-            if (state.vodCache.series.items.length) state.fetchedSeries = state.vodCache.series.items.map(it => ({ ...it, type: 'series' })).slice(0, 100);
-        }
-        if (savedData.tmdbCache && typeof savedData.tmdbCache === 'object') {
-            state.tmdbCache = savedData.tmdbCache;
-        }
         state.selectedWallpaper = normalizeWallpaperPath(savedData.selectedWallpaper || "assets/wallpapers/Planet.jpg");
         state.audioLevelerEnabled = savedData.audioLevelerEnabled !== undefined ? savedData.audioLevelerEnabled : false;
         state.hwAccelEnabled = savedData.hwAccelEnabled !== undefined ? savedData.hwAccelEnabled : true;
@@ -580,7 +527,7 @@ async function init() {
         
     }, 900);
 
-    showModule('home');
+    showModule('live');
 
     // Document error boundaries
     document.addEventListener('error', (event) => {
@@ -622,19 +569,11 @@ async function init() {
     checkResolution();
     updatePlayerActiveState();
 
-    setTimeout(() => {
-        warmupVodCache();
-    }, 250);
 }
 
 window.addEventListener('load', () => {
     checkResolution();
     syncCenterNavWidth();
-    initVodGridResizeObserver();
-    if (state.currentModule === 'movies' || state.currentModule === 'series') {
-        const dims = updateVodGridDimensions();
-        if (dims) state.VOD_ITEMS_PER_PAGE = dims.itemsPerPage;
-    }
     initCustomTooltips();
     if (window.lucide) window.lucide.createIcons();
     syncCenterNavWidth();

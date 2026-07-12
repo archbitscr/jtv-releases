@@ -41,21 +41,11 @@ export function hideMenu() {
 
 export function updateTopNavVisibility(moduleName) {
     const topBtnLive = document.getElementById('tnav-btn-live');
-    const topBtnSeries = document.getElementById('tnav-btn-series');
-    const topBtnMovies = document.getElementById('tnav-btn-movies');
     const topBtnSettings = document.getElementById('tnav-btn-settings');
-    
+
     if (topBtnLive) {
         topBtnLive.classList.remove('hidden');
         topBtnLive.classList.toggle('active', moduleName === 'live');
-    }
-    if (topBtnSeries) {
-        topBtnSeries.classList.remove('hidden');
-        topBtnSeries.classList.toggle('active', moduleName === 'series');
-    }
-    if (topBtnMovies) {
-        topBtnMovies.classList.remove('hidden');
-        topBtnMovies.classList.toggle('active', moduleName === 'movies');
     }
     if (topBtnSettings) {
         topBtnSettings.classList.remove('hidden');
@@ -95,76 +85,30 @@ export function showLiveLanding() {
 }
 
 export function showModule(moduleName) {
-    if (moduleName === 'live' || moduleName === 'series' || moduleName === 'movies') {
-        state.activeDashTab = moduleName === 'live' ? 'live' : moduleName;
+    // 'home' is now an alias for 'live'
+    if (moduleName === 'home') moduleName = 'live';
+
+    if (moduleName === 'live') {
+        state.activeDashTab = 'live';
     }
 
-    const vodControls = document.getElementById('vod-controls');
     const liveSearchContainer = document.getElementById('live-search-container');
     const dashboardFiltersEl = document.getElementById('dashboard-filters');
-    const favoritesGrid = document.getElementById('land-grid');
-    const gridDots = document.getElementById('land-dots');
-    const playerContainer = document.getElementById('player-container');
     const sourceSwitcher = document.getElementById('pbar');
     const topNavMenu = document.getElementById('tnav-menu');
-    
-    if (vodControls) vodControls.classList.add('hidden');
+
     if (liveSearchContainer) liveSearchContainer.classList.add('hidden');
     if (dashboardFiltersEl) dashboardFiltersEl.classList.add('hidden');
-
-    const isChannelPlaying = state.activeChannelId && !state.isVodPlaying;
-    const leavingVod = (state.currentModule === 'series' || state.currentModule === 'movies') && (moduleName !== 'series' && moduleName !== 'movies');
-
-    if (leavingVod && favoritesGrid) {
-        favoritesGrid.innerHTML = '';
-        if (gridDots) gridDots.innerHTML = '';
-    }
-
-    if (moduleName === 'series' || moduleName === 'movies') {
-        if (favoritesGrid) favoritesGrid.classList.add('vod-active');
-    } else {
-        if (favoritesGrid) favoritesGrid.classList.remove('vod-active');
-    }
 
     if (state.currentModule !== 'settings') {
         state.previousModule = state.currentModule;
     }
 
-    const enteringVod = moduleName === 'series' || moduleName === 'movies';
-
-    if (enteringVod && (isChannelPlaying || state.failoverInProgress)) {
-        // Save channel for restore when returning to Live (only if we had one)
-        if (state.activeChannelId) {
-            const activeChan = state.channels.find(c => String(c.id) === String(state.activeChannelId));
-            if (activeChan) {
-                state.lastTunedChannel = activeChan;
-                state.shouldRestoreTunedChannel = true;
-            }
-        }
-        // Cancel any active failover/autotuner cycle
-        if (state.failoverInProgress) {
-            resetFailoverState();
-            if (state.failoverTimeoutId) {
-                clearTimeout(state.failoverTimeoutId);
-                state.failoverTimeoutId = null;
-            }
-            state.failoverInProgress = false;
-            showNoSignalOverlay(false);
-        }
-        if (playerContainer) playerContainer.innerHTML = '';
-        resetAntiBlackScreen();
-        state.activeChannelId = null;
-        if (sourceSwitcher) sourceSwitcher.classList.add('hidden');
-        if (ext.applyWallpaper) ext.applyWallpaper(state.selectedWallpaper);
-        if (ext.updatePlayerActiveState) ext.updatePlayerActiveState();
-    }
-
-    if (moduleName === 'home' || moduleName === 'settings' || moduleName === 'series' || moduleName === 'movies') {
+    if (moduleName === 'settings') {
         if (sourceSwitcher) sourceSwitcher.classList.add('hidden');
     }
 
     state.currentModule = moduleName;
-    state.isVodPlaying = false;
     document.body.setAttribute('data-module', moduleName);
 
     const sectionTitle = document.getElementById('land-title');
@@ -172,21 +116,14 @@ export function showModule(moduleName) {
         if (moduleName === 'live') {
             sectionTitle.textContent = "Live TV";
             sectionTitle.classList.remove('hidden');
-        } else if (moduleName === 'series') {
-            sectionTitle.textContent = "Series";
-            sectionTitle.classList.remove('hidden');
-        } else if (moduleName === 'movies') {
-            sectionTitle.textContent = "Movies";
-            sectionTitle.classList.remove('hidden');
         } else {
             sectionTitle.classList.add('hidden');
         }
     }
 
-    document.getElementById('main-home').classList.add('hidden');
     document.getElementById('vod-library').classList.add('hidden');
     document.getElementById('settings-screen').classList.add('hidden');
-    
+
     document.querySelectorAll('.header-nav-btn').forEach(btn => btn.classList.remove('active'));
 
     updateTopNavVisibility(moduleName);
@@ -199,13 +136,7 @@ export function showModule(moduleName) {
         }
     }
 
-    if (moduleName === 'home') {
-        if (ext.applyWallpaper) ext.applyWallpaper(state.selectedWallpaper);
-        document.getElementById('main-home').classList.remove('hidden');
-        document.querySelector('.header-nav-btn[data-nav="home"]')?.classList.add('active');
-        state.isHomeActive = true;
-        document.title = "JTV";
-    } else if (moduleName === 'live') {
+    if (moduleName === 'live') {
         if (state.activeChannelId) {
             state.isHomeActive = false;
             if (sourceSwitcher) sourceSwitcher.classList.remove('hidden');
@@ -227,58 +158,10 @@ export function showModule(moduleName) {
             if (ext.renderFavoritesGrid) ext.renderFavoritesGrid();
             document.title = "JTV - Live TV";
         }
-    } else if (moduleName === 'series') {
-        document.getElementById('vod-library').classList.remove('hidden');
-        state.isHomeActive = true;
-        document.querySelector('.header-nav-btn[data-nav="series"]')?.classList.add('active');
-        hideMenu();
-        const vodSI = document.getElementById('vod-search-input');
-        if (vodSI) vodSI.placeholder = "Search series...";
-        state.vodFilterMode = "all";
-        state.selectedVodRating = "all";
-        state.selectedVodYear = "all";
-        state.vodPage = 0;
-        state.vodFavPage = 0;
-        state.vodSearchTerm = "";
-        state.selectedVodGenre = "All";
-        if (vodSI) vodSI.value = "";
-        
-        if (ext.updateVodGridDimensions) {
-            const dims = ext.updateVodGridDimensions();
-            if (dims) state.VOD_ITEMS_PER_PAGE = dims.itemsPerPage;
-        }
-        
-        if (ext.renderFavoritesGrid) ext.renderFavoritesGrid();
-        if (ext.refreshVodContent) ext.refreshVodContent();
-        document.title = "JTV - Series";
-    } else if (moduleName === 'movies') {
-        document.getElementById('vod-library').classList.remove('hidden');
-        state.isHomeActive = true;
-        document.querySelector('.header-nav-btn[data-nav="movies"]')?.classList.add('active');
-        hideMenu();
-        const vodSI2 = document.getElementById('vod-search-input');
-        if (vodSI2) vodSI2.placeholder = "Search movies...";
-        state.vodFilterMode = "all";
-        state.selectedVodRating = "all";
-        state.selectedVodYear = "all";
-        state.vodPage = 0;
-        state.vodFavPage = 0;
-        state.vodSearchTerm = "";
-        state.selectedVodGenre = "All";
-        if (vodSI2) vodSI2.value = "";
-        
-        if (ext.updateVodGridDimensions) {
-            const dims = ext.updateVodGridDimensions();
-            if (dims) state.VOD_ITEMS_PER_PAGE = dims.itemsPerPage;
-        }
-        
-        if (ext.renderFavoritesGrid) ext.renderFavoritesGrid();
-        if (ext.refreshVodContent) ext.refreshVodContent();
-        document.title = "JTV - Movies";
     } else if (moduleName === 'settings') {
         document.getElementById('settings-screen').classList.remove('hidden');
         document.querySelector('.header-nav-btn[data-nav="settings"]')?.classList.add('active');
-        
+
         document.querySelectorAll('.settings-tab-btn').forEach(b => b.classList.remove('active'));
         const generalTabBtn = document.querySelector('.settings-tab-btn[data-settings-tab="general"]');
         if (generalTabBtn) generalTabBtn.classList.add('active');
@@ -286,7 +169,7 @@ export function showModule(moduleName) {
         document.querySelectorAll('.settings-sect-pane').forEach(pane => {
             pane.classList.toggle('active', pane.id === 'settings-sect-general');
         });
-        
+
         document.title = "JTV - Settings";
     }
     if (ext.updateTriggersVisibility) ext.updateTriggersVisibility();

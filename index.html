@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: file:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https:; frame-src https:; media-src https: blob:; object-src 'none'; base-uri 'self'; form-action 'self';">
-    <title>JTV 2.3.9</title>
+    <title>JTV 2.3.11</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Roboto:wght@500&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=63">
+    <link rel="stylesheet" href="./style.css?v=64">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen -->
@@ -39,36 +39,6 @@
     <div id="app">
         <!-- App Wallpaper Layer -->
         <div id="app-wallpaper" class="app-wallpaper"></div>
-
-        <!-- App Home Screen Landing Page -->
-        <div id="main-home" class="main-home">
-            <div class="home-cards-container">
-                <div class="home-card" id="card-live-tv">
-                    <div class="home-card-header">
-                        <div class="card-icon-wrapper"><i data-lucide="tv"></i></div>
-                        <h2>Live TV</h2>
-                    </div>
-                </div>
-                <div class="home-card" id="card-series">
-                    <div class="home-card-header">
-                        <div class="card-icon-wrapper"><i data-lucide="clapperboard"></i></div>
-                        <h2>Series</h2>
-                    </div>
-                </div>
-                <div class="home-card" id="card-movies">
-                    <div class="home-card-header">
-                        <div class="card-icon-wrapper"><i data-lucide="film"></i></div>
-                        <h2>Movies</h2>
-                    </div>
-                </div>
-                <div class="home-card" id="card-settings">
-                    <div class="home-card-header">
-                        <div class="card-icon-wrapper"><i data-lucide="settings"></i></div>
-                        <h2>Settings</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- LiveTV Module -->
         <main id="live-tv">
@@ -276,9 +246,7 @@
         <!-- Top Navigation Bar (outside live-tv to avoid stacking context burial) -->
         <div id="tnav-menu" class="tnav-menu glass-panel hidden">
             <div class="tnav-buttons">
-                <button class="tnav-btn" data-nav="live" id="tnav-btn-live"><i data-lucide="tv"></i> Live TV</button>
-                <button class="tnav-btn" data-nav="series" id="tnav-btn-series"><i data-lucide="clapperboard"></i> Series</button>
-                <button class="tnav-btn" data-nav="movies" id="tnav-btn-movies"><i data-lucide="film"></i> Movies</button>
+                <button class="tnav-btn" data-nav="live" id="tnav-btn-live"><i data-lucide="home"></i> Home</button>
                 <button class="tnav-btn" data-nav="settings" id="tnav-btn-settings"><i data-lucide="settings"></i> Settings</button>
             </div>
         </div>
@@ -300,32 +268,11 @@
                             </div>
                         </div>
 
-                        <div id="vod-controls" class="vod-controls hidden">
-                            <div class="search-container">
-                                <i data-lucide="search"></i>
-                                <input type="text" id="vod-search-input" placeholder="Search movies and series...">
-                                <button id="clear-vod-search" class="search-clear-btn hidden" title="Clear"><i data-lucide="x"></i></button>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="land-exit-block">
                         <button id="close-home" class="land-exit-btn" title="Exit">Exit</button>
                     </div>
-                </div>
-
-                <div id="vod-filter-row" class="land-filter-row hidden">
-                    <button id="vod-filter-all" class="land-filter-btn vod-filter-btn active" type="button">All</button>
-                    <button id="vod-filter-favs" class="land-filter-btn vod-filter-btn" type="button">Favorites</button>
-                    <select id="vod-genre-select" class="vod-filter-select" aria-label="Genre">
-                        <option value="All">Genre</option>
-                    </select>
-                    <select id="vod-rating-select" class="vod-filter-select" aria-label="Rating">
-                        <option value="all">Rating</option>
-                    </select>
-                    <select id="vod-year-select" class="vod-filter-select" aria-label="Year">
-                        <option value="all">Year</option>
-                    </select>
                 </div>
 
                 <div id="dashboard-filters" class="land-filter-row">
@@ -367,106 +314,6 @@
                 </div>
             </div>
 
-            <!-- VOD Detail Page -->
-            <div id="vod-detail-page" class="vdp hidden">
-                <!-- Header bar with back button + VOD filters -->
-                <div class="vdp-header">
-                    <button id="vdp-back-btn" class="vdp-back-btn"><i data-lucide="arrow-left"></i> Back</button>
-                    <div class="vdp-header-filters">
-                        <button id="vdp-filter-all" class="land-filter-btn vdp-filter-btn active" type="button">All</button>
-                        <button id="vdp-filter-favs" class="land-filter-btn vdp-filter-btn" type="button">Favorites</button>
-                        <select id="vdp-genre-select" class="vod-filter-select" aria-label="Genre">
-                            <option value="All">Genre</option>
-                        </select>
-                        <select id="vdp-rating-select" class="vod-filter-select" aria-label="Rating">
-                            <option value="all">Rating</option>
-                        </select>
-                        <select id="vdp-year-select" class="vod-filter-select" aria-label="Year">
-                            <option value="all">Year</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Hero backdrop -->
-                <div class="vdp-hero" id="vdp-hero">
-                    <div class="vdp-hero-overlay"></div>
-                    <button id="vdp-play-hero-btn" class="vdp-play-hero-btn" title="Watch Now">
-                        <i data-lucide="play"></i>
-                    </button>
-                </div>
-
-                <!-- Body -->
-                <div class="vdp-body">
-                    <!-- Poster -->
-                    <div class="vdp-poster-col">
-                        <div class="vdp-poster-wrap">
-                            <div id="vdp-poster-placeholder" class="vdp-poster-ph"><div class="loader-spinner"></div></div>
-                            <img id="vdp-poster-img" src="" alt="Poster" class="hidden">
-                        </div>
-                    </div>
-
-                    <!-- Main info -->
-                    <div class="vdp-info-col">
-                        <div class="vdp-title-row">
-                            <h1 id="vdp-title" class="vdp-title">—</h1>
-                        </div>
-                        <p id="vdp-tagline" class="vdp-tagline hidden"></p>
-
-                        <!-- Synopsis above the metadata grid -->
-                        <p id="vdp-overview" class="vdp-overview">Loading…</p>
-
-                        <!-- Two-column metadata grid -->
-                        <div class="vdp-meta-grid">
-                            <div class="vdp-meta-left">
-                                <div class="vdp-field" id="vdp-genre-wrap">
-                                    <span class="vdp-field-label">Genre:</span>
-                                    <span id="vdp-genres" class="vdp-inline-links">—</span>
-                                </div>
-                                <div class="vdp-field" id="vdp-cast-wrap" style="display:none">
-                                    <span class="vdp-field-label">Cast:</span>
-                                    <span id="vdp-cast" class="vdp-inline-links"></span>
-                                </div>
-                            </div>
-                            <div class="vdp-meta-right">
-                                <div class="vdp-field" id="vdp-country-wrap" style="display:none">
-                                    <span class="vdp-field-label">Country:</span>
-                                    <span id="vdp-country" class="vdp-inline-links"></span>
-                                </div>
-                                <div class="vdp-field" id="vdp-runtime-wrap" style="display:none">
-                                    <span class="vdp-field-label">Runtime:</span>
-                                    <span id="vdp-runtime" class="vdp-value"></span>
-                                </div>
-                                <div class="vdp-field">
-                                    <span class="vdp-field-label">Quality:</span>
-                                    <span id="vdp-quality" class="vdp-badge-quality"></span>
-                                </div>
-                                <div class="vdp-field">
-                                    <span class="vdp-field-label">Release:</span>
-                                    <span id="vdp-year" class="vdp-inline-links"></span>
-                                </div>
-                                <div class="vdp-field" id="vdp-imdb-field" style="display:none">
-                                    <span class="vdp-imdb-badge">IMDb</span>
-                                    <span id="vdp-imdb-score" class="vdp-imdb-number"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Rating column (top-right): big score badge + 10 stars -->
-                    <div class="vdp-rating-col" id="vdp-rating-col" style="display:none">
-                        <div class="vdp-rating-inner">
-                            <div class="vdp-rating-score" id="vdp-rating-score">—</div>
-                            <div class="vdp-stars" id="vdp-stars"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Keywords: full-width gray band below the 3-col body -->
-                <div class="vdp-keywords-band" id="vdp-keywords-wrap" style="display:none">
-                    <span class="vdp-field-label">Keyword:</span>
-                    <span id="vdp-keywords" class="vdp-keywords"></span>
-                </div>
-            </div>
         </div> <!-- closes #vod-library -->
 
         <!-- Hover Triggers — after vod-library so #vod-library ~ #trigger-* selector works;
@@ -494,7 +341,7 @@
                     </div>
                     <div class="settings-sidebar-footer">
                         <div class="settings-version-info">
-                            <div>JTV Version 2.3.9</div>
+                            <div>JTV Version 2.3.11</div>
                             <a href="https://archbits.xyz" class="external-link">2026 ARCHBITS.xyz</a>
                         </div>
                     </div>
@@ -723,8 +570,7 @@
                         <nav class="settings-subnav" aria-label="Filters by section">
                             <button class="settings-subnav-btn active" data-filter-type="asignacion"><i data-lucide="tag"></i> Assignment</button>
                             <button class="settings-subnav-btn" data-filter-type="tv"><i data-lucide="tv"></i> Live</button>
-                            <button class="settings-subnav-btn" data-filter-type="series" data-dev="true"><i data-lucide="clapperboard"></i> Series</button>
-                            <button class="settings-subnav-btn" data-filter-type="movies" data-dev="true"><i data-lucide="film"></i> Movies</button>
+
                         </nav>
                         
                         <!-- Subtab Content: Live TV (Channels Live) -->
@@ -787,58 +633,6 @@
                                         <button id="add-event-btn" class="filter-add-submit-btn" type="button" title="Add Filter"><i data-lucide="plus"></i></button>
                                     </div>
                                     <div class="filter-group-list scroll-panel" id="list-filter-events">
-                                        <!-- Populated dynamically -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Subtab Content: Series (dev-only) -->
-                        <div id="filters-content-series" class="filters-subsect-pane" data-dev="true">
-                            <div class="filters-groups-container">
-                                <div class="filter-group-card full-width-card" id="group-card-series">
-                                    <div class="filter-group-header">
-                                        <h4>Series Genres</h4>
-                                    </div>
-                                    <div class="filter-group-add-form">
-                                        <div class="filter-icon-picker-wrapper">
-                                            <button id="series-icon-select-btn" class="filter-icon-select-btn" type="button" title="Select Icon">
-                                                <i data-lucide="tag"></i>
-                                            </button>
-                                        </div>
-                                        <div class="filter-input-wrapper">
-                                            <input type="text" id="add-series-input" class="settings-filter-input" placeholder="New series genre...">
-                                            <button id="clear-series-input" class="input-clear-btn hidden" type="button" title="Clear"><i data-lucide="x"></i></button>
-                                        </div>
-                                        <button id="add-series-btn" class="filter-add-submit-btn" type="button" title="Add Filter"><i data-lucide="plus"></i></button>
-                                    </div>
-                                    <div class="filter-group-list scroll-panel" id="list-filter-series">
-                                        <!-- Populated dynamically -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Subtab Content: Movies (dev-only) -->
-                        <div id="filters-content-movies" class="filters-subsect-pane" data-dev="true">
-                            <div class="filters-groups-container">
-                                <div class="filter-group-card full-width-card" id="group-card-movies">
-                                    <div class="filter-group-header">
-                                        <h4>Movie Genres</h4>
-                                    </div>
-                                    <div class="filter-group-add-form">
-                                        <div class="filter-icon-picker-wrapper">
-                                            <button id="movies-icon-select-btn" class="filter-icon-select-btn" type="button" title="Select Icon">
-                                                <i data-lucide="tag"></i>
-                                            </button>
-                                        </div>
-                                        <div class="filter-input-wrapper">
-                                            <input type="text" id="add-movies-input" class="settings-filter-input" placeholder="New movie genre...">
-                                            <button id="clear-movies-input" class="input-clear-btn hidden" type="button" title="Clear"><i data-lucide="x"></i></button>
-                                        </div>
-                                        <button id="add-movies-btn" class="filter-add-submit-btn" type="button" title="Add Filter"><i data-lucide="plus"></i></button>
-                                    </div>
-                                    <div class="filter-group-list scroll-panel" id="list-filter-movies">
                                         <!-- Populated dynamically -->
                                     </div>
                                 </div>
