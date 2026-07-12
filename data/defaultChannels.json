@@ -384,7 +384,7 @@
     "id": "60",
     "name": "Sky Sports F1 UK",
     "path": "watch.php?id=60",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -1122,7 +1122,7 @@
     "id": "131",
     "name": "Telemundo",
     "path": "watch.php?id=131",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 2997.471,
     "categories": [
       "all",
@@ -1965,7 +1965,7 @@
     "id": "285",
     "name": "Discovery Velocity CA",
     "path": "watch.php?id=285",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -1976,7 +1976,7 @@
     "id": "286",
     "name": "YTV CA",
     "path": "watch.php?id=286",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 64.14,
     "categories": [
       "all",
@@ -2064,7 +2064,7 @@
     "id": "293",
     "name": "Reelz Channel",
     "path": "watch.php?id=293",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2125,7 +2125,7 @@
     "id": "298",
     "name": "FXX USA",
     "path": "watch.php?id=298",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2180,7 +2180,7 @@
     "id": "303",
     "name": "AMC USA",
     "path": "watch.php?id=303",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 77.453,
     "categories": [
       "all",
@@ -2191,7 +2191,7 @@
     "id": "304",
     "name": "Animal Planet",
     "path": "watch.php?id=304",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 68.197,
     "categories": [
       "all",
@@ -2293,7 +2293,7 @@
     "id": "313",
     "name": "Discovery Channel",
     "path": "watch.php?id=313",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2340,7 +2340,7 @@
     "id": "317",
     "name": "FX USA",
     "path": "watch.php?id=317",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2384,7 +2384,7 @@
     "id": "321",
     "name": "HBO USA",
     "path": "watch.php?id=321",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2463,7 +2463,7 @@
     "id": "328",
     "name": "National Geographic (NGC)",
     "path": "watch.php?id=328",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2524,7 +2524,7 @@
     "id": "333",
     "name": "Showtime USA",
     "path": "watch.php?id=333",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2536,7 +2536,7 @@
     "id": "334",
     "name": "Paramount Network",
     "path": "watch.php?id=334",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2561,7 +2561,7 @@
     "id": "336",
     "name": "TBS USA",
     "path": "watch.php?id=336",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2572,7 +2572,7 @@
     "id": "337",
     "name": "TLC",
     "path": "watch.php?id=337",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2585,7 +2585,7 @@
     "id": "338",
     "name": "TNT USA",
     "path": "watch.php?id=338",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2597,7 +2597,7 @@
     "id": "339",
     "name": "Cartoon Network",
     "path": "watch.php?id=339",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 1495.225,
     "categories": [
       "all",
@@ -2610,7 +2610,7 @@
     "id": "340",
     "name": "Discovery Travel",
     "path": "watch.php?id=340",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2625,7 +2625,7 @@
     "id": "341",
     "name": "TruTV USA",
     "path": "watch.php?id=341",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -3002,7 +3002,7 @@
     "id": "373",
     "name": "SYFY USA",
     "path": "watch.php?id=373",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -3014,7 +3014,7 @@
     "id": "374",
     "name": "Cinemax USA",
     "path": "watch.php?id=374",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 35.94,
     "categories": [
       "all",
@@ -3095,7 +3095,7 @@
     "id": "381",
     "name": "FX Movie Channel",
     "path": "watch.php?id=381",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -3130,7 +3130,7 @@
     "id": "384",
     "name": "The Food Network",
     "path": "watch.php?id=384",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -4929,7 +4929,7 @@
     "id": "537",
     "name": "DAZN F1 ES",
     "path": "watch.php?id=537",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 132.071,
     "categories": [
       "all",
@@ -5138,7 +5138,7 @@
     "id": "555",
     "name": "Racing Tv UK",
     "path": "watch.php?id=555",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -5759,7 +5759,7 @@
     "id": "607",
     "name": "Rally Tv",
     "path": "watch.php?id=607",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6228,7 +6228,7 @@
     "id": "646",
     "name": "Racer TV USA",
     "path": "watch.php?id=646",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6286,7 +6286,7 @@
     "id": "651",
     "name": "Destination America",
     "path": "watch.php?id=651",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6331,7 +6331,7 @@
     "id": "655",
     "name": "WETV USA",
     "path": "watch.php?id=655",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6377,7 +6377,7 @@
     "id": "659",
     "name": "VICE TV",
     "path": "watch.php?id=659",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6403,7 +6403,7 @@
     "id": "661",
     "name": "Discovery Turbo",
     "path": "watch.php?id=661",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6598,7 +6598,7 @@
     "id": "677",
     "name": "Sky Cinema Action UK",
     "path": "watch.php?id=677",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6611,7 +6611,7 @@
     "id": "678",
     "name": "Sky Cinema Comedy UK",
     "path": "watch.php?id=678",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6650,7 +6650,7 @@
     "id": "681",
     "name": "Sky Cinema Sci-Fi Horror UK",
     "path": "watch.php?id=681",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6711,7 +6711,7 @@
     "id": "686",
     "name": "Sky History",
     "path": "watch.php?id=686",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6746,7 +6746,7 @@
     "id": "689",
     "name": "HBO2 USA",
     "path": "watch.php?id=689",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6758,7 +6758,7 @@
     "id": "690",
     "name": "HBO Comedy USA",
     "path": "watch.php?id=690",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6853,7 +6853,7 @@
     "id": "698",
     "name": "TMC Channel USA",
     "path": "watch.php?id=698",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -7926,7 +7926,7 @@
     "id": "791",
     "name": "MGM+ USA / Epix",
     "path": "watch.php?id=791",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 89.398,
     "categories": [
       "all",
@@ -7938,7 +7938,7 @@
     "id": "792",
     "name": "Showtime 2 USA (SHO2) USA",
     "path": "watch.php?id=792",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -7950,7 +7950,7 @@
     "id": "793",
     "name": "Showtime Showcase USA",
     "path": "watch.php?id=793",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -8587,7 +8587,7 @@
     "id": "848",
     "name": "Outdoor Channel USA",
     "path": "watch.php?id=848",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
@@ -10055,7 +10055,7 @@
     "id": "975",
     "name": "Starz Encore",
     "path": "watch.php?id=975",
-    "favorite": true,
+    "favorite": false,
     "watchTime": 0,
     "categories": [
       "all",
