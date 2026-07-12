@@ -404,10 +404,6 @@
 // ─────────────────────────────────────────────────────────────────────────────
 const SECTIONS = [
   {
-    id: 'home', label: 'Home',
-    components: [{ id: 'home', label: '.home-*', populated: true }]
-  },
-  {
     id: 'livetv', label: 'Live TV',
     components: [
       { id: 'pbar',   label: '.pbar-*',   populated: true },
@@ -417,10 +413,6 @@ const SECTIONS = [
       { id: 'fbar',   label: '.fbar-*',   populated: true },
       { id: 'player', label: '.player-*', populated: false },
     ]
-  },
-  {
-    id: 'vod', label: 'VOD',
-    components: [{ id: 'vod', label: '.vod-*', populated: false }]
   },
   {
     id: 'settings', label: 'Settings',
@@ -1010,43 +1002,6 @@ const SIDE_GROUPS = [
 // ─────────────────────────────────────────────────────────────────────────────
 // HOME DATA
 // ─────────────────────────────────────────────────────────────────────────────
-const HOME_GROUPS = [
-  {
-    selector: '.home-cards-container', comment: 'Cards container',
-    template: (f) => `  gap: ${f('gap')};`,
-    items: [{ id: 'gap', label: 'gap', base: 24, min: 14, max: 57, unit: 'px' }]
-  },
-  {
-    selector: '.home-card', comment: 'Channel card',
-    template: (f) => [`  flex: 0 0 ${f('size')};`, `  width: ${f('size')};`, `  border-radius: ${f('radius')};`].join('\n'),
-    items: [
-      { id: 'size',   label: 'width',         base: 180, min: 107, max: 427, unit: 'px' },
-      { id: 'radius', label: 'border-radius', base: 20,  min: 13,  max: 51,  unit: 'px' },
-    ]
-  },
-  {
-    selector: '.home-card-header', comment: 'Card header overlay',
-    template: (f) => [
-      `  top: ${f('top')};`,
-      `  left: ${f('side')}; right: ${f('side')};`,
-      `  padding: ${f('padV')} ${f('padH')};`,
-      `  gap: ${f('gap')};`,
-    ].join('\n'),
-    items: [
-      { id: 'top',  label: 'top',        base: 100, min: 59, max: 237, unit: 'px' },
-      { id: 'side', label: 'left / right', base: 16, min: 10, max: 38,  unit: 'px' },
-      { id: 'padV', label: 'padding V',   base: 6,  min: 4,  max: 15,  unit: 'px' },
-      { id: 'padH', label: 'padding H',   base: 10, min: 7,  max: 26,  unit: 'px' },
-      { id: 'gap',  label: 'gap',         base: 8,  min: 5,  max: 20,  unit: 'px' },
-    ]
-  },
-  {
-    selector: '.home-card h2', comment: 'Card title',
-    template: (f) => `  font-size: ${f('fontSize')};`,
-    items: [{ id: 'fontSize', label: 'font-size', base: 19, min: 11, max: 45, unit: 'px' }]
-  },
-];
-
 // ─────────────────────────────────────────────────────────────────────────────
 // LAND DATA
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1702,7 +1657,7 @@ const MODAL_GROUPS = [
 const COMPONENT_DATA = {
   pbar: PBAR_GROUPS, tnav: TNAV_GROUPS, side: SIDE_GROUPS,
   corner: CORNER_GROUPS, volosd: VOLOSD_GROUPS,
-  home: HOME_GROUPS, land: LAND_GROUPS, fbar: FBAR_GROUPS,
+  land: LAND_GROUPS, fbar: FBAR_GROUPS,
   settings: SETTINGS_GROUPS, tooltip: TOOLTIP_GROUPS,
   search: SEARCH_GROUPS, modal: MODAL_GROUPS,
 };
