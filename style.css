@@ -5958,33 +5958,29 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
 }
 
 .donate-qr-img {
-    width: auto;
+    width: 160px;
     height: auto;
     border-radius: clamp(5px, 0.74vw, 12px);
-    cursor: pointer;
-    opacity: 0.9;
-    transition: opacity 0.2s ease, box-shadow 0.2s ease;
-}
-
-.donate-qr-img:hover {
-    opacity: 1;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
 }
 
 .paypal-donate-btn {
-    max-width: 160px;
+    width: 160px;
     height: 40px;
     padding: 0 !important;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-image: url('/assets/paypal-donate-btn.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.paypal-donate-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 .paypal-donate-img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-    display: block;
+    display: none;
 }
 
