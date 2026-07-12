@@ -118,6 +118,12 @@ export function setupEventListeners() {
         };
     }
 
+    // 4. Donate PayPal button
+    const donatePaypalBtn = document.getElementById('donate-paypal-btn');
+    if (donatePaypalBtn) {
+        donatePaypalBtn.onclick = () => nativeApi.openExternal('https://paypal.me/ARCHBITS');
+    }
+
     // 6. Unified filter dropdowns (single set shared by sidebar and landing)
     ['filter-select-language', 'filter-select-genre', 'filter-select-event'].forEach(id => {
         const select = document.getElementById(id);

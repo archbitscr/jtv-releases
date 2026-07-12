@@ -317,22 +317,6 @@ async function init() {
         return; // Halt app boot — license check pending implementation
     }
 
-    // Update trial status in settings pane
-    const trialStatusEl = document.getElementById('account-trial-status');
-    if (trialStatusEl) {
-        if (isDevMode) {
-            trialStatusEl.innerText = 'Developer Mode';
-        } else if (trialCheck.firstTime) {
-            trialStatusEl.innerText = 'Trial period active (3 days remaining).';
-        } else {
-            const totalHoursLeft = Math.max(0, (3 - (trialCheck.elapsedDays || 0)) * 24);
-            const d = Math.floor(totalHoursLeft / 24);
-            const h = Math.round(totalHoursLeft % 24);
-            const timeStr = d >= 1 ? `${d} days remaining.` : `${h} hours remaining.`;
-            trialStatusEl.innerText = `Trial period active. ${timeStr}`;
-        }
-    }
-
     // Progress bar animations
     setTimeout(() => {
         if (loaderProgressBar) loaderProgressBar.style.width = '50%';
