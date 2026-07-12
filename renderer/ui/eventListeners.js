@@ -118,11 +118,12 @@ export function setupEventListeners() {
         };
     }
 
-    // 4. Donate PayPal button
+    // 4. Donate PayPal button + QR
+    const PAYPAL_URL = 'https://www.paypal.com/donate/?hosted_button_id=GWPABYM5EFM8U';
     const donatePaypalBtn = document.getElementById('donate-paypal-btn');
-    if (donatePaypalBtn) {
-        donatePaypalBtn.onclick = () => nativeApi.openExternal('https://paypal.me/ARCHBITS');
-    }
+    if (donatePaypalBtn) donatePaypalBtn.onclick = () => nativeApi.openExternal(PAYPAL_URL);
+    const qrPaypalImg = document.getElementById('qr-paypal-img');
+    if (qrPaypalImg) qrPaypalImg.onclick = () => nativeApi.openExternal(PAYPAL_URL);
 
     // 6. Unified filter dropdowns (single set shared by sidebar and landing)
     ['filter-select-language', 'filter-select-genre', 'filter-select-event'].forEach(id => {
