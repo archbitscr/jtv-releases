@@ -215,7 +215,7 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ### ⏳ Dificultad Media
 
-#### 0. Tarea 47: Eliminar módulo VOD — App 100% Live TV ⏳ (PENDIENTE)
+#### 0. Tarea 47: Eliminar módulo VOD — App 100% Live TV ✅ (v2.3.11 — 2026-07-12)
 
 *   **Versión objetivo:** v2.3.11
 *   **Contexto:** Se decide simplificar la app eliminando completamente el módulo VOD (Movies + Series + VOD Detail Page) y concentrando la experiencia en Live TV. Esta tarea vuelve obsoletas las Tareas 43, 46 y los sub-pendientes VOD de Tarea 37 (meseta clamp `.vod-*`, `.vdp-*`).
