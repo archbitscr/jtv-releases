@@ -3,7 +3,9 @@ import IPC from '../../shared/ipcChannels.json' with { type: 'json' };
 
 const ALLOWED_EXTERNAL_HOSTS = new Set([
   'archbits.xyz',
-  'www.archbits.xyz'
+  'www.archbits.xyz',
+  'paypal.com',
+  'www.paypal.com'
 ]);
 
 export function registerShellIpc({ ipcMain }) {
