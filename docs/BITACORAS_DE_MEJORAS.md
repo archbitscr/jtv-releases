@@ -2,7 +2,7 @@
 
 Este documento unifica de forma cronológica todas las mejoras, características de usabilidad, correcciones de errores, refactorizaciones y planes de seguridad implementados en el proyecto JTV.app, así como la hoja de ruta de tareas pendientes de desarrollo solicitadas por el usuario.
 
-**Política de versionado (desde v2.3.9):** cada tarea de la hoja de ruta que se completa incluye como subtarea un bump del patch version (`package.json`, `package-lock.json`, `<title>` de `index.html`, footer "JTV Version" en Settings) y build de verificación. La versión asignada a cada tarea se anota en su entrada al completarse — no se reserva de antemano, ya que el orden de ejecución lo decide el usuario. Última versión: **v2.3.10** (Tarea 37). Próxima disponible: **v2.3.11**.
+**Política de versionado (desde v2.3.9):** cada tarea de la hoja de ruta que se completa incluye como subtarea un bump del patch version (`package.json`, `package-lock.json`, `<title>` de `index.html`, footer "JTV Version" en Settings) y build de verificación. La versión asignada a cada tarea se anota en su entrada al completarse — no se reserva de antemano, ya que el orden de ejecución lo decide el usuario. Última versión: **v2.3.12** (Tarea 48). Próxima disponible: **v2.3.13**.
 
 ---
 
@@ -214,6 +214,20 @@ Este documento unifica de forma cronológica todas las mejoras, características
 ---
 
 ### ⏳ Dificultad Media
+
+#### 0. Tarea 48: Eliminar sección Parental Controls ✅ (v2.3.12 — 2026-07-12)
+
+*   **Versión objetivo:** v2.3.12
+*   **Contexto:** Se elimina completamente la sección de Parental Controls de la app: pestaña en Settings, toda la UI (PIN, Kids Mode, Time Schedule, Allowed Channels), el modal de verificación PIN, el módulo JS `renderer/settings/parental.js`, y toda la lógica de filtrado basada en restricciones parentales. La app ya no requiere esta funcionalidad.
+*   **Cambios:**
+    *   ✅ `index.html` — Eliminado botón de pestaña "Parental", sección `#settings-sect-parental` completa (~147 líneas), modal `#parental-pin-modal`.
+    *   ✅ `renderer/settings/parental.js` — Archivo eliminado (`hashPIN`, `verifyPIN`, `promptParentalPIN`, `isParentalTimeLocked`).
+    *   ✅ `renderer.js` — Eliminado import de parental, `isParentalTimeLocked` de `initFilterManager`/`initFavoritesGrid`, `window.isParentalTimeLocked`/`window.promptParentalPIN`.
+    *   ✅ `renderer/ui/eventListeners.js` — Eliminado import, bloques 4 y 5 (PIN modal + controls UI, ~430 líneas), `targetTab === 'parental'` branches, `isParentalOpen` keyboard guard, `renderParentalChannelsList`, listener `parental-channels-search`, entrada en scroll selectors.
+    *   ✅ `renderer/ui/playerUI.js` — Eliminado `parentalOpen` de `updateWebviewPointerEvents` y MutationObserver targets.
+    *   ✅ `renderer/filters/filterManager.js` — Eliminadas verificaciones de `jtv_parental_adult_content` y `isParentalTimeLocked` del filtro de canales.
+    *   ✅ `renderer/utils/tooltips.js` — Eliminados IDs de botones parental de `SUPPRESS_IDS`, eliminado `#settings-sect-parental` del selector de inputs.
+    *   ✅ `style.css` — Eliminados todos los bloques `.parental-*`, `#settings-sect-parental`, `#parental-*`, `.modal-parental-*` (~200 líneas). Refactorizado `.danger-btn` para que tenga su propio bloque base.
 
 #### 0. Tarea 47: Eliminar módulo VOD — App 100% Live TV ✅ (v2.3.11 — 2026-07-12)
 

@@ -31,7 +31,6 @@ import { initFavoritesGrid, renderFavoritesGrid, syncGridPageToActiveChannel } f
 import { initRenderAll, renderAll } from './renderer/render/renderAll.js';
 import { eventIconsList, mapIconToEmoji } from './renderer/filters/filterState.js';
 import { initFilterManager, populateDropdowns, matchesOnboardingLanguages, getFilteredChannelsList, syncFilterList, removeFilterFromChannel, startEditingFilter, removeSettingsFilter, autoCategorizeChannels } from './renderer/filters/filterManager.js';
-import { hashPIN, verifyPIN, promptParentalPIN, isParentalTimeLocked } from './renderer/settings/parental.js';
 import { initEventAssigner, renderAssignerChannelsList, renderAssignerEvents, selectAssignerChannel, selectAssignerChannelMultiple } from './renderer/filters/filterAssigner.js';
 import { initIconPickers } from './renderer/utils/iconPicker.js';
 import { initDashCustomSelects, syncCustomSelect } from './renderer/utils/customSelect.js';
@@ -146,7 +145,6 @@ async function init() {
     // Initialize filter manager dependencies
     initFilterManager({
         getActiveEpg,
-        isParentalTimeLocked,
         renderAll,
         saveAppState,
         initIconPickers,
@@ -215,7 +213,6 @@ async function init() {
         saveAppState,
         getActiveEpg,
         matchesOnboardingLanguages,
-        isParentalTimeLocked,
         selectChannel,
         getFilteredChannelsList
     });
@@ -250,8 +247,6 @@ async function init() {
     window.renderAll = renderAll;
     window.renderFavoritesGrid = renderFavoritesGrid;
     window.removeFilterFromChannel = removeFilterFromChannel;
-    window.isParentalTimeLocked = isParentalTimeLocked;
-    window.promptParentalPIN = promptParentalPIN;
     window.initEventAssigner = initEventAssigner;
     window.renderAssignerEvents = renderAssignerEvents;
     window.renderAssignerChannelsList = renderAssignerChannelsList;

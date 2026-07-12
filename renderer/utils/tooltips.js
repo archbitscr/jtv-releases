@@ -1,10 +1,6 @@
 import { state } from '../state/appState.js';
 
 const SUPPRESS_IDS = new Set([
-    'parental-pin-cancel-btn', 'parental-pin-submit-btn',
-    'parental-save-pin-btn', 'parental-cancel-pin-btn',
-    'parental-delete-pin-btn', 'parental-change-pin-btn',
-    'parental-pin-input', 'parental-new-pin-1', 'parental-new-pin-2',
     'open-devtools-btn',
     'factory-reset-btn', 'sync-channels-btn', 'apply-domain-btn',
     'crud-save-btn', 'crud-delete-btn', 'crud-logo-delete-btn', 'crud-logo-upload-btn',
@@ -25,7 +21,7 @@ function shouldSuppressTooltip(el) {
     // Sidebar All/Favorites tabs
     if (className.includes('side-tab-btn') && el.closest('.channel-tabs')) return true;
     // Inputs inside CRUD or connectivity sections
-    if (el.tagName === 'INPUT' && el.closest('#settings-sect-developer, #settings-sect-connectivity, #settings-sect-parental')) return true;
+    if (el.tagName === 'INPUT' && el.closest('#settings-sect-developer, #settings-sect-connectivity')) return true;
     return false;
 }
 

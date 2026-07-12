@@ -28,9 +28,8 @@ export function updateWebviewPointerEvents() {
     if (!webview) return;
 
     const settingsOpen = !document.getElementById('settings-screen').classList.contains('hidden');
-    const parentalOpen = !document.getElementById('parental-pin-modal').classList.contains('hidden');
     const noSignalOpen = !document.getElementById('no-signal-overlay').classList.contains('hidden');
-    if (settingsOpen || parentalOpen || noSignalOpen) {
+    if (settingsOpen || noSignalOpen) {
         webview.style.pointerEvents = 'none';
     } else {
         webview.style.pointerEvents = 'auto';
@@ -40,7 +39,6 @@ export function updateWebviewPointerEvents() {
 export function initWebviewPointerEventsObserver() {
     const targets = [
         'settings-screen',
-        'parental-pin-modal',
         'no-signal-overlay'
     ];
     

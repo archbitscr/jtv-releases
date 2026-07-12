@@ -2716,132 +2716,6 @@ body:not(.dev-mode) .dev-indicator {
     display: block;
 }
 
-/* Parental section fills available height so the Allowed Channels list
-   can grow to use the full page instead of a fixed 250px box.
-   The flex chain is: .settings-main-content (flex col) → #settings-sect-parental
-   (flex col, flex:1) → .parental-tab-pane (flex col, flex:1) → content. */
-#settings-sect-parental.active {
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-    flex: 1;
-}
-
-#settings-sect-parental .parental-tab-pane {
-    flex: 1 1 auto;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-/* The allowed-channels tab scrolls its channel list, not the whole pane.
-   Pack children at the top; only the channel list grows to fill height. */
-#parental-tab-allowed .parental-allowed-item {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: clamp(7px, 1.11vw, 28px);
-    flex: 1;
-    min-height: 0;
-    padding: 0;
-    justify-content: flex-start;
-}
-
-/* Description must not grow vertically */
-#parental-tab-allowed .parental-allowed-item .setting-item-info {
-    flex: 0 0 auto;
-}
-
-#parental-channels-search {
-    width: 100%;
-    max-width: clamp(190px, 29.63vw, 759px);
-    font-size: clamp(0.48rem, 1.2vw, 1.93rem);
-    padding: clamp(5px, 0.74vw, 19px) clamp(7px, 1.11vw, 28px);
-    margin: 0;
-}
-
-#parental-allowed-channels-list {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: clamp(7px, 1.11vw, 28px);
-    padding: clamp(7px, 1.11vw, 28px);
-    display: flex;
-    flex-direction: column;
-    gap: clamp(5px, 0.74vw, 19px);
-}
-
-.parental-channel-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: clamp(5px, 0.74vw, 19px) clamp(7px, 1.11vw, 28px);
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: clamp(5px, 0.74vw, 19px);
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.parental-channel-item .parental-channel-info {
-    display: flex;
-    align-items: center;
-    gap: clamp(6px, 0.93vw, 24px);
-}
-
-.parental-channel-item .parental-channel-num {
-    font-size: clamp(0.41rem, 1.02vw, 1.63rem);
-    color: rgba(255, 255, 255, 0.4);
-    font-weight: 600;
-    min-width: clamp(14px, 2.22vw, 57px);
-}
-
-.parental-channel-item .parental-channel-name {
-    font-size: clamp(0.48rem, 1.2vw, 1.93rem);
-    color: #fff;
-    font-weight: 500;
-}
-
-.parental-channel-item .parental-channel-badge {
-    font-size: clamp(0.37rem, 0.93vw, 1.48rem);
-    color: #00ffcc;
-    background: rgba(0, 255, 204, 0.1);
-    padding: clamp(1px, 0.19vw, 5px) clamp(4px, 0.56vw, 14px);
-    border-radius: clamp(2px, 0.37vw, 9px);
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-.parental-channel-item .parental-channel-badge-secondary {
-    font-size: clamp(0.37rem, 0.93vw, 1.48rem);
-    color: rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.05);
-    padding: clamp(1px, 0.19vw, 5px) clamp(4px, 0.56vw, 14px);
-    border-radius: clamp(2px, 0.37vw, 9px);
-    font-weight: 500;
-}
-
-.parental-channel-item input[type="checkbox"] {
-    cursor: pointer;
-    width: clamp(10px, 1.48vw, 38px);
-    height: clamp(10px, 1.48vw, 38px);
-    accent-color: #00ffcc;
-    margin: 0;
-}
-
-/* When parental pane is active, prevent the settings container from
-   scrolling so the flex chain can fill the viewport height. */
-.settings-main-content:has(#settings-sect-parental.active) {
-    overflow-y: hidden;
-}
-
-/* Confirm button in the PIN modal is inert until a valid PIN is typed */
-#parental-pin-submit-btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-}
 
 #settings-sect-channels.active {
     display: flex;
@@ -3088,11 +2962,6 @@ body:not(.dev-mode) .dev-indicator {
     flex-shrink: 0;
 }
 
-#settings-sect-parental .setting-item-actions {
-    flex-direction: row;
-    align-items: center;
-}
-
 .settings-sect-pane .settings-action-btn {
     background: rgba(0, 0, 0, 0.45);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -3270,9 +3139,8 @@ body:not(.dev-mode) .dev-indicator {
     font-weight: 600;
 }
 
-/* Tighter gap under the sub-nav separator for General, Parental and Developer */
+/* Tighter gap under the sub-nav separator for General and Developer */
 #settings-sect-general .settings-subnav,
-#settings-sect-parental .settings-subnav,
 #settings-sect-developer .settings-subnav {
     margin-bottom: clamp(7px, 1.11vw, 28px);
 }
@@ -4530,8 +4398,7 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     flex-direction: column;
 }
 
-.danger-btn,
-#parental-pin-submit-btn {
+.danger-btn {
     background: rgba(0, 0, 0, 0.45);
     font-size: clamp(0.54rem, 1.20vw, 2.08rem);
     font-weight: 500;
@@ -4541,25 +4408,8 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     cursor: pointer;
     white-space: nowrap;
     transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-}
-
-.danger-btn {
     border: 1px solid rgba(255, 74, 74, 0.3) !important;
     color: #ff4a4a !important;
-}
-
-#parental-pin-submit-btn {
-    border: 1px solid rgba(0, 255, 204, 0.3);
-    color: #00ffcc;
-}
-
-#parental-pin-submit-btn:hover {
-    background: rgba(0, 255, 204, 0.1);
-    border-color: rgba(0, 255, 204, 0.5);
-}
-
-#parental-pin-submit-btn:active {
-    background: rgba(0, 255, 204, 0.05);
 }
 
 .danger-btn:hover {
@@ -4625,20 +4475,6 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.parental-time-inputs {
-    display: flex;
-    gap: clamp(9px, 1.39vw, 36px);
-    align-items: center;
-}
-
-.parental-time-label {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(2px, 0.37vw, 9px);
-    font-size: clamp(0.44rem, 1.11vw, 1.78rem);
-    color: rgba(255, 255, 255, 0.5);
-    font-weight: 500;
-}
 
 /* ---- Premium custom time picker (replaces native time dropdown) ---- */
 .custom-time-picker {
@@ -5670,8 +5506,6 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 /* Disable webview pointer events when settings or modal overlays are active */
 body:has(#settings-screen:not(.hidden)) webview,
 body:has(#settings-screen:not(.hidden)) #player-container,
-body:has(#parental-pin-modal:not(.hidden)) webview,
-body:has(#parental-pin-modal:not(.hidden)) #player-container,
 body:has(#no-signal-overlay:not(.hidden)) webview,
 body:has(#no-signal-overlay:not(.hidden)) #player-container {
     pointer-events: none !important;
@@ -6116,223 +5950,3 @@ body:has(#no-signal-overlay:not(.hidden)) #player-container {
     margin-top: clamp(5px, 0.74vw, 19px);
 }
 
-/* Parental Controls General Pane Helpers */
-#settings-sect-parental .dark-input {
-    padding: clamp(7px, 1.11vw, 28px);
-    border-radius: clamp(6px, 0.93vw, 24px);
-    margin-bottom: clamp(6px, 0.93vw, 24px);
-}
-
-.parental-pin-card {
-    margin-top: clamp(9px, 1.39vw, 36px);
-    padding: clamp(12px, 1.85vw, 47px);
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: clamp(7px, 1.11vw, 28px);
-    transition: all 0.3s ease;
-}
-
-.parental-pin-title {
-    margin: 0 0 clamp(6px, 0.93vw, 24px) 0;
-    color: #00ffcc;
-    font-size: clamp(8px, 1.3vw, 33px);
-    font-weight: 600;
-}
-
-.parental-pin-desc {
-    margin: 0 0 clamp(9px, 1.39vw, 36px) 0;
-    font-size: clamp(7px, 1.11vw, 28px);
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.parental-pin-form {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(7px, 1.11vw, 28px);
-    max-width: clamp(190px, 29.63vw, 758px);
-}
-
-.parental-field-label {
-    font-size: clamp(6px, 1.02vw, 26px);
-    color: rgba(255,255,255,0.6);
-    font-weight: 500;
-}
-
-.parental-pin-input-field {
-    letter-spacing: clamp(2px, 0.37vw, 9px) !important;
-    font-size: clamp(10px, 1.48vw, 38px) !important;
-    padding: clamp(5px, 0.74vw, 19px) clamp(7px, 1.11vw, 28px) !important;
-    width: 100%;
-    margin: 0;
-}
-
-.parental-reqs-card {
-    margin-top: clamp(3px, 0.46vw, 12px);
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: clamp(5px, 0.74vw, 19px);
-    padding: clamp(7px, 1.11vw, 28px);
-}
-
-.parental-reqs-title {
-    font-size: clamp(6px, 1.02vw, 26px);
-    color: rgba(255, 255, 255, 0.6);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    display: block;
-    margin-bottom: clamp(5px, 0.74vw, 19px);
-}
-
-.parental-reqs-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: clamp(4px, 0.56vw, 14px);
-}
-
-.parental-reqs-item {
-    font-size: clamp(7px, 1.11vw, 28px);
-    color: rgba(255,255,255,0.4);
-    display: flex;
-    align-items: center;
-    gap: clamp(5px, 0.74vw, 19px);
-    transition: color 0.2s;
-}
-
-.parental-reqs-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: clamp(8px, 1.3vw, 33px);
-    height: clamp(8px, 1.3vw, 33px);
-}
-
-.parental-reqs-icon svg {
-    width: 100%;
-    height: 100%;
-}
-
-.parental-error-msg {
-    color: #ff4a4a;
-    font-size: clamp(7px, 1.11vw, 28px);
-    margin: 0;
-    font-weight: 500;
-}
-
-.parental-actions-row {
-    display: flex;
-    gap: clamp(6px, 0.93vw, 24px);
-    margin-top: clamp(3px, 0.46vw, 12px);
-}
-
-.parental-pin-btn {
-    padding: clamp(5px, 0.74vw, 19px) clamp(10px, 1.48vw, 38px) !important;
-    font-size: clamp(7px, 1.11vw, 28px) !important;
-    margin: 0;
-}
-
-.parental-success-card {
-    margin-top: clamp(9px, 1.39vw, 36px);
-    padding: clamp(12px, 1.85vw, 47px);
-    background: rgba(0, 255, 204, 0.08);
-    border: 1px solid rgba(0, 255, 204, 0.2);
-    border-radius: clamp(7px, 1.11vw, 28px);
-    text-align: center;
-    max-width: clamp(190px, 29.63vw, 758px);
-    transition: all 0.3s ease;
-}
-
-.parental-success-icon {
-    width: clamp(24px, 3.7vw, 95px);
-    height: clamp(24px, 3.7vw, 95px);
-    margin: 0 auto clamp(6px, 0.93vw, 24px) auto;
-    display: block;
-}
-
-.parental-success-title {
-    margin: 0 0 clamp(3px, 0.46vw, 12px) 0;
-    color: #00ffcc;
-    font-size: clamp(8px, 1.3vw, 33px);
-    font-weight: 700;
-}
-
-.parental-success-msg {
-    margin: 0;
-    font-size: clamp(7px, 1.11vw, 28px);
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.4;
-}
-
-.parental-field-group {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(2px, 0.37vw, 9px);
-}
-
-.parental-input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-#settings-sect-parental .setting-item-actions {
-    flex-direction: row;
-    align-items: center;
-    gap: clamp(5px, 0.74vw, 19px);
-}
-
-/* Parental Verification PIN Modal */
-.modal-parental-card {
-    max-width: clamp(237px, 37.04vw, 948px) !important;
-    padding: clamp(18px, 2.78vw, 71px) !important;
-    text-align: center;
-}
-
-.modal-parental-icon {
-    width: clamp(28px, 4.44vw, 114px) !important;
-    height: clamp(28px, 4.44vw, 114px) !important;
-    color: #00ffcc;
-    margin: 0 auto clamp(9px, 1.39vw, 36px) auto;
-    display: block;
-}
-
-.modal-parental-input-container {
-    display: flex;
-    gap: clamp(5px, 0.74vw, 19px);
-    justify-content: center;
-    margin: clamp(12px, 1.85vw, 47px) 0;
-}
-
-.modal-parental-input {
-    width: clamp(95px, 14.81vw, 379px) !important;
-    font-size: clamp(14px, 2.22vw, 57px) !important;
-    letter-spacing: clamp(4px, 0.56vw, 14px) !important;
-    text-align: center;
-    margin: 0 !important;
-}
-
-.modal-parental-error {
-    color: #ff4a4a;
-    font-size: clamp(8px, 1.2vw, 31px);
-    margin: clamp(-24px, -0.93vw, -6px) 0 clamp(9px, 1.39vw, 36px) 0;
-    font-weight: 500;
-}
-
-.modal-parental-actions {
-    display: flex;
-    gap: clamp(6px, 0.93vw, 24px);
-    justify-content: center;
-    margin-top: clamp(12px, 1.85vw, 47px);
-}
-
-.modal-parental-btn {
-    margin: 0 !important;
-}
-
-.modal-parental-confirm-btn {
-    border-color: rgba(0, 255, 204, 0.3) !important;
-    color: #00ffcc !important;
-}

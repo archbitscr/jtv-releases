@@ -121,19 +121,6 @@ export function getFilteredChannelsList(mode = 'channels', opts = {}) {
         // Onboarding languages check
         if (!matchesOnboardingLanguages(channel)) return false;
 
-        // Block XXX channels unless explicitly unlocked
-        if (localStorage.getItem('jtv_parental_adult_content') !== 'true') {
-            const cats = (channel.categories || []).map(c => c.toLowerCase());
-            if (cats.includes('xxx')) return false;
-        }
-
-        // Parental Lock automatic check
-        if (ext.isParentalTimeLocked && ext.isParentalTimeLocked()) {
-            const cats = (channel.categories || []).map(c => c.toLowerCase());
-            const isKids = cats.includes('kids') || cats.includes('children');
-            if (!isKids && !channel.kidsAllowed) return false;
-        }
-
         // Multi-criteria search (EPG event / ID / Name)
         const nameLower = (channel.name || "").toLowerCase();
         const idStr = (channel.id || "").toString().toLowerCase();

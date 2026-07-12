@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: file:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https:; frame-src https:; media-src https: blob:; object-src 'none'; base-uri 'self'; form-action 'self';">
-    <title>JTV 2.3.11</title>
+    <title>JTV 2.3.12</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Roboto:wght@500&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=64">
+    <link rel="stylesheet" href="./style.css?v=65">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen -->
@@ -331,7 +331,6 @@
                         <button class="settings-tab-btn active" data-settings-tab="general"><i data-lucide="settings-2"></i> Settings</button>
                         <button class="settings-tab-btn" data-settings-tab="filters" id="settings-tab-filters"><i data-lucide="filter"></i> Filters</button>
                         <button class="settings-tab-btn" data-settings-tab="background"><i data-lucide="image"></i> Wallpaper</button>
-                        <button class="settings-tab-btn" data-settings-tab="parental" id="settings-tab-parental"><i data-lucide="shield"></i> Parental</button>
                         <button class="settings-tab-btn" data-settings-tab="account"><i data-lucide="monitor"></i> System</button>
                         <button class="settings-tab-btn" data-settings-tab="developer" id="settings-tab-developer" data-dev="true"><i data-lucide="code-2"></i> Developer <span class="dev-indicator"></span></button>
                         <button class="settings-tab-btn" data-settings-tab="channels" id="settings-tab-channels" data-dev="true"><i data-lucide="tv"></i> Channels <span class="dev-indicator"></span></button>
@@ -759,154 +758,6 @@
                         </div>
                     </div>
                     
-                    <!-- Section: Parental Controls -->
-                    <div id="settings-sect-parental" class="settings-sect-pane">
-                        <h3 class="settings-page-title">Parental Controls</h3>
-                        <p class="section-desc">Manage content restrictions, PIN access, and allowed channels for supervised viewing.</p>
-                        <nav class="settings-subnav" aria-label="Parental sections">
-                            <button class="settings-subnav-btn parental-subnav-btn active" data-parental-tab="parental-tab-general"><i data-lucide="settings"></i> General</button>
-                            <button class="settings-subnav-btn parental-subnav-btn" data-parental-tab="parental-tab-allowed"><i data-lucide="users"></i> Allowed Channels</button>
-                        </nav>
-                        <div id="parental-tab-general" class="parental-tab-pane">
-                        <!-- 1. PIN -->
-                        <div class="setting-item">
-                            <div class="setting-item-info">
-                                <span class="setting-title">6-digit PIN</span>
-                                <span class="setting-desc">Required to manage parental controls and unlock restricted content.</span>
-                            </div>
-                            <div class="setting-item-actions">
-                                <button id="parental-change-pin-btn" class="settings-action-btn">Create PIN</button>
-                                <button id="parental-delete-pin-btn" class="settings-action-btn danger-btn hidden">Delete PIN</button>
-                            </div>
-                        </div>
-                        <div id="parental-pin-creation-wrapper" class="hidden parental-pin-card">
-                            <h4 id="parental-pin-creation-title" class="parental-pin-title">Set Parental Controls PIN</h4>
-                            <p class="parental-pin-desc">Create a 6-digit numeric code. Write it down in a safe place.</p>
-                            
-                            <div class="parental-pin-form">
-                                <div class="parental-field-group">
-                                    <label class="parental-field-label">New PIN</label>
-                                    <div class="parental-input-wrapper">
-                                        <input type="text" id="parental-new-pin-1" class="dark-input parental-pin-input-field" maxlength="6" inputmode="numeric" pattern="[0-9]*">
-                                    </div>
-                                </div>
-                                <div class="parental-field-group">
-                                    <label class="parental-field-label">Confirm New PIN</label>
-                                    <div class="parental-input-wrapper">
-                                        <input type="text" id="parental-new-pin-2" class="dark-input parental-pin-input-field" maxlength="6" inputmode="numeric" pattern="[0-9]*">
-                                    </div>
-                                </div>
-                                
-                                <div class="parental-reqs-card">
-                                    <span class="parental-reqs-title">PIN Requirements</span>
-                                    <ul class="parental-reqs-list">
-                                        <li id="pin-req-length" class="parental-reqs-item">
-                                            <span class="req-icon-container parental-reqs-icon">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle></svg>
-                                            </span>
-                                            Exactly 6 digits
-                                        </li>
-                                        <li id="pin-req-digits" class="parental-reqs-item">
-                                            <span class="req-icon-container parental-reqs-icon">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle></svg>
-                                            </span>
-                                            Numbers only (0-9)
-                                        </li>
-                                        <li id="pin-req-match" class="parental-reqs-item">
-                                            <span class="req-icon-container parental-reqs-icon">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle></svg>
-                                            </span>
-                                            Codes match
-                                        </li>
-                                    </ul>
-                                </div>
-                                
-                                <p id="parental-creation-error" class="parental-error-msg hidden"></p>
-                                
-                                <div class="parental-actions-row">
-                                    <button id="parental-save-pin-btn" class="settings-action-btn primary-btn parental-pin-btn">Save PIN</button>
-                                    <button id="parental-cancel-pin-btn" class="settings-action-btn parental-pin-btn">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Success Card -->
-                        <div id="parental-pin-success-card" class="hidden parental-success-card">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#00ffcc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="parental-success-icon">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                            <h4 class="parental-success-title">PIN Saved!</h4>
-                            <p id="parental-pin-success-msg" class="parental-success-msg">The Parental Controls PIN has been updated successfully.</p>
-                        </div>
-                        <!-- Everything below requires a PIN to exist (master gate) -->
-                        <div id="parental-pin-gated">
-                        <div class="setting-divider"></div>
-                        <!-- 2. Adult Channels -->
-                        <div class="setting-item" id="parental-adult-section">
-                            <div class="setting-item-info">
-                                <span class="setting-title">Adult Channels</span>
-                                <span class="setting-desc">Shows the selection of Explicit Content Channels.</span>
-                            </div>
-                            <label class="settings-switch">
-                                <input type="checkbox" id="parental-adult-toggle" disabled>
-                                <span class="settings-switch-slider"></span>
-                            </label>
-                        </div>
-                        <div class="setting-divider"></div>
-                        <!-- 3. Kids Mode -->
-                        <div class="setting-item">
-                            <div class="setting-item-info">
-                                <span class="setting-title">Kids Mode</span>
-                                <span class="setting-desc">Automatically filters channels to show only family-friendly content (Kids genre).</span>
-                            </div>
-                            <label class="settings-switch">
-                                <input type="checkbox" id="parental-kids-toggle">
-                                <span class="settings-switch-slider"></span>
-                            </label>
-                        </div>
-                        <div id="parental-dependent-options" class="disabled-setting-row">
-                        <div class="setting-divider"></div>
-                        <!-- 4. Time Schedule -->
-                        <div class="setting-item">
-                            <div class="setting-item-info">
-                                <span class="setting-title">Time Schedule</span>
-                                <span class="setting-desc">Activates Kids Mode automatically only during the selected hours.</span>
-                            </div>
-                            <label class="settings-switch">
-                                <input type="checkbox" id="parental-schedule-toggle">
-                                <span class="settings-switch-slider"></span>
-                            </label>
-                        </div>
-                        <div class="setting-divider"></div>
-                        <!-- 5. Range -->
-                        <div class="setting-item" id="parental-time-settings-row">
-                            <div class="setting-item-info">
-                                <span class="setting-title">Blocking Time Range</span>
-                                <span class="setting-desc">Defines the hours when content will be restricted (Kids Mode Active).</span>
-                            </div>
-                            <div class="parental-time-inputs">
-                                <label class="parental-time-label">From <input type="time" id="parental-start-time" class="dark-input parental-time-field" value="08:00"></label>
-                                <label class="parental-time-label">To <input type="time" id="parental-end-time" class="dark-input parental-time-field" value="20:00"></label>
-                            </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        <!-- Sub-tab: Allowed Channels -->
-                        <div id="parental-tab-allowed" class="parental-tab-pane" style="display: none;">
-                        <div class="setting-item parental-allowed-item" id="parental-allowed-item">
-                            <div class="setting-item-info">
-                                <span class="setting-desc">Select channels that are not in the "Kids" genre but you want to allow in Kids Mode.</span>
-                            </div>
-                            <input type="text" id="parental-channels-search" class="dark-input" placeholder="Search channel...">
-                            <div id="parental-allowed-channels-list">
-                                <!-- Populated dynamically -->
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    
                     <!-- Section: Sensors & API -->
                     <div id="settings-sect-sensors" class="settings-sect-pane" data-dev="true">
                         
@@ -1189,24 +1040,6 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
         <!-- Hidden elements for processing -->
         <input type="file" id="logo-upload-input" accept="image/*" style="display: none;">
         <canvas id="logo-canvas" width="256" height="256" style="display: none;"></canvas>
-
-        <!-- Parental PIN Modal -->
-        <div id="parental-pin-modal" class="modal-overlay hidden">
-            <div class="modal-backdrop" id="parental-pin-backdrop"></div>
-            <div class="modal-content glass-card modal-parental-card">
-                <i data-lucide="shield-alert" class="modal-parental-icon"></i>
-                <h2>Parental Controls</h2>
-                <p id="parental-pin-message">Enter your 6-digit PIN to continue:</p>
-                <div class="modal-parental-input-container">
-                    <input type="text" maxlength="6" id="parental-pin-input" class="dark-input modal-parental-input" inputmode="numeric" pattern="[0-9]*">
-                </div>
-                <p id="parental-pin-error" class="modal-parental-error hidden"></p>
-                <div class="modal-parental-actions">
-                    <button id="parental-pin-cancel-btn" class="danger-btn modal-parental-btn">Cancel</button>
-                    <button id="parental-pin-submit-btn" class="settings-action-btn modal-parental-btn modal-parental-confirm-btn">Confirm</button>
-                </div>
-            </div>
-        </div>
 
     </div>
     <!-- Floating controls (dev-only): Glass Tuner, Reload Window, Shut Down -->
