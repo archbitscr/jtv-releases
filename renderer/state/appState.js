@@ -84,7 +84,7 @@ export const state = {
         { name: "Travel", icon: "🌍" },
         { name: "Investigation", icon: "🔍" },
         { name: "Regional", icon: "🌐" },
-        { name: "XXX", icon: "🔞" }
+        { name: "XXX Adult 18+", icon: "🔞" }
     ],
     filterEvents: [
         { name: "FIFA 2026", icon: "🏆" },
