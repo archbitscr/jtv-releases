@@ -198,7 +198,7 @@ export function setupEventListeners() {
 
     if (triggerTop) {
         triggerTop.onmouseenter = () => {
-            if (state.currentModule !== 'live' || !state.isHomeActive) return;
+            if (state.currentModule !== 'live') return;
             topNavMenu.classList.remove('hidden');
             startInactivityTimers();
         };
