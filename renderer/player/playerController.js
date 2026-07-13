@@ -296,19 +296,6 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     const tunerChannelText = document.getElementById('pbar-channel-text');
     const tunerFavHeart = document.getElementById('pbar-fav-heart');
 
-    // Verify trial period expiration on channel tune
-    const check = await nativeApi.getNetworkDate(channel.path).catch(() => ({ expired: false }));
-    if (check && check.expired) {
-        playerContainer.innerHTML = '';
-        resetAntiBlackScreen();
-        state.activeChannelId = null;
-        sourceSwitcher.classList.add('hidden');
-        if (ext.applyWallpaper) ext.applyWallpaper(state.selectedWallpaper);
-        updatePlayerActiveState();
-        
-        return;
-    }
-
     // Reset failover state only on manual channel changes (not during failover cycle)
     if (resetSource) {
         if (state.failoverTimeoutId) clearTimeout(state.failoverTimeoutId);

@@ -308,15 +308,7 @@ async function init() {
         return;
     }
 
-    // Verify trial period on startup
-    const trialCheck = await nativeApi.getNetworkDate().catch(() => ({ expired: false }));
     const savedDataLocal = await nativeApi.loadUserData().catch(() => null);
-    const isDevMode = savedDataLocal && savedDataLocal.developerModeEnabled !== undefined ? !!savedDataLocal.developerModeEnabled : true;
-
-    if (!isDevMode && trialCheck && trialCheck.expired) {
-        if (appLoader) appLoader.classList.add('hidden');
-        return; // Halt app boot — license check pending implementation
-    }
 
     // Load locale early so loader messages are translated
     await loadLocale(savedDataLocal?.appLanguage || 'en');

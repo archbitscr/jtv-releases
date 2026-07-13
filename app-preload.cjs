@@ -90,8 +90,6 @@ contextBridge.exposeInMainWorld('jtvAPI', {
     },
     readLocaleFile: (langCode) => ipcRenderer.invoke('read-locale-file', langCode),
     relaunch: () => ipcRenderer.invoke('relaunch'),
-    googleLogin: () => ipcRenderer.invoke('google-login'),
-    getNetworkDate: (streamUrl) => ipcRenderer.invoke('get-network-date', streamUrl),
     checkChannelStatus: (url) => ipcRenderer.invoke('check-channel-status', url),
     onWebviewHttpError: (callback) => subscribe('webview-http-error', callback),
     onWebviewLoadFailed: (callback) => subscribe('webview-load-failed', callback)
