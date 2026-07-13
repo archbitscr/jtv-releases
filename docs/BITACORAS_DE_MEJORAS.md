@@ -658,11 +658,74 @@ https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=juanhidgo@gmail.com&i
 *   **Política de mantenimiento:** actualizar la sección relevante al completar cualquier tarea que cambie el comportamiento (no el código) de un módulo.
 *   **✅ Completada (2026-07-06).** Archivo: [`docs/TECHNICAL_MANUAL.md`](file:///d:/Projects/JTV.app/docs/TECHNICAL_MANUAL.md). Cubre: boot sequence, estado global, persistencia, navegación, módulo VOD, LiveTV, watchdog/failover, red (DoH + request policy + IPC), inactividad y timers.
 
-#### 10. Tarea 40: AutoUpdater 🧠
-*   **Componente:** Main process (`bootstrap.js`), `electron-updater`.
-*   **Acción Requerida:**
-    1.  Integrar `electron-updater` para verificar y descargar actualizaciones automáticamente.
-    2.  Mostrar notificación al usuario cuando hay una actualización disponible.
-    3.  Implementar descarga en segundo plano e instalación al reiniciar.
-    4.  Configurar publicación de releases (GitHub Releases o servidor propio).
+#### 10. Tarea 40: AutoUpdater — Botón Manual "Check for Updates" 🧠
+
+##### Comportamiento esperado (UX)
+
+Botón dinámico ubicado en **Settings → System**, primera opción visible (encima del dropdown de idioma). El botón tiene 5 estados exclusivos:
+
+| Estado | Label | Acción al click |
+|---|---|---|
+| Idle | `Check for Updates` | Inicia revisión |
+| Revisando | `Checking...` | — (deshabilitado) |
+| Sin novedad | `Up to date` | — (vuelve a Idle tras 3 s) |
+| Descargando | `Downloading… X%` | — (deshabilitado) |
+| Listo | `Restart to Update` | `quitAndInstall()` |
+
+**Reglas:**
+- La app **nunca** hace chequeos silenciosos ni en background — solo cuando el usuario hace click.
+- La descarga comienza automáticamente al detectar versión nueva (no pide confirmación).
+- Al hacer click en "Restart to Update": la app se cierra, el instalador corre silenciosamente, la app vuelve a abrirse con la nueva versión ya instalada.
+- Si el chequeo falla (sin red, repositorio inaccesible): el botón muestra `Update check failed` y vuelve a Idle tras 3 s.
+
+##### Componentes a crear / modificar
+
+| Archivo | Cambio |
+|---|---|
+| `main/ipc/registerUpdaterIpc.js` | Nuevo. Registra IPC: `check-for-updates`, `quit-and-install`. Eventos al renderer: `update-available`, `download-progress`, `update-downloaded`, `update-not-available`, `update-error`. |
+| `main/bootstrap.js` | Importar y llamar `registerUpdaterIpc`. Configurar `autoUpdater.autoDownload = true`, `autoUpdater.autoInstallOnAppQuit = false`. |
+| `index.html` | Nuevo `setting-item` con `id="update-check-btn"` en Settings → System, primera posición. |
+| `renderer/ui/eventListeners.js` | Lógica del botón: estados, listeners IPC. |
+| `shared/ipcChannels.json` | Agregar `CHECK_FOR_UPDATES`, `QUIT_AND_INSTALL`, `UPDATE_AVAILABLE`, `DOWNLOAD_PROGRESS`, `UPDATE_DOWNLOADED`, `UPDATE_NOT_AVAILABLE`, `UPDATE_ERROR`. |
+| `app-preload.cjs` | Exponer `checkForUpdates()`, `quitAndInstall()`, `onUpdateAvailable(cb)`, `onDownloadProgress(cb)`, `onUpdateDownloaded(cb)`, `onUpdateNotAvailable(cb)`, `onUpdateError(cb)`. |
+| `package.json` (build) | Agregar sección `publish` con `provider: github`, `owner`, `repo`. |
+| `locales/*.json` | Agregar claves: `settings.system.update.check`, `settings.system.update.checking`, `settings.system.update.up_to_date`, `settings.system.update.downloading`, `settings.system.update.restart`, `settings.system.update.failed`. |
+
+##### Dependencia a instalar
+
+```
+npm install electron-updater --save
+```
+
+##### Configuración `publish` en `package.json`
+
+```json
+"publish": {
+  "provider": "github",
+  "owner": "<tu-usuario-github>",
+  "repo": "<nombre-del-repo>"
+}
+```
+
+Para repos privados, la variable de entorno `GH_TOKEN` debe estar presente al hacer `npm run publish` (no se embebe en el código).
+
+##### ⚠️ Pasos que el usuario debe completar ANTES de ejecutar esta tarea
+
+1. **Crear repositorio en GitHub** — puede ser privado, solo necesita existir. Nombre sugerido: `jtv-releases`. Anotar `owner/repo` para configurar el `publish`.
+2. **Generar un Personal Access Token (PAT)** — GitHub → Settings → Developer settings → Fine-grained tokens → New token. Permisos mínimos: repositorio `jtv-releases` → Contents: **Read and Write**. Guardar el token — solo se muestra una vez.
+3. **Configurar el token localmente** — crear archivo `.env` en la raíz del proyecto (ya en `.gitignore`) con `GH_TOKEN=ghp_xxxxxxxxxx`. Este token lo usa electron-builder al publicar releases.
+4. **Primera publicación manual** — tras implementar la tarea, ejecutar `npm run publish` (o `electron-builder --publish always`) para subir los artefactos de v2.3.13/2.3.14 a GitHub Releases. Esto crea el `latest.yml` que el updater consulta. Sin esta release publicada el botón siempre dirá "Up to date".
+
+##### Orden de implementación (cuando se ejecute)
+
+1. `npm install electron-updater`
+2. `shared/ipcChannels.json` — agregar claves
+3. `main/ipc/registerUpdaterIpc.js` — nuevo módulo IPC
+4. `main/bootstrap.js` — registrar el módulo
+5. `app-preload.cjs` — exponer métodos
+6. `package.json` — sección `publish` con `owner/repo`
+7. `index.html` — botón en Settings → System
+8. `locales/*.json` — claves de traducción
+9. `renderer/ui/eventListeners.js` — lógica de estados del botón
+10. Build + publicación de primera release
 
