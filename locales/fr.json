@@ -67,7 +67,7 @@
   "settings.system.donate.title": "Soutenir l'Auteur",
   "settings.system.donate.desc": "Si vous appréciez JTV, pensez à soutenir son développement par un don.<br>Scannez le QR ou cliquez sur le bouton.",
   "settings.system.danger.title": "Zone Dangereuse",
-  "settings.system.danger.desc": "Supprime tous les chaînes, identifiants et l'historique local et réinitialise l'application.",
+  "settings.system.danger.desc": "Supprime tous les chaînes, filtres et paramètres et réinitialise l'application à son état initial.",
   "settings.system.danger.btn": "Réinitialisation d'Usine",
 
   "settings.filters.title": "Filtres de Chaînes",
