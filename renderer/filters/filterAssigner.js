@@ -3,7 +3,7 @@ import { t } from '../i18n/i18n.js';
 import { escapeHtml } from '../utils/sanitize.js';
 import { highlightText } from '../utils/domHelpers.js';
 import { sanitizeIconName } from '../utils/sanitize.js';
-import { sortCategories } from './filterManager.js';
+import { sortCategories, matchesOnboardingLanguages } from './filterManager.js';
 import { emojiToHtml } from './filterState.js';
 import { saveChannelsAndFilters } from '../services/stateManager.js';
 import { renderSettingsFilters } from '../render/renderAll.js';
@@ -46,8 +46,9 @@ export function initEventAssigner() {
                 state.assignerSelectedChannelIndices = [];
             } else {
                 const filterVal = (document.getElementById('assigner-search')?.value || '').toLowerCase();
-                const chList = window.getChannels ? window.getChannels() : [];
-                chList.forEach((c, index) => {
+                const rawList = window.getChannels ? window.getChannels() : [];
+                rawList.forEach((c, index) => {
+                    if (!matchesOnboardingLanguages(c)) return;
                     const num = c.id || (index + 1);
                     const name = c.name || '';
                     if (filterVal && !name.toLowerCase().includes(filterVal) && !String(num).includes(filterVal)) return;
@@ -147,9 +148,11 @@ export function renderAssignerChannelsList() {
 
     const filterVal = (document.getElementById('assigner-search')?.value || '').toLowerCase();
     const rawList = window.getChannels ? window.getChannels() : [];
-    const chList = [...rawList].sort((a, b) =>
-        (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base', numeric: true })
-    );
+    const chList = [...rawList]
+        .filter(c => matchesOnboardingLanguages(c))
+        .sort((a, b) =>
+            (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base', numeric: true })
+        );
 
     chList.forEach((c, index) => {
         const originalIndex = rawList.indexOf(c);

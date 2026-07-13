@@ -584,7 +584,9 @@ export function setupEventListeners() {
                     alert(t('alert.filter.duplicate', 'The filter "{name}" already exists in this group.').replace('{name}', name));
                     return;
                 }
-                listToCheck.push({ name, icon });
+                const newEntry = { name, icon };
+                if (type === 'language') newEntry.enabled = false;
+                listToCheck.push(newEntry);
             }
             
             input.value = '';
