@@ -5503,13 +5503,22 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     display: block;
 }
 
-/* Disable webview pointer events when settings or modal overlays are active */
+/* Disable webview pointer events when any overlay is active (reactive via CSS :has) */
 body:has(#settings-screen:not(.hidden)) webview,
 body:has(#settings-screen:not(.hidden)) #player-container,
 body:has(#no-signal-overlay:not(.hidden)) webview,
-body:has(#no-signal-overlay:not(.hidden)) #player-container {
+body:has(#no-signal-overlay:not(.hidden)) #player-container,
+body:has(#pbar:not(.hidden)) webview,
+body:has(#pbar:not(.hidden)) #player-container,
+body:has(#side-menu:not(.hidden)) webview,
+body:has(#side-menu:not(.hidden)) #player-container {
     pointer-events: none !important;
 }
+
+/* Disable trigger zones when their overlay is open so they don't block overlay clicks */
+body:has(#pbar:not(.hidden)) #trigger-bottom { pointer-events: none !important; }
+body:has(#side-menu:not(.hidden)) #trigger-left { pointer-events: none !important; }
+body:has(#tnav-menu:not(.hidden)) #trigger-top { pointer-events: none !important; }
 
 /* Electric neon glow for Save Button when modifications are pending */
 .settings-action-btn#crud-save-btn.pending-save {
