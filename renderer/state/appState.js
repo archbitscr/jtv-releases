@@ -129,8 +129,6 @@ export const state = {
     activeSettingsFilterTab: "tv",
     editingFilter: null,
     currentEditingChannelId: null,
-    currentPinCallback: null,
-
     // i18n
     appLanguage: 'en',
 

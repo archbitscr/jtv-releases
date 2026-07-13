@@ -360,7 +360,7 @@ if (window.self !== window.top) {
     }, 1000);
 }
 
-// Escape key forwarder to main process to break out of VOD playback keyboard trap
+// Escape key forwarder to main process
 window.addEventListener('keydown', (e) => {
     const activeEl = document.activeElement;
     const isEditable = activeEl && (

@@ -1,6 +1,4 @@
 {
-  "app.loader.login": "Entrar com o Google",
-  "app.loader.uninstall": "Desinstalar",
   "loader.init": "Iniciando banco de dados local...",
   "loader.ui": "Carregando interface...",
   "loader.ready": "Pronto.",

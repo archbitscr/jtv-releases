@@ -12,10 +12,6 @@ const IPC = {
     GET_AUDIO_LEVELER: 'get-audio-leveler',
     BROADCAST_VOLUME: 'broadcast-volume',
     BROADCAST_AUDIO_LEVELER: 'broadcast-audio-leveler',
-    FETCH_SFLIX_PAGE: 'fetch-sflix-page',
-    FETCH_TMDB_METADATA: 'fetch-tmdb-metadata',
-    FETCH_TMDB_DETAIL: 'fetch-tmdb-detail',
-    FETCH_OMDB_RATINGS: 'fetch-omdb-ratings',
     LOG_RENDERER: 'log-renderer',
     LOG_DIAGNOSTIC: 'log-diagnostic',
     GET_AUDIO_STATE: 'get-audio-state',
@@ -33,11 +29,6 @@ const IPC = {
     OPEN_DEVTOOLS: 'open-devtools',
     RELOAD_WINDOW: 'reload-window',
     RESET_WINDOW_SIZE: 'reset-window-size',
-    MOVIES_DB_GET: 'movies-db-get',
-    MOVIES_DB_SAVE: 'movies-db-save',
-    MOVIES_DB_DELETE: 'movies-db-delete',
-    MOVIES_DB_SAVE_POSTER: 'movies-db-save-poster',
-    MOVIES_DB_GET_POSTER: 'movies-db-get-poster'
 };
 
 function subscribe(channel, callback) {
@@ -64,10 +55,6 @@ contextBridge.exposeInMainWorld('jtvAPI', {
     setAudioMuted: (muted) => ipcRenderer.invoke(IPC.SET_AUDIO_MUTED, muted),
     isAudioMuted: () => ipcRenderer.invoke(IPC.IS_AUDIO_MUTED),
     isCurrentlyAudible: () => ipcRenderer.invoke(IPC.IS_CURRENTLY_AUDIBLE),
-    fetchSflixPage: (url) => ipcRenderer.invoke(IPC.FETCH_SFLIX_PAGE, url),
-    fetchTmdbMetadata: (payload) => ipcRenderer.invoke(IPC.FETCH_TMDB_METADATA, payload),
-    fetchTmdbDetail: (payload) => ipcRenderer.invoke(IPC.FETCH_TMDB_DETAIL, payload),
-    fetchOmdbRatings: (payload) => ipcRenderer.invoke(IPC.FETCH_OMDB_RATINGS, payload),
     fetchChannels: (domain) => ipcRenderer.invoke(IPC.FETCH_CHANNELS, domain),
     fetchSchedule: (domain) => ipcRenderer.invoke(IPC.FETCH_SCHEDULE, domain),
     checkDomain: () => ipcRenderer.invoke(IPC.CHECK_DOMAIN),
@@ -81,13 +68,6 @@ contextBridge.exposeInMainWorld('jtvAPI', {
     openDevtools: () => ipcRenderer.invoke(IPC.OPEN_DEVTOOLS),
     reloadWindow: () => ipcRenderer.invoke(IPC.RELOAD_WINDOW),
     resetWindowSize: () => ipcRenderer.invoke(IPC.RESET_WINDOW_SIZE),
-    moviesDb: {
-        get: () => ipcRenderer.invoke(IPC.MOVIES_DB_GET),
-        save: (payload) => ipcRenderer.invoke(IPC.MOVIES_DB_SAVE, payload),
-        delete: () => ipcRenderer.invoke(IPC.MOVIES_DB_DELETE),
-        savePoster: (payload) => ipcRenderer.invoke(IPC.MOVIES_DB_SAVE_POSTER, payload),
-        getPoster: (payload) => ipcRenderer.invoke(IPC.MOVIES_DB_GET_POSTER, payload)
-    },
     readLocaleFile: (langCode) => ipcRenderer.invoke('read-locale-file', langCode),
     relaunch: () => ipcRenderer.invoke('relaunch'),
     checkChannelStatus: (url) => ipcRenderer.invoke('check-channel-status', url),

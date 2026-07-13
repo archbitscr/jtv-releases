@@ -92,19 +92,6 @@ export function setupEventListeners() {
     document.addEventListener('focusout', () => setTimeout(syncTypingState, 0), true);
     syncTypingState();
 
-    // 1. Google Login mock bypass
-    const handleGoogleLogin = async () => {
-        try {
-            await nativeApi.googleLogin();
-            alert(t('alert.google.success', 'Signed in with Google. The app will restart to apply changes.'));
-            await nativeApi.relaunch();
-        } catch (e) {
-            console.error("Google Login failed:", e);
-            alert(t('alert.google.fail', 'Failed to sign in with Google.'));
-        }
-    };
-    const loaderLoginBtn = document.getElementById('loader-login-btn');
-    if (loaderLoginBtn) loaderLoginBtn.onclick = (e) => { e.preventDefault(); };
 
     // 3. Factory Reset
     const factoryResetBtn = document.getElementById('factory-reset-btn');

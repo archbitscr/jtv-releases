@@ -1,6 +1,4 @@
 {
-  "app.loader.login": "Se connecter avec Google",
-  "app.loader.uninstall": "Désinstaller",
   "loader.init": "Initialisation de la base de données locale...",
   "loader.ui": "Chargement de l'interface...",
   "loader.ready": "Prêt.",

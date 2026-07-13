@@ -984,27 +984,6 @@ export function updateDeveloperUI() {
         }
     }
 
-    // Dynamically update trial/subscription status text in Account tab
-    const trialStatusEl = document.getElementById('account-trial-status');
-    if (trialStatusEl) {
-        if (developerModeEnabled) {
-            trialStatusEl.innerText = 'Developer Mode';
-        } else {
-            nativeApi.getNetworkDate().then(trialCheck => {
-                if (trialCheck && trialCheck.firstTime) {
-                    trialStatusEl.innerText = 'Trial period active (3 days remaining).';
-                } else if (trialCheck) {
-                    const totalHoursLeft = Math.max(0, (3 - (trialCheck.elapsedDays || 0)) * 24);
-                    const d = Math.floor(totalHoursLeft / 24);
-                    const h = Math.round(totalHoursLeft % 24);
-                    const timeStr = d >= 1 ? `${d} days remaining.` : `${h} hours remaining.`;
-                    trialStatusEl.innerText = `Trial period active. ${timeStr}`;
-                }
-            }).catch(() => {
-                trialStatusEl.innerText = 'Trial period active.';
-            });
-        }
-    }
     syncAutotuneToggleBtn();
 }
 window.updateDeveloperUI = updateDeveloperUI;
