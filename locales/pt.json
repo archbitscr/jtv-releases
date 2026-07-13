@@ -134,6 +134,10 @@
   "filter.event.concerts": "Concertos",
   "filter.event.awards": "Prêmios",
   "filter.event.festival": "Festival",
+  "filter.event.boxing": "Boxe",
+  "filter.event.futbol": "Futebol",
+  "filter.event.tennis": "Tênis",
+  "filter.event.cycling": "Ciclismo",
 
   "assigner.selected": "{n} selecionados",
   "assigner.multiple": "Seleção Múltipla",
