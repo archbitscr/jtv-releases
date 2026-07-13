@@ -1,5 +1,6 @@
 import { state } from '../state/appState.js';
 import { highlightText, getSafeLogoHtml } from '../utils/domHelpers.js';
+import { t } from '../i18n/i18n.js';
 
 let ext = {};
 
@@ -22,7 +23,7 @@ export function renderList(container, list, highlightTerm = "") {
             emptyItem.className = 'no-results-message';
             emptyItem.innerHTML = `
                 <i data-lucide="search"></i>
-                <span>No channels found</span>
+                <span>${t('channel.no_found', 'No channels found')}</span>
             `;
             container.appendChild(emptyItem);
             if (window.lucide) window.lucide.createIcons({ nodes: [container] });
@@ -37,7 +38,7 @@ export function renderList(container, list, highlightTerm = "") {
         item.setAttribute('data-id', channel.id);
 
         const epg = ext.getActiveEpg ? ext.getActiveEpg(channel.id) : null;
-        const epgText = epg ? (epg.time ? `${epg.time} - ${epg.event}` : epg.event) : "Live broadcast";
+        const epgText = epg ? (epg.time ? `${epg.time} - ${epg.event}` : epg.event) : t('channel.live_broadcast', 'Live broadcast');
 
         const formattedId = isNaN(channel.id) ? channel.id : String(channel.id).padStart(4, '0');
         const highlightedName = highlightText(channel.name, highlightTerm);

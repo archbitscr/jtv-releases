@@ -1,4 +1,5 @@
 import { state } from '../state/appState.js';
+import { t } from '../i18n/i18n.js';
 
 const SUPPRESS_IDS = new Set([
     'open-devtools-btn',
@@ -43,13 +44,13 @@ export function getOrGenerateTooltip(el) {
     if (iconName === 'heart') {
         const favBtn = el.closest('.favorite, .pbar-fav-btn, [id*="fav"]');
         const isActive = (favBtn && favBtn.classList.contains('active')) || el.classList.contains('active');
-        return isActive ? 'Remove from Favorites' : 'Add to Favorites';
+        return isActive ? t('tooltip.fav.remove', 'Remove from Favorites') : t('tooltip.fav.add', 'Add to Favorites');
     }
     if (iconName === 'sliders' && el.closest('.side-channel-actions')) {
-        return 'Edit channel';
+        return t('tooltip.channel.edit', 'Edit channel');
     }
     if (iconName === 'pin') {
-        return el.classList.contains('active') ? 'Unpin Player' : 'Pin Player';
+        return el.classList.contains('active') ? t('tooltip.player.unpin', 'Unpin Player') : t('tooltip.player.pin', 'Pin Player');
     }
 
     let tooltip = el.getAttribute('data-tooltip');
@@ -59,13 +60,15 @@ export function getOrGenerateTooltip(el) {
     const className = el.className || '';
 
     if (id.includes('close-settings') || className.includes('settings-close')) {
-        el.setAttribute('data-tooltip', 'Close settings');
-        return 'Close settings';
+        const tt = t('tooltip.settings.close', 'Close settings');
+        el.setAttribute('data-tooltip', tt);
+        return tt;
     }
 
     if (id === 'crud-add-new-btn') {
-        el.setAttribute('data-tooltip', 'Create a new channel');
-        return 'Create a new channel';
+        const tt = t('tooltip.channel.create', 'Create a new channel');
+        el.setAttribute('data-tooltip', tt);
+        return tt;
     }
 
     if (className.includes('crud-channel-item')) {
@@ -103,21 +106,21 @@ export function getOrGenerateTooltip(el) {
     if (icon) {
         let tooltipText = '';
         switch (iconName) {
-            case 'x': tooltipText = 'Close'; break;
-            case 'tv': tooltipText = 'Watch Live'; break;
-            case 'heart': tooltipText = 'Favorite'; break;
-            case 'settings': case 'settings-2': case 'sliders': tooltipText = 'Settings & Filters'; break;
-            case 'search': tooltipText = 'Search'; break;
-            case 'plus': case 'plus-circle': tooltipText = 'Add'; break;
-            case 'minus': tooltipText = 'Decrease / Remove'; break;
-            case 'arrow-left': case 'chevron-left': tooltipText = 'Back / Previous'; break;
-            case 'arrow-right': case 'chevron-right': tooltipText = 'Next'; break;
-            case 'trash-2': tooltipText = 'Delete'; break;
-            case 'upload': tooltipText = 'Upload file or image'; break;
-            case 'volume-2': case 'volume-x': case 'volume-1': tooltipText = 'Volume / Mute'; break;
-            case 'home': tooltipText = 'Home'; break;
-            case 'code-2': tooltipText = 'Developer Mode'; break;
-            case 'user': tooltipText = 'My Account'; break;
+            case 'x': tooltipText = t('tooltip.icon.close', 'Close'); break;
+            case 'tv': tooltipText = t('tooltip.icon.watch', 'Watch Live'); break;
+            case 'heart': tooltipText = t('tooltip.icon.favorite', 'Favorite'); break;
+            case 'settings': case 'settings-2': case 'sliders': tooltipText = t('tooltip.icon.settings', 'Settings & Filters'); break;
+            case 'search': tooltipText = t('tooltip.icon.search', 'Search'); break;
+            case 'plus': case 'plus-circle': tooltipText = t('tooltip.icon.add', 'Add'); break;
+            case 'minus': tooltipText = t('tooltip.icon.remove', 'Decrease / Remove'); break;
+            case 'arrow-left': case 'chevron-left': tooltipText = t('tooltip.icon.back', 'Back / Previous'); break;
+            case 'arrow-right': case 'chevron-right': tooltipText = t('tooltip.icon.next', 'Next'); break;
+            case 'trash-2': tooltipText = t('tooltip.icon.delete', 'Delete'); break;
+            case 'upload': tooltipText = t('tooltip.icon.upload', 'Upload file or image'); break;
+            case 'volume-2': case 'volume-x': case 'volume-1': tooltipText = t('tooltip.icon.volume', 'Volume / Mute'); break;
+            case 'home': tooltipText = t('tooltip.icon.home', 'Home'); break;
+            case 'code-2': tooltipText = t('tooltip.icon.devmode', 'Developer Mode'); break;
+            case 'user': tooltipText = t('tooltip.icon.account', 'My Account'); break;
         }
         if (tooltipText) {
             el.setAttribute('data-tooltip', tooltipText);
@@ -127,20 +130,24 @@ export function getOrGenerateTooltip(el) {
 
     // Generic fallbacks based on ids / classes
     if (id.includes('close') || className.includes('close')) {
-        el.setAttribute('data-tooltip', 'Close');
-        return 'Close';
+        const tt = t('tooltip.generic.close', 'Close');
+        el.setAttribute('data-tooltip', tt);
+        return tt;
     }
     if (id.includes('delete') || className.includes('delete') || className.includes('danger')) {
-        el.setAttribute('data-tooltip', 'Delete');
-        return 'Delete';
+        const tt = t('tooltip.generic.delete', 'Delete');
+        el.setAttribute('data-tooltip', tt);
+        return tt;
     }
     if (id.includes('save') || className.includes('save')) {
-        el.setAttribute('data-tooltip', 'Save');
-        return 'Save';
+        const tt = t('tooltip.generic.save', 'Save');
+        el.setAttribute('data-tooltip', tt);
+        return tt;
     }
     if (id.includes('back') || className.includes('back')) {
-        el.setAttribute('data-tooltip', 'Back');
-        return 'Back';
+        const tt = t('tooltip.generic.back', 'Back');
+        el.setAttribute('data-tooltip', tt);
+        return tt;
     }
 
     return null;

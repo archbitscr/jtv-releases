@@ -1,6 +1,6 @@
 /* global lucide */
 import { state } from '../state/appState.js';
-import { applyLocale, getCurrentLang } from '../i18n/i18n.js';
+import { applyLocale, getCurrentLang, t } from '../i18n/i18n.js';
 import { selectChannel, zapChannel, mountRemotePlayer, updatePlayerActiveState } from '../player/playerController.js';
 import { showModule, switchTab, showLiveLanding, hideMenu, hideEditPane } from '../ui/navigation.js';
 import { syncMenuScroll } from '../render/channelList.js';
@@ -96,11 +96,11 @@ export function setupEventListeners() {
     const handleGoogleLogin = async () => {
         try {
             await nativeApi.googleLogin();
-            alert("Signed in with Google. The app will restart to apply changes.");
+            alert(t('alert.google.success', 'Signed in with Google. The app will restart to apply changes.'));
             await nativeApi.relaunch();
         } catch (e) {
             console.error("Google Login failed:", e);
-            alert("Failed to sign in with Google.");
+            alert(t('alert.google.fail', 'Failed to sign in with Google.'));
         }
     };
     const loaderLoginBtn = document.getElementById('loader-login-btn');
@@ -110,7 +110,7 @@ export function setupEventListeners() {
     const factoryResetBtn = document.getElementById('factory-reset-btn');
     if (factoryResetBtn) {
         factoryResetBtn.onclick = async () => {
-            if (confirm("Are you sure you want to factory reset the app? All local data and custom channels will be lost.")) {
+            if (confirm(t('alert.factory_reset.confirm', 'Are you sure you want to factory reset the app? All local data and custom channels will be lost.'))) {
                 localStorage.clear();
                 await nativeApi.saveUserData({});
                 await nativeApi.relaunch();
@@ -565,7 +565,7 @@ export function setupEventListeners() {
 
                 if (oldName.toLowerCase() !== newName.toLowerCase() &&
                     listToCheck.some(f => f.name.toLowerCase() === newName.toLowerCase())) {
-                    alert(`The filter "${newName}" already exists in this group.`);
+                    alert(t('alert.filter.duplicate', 'The filter "{name}" already exists in this group.').replace('{name}', newName));
                     return;
                 }
                 
@@ -594,7 +594,7 @@ export function setupEventListeners() {
                 addBtn.setAttribute('data-tooltip', 'Add Filter');
             } else {
                 if (listToCheck.some(f => f.name.toLowerCase() === name.toLowerCase())) {
-                    alert(`The filter "${name}" already exists in this group.`);
+                    alert(t('alert.filter.duplicate', 'The filter "{name}" already exists in this group.').replace('{name}', name));
                     return;
                 }
                 listToCheck.push({ name, icon });
@@ -679,7 +679,7 @@ export function setupEventListeners() {
         state.apiEndpoint = apiEndpointInput.value;
         if (!state.globalDomain.endsWith('/')) state.globalDomain += '/';
         window.globalDomain = state.globalDomain;
-        saveAppState(); syncChannels(); alert('Settings saved. Syncing...');
+        saveAppState(); syncChannels(); alert(t('alert.saved_syncing', 'Settings saved. Syncing...'));
     };
 
     if (autoDomainToggle) autoDomainToggle.onchange = (e) => { state.autoUpdateDomain = e.target.checked; saveAppState(); };
@@ -696,7 +696,7 @@ export function setupEventListeners() {
         hwAccelToggle.onchange = async (e) => {
             state.hwAccelEnabled = e.target.checked;
             await saveAppState();
-            if (confirm("To apply hardware acceleration changes, the app must restart now. Do you want to restart?")) {
+            if (confirm(t('alert.hw_accel.confirm', 'To apply hardware acceleration changes, the app must restart now. Do you want to restart?'))) {
                 await nativeApi.relaunch();
             }
         };
@@ -775,7 +775,7 @@ export function setupEventListeners() {
             if (!state.currentEditingChannelId) return;
             const channel = channels.find(c => String(c.id) === String(state.currentEditingChannelId));
             const channelName = channel ? channel.name || `ID #${channel.id}` : `ID #${state.currentEditingChannelId}`;
-            if (confirm(`Are you sure you want to delete "${channelName}"?`)) {
+            if (confirm(t('alert.delete_channel.confirm', 'Are you sure you want to delete "{name}"?').replace('{name}', channelName))) {
                 channels = channels.filter(c => String(c.id) !== String(state.currentEditingChannelId));
                 state.currentEditingChannelId = null;
                 hideEditPane(false);
@@ -967,14 +967,14 @@ export function setupEventListeners() {
     };
 
     const HOTKEY_DEFS = [
-        { action: 'fullscreen',  title: 'Toggle Fullscreen', desc: 'Enter or exit fullscreen mode.',            group: 'player'  },
-        { action: 'toggleHUD',   title: 'Player Pin',        desc: 'Show HUD and toggle pin state.',            group: 'player'  },
-        { action: 'prevChannel', title: 'Channel Up',        desc: 'Zap to the previous channel.',              group: 'channel' },
-        { action: 'nextChannel', title: 'Channel Down',      desc: 'Zap to the next channel.',                  group: 'channel' },
-        { action: 'volumeUp',    title: 'Volume Up',         desc: 'Increase the volume level.',                group: 'volume'  },
-        { action: 'volumeDown',  title: 'Volume Down',       desc: 'Decrease the volume level.',                group: 'volume'  },
-        { action: 'toggleMute',  title: 'Toggle Mute',       desc: 'Mute or unmute audio.',                     group: 'misc'    },
-        { action: 'escape',      title: 'Close / Go Back',   desc: 'Close modals or return to previous view.',  group: 'misc'    },
+        { action: 'fullscreen',  title: t('hotkey.fullscreen.title', 'Toggle Fullscreen'), desc: t('hotkey.fullscreen.desc', 'Enter or exit fullscreen mode.'),           group: 'player'  },
+        { action: 'toggleHUD',   title: t('hotkey.pin.title', 'Player Pin'),               desc: t('hotkey.pin.desc', 'Show HUD and toggle pin state.'),                  group: 'player'  },
+        { action: 'prevChannel', title: t('hotkey.ch_up.title', 'Channel Up'),             desc: t('hotkey.ch_up.desc', 'Zap to the previous channel.'),                  group: 'channel' },
+        { action: 'nextChannel', title: t('hotkey.ch_down.title', 'Channel Down'),         desc: t('hotkey.ch_down.desc', 'Zap to the next channel.'),                    group: 'channel' },
+        { action: 'volumeUp',    title: t('hotkey.vol_up.title', 'Volume Up'),             desc: t('hotkey.vol_up.desc', 'Increase the volume level.'),                   group: 'volume'  },
+        { action: 'volumeDown',  title: t('hotkey.vol_down.title', 'Volume Down'),         desc: t('hotkey.vol_down.desc', 'Decrease the volume level.'),                 group: 'volume'  },
+        { action: 'toggleMute',  title: t('hotkey.mute.title', 'Toggle Mute'),             desc: t('hotkey.mute.desc', 'Mute or unmute audio.'),                          group: 'misc'    },
+        { action: 'escape',      title: t('hotkey.escape.title', 'Close / Go Back'),       desc: t('hotkey.escape.desc', 'Close modals or return to previous view.'),     group: 'misc'    },
     ];
 
     function keyToDisplay(key) {
@@ -1039,7 +1039,7 @@ export function setupEventListeners() {
                     const conflict = findConflicts(def.action, key);
                     if (conflict) {
                         chip.classList.add('conflict');
-                        chip.title = `Conflict: already used by "${conflict}"`;
+                        chip.title = t('hotkey.conflict', 'Conflict: already used by "{action}"').replace('{action}', conflict);
                     }
 
                     const delBtn = document.createElement('button');
@@ -1085,7 +1085,7 @@ export function setupEventListeners() {
 
         const listener = document.createElement('div');
         listener.className = 'hotkey-listener';
-        listener.textContent = 'Press a key...';
+        listener.textContent = t('hotkey.press_key', 'Press a key...');
 
         const cancelBtn = document.createElement('button');
         cancelBtn.className = 'hotkey-listener-cancel';

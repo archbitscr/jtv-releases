@@ -1,4 +1,5 @@
 import { state } from '../state/appState.js';
+import { t } from '../i18n/i18n.js';
 import { autoCategorizeChannels } from '../filters/filterManager.js';
 import { renderAll } from '../render/renderAll.js';
 import { saveAppState } from './stateManager.js';
@@ -28,14 +29,14 @@ export async function syncChannels(silent = false) {
     const log = document.getElementById('sync-log');
 
     if (!silent) {
-        if (btn) { btn.innerText = "Syncing..."; btn.disabled = true; }
+        if (btn) { btn.innerText = t('sync.btn.syncing', 'Syncing...'); btn.disabled = true; }
         if (log) { log.textContent = ''; log.classList.add('active'); }
-        syncLog(`> Connecting to ${state.globalDomain}...`);
+        syncLog(`${t('sync.connecting', '> Connecting to')} ${state.globalDomain}...`);
     }
 
     const newChannels = await nativeApi.fetchChannels(state.globalDomain);
     if (newChannels && !newChannels.error) {
-        if (!silent) syncLog(`> Received ${newChannels.length} channels`);
+        if (!silent) syncLog(`${t('sync.received', '> Received')} ${newChannels.length} ${t('sync.channels', 'channels')}`);
         let updated = 0, added = 0;
         newChannels.forEach(nc => {
             const existing = state.channels.find(c => String(c.id) === String(nc.id));
@@ -64,18 +65,18 @@ export async function syncChannels(silent = false) {
                 added++;
             }
         });
-        if (!silent) syncLog(`> Updated: ${updated} | New: ${added}`);
+        if (!silent) syncLog(t('sync.updated_new', '> Updated: {u} | New: {a}').replace('{u}', updated).replace('{a}', added));
         state.dropdownsPopulated = false;
         autoCategorizeChannels();
         renderAll();
         saveAppState();
-        if (!silent) syncLog('> Sync complete.');
+        if (!silent) syncLog(t('sync.complete', '> Sync complete.'));
     } else {
-        if (!silent) syncLog('> ERROR: Sync failed.');
+        if (!silent) syncLog(t('sync.error', '> ERROR: Sync failed.'));
     }
 
     if (!silent) {
-        if (btn) { btn.innerText = "Sync Channels"; btn.disabled = false; }
+        if (btn) { btn.innerText = t('sync.btn.default', 'Sync Channels'); btn.disabled = false; }
     }
 
     updateSchedule();

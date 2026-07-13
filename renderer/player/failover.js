@@ -1,4 +1,5 @@
 import { state } from '../state/appState.js';
+import { t } from '../i18n/i18n.js';
 
 let selectChannelFn = () => {};
 let mountRemotePlayerFn = () => {};
@@ -29,7 +30,7 @@ export function showNoSignalOverlay(show, type = 'signal') {
         const icon = document.getElementById('no-signal-icon');
         if (icon) icon.src = type === 'internet' ? './assets/images/no-internet.png' : './assets/images/no-signal.png';
         const titleEl = document.querySelector('#no-signal-overlay h2');
-        if (titleEl) titleEl.textContent = type === 'internet' ? 'No Internet' : 'No Signal';
+        if (titleEl) titleEl.textContent = type === 'internet' ? t('player.no_internet.title', 'No Internet') : t('player.no_signal.title', 'No Signal');
         overlay.classList.remove('hidden');
         const audioIndicator = document.getElementById('pbar-indicator-audio');
         const videoIndicator = document.getElementById('pbar-indicator-video');
@@ -79,7 +80,9 @@ function scheduleNextCycle(channelId) {
     else delayMs = 300000;
 
     const minutes = Math.round(delayMs / 60000);
-    setRetryText(`Reintentando en ${minutes} minuto${minutes > 1 ? 's' : ''}...`);
+    const retryKey = minutes > 1 ? 'player.retry_in_plural' : 'player.retry_in';
+    const retryDefault = minutes > 1 ? `Retrying in ${minutes} minutes...` : `Retrying in ${minutes} minute...`;
+    setRetryText(t(retryKey, retryDefault).replace('{m}', minutes));
 
     retryCount++;
 
@@ -87,7 +90,7 @@ function scheduleNextCycle(channelId) {
         retryTimeoutId = null;
         const channel = state.channels?.find(c => c.id === channelId);
         if (!channel) return;
-        setRetryText('Searching alternate sources...');
+        setRetryText(t('player.searching', 'Searching alternate sources...'));
         runFailoverCycle(channelId);
     }, delayMs);
 }
@@ -164,7 +167,7 @@ export function triggerFailover() {
     if (!navigator.onLine) {
         nativeApi.logRenderer('Failover paused: No internet connection');
         showNoSignalOverlay(true, 'internet');
-        setRetryText('No internet connection. Connect to continue.');
+        setRetryText(t('player.no_internet.msg', 'No internet connection. Connect to continue.'));
         window.addEventListener('online', resumeFailoverOnce);
         return;
     }
@@ -190,6 +193,6 @@ window.addEventListener('offline', () => {
         stopNoSignalRetryLoop();
     }
     showNoSignalOverlay(true, 'internet');
-    setRetryText('No internet connection. Connect to continue.');
+    setRetryText(t('player.no_internet.msg', 'No internet connection. Connect to continue.'));
     window.addEventListener('online', resumeFailoverOnce);
 });

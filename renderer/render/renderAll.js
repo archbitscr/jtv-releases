@@ -1,4 +1,5 @@
 import { state } from '../state/appState.js';
+import { t } from '../i18n/i18n.js';
 import { sanitizeIconName, escapeHtml } from '../utils/sanitize.js';
 import { syncFilterList } from '../filters/filterManager.js';
 import { emojiToHtml } from '../filters/filterState.js';
@@ -34,7 +35,7 @@ export function renderSettingsFilters() {
         if (!container) return;
         container.innerHTML = '';
         if (list.length === 0) {
-            container.innerHTML = `<div class="empty-list-msg">No filters defined</div>`;
+            container.innerHTML = `<div class="empty-list-msg">${t('filter.no_defined', 'No filters defined')}</div>`;
             return;
         }
         list.forEach(filter => {

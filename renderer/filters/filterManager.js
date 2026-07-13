@@ -1,4 +1,5 @@
 import { state } from '../state/appState.js';
+import { t } from '../i18n/i18n.js';
 import { eventIconsList, mapIconToEmoji, getGenreIcon, emojiToHtml } from './filterState.js';
 import { sanitizeIconName, escapeHtml, sanitizeMediaUrl } from '../utils/sanitize.js';
 import { getPlaceholderHtml, TV_ICON_SVG } from '../utils/domHelpers.js';
@@ -349,11 +350,11 @@ export function renderChannelFiltersManager(channel) {
 
     const addFilterToChannel = document.getElementById('add-filter-to-channel');
     if (!addFilterToChannel) return;
-    addFilterToChannel.innerHTML = '<option value="">+ Add Filter...</option>';
-    
+    addFilterToChannel.innerHTML = `<option value="">${t('filter.add', '+ Add Filter...')}</option>`;
+
     // Agrupar las opciones disponibles por tipo usando optgroups premium
     const langGroup = document.createElement('optgroup');
-    langGroup.label = "Languages";
+    langGroup.label = t('filter.languages', 'Languages');
     state.filterLanguages.forEach(f => {
         if (!channel.categories.map(c => c.toLowerCase()).includes(f.name.toLowerCase())) {
             const opt = document.createElement('option');
@@ -365,7 +366,7 @@ export function renderChannelFiltersManager(channel) {
     if (langGroup.children.length > 0) addFilterToChannel.appendChild(langGroup);
 
     const genreGroup = document.createElement('optgroup');
-    genreGroup.label = "Genres";
+    genreGroup.label = t('filter.genres', 'Genres');
     state.filterGenres.forEach(f => {
         if (!channel.categories.map(c => c.toLowerCase()).includes(f.name.toLowerCase())) {
             const opt = document.createElement('option');
@@ -377,7 +378,7 @@ export function renderChannelFiltersManager(channel) {
     if (genreGroup.children.length > 0) addFilterToChannel.appendChild(genreGroup);
 
     const eventGroup = document.createElement('optgroup');
-    eventGroup.label = "Events";
+    eventGroup.label = t('filter.events', 'Events');
     state.filterEvents.forEach(f => {
         if (!channel.categories.map(c => c.toLowerCase()).includes(f.name.toLowerCase())) {
             const opt = document.createElement('option');
@@ -415,7 +416,7 @@ export function removeFilterFromChannel(catName) {
     const channel = channels.find(c => String(c.id) === String(state.currentEditingChannelId));
     if (channel) {
         if (catName.toLowerCase() === 'all') {
-            alert('The "All" filter is required for all channels and cannot be removed.');
+            alert(t('filter.all_required', 'The "All" filter is required for all channels and cannot be removed.'));
             return;
         }
         channel.categories = channel.categories.filter(c => c !== catName);

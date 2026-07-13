@@ -1,4 +1,5 @@
 import { state } from '../state/appState.js';
+import { t } from '../i18n/i18n.js';
 import { resetAntiBlackScreen } from '../player/playerController.js';
 import { resetFailoverState, showNoSignalOverlay } from '../player/failover.js';
 
@@ -68,7 +69,7 @@ export function showLiveLanding() {
     document.body.setAttribute('data-module', 'live');
     
     if (sectionTitle) {
-        sectionTitle.textContent = "Live TV";
+        sectionTitle.textContent = t('nav.live_tv', 'Live TV');
         sectionTitle.classList.remove('hidden');
     }
 
@@ -109,7 +110,7 @@ export function showModule(moduleName) {
     const sectionTitle = document.getElementById('land-title');
     if (sectionTitle) {
         if (moduleName === 'live') {
-            sectionTitle.textContent = "Live TV";
+            sectionTitle.textContent = t('nav.live_tv', 'Live TV');
             sectionTitle.classList.remove('hidden');
         } else {
             sectionTitle.classList.add('hidden');

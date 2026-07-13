@@ -1,4 +1,5 @@
 import { state } from '../state/appState.js';
+import { t } from '../i18n/i18n.js';
 import { escapeHtml, sanitizeMediaUrl } from '../utils/sanitize.js';
 import { getSafeLogoHtml } from '../utils/domHelpers.js';
 
@@ -68,7 +69,7 @@ export function renderFavoritesGrid() {
         if (channel) {
             gridItem.setAttribute('data-id', channel.id);
             const epg = ext.getActiveEpg ? ext.getActiveEpg(channel.id) : null;
-            const epgText = epg ? epg.event : "Live broadcast";
+            const epgText = epg ? epg.event : t('channel.live_broadcast', 'Live broadcast');
 
             const logoHtml = getSafeLogoHtml(channel.name, channel.logo);
             gridItem.innerHTML = `

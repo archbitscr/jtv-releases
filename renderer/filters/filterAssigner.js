@@ -1,4 +1,5 @@
 import { state } from '../state/appState.js';
+import { t } from '../i18n/i18n.js';
 import { escapeHtml } from '../utils/sanitize.js';
 import { highlightText } from '../utils/domHelpers.js';
 import { sanitizeIconName } from '../utils/sanitize.js';
@@ -248,7 +249,7 @@ export function updateAssignerBulkSelectBtn() {
 
     if (countEl) {
         if (count > 0) {
-            countEl.textContent = `${count} selected`;
+            countEl.textContent = t('assigner.selected', '{n} selected').replace('{n}', count);
             countEl.style.display = '';
         } else {
             countEl.style.display = 'none';
@@ -293,7 +294,7 @@ export function renderAssignerEvents() {
     }
 
     if (activeList.length === 0) {
-        container.innerHTML = `<div class="empty-list-msg" style="color: rgba(255,255,255,0.4); text-align: center; margin-top: 20px; font-size: 12px;">No filters defined</div>`;
+        container.innerHTML = `<div class="empty-list-msg" style="color: rgba(255,255,255,0.4); text-align: center; margin-top: 20px; font-size: 12px;">${t('filter.no_defined', 'No filters defined')}</div>`;
         return;
     }
 
@@ -522,8 +523,8 @@ export function selectAssignerChannelMultiple() {
             renderAssignerMetaChips(channel);
         }
     } else {
-        nameText.textContent = "Multiple Selection";
-        idText.textContent = `${state.assignerSelectedChannelIndices.length} channels selected`;
+        nameText.textContent = t('assigner.multiple', 'Multiple Selection');
+        idText.textContent = t('assigner.channels_selected', '{n} channels selected').replace('{n}', state.assignerSelectedChannelIndices.length);
         
         logoContainer.innerHTML = `<i data-lucide="layers" style="width: 28px; height: 28px; color: #00ffcc;"></i>`;
         if (window.lucide) {

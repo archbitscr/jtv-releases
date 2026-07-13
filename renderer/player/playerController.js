@@ -1,4 +1,5 @@
 import { state } from '../state/appState.js';
+import { t } from '../i18n/i18n.js';
 import { sanitizeRemoteUrl } from '../utils/sanitize.js';
 import { getSafeLogoHtml } from '../utils/domHelpers.js';
 import { stopWatchTimer } from './watchTimer.js';
@@ -346,7 +347,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     }
 
     const epg = ext.getActiveEpg ? ext.getActiveEpg(channel.id) : null;
-    const epgText = epg ? epg.event : "Live Stream";
+    const epgText = epg ? epg.event : t('channel.live_stream', 'Live Stream');
     document.title = `${channel.name} - ${channel.id}`;
 
     // Update Player Bar tuned channel info
