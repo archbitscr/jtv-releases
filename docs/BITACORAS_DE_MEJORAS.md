@@ -168,6 +168,14 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ---
 
+### [2026-07-12] - Fix: trigger-top no activaba topnav durante reproducción de canal
+
+*   ✅ **Root cause:** Condición `!state.isHomeActive` en el handler de `trigger-top` (`eventListeners.js`). `playerController` pone `state.isHomeActive = false` al sintonizar un canal, bloqueando el trigger aunque el módulo fuera `'live'`.
+*   ✅ **Fix:** Eliminada la condición `!state.isHomeActive`. El topnav (Home/Settings) ahora se activa al hover en el borde superior en cualquier momento dentro del módulo live, con o sin canal activo.
+*   **Archivo:** `renderer/ui/eventListeners.js`
+
+---
+
 ### [2026-07-05] - Fix: volumen e IPC de audio no funcionaban en app instalable
 
 *   ✅ **Root cause:** `IS_AUDIO_MUTED` y `SET_AUDIO_MUTED` estaban en `registerDiagnosticsIpc.js`, que solo se carga con `devModeAvailable=true`. En producción nunca se registraban → `nativeApi.isAudioMuted()` rechazaba en la primera línea de `adjustVolume`/`toggleMute` → fallo silencioso (sin OSD, sin mute, sin respuesta de controles).
