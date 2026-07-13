@@ -347,24 +347,36 @@
                         <div id="general-tab-options" class="general-tab-pane">
                             <div class="setting-item">
                                 <div class="setting-item-info">
-                                    <span class="setting-title" data-i18n="settings.hw_accel.title">Hardware Acceleration</span>
-                                    <span class="setting-desc" data-i18n="settings.hw_accel.desc">Uses the graphics card to improve performance. Requires restart.</span>
+                                    <span class="setting-title" data-i18n="settings.system.language.title">App Language</span>
+                                    <span class="setting-desc" data-i18n="settings.system.language.desc">Change the display language of the application interface.</span>
                                 </div>
-                                <label class="settings-switch">
-                                    <input type="checkbox" id="hw-accel-toggle" checked>
-                                    <span class="settings-switch-slider"></span>
-                                </label>
-                            </div>
-                            <div class="setting-divider"></div>
-                            <div class="setting-item">
-                                <div class="setting-item-info">
-                                    <span class="setting-title" data-i18n="settings.agc.title">Active Audio Leveler (AGC)</span>
-                                    <span class="setting-desc" data-i18n="settings.agc.desc">Stabilizes volume to prevent loud commercials and amplify quiet dialogue.</span>
+                                <div class="setting-item-actions">
+                                    <select id="app-language-select" class="settings-select">
+                                        <option value="en">🇺🇸 English</option>
+                                        <option value="es">🇪🇸 Español</option>
+                                        <option value="fr">🇫🇷 Français</option>
+                                        <option value="pt">🇧🇷 Português</option>
+                                        <option value="ar">🇸🇦 Arabic</option>
+                                        <option value="it">🇮🇹 Italiano</option>
+                                        <option value="de">🇩🇪 Deutsch</option>
+                                        <option value="pl">🇵🇱 Polish</option>
+                                        <option value="tr">🇹🇷 Turkish</option>
+                                        <option value="el">🇬🇷 Greek</option>
+                                        <option value="nl">🇳🇱 Dutch</option>
+                                        <option value="ru">🇷🇺 Russian</option>
+                                        <option value="sr">🇷🇸 Serbian</option>
+                                        <option value="hr">🇭🇷 Croatian</option>
+                                        <option value="bg">🇧🇬 Bulgarian</option>
+                                        <option value="he">🇮🇱 Hebrew</option>
+                                        <option value="da">🇩🇰 Danish</option>
+                                        <option value="sv">🇸🇪 Swedish</option>
+                                        <option value="ro">🇷🇴 Romanian</option>
+                                        <option value="cs">🇨🇿 Czech</option>
+                                        <option value="sk">🇸🇰 Slovak</option>
+                                        <option value="hu">🇭🇺 Hungarian</option>
+                                    </select>
+                                    <button id="lang-apply-btn" class="settings-action-btn" style="display:none;" data-i18n="settings.system.language.apply">Apply &amp; Restart</button>
                                 </div>
-                                <label class="settings-switch">
-                                    <input type="checkbox" id="audio-leveler-toggle">
-                                    <span class="settings-switch-slider"></span>
-                                </label>
                             </div>
                             <div class="setting-divider"></div>
                             <div class="setting-item">
@@ -385,17 +397,6 @@
                                 </div>
                                 <label class="settings-switch">
                                     <input type="checkbox" id="prevent-sleep-toggle">
-                                    <span class="settings-switch-slider"></span>
-                                </label>
-                            </div>
-                            <div class="setting-divider"></div>
-                            <div class="setting-item">
-                                <div class="setting-item-info">
-                                    <span class="setting-title" data-i18n="settings.cloudflare.title">Cloudflare Connection &amp; Protection</span>
-                                    <span class="setting-desc" data-i18n="settings.cloudflare.desc">Securely routes JTV DNS queries through Cloudflare (1.1.1.2) to block malware.</span>
-                                </div>
-                                <label class="settings-switch">
-                                    <input type="checkbox" id="cloudflare-protection-toggle">
                                     <span class="settings-switch-slider"></span>
                                 </label>
                             </div>
@@ -465,36 +466,35 @@
                         <div class="setting-divider" data-dev="true"></div>
                         <div class="setting-item">
                             <div class="setting-item-info">
-                                <span class="setting-title" data-i18n="settings.system.language.title">App Language</span>
-                                <span class="setting-desc" data-i18n="settings.system.language.desc">Change the display language of the application interface.</span>
+                                <span class="setting-title" data-i18n="settings.hw_accel.title">Hardware Acceleration</span>
+                                <span class="setting-desc" data-i18n="settings.hw_accel.desc">Uses the graphics card to improve performance. Requires restart.</span>
                             </div>
-                            <div class="setting-item-actions">
-                                <select id="app-language-select" class="settings-select">
-                                    <option value="en">🇺🇸 English</option>
-                                    <option value="es">🇪🇸 Español</option>
-                                    <option value="fr">🇫🇷 Français</option>
-                                    <option value="pt">🇧🇷 Português</option>
-                                    <option value="ar">🇸🇦 Arabic</option>
-                                    <option value="it">🇮🇹 Italiano</option>
-                                    <option value="de">🇩🇪 Deutsch</option>
-                                    <option value="pl">🇵🇱 Polish</option>
-                                    <option value="tr">🇹🇷 Turkish</option>
-                                    <option value="el">🇬🇷 Greek</option>
-                                    <option value="nl">🇳🇱 Dutch</option>
-                                    <option value="ru">🇷🇺 Russian</option>
-                                    <option value="sr">🇷🇸 Serbian</option>
-                                    <option value="hr">🇭🇷 Croatian</option>
-                                    <option value="bg">🇧🇬 Bulgarian</option>
-                                    <option value="he">🇮🇱 Hebrew</option>
-                                    <option value="da">🇩🇰 Danish</option>
-                                    <option value="sv">🇸🇪 Swedish</option>
-                                    <option value="ro">🇷🇴 Romanian</option>
-                                    <option value="cs">🇨🇿 Czech</option>
-                                    <option value="sk">🇸🇰 Slovak</option>
-                                    <option value="hu">🇭🇺 Hungarian</option>
-                                </select>
-                                <button id="lang-apply-btn" class="settings-action-btn" style="display:none;" data-i18n="settings.system.language.apply">Apply &amp; Restart</button>
+                            <label class="settings-switch">
+                                <input type="checkbox" id="hw-accel-toggle" checked>
+                                <span class="settings-switch-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-divider"></div>
+                        <div class="setting-item">
+                            <div class="setting-item-info">
+                                <span class="setting-title" data-i18n="settings.agc.title">Active Audio Leveler (AGC)</span>
+                                <span class="setting-desc" data-i18n="settings.agc.desc">Stabilizes volume to prevent loud commercials and amplify quiet dialogue.</span>
                             </div>
+                            <label class="settings-switch">
+                                <input type="checkbox" id="audio-leveler-toggle">
+                                <span class="settings-switch-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-divider"></div>
+                        <div class="setting-item">
+                            <div class="setting-item-info">
+                                <span class="setting-title" data-i18n="settings.cloudflare.title">Cloudflare Connection &amp; Protection</span>
+                                <span class="setting-desc" data-i18n="settings.cloudflare.desc">Securely routes JTV DNS queries through Cloudflare (1.1.1.2) to block malware.</span>
+                            </div>
+                            <label class="settings-switch">
+                                <input type="checkbox" id="cloudflare-protection-toggle">
+                                <span class="settings-switch-slider"></span>
+                            </label>
                         </div>
                         <div class="setting-divider"></div>
                         <div class="setting-item">
