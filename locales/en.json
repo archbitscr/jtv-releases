@@ -67,7 +67,7 @@
   "settings.system.donate.title": "Support the Author",
   "settings.system.donate.desc": "If you enjoy JTV, consider supporting its development with a donation.<br>Scan the QR or click the button.",
   "settings.system.danger.title": "Danger Zone",
-  "settings.system.danger.desc": "Deletes all channels, filters, and settings and restarts the app.",
+  "settings.system.danger.desc": "Deletes all favorites, filters, settings and resets the app.",
   "settings.system.danger.btn": "Factory Reset",
 
   "settings.filters.title": "Channel Filters",

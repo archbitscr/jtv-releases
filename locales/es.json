@@ -67,7 +67,7 @@
   "settings.system.donate.title": "Apoya al Autor",
   "settings.system.donate.desc": "Si disfrutas JTV, considera apoyar su desarrollo con una donación.<br>Escanea el QR o haz clic en el botón.",
   "settings.system.danger.title": "Zona de Peligro",
-  "settings.system.danger.desc": "Elimina todos los canales, filtros y ajustes y reinicia la app.",
+  "settings.system.danger.desc": "Elimina todos los favoritos, filtros, ajustes y reinicia la app.",
   "settings.system.danger.btn": "Restablecer de Fábrica",
 
   "settings.filters.title": "Filtros de Canales",
