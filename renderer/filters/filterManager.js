@@ -1,4 +1,4 @@
-import { state } from '../state/appState.js';
+import { state, DEFAULT_EVENT_NAMES } from '../state/appState.js';
 import { t } from '../i18n/i18n.js';
 import { eventIconsList, mapIconToEmoji, getGenreIcon, emojiToHtml } from './filterState.js';
 import { sanitizeIconName, escapeHtml, sanitizeMediaUrl } from '../utils/sanitize.js';
@@ -8,6 +8,42 @@ let ext = {};
 
 export function initFilterManager(dependencies) {
     ext = dependencies;
+}
+
+const GENRE_KEYS = {
+    'Sports':        'filter.genre.sports',
+    'News':          'filter.genre.news',
+    'Movies':        'filter.genre.movies',
+    'Series':        'filter.genre.series',
+    'Comedy':        'filter.genre.comedy',
+    'Animation':     'filter.genre.animation',
+    'Kids':          'filter.genre.kids',
+    'Reality':       'filter.genre.reality',
+    'Music':         'filter.genre.music',
+    'Documentary':   'filter.genre.documentary',
+    'Lifestyle':     'filter.genre.lifestyle',
+    'Food':          'filter.genre.food',
+    'Travel':        'filter.genre.travel',
+    'Investigation': 'filter.genre.investigation',
+    'Regional':      'filter.genre.regional',
+    'XXX Adult 18+': 'filter.genre.xxx',
+};
+
+const EVENT_KEYS = {
+    'Concerts': 'filter.event.concerts',
+    'Awards':   'filter.event.awards',
+    'Festival': 'filter.event.festival',
+};
+
+export function getFilterDisplayName(name) {
+    if (GENRE_KEYS[name]) return t(GENRE_KEYS[name], name);
+    if (EVENT_KEYS[name]) return t(EVENT_KEYS[name], name);
+    return name;
+}
+
+export function isDefaultFilter(type, name) {
+    if (type === 'event') return DEFAULT_EVENT_NAMES.has(name);
+    return false;
 }
 
 export function syncFilterList() {
@@ -66,10 +102,10 @@ export function populateDropdowns() {
                 const opt = document.createElement('option');
                 opt.value = val;
 
-                let displayText = val;
+                let displayText = getFilterDisplayName(val);
                 if (filterList) {
                     const emoji = getFilterEmoji(val, filterList);
-                    if (emoji) displayText = emoji + ' ' + val;
+                    if (emoji) displayText = emoji + ' ' + displayText;
                 }
                 opt.textContent = displayText;
                 select.appendChild(opt);
@@ -338,10 +374,10 @@ export function renderChannelFiltersManager(channel) {
         } else {
             const isEmoji = (filter.icon && /[^\x00-\x7F]/.test(filter.icon)) || (filter.icon && filter.icon.length <= 2);
             chip.innerHTML = `
-                ${isEmoji 
+                ${isEmoji
                     ? `<span class="emoji-icon">${emojiToHtml(filter.icon)}</span>`
                     : `<i data-lucide="${filter.icon}"></i>`}
-                <span>${filter.name || catName}</span>
+                <span>${getFilterDisplayName(filter.name || catName)}</span>
                 <button class="remove-btn" onclick="removeFilterFromChannel('${catName}')"><i data-lucide="x"></i></button>
             `;
         }

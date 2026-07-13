@@ -154,3 +154,15 @@ export function setGlobalDomain(val) { state.globalDomain = val; }
 
 export function getActiveSettingsFilterTab() { return state.activeSettingsFilterTab; }
 export function setActiveSettingsFilterTab(val) { state.activeSettingsFilterTab = val; }
+
+export const DEFAULT_LANG_NAMES = new Set([
+    "English", "Español", "Français", "Português", "Arabic", "Italiano", "Deutsch",
+    "Polish", "Turkish", "Greek", "Dutch", "Russian", "Serbian", "Croatian",
+    "Bulgarian", "Hebrew", "Danish", "Swedish", "Romanian", "Czech", "Slovak", "Hungarian"
+]);
+
+export const DEFAULT_EVENT_NAMES = new Set([
+    "FIFA 2026", "Formula 1", "UFC", "Boxing", "Motorsport", "Rally", "MotoGP",
+    "Futbol", "NBA", "NFL", "MLB", "Golf", "Tennis", "NHL", "Cycling", "Cricket",
+    "Rugby", "Concerts", "Awards", "Festival"
+]);

@@ -1,7 +1,7 @@
 import { state } from '../state/appState.js';
 import { t } from '../i18n/i18n.js';
 import { sanitizeIconName, escapeHtml } from '../utils/sanitize.js';
-import { syncFilterList } from '../filters/filterManager.js';
+import { syncFilterList, getFilterDisplayName, isDefaultFilter } from '../filters/filterManager.js';
 import { emojiToHtml } from '../filters/filterState.js';
 import { saveChannelsAndFilters } from '../services/stateManager.js';
 import Sortable from 'sortablejs';
@@ -56,17 +56,18 @@ export function renderSettingsFilters() {
             const isSystem = (type === 'language' && systemLanguages.includes(filter.name)) ||
                              (type === 'genre' && systemGenres.includes(filter.name));
 
-            // Genre is read-only in user mode; language add/delete controls
-            // are hidden at the card level but checkboxes remain functional.
             const readOnlyType = !isDevMode && (type === 'genre' || type === 'language');
-            const showControls = readOnlyType ? false : (isDevMode || !isSystem);
+            const isProtectedDefault = !isDevMode && isDefaultFilter(type, filter.name);
+            const showControls = (readOnlyType || isProtectedDefault) ? false : (isDevMode || !isSystem);
+
+            const displayName = getFilterDisplayName(filter.name);
 
             item.innerHTML = `
                 <div class="item-details">
                     ${isEmoji
                         ? `<span class="emoji-icon">${emojiToHtml(filter.icon)}</span>`
                         : `<i data-lucide="${sanitizeIconName(filter.icon)}" style="color: ${iconColor} !important;"></i>`}
-                    <span>${escapeHtml(filter.name)}</span>
+                    <span>${escapeHtml(displayName)}</span>
                 </div>
                 ${showControls ? `
                 <div class="filter-item-controls" onclick="event.stopPropagation();">

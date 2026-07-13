@@ -63,12 +63,23 @@ export function initEventAssigner() {
         };
     }
 
-    // Set up tab switching buttons click handlers
+    // In user mode, hide Languages and Genre tabs — only Events is available
+    const devState = window.getDeveloperState ? window.getDeveloperState() : null;
+    const isDevMode = devState ? !!devState.developerModeEnabled : false;
     document.querySelectorAll('.assigner-tab-btn').forEach(btn => {
+        const tab = btn.dataset.assignerTab;
+        if (!isDevMode && (tab === 'languages' || tab === 'genres')) {
+            btn.style.display = 'none';
+        } else {
+            btn.style.display = '';
+        }
         btn.onclick = () => {
             window.setAssignerActiveTab(btn.dataset.assignerTab);
         };
     });
+    if (!isDevMode) {
+        window.setAssignerActiveTab('events');
+    }
 
     const applyBtn = document.getElementById('assigner-apply-btn');
     if (applyBtn) {
