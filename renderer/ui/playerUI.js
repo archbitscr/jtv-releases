@@ -29,17 +29,26 @@ export function updateWebviewPointerEvents() {
 
     const settingsOpen = !document.getElementById('settings-screen').classList.contains('hidden');
     const noSignalOpen = !document.getElementById('no-signal-overlay').classList.contains('hidden');
-    if (settingsOpen || noSignalOpen) {
+    const pbarOpen = !document.getElementById('pbar').classList.contains('hidden');
+    const sideMenuOpen = !document.getElementById('side-menu').classList.contains('hidden');
+    if (settingsOpen || noSignalOpen || pbarOpen || sideMenuOpen) {
         webview.style.pointerEvents = 'none';
     } else {
         webview.style.pointerEvents = 'auto';
+    }
+
+    const triggerBottom = document.getElementById('trigger-bottom');
+    if (triggerBottom) {
+        triggerBottom.style.pointerEvents = pbarOpen ? 'none' : '';
     }
 }
 
 export function initWebviewPointerEventsObserver() {
     const targets = [
         'settings-screen',
-        'no-signal-overlay'
+        'no-signal-overlay',
+        'pbar',
+        'side-menu'
     ];
     
     const observer = new MutationObserver(() => {
