@@ -101,10 +101,9 @@ export function registerUserDataIpc({ ipcMain, context }) {
   // Read a locale file from the bundled locales/ directory
   ipcMain.handle('read-locale-file', async (_event, langCode) => {
     const safe = langCode.replace(/[^a-z]/g, '');
-    const localesDir = app.isPackaged
-      ? path.join(process.resourcesPath, 'locales')
-      : path.join(app.getAppPath(), 'locales');
-    const filePath = path.join(localesDir, `${safe}.json`);
+    // app.getAppPath() returns the app root in dev and the app.asar path when packaged.
+    // Electron patches fs to read inside .asar, so this works in both cases.
+    const filePath = path.join(app.getAppPath(), 'locales', `${safe}.json`);
     return fs.readFileSync(filePath, 'utf8');
   });
 
