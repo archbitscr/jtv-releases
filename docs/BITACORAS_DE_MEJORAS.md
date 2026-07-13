@@ -398,6 +398,8 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ---
 
+> **Sub-pendientes de Tarea 37 cancelados (2026-07-12):** meseta `clamp()` en Vol OSD (`.volosd-*`) y Settings — marcados como ❌ Obsoletos. No se continuará con la aplicación de clamp en esos componentes.
+
 ### ⏳ Dificultad Media-Alta
 
 #### 5. Tarea 30: Soporte Multi-idioma (i18n) — Bundle-first
@@ -580,7 +582,8 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ---
 
-#### 7. Tarea 42: Soporte de Streams Directos (HLS / m3u8)
+#### ~~7. Tarea 42: Soporte de Streams Directos (HLS / m3u8)~~ ❌ Obsoleta
+
 *   **Componentes:** `renderer/player/playerController.js`, `index.html`, `style.css`, `renderer/player/` (nuevo módulo `hlsPlayer.js`), `renderer/services/channelSync.js` (parser m3u).
 *   **Objetivo:** Permitir sintonizar canales cuya URL es un stream directo (`.m3u8`, `.m3u`, `.ts`, `rtmp://`, `rtsp://`) usando un `<video>` + hls.js en lugar del `<webview>` actual. El usuario no nota diferencia — mismos controles, mismo Player Bar, mismo comportamiento.
 
@@ -632,7 +635,8 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ### ⏳ Dificultad Alta — 🧠 Recomendado Opus 4.8
 
-#### 8. Tarea 24: Licenciamiento, Trial Lock y Pasarela de Pago 🧠
+#### ~~8. Tarea 24: Licenciamiento, Trial Lock y Pasarela de Pago~~ ❌ Obsoleta
+
 *   **Componentes:** `main.js`, interceptores del webview, Registro de Windows, Supabase (proyecto nuevo), PayPal Webhook, `jtv_data.json`.
 
 ##### A. Trial local (doble verificación)
