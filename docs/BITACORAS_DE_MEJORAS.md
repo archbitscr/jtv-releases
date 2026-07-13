@@ -400,6 +400,15 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 > **Sub-pendientes de Tarea 37 cancelados (2026-07-12):** meseta `clamp()` en Vol OSD (`.volosd-*`) y Settings — marcados como ❌ Obsoletos. No se continuará con la aplicación de clamp en esos componentes.
 
+### [2026-07-13] — Tarea 30: i18n alta+media priority strings ✅ v2.3.13
+
+*   **Commit:** `90dcc2f`
+*   **Archivos JS modificados (11):** `renderer/utils/tooltips.js`, `renderer/player/failover.js`, `renderer/render/channelList.js`, `renderer/render/renderAll.js`, `renderer/render/favoritesGrid.js`, `renderer/filters/filterAssigner.js`, `renderer/filters/filterManager.js`, `renderer/services/channelSync.js`, `renderer/player/playerController.js`, `renderer/ui/eventListeners.js`, `renderer/ui/navigation.js`.
+*   **Resumen:** ~80 strings hardcodeados en inglés (y uno en español incorrecto — el countdown del retry) reemplazados con llamadas `t('key', 'fallback')`. ~90 claves nuevas en los 5 locale JSON. Cubre: tooltips, overlays de señal/internet, EPG fallback, filtros, asignador, sync log, hotkey cards, dialogs alert/confirm, y el título "Live TV" del nav.
+*   **Fix incluido:** El countdown de reintento (`scheduleNextCycle`) estaba hardcodeado en español `"Reintentando en X minuto(s)..."` — corregido a `t('player.retry_in[_plural]')` con reemplazo de `{m}`.
+
+---
+
 ### [2026-07-12] — Tarea 30: i18n Bundle-first ✅ v2.3.13
 
 *   **Componentes:** `locales/` (5 archivos JSON), `renderer/i18n/i18n.js`, `index.html`, `main/ipc/registerUserDataIpc.js`, `app-preload.cjs`, `renderer.js`, `renderer/state/appState.js`, `renderer/services/stateManager.js`, `renderer/ui/eventListeners.js`, `package.json`.
