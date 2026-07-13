@@ -63,11 +63,11 @@
   "settings.system.title": "Opções do Sistema",
   "settings.system.language.title": "Idioma do App",
   "settings.system.language.desc": "Altere o idioma de exibição da interface do aplicativo.",
-  "settings.system.language.apply": "Aplicar e Reiniciar",
+  "settings.system.language.apply": "Aplicar",
   "settings.system.donate.title": "Apoie o Autor",
   "settings.system.donate.desc": "Se você gosta do JTV, considere apoiar seu desenvolvimento com uma doação.<br>Escaneie o QR ou clique no botão.",
   "settings.system.danger.title": "Zona de Perigo",
-  "settings.system.danger.desc": "Exclui todos os canais, credenciais e histórico local e redefine o app.",
+  "settings.system.danger.desc": "Exclui todos os canais, filtros e configurações e reinicia o app.",
   "settings.system.danger.btn": "Redefinição de Fábrica",
 
   "settings.filters.title": "Filtros de Canais",

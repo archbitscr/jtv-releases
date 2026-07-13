@@ -63,7 +63,7 @@
   "settings.system.title": "Options Système",
   "settings.system.language.title": "Langue de l'Application",
   "settings.system.language.desc": "Modifiez la langue d'affichage de l'interface de l'application.",
-  "settings.system.language.apply": "Appliquer et Redémarrer",
+  "settings.system.language.apply": "Appliquer",
   "settings.system.donate.title": "Soutenir l'Auteur",
   "settings.system.donate.desc": "Si vous appréciez JTV, pensez à soutenir son développement par un don.<br>Scannez le QR ou cliquez sur le bouton.",
   "settings.system.danger.title": "Zone Dangereuse",

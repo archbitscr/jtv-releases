@@ -718,9 +718,16 @@ export function setupEventListeners() {
     }
     if (langApplyBtn) {
         langApplyBtn.onclick = async () => {
-            state.appLanguage = langSelect.value;
+            const newLang = langSelect.value;
+            state.appLanguage = newLang;
+            await applyLocale(newLang);
+            renderAll();
+            const landTitle = document.getElementById('land-title');
+            if (landTitle && !landTitle.classList.contains('hidden')) {
+                landTitle.textContent = t('nav.live_tv', 'Live TV');
+            }
+            langApplyBtn.style.display = 'none';
             await saveAppState(true);
-            await window.jtvAPI.relaunch();
         };
     }
 
