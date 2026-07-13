@@ -1,5 +1,6 @@
 /* global lucide */
 import { state } from '../state/appState.js';
+import { applyLocale, getCurrentLang } from '../i18n/i18n.js';
 import { selectChannel, zapChannel, mountRemotePlayer, updatePlayerActiveState } from '../player/playerController.js';
 import { showModule, switchTab, showLiveLanding, hideMenu, hideEditPane } from '../ui/navigation.js';
 import { syncMenuScroll } from '../render/channelList.js';
@@ -720,6 +721,21 @@ export function setupEventListeners() {
         };
     }
 
+    const langSelect = document.getElementById('app-language-select');
+    const langApplyBtn = document.getElementById('lang-apply-btn');
+    if (langSelect) {
+        langSelect.value = state.appLanguage || 'en';
+        langSelect.onchange = () => {
+            if (langApplyBtn) langApplyBtn.style.display = langSelect.value !== getCurrentLang() ? '' : 'none';
+        };
+    }
+    if (langApplyBtn) {
+        langApplyBtn.onclick = async () => {
+            state.appLanguage = langSelect.value;
+            await saveAppState(true);
+            await window.jtvAPI.relaunch();
+        };
+    }
 
 
     editNameInput.oninput = (e) => {

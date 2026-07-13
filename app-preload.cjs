@@ -88,6 +88,7 @@ contextBridge.exposeInMainWorld('jtvAPI', {
         savePoster: (payload) => ipcRenderer.invoke(IPC.MOVIES_DB_SAVE_POSTER, payload),
         getPoster: (payload) => ipcRenderer.invoke(IPC.MOVIES_DB_GET_POSTER, payload)
     },
+    readLocaleFile: (langCode) => ipcRenderer.invoke('read-locale-file', langCode),
     relaunch: () => ipcRenderer.invoke('relaunch'),
     googleLogin: () => ipcRenderer.invoke('google-login'),
     getNetworkDate: (streamUrl) => ipcRenderer.invoke('get-network-date', streamUrl),

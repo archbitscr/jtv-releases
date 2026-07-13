@@ -38,6 +38,7 @@
       "!main/ipc/registerDiagnosticsIpc.js",
       "!main/diagnostics/**/*",
       "shared/**/*",
+      "locales/**/*",
       "dist/assets/images/JTV.ico"
     ],
     "win": {

@@ -68,7 +68,8 @@ export async function actualSaveAppState() {
         showDiagnosticClicks: devState.showDiagnosticClicks,
         hudDevControlsEnabled: devState.hudDevControlsEnabled,
         hotkeyMap: state.hotkeyMap,
-        timeoutsConfig: window.timeoutsConfig
+        timeoutsConfig: window.timeoutsConfig,
+        appLanguage: state.appLanguage
     };
     if (window.jtvAPI) {
         await window.jtvAPI.saveUserData(dataToSave);
@@ -107,7 +108,8 @@ export async function saveChannelsAndFilters() {
         showDiagnosticClicks: devState.showDiagnosticClicks,
         hudDevControlsEnabled: devState.hudDevControlsEnabled,
         hotkeyMap: state.hotkeyMap,
-        timeoutsConfig: window.timeoutsConfig
+        timeoutsConfig: window.timeoutsConfig,
+        appLanguage: state.appLanguage
     };
     if (window.jtvAPI) {
         await window.jtvAPI.saveUserData(dataToSave);

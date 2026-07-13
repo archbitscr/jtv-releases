@@ -1,4 +1,5 @@
 import { state } from './renderer/state/appState.js';
+import { loadLocale, applyLocale } from './renderer/i18n/i18n.js';
 
 if (import.meta.hot) {
   const _devOverrides = new Map()
@@ -394,7 +395,13 @@ async function init() {
         if (savedData.timeoutsConfig) {
             window.timeoutsConfig = { ...window.timeoutsConfig, ...savedData.timeoutsConfig };
         }
+        if (savedData.appLanguage) {
+            state.appLanguage = savedData.appLanguage;
+        }
     }
+
+    await loadLocale(state.appLanguage);
+    applyLocale();
 
     // Dev-only modules (Task 23): loaded exclusively via dynamic import() guarded by
     // import.meta.env.PROD. In production builds Vite/esbuild replaces PROD with `true`,

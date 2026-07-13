@@ -29,9 +29,9 @@
                     <span class="google-icon-wrapper">
                         <img class="google-icon-img" src="assets/images/google-logo.png" alt="Google">
                     </span>
-                    <span class="google-button-text">Sign in with Google</span>
+                    <span class="google-button-text" data-i18n="app.loader.login">Sign in with Google</span>
                 </button>
-                <button id="loader-uninstall-btn" class="danger-btn loader-btn">Uninstall</button>
+                <button id="loader-uninstall-btn" class="danger-btn loader-btn" data-i18n="app.loader.uninstall">Uninstall</button>
             </div>
         </div>
     </div>
@@ -49,9 +49,9 @@
                 <div id="no-signal-overlay" class="modal-blocker hidden">
                     <div class="modal-blocker-content glass-card no-signal-content">
                         <img id="no-signal-icon" src="./assets/images/no-signal.png">
-                        <h2>No Signal</h2>
+                        <h2 data-i18n="player.no_signal.title">No Signal</h2>
                         <div id="no-signal-retry-status">
-                            <p id="no-signal-retry-text">Waiting for signal to be restored...</p>
+                            <p id="no-signal-retry-text" data-i18n="player.no_signal.retry">Waiting for signal to be restored...</p>
                             <div class="retry-dots-row">
                                 <span class="retry-dot"></span>
                                 <span class="retry-dot"></span>
@@ -167,9 +167,9 @@
             <!-- Combined tab row with close button -->
             <div class="side-tabs">
                 <div class="side-tabs-center">
-                    <button class="side-tab-btn" data-tab="home" id="menu-home-btn" title="Live TV Home"><i data-lucide="home"></i> Home</button>
-                    <button class="side-tab-btn active" data-tab="channels"><i data-lucide="tv"></i> All</button>
-                    <button class="side-tab-btn" data-tab="favorites"><i data-lucide="heart"></i> Favorites</button>
+                    <button class="side-tab-btn" data-tab="home" id="menu-home-btn" title="Live TV Home"><i data-lucide="home"></i> <span data-i18n="side.tab.home">Home</span></button>
+                    <button class="side-tab-btn active" data-tab="channels"><i data-lucide="tv"></i> <span data-i18n="side.tab.all">All</span></button>
+                    <button class="side-tab-btn" data-tab="favorites"><i data-lucide="heart"></i> <span data-i18n="side.tab.favorites">Favorites</span></button>
                 </div>
                 <button class="close-btn side-close-btn" title="Close menu"><i data-lucide="x"></i></button>
             </div>
@@ -188,7 +188,7 @@
                         <div id="favorites-list" class="carousel"></div>
                     </div>
                     <!-- Tuning Hint Message -->
-                    <div id="menu-tuning-hint" class="menu-tuning-hint">Tune a channel to get started...</div>
+                    <div id="menu-tuning-hint" class="menu-tuning-hint" data-i18n="side.hint">Tune a channel to get started...</div>
                 </div>
 
 
@@ -196,46 +196,46 @@
                 <!-- Edit View -->
                 <div id="edit-view" class="menu-view hidden">
                     <div class="view-header">
-                        <button id="back-to-list-btn" class="back-btn"><i data-lucide="arrow-left"></i> Back</button>
-                        <h2 id="editing-channel-name">Edit channel</h2>
+                        <button id="back-to-list-btn" class="back-btn"><i data-lucide="arrow-left"></i> <span data-i18n="edit.back">Back</span></button>
+                        <h2 id="editing-channel-name" data-i18n="edit.title">Edit channel</h2>
                     </div>
                     <div class="modal-body side-scroll-area">
                         <div class="edit-group">
-                            <label>Channel name</label>
-                            <input type="text" id="edit-name-input" class="dark-input" placeholder="Ej. HBO USA">
-                            <span id="edit-name-error" class="error-text hidden">Name is required</span>
+                            <label data-i18n="edit.label.name">Channel name</label>
+                            <input type="text" id="edit-name-input" class="dark-input" placeholder="E.g. HBO USA" data-i18n-placeholder="edit.ph.name">
+                            <span id="edit-name-error" class="error-text hidden" data-i18n="edit.err.name">Name is required</span>
                         </div>
                         <div class="edit-group">
-                            <label>ID / channel number</label>
-                            <input type="text" id="edit-id-input" class="dark-input" placeholder="Ej. 55">
-                            <span id="edit-id-error" class="error-text hidden">Number is required</span>
+                            <label data-i18n="edit.label.id">ID / channel number</label>
+                            <input type="text" id="edit-id-input" class="dark-input" placeholder="E.g. 55" data-i18n-placeholder="edit.ph.id">
+                            <span id="edit-id-error" class="error-text hidden" data-i18n="edit.err.id">Number is required</span>
                         </div>
                         <div class="edit-group">
-                            <label>Stream URL / Ruta</label>
-                            <input type="text" id="edit-stream-input" class="dark-input" placeholder="Ej. watch.php?id=55 o https://...">
-                            <span id="edit-stream-error" class="error-text hidden">Stream URL is required</span>
+                            <label data-i18n="edit.label.stream">Stream URL / Path</label>
+                            <input type="text" id="edit-stream-input" class="dark-input" placeholder="E.g. watch.php?id=55 or https://..." data-i18n-placeholder="edit.ph.stream">
+                            <span id="edit-stream-error" class="error-text hidden" data-i18n="edit.err.stream">Stream URL is required</span>
                         </div>
                         <div class="config-section">
-                            <h3>Assigned filters</h3>
+                            <h3 data-i18n="edit.section.filters">Assigned filters</h3>
                             <div id="channel-filters-manager" class="settings-list"></div>
                             <select id="add-filter-to-channel" class="dark-input">
-                                <option value="">+ Add filter...</option>
+                                <option value="" data-i18n="edit.filter.add">+ Add filter...</option>
                             </select>
                         </div>
                         <div class="config-section fav-config">
-                            <h3>Favorite status</h3>
+                            <h3 data-i18n="edit.section.fav">Favorite status</h3>
                             <button id="edit-fav-toggle" class="side-action-btn favorite edit-mode" data-tooltip-pos="right">
                                 <i data-lucide="heart"></i>
                             </button>
                         </div>
                         <div class="config-section logo-edit-section">
-                            <h3>Channel logo</h3>
+                            <h3 data-i18n="edit.section.logo">Channel logo</h3>
                             <div id="edit-logo-preview" class="logo-preview-box"></div>
-                            <button id="edit-upload-btn" class="primary-btn">Change/Upload</button>
+                            <button id="edit-upload-btn" class="primary-btn" data-i18n="edit.btn.upload">Change/Upload</button>
                             <input type="file" id="logo-upload-input" hidden accept="image/*">
                         </div>
                         <div class="config-section delete-section" style="margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px;">
-                            <button id="delete-channel-btn" class="primary-btn" style="background: #ff4b4b; color: white; margin-top: 0;">Delete Channel</button>
+                            <button id="delete-channel-btn" class="primary-btn" style="background: #ff4b4b; color: white; margin-top: 0;" data-i18n="edit.btn.delete">Delete Channel</button>
                         </div>
                     </div>
                 </div>
@@ -246,8 +246,8 @@
         <!-- Top Navigation Bar (outside live-tv to avoid stacking context burial) -->
         <div id="tnav-menu" class="tnav-menu glass-panel hidden">
             <div class="tnav-buttons">
-                <button class="tnav-btn" data-nav="live" id="tnav-btn-live"><i data-lucide="home"></i> Home</button>
-                <button class="tnav-btn" data-nav="settings" id="tnav-btn-settings"><i data-lucide="settings"></i> Settings</button>
+                <button class="tnav-btn" data-nav="live" id="tnav-btn-live"><i data-lucide="home"></i> <span data-i18n="tnav.home">Home</span></button>
+                <button class="tnav-btn" data-nav="settings" id="tnav-btn-settings"><i data-lucide="settings"></i> <span data-i18n="tnav.settings">Settings</span></button>
             </div>
         </div>
 
@@ -256,14 +256,14 @@
             <div class="land-content">
                 <div class="land-top-row">
                     <div class="land-title-block">
-                        <h2 id="land-title" class="land-title">Live TV</h2>
+                        <h2 id="land-title" class="land-title" data-i18n="land.title">Live TV</h2>
                     </div>
 
                     <div class="land-controls-block">
                         <div id="live-search-container" class="hidden">
                             <div class="search-container">
                                 <i data-lucide="search"></i>
-                                <input type="text" id="live-landing-search" placeholder="Search live channels...">
+                                <input type="text" id="live-landing-search" placeholder="Search live channels..." data-i18n-placeholder="land.search">
                                 <button id="clear-live-landing-search" class="search-clear-btn hidden" title="Clear"><i data-lucide="x"></i></button>
                             </div>
                         </div>
@@ -271,34 +271,34 @@
                     </div>
 
                     <div class="land-exit-block">
-                        <button id="close-home" class="land-exit-btn" title="Exit">Exit</button>
+                        <button id="close-home" class="land-exit-btn" title="Exit" data-i18n="land.exit">Exit</button>
                     </div>
                 </div>
 
                 <div id="dashboard-filters" class="land-filter-row">
-                    <button id="land-nav-all" class="land-filter-btn">All</button>
-                    <button id="land-nav-favorites" class="land-filter-btn">Favorites</button>
+                    <button id="land-nav-all" class="land-filter-btn" data-i18n="land.all">All</button>
+                    <button id="land-nav-favorites" class="land-filter-btn" data-i18n="land.favorites">Favorites</button>
 
                     <!-- Unified filter dropdowns (shared by sidebar and landing) -->
                     <div class="fbar-select" data-for="filter-select-language">
                         <select id="filter-select-language" aria-label="Language" data-label="Language" style="display:none;">
                             <option value="all">All</option>
                         </select>
-                        <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Language</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
+                        <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label" data-i18n="land.filter.language">Language</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
                         <div class="fbar-select-menu hidden"></div>
                     </div>
                     <div class="fbar-select" data-for="filter-select-genre">
                         <select id="filter-select-genre" aria-label="Genre" data-label="Genre" style="display:none;">
                             <option value="all">All</option>
                         </select>
-                        <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Genre</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
+                        <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label" data-i18n="land.filter.genre">Genre</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
                         <div class="fbar-select-menu hidden"></div>
                     </div>
                     <div class="fbar-select" data-for="filter-select-event">
                         <select id="filter-select-event" aria-label="Event" data-label="Event" style="display:none;">
                             <option value="all">All</option>
                         </select>
-                        <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label">Event</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
+                        <button class="fbar-select-btn land-filter-btn" type="button"><span class="fbar-select-label" data-i18n="land.filter.event">Event</span> <i data-lucide="chevron-down" class="fbar-chevron"></i></button>
                         <div class="fbar-select-menu hidden"></div>
                     </div>
                 </div>
@@ -328,10 +328,10 @@
                 <!-- Sidebar navigation for settings -->
                 <aside class="settings-sidebar">
                     <div class="settings-tabs">
-                        <button class="settings-tab-btn active" data-settings-tab="general"><i data-lucide="settings-2"></i> Settings</button>
-                        <button class="settings-tab-btn" data-settings-tab="filters" id="settings-tab-filters"><i data-lucide="filter"></i> Filters</button>
-                        <button class="settings-tab-btn" data-settings-tab="background"><i data-lucide="image"></i> Wallpaper</button>
-                        <button class="settings-tab-btn" data-settings-tab="account"><i data-lucide="monitor"></i> System</button>
+                        <button class="settings-tab-btn active" data-settings-tab="general"><i data-lucide="settings-2"></i> <span data-i18n="settings.tab.general">Settings</span></button>
+                        <button class="settings-tab-btn" data-settings-tab="filters" id="settings-tab-filters"><i data-lucide="filter"></i> <span data-i18n="settings.tab.filters">Filters</span></button>
+                        <button class="settings-tab-btn" data-settings-tab="background"><i data-lucide="image"></i> <span data-i18n="settings.tab.wallpaper">Wallpaper</span></button>
+                        <button class="settings-tab-btn" data-settings-tab="account"><i data-lucide="monitor"></i> <span data-i18n="settings.tab.system">System</span></button>
                         <button class="settings-tab-btn" data-settings-tab="developer" id="settings-tab-developer" data-dev="true"><i data-lucide="code-2"></i> Developer <span class="dev-indicator"></span></button>
                         <button class="settings-tab-btn" data-settings-tab="channels" id="settings-tab-channels" data-dev="true"><i data-lucide="tv"></i> Channels <span class="dev-indicator"></span></button>
                         <button class="settings-tab-btn" data-settings-tab="connectivity" id="settings-tab-connectivity" data-dev="true"><i data-lucide="network"></i> Connectivity <span class="dev-indicator"></span></button>
@@ -349,15 +349,15 @@
                     <!-- Section: General -->
                     <div id="settings-sect-general" class="settings-sect-pane active">
                         <nav class="settings-subnav" aria-label="General settings sections">
-                            <button class="settings-subnav-btn general-subnav-btn active" data-general-tab="general-tab-options"><i data-lucide="sliders"></i> General</button>
-                            <button class="settings-subnav-btn general-subnav-btn" data-general-tab="general-tab-hotkeys"><i data-lucide="keyboard"></i> Hotkeys</button>
+                            <button class="settings-subnav-btn general-subnav-btn active" data-general-tab="general-tab-options"><i data-lucide="sliders"></i> <span data-i18n="settings.subnav.general">General</span></button>
+                            <button class="settings-subnav-btn general-subnav-btn" data-general-tab="general-tab-hotkeys"><i data-lucide="keyboard"></i> <span data-i18n="settings.subnav.hotkeys">Hotkeys</span></button>
                         </nav>
 
                         <div id="general-tab-options" class="general-tab-pane">
                             <div class="setting-item">
                                 <div class="setting-item-info">
-                                    <span class="setting-title">Hardware Acceleration</span>
-                                    <span class="setting-desc">Uses the graphics card to improve performance. Requires restart.</span>
+                                    <span class="setting-title" data-i18n="settings.hw_accel.title">Hardware Acceleration</span>
+                                    <span class="setting-desc" data-i18n="settings.hw_accel.desc">Uses the graphics card to improve performance. Requires restart.</span>
                                 </div>
                                 <label class="settings-switch">
                                     <input type="checkbox" id="hw-accel-toggle" checked>
@@ -367,8 +367,8 @@
                             <div class="setting-divider"></div>
                             <div class="setting-item">
                                 <div class="setting-item-info">
-                                    <span class="setting-title">Active Audio Leveler (AGC)</span>
-                                    <span class="setting-desc">Stabilizes volume to prevent loud commercials and amplify quiet dialogue.</span>
+                                    <span class="setting-title" data-i18n="settings.agc.title">Active Audio Leveler (AGC)</span>
+                                    <span class="setting-desc" data-i18n="settings.agc.desc">Stabilizes volume to prevent loud commercials and amplify quiet dialogue.</span>
                                 </div>
                                 <label class="settings-switch">
                                     <input type="checkbox" id="audio-leveler-toggle">
@@ -378,8 +378,8 @@
                             <div class="setting-divider"></div>
                             <div class="setting-item">
                                 <div class="setting-item-info">
-                                    <span class="setting-title">Minimize to System Tray</span>
-                                    <span class="setting-desc">Hides the app in the background instead of closing it.</span>
+                                    <span class="setting-title" data-i18n="settings.tray.title">Minimize to System Tray</span>
+                                    <span class="setting-desc" data-i18n="settings.tray.desc">Hides the app in the background instead of closing it.</span>
                                 </div>
                                 <label class="settings-switch">
                                     <input type="checkbox" id="minimize-to-tray-toggle">
@@ -389,8 +389,8 @@
                             <div class="setting-divider"></div>
                             <div class="setting-item">
                                 <div class="setting-item-info">
-                                    <span class="setting-title">Prevent System Sleep</span>
-                                    <span class="setting-desc">Prevents the screen or system from sleeping during playback.</span>
+                                    <span class="setting-title" data-i18n="settings.sleep.title">Prevent System Sleep</span>
+                                    <span class="setting-desc" data-i18n="settings.sleep.desc">Prevents the screen or system from sleeping during playback.</span>
                                 </div>
                                 <label class="settings-switch">
                                     <input type="checkbox" id="prevent-sleep-toggle">
@@ -400,8 +400,8 @@
                             <div class="setting-divider"></div>
                             <div class="setting-item">
                                 <div class="setting-item-info">
-                                    <span class="setting-title">Cloudflare Connection &amp; Protection</span>
-                                    <span class="setting-desc">Securely routes JTV DNS queries through Cloudflare (1.1.1.2) to block malware.</span>
+                                    <span class="setting-title" data-i18n="settings.cloudflare.title">Cloudflare Connection &amp; Protection</span>
+                                    <span class="setting-desc" data-i18n="settings.cloudflare.desc">Securely routes JTV DNS queries through Cloudflare (1.1.1.2) to block malware.</span>
                                 </div>
                                 <label class="settings-switch">
                                     <input type="checkbox" id="cloudflare-protection-toggle">
@@ -459,7 +459,7 @@
 
                     <!-- Section: My Account -->
                     <div id="settings-sect-account" class="settings-sect-pane">
-                        <h3 class="settings-page-title">System Options</h3>
+                        <h3 class="settings-page-title" data-i18n="settings.system.title">System Options</h3>
                         <!-- Developer Mode toggle (dev-only) -->
                         <div class="setting-item" data-dev="true">
                             <div class="setting-item-info">
@@ -474,11 +474,11 @@
                         <div class="setting-divider" data-dev="true"></div>
                         <div class="setting-item">
                             <div class="setting-item-info">
-                                <span class="setting-title">App Language</span>
-                                <span class="setting-desc">Change the display language of the application interface.</span>
+                                <span class="setting-title" data-i18n="settings.system.language.title">App Language</span>
+                                <span class="setting-desc" data-i18n="settings.system.language.desc">Change the display language of the application interface.</span>
                             </div>
                             <div class="setting-item-actions">
-                                <select id="app-language-select" class="settings-select" disabled>
+                                <select id="app-language-select" class="settings-select">
                                     <option value="en">🇺🇸 English</option>
                                     <option value="es">🇪🇸 Español</option>
                                     <option value="fr">🇫🇷 Français</option>
@@ -502,13 +502,14 @@
                                     <option value="sk">🇸🇰 Slovak</option>
                                     <option value="hu">🇭🇺 Hungarian</option>
                                 </select>
+                                <button id="lang-apply-btn" class="settings-action-btn" style="display:none;" data-i18n="settings.system.language.apply">Apply &amp; Restart</button>
                             </div>
                         </div>
                         <div class="setting-divider"></div>
                         <div class="setting-item">
                             <div class="setting-item-info">
-                                <span class="setting-title">Support the Author</span>
-                                <span class="setting-desc">If you enjoy JTV, consider supporting its development with a donation.<br>Scan the QR or click the button.</span>
+                                <span class="setting-title" data-i18n="settings.system.donate.title">Support the Author</span>
+                                <span class="setting-desc" data-i18n-html="settings.system.donate.desc">If you enjoy JTV, consider supporting its development with a donation.<br>Scan the QR or click the button.</span>
                             </div>
                             <div class="setting-item-actions donate-actions">
                                 <img id="qr-paypal-img" src="/assets/qr-paypal.png" alt="PayPal QR Code" class="donate-qr-img">
@@ -520,11 +521,11 @@
                         <div class="setting-divider"></div>
                         <div class="setting-item danger-zone">
                             <div class="setting-item-info">
-                                <span class="setting-title" style="color: #ff4a4a; font-weight: 600;">Danger Zone</span>
-                                <span class="setting-desc">Deletes all channels, credentials, and local history and resets the app.</span>
+                                <span class="setting-title" style="color: #ff4a4a; font-weight: 600;" data-i18n="settings.system.danger.title">Danger Zone</span>
+                                <span class="setting-desc" data-i18n="settings.system.danger.desc">Deletes all channels, credentials, and local history and resets the app.</span>
                             </div>
                             <div class="setting-item-actions">
-                                <button id="factory-reset-btn" class="settings-action-btn danger-btn">Factory Reset</button>
+                                <button id="factory-reset-btn" class="settings-action-btn danger-btn" data-i18n="settings.system.danger.btn">Factory Reset</button>
                             </div>
                         </div>
                     </div>
@@ -546,13 +547,13 @@
 
                     <!-- Section: Filters (user-facing tab; specific edit controls are dev-only via data-dev) -->
                     <div id="settings-sect-filters" class="settings-sect-pane">
-                        <h3 class="settings-page-title">Channel Filters</h3>
-                        <p class="section-desc" style="margin-bottom: clamp(5px, 0.74vw, 20px);">Manage available event filters to organize TV channels.</p>
+                        <h3 class="settings-page-title" data-i18n="settings.filters.title">Channel Filters</h3>
+                        <p class="section-desc" style="margin-bottom: clamp(5px, 0.74vw, 20px);" data-i18n="settings.filters.desc">Manage available event filters to organize TV channels.</p>
                         
                         <!-- Sub-navigation for Filters Tab -->
                         <nav class="settings-subnav" aria-label="Filters by section">
-                            <button class="settings-subnav-btn active" data-filter-type="asignacion"><i data-lucide="tag"></i> Assignment</button>
-                            <button class="settings-subnav-btn" data-filter-type="tv"><i data-lucide="tv"></i> Live</button>
+                            <button class="settings-subnav-btn active" data-filter-type="asignacion"><i data-lucide="tag"></i> <span data-i18n="settings.filters.subnav.assignment">Assignment</span></button>
+                            <button class="settings-subnav-btn" data-filter-type="tv"><i data-lucide="tv"></i> <span data-i18n="settings.filters.subnav.live">Live</span></button>
 
                         </nav>
                         
@@ -562,11 +563,11 @@
                                 <!-- Group 1: Language -->
                                 <div class="filter-group-card" id="group-card-language">
                                     <div class="filter-group-header">
-                                        <h4>Languages</h4>
+                                        <h4 data-i18n="settings.filters.languages">Languages</h4>
                                     </div>
                                     <div class="filter-group-add-form">
                                         <div class="filter-input-wrapper">
-                                            <input type="text" id="add-lang-input" class="settings-filter-input" placeholder="New language...">
+                                            <input type="text" id="add-lang-input" class="settings-filter-input" placeholder="New language..." data-i18n-placeholder="settings.filters.lang.ph">
                                             <button id="clear-lang-input" class="input-clear-btn hidden" type="button" title="Clear"><i data-lucide="x"></i></button>
                                         </div>
                                         <button id="add-lang-btn" class="filter-add-submit-btn" type="button" title="Add Filter"><i data-lucide="plus"></i></button>
@@ -579,7 +580,7 @@
                                 <!-- Group 2: Genre (read-only for users; add form is dev-only) -->
                                 <div class="filter-group-card readonly-filter-group" id="group-card-genre">
                                     <div class="filter-group-header">
-                                        <h4>Genres</h4>
+                                        <h4 data-i18n="settings.filters.genres">Genres</h4>
                                     </div>
                                     <div class="filter-group-add-form" data-dev="true">
                                         <div class="filter-icon-picker-wrapper">
@@ -588,7 +589,7 @@
                                             </button>
                                         </div>
                                         <div class="filter-input-wrapper">
-                                            <input type="text" id="add-genre-input" class="settings-filter-input" placeholder="New genre...">
+                                            <input type="text" id="add-genre-input" class="settings-filter-input" placeholder="New genre..." data-i18n-placeholder="settings.filters.genre.ph">
                                             <button id="clear-genre-input" class="input-clear-btn hidden" type="button" title="Clear"><i data-lucide="x"></i></button>
                                         </div>
                                         <button id="add-genre-btn" class="filter-add-submit-btn" type="button" title="Add Filter"><i data-lucide="plus"></i></button>
@@ -601,7 +602,7 @@
                                 <!-- Group 3: Event -->
                                 <div class="filter-group-card" id="group-card-event">
                                     <div class="filter-group-header">
-                                        <h4>Events</h4>
+                                        <h4 data-i18n="settings.filters.events">Events</h4>
                                     </div>
                                     <div class="filter-group-add-form">
                                         <div class="filter-icon-picker-wrapper">
@@ -610,7 +611,7 @@
                                             </button>
                                         </div>
                                         <div class="filter-input-wrapper">
-                                            <input type="text" id="add-event-input" class="settings-filter-input" placeholder="New event...">
+                                            <input type="text" id="add-event-input" class="settings-filter-input" placeholder="New event..." data-i18n-placeholder="settings.filters.event.ph">
                                             <button id="clear-event-input" class="input-clear-btn hidden" type="button" title="Clear"><i data-lucide="x"></i></button>
                                         </div>
                                         <button id="add-event-btn" class="filter-add-submit-btn" type="button" title="Add Filter"><i data-lucide="plus"></i></button>
@@ -629,12 +630,12 @@
                                     <!-- Column 1: Copy of channel CRUD list -->
                                     <div class="filter-group-card assigner-col-channels">
                                         <div class="filter-group-header assigner-header">
-                                            <h4>Channels</h4>
+                                            <h4 data-i18n="settings.assigner.channels">Channels</h4>
                                             <span id="assigner-selection-count"></span>
                                         </div>
                                         <div class="filter-group-add-form">
                                             <div class="filter-input-wrapper">
-                                                <input type="search" id="assigner-search" class="settings-filter-input" placeholder="Filter...">
+                                                <input type="search" id="assigner-search" class="settings-filter-input" placeholder="Filter..." data-i18n-placeholder="settings.assigner.search">
                                             </div>
                                             <button id="assigner-bulk-select" class="bulk-select-btn" type="button" title="Select all / Clear">
                                                 <i data-lucide="square"></i>
@@ -648,11 +649,11 @@
                                      <!-- Column 2: Assignment checkboxes -->
                                      <div class="filter-group-card assigner-col-events">
                                          <div class="filter-group-header">
-                                             <h4>Assign Filters</h4>
+                                             <h4 data-i18n="settings.assigner.assign">Assign Filters</h4>
                                              <nav id="assigner-tabs-nav">
-                                                 <button id="assigner-tab-languages" class="assigner-tab-btn" data-assigner-tab="languages">Languages</button>
-                                                 <button id="assigner-tab-genres" class="assigner-tab-btn" data-assigner-tab="genres">Genre</button>
-                                                 <button id="assigner-tab-events" class="assigner-tab-btn active" data-assigner-tab="events">Events</button>
+                                                 <button id="assigner-tab-languages" class="assigner-tab-btn" data-assigner-tab="languages" data-i18n="settings.assigner.tab.languages">Languages</button>
+                                                 <button id="assigner-tab-genres" class="assigner-tab-btn" data-assigner-tab="genres" data-i18n="settings.assigner.tab.genre">Genre</button>
+                                                 <button id="assigner-tab-events" class="assigner-tab-btn active" data-assigner-tab="events" data-i18n="settings.assigner.tab.events">Events</button>
                                              </nav>
                                          </div>
                                          <div id="assigner-events-list" class="filter-group-list scroll-panel">
@@ -663,9 +664,9 @@
                                      <!-- Column 3: Channel info and status -->
                                      <div class="filter-group-card assigner-col-metadata">
                                          <div class="filter-group-header">
-                                             <h4>Channel Details</h4>
+                                             <h4 data-i18n="settings.assigner.details">Channel Details</h4>
                                          </div>
-                                         <div id="assigner-metadata-empty">
+                                         <div id="assigner-metadata-empty" data-i18n="settings.assigner.empty">
                                              Select one or more channels to assign or unassign filters.
                                          </div>
                                          <div id="assigner-metadata-content" class="hidden">
@@ -682,7 +683,7 @@
 
                                              <!-- Current categories -->
                                              <div class="assigner-meta-categories-box">
-                                                 <span class="assigner-meta-categories-label">Current categories &amp; events:</span>
+                                                 <span class="assigner-meta-categories-label" data-i18n="settings.assigner.categories">Current categories &amp; events:</span>
                                                  <div id="assigner-meta-categories">
                                                      <!-- Category chips -->
                                                  </div>
@@ -690,9 +691,9 @@
 
                                              <!-- Save / confirm buttons -->
                                              <div class="assigner-meta-actions-box">
-                                                 <span class="assigner-meta-actions-label">Checkbox changes in column 2 are applied dynamically to the channel.</span>
+                                                 <span class="assigner-meta-actions-label" data-i18n="settings.assigner.note">Checkbox changes in column 2 are applied dynamically to the channel.</span>
                                                  <button id="assigner-apply-btn" class="primary-btn">
-                                                     <i data-lucide="save"></i> Save changes
+                                                     <i data-lucide="save"></i> <span data-i18n="settings.assigner.save">Save changes</span>
                                                  </button>
                                              </div>
                                          </div>
@@ -705,8 +706,8 @@
 
                     <!-- Section: Background -->
                     <div id="settings-sect-background" class="settings-sect-pane">
-                        <h3>Wallpaper</h3>
-                        <p class="section-desc">Select a wallpaper for the main home screen.</p>
+                        <h3 data-i18n="settings.wallpaper.title">Wallpaper</h3>
+                        <p class="section-desc" data-i18n="settings.wallpaper.desc">Select a wallpaper for the main home screen.</p>
                         <div class="wallpaper-picker-grid">
                             <div class="wallpaper-option active" data-wall="assets/wallpapers/Planet.jpg">
                                 <img src="assets/wallpapers/Planet.jpg">
@@ -748,7 +749,7 @@
                                 <div class="no-wall-box">
                                     <i data-lucide="image-off"></i>
                                 </div>
-                                <span>No Wallpaper</span>
+                                <span data-i18n="settings.wallpaper.none">No Wallpaper</span>
                             </div>
                         </div>
                     </div>

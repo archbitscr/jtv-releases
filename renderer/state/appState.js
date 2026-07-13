@@ -131,6 +131,9 @@ export const state = {
     currentEditingChannelId: null,
     currentPinCallback: null,
 
+    // i18n
+    appLanguage: 'en',
+
     // Feature Flags
     audioLevelerEnabled: true,
     hwAccelEnabled: true,

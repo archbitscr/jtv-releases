@@ -1,6 +1,8 @@
 import { app } from 'electron';
 import crypto from 'crypto';
 import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
 import https from 'https';
 import http from 'http';
 import IPC from '../../shared/ipcChannels.json' with { type: 'json' };
@@ -94,6 +96,16 @@ export function registerUserDataIpc({ ipcMain, context }) {
   ipcMain.handle('relaunch', async () => {
     app.relaunch();
     app.exit(0);
+  });
+
+  // Read a locale file from the bundled locales/ directory
+  ipcMain.handle('read-locale-file', async (_event, langCode) => {
+    const safe = langCode.replace(/[^a-z]/g, '');
+    const localesDir = app.isPackaged
+      ? path.join(process.resourcesPath, 'locales')
+      : path.join(app.getAppPath(), 'locales');
+    const filePath = path.join(localesDir, `${safe}.json`);
+    return fs.readFileSync(filePath, 'utf8');
   });
 
   // Google Login registry mock unlock
