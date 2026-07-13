@@ -71,7 +71,7 @@
   "settings.system.danger.btn": "Restablecer de Fábrica",
 
   "settings.filters.title": "Filtros de Canales",
-  "settings.filters.desc": "Gestiona los filtros de eventos disponibles para organizar los canales de TV.",
+  "settings.filters.desc": "Selecciona los canales disponibles por idioma y gestiona tus eventos para los canales existentes.",
   "settings.filters.subnav.assignment": "Asignación",
   "settings.filters.subnav.live": "En Vivo",
   "settings.filters.languages": "Idiomas",

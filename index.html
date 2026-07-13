@@ -538,7 +538,7 @@
                     <!-- Section: Filters (user-facing tab; specific edit controls are dev-only via data-dev) -->
                     <div id="settings-sect-filters" class="settings-sect-pane">
                         <h3 class="settings-page-title" data-i18n="settings.filters.title">Channel Filters</h3>
-                        <p class="section-desc" style="margin-bottom: clamp(5px, 0.74vw, 20px);" data-i18n="settings.filters.desc">Manage available event filters to organize TV channels.</p>
+                        <p class="section-desc" style="margin-bottom: clamp(5px, 0.74vw, 20px);" data-i18n="settings.filters.desc">Select available channels by Language and manage your events for existing channels.</p>
                         
                         <!-- Sub-navigation for Filters Tab -->
                         <nav class="settings-subnav" aria-label="Filters by section">
@@ -555,7 +555,7 @@
                                     <div class="filter-group-header">
                                         <h4 data-i18n="settings.filters.languages">Languages</h4>
                                     </div>
-                                    <div class="filter-group-add-form">
+                                    <div class="filter-group-add-form" data-dev="true">
                                         <div class="filter-input-wrapper">
                                             <input type="text" id="add-lang-input" class="settings-filter-input" placeholder="New language..." data-i18n-placeholder="settings.filters.lang.ph">
                                             <button id="clear-lang-input" class="input-clear-btn hidden" type="button" title="Clear"><i data-lucide="x"></i></button>

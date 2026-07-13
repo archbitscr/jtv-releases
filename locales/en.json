@@ -71,7 +71,7 @@
   "settings.system.danger.btn": "Factory Reset",
 
   "settings.filters.title": "Channel Filters",
-  "settings.filters.desc": "Manage available event filters to organize TV channels.",
+  "settings.filters.desc": "Select available channels by Language and manage your events for existing channels.",
   "settings.filters.subnav.assignment": "Assignment",
   "settings.filters.subnav.live": "Live",
   "settings.filters.languages": "Languages",

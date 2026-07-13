@@ -71,7 +71,7 @@
   "settings.system.danger.btn": "Réinitialisation d'Usine",
 
   "settings.filters.title": "Filtres de Chaînes",
-  "settings.filters.desc": "Gérez les filtres d'événements disponibles pour organiser les chaînes TV.",
+  "settings.filters.desc": "Sélectionnez les chaînes disponibles par langue et gérez vos événements pour les chaînes existantes.",
   "settings.filters.subnav.assignment": "Attribution",
   "settings.filters.subnav.live": "En Direct",
   "settings.filters.languages": "Langues",

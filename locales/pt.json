@@ -71,7 +71,7 @@
   "settings.system.danger.btn": "Redefinição de Fábrica",
 
   "settings.filters.title": "Filtros de Canais",
-  "settings.filters.desc": "Gerencie os filtros de eventos disponíveis para organizar os canais de TV.",
+  "settings.filters.desc": "Selecione os canais disponíveis por idioma e gerencie seus eventos para os canais existentes.",
   "settings.filters.subnav.assignment": "Atribuição",
   "settings.filters.subnav.live": "Ao Vivo",
   "settings.filters.languages": "Idiomas",

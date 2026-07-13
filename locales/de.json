@@ -71,7 +71,7 @@
   "settings.system.danger.btn": "Auf Werkseinstellungen zurücksetzen",
 
   "settings.filters.title": "Kanalfilter",
-  "settings.filters.desc": "Verwalte verfügbare Ereignisfilter, um TV-Kanäle zu organisieren.",
+  "settings.filters.desc": "Wähle verfügbare Sender nach Sprache aus und verwalte deine Ereignisse für vorhandene Sender.",
   "settings.filters.subnav.assignment": "Zuweisung",
   "settings.filters.subnav.live": "Live",
   "settings.filters.languages": "Sprachen",
