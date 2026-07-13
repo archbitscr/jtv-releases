@@ -127,6 +127,7 @@
   "sync.btn.default": "Synchroniser les Chaînes",
 
   "nav.live_tv": "TV en Direct",
+  "nav.settings": "Paramètres",
 
   "hotkey.fullscreen.title": "Plein Écran",
   "hotkey.fullscreen.desc": "Entre ou quitte le mode plein écran.",

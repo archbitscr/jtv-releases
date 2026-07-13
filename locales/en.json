@@ -127,6 +127,7 @@
   "sync.btn.default": "Sync Channels",
 
   "nav.live_tv": "Live TV",
+  "nav.settings": "Settings",
 
   "hotkey.fullscreen.title": "Toggle Fullscreen",
   "hotkey.fullscreen.desc": "Enter or exit fullscreen mode.",

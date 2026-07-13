@@ -152,7 +152,7 @@ export function showModule(moduleName) {
             if (liveSearchInput) liveSearchInput.value = "";
             if (ext.syncGridPageToActiveChannel) ext.syncGridPageToActiveChannel();
             if (ext.renderFavoritesGrid) ext.renderFavoritesGrid();
-            document.title = "JTV - Live TV";
+            document.title = `JTV - ${t('nav.live_tv', 'Live TV')}`;
         }
     } else if (moduleName === 'settings') {
         document.getElementById('settings-screen').classList.remove('hidden');
@@ -166,7 +166,7 @@ export function showModule(moduleName) {
             pane.classList.toggle('active', pane.id === 'settings-sect-general');
         });
 
-        document.title = "JTV - Settings";
+        document.title = `JTV - ${t('nav.settings', 'Settings')}`;
     }
     if (ext.updateTriggersVisibility) ext.updateTriggersVisibility();
     if (ext.updateWebviewPointerEvents) ext.updateWebviewPointerEvents();
