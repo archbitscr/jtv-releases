@@ -1,5 +1,5 @@
 import { state } from './renderer/state/appState.js';
-import { loadLocale, applyLocale } from './renderer/i18n/i18n.js';
+import { loadLocale, applyLocale, t } from './renderer/i18n/i18n.js';
 
 if (import.meta.hot) {
   const _devOverrides = new Map()
@@ -295,10 +295,10 @@ async function init() {
     
     if (appLoader) appLoader.classList.remove('hidden');
     if (loaderProgressBar) loaderProgressBar.style.width = '0%';
-    if (loaderMessage) loaderMessage.innerText = 'Initializing local database...';
 
     // En modo browser (Vite dev sin Electron) no hay IPC — mostrar la app directamente
     if (!nativeApi) {
+        if (loaderMessage) loaderMessage.innerText = 'Initializing local database...';
         setTimeout(() => {
             if (appLoader) {
                 appLoader.classList.add('fade-out');
@@ -318,15 +318,19 @@ async function init() {
         return; // Halt app boot — license check pending implementation
     }
 
+    // Load locale early so loader messages are translated
+    await loadLocale(savedDataLocal?.appLanguage || 'en');
+    if (loaderMessage) loaderMessage.innerText = t('loader.init', 'Initializing local database...');
+
     // Progress bar animations
     setTimeout(() => {
         if (loaderProgressBar) loaderProgressBar.style.width = '50%';
-        if (loaderMessage) loaderMessage.innerText = 'Loading UI/UX...';
+        if (loaderMessage) loaderMessage.innerText = t('loader.ui', 'Loading UI/UX...');
     }, 300);
 
     setTimeout(() => {
         if (loaderProgressBar) loaderProgressBar.style.width = '100%';
-        if (loaderMessage) loaderMessage.innerText = 'Ready.';
+        if (loaderMessage) loaderMessage.innerText = t('loader.ready', 'Ready.');
     }, 600);
 
     // Core Data Loading

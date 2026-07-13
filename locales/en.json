@@ -1,6 +1,9 @@
 {
   "app.loader.login": "Sign in with Google",
   "app.loader.uninstall": "Uninstall",
+  "loader.init": "Initializing local database...",
+  "loader.ui": "Loading UI/UX...",
+  "loader.ready": "Ready.",
 
   "player.no_signal.title": "No Signal",
   "player.no_signal.retry": "Waiting for signal to be restored...",

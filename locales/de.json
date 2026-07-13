@@ -1,6 +1,9 @@
 {
   "app.loader.login": "Mit Google anmelden",
   "app.loader.uninstall": "Deinstallieren",
+  "loader.init": "Lokale Datenbank wird initialisiert...",
+  "loader.ui": "Benutzeroberfläche wird geladen...",
+  "loader.ready": "Bereit.",
 
   "player.no_signal.title": "Kein Signal",
   "player.no_signal.retry": "Warten auf Wiederherstellung des Signals...",
