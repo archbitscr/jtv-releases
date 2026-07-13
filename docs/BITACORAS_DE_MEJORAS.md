@@ -153,6 +153,21 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 ---
 
+### [2026-07-12] - Fix: botones del pbar y sidebar no respondían al mouse (trigger zones)
+
+*   ✅ **Root cause:** El elemento `trigger-bottom` (z-index 600, `pointer-events: auto`) cubría el área del pbar (z-index 1000) e interceptaba todos los clicks. El pbar no creaba stacking context propio (faltaba `position` efectivo), por lo que sus botones quedaban por debajo del trigger en el hit-test.
+*   ✅ **Fix initial (pbar):** `updateWebviewPointerEvents()` desactivaba `trigger-bottom` cuando pbar estaba visible. Pero el MutationObserver que lo restauraba nunca se inicializaba → trigger-bottom quedaba stuck en `pointer-events: none` después de que el pbar se ocultaba.
+*   ✅ **Fix definitivo (CSS :has()):** Reemplazado el enfoque JS por reglas CSS reactivas (mismo patrón de `settings` y `no-signal`):
+    *   Webview + `#player-container` → `pointer-events: none !important` cuando `#pbar` o `#side-menu` están abiertos.
+    *   `#trigger-bottom` → `pointer-events: none` cuando `#pbar` está abierto.
+    *   `#trigger-left` → `pointer-events: none` cuando `#side-menu` está abierto.
+    *   `#trigger-top` → `pointer-events: none` cuando `#tnav-menu` está abierto.
+    *   `updateWebviewPointerEvents()` simplificado para solo limpiar cualquier override inline previo.
+*   **Archivos:** `renderer/ui/playerUI.js`, `style.css`
+*   **Verificado:** pbar-up, pbar-down, mute, sidebar channel click — todos funcionan. Trigger zones (left, bottom) accesibles correctamente.
+
+---
+
 ### [2026-07-05] - Fix: volumen e IPC de audio no funcionaban en app instalable
 
 *   ✅ **Root cause:** `IS_AUDIO_MUTED` y `SET_AUDIO_MUTED` estaban en `registerDiagnosticsIpc.js`, que solo se carga con `devModeAvailable=true`. En producción nunca se registraban → `nativeApi.isAudioMuted()` rechazaba en la primera línea de `adjustVolume`/`toggleMute` → fallo silencioso (sin OSD, sin mute, sin respuesta de controles).
