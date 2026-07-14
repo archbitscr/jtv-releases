@@ -39,6 +39,13 @@ const nuclearStyle = `
     .media-control-button, .media-control-icon, .media-control-background, .bar-container, .bar-background, .bar-fill-1, .bar-fill-2,
     div[id^="ys"], div#advert1, div[class*="ad-overlay"], div[class*="pop-overlay"], div[class*="ads-overlay"], div[class*="advert-overlay"],
     div[style*="z-index: 2147483647"], div[style*="z-index:2147483647"],
+    div[style*="z-index: 100000000"], div[style*="z-index:100000000"],
+    div[style*="z-index: 300000"], div[style*="z-index:300000"],
+    div[style*="z-index: 99999"], div[style*="z-index:99999"],
+    div[style*="z-index: 10000"][style*="position: fixed"],
+    div[style*="z-index:10000"][style*="position:fixed"],
+    div[style*="z-index: 10000"][style*="position: absolute"],
+    div[style*="z-index:10000"][style*="position:absolute"],
     iframe[src*="ads"], iframe[src*="/ad"], iframe[src*=".ad"], iframe[src*="-ad"], iframe[src*="track"], iframe[src*="pop"], iframe[src*="histats"], iframe[src*="analytics"] {
         display: none !important;
         visibility: hidden !important;
@@ -282,16 +289,16 @@ function syncVideoAudioState(video) {
 
 window.addEventListener('DOMContentLoaded', () => {
     injectStyle();
-    // cleanupHighZIndex();
-    // disableAdOverlays();
+    cleanupHighZIndex();
+    disableAdOverlays();
     autoClickOK();
 
     const observer = new MutationObserver(() => {
         try {
             observer.disconnect();
             injectStyle();
-            // cleanupHighZIndex();
-            // disableAdOverlays();
+            cleanupHighZIndex();
+            disableAdOverlays();
             autoClickOK();
         } catch (e) {
             console.error('[Guest Preload] MutationObserver error:', e);
@@ -305,8 +312,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('load', () => {
     injectStyle();
-    // cleanupHighZIndex();
-    // disableAdOverlays();
+    cleanupHighZIndex();
+    disableAdOverlays();
     autoClickOK();
 });
 
@@ -611,7 +618,7 @@ try {
             console.log(`[IntervalTick] Frame="${window.location.href}"`);
             hideDistractingSymbols();
             logFrameDetails();
-            // disableAdOverlays();
+            disableAdOverlays();
             triggerPlayerHover();
             autoClickPlayOverlays();
             autoClickCenter();

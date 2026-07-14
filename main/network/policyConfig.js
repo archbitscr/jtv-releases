@@ -81,6 +81,23 @@ export const KNOWN_AD_DOMAINS = [
   'ero-advertising.com',
   'mnhrcnv.com',
   'clouddn.com',
-  'fastserve.club'
+  'fastserve.club',
+  'cobnutscopale.com',
+  'sabretweight.com',
+  'merithot0og.net',
+  'llvpn.com',
+  'iahivizxhvble.online',
+  'ylyfwxsymjake.com',
+  'processions2controller.com',
+  'processors2480.com',
+  'payrloll.com',
+  'itvcinstecompvf.com',
+  'xadsmart.com',
+  'cobnutscopsole.com',
+  'ksohls.ru',
+  'effectivecpmnetwork.com',
+  'tabretwicht.com',
+  'romponalis.st',
+  'liveon5.zip'
 ];
 
