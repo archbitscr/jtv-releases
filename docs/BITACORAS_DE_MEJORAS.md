@@ -400,6 +400,17 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 > **Sub-pendientes de Tarea 37 cancelados (2026-07-12):** meseta `clamp()` en Vol OSD (`.volosd-*`) y Settings — marcados como ❌ Obsoletos. No se continuará con la aplicación de clamp en esos componentes.
 
+### [2026-07-14] — Enriquecimiento de Canales + Nuevos Eventos de Filtro + Fixes i18n ✅ v2.3.13
+
+*   **Commit:** `20dbd43`
+*   **Archivos modificados (13):** `data/defaultChannels.json`, `index.html`, `style.css`, `locales/` (5 archivos), `renderer/state/appState.js`, `renderer/filters/filterManager.js`, `renderer/ui/eventListeners.js`, `renderer/ui/volumeController.js`, `scripts/enrich-channels.cjs` (nuevo).
+*   **Enriquecimiento de canales:** Script `scripts/enrich-channels.cjs` que aplica 87 reglas de género/evento por name-matching a los 509 canales activos (EN/ES). Resultado: 260 canales enriquecidos, 0 sin categoría. Géneros asignados: Sports, News, Movies, Series, Documentary, Kids, Animation, Comedy, Reality, Lifestyle, Music, Food, Investigation, Travel, Regional. Eventos asignados: Futbol, Cricket, Golf, Tennis, NBA, NFL, NHL, MLB, Formula 1, MotoGP, Motorsport, Boxing, Wrestling, Horse Racing, Darts.
+*   **Nuevos eventos de filtro:** Wrestling 🤼, Horse Racing 🏇, Darts 🎯 agregados a `filterEvents` en `appState.js` y `DEFAULT_EVENT_NAMES`. Canales asignados: WWE Network → Wrestling, Racing TV UK → Horse Racing, PDC TV → Darts. Traducidos en 5 idiomas.
+*   **Fix player.muted:** String `"Silenciado"` hardcodeado en `volumeController.js` reemplazado con `t('player.muted', 'Muted')`.
+*   **Fix dropdown idioma:** Reducido de 22 a 5 opciones (solo idiomas con locale completo). Convertido a custom dropdown via `syncCustomSelect()` para UI consistente.
+
+---
+
 ### [2026-07-13] — Tarea 30: i18n alta+media priority strings ✅ v2.3.13
 
 *   **Commit:** `90dcc2f`
