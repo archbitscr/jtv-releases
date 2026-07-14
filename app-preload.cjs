@@ -75,5 +75,6 @@ contextBridge.exposeInMainWorld('jtvAPI', {
     onWebviewLoadFailed: (callback) => subscribe('webview-load-failed', callback),
     setWatchdogConfig: (config) => ipcRenderer.send('set-watchdog-config', config),
     adScan: () => ipcRenderer.invoke('ad-scan'),
-    adKill: () => ipcRenderer.invoke('ad-kill')
+    adKill: () => ipcRenderer.invoke('ad-kill'),
+    adScreenshot: () => ipcRenderer.invoke('ad-screenshot')
 });

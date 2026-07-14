@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=67">
+    <link rel="stylesheet" href="./style.css?v=68">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen -->
@@ -1032,6 +1032,16 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
                         <input id="claude-ch-input" class="dark-input claude-ch-input" type="number" placeholder="Channel ID (e.g. 742)">
                         <button id="claude-tune-btn" class="claude-btn">Tune</button>
                     </div>
+                </div>
+
+                <!-- Screenshot capture -->
+                <div class="claude-ctrl-section">
+                    <div class="claude-ctrl-row">
+                        <span class="claude-ctrl-title">Visual Capture</span>
+                        <button id="claude-screenshot-btn" class="claude-btn">Screenshot</button>
+                    </div>
+                    <p class="claude-ctrl-desc">Captures the active player webview to <code>userData/jtv_screenshot.png</code> for visual ad verification.</p>
+                    <pre id="claude-screenshot-readout" class="claude-status-pre" style="font-size:10px;">—</pre>
                 </div>
 
                 <!-- Click visualizer -->

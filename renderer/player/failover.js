@@ -16,11 +16,32 @@ export function initFailover({ selectChannel, mountRemotePlayer, updateSourceSwi
 let retryTimeoutId = null;
 let retryCount = 0;         // number of full source cycles completed
 let cycleInProgress = false; // true while iterating sources
+let _hardFrozen = false;     // set by claudeControl.freeze() — blocks ALL failover paths
 
 export function resetFailoverState() {
     // called on manual channel change — resets everything
     cycleInProgress = false;
     stopNoSignalRetryLoop();
+}
+
+// Hard freeze: blocks ALL failover entry points (including did-fail-load bypass)
+export function hardFreeze() {
+    _hardFrozen = true;
+    cycleInProgress = false;
+    state.failoverInProgress = true;
+    stopNoSignalRetryLoop();
+    if (state.failoverTimeoutId) {
+        clearTimeout(state.failoverTimeoutId);
+        state.failoverTimeoutId = null;
+    }
+    showNoSignalOverlay(false);
+    console.log('[Failover] hardFreeze — ALL paths blocked.');
+}
+
+export function hardUnfreeze() {
+    _hardFrozen = false;
+    state.failoverInProgress = false;
+    console.log('[Failover] hardUnfreeze — normal operation.');
 }
 
 // --- Overlay UI ---
@@ -152,8 +173,8 @@ function runFailoverCycle(channelId) {
         // Wait for this source to either play or timeout, then try next
         state.failoverTimeoutId = setTimeout(() => {
             state.failoverTimeoutId = null;
-            // If still in cycle (no guest-playing received), try next source
-            if (cycleInProgress) tryNextSource();
+            // If still in cycle and not frozen, try next source
+            if (cycleInProgress && !_hardFrozen) tryNextSource();
         }, waitTime + 15000); // waitTime to load + 15s for initial load timeout
     }
 
@@ -162,7 +183,7 @@ function runFailoverCycle(channelId) {
 
 // --- Public entry point (called by watchdog triggers) ---
 export function triggerFailover() {
-    if (cycleInProgress || retryTimeoutId) return;
+    if (_hardFrozen || cycleInProgress || retryTimeoutId) return;
 
     const nativeApi = window.jtvAPI;
 

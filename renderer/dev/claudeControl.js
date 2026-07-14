@@ -63,21 +63,27 @@ function _syncSourceHighlight() {
 
 function freeze() {
     _frozen = true;
-    const s = window.state;
-    if (s) {
-        s.failoverInProgress = true; // blocks triggerFailover() from running
+    // hardFreeze blocks ALL failover paths including did-fail-load bypass
+    if (window._jtvFailoverBridge?.hardFreeze) {
+        window._jtvFailoverBridge.hardFreeze();
+    } else {
+        // fallback
+        const s = window.state;
+        if (s) s.failoverInProgress = true;
+        _clearAllFailoverTimers();
     }
-    _clearAllFailoverTimers();
     _setWatchdog(false);
     _updateFreezeBtn();
-    console.log('[ClaudeControl] FROZEN — all timeouts paused.');
+    console.log('[ClaudeControl] FROZEN — all failover paths blocked.');
 }
 
 function unfreeze() {
     _frozen = false;
-    const s = window.state;
-    if (s) {
-        s.failoverInProgress = false;
+    if (window._jtvFailoverBridge?.hardUnfreeze) {
+        window._jtvFailoverBridge.hardUnfreeze();
+    } else {
+        const s = window.state;
+        if (s) s.failoverInProgress = false;
     }
     _setWatchdog(true);
     _updateFreezeBtn();
@@ -198,6 +204,27 @@ export function initClaudeControl() {
     const cvBtn = document.getElementById('claude-clickviz-btn');
     if (cvBtn) cvBtn.addEventListener('click', () => clickViz(!_clickVizEnabled));
 
+    // Screenshot button
+    const ssBtn = document.getElementById('claude-screenshot-btn');
+    const ssReadout = document.getElementById('claude-screenshot-readout');
+    if (ssBtn) {
+        ssBtn.addEventListener('click', async () => {
+            ssBtn.disabled = true;
+            ssBtn.textContent = '…';
+            try {
+                const result = await window.jtvAPI?.adScreenshot?.();
+                if (ssReadout) ssReadout.textContent = result?.path
+                    ? `✅ Saved: ${result.path}\n(${(result.size/1024).toFixed(1)} KB)`
+                    : `❌ ${result?.error || 'Unknown error'}`;
+            } catch (e) {
+                if (ssReadout) ssReadout.textContent = '❌ ' + e.message;
+            } finally {
+                ssBtn.disabled = false;
+                ssBtn.textContent = 'Screenshot';
+            }
+        });
+    }
+
     // Status refresh button
     const statusBtn = document.getElementById('claude-status-refresh-btn');
     if (statusBtn) statusBtn.addEventListener('click', () => status());
@@ -207,7 +234,13 @@ export function initClaudeControl() {
     _updateClickVizBtn();
     _syncSourceHighlight();
 
+    async function screenshot() {
+        const result = await window.jtvAPI?.adScreenshot?.();
+        if (result?.path) console.log('[ClaudeControl] Screenshot →', result.path);
+        return result;
+    }
+
     // Expose globally for CDP access
-    window.claudeControl = { freeze, unfreeze, isFrozen, tuneSource, tune, clickViz, status };
+    window.claudeControl = { freeze, unfreeze, isFrozen, tuneSource, tune, clickViz, status, screenshot };
     console.log('[ClaudeControl] Initialized. window.claudeControl ready.');
 }

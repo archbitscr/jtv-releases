@@ -43,5 +43,6 @@
   "GUEST_HOTKEY": "guest-hotkey",
   "AD_SCAN": "ad-scan",
   "AD_KILL": "ad-kill",
-  "AD_CANDIDATES": "ad-candidates"
+  "AD_CANDIDATES": "ad-candidates",
+  "AD_SCREENSHOT": "ad-screenshot"
 }

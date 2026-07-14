@@ -180,6 +180,41 @@ export function registerDeveloperIpc({ ipcMain, context }) {
     return results;
   });
 
+  // AD_SCREENSHOT: captures the active player webview to PNG and writes it to userData.
+  // Returns the file path so Claude can read it via the Read tool.
+  ipcMain.handle(IPC.AD_SCREENSHOT, async () => {
+    try {
+      const all = webContents.getAllWebContents();
+      // Find the largest webview frame (the player — not the main app renderer)
+      let target = null;
+      let bestArea = 0;
+      for (const wc of all) {
+        const url = wc.getURL() || '';
+        if (url.startsWith('devtools://') || url.startsWith('chrome://') || url.startsWith('file://')) continue;
+        try {
+          const bounds = wc.getBounds?.() || { width: 0, height: 0 };
+          const area = bounds.width * bounds.height;
+          if (area > bestArea) { bestArea = area; target = wc; }
+        } catch (_) {}
+      }
+      if (!target) {
+        // fallback: capture the main window
+        const win = context.windowManager?.getMainWindow?.();
+        if (win) target = win.webContents;
+      }
+      if (!target) return { error: 'No capturable webview found' };
+      const image = await target.capturePage();
+      const pngBuf = image.toPNG();
+      const outPath = path.join(app.getPath('userData'), 'jtv_screenshot.png');
+      fs.writeFileSync(outPath, pngBuf);
+      console.log('[AdScreenshot] Captured to', outPath, `(${pngBuf.length} bytes)`);
+      return { path: outPath, size: pngBuf.length };
+    } catch (e) {
+      console.error('[AdScreenshot] Failed:', e.message);
+      return { error: e.message };
+    }
+  });
+
   // AD_CANDIDATES: collects unknown domains seen in frame src/script attributes and logs them.
   ipcMain.on(IPC.AD_CANDIDATES, (_event, candidates) => {
     if (!Array.isArray(candidates) || candidates.length === 0) return;

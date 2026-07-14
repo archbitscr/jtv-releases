@@ -3,7 +3,7 @@ import { t } from '../i18n/i18n.js';
 import { sanitizeRemoteUrl } from '../utils/sanitize.js';
 import { getSafeLogoHtml } from '../utils/domHelpers.js';
 import { stopWatchTimer } from './watchTimer.js';
-import { triggerFailover, showNoSignalOverlay, resetFailoverState, stopNoSignalRetryLoop, signalRestored } from './failover.js';
+import { triggerFailover, showNoSignalOverlay, resetFailoverState, stopNoSignalRetryLoop, signalRestored, hardFreeze, hardUnfreeze } from './failover.js';
 
 let ext = {};
 
@@ -35,7 +35,7 @@ export function resetAntiBlackScreen() {
 export function initPlayerController(dependencies) {
     ext = dependencies;
     // Expose failover control bridge for claudeControl.js freeze/unfreeze
-    window._jtvFailoverBridge = { stopRetryLoop: stopNoSignalRetryLoop, signalRestored };
+    window._jtvFailoverBridge = { stopRetryLoop: stopNoSignalRetryLoop, signalRestored, hardFreeze, hardUnfreeze };
 }
 
 export function updatePlayerActiveState() {
