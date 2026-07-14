@@ -949,7 +949,7 @@ export function setupEventListeners() {
                 const pinBtn = document.getElementById('pbar-pin-btn');
                 if (pinBtn) {
                     pinBtn.classList.toggle('active', state.hudPinned);
-                    pinBtn.title = state.hudPinned ? 'Unpin Player' : 'Pin Player';
+                    pinBtn.title = state.hudPinned ? t('tooltip.pbar.unpin', 'Unpin Player') : t('tooltip.pbar.pin', 'Pin Player');
                 }
                 return true;
             }
@@ -1081,7 +1081,7 @@ export function setupEventListeners() {
 
                     const delBtn = document.createElement('button');
                     delBtn.className = 'hotkey-chip-delete';
-                    delBtn.title = 'Delete';
+                    delBtn.title = t('tooltip.generic.delete', 'Delete');
                     delBtn.textContent = '×';
                     delBtn.onclick = (e) => {
                         e.stopPropagation();
@@ -1095,7 +1095,7 @@ export function setupEventListeners() {
 
                 const addBtn = document.createElement('button');
                 addBtn.className = 'hotkey-add-btn';
-                addBtn.title = 'Add hotkey';
+                addBtn.title = t('tooltip.hotkey.add', 'Add hotkey');
                 addBtn.innerHTML = '<i data-lucide="plus"></i>';
                 if (keys.length >= 2) addBtn.disabled = true;
                 addBtn.onclick = (e) => {
@@ -1126,7 +1126,7 @@ export function setupEventListeners() {
 
         const cancelBtn = document.createElement('button');
         cancelBtn.className = 'hotkey-listener-cancel';
-        cancelBtn.title = 'Cancel';
+        cancelBtn.title = t('tooltip.generic.cancel', 'Cancel');
         cancelBtn.textContent = '×';
         cancelBtn.onclick = (e) => {
             e.stopPropagation();
@@ -1207,7 +1207,7 @@ export function setupEventListeners() {
             e.stopPropagation();
             state.hudPinned = !state.hudPinned;
             hudPinBtn.classList.toggle('active', state.hudPinned);
-            hudPinBtn.title = state.hudPinned ? 'Unpin HUD' : 'Pin HUD';
+            hudPinBtn.title = state.hudPinned ? t('tooltip.hud.unpin', 'Unpin HUD') : t('tooltip.hud.pin', 'Pin HUD');
             if (state.hudPinned) {
                 clearInactivityTimers();
             } else {

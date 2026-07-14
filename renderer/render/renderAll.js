@@ -94,7 +94,7 @@ export function renderSettingsFilters() {
                 enabledCheckbox.type = 'checkbox';
                 enabledCheckbox.className = 'filter-lang-enabled';
                 enabledCheckbox.checked = filter.enabled !== false;
-                enabledCheckbox.title = 'Toggle language';
+                enabledCheckbox.title = t('tooltip.generic.toggle', 'Toggle');
                 enabledCheckbox.classList.add('filter-lang-checkbox');
                 enabledCheckbox.addEventListener('change', async (e) => {
                     e.stopPropagation();

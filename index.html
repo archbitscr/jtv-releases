@@ -87,15 +87,15 @@
                         <!-- Autotuner Indicators & Source Toggle Row -->
                         <div class="pbar-autotune-row">
                             <!-- Audio Indicator -->
-                            <span id="pbar-indicator-audio" class="pbar-autotune-indicator inactive" title="Autotune Audio: Inactive">
+                            <span id="pbar-indicator-audio" class="pbar-autotune-indicator inactive" title="Autotune Audio: Inactive" data-i18n-title="tooltip.autotune.audio">
                                 <i data-lucide="volume-2"></i>
                             </span>
                             <!-- Video Indicator -->
-                            <span id="pbar-indicator-video" class="pbar-autotune-indicator inactive" title="Autotune Video: Inactive">
+                            <span id="pbar-indicator-video" class="pbar-autotune-indicator inactive" title="Autotune Video: Inactive" data-i18n-title="tooltip.autotune.video">
                                 <i data-lucide="video"></i>
                             </span>
                             <!-- Toggle Source Selector (Visible only in developer mode) -->
-                            <button id="pbar-toggle-sources-btn" class="pbar-source-toggle-btn" title="Show/hide sources">
+                            <button id="pbar-toggle-sources-btn" class="pbar-source-toggle-btn" title="Show/hide sources" data-i18n-title="tooltip.pbar.sources">
                                 <i data-lucide="server"></i>
                             </button>
 
@@ -121,27 +121,27 @@
                         <!-- Channel/Mute/Volume center block -->
                         <div class="pbar-center-block">
                             <div class="pbar-top-row">
-                                <button id="pbar-fav-btn" class="pbar-action-btn pbar-mini-btn pbar-mini-fav pbar-fav-btn" title="Favorite">
+                                <button id="pbar-fav-btn" class="pbar-action-btn pbar-mini-btn pbar-mini-fav pbar-fav-btn" title="Favorite" data-i18n-title="tooltip.pbar.fav">
                                     <i data-lucide="heart" id="pbar-fav-heart"></i>
                                 </button>
-                                <button id="pbar-up" class="pbar-action-btn pbar-zap-btn" title="Previous channel"><i data-lucide="chevron-up"></i></button>
-                                <button id="pbar-pin-btn" class="pbar-action-btn pbar-mini-btn pbar-pin-btn" title="Pin Player">
+                                <button id="pbar-up" class="pbar-action-btn pbar-zap-btn" title="Previous channel" data-i18n-title="tooltip.pbar.ch_prev"><i data-lucide="chevron-up"></i></button>
+                                <button id="pbar-pin-btn" class="pbar-action-btn pbar-mini-btn pbar-pin-btn" title="Pin Player" data-i18n-title="tooltip.pbar.pin">
                                     <i data-lucide="pin"></i>
                                 </button>
                             </div>
                             <div class="pbar-center-row">
-                                <button id="pbar-vol-down" class="pbar-vol-icon" title="Volume down" tabindex="0" aria-label="Volume down"><i data-lucide="minus"></i></button>
-                                <button id="pbar-mute" class="pbar-action-btn pbar-mute-btn" title="Mute / unmute">
+                                <button id="pbar-vol-down" class="pbar-vol-icon" title="Volume down" tabindex="0" aria-label="Volume down" data-i18n-title="tooltip.pbar.vol_down"><i data-lucide="minus"></i></button>
+                                <button id="pbar-mute" class="pbar-action-btn pbar-mute-btn" title="Mute / unmute" data-i18n-title="tooltip.pbar.mute">
                                     <i data-lucide="volume-2" id="pbar-mute-icon"></i>
                                 </button>
-                                <button id="pbar-vol-up" class="pbar-vol-icon" title="Volume up" tabindex="0" aria-label="Volume up"><i data-lucide="plus"></i></button>
+                                <button id="pbar-vol-up" class="pbar-vol-icon" title="Volume up" tabindex="0" aria-label="Volume up" data-i18n-title="tooltip.pbar.vol_up"><i data-lucide="plus"></i></button>
                             </div>
                             <div class="pbar-bottom-row">
-                                <button id="pbar-autotune-toggle-btn" class="pbar-action-btn pbar-mini-btn pbar-autotune-toggle-btn" title="Toggle signal controls">
+                                <button id="pbar-autotune-toggle-btn" class="pbar-action-btn pbar-mini-btn pbar-autotune-toggle-btn" title="Toggle signal controls" data-i18n-title="tooltip.pbar.autotune">
                                     <i data-lucide="app-window"></i>
                                 </button>
-                                <button id="pbar-down" class="pbar-action-btn pbar-zap-btn" title="Next channel"><i data-lucide="chevron-down"></i></button>
-                                <button id="pbar-settings-btn" class="pbar-action-btn pbar-mini-btn pbar-settings-btn" title="Edit channel">
+                                <button id="pbar-down" class="pbar-action-btn pbar-zap-btn" title="Next channel" data-i18n-title="tooltip.pbar.ch_next"><i data-lucide="chevron-down"></i></button>
+                                <button id="pbar-settings-btn" class="pbar-action-btn pbar-mini-btn pbar-settings-btn" title="Edit channel" data-i18n-title="tooltip.channel.edit">
                                     <i data-lucide="sliders"></i>
                                 </button>
                             </div>
@@ -158,11 +158,11 @@
             <!-- Combined tab row with close button -->
             <div class="side-tabs">
                 <div class="side-tabs-center">
-                    <button class="side-tab-btn" data-tab="home" id="menu-home-btn" title="Live TV Home"><i data-lucide="home"></i> <span data-i18n="side.tab.home">Home</span></button>
+                    <button class="side-tab-btn" data-tab="home" id="menu-home-btn" title="Live TV Home" data-i18n-title="tooltip.side.home"><i data-lucide="home"></i> <span data-i18n="side.tab.home">Home</span></button>
                     <button class="side-tab-btn active" data-tab="channels"><i data-lucide="tv"></i> <span data-i18n="side.tab.all">All</span></button>
                     <button class="side-tab-btn" data-tab="favorites"><i data-lucide="heart"></i> <span data-i18n="side.tab.favorites">Favorites</span></button>
                 </div>
-                <button class="close-btn side-close-btn" title="Close menu"><i data-lucide="x"></i></button>
+                <button class="close-btn side-close-btn" title="Close menu" data-i18n-title="tooltip.side.close"><i data-lucide="x"></i></button>
             </div>
 
             <div class="menu-content">
@@ -315,7 +315,7 @@
         <!-- Full Screen Settings Screen -->
         <div id="settings-screen" class="settings-screen hidden">
             <div class="settings-container glass-card">
-                <button id="close-settings" class="settings-close" title="Close settings"><i data-lucide="x"></i></button>
+                <button id="close-settings" class="settings-close" title="Close settings" data-i18n-title="tooltip.settings.close"><i data-lucide="x"></i></button>
                 <!-- Sidebar navigation for settings -->
                 <aside class="settings-sidebar">
                     <div class="settings-tabs">
@@ -1078,13 +1078,13 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
         </div>
 
         <div id="corner-fs-zone" class="corner-fs-zone">
-            <button id="corner-fs-btn" class="corner-fs-btn" title="Fullscreen" data-tooltip-pos="left">
+            <button id="corner-fs-btn" class="corner-fs-btn" title="Fullscreen" data-tooltip-pos="left" data-i18n-title="tooltip.corner.fullscreen">
                 <i id="corner-fs-icon" data-lucide="maximize"></i>
             </button>
         </div>
 
         <div id="corner-power-zone" class="corner-power-zone">
-            <button id="corner-power-btn" class="corner-power-btn" title="Shut Down Application" data-tooltip-pos="left">
+            <button id="corner-power-btn" class="corner-power-btn" title="Shut Down Application" data-tooltip-pos="left" data-i18n-title="tooltip.corner.shutdown">
                 <i data-lucide="power"></i>
             </button>
         </div>
@@ -1096,16 +1096,16 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
     </div>
     <!-- Floating controls (dev-only): Glass Tuner, Reload Window, Shut Down -->
     <div id="floating-controls-container" class="floating-controls-container" data-dev="true">
-        <button id="glass-tuner-btn" class="floating-reload-btn" title="Glass Tuner" data-tooltip-pos="left" style="display: none;">
+        <button id="glass-tuner-btn" class="floating-reload-btn" title="Glass Tuner" data-tooltip-pos="left" data-i18n-title="tooltip.dev.glass_tuner" style="display: none;">
             <i data-lucide="palette"></i>
         </button>
-        <button id="reset-window-size-btn" class="floating-reload-btn" title="Reset to 1080×720" data-tooltip-pos="left" style="display: none;">
+        <button id="reset-window-size-btn" class="floating-reload-btn" title="Reset to 1080×720" data-tooltip-pos="left" data-i18n-title="tooltip.dev.reset_window" style="display: none;">
             <i data-lucide="expand"></i>
         </button>
-        <button id="reload-window-btn" class="floating-reload-btn" title="Reload Window" data-tooltip-pos="left" style="display: none;">
+        <button id="reload-window-btn" class="floating-reload-btn" title="Reload Window" data-tooltip-pos="left" data-i18n-title="tooltip.dev.reload" style="display: none;">
             <i data-lucide="refresh-cw">↻</i>
         </button>
-        <button id="power-off-btn" class="floating-reload-btn" title="Shut Down Application" data-tooltip-pos="left" style="display: none;">
+        <button id="power-off-btn" class="floating-reload-btn" title="Shut Down Application" data-tooltip-pos="left" data-i18n-title="tooltip.corner.shutdown" style="display: none;">
             <i data-lucide="power"></i>
         </button>
     </div>

@@ -1,6 +1,7 @@
 import { state } from '../state/appState.js';
 import { getFilteredChannelsList } from '../filters/filterManager.js';
 import { renderFavoritesGrid } from '../render/favoritesGrid.js';
+import { t } from '../i18n/i18n.js';
 
 export function updatePlayerVideoBox() {
     const webview = document.getElementById('player-webview');
@@ -41,7 +42,7 @@ export function updateFullscreenButton() {
     
     fullscreenToggleBtn.classList.toggle('is-fullscreen', state.isAppFullscreen);
     fullscreenToggleIcon.setAttribute('data-lucide', state.isAppFullscreen ? 'minimize' : 'maximize');
-    fullscreenToggleBtn.title = state.isAppFullscreen ? 'Exit fullscreen' : 'Fullscreen';
+    fullscreenToggleBtn.title = state.isAppFullscreen ? t('tooltip.corner.fullscreen_exit', 'Exit fullscreen') : t('tooltip.corner.fullscreen', 'Fullscreen');
     fullscreenToggleBtn.setAttribute('aria-label', fullscreenToggleBtn.title);
     if (window.lucide) window.lucide.createIcons();
 }
