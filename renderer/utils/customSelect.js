@@ -137,8 +137,7 @@ export function syncCustomSelect(select) {
         optionDiv.className = 'custom-select-option';
         if (select.value === opt.value) {
             optionDiv.classList.add('selected');
-            const fixedLabel = select.dataset.label || select.getAttribute('placeholder') || select.options[0]?.textContent || '';
-            trigger.innerHTML = `<span>${fixedLabel}</span><i data-lucide="chevron-down" class="chevron-icon"></i>`;
+            trigger.innerHTML = `<span>${opt.textContent}</span><i data-lucide="chevron-down" class="chevron-icon"></i>`;
             if (window.lucide) window.lucide.createIcons();
         }
         optionDiv.textContent = opt.textContent;
