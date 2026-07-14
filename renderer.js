@@ -25,7 +25,7 @@ import { initWatchTimer } from './renderer/player/watchTimer.js';
 import { initFailover } from './renderer/player/failover.js';
 import { initPlayerController, selectChannel, zapChannel, mountRemotePlayer, updatePlayerActiveState } from './renderer/player/playerController.js';
 import { initNavigation, showModule, showLiveLanding, switchTab, hideMenu } from './renderer/ui/navigation.js';
-import { initInactivity, startInactivityTimers } from './renderer/ui/inactivity.js';
+import { initInactivity, startInactivityTimers, startPanelTimers } from './renderer/ui/inactivity.js';
 import { initChannelList, renderList, syncMenuScroll } from './renderer/render/channelList.js';
 import { initGuide, renderGuide } from './renderer/render/guide.js';
 import { initFavoritesGrid, renderFavoritesGrid, syncGridPageToActiveChannel } from './renderer/render/favoritesGrid.js';
@@ -165,6 +165,7 @@ async function init() {
         getActiveEpg,
         renderAll,
         startInactivityTimers,
+        startPanelTimers,
         switchTab,
         updateTriggersVisibility,
         getFilteredChannelsList,

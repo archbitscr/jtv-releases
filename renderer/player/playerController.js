@@ -391,6 +391,7 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
         if (ext.renderAll) ext.renderAll();
         if (ext.syncMenuScroll) ext.syncMenuScroll();
         if (ext.startInactivityTimers) ext.startInactivityTimers();
+        if (ext.startPanelTimers) ext.startPanelTimers();
     }
 
     // Update hover-trigger visibility early so sidebar triggers are enabled

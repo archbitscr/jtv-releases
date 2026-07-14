@@ -19,15 +19,21 @@ export function clearInactivityTimers() {
     timeouts.clear('topNav');
 }
 
+// Called by document activity events (mousedown, click, scroll, etc.)
+// Only resets activity-level timers; does NOT touch panel timers (menu, topNav, zappingHUD)
+// so that background events don't prevent panels from auto-hiding.
 export function startInactivityTimers() {
     if (!timeouts) return;
-    clearInactivityTimers();
+    timeouts.clear('cursor');
+    timeouts.clear('settings');
+    timeouts.clear('home');
+    timeouts.clear('land');
     document.body.classList.remove('hide-cursor');
 
     const mainMenu = document.getElementById('side-menu');
-    const topNavMenu = document.getElementById('tnav-menu');
     const sourceSwitcher = document.getElementById('pbar');
     const settingsScreen = document.getElementById('settings-screen');
+    const homeDashboard = document.getElementById('vod-library');
 
     const hasChannel = !!state.activeChannelId;
     const settingsVisible = settingsScreen && !settingsScreen.classList.contains('hidden');
@@ -43,42 +49,7 @@ export function startInactivityTimers() {
         }, cfg.settingsActive);
     }
 
-    // 2. Overlays / Menus (Sidebar menu, details modal — only while a stream is active)
-    if (hasChannel && cfg.menuActiveEnabled && mainMenu) {
-        const menuDelay = cfg.menuActive;
-        timeouts.set('menu', () => {
-            if (!mainMenu.matches(':hover')) {
-                if (ext.hideMenu) ext.hideMenu();
-            }
-            // detail page persists on inactivity — user is reading
-        }, menuDelay);
-    }
-
-    // 3. Top Nav Menu
-    if (topNavMenu && !topNavMenu.classList.contains('hidden')) {
-        if (cfg.topNavEnabled) {
-            timeouts.set('topNav', () => {
-                if (!topNavMenu.matches(':hover')) {
-                    topNavMenu.classList.add('hidden');
-                }
-            }, cfg.topNav);
-        }
-    }
-
-    // 4. Source Switcher — keep visible while failover is working; timeout only after signal restores
-    if (sourceSwitcher && !state.hudPinned) {
-        if (state.failoverInProgress) {
-            sourceSwitcher.classList.remove('hidden');
-        } else if (!sourceSwitcher.classList.contains('hidden') && cfg.zappingHUDEnabled) {
-            timeouts.set('zappingHUD', () => {
-                if (!sourceSwitcher.matches(':hover')) {
-                    sourceSwitcher.classList.add('hidden');
-                }
-            }, cfg.zappingHUD);
-        }
-    }
-
-    // 5. Hide Cursor (only while a stream is active)
+    // 2. Hide Cursor (only while a stream is active)
     if (hasChannel && cfg.cursorActiveEnabled) {
         const rawCursorDelay = cfg.cursorActive;
         const zappingDelay = (cfg.zappingHUDEnabled && sourceSwitcher && !sourceSwitcher.classList.contains('hidden')) ? (cfg.zappingHUD || 0) : 0;
@@ -90,8 +61,7 @@ export function startInactivityTimers() {
         }, cursorDelay);
     }
 
-    // 6. Home-dashboard inactivity timeout when channel is playing
-    const homeDashboard = document.getElementById('vod-library');
+    // 3. Home-dashboard inactivity timeout when channel is playing
     if (homeDashboard && !homeDashboard.classList.contains('hidden') && hasChannel) {
         const homeDelay = cfg.settingsActive || 5000;
         timeouts.set('home', () => {
@@ -101,7 +71,7 @@ export function startInactivityTimers() {
         }, homeDelay);
     }
 
-    // 7. Live TV landing auto-hide when channel is playing
+    // 4. Live TV landing auto-hide when channel is playing
     if (homeDashboard && !homeDashboard.classList.contains('hidden') && hasChannel) {
         if (cfg.landAutoHideEnabled) {
             timeouts.set('land', () => {
@@ -109,6 +79,50 @@ export function startInactivityTimers() {
                     homeDashboard.classList.add('hidden');
                 }
             }, cfg.landAutoHide);
+        }
+    }
+}
+
+// Called by trigger zones (on show) and panel mouseleave handlers.
+// Resets panel-specific hide timers independently of document activity.
+export function startPanelTimers() {
+    if (!timeouts) return;
+
+    const mainMenu = document.getElementById('side-menu');
+    const topNavMenu = document.getElementById('tnav-menu');
+    const sourceSwitcher = document.getElementById('pbar');
+
+    const hasChannel = !!state.activeChannelId;
+    const cfg = window.timeoutsConfig || {};
+
+    // Sidebar menu
+    if (hasChannel && cfg.menuActiveEnabled && mainMenu && !mainMenu.classList.contains('hidden')) {
+        timeouts.set('menu', () => {
+            if (!mainMenu.matches(':hover')) {
+                if (ext.hideMenu) ext.hideMenu();
+            }
+        }, cfg.menuActive);
+    }
+
+    // Top Nav menu
+    if (topNavMenu && !topNavMenu.classList.contains('hidden') && cfg.topNavEnabled) {
+        timeouts.set('topNav', () => {
+            if (!topNavMenu.matches(':hover')) {
+                topNavMenu.classList.add('hidden');
+            }
+        }, cfg.topNav);
+    }
+
+    // Source Switcher (pbar) — keep visible while failover is working
+    if (sourceSwitcher && !state.hudPinned) {
+        if (state.failoverInProgress) {
+            sourceSwitcher.classList.remove('hidden');
+        } else if (!sourceSwitcher.classList.contains('hidden') && cfg.zappingHUDEnabled) {
+            timeouts.set('zappingHUD', () => {
+                if (!sourceSwitcher.matches(':hover')) {
+                    sourceSwitcher.classList.add('hidden');
+                }
+            }, cfg.zappingHUD);
         }
     }
 }

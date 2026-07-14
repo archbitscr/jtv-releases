@@ -4,7 +4,7 @@ import { applyLocale, getCurrentLang, t } from '../i18n/i18n.js';
 import { selectChannel, zapChannel, mountRemotePlayer, updatePlayerActiveState } from '../player/playerController.js';
 import { showModule, switchTab, showLiveLanding, hideMenu, hideEditPane } from '../ui/navigation.js';
 import { syncMenuScroll } from '../render/channelList.js';
-import { startInactivityTimers, clearInactivityTimers, startCursorTimer } from '../ui/inactivity.js';
+import { startInactivityTimers, startPanelTimers, clearInactivityTimers, startCursorTimer } from '../ui/inactivity.js';
 import { applyWallpaper } from '../settings/wallpaper.js';
 import { syncFilterList, populateDropdowns, removeSettingsFilter, updateEventIconSelectBtnColor } from '../filters/filterManager.js';
 import { emojiToHtml } from '../filters/filterState.js';
@@ -198,6 +198,7 @@ export function setupEventListeners() {
 
         mainMenu.classList.remove('hidden');
         startInactivityTimers();
+        startPanelTimers();
         setTimeout(() => {
             syncMenuScroll(state.activeChannelId);
         }, 50);
@@ -209,6 +210,7 @@ export function setupEventListeners() {
             if (!state.isHomeActive) {
                 sourceSwitcher.classList.remove('hidden');
                 startInactivityTimers();
+                startPanelTimers();
             }
         };
     }
@@ -219,6 +221,7 @@ export function setupEventListeners() {
             if (!state.isHomeActive) {
                 sourceSwitcher.classList.remove('hidden');
                 startInactivityTimers();
+                startPanelTimers();
             }
         };
     }
@@ -228,33 +231,29 @@ export function setupEventListeners() {
             if (state.currentModule !== 'live') return;
             topNavMenu.classList.remove('hidden');
             startInactivityTimers();
+            startPanelTimers();
         };
     }
 
     if (topNavMenu) {
-        // Don't clearInactivityTimers on mouseenter — the CSS :has() rule disables the
-        // trigger zone when the panel opens, causing a pointer-events recalculation that
-        // fires mouseenter immediately and would cancel the just-started hide timer.
-        // The :hover check inside the timer callback keeps the panel alive while hovered;
-        // mouseleave restarts the timer when the cursor genuinely leaves.
         topNavMenu.onmouseenter = () => {
             document.body.classList.remove('hide-cursor');
         };
-        topNavMenu.onmouseleave = () => startInactivityTimers();
+        topNavMenu.onmouseleave = () => { startInactivityTimers(); startPanelTimers(); };
     }
 
     if (sourceSwitcher) {
         sourceSwitcher.onmouseenter = () => {
             document.body.classList.remove('hide-cursor');
         };
-        sourceSwitcher.onmouseleave = () => startInactivityTimers();
+        sourceSwitcher.onmouseleave = () => { startInactivityTimers(); startPanelTimers(); };
     }
 
     mainMenu.onmouseenter = () => {
         document.body.classList.remove('hide-cursor');
     };
 
-    mainMenu.onmouseleave = () => startInactivityTimers();
+    mainMenu.onmouseleave = () => { startInactivityTimers(); startPanelTimers(); };
 
     const settingsScreenEl = document.getElementById('settings-screen');
     if (settingsScreenEl) {
@@ -262,7 +261,7 @@ export function setupEventListeners() {
             clearInactivityTimers();
             document.body.classList.remove('hide-cursor');
         };
-        settingsScreenEl.onmouseleave = () => startInactivityTimers();
+        settingsScreenEl.onmouseleave = () => { startInactivityTimers(); startPanelTimers(); };
     }
 
     // Mouse movement un-hides the cursor and restarts only the cursor hide timer.
@@ -408,6 +407,8 @@ export function setupEventListeners() {
                 state.isHomeActive = false;
                 sourceSwitcher.classList.remove('hidden');
                 updateTriggersVisibility();
+                startInactivityTimers();
+                startPanelTimers();
             } else {
                 showModule('home');
             }
@@ -946,6 +947,7 @@ export function setupEventListeners() {
                         clearInactivityTimers();
                     } else {
                         startInactivityTimers();
+                        startPanelTimers();
                     }
                 }
                 const pinBtn = document.getElementById('pbar-pin-btn');
