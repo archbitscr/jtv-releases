@@ -400,6 +400,28 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 > **Sub-pendientes de Tarea 37 cancelados (2026-07-12):** meseta `clamp()` en Vol OSD (`.volosd-*`) y Settings — marcados como ❌ Obsoletos. No se continuará con la aplicación de clamp en esos componentes.
 
+### [2026-07-14] — Fix: CSP `script-src 'none'` en páginas casting/watch — elimina inline ad scripts
+
+*   **Commit:** `26bba77`
+*   **Archivo:** `main/network/requestPolicy.js`
+
+#### Problema
+El inline script obfuscado en `dlhd.st/casting/stream-*.php` y `/watch/stream-*.php` generaba notificaciones HTML ("Command Hot Mercenaries") directamente desde el HTML de respuesta sin hacer solicitudes de red adicionales. Al estar embebido en la respuesta PHP, no era interceptable por `webRequest.onBeforeRequest`. Los dominios externos (`nbnbewlhy.com`, `misdlgenddd.com`, etc.) estaban en `KNOWN_AD_DOMAINS` y sí eran bloqueados, pero el malware inline incluía su propia implementación de notificación como fallback.
+
+#### Solución
+`onHeadersReceived` en `requestPolicy.js` inyecta el header:
+```
+Content-Security-Policy: script-src 'none'
+```
+en las respuestas de `resourceType === 'mainFrame'` cuya URL incluya `/casting/stream-` o `/watch/stream-`. Esto bloquea **todos** los scripts (inline y externos) en esas páginas wrapper. El iframe del player (`#thatframe`) es HTML estático generado server-side por PHP, no depende de JS en la página padre — el player sigue cargando sin interrupciones.
+
+#### Verificación
+*   Fuente 3 (casting, ch742): pantalla negra limpia sin notificaciones durante 15+ segundos con autotuner activo.
+*   Fuente 5 (watch, ch742): ídem — "Could not play video." limpio (streams caídos externamente).
+*   Cero overlays HTML de ads en ninguna fuente.
+
+---
+
 ### [2026-07-14] — Fix: Bloqueo de ads en fuentes 3 y 5 (canal 742) + hardFreeze + screenshot CDP
 
 *   **Commits:** `bb3f82c`, `5078130`, `e6eacc6`
