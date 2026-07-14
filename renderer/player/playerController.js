@@ -34,6 +34,8 @@ export function resetAntiBlackScreen() {
 
 export function initPlayerController(dependencies) {
     ext = dependencies;
+    // Expose failover control bridge for claudeControl.js freeze/unfreeze
+    window._jtvFailoverBridge = { stopRetryLoop: stopNoSignalRetryLoop, signalRestored };
 }
 
 export function updatePlayerActiveState() {

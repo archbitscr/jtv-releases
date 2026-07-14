@@ -5997,3 +5997,111 @@ body:has(#tnav-menu:not(.hidden)) #trigger-top { pointer-events: none !important
     display: none;
 }
 
+/* ── Claude Control Panel ───────────────────────────────────────────────── */
+.claude-ctrl-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 4px 0 12px;
+}
+.claude-ctrl-section {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.claude-ctrl-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+.claude-ctrl-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.claude-ctrl-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-primary, #e0e0e0);
+    letter-spacing: 0.02em;
+}
+.claude-ctrl-desc {
+    font-size: 0.72rem;
+    color: var(--text-secondary, #888);
+    margin: 0;
+    line-height: 1.4;
+}
+.claude-status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.dot-green { background: #3ecf6a; box-shadow: 0 0 6px #3ecf6a88; }
+.dot-red   { background: #f05050; box-shadow: 0 0 6px #f0505088; }
+.dot-grey  { background: #555; }
+
+.claude-btn {
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.08);
+    color: var(--text-primary, #e0e0e0);
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+}
+.claude-btn:hover { background: rgba(255,255,255,0.15); }
+.claude-btn-freeze { min-width: 72px; }
+
+.claude-source-grid {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+.claude-src-btn {
+    width: 36px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+    color: var(--text-primary, #e0e0e0);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+.claude-src-btn:hover { background: rgba(255,255,255,0.14); }
+.claude-src-btn.claude-src-active {
+    background: rgba(62,207,106,0.2);
+    border-color: #3ecf6a;
+    color: #3ecf6a;
+}
+
+.claude-ch-input {
+    width: 130px;
+    font-size: 0.8rem;
+}
+
+.claude-status-pre {
+    font-size: 0.68rem;
+    font-family: 'Courier New', monospace;
+    color: #9af;
+    background: rgba(0,0,0,0.3);
+    border-radius: 5px;
+    padding: 8px;
+    margin: 0;
+    max-height: 140px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+

@@ -1,4 +1,5 @@
 const nativeApi = window.jtvAPI;
+import { initClaudeControl } from './renderer/dev/claudeControl.js';
 
 let devModeAvailable = false;
 let developerModeEnabled = true;
@@ -87,6 +88,8 @@ export async function initDeveloperFeatures() {
     }
 
     if (!devModeAvailable) return;
+
+    initClaudeControl();
 
     // The Developer tab button, the Developer-mode toggle (in the System pane) and the
     // Developer section pane are now static HTML in index.html, marked data-dev="true".

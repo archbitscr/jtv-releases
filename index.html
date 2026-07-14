@@ -13,7 +13,7 @@
         html, body { background: #000; color: #fff; }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css?v=66">
+    <link rel="stylesheet" href="./style.css?v=67">
 </head>
 <body class="theme-dark">
     <!-- App Loading Screen -->
@@ -762,6 +762,7 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
         <nav class="settings-subnav" aria-label="Developer sections">
             <button class="settings-subnav-btn dev-subnav-btn active" data-dev-tab="dev-tab-general"><i data-lucide="settings"></i> General</button>
             <button class="settings-subnav-btn dev-subnav-btn" data-dev-tab="dev-tab-timeouts"><i data-lucide="timer"></i> Timeouts</button>
+            <button class="settings-subnav-btn dev-subnav-btn" data-dev-tab="dev-tab-claude"><i data-lucide="bot"></i> Claude</button>
         </nav>
         <div id="dev-tab-general" class="dev-tab-pane">
         <div class="setting-item">
@@ -991,6 +992,68 @@ await window.JTV_SENSORS.getAudioState();</code></pre>
         </div>
                     </div>
                 </main>
+            </div>
+        </div>
+
+        <!-- Claude Control Panel — DEV tab -->
+        <div id="dev-tab-claude" class="dev-tab-pane" style="display: none;">
+            <div class="claude-ctrl-panel">
+
+                <!-- Freeze strip -->
+                <div class="claude-ctrl-section">
+                    <div class="claude-ctrl-row">
+                        <div class="claude-ctrl-label">
+                            <span id="claude-freeze-indicator" class="claude-status-dot dot-green"></span>
+                            <span class="claude-ctrl-title">Freeze Timeouts &amp; Autotune</span>
+                        </div>
+                        <button id="claude-freeze-btn" class="claude-btn claude-btn-freeze">Freeze</button>
+                    </div>
+                    <p class="claude-ctrl-desc">Pauses failover, watchdog and all retry timers. Lets Claude tune directly without interference.</p>
+                </div>
+
+                <!-- Source selector -->
+                <div class="claude-ctrl-section">
+                    <span class="claude-ctrl-title">Direct Source Tune</span>
+                    <p class="claude-ctrl-desc">Switches source on the current channel immediately, bypassing autotune.</p>
+                    <div class="claude-source-grid" id="claude-source-grid">
+                        <button class="claude-src-btn" data-claude-src="stream">1</button>
+                        <button class="claude-src-btn" data-claude-src="player">2</button>
+                        <button class="claude-src-btn" data-claude-src="casting">3</button>
+                        <button class="claude-src-btn" data-claude-src="plus">4</button>
+                        <button class="claude-src-btn" data-claude-src="watch">5</button>
+                        <button class="claude-src-btn" data-claude-src="cast">6</button>
+                    </div>
+                </div>
+
+                <!-- Channel tune -->
+                <div class="claude-ctrl-section">
+                    <span class="claude-ctrl-title">Direct Channel Tune</span>
+                    <div class="claude-ctrl-row">
+                        <input id="claude-ch-input" class="dark-input claude-ch-input" type="number" placeholder="Channel ID (e.g. 742)">
+                        <button id="claude-tune-btn" class="claude-btn">Tune</button>
+                    </div>
+                </div>
+
+                <!-- Click visualizer -->
+                <div class="claude-ctrl-section">
+                    <div class="claude-ctrl-row">
+                        <div class="claude-ctrl-label">
+                            <span id="claude-clickviz-dot" class="claude-status-dot dot-grey"></span>
+                            <span class="claude-ctrl-title">Click Visualizer (red dot)</span>
+                        </div>
+                        <button id="claude-clickviz-btn" class="claude-btn">Enable</button>
+                    </div>
+                    <p class="claude-ctrl-desc">Shows a red dot on every click — useful when Claude uses computer-use for verification.</p>
+                </div>
+
+                <!-- Live status -->
+                <div class="claude-ctrl-section">
+                    <div class="claude-ctrl-row">
+                        <span class="claude-ctrl-title">Live Status</span>
+                        <button id="claude-status-refresh-btn" class="claude-btn">Refresh</button>
+                    </div>
+                    <pre id="claude-status-readout" class="claude-status-pre">—</pre>
+                </div>
             </div>
         </div>
 

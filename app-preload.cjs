@@ -72,5 +72,8 @@ contextBridge.exposeInMainWorld('jtvAPI', {
     relaunch: () => ipcRenderer.invoke('relaunch'),
     checkChannelStatus: (url) => ipcRenderer.invoke('check-channel-status', url),
     onWebviewHttpError: (callback) => subscribe('webview-http-error', callback),
-    onWebviewLoadFailed: (callback) => subscribe('webview-load-failed', callback)
+    onWebviewLoadFailed: (callback) => subscribe('webview-load-failed', callback),
+    setWatchdogConfig: (config) => ipcRenderer.send('set-watchdog-config', config),
+    adScan: () => ipcRenderer.invoke('ad-scan'),
+    adKill: () => ipcRenderer.invoke('ad-kill')
 });
