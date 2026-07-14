@@ -418,7 +418,7 @@ en las respuestas de `resourceType === 'mainFrame'` cuya URL incluya `/casting/s
 #### Verificación
 *   Fuente 3 (casting, ch742): pantalla negra limpia sin notificaciones durante 15+ segundos con autotuner activo.
 *   Fuente 5 (watch, ch742): ídem — "Could not play video." limpio (streams caídos externamente).
-*   Cero overlays HTML de ads en ninguna fuente.
+*   ✅ **Confirmado por usuario:** canal HBO (321), fuente 5 — sin ads. Fix validado en canal distinto al de desarrollo.
 
 ---
 
