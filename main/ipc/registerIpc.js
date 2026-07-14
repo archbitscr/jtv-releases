@@ -3,6 +3,7 @@ import { registerScrapeIpc } from './registerScrapeIpc.js';
 import { registerShellIpc } from './registerShellIpc.js';
 import { registerUserDataIpc } from './registerUserDataIpc.js';
 import { registerWindowIpc } from './registerWindowIpc.js';
+import { registerUpdaterIpc } from './registerUpdaterIpc.js';
 
 export async function registerIpc({ ipcMain, context }) {
   registerUserDataIpc({ ipcMain, context });
@@ -10,6 +11,7 @@ export async function registerIpc({ ipcMain, context }) {
   registerWindowIpc({ ipcMain, context });
   registerAudioIpc({ ipcMain, context });
   registerScrapeIpc({ ipcMain, context });
+  registerUpdaterIpc({ ipcMain, context });
 
   // Developer/Diagnostics IPC: loaded only in dev (Task 23). In the packaged .exe
   // devModeAvailable is false, so these modules are never imported — and they are

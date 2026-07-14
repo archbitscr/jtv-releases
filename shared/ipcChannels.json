@@ -44,5 +44,12 @@
   "AD_SCAN": "ad-scan",
   "AD_KILL": "ad-kill",
   "AD_CANDIDATES": "ad-candidates",
-  "AD_SCREENSHOT": "ad-screenshot"
+  "AD_SCREENSHOT": "ad-screenshot",
+  "CHECK_FOR_UPDATES": "check-for-updates",
+  "QUIT_AND_INSTALL": "quit-and-install",
+  "UPDATE_AVAILABLE": "update-available",
+  "DOWNLOAD_PROGRESS": "download-progress",
+  "UPDATE_DOWNLOADED": "update-downloaded",
+  "UPDATE_NOT_AVAILABLE": "update-not-available",
+  "UPDATE_ERROR": "update-error"
 }

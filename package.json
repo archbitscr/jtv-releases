@@ -1,6 +1,6 @@
 {
   "name": "jtv",
-  "version": "2.3.13",
+  "version": "2.3.14",
   "main": "main.js",
   "type": "module",
   "description": "JTV - Your Personal Stream Dashboard",
@@ -54,9 +54,15 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "deleteAppDataOnUninstall": false
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "juanhidgo",
+      "repo": "jtv-releases"
     }
   },
   "dependencies": {
+    "electron-updater": "^6.8.9",
     "pngjs": "^7.0.0",
     "sortablejs": "^1.15.7"
   }

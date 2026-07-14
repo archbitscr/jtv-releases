@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: file:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https:; frame-src https:; media-src https: blob:; object-src 'none'; base-uri 'self'; form-action 'self';">
-    <title>JTV 2.3.13</title>
+    <title>JTV 2.3.14</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Roboto:wght@500&display=swap" rel="stylesheet">
@@ -330,7 +330,7 @@
                     </div>
                     <div class="settings-sidebar-footer">
                         <div class="settings-version-info">
-                            <div>JTV Version 2.3.13</div>
+                            <div>JTV Version 2.3.14</div>
                         </div>
                     </div>
                 </aside>
@@ -444,6 +444,17 @@
                     <!-- Section: My Account -->
                     <div id="settings-sect-account" class="settings-sect-pane">
                         <h3 class="settings-page-title" data-i18n="settings.system.title">System Options</h3>
+                        <!-- AutoUpdater -->
+                        <div class="setting-item">
+                            <div class="setting-item-info">
+                                <span class="setting-title" data-i18n="settings.system.update.title">App Updates</span>
+                                <span class="setting-desc" data-i18n="settings.system.update.desc">Check for a new version and install it automatically.</span>
+                            </div>
+                            <div class="setting-item-actions">
+                                <button id="update-check-btn" class="settings-action-btn" data-i18n="settings.system.update.check">Check for Updates</button>
+                            </div>
+                        </div>
+                        <div class="setting-divider"></div>
                         <!-- Developer Mode toggle (dev-only) -->
                         <div class="setting-item" data-dev="true">
                             <div class="setting-item-info">

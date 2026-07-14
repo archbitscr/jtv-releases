@@ -60,6 +60,15 @@
   "settings.cloudflare.title": "Connexion et Protection Cloudflare",
   "settings.cloudflare.desc": "Achemine les requêtes DNS de JTV via Cloudflare (1.1.1.2) pour bloquer les malwares.",
 
+  "settings.system.update.title": "Mises à jour",
+  "settings.system.update.desc": "Recherchez une nouvelle version et installez-la automatiquement.",
+  "settings.system.update.check": "Rechercher des mises à jour",
+  "settings.system.update.checking": "Vérification...",
+  "settings.system.update.up_to_date": "À jour",
+  "settings.system.update.downloading": "Téléchargement… {p}%",
+  "settings.system.update.restart": "Redémarrer pour mettre à jour",
+  "settings.system.update.failed": "Échec de la vérification",
+
   "settings.system.title": "Options Système",
   "settings.system.language.title": "Langue de l'Application",
   "settings.system.language.desc": "Modifiez la langue d'affichage de l'interface de l'application.",

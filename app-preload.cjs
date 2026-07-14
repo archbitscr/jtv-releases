@@ -76,5 +76,12 @@ contextBridge.exposeInMainWorld('jtvAPI', {
     setWatchdogConfig: (config) => ipcRenderer.send('set-watchdog-config', config),
     adScan: () => ipcRenderer.invoke('ad-scan'),
     adKill: () => ipcRenderer.invoke('ad-kill'),
-    adScreenshot: () => ipcRenderer.invoke('ad-screenshot')
+    adScreenshot: () => ipcRenderer.invoke('ad-screenshot'),
+    checkForUpdates: () => ipcRenderer.invoke('check-for-updates'),
+    quitAndInstall: () => ipcRenderer.invoke('quit-and-install'),
+    onUpdateAvailable: (cb) => subscribe('update-available', cb),
+    onDownloadProgress: (cb) => subscribe('download-progress', cb),
+    onUpdateDownloaded: (cb) => subscribe('update-downloaded', cb),
+    onUpdateNotAvailable: (cb) => subscribe('update-not-available', cb),
+    onUpdateError: (cb) => subscribe('update-error', cb)
 });

@@ -60,6 +60,15 @@
   "settings.cloudflare.title": "Cloudflare Connection & Protection",
   "settings.cloudflare.desc": "Securely routes JTV DNS queries through Cloudflare (1.1.1.2) to block malware.",
 
+  "settings.system.update.title": "App Updates",
+  "settings.system.update.desc": "Check for a new version and install it automatically.",
+  "settings.system.update.check": "Check for Updates",
+  "settings.system.update.checking": "Checking...",
+  "settings.system.update.up_to_date": "Up to date",
+  "settings.system.update.downloading": "Downloading… {p}%",
+  "settings.system.update.restart": "Restart to Update",
+  "settings.system.update.failed": "Update check failed",
+
   "settings.system.title": "System Options",
   "settings.system.language.title": "App Language",
   "settings.system.language.desc": "Change the display language of the application interface.",

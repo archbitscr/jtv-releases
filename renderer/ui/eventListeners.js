@@ -105,7 +105,46 @@ export function setupEventListeners() {
         };
     }
 
-    // 4. Donate PayPal button + QR
+    // 4. AutoUpdater button
+    const updateBtn = document.getElementById('update-check-btn');
+    if (updateBtn) {
+        const _setUpdateState = (state, percent) => {
+            updateBtn.disabled = state !== 'idle' && state !== 'restart';
+            switch (state) {
+                case 'idle':
+                    updateBtn.textContent = t('settings.system.update.check', 'Check for Updates');
+                    updateBtn.onclick = () => { _setUpdateState('checking'); nativeApi.checkForUpdates(); };
+                    break;
+                case 'checking':
+                    updateBtn.textContent = t('settings.system.update.checking', 'Checking...');
+                    break;
+                case 'up_to_date':
+                    updateBtn.textContent = t('settings.system.update.up_to_date', 'Up to date');
+                    setTimeout(() => _setUpdateState('idle'), 3000);
+                    break;
+                case 'downloading':
+                    updateBtn.textContent = t('settings.system.update.downloading', 'Downloading… {p}%').replace('{p}', percent ?? 0);
+                    break;
+                case 'restart':
+                    updateBtn.textContent = t('settings.system.update.restart', 'Restart to Update');
+                    updateBtn.disabled = false;
+                    updateBtn.onclick = () => nativeApi.quitAndInstall();
+                    break;
+                case 'failed':
+                    updateBtn.textContent = t('settings.system.update.failed', 'Update check failed');
+                    setTimeout(() => _setUpdateState('idle'), 3000);
+                    break;
+            }
+        };
+        _setUpdateState('idle');
+        nativeApi.onUpdateAvailable(() => _setUpdateState('downloading', 0));
+        nativeApi.onDownloadProgress(({ percent }) => _setUpdateState('downloading', percent));
+        nativeApi.onUpdateDownloaded(() => _setUpdateState('restart'));
+        nativeApi.onUpdateNotAvailable(() => _setUpdateState('up_to_date'));
+        nativeApi.onUpdateError(() => _setUpdateState('failed'));
+    }
+
+    // 5. Donate PayPal button + QR
     const PAYPAL_URL = 'https://www.paypal.com/donate/?hosted_button_id=GWPABYM5EFM8U';
     const donatePaypalBtn = document.getElementById('donate-paypal-btn');
     if (donatePaypalBtn) donatePaypalBtn.onclick = () => nativeApi.openExternal(PAYPAL_URL);

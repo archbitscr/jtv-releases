@@ -811,3 +811,21 @@ Para repos privados, la variable de entorno `GH_TOKEN` debe estar presente al ha
 9. `renderer/ui/eventListeners.js` — lógica de estados del botón
 10. Build + publicación de primera release
 
+##### ✅ Implementación completada (2026-07-14) — v2.3.14
+
+**Archivos creados/modificados:**
+- `main/ipc/registerUpdaterIpc.js` — nuevo módulo IPC; registra `check-for-updates` y `quit-and-install`; maneja el retorno `null` en modo dev emitiendo `update-not-available` manualmente (fix: sin este parche el botón quedaba bloqueado en "Checking..." porque `electron-updater` omite silenciosamente el chequeo cuando `app.isPackaged === false`).
+- `main/ipc/registerIpc.js` — importa y llama `registerUpdaterIpc`.
+- `shared/ipcChannels.json` — 7 canales nuevos: `CHECK_FOR_UPDATES`, `QUIT_AND_INSTALL`, `UPDATE_AVAILABLE`, `DOWNLOAD_PROGRESS`, `UPDATE_DOWNLOADED`, `UPDATE_NOT_AVAILABLE`, `UPDATE_ERROR`.
+- `app-preload.cjs` — expone `checkForUpdates`, `quitAndInstall`, `onUpdateAvailable`, `onDownloadProgress`, `onUpdateDownloaded`, `onUpdateNotAvailable`, `onUpdateError` en `jtvAPI`.
+- `package.json` — sección `publish` con `provider: github`, `owner: juanhidgo`, `repo: jtv-releases`; `electron-updater ^6.8.9` en `dependencies`; versión bumpeada a `2.3.14`.
+- `index.html` — nuevo `setting-item` (App Updates / `#update-check-btn`) como primera opción en `#settings-sect-account`.
+- `locales/en|es|pt|fr|de.json` — 8 claves `settings.system.update.*`.
+- `renderer/ui/eventListeners.js` — máquina de estados del botón (idle → checking → up_to_date / downloading → restart / failed).
+- `.env` — `GH_TOKEN` para publicación (en `.gitignore`; regenerar el token tras esta sesión).
+
+**Verificación en dev:**
+- Click "Check for Updates" → transición instantánea a "Up to date" (en dev mode el chequeo devuelve `null`; el null-fix emite `update-not-available`) → botón resetea a "Check for Updates" tras 3 s. ✅
+
+**Pendiente (fuera del scope de la tarea):**
+- Ejecutar `npm run publish` para crear la primera GitHub Release con `latest.yml` en `juanhidgo/jtv-releases`; sin ella el botón mostrará "Up to date" también en producción. Pendiente de autorización del usuario.
