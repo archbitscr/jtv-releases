@@ -4294,16 +4294,16 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.8);
-    padding: 7px 14px;
-    border-radius: 12px;
+    padding: clamp(5px, max(clamp(5px, 0.65vw, 7px), calc(7px + 0.00613 * (100vw - 2046px))), 18px) clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.01226 * (100vw - 2046px))), 36px);
+    border-radius: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px);
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.01226 * (100vw - 2046px))), 36px);
     font-weight: 700;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px));
+    -webkit-backdrop-filter: blur(clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px));
     height: 100%;
-    min-height: 34px;
+    min-height: clamp(22px, max(clamp(22px, 3.15vw, 34px), calc(34px + 0.02954 * (100vw - 2046px))), 87px);
     width: 100%;
 }
 
@@ -4324,12 +4324,12 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-right: 6px;
+    margin-right: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
 }
 
 .custom-select-trigger .chevron-icon {
-    width: 12px;
-    height: 12px;
+    width: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px);
+    height: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px);
     transition: transform 0.25s ease;
     opacity: 0.7;
 }
@@ -4349,14 +4349,14 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     min-width: 100%;
     background: rgba(15, 15, 15, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
+    border-radius: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00724 * (100vw - 2046px))), 21px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 255, 255, 0.03);
     z-index: 10000;
-    max-height: 200px;
+    max-height: clamp(130px, max(clamp(130px, 18.52vw, 200px), calc(200px + 0.17503 * (100vw - 2046px))), 514px);
     overflow-y: auto;
     overflow-x: hidden;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01338 * (100vw - 2046px))), 39px));
+    -webkit-backdrop-filter: blur(clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01338 * (100vw - 2046px))), 39px));
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -4373,10 +4373,10 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 
 /* Custom Select Option Item */
 .custom-select-option {
-    padding: 8px 14px;
+    padding: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00724 * (100vw - 2046px))), 21px) clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.01226 * (100vw - 2046px))), 36px);
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
-    font-size: 13px;
+    font-size: clamp(9px, max(clamp(9px, 1.20vw, 13px), calc(13px + 0.01115 * (100vw - 2046px))), 33px);
     font-weight: 400;
     white-space: nowrap;
     transition: background 0.18s ease, color 0.18s ease, padding-left 0.18s ease;
