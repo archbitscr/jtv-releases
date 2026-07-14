@@ -624,7 +624,7 @@ Los ads de push notification (Service Workers) y scripts de seguimiento persist�
 
 ---
 
-#### 6. Tarea 44: Auditoría y Mejoras de Red — Cloudflare DoH + Circuit Breaker
+#### 6. Tarea 44: Auditoría y Mejoras de Red — Cloudflare DoH + Circuit Breaker ✅ (2026-07-14)
 
 *   **Componente:** `main/network/cloudflareNetworkService.js`.
 *   **Objetivo:** Hacer robusto el servicio DNS-over-HTTPS de Cloudflare para que fallos de conectividad con `1.1.1.2` no penalicen el startup ni el streaming con delays acumulados.
@@ -635,7 +635,7 @@ Los ads de push notification (Service Workers) y scripts de seguimiento persist�
     *   ✅ **Redemption automático a los 10 min:** el circuit breaker pasa a estado HALF-OPEN y prueba DoH nuevamente. Si tiene éxito cierra el circuito; si falla vuelve a abrir. Completamente transparente al usuario — sin toggle en Settings.
     *   ✅ **Reset al toggle manual:** `enableCloudflareProtection()` y `disableCloudflareProtection()` limpian el estado del circuit breaker para que el usuario pueda forzar un reintento inmediato.
 *   **Decisión de diseño:** el redemption time es interno y siempre activo junto al circuit breaker — no tiene sentido exponer un toggle separado en Settings para desactivar la recuperación automática sin desactivar todo el servicio. Si en el futuro se necesita hacer el intervalo configurable (ej. 5/10/30 min), la constante `CB_REDEMPTION_MS` está centralizada en la cabecera del archivo.
-*   **⏳ Pendiente verificación del usuario.**
+*   **✅ Confirmado por usuario (2026-07-14).** Bump de versión diferido — se aplicará junto con Tarea 40 (AutoUpdater).
 
 ---
 
