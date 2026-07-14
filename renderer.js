@@ -76,12 +76,6 @@ window.timeoutsConfig = {
     watchdogSilence: 10000,
     landAutoHide: 6000,
     landAutoHideEnabled: true,
-    menuInactive: 4000,
-    menuInactiveEnabled: true,
-    cursorInactive: 3000,
-    cursorInactiveEnabled: true,
-    settingsInactive: 3500,
-    settingsInactiveEnabled: false
 };
 
 class TimeoutManager {

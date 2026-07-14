@@ -232,8 +232,12 @@ export function setupEventListeners() {
     }
 
     if (topNavMenu) {
+        // Don't clearInactivityTimers on mouseenter — the CSS :has() rule disables the
+        // trigger zone when the panel opens, causing a pointer-events recalculation that
+        // fires mouseenter immediately and would cancel the just-started hide timer.
+        // The :hover check inside the timer callback keeps the panel alive while hovered;
+        // mouseleave restarts the timer when the cursor genuinely leaves.
         topNavMenu.onmouseenter = () => {
-            clearInactivityTimers();
             document.body.classList.remove('hide-cursor');
         };
         topNavMenu.onmouseleave = () => startInactivityTimers();
@@ -241,14 +245,12 @@ export function setupEventListeners() {
 
     if (sourceSwitcher) {
         sourceSwitcher.onmouseenter = () => {
-            clearInactivityTimers();
             document.body.classList.remove('hide-cursor');
         };
         sourceSwitcher.onmouseleave = () => startInactivityTimers();
     }
 
     mainMenu.onmouseenter = () => {
-        clearInactivityTimers();
         document.body.classList.remove('hide-cursor');
     };
 
