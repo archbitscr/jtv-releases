@@ -6,4 +6,7 @@
   padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px) clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
   border-radius: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
   font-size: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00948 * (100vw - 2046px))), 29px);
+  box-shadow: 0 clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00334 * (100vw - 2046px))), 10px) clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px) rgba(0,0,0,0.5);
+  backdrop-filter: blur(clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px));
+  -webkit-backdrop-filter: blur(clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px));
 }

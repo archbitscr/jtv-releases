@@ -3871,20 +3871,20 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 /* Volume OSD Indicator */
 .volosd-indicator {
     position: absolute;
-    bottom: clamp(101px, 13.89vw, 384px); /* Positioned directly above the Player Bar */
+    bottom: clamp(101px, max(clamp(101px, 13.89vw, 150px), calc(150px + 0.13043 * (100vw - 2046px))), 384px); /* Positioned directly above the Player Bar */
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 10005;
 
     display: flex;
     align-items: center;
-    gap: clamp(10px, 1.39vw, 38px);
-    padding: clamp(8px, 1.11vw, 31px) clamp(16px, 2.22vw, 61px);
+    gap: clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01282 * (100vw - 2046px))), 38px);
+    padding: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px) clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.02062 * (100vw - 2046px))), 61px);
 
     background: rgba(10, 10, 10, 0.85) !important;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: clamp(13px, 1.85vw, 51px);
+    border-radius: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01728 * (100vw - 2046px))), 51px);
     
     /* White electric neon style */
     border: 1px solid rgba(255, 255, 255, 0.95) !important;
@@ -3903,17 +3903,17 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 
 .volosd-indicator i,
 .volosd-indicator svg {
-    width: clamp(12px, 1.67vw, 46px);
-    height: clamp(12px, 1.67vw, 46px);
+    width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01561 * (100vw - 2046px))), 46px);
+    height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01561 * (100vw - 2046px))), 46px);
     color: #ffffff !important;
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)) !important;
 }
 
 .volosd-bar-container {
-    width: clamp(80px, 11.11vw, 307px);
-    height: clamp(4px, 0.56vw, 15px);
+    width: clamp(80px, max(clamp(80px, 11.11vw, 120px), calc(120px + 0.10424 * (100vw - 2046px))), 307px);
+    height: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
     background: rgba(255, 255, 255, 0.15);
-    border-radius: clamp(2px, 0.28vw, 8px);
+    border-radius: clamp(2px, max(clamp(2px, 0.28vw, 3px), calc(3px + 0.00279 * (100vw - 2046px))), 8px);
     overflow: hidden;
 }
 
@@ -3921,16 +3921,16 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     height: 100%;
     width: 100%;
     background: #ffffff !important;
-    border-radius: clamp(2px, 0.28vw, 8px);
+    border-radius: clamp(2px, max(clamp(2px, 0.28vw, 3px), calc(3px + 0.00279 * (100vw - 2046px))), 8px);
     transition: width 0.15s ease-out;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.9) !important;
 }
 
 .volosd-indicator span {
-    font-size: clamp(0.64rem, 1.41vw, 2.43rem);
+    font-size: clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01338 * (100vw - 2046px))), 39px);
     font-weight: 700;
     color: white;
-    min-width: clamp(30px, 4.17vw, 115px);
+    min-width: clamp(30px, max(clamp(30px, 4.17vw, 45px), calc(45px + 0.03902 * (100vw - 2046px))), 115px);
     text-align: right;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
 }
@@ -5349,14 +5349,14 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     background: rgba(15, 15, 27, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: #ffffff;
-    padding: clamp(4px, 0.56vw, 15px) clamp(7px, 0.93vw, 26px);
-    border-radius: clamp(4px, 0.56vw, 15px);
-    font-size: clamp(0.48rem, 1.07vw, 1.84rem);
+    padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px) clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
+    border-radius: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
+    font-size: clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.00948 * (100vw - 2046px))), 29px);
     font-weight: 500;
     pointer-events: none;
-    box-shadow: 0 clamp(3px, 0.37vw, 10px) clamp(8px, 1.11vw, 31px) rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(clamp(7px, 0.93vw, 26px));
-    -webkit-backdrop-filter: blur(clamp(7px, 0.93vw, 26px));
+    box-shadow: 0 clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00334 * (100vw - 2046px))), 10px) clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px) rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px));
+    -webkit-backdrop-filter: blur(clamp(7px, max(clamp(7px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px));
     opacity: 0;
     transform: scale(0.95);
     transition: opacity 0.15s ease, transform 0.15s ease;

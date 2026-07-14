@@ -1483,12 +1483,18 @@ const TOOLTIP_GROUPS = [
       `  padding: ${f('padV')} ${f('padH')};`,
       `  border-radius: ${f('radius')};`,
       `  font-size: ${f('fontSize')};`,
+      `  box-shadow: 0 ${f('shadowY')} ${f('shadowBlur')} rgba(0,0,0,0.5);`,
+      `  backdrop-filter: blur(${f('blurFilter')});`,
+      `  -webkit-backdrop-filter: blur(${f('blurFilter')});`,
     ].join('\n'),
     items: [
-      { id: 'padV',     label: 'padding V',     base: 6,  min: 4, max: 15, unit: 'px' },
-      { id: 'padH',     label: 'padding H',     base: 10, min: 7, max: 26, unit: 'px' },
-      { id: 'radius',   label: 'border-radius', base: 6,  min: 4, max: 15, unit: 'px' },
-      { id: 'fontSize', label: 'font-size',     base: 12, min: 8, max: 29, unit: 'px' },
+      { id: 'padV',       label: 'padding V',           base: 6,  min: 4, max: 15, unit: 'px' },
+      { id: 'padH',       label: 'padding H',           base: 10, min: 7, max: 26, unit: 'px' },
+      { id: 'radius',     label: 'border-radius',       base: 6,  min: 4, max: 15, unit: 'px' },
+      { id: 'fontSize',   label: 'font-size',           base: 12, min: 8, max: 29, unit: 'px' },
+      { id: 'shadowY',    label: 'box-shadow Y offset', base: 4,  min: 3, max: 10, unit: 'px' },
+      { id: 'shadowBlur', label: 'box-shadow blur',     base: 12, min: 8, max: 31, unit: 'px' },
+      { id: 'blurFilter', label: 'backdrop-filter blur',base: 10, min: 7, max: 26, unit: 'px' },
     ]
   },
 ];
