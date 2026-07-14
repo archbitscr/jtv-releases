@@ -57,13 +57,13 @@ import { sanitizeMediaUrl } from './renderer/utils/sanitize.js';
 const nativeApi = window.jtvAPI;
 
 window.timeoutsConfig = {
-    settingsActive: 6000,
+    settingsActive: 8000,
     settingsActiveEnabled: true,
-    menuActive: 2500,
+    menuActive: 3000,
     menuActiveEnabled: true,
-    topNav: 2500,
+    topNav: 3000,
     topNavEnabled: true,
-    zappingHUD: 2500,
+    zappingHUD: 3000,
     zappingHUDEnabled: true,
     cursorActive: 3000,
     cursorActiveEnabled: true,
@@ -75,7 +75,13 @@ window.timeoutsConfig = {
     watchdogFreezeEnabled: true,
     watchdogSilence: 10000,
     landAutoHide: 6000,
-    landAutoHideEnabled: true
+    landAutoHideEnabled: true,
+    menuInactive: 4000,
+    menuInactiveEnabled: true,
+    cursorInactive: 3000,
+    cursorInactiveEnabled: true,
+    settingsInactive: 3500,
+    settingsInactiveEnabled: false
 };
 
 class TimeoutManager {
