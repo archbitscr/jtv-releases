@@ -102,6 +102,8 @@ export const KNOWN_AD_DOMAINS = [
   'misdlgenddd.com',
   'kzt2afc1rp52.com',
   'jrmkpvntxat.com',
-  'd11enq2rymy0yl.cloudfront.net'
+  'd11enq2rymy0yl.cloudfront.net',
+  'acscdn.com',
+  'waust.at'
 ];
 
