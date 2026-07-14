@@ -29,6 +29,12 @@
     },
     "files": [
       "dist/**/*",
+      "!dist/win-unpacked/**/*",
+      "!dist/*.exe",
+      "!dist/*.blockmap",
+      "!dist/*.yml",
+      "!dist/__uninstaller*",
+      "!dist/*.7z",
       "main.js",
       "app-preload.cjs",
       "guest-preload.cjs",
