@@ -289,14 +289,17 @@ function syncVideoAudioState(video) {
 
 window.addEventListener('DOMContentLoaded', () => {
     injectStyle();
+    killCastPageAds();
     cleanupHighZIndex();
     disableAdOverlays();
     autoClickOK();
+    killOrphanFrame();
 
     const observer = new MutationObserver(() => {
         try {
             observer.disconnect();
             injectStyle();
+            killCastPageAds();
             cleanupHighZIndex();
             disableAdOverlays();
             autoClickOK();
@@ -312,9 +315,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('load', () => {
     injectStyle();
+    killCastPageAds();
     cleanupHighZIndex();
     disableAdOverlays();
     autoClickOK();
+    reportAdCandidates();
 });
 
 // Volume/mute hotkeys that are safe to intercept (don't conflict with player seek controls).
@@ -564,6 +569,71 @@ function autoClickPlayOverlays() {
     });
 }
 
+function killCastPageAds() {
+    const url = window.location.href;
+    // Nuclear: in cast.php context, hide EVERYTHING except #thatframe and video
+    if (!url.includes('cast.php')) return;
+    try {
+        const thatframe = document.getElementById('thatframe');
+        document.querySelectorAll('body *').forEach(el => {
+            if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE' || el.tagName === 'VIDEO') return;
+            if (el === thatframe) return;
+            if (thatframe && thatframe.contains(el)) return;
+            el.style.cssText = 'display:none!important;visibility:hidden!important;pointer-events:none!important;height:0!important;width:0!important;';
+        });
+    } catch (e) {}
+}
+
+function killOrphanFrame() {
+    // If this frame has no video AND is not a recognized player context, it's likely an ad frame
+    const url = window.location.href;
+    if (!url || url === 'about:blank' || url.startsWith('file:') || url.startsWith('devtools:')) return;
+    if (window.self === window.top) return; // only in sub-frames
+    // Give the frame 2s to load a video before killing
+    setTimeout(() => {
+        try {
+            const videos = document.querySelectorAll('video');
+            if (videos.length > 0) return; // has video → legit player frame
+            const isPlayerPath = url.includes('premiumtv') || url.includes('clappr') ||
+                url.includes('hls') || url.includes('cast.php') || url.includes('embed') ||
+                url.includes('player') || url.includes('watch') || url.includes('stream');
+            if (isPlayerPath) return;
+            console.log(`[AdKill] Orphan frame (no video, no player signature): ${url} — hiding body.`);
+            if (document.body) {
+                document.body.style.cssText = 'display:none!important;visibility:hidden!important;';
+            }
+        } catch (e) {}
+    }, 2000);
+}
+
+function reportAdCandidates() {
+    // Collect iframe srcs and script srcs that look external; send to main for logging
+    if (window.self !== window.top) return; // only from top frame of webview
+    try {
+        const known = [
+            'localhost', '127.0.0.1', 'file:', 'devtools:', 'chrome:',
+            'dlhd.', 'daddylive.', 'rabbitstream.', 'jwpcdn.', 'clappr.',
+            'cloudfront.', 'cdnjs.', 'jsdelivr.', 'jquery.', 'unpkg.',
+            'fonts.gstatic', 'fonts.googleapis', 'vertex.st', 'embedindia.',
+            'megacloud.', 'rapid-cloud.', 'dokicloud.'
+        ];
+        const candidates = [];
+        document.querySelectorAll('iframe[src], script[src]').forEach(el => {
+            const src = el.src || el.getAttribute('src') || '';
+            if (!src || src.startsWith('blob:') || src.startsWith('data:')) return;
+            try {
+                const hostname = new URL(src).hostname;
+                if (!hostname) return;
+                const isKnown = known.some(k => hostname.includes(k));
+                if (!isKnown) candidates.push(hostname);
+            } catch (e) {}
+        });
+        if (candidates.length > 0) {
+            ipcRenderer.send('ad-candidates', [...new Set(candidates)]);
+        }
+    } catch (e) {}
+}
+
 function hideDistractingSymbols() {
     try {
         const allElements = document.querySelectorAll('*');
@@ -618,6 +688,7 @@ try {
             console.log(`[IntervalTick] Frame="${window.location.href}"`);
             hideDistractingSymbols();
             logFrameDetails();
+            killCastPageAds();
             disableAdOverlays();
             triggerPlayerHover();
             autoClickPlayOverlays();

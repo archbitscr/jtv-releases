@@ -40,5 +40,8 @@
   "OPEN_DEVTOOLS": "open-devtools",
   "RELOAD_WINDOW": "reload-window",
   "RESET_WINDOW_SIZE": "reset-window-size",
-  "GUEST_HOTKEY": "guest-hotkey"
+  "GUEST_HOTKEY": "guest-hotkey",
+  "AD_SCAN": "ad-scan",
+  "AD_KILL": "ad-kill",
+  "AD_CANDIDATES": "ad-candidates"
 }
