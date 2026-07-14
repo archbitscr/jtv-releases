@@ -350,9 +350,10 @@ async function init() {
         }
         if (savedData.filterGenres) {
             state.filterGenres = savedData.filterGenres;
-            if (!state.filterGenres.some(f => f.name === 'XXX')) {
-                state.filterGenres.push({ name: 'XXX', icon: 'ban' });
+            if (!state.filterGenres.some(f => f.name === 'XXX (18+)')) {
+                state.filterGenres.push({ name: 'XXX (18+)', icon: '🔞' });
             }
+            state.filterGenres = state.filterGenres.filter(f => f.name !== 'XXX');
         }
 
         if (savedData.filterEvents) {
