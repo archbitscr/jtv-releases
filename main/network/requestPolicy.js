@@ -25,6 +25,16 @@ export function attachRequestPolicy(electronSession, context) {
         return callback({ cancel: true });
       }
 
+      // Block service worker scripts from any non-allowed domain
+      // (covers romponalis.st/premiumtv/sw.js and similar ad SW injectors)
+      if (parsedUrl.pathname.endsWith('/sw.js') || parsedUrl.pathname.endsWith('/service-worker.js')) {
+        const isAllowedSW = ALLOWED_DOMAINS.some(allowed => hostname.endsWith(allowed) || hostname === allowed);
+        if (!isAllowedSW) {
+          console.log(`[AdBlock] Blocked service worker from untrusted domain: ${hostname}${parsedUrl.pathname}`);
+          return callback({ cancel: true });
+        }
+      }
+
       if (
         parsedUrl.pathname.endsWith('.m3u8') ||
         parsedUrl.pathname.endsWith('.ts') ||
@@ -43,6 +53,7 @@ export function attachRequestPolicy(electronSession, context) {
 
           const isPlayerSignature =
             pathStr.includes('daddy.php') ||
+            pathStr.includes('daddyhd.php') ||
             pathStr.includes('stream.php') ||
             pathStr.includes('cast.php') ||
             pathStr.includes('watch.php') ||
@@ -82,6 +93,23 @@ export function attachRequestPolicy(electronSession, context) {
     } catch (e) {
       callback({ cancel: false });
     }
+  });
+
+  // Inject script-blocking CSP on casting/watch stream pages.
+  // #thatframe (the player iframe) is static HTML rendered server-side by PHP,
+  // so blocking all scripts does NOT break the player.
+  electronSession.webRequest.onHeadersReceived((details, callback) => {
+    const url = details.url || '';
+    if (
+      (url.includes('/casting/stream-') || url.includes('/watch/stream-')) &&
+      details.resourceType === 'mainFrame'
+    ) {
+      const headers = { ...details.responseHeaders };
+      headers['content-security-policy'] = ["script-src 'none'"];
+      console.log(`[AdBlock] Injected script-src none CSP on: ${url.slice(0, 80)}`);
+      return callback({ cancel: false, responseHeaders: headers });
+    }
+    callback({ cancel: false, responseHeaders: details.responseHeaders });
   });
 
   electronSession.webRequest.onBeforeSendHeaders((details, callback) => {
