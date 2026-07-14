@@ -5965,20 +5965,20 @@ body:has(#tnav-menu:not(.hidden)) #trigger-top { pointer-events: none !important
 .donate-actions {
     flex-direction: column;
     align-items: flex-end;
-    gap: clamp(6px, 0.93vw, 14px);
+    gap: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00892 * (100vw - 2046px))), 26px);
 }
 
 .donate-qr-img {
-    width: 160px;
+    width: clamp(104px, max(clamp(104px, 14.81vw, 160px), calc(160px + 0.13993 * (100vw - 2046px))), 411px);
     height: auto;
-    border-radius: clamp(5px, 0.74vw, 12px);
+    border-radius: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00724 * (100vw - 2046px))), 21px);
 }
 
 .paypal-donate-btn {
-    width: 160px;
-    height: 40px;
+    width: clamp(104px, max(clamp(104px, 14.81vw, 160px), calc(160px + 0.13993 * (100vw - 2046px))), 411px);
+    height: clamp(26px, max(clamp(26px, 3.70vw, 40px), calc(40px + 0.03512 * (100vw - 2046px))), 103px);
     padding: 0;
-    border: 4px solid rgba(255, 255, 255, 0.08);
+    border: clamp(3px, max(clamp(3px, 0.37vw, 4px), calc(4px + 0.00334 * (100vw - 2046px))), 10px) solid rgba(255, 255, 255, 0.08);
     border-radius: 999px;
     cursor: pointer;
     background-image: url('/assets/paypal-donate-btn.png');
