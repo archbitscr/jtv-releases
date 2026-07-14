@@ -400,6 +400,28 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 > **Sub-pendientes de Tarea 37 cancelados (2026-07-12):** meseta `clamp()` en Vol OSD (`.volosd-*`) y Settings — marcados como ❌ Obsoletos. No se continuará con la aplicación de clamp en esos componentes.
 
+### [2026-07-14] — Fix: pbar/topNav/sidebar no se ocultaban por timeout
+
+*   **Commit:** `b38d5d7`
+*   **Archivos:** `renderer/ui/inactivity.js`, `renderer/ui/eventListeners.js`, `renderer.js`, `renderer/player/playerController.js`
+
+#### Problema
+Los paneles (pbar/source-switcher, topNav, sidebar) se mostraban al hacer hover sobre su trigger zone, pero nunca se ocultaban solos después del timeout configurado (3000 ms).
+
+**Causa raíz:** `signalRestored()` en `failover.js` era llamada por el evento `guest-playing` del webview del reproductor, que se emite continuamente durante la reproducción en vivo. Cada llamada invocaba `startPanelTimers()` → `timeouts.set('zappingHUD', ...)` → cancelaba el timer anterior y creaba uno nuevo. Nunca alcanzaban los 3 000 ms.
+
+#### Solución
+Se separaron los temporizadores de panel de los temporizadores de actividad del documento:
+
+- **`startPanelTimers()`** (nueva función): gestiona exclusivamente los timers de `menu`, `topNav` y `zappingHUD`. Solo la invocan las trigger zones (mouseenter) y los handlers `mouseleave` de los paneles.
+- **`startInactivityTimers()`** (reducida): ahora solo maneja `cursor`, `settings`, `home` y `land`. Es la que llaman los eventos de actividad del documento (`scroll`, `wheel`, `pointerdown`, etc.).
+- Se eliminó `startPanelTimers()` de `signalRestored()` y de cualquier ruta que se dispare continuamente durante la reproducción.
+
+#### Verificación
+Hover trigger bottom → pbar visible → mover mouse al centro → pbar se oculta a los ~3 s. Idem topNav. Comprobado en `npm run dev:app`.
+
+---
+
 ### [2026-07-14] — Fix: CSP `script-src 'none'` en páginas casting/watch — elimina inline ad scripts
 
 *   **Commit:** `26bba77`
