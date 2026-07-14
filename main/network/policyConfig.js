@@ -94,10 +94,14 @@ export const KNOWN_AD_DOMAINS = [
   'itvcinstecompvf.com',
   'xadsmart.com',
   'cobnutscopsole.com',
-  'ksohls.ru',
   'effectivecpmnetwork.com',
   'tabretwicht.com',
-  'romponalis.st',
-  'liveon5.zip'
+  // liveon5.zip, ksohls.ru, romponalis.st son hosts de player (/daddy.php, /premiumtv/)
+  // NO bloquear aquí — ZeroTrust los cubre; sus SW se bloquean por path en requestPolicy.js
+  'nbnbewlhy.com',
+  'misdlgenddd.com',
+  'kzt2afc1rp52.com',
+  'jrmkpvntxat.com',
+  'd11enq2rymy0yl.cloudfront.net'
 ];
 
