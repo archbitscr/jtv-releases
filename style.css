@@ -1449,22 +1449,21 @@ body[data-module="settings"] #trigger-top {
 .settings-list {
     display: flex;
     flex-wrap: wrap;
-    gap: clamp(4px, 0.56vw, 15px);
+    gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
     background: transparent;
     padding: 0;
-    margin-bottom: clamp(10px, 1.39vw, 38px);
-    margin-bottom: clamp(12px, 1.85vw, 47px);
+    margin-bottom: clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01282 * (100vw - 2046px))), 38px);
 }
 
 .settings-chip {
     display: flex;
     align-items: center;
-    gap: clamp(4px, 0.56vw, 15px);
-    padding: clamp(4px, 0.56vw, 15px) clamp(8px, 1.11vw, 31px);
+    gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px);
+    padding: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00502 * (100vw - 2046px))), 15px) clamp(8px, max(clamp(8px, 1.11vw, 12px), calc(12px + 0.01059 * (100vw - 2046px))), 31px);
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: clamp(10px, 1.39vw, 38px);
-    font-size: clamp(0.67rem, 1.48vw, 2.56rem);
+    border-radius: clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01282 * (100vw - 2046px))), 38px);
+    font-size: clamp(11px, max(clamp(11px, 1.48vw, 16px), calc(16px + 0.01394 * (100vw - 2046px))), 41px);
     color: rgba(255,255,255,0.8);
     transition: 0.3s;
 }
@@ -1473,8 +1472,8 @@ body[data-module="settings"] #trigger-top {
 .settings-chip svg {
     width: 1.05em;
     height: 1.05em;
-    max-width: clamp(12px, 1.67vw, 46px);
-    max-height: clamp(12px, 1.67vw, 46px);
+    max-width: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01561 * (100vw - 2046px))), 46px);
+    max-height: clamp(12px, max(clamp(12px, 1.67vw, 18px), calc(18px + 0.01561 * (100vw - 2046px))), 46px);
 }
 
 .settings-chip .remove-btn {
@@ -2547,18 +2546,18 @@ body.hide-cursor * {
 
 .settings-close {
     position: absolute;
-    top: clamp(12px, 1.85vw, 47px);
-    right: clamp(12px, 1.85vw, 47px);
+    top: clamp(12px, max(clamp(12px, 1.85vw, 20px), calc(20px + 0.01505 * (100vw - 2046px))), 47px);
+    right: clamp(12px, max(clamp(12px, 1.85vw, 20px), calc(20px + 0.01505 * (100vw - 2046px))), 47px);
     background: none;
     border: none;
     color: #fff;
-    font-size: clamp(1.07rem, 2.67vw, 4.27rem);
+    font-size: clamp(17px, max(clamp(17px, 2.69vw, 29px), calc(29px + 0.02174 * (100vw - 2046px))), 68px);
 }
 
 .settings-close i,
 .settings-close svg {
-    width: clamp(17px, 2.67vw, 68px);
-    height: clamp(17px, 2.67vw, 68px);
+    width: clamp(17px, max(clamp(17px, 2.69vw, 29px), calc(29px + 0.02174 * (100vw - 2046px))), 68px);
+    height: clamp(17px, max(clamp(17px, 2.69vw, 29px), calc(29px + 0.02174 * (100vw - 2046px))), 68px);
     cursor: pointer;
     opacity: 0.7;
     transition: 0.2s;
@@ -2588,9 +2587,9 @@ body.hide-cursor * {
 }
 
 .settings-sidebar {
-    width: clamp(107px, 16.67vw, 427px);
+    width: clamp(107px, max(clamp(107px, 16.67vw, 180px), calc(180px + 0.13768 * (100vw - 2046px))), 427px);
     border-right: 1px solid rgba(255, 255, 255, 0.05);
-    padding: clamp(12px, 1.85vw, 47px) clamp(6px, 0.93vw, 24px);
+    padding: clamp(12px, max(clamp(12px, 1.85vw, 20px), calc(20px + 0.01505 * (100vw - 2046px))), 47px) clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px);
     display: flex;
     flex-direction: column;
     background: transparent;
@@ -2600,16 +2599,16 @@ body.hide-cursor * {
 
 .settings-sidebar-footer {
     margin-top: auto;
-    padding-top: clamp(11px, 1.67vw, 43px);
+    padding-top: clamp(11px, max(clamp(11px, 1.67vw, 18px), calc(18px + 0.01394 * (100vw - 2046px))), 43px);
 }
 
 .settings-version-info {
-    font-size: clamp(0.44rem, 1.11vw, 1.78rem);
+    font-size: clamp(7px, max(clamp(7px, 1.11vw, 12px), calc(12px + 0.00892 * (100vw - 2046px))), 28px);
     color: rgba(255,255,255,0.35);
-    padding-left: clamp(6px, 0.93vw, 24px);
+    padding-left: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px);
     display: flex;
     flex-direction: column;
-    gap: clamp(1px, 0.19vw, 5px);
+    gap: clamp(1px, max(clamp(1px, 0.19vw, 2px), calc(2px + 0.00167 * (100vw - 2046px))), 5px);
 }
 
 .settings-version-info a {
@@ -2623,40 +2622,40 @@ body.hide-cursor * {
 }
 
 .settings-sidebar h2 {
-    font-size: clamp(0.89rem, 2.22vw, 3.56rem);
+    font-size: clamp(14px, max(clamp(14px, 2.22vw, 24px), calc(24px + 0.01839 * (100vw - 2046px))), 57px);
     font-weight: 700;
     color: white;
-    margin-bottom: clamp(15px, 2.31vw, 59px);
-    padding-left: clamp(6px, 0.93vw, 24px);
+    margin-bottom: clamp(15px, max(clamp(15px, 2.31vw, 25px), calc(25px + 0.01895 * (100vw - 2046px))), 59px);
+    padding-left: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px);
 }
 
 .settings-tabs {
     display: flex;
     flex-direction: column;
-    gap: clamp(5px, 0.74vw, 19px);
+    gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px);
 }
 
 .settings-tab-btn {
     background: none;
     border: none;
     color: rgba(255,255,255,0.5);
-    padding: clamp(6px, 0.93vw, 24px) clamp(7px, 1.11vw, 28px);
+    padding: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px) clamp(7px, max(clamp(7px, 1.11vw, 12px), calc(12px + 0.00892 * (100vw - 2046px))), 28px);
     text-align: left;
-    font-size: clamp(0.53rem, 1.33vw, 2.13rem);
+    font-size: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01115 * (100vw - 2046px))), 34px);
     font-weight: 600;
     cursor: pointer;
-    border-radius: clamp(7px, 1.11vw, 28px);
+    border-radius: clamp(7px, max(clamp(7px, 1.11vw, 12px), calc(12px + 0.00892 * (100vw - 2046px))), 28px);
     transition: all 0.2s;
     display: flex;
     align-items: center;
-    gap: clamp(5px, 0.74vw, 19px);
+    gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px);
     position: relative;
 }
 
 .settings-tab-btn i,
 .settings-tab-btn svg {
-    width: clamp(11px, 1.67vw, 43px);
-    height: clamp(11px, 1.67vw, 43px);
+    width: clamp(11px, max(clamp(11px, 1.67vw, 18px), calc(18px + 0.01394 * (100vw - 2046px))), 43px);
+    height: clamp(11px, max(clamp(11px, 1.67vw, 18px), calc(18px + 0.01394 * (100vw - 2046px))), 43px);
 }
 
 .settings-tab-btn:hover {
@@ -2700,7 +2699,7 @@ body:not(.dev-mode) .dev-indicator {
 
 .settings-main-content {
     flex: 1;
-    padding: clamp(9px, 1.39vw, 36px) clamp(15px, 2.31vw, 59px);
+    padding: clamp(9px, max(clamp(9px, 1.39vw, 15px), calc(15px + 0.01171 * (100vw - 2046px))), 36px) clamp(15px, max(clamp(15px, 2.31vw, 25px), calc(25px + 0.01895 * (100vw - 2046px))), 59px);
     display: flex;
     flex-direction: column;
     min-height: 0;
@@ -2899,19 +2898,19 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .settings-sect-pane h3 {
-    font-size: clamp(0.83rem, 2.07vw, 3.32rem);
+    font-size: clamp(13px, max(clamp(13px, 2.04vw, 22px), calc(22px + 0.01728 * (100vw - 2046px))), 53px);
     font-weight: 700;
     color: white;
-    margin-bottom: clamp(4px, 0.56vw, 14px);
+    margin-bottom: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00446 * (100vw - 2046px))), 14px);
 }
 
 /* General settings — Raycast-style typography & controls */
 .settings-sect-pane .settings-page-title {
-    font-size: clamp(0.74rem, 1.85vw, 2.96rem);
+    font-size: clamp(12px, max(clamp(12px, 1.85vw, 20px), calc(20px + 0.01505 * (100vw - 2046px))), 47px);
     font-weight: 600;
     color: #ffffff;
     letter-spacing: -0.02em;
-    margin-bottom: clamp(5px, 0.74vw, 19px);
+    margin-bottom: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px);
     line-height: 1.3;
 }
 
@@ -2919,20 +2918,20 @@ body:not(.dev-mode) .dev-indicator {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: clamp(19px, 2.96vw, 76px);
-    padding: clamp(11px, 1.67vw, 43px) 0;
+    gap: clamp(19px, max(clamp(19px, 2.96vw, 32px), calc(32px + 0.02453 * (100vw - 2046px))), 76px);
+    padding: clamp(11px, max(clamp(11px, 1.67vw, 18px), calc(18px + 0.01394 * (100vw - 2046px))), 43px) 0;
 }
 
 .settings-sect-pane .setting-item-info {
     display: flex;
     flex-direction: column;
-    gap: clamp(2px, 0.37vw, 9px);
+    gap: clamp(2px, max(clamp(2px, 0.37vw, 4px), calc(4px + 0.00279 * (100vw - 2046px))), 9px);
     flex: 1;
     min-width: 0;
 }
 
 .settings-sect-pane .setting-title {
-    font-size: clamp(0.56rem, 1.39vw, 2.22rem);
+    font-size: clamp(9px, max(clamp(9px, 1.39vw, 15px), calc(15px + 0.01171 * (100vw - 2046px))), 36px);
     font-weight: 600;
     color: #ffffff;
     letter-spacing: -0.01em;
@@ -2940,7 +2939,7 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .settings-sect-pane .setting-desc {
-    font-size: clamp(0.48rem, 1.2vw, 1.93rem);
+    font-size: clamp(8px, max(clamp(8px, 1.20vw, 13px), calc(13px + 0.01003 * (100vw - 2046px))), 31px);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.45);
     line-height: 1.5;
@@ -2958,7 +2957,7 @@ body:not(.dev-mode) .dev-indicator {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: clamp(5px, 0.74vw, 19px);
+    gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px);
     flex-shrink: 0;
 }
 
@@ -2966,10 +2965,10 @@ body:not(.dev-mode) .dev-indicator {
     background: rgba(0, 0, 0, 0.45);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: #ffffff;
-    font-size: clamp(0.48rem, 1.2vw, 1.93rem);
+    font-size: clamp(8px, max(clamp(8px, 1.20vw, 13px), calc(13px + 0.01003 * (100vw - 2046px))), 31px);
     font-weight: 500;
     letter-spacing: -0.01em;
-    padding: clamp(5px, 0.74vw, 19px) clamp(10px, 1.48vw, 38px);
+    padding: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px) clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01226 * (100vw - 2046px))), 38px);
     border-radius: 999px;
     cursor: pointer;
     white-space: nowrap;
@@ -2980,8 +2979,8 @@ body:not(.dev-mode) .dev-indicator {
 
 .settings-sect-pane .settings-action-btn i,
 .settings-sect-pane .settings-action-btn svg {
-    width: clamp(10px, 1.48vw, 38px);
-    height: clamp(10px, 1.48vw, 38px);
+    width: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01226 * (100vw - 2046px))), 38px);
+    height: clamp(10px, max(clamp(10px, 1.48vw, 16px), calc(16px + 0.01226 * (100vw - 2046px))), 38px);
 }
 
 .settings-sect-pane .settings-action-btn:hover {
@@ -2998,9 +2997,9 @@ body:not(.dev-mode) .dev-indicator {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.05);
     color: rgba(255, 255, 255, 0.7);
-    font-size: clamp(0.48rem, 1.2vw, 1.93rem);
+    font-size: clamp(8px, max(clamp(8px, 1.20vw, 13px), calc(13px + 0.01003 * (100vw - 2046px))), 31px);
     font-weight: 600;
-    padding: clamp(5px, 0.74vw, 19px) clamp(9px, 1.48vw, 38px);
+    padding: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px) clamp(9px, max(clamp(9px, 1.48vw, 16px), calc(16px + 0.01226 * (100vw - 2046px))), 38px);
     border-radius: 999px;
     cursor: pointer;
     appearance: none;
@@ -3032,8 +3031,8 @@ body:not(.dev-mode) .dev-indicator {
 .settings-sect-pane .settings-switch {
     position: relative;
     display: inline-block;
-    width: clamp(26px, 4.07vw, 104px);
-    height: clamp(14px, 2.22vw, 57px);
+    width: clamp(26px, max(clamp(26px, 4.07vw, 44px), calc(44px + 0.03344 * (100vw - 2046px))), 104px);
+    height: clamp(14px, max(clamp(14px, 2.22vw, 24px), calc(24px + 0.01839 * (100vw - 2046px))), 57px);
     flex-shrink: 0;
     cursor: pointer;
 }
@@ -3056,10 +3055,10 @@ body:not(.dev-mode) .dev-indicator {
 .settings-sect-pane .settings-switch-slider::before {
     content: "";
     position: absolute;
-    width: clamp(11px, 1.67vw, 43px);
-    height: clamp(11px, 1.67vw, 43px);
-    left: clamp(2px, 0.28vw, 7px);
-    bottom: clamp(2px, 0.28vw, 7px);
+    width: clamp(11px, max(clamp(11px, 1.67vw, 18px), calc(18px + 0.01394 * (100vw - 2046px))), 43px);
+    height: clamp(11px, max(clamp(11px, 1.67vw, 18px), calc(18px + 0.01394 * (100vw - 2046px))), 43px);
+    left: clamp(2px, max(clamp(2px, 0.28vw, 3px), calc(3px + 0.00223 * (100vw - 2046px))), 7px);
+    bottom: clamp(2px, max(clamp(2px, 0.28vw, 3px), calc(3px + 0.00223 * (100vw - 2046px))), 7px);
     background: #ffffff;
     border-radius: 50%;
     transition: transform 0.2s ease;
@@ -3071,7 +3070,7 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .settings-sect-pane .settings-switch input:checked + .settings-switch-slider::before {
-    transform: translateX(clamp(12px, 1.85vw, 47px));
+    transform: translateX(clamp(12px, max(clamp(12px, 1.85vw, 20px), calc(20px + 0.01505 * (100vw - 2046px))), 47px));
 }
 
 .settings-sect-pane .settings-switch input:focus-visible + .settings-switch-slider {
@@ -3086,10 +3085,10 @@ body:not(.dev-mode) .dev-indicator {
 #settings-sect-filters .settings-subnav {
     display: flex;
     align-items: center;
-    gap: clamp(5px, 0.74vw, 19px);
-    margin-bottom: clamp(13px, 2.04vw, 52px);
+    gap: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00613 * (100vw - 2046px))), 19px);
+    margin-bottom: clamp(13px, max(clamp(13px, 2.04vw, 22px), calc(22px + 0.01672 * (100vw - 2046px))), 52px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: clamp(6px, 0.93vw, 24px);
+    padding-bottom: clamp(6px, max(clamp(6px, 0.93vw, 10px), calc(10px + 0.00780 * (100vw - 2046px))), 24px);
 }
 
 .connectivity-subnav-btn,
@@ -3099,8 +3098,10 @@ body:not(.dev-mode) .dev-indicator {
     background: transparent;
     border: none;
     color: rgba(255, 255, 255, 0.42);
-    font-size: clamp(0.48rem, 1.20vw, 1.93rem);
+    font-size: clamp(8px, max(clamp(8px, 1.20vw, 13px), calc(13px + 0.01003 * (100vw - 2046px))), 31px);
     font-weight: 500;
+    padding: clamp(4px, max(clamp(4px, 0.65vw, 7px), calc(7px + 0.00557 * (100vw - 2046px))), 17px) clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01059 * (100vw - 2046px))), 33px);
+    gap: clamp(4px, max(clamp(4px, 0.56vw, 6px), calc(6px + 0.00446 * (100vw - 2046px))), 14px);
     letter-spacing: -0.01em;
     padding: clamp(4px, 0.65vw, 17px) clamp(8px, 1.30vw, 33px);
     border-radius: 999px;
@@ -3119,8 +3120,8 @@ body:not(.dev-mode) .dev-indicator {
 .settings-subnav-btn svg,
 #settings-sect-filters .settings-subnav-btn i,
 #settings-sect-filters .settings-subnav-btn svg {
-    width: clamp(8px, 1.30vw, 33px);
-    height: clamp(8px, 1.30vw, 33px);
+    width: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01059 * (100vw - 2046px))), 33px);
+    height: clamp(8px, max(clamp(8px, 1.30vw, 14px), calc(14px + 0.01059 * (100vw - 2046px))), 33px);
 }
 
 .connectivity-subnav-btn:hover,
@@ -3957,26 +3958,26 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 }
 
 .modal-blocker-content {
-    padding: clamp(30px, 4.17vw, 115px);
+    padding: clamp(30px, max(clamp(30px, 4.17vw, 45px), calc(45px + 0.03902 * (100vw - 2046px))), 115px);
     max-width: clamp(348px, 48.15vw, 1331px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(16px, 2.22vw, 61px);
-    border-radius: clamp(16px, 2.22vw, 61px);
+    gap: clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.02062 * (100vw - 2046px))), 61px);
+    border-radius: clamp(16px, max(clamp(16px, 2.22vw, 24px), calc(24px + 0.02062 * (100vw - 2046px))), 61px);
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .modal-blocker-content i,
 .modal-blocker-content svg {
-    width: clamp(43px, 5.93vw, 164px);
-    height: clamp(43px, 5.93vw, 164px);
+    width: clamp(43px, max(clamp(43px, 5.93vw, 64px), calc(64px + 0.05574 * (100vw - 2046px))), 164px);
+    height: clamp(43px, max(clamp(43px, 5.93vw, 64px), calc(64px + 0.05574 * (100vw - 2046px))), 164px);
     color: var(--accent);
 }
 
 .modal-blocker-content h2 {
     margin: 0;
-    font-size: clamp(1.21rem, 2.67vw, 4.61rem);
+    font-size: clamp(19px, max(clamp(19px, 2.69vw, 29px), calc(29px + 0.02508 * (100vw - 2046px))), 74px);
     font-weight: 700;
     letter-spacing: clamp(0px, 0.05vw, 1px);
 }
@@ -3985,7 +3986,7 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
     line-height: 1.6;
-    font-size: clamp(0.67rem, 1.48vw, 2.56rem);
+    font-size: clamp(11px, max(clamp(11px, 1.48vw, 16px), calc(16px + 0.01394 * (100vw - 2046px))), 41px);
 }
 
 .modal-blocker-content p strong {
@@ -3999,12 +4000,12 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 
 .modal-blocker-icon {
     color: #ff4a4a !important;
-    margin: 0 auto clamp(13px, 1.85vw, 51px) auto;
+    margin: 0 auto clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01728 * (100vw - 2046px))), 51px) auto;
     display: block;
 }
 
 .modal-blocker-btn {
-    margin: clamp(13px, 1.85vw, 51px) auto 0 auto;
+    margin: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01728 * (100vw - 2046px))), 51px) auto 0 auto;
     display: block;
 }
 
@@ -4126,38 +4127,38 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(clamp(10px, 1.39vw, 38px));
-    -webkit-backdrop-filter: blur(clamp(10px, 1.39vw, 38px));
+    backdrop-filter: blur(clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01282 * (100vw - 2046px))), 38px));
+    -webkit-backdrop-filter: blur(clamp(10px, max(clamp(10px, 1.39vw, 15px), calc(15px + 0.01282 * (100vw - 2046px))), 38px));
 }
 
 .modal-content {
     position: relative;
     width: 90%;
     max-width: clamp(295px, 40.74vw, 1126px);
-    padding: clamp(20px, 2.78vw, 77px);
+    padding: clamp(20px, max(clamp(20px, 2.78vw, 30px), calc(30px + 0.02620 * (100vw - 2046px))), 77px);
     background: rgba(20, 20, 30, 0.45);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: clamp(11px, 1.48vw, 41px);
+    border-radius: clamp(11px, max(clamp(11px, 1.48vw, 16px), calc(16px + 0.01394 * (100vw - 2046px))), 41px);
     box-shadow: 0 clamp(13px, 1.85vw, 51px) clamp(34px, 4.63vw, 128px) rgba(0, 0, 0, 0.5);
     z-index: 2;
     text-align: left;
 }
 
 .modal-content h2 {
-    font-size: clamp(0.84rem, 1.85vw, 3.20rem);
+    font-size: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01728 * (100vw - 2046px))), 51px);
     font-weight: 600;
     color: #ffffff;
     margin-top: 0;
-    margin-bottom: clamp(5px, 0.74vw, 20px);
+    margin-bottom: clamp(5px, max(clamp(5px, 0.74vw, 8px), calc(8px + 0.00669 * (100vw - 2046px))), 20px);
     line-height: 1.3;
     letter-spacing: -0.02em;
 }
 
 .modal-content p {
-    font-size: clamp(0.57rem, 1.26vw, 2.18rem);
+    font-size: clamp(9px, max(clamp(9px, 1.30vw, 14px), calc(14px + 0.01171 * (100vw - 2046px))), 35px);
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.5);
-    margin-bottom: clamp(13px, 1.85vw, 51px);
+    margin-bottom: clamp(13px, max(clamp(13px, 1.85vw, 20px), calc(20px + 0.01728 * (100vw - 2046px))), 51px);
 }
 
 .onboarding-languages {
