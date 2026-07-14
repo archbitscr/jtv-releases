@@ -400,6 +400,46 @@ Este documento unifica de forma cronológica todas las mejoras, características
 
 > **Sub-pendientes de Tarea 37 cancelados (2026-07-12):** meseta `clamp()` en Vol OSD (`.volosd-*`) y Settings — marcados como ❌ Obsoletos. No se continuará con la aplicación de clamp en esos componentes.
 
+### [2026-07-14] — Fix: Bloqueo de ads en fuentes 3 y 5 (canal 742) + hardFreeze + screenshot CDP
+
+*   **Commits:** `bb3f82c`, `5078130`, `e6eacc6`
+*   **Archivos modificados (8):** `renderer/player/failover.js`, `renderer/player/playerController.js`, `renderer/dev/claudeControl.js`, `app-preload.cjs`, `main/ipc/registerDeveloperIpc.js`, `main/network/policyConfig.js`, `shared/ipcChannels.json`, `index.html`
+
+#### Problema
+Los ads de push notification (Service Workers) y scripts de seguimiento persistían en fuentes 3 (`casting` → `ksohls.ru/premiumtv/daddyhd.php?id=742`) y 5 (`watch` → `hamis.romponalis.st/premiumtv/daddy.php?id=742`) del canal 742 incluso tras recargas. Adicionalmente, el `claudeControl.freeze()` no bloqueaba realmente el autotuner porque `triggerFailover()` verificaba `cycleInProgress` (no el flag `failoverInProgress` del state) y el handler `did-fail-load` en `playerController.js` llamaba `triggerFailover()` sin ningún guard.
+
+#### Soluciones aplicadas
+
+**1. `hardFreeze` — bloqueo total del autotuner (`failover.js` + `playerController.js`)**
+*   Nuevo flag privado `_hardFrozen` en `failover.js` que bloquea TODOS los puntos de entrada del failover, incluyendo el bypass de `did-fail-load`.
+*   `triggerFailover()` ahora verifica `if (_hardFrozen || cycleInProgress || retryTimeoutId)`.
+*   Callback de `setTimeout` en `tryNextSource()` verifica `if (cycleInProgress && !_hardFrozen)`.
+*   Exportaciones nuevas: `hardFreeze()`, `hardUnfreeze()` — expuestas en `window._jtvFailoverBridge`.
+*   `claudeControl.freeze()` y `unfreeze()` actualizados para llamar `hardFreeze()`/`hardUnfreeze()`.
+
+**2. Nuevos dominios de ads bloqueados (`policyConfig.js`)**
+*   `acscdn.com` — librería de control de ads encontrada dentro del iframe del player.
+*   `waust.at` — tracker de ads encontrado dentro del iframe del player.
+*   `ksohls.ru` — **removido** de `KNOWN_AD_DOMAINS` (era host del player, no ad network; su bloqueo causaba "No Signal" en fuente 3). ZeroTrust lo cubre por path `/premiumtv/`.
+
+**3. Screenshot CDP (`registerDeveloperIpc.js` + `app-preload.cjs` + `claudeControl.js`)**
+*   Nuevo IPC handler `AD_SCREENSHOT` (`ad-screenshot`): captura el webview más grande (player) vía `webContents.capturePage()` y guarda PNG en `userData/jtv_screenshot.png`.
+*   Expuesto en `jtvAPI.adScreenshot()` y `claudeControl.screenshot()`.
+*   Botón "Screenshot" añadido al Claude Control Panel en `index.html`.
+
+**4. Limpieza de Service Workers de redes de ads**
+*   Usando CDP `Storage.clearDataForOrigin` se limpiaron SW registrados por 7 dominios de ads (`cobnutscopsole.com`, `cobnutscopale.com`, `processions2controller.com`, `processors2480.com`, `payrloll.com`, `iahivizxhvble.online`, `ylyfwxsymjake.com`) en la sesión `persist:jtv-playback`.
+*   Registraciones futuras bloqueadas porque los dominios ya están en `KNOWN_AD_DOMAINS` (bloquea el script de registro del SW).
+
+#### Estado de verificación
+*   DOM scan de fuente 5: **cero overlays de ads** detectados — solo `#thatframe` (player legítimo) a z-index alto.
+*   Scripts de ads (`acscdn.com`, `waust.at`): presentes en DOM pero **no ejecutados** (requests cancelados por policy).
+*   Push notifications: SWs limpiados; registraciones futuras bloqueadas.
+*   Fuente 3 (`ksohls.ru`): servidor genuinamente caído (timeout tras 8s) — no relacionado con bloqueo.
+*   Pendiente: confirmación visual final cuando los streams estén activos.
+
+---
+
 ### [2026-07-14] — Enriquecimiento de Canales + Nuevos Eventos de Filtro + Fixes i18n ✅ v2.3.13
 
 *   **Commit:** `20dbd43`
