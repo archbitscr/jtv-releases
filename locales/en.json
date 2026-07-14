@@ -97,6 +97,7 @@
   "settings.wallpaper.desc": "Select a wallpaper for the main home screen.",
   "settings.wallpaper.none": "No Wallpaper",
 
+  "player.muted": "Muted",
   "player.no_internet.title": "No Internet",
   "player.searching": "Searching alternate sources...",
   "player.no_internet.msg": "No internet connection. Connect to continue.",
@@ -138,6 +139,9 @@
   "filter.event.futbol": "Soccer",
   "filter.event.tennis": "Tennis",
   "filter.event.cycling": "Cycling",
+  "filter.event.wrestling": "Wrestling",
+  "filter.event.horse_racing": "Horse Racing",
+  "filter.event.darts": "Darts",
 
   "assigner.selected": "{n} selected",
   "assigner.multiple": "Multiple Selection",

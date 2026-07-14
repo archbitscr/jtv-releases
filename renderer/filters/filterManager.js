@@ -33,10 +33,13 @@ const EVENT_KEYS = {
     'Concerts': 'filter.event.concerts',
     'Awards':   'filter.event.awards',
     'Festival': 'filter.event.festival',
-    'Boxing':   'filter.event.boxing',
-    'Futbol':   'filter.event.futbol',
-    'Tennis':   'filter.event.tennis',
-    'Cycling':  'filter.event.cycling',
+    'Boxing':       'filter.event.boxing',
+    'Futbol':       'filter.event.futbol',
+    'Tennis':       'filter.event.tennis',
+    'Cycling':      'filter.event.cycling',
+    'Wrestling':    'filter.event.wrestling',
+    'Horse Racing': 'filter.event.horse_racing',
+    'Darts':        'filter.event.darts',
 };
 
 export function getFilterDisplayName(name) {

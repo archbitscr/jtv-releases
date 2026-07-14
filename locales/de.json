@@ -97,6 +97,7 @@
   "settings.wallpaper.desc": "Wähle ein Hintergrundbild für den Hauptstartbildschirm.",
   "settings.wallpaper.none": "Kein Hintergrundbild",
 
+  "player.muted": "Stummgeschaltet",
   "player.no_internet.title": "Kein Internet",
   "player.searching": "Suche nach alternativen Quellen...",
   "player.no_internet.msg": "Keine Internetverbindung. Verbinde dich, um fortzufahren.",
@@ -138,6 +139,9 @@
   "filter.event.futbol": "Fußball",
   "filter.event.tennis": "Tennis",
   "filter.event.cycling": "Radsport",
+  "filter.event.wrestling": "Wrestling",
+  "filter.event.horse_racing": "Pferderennen",
+  "filter.event.darts": "Darts",
 
   "assigner.selected": "{n} ausgewählt",
   "assigner.multiple": "Mehrfachauswahl",

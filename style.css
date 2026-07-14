@@ -2995,11 +2995,11 @@ body:not(.dev-mode) .dev-indicator {
 }
 
 .settings-select {
-    background: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
     font-size: clamp(0.48rem, 1.2vw, 1.93rem);
-    font-weight: 500;
+    font-weight: 600;
     padding: clamp(5px, 0.74vw, 19px) clamp(9px, 1.48vw, 38px);
     border-radius: 999px;
     cursor: pointer;
@@ -3010,12 +3010,13 @@ body:not(.dev-mode) .dev-indicator {
     background-repeat: no-repeat;
     background-position: right clamp(7px, 1.11vw, 28px) center;
     padding-right: clamp(19px, 2.96vw, 76px);
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    transition: all 0.2s ease;
 }
 
 .settings-select:hover:not(:disabled) {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
 }
 
 .settings-select:disabled {

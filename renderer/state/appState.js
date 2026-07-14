@@ -106,7 +106,10 @@ export const state = {
         { name: "Rugby", icon: "🏉" },
         { name: "Concerts", icon: "🎤" },
         { name: "Awards", icon: "🏆" },
-        { name: "Festival", icon: "🎭" }
+        { name: "Festival", icon: "🎭" },
+        { name: "Wrestling", icon: "🤼" },
+        { name: "Horse Racing", icon: "🏇" },
+        { name: "Darts", icon: "🎯" }
     ],
     filterList: [],
     dropdownsPopulated: false,
@@ -164,5 +167,5 @@ export const DEFAULT_LANG_NAMES = new Set([
 export const DEFAULT_EVENT_NAMES = new Set([
     "FIFA 2026", "Formula 1", "UFC", "Boxing", "Motorsport", "Rally", "MotoGP",
     "Futbol", "NBA", "NFL", "MLB", "Golf", "Tennis", "NHL", "Cycling", "Cricket",
-    "Rugby", "Concerts", "Awards", "Festival"
+    "Rugby", "Concerts", "Awards", "Festival", "Wrestling", "Horse Racing", "Darts"
 ]);

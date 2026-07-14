@@ -97,6 +97,7 @@
   "settings.wallpaper.desc": "Sélectionnez un fond d'écran pour l'écran d'accueil principal.",
   "settings.wallpaper.none": "Sans Fond d'écran",
 
+  "player.muted": "Muet",
   "player.no_internet.title": "Pas d'Internet",
   "player.searching": "Recherche de sources alternatives...",
   "player.no_internet.msg": "Pas de connexion internet. Connectez-vous pour continuer.",
@@ -138,6 +139,9 @@
   "filter.event.futbol": "Football",
   "filter.event.tennis": "Tennis",
   "filter.event.cycling": "Cyclisme",
+  "filter.event.wrestling": "Catch",
+  "filter.event.horse_racing": "Courses Hippiques",
+  "filter.event.darts": "Fléchettes",
 
   "assigner.selected": "{n} sélectionnés",
   "assigner.multiple": "Sélection Multiple",

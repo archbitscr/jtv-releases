@@ -717,6 +717,7 @@ export function setupEventListeners() {
         langSelect.onchange = () => {
             if (langApplyBtn) langApplyBtn.style.display = langSelect.value !== getCurrentLang() ? '' : 'none';
         };
+        syncCustomSelect(langSelect);
     }
     if (langApplyBtn) {
         langApplyBtn.onclick = async () => {

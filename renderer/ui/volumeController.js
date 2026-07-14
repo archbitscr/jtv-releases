@@ -1,5 +1,6 @@
 import { state } from '../state/appState.js';
 import { saveAppState } from '../services/stateManager.js';
+import { t } from '../i18n/i18n.js';
 
 export function showVolumeHUD(level, isMuted) {
     const isChannelPlaying = !!state.activeChannelId;
@@ -17,7 +18,7 @@ export function showVolumeHUD(level, isMuted) {
     }
     
     if (isMuted) {
-        text.textContent = "Silenciado";
+        text.textContent = t('player.muted', 'Muted');
         bar.style.width = "0%";
         icon.setAttribute('data-lucide', 'volume-x');
     } else {

@@ -97,6 +97,7 @@
   "settings.wallpaper.desc": "Selecione um papel de parede para a tela inicial principal.",
   "settings.wallpaper.none": "Sem Papel de Parede",
 
+  "player.muted": "Silenciado",
   "player.no_internet.title": "Sem Internet",
   "player.searching": "Procurando fontes alternativas...",
   "player.no_internet.msg": "Sem conexão à internet. Conecte-se para continuar.",
@@ -138,6 +139,9 @@
   "filter.event.futbol": "Futebol",
   "filter.event.tennis": "Tênis",
   "filter.event.cycling": "Ciclismo",
+  "filter.event.wrestling": "Luta Livre",
+  "filter.event.horse_racing": "Corridas de Cavalos",
+  "filter.event.darts": "Dardos",
 
   "assigner.selected": "{n} selecionados",
   "assigner.multiple": "Seleção Múltipla",
