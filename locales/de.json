@@ -72,7 +72,7 @@
   "settings.system.title": "Systemoptionen",
   "settings.system.language.title": "App-Sprache",
   "settings.system.language.desc": "Ändere die Anzeigesprache der Anwendungsoberfläche.",
-  "settings.system.language.apply": "Anwenden",
+  "settings.system.language.apply": "Sprache anwenden",
   "settings.system.donate.title": "Den Autor unterstützen",
   "settings.system.donate.desc": "Wenn dir JTV gefällt, erwäge die Entwicklung mit einer Spende zu unterstützen.<br>QR scannen oder auf die Schaltfläche klicken.",
   "settings.system.danger.title": "Gefahrenzone",
