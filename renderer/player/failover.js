@@ -1,5 +1,6 @@
 import { state } from '../state/appState.js';
 import { t } from '../i18n/i18n.js';
+import { startInactivityTimers } from '../ui/inactivity.js';
 
 let selectChannelFn = () => {};
 let mountRemotePlayerFn = () => {};
@@ -71,6 +72,7 @@ export function signalRestored() {
     }
     state.failoverInProgress = false;
     showNoSignalOverlay(false);
+    startInactivityTimers();
 }
 
 function scheduleNextCycle(channelId) {

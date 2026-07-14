@@ -319,9 +319,6 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     state.activeChannelId = channel.id;
     state.currentlyWatchingId = channel.id;
     state.watchStartTime = Date.now();
-    state.isHomeActive = false;
-    state.currentModule = 'live';
-    document.body.setAttribute('data-module', 'live');
     state.shouldRestoreTunedChannel = false;
 
     nativeApi.logDiagnostic(`Tuning channel ID: ${channel.id} ("${channel.name}") [ResetSource=${resetSource}]`);
@@ -378,17 +375,21 @@ export async function selectChannel(channel, resetSource = true, sourceTab = nul
     // Force show Player Bar immediately
     sourceSwitcher.classList.remove('hidden');
     
-    // Hide landing overlay and home screens only on manual channel change
+    // Only take over navigation state on manual channel change
     if (resetSource) {
+        state.isHomeActive = false;
+        state.currentModule = 'live';
+        document.body.setAttribute('data-module', 'live');
         document.getElementById('vod-library').classList.add('hidden');
         document.getElementById('settings-screen').classList.add('hidden');
-        state.isHomeActive = false;
     }
 
     if (ext.syncGridPageToActiveChannel) ext.syncGridPageToActiveChannel(channel.id);
-    if (ext.renderAll) ext.renderAll();
-    if (ext.syncMenuScroll) ext.syncMenuScroll();
-    if (ext.startInactivityTimers) ext.startInactivityTimers();
+    if (resetSource) {
+        if (ext.renderAll) ext.renderAll();
+        if (ext.syncMenuScroll) ext.syncMenuScroll();
+        if (ext.startInactivityTimers) ext.startInactivityTimers();
+    }
 
     // Update hover-trigger visibility early so sidebar triggers are enabled
     // even if a later call (e.g. switchTab on first tune) throws. (Fixes sidebar not

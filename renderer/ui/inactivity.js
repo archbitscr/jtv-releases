@@ -65,9 +65,11 @@ export function startInactivityTimers() {
         }
     }
 
-    // 4. Source Switcher
-    if (sourceSwitcher && !sourceSwitcher.classList.contains('hidden') && !state.hudPinned) {
-        if (cfg.zappingHUDEnabled) {
+    // 4. Source Switcher — keep visible while failover is working; timeout only after signal restores
+    if (sourceSwitcher && !state.hudPinned) {
+        if (state.failoverInProgress) {
+            sourceSwitcher.classList.remove('hidden');
+        } else if (!sourceSwitcher.classList.contains('hidden') && cfg.zappingHUDEnabled) {
             timeouts.set('zappingHUD', () => {
                 if (!sourceSwitcher.matches(':hover')) {
                     sourceSwitcher.classList.add('hidden');
