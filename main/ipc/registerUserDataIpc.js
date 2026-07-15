@@ -52,7 +52,8 @@ export function registerUserDataIpc({ ipcMain, context }) {
     // app.getAppPath() returns the app root in dev and the app.asar path when packaged.
     // Electron patches fs to read inside .asar, so this works in both cases.
     const filePath = path.join(app.getAppPath(), 'locales', `${safe}.json`);
-    return fs.readFileSync(filePath, 'utf8');
+    const content = fs.readFileSync(filePath, 'utf8');
+    return content.charCodeAt(0) === 0xFEFF ? content.slice(1) : content;
   });
 
 }
