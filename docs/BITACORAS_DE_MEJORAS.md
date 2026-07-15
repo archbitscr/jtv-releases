@@ -849,5 +849,22 @@ Para repos privados, la variable de entorno `GH_TOKEN` debe estar presente al ha
 **Verificación en dev:**
 - Click "Check for Updates" → transición instantánea a "Up to date" (en dev mode el chequeo devuelve `null`; el null-fix emite `update-not-available`) → botón resetea a "Check for Updates" tras 3 s. ✅
 
-**Pendiente (fuera del scope de la tarea):**
-- Ejecutar `npm run publish` para crear la primera GitHub Release con `latest.yml` en `juanhidgo/jtv-releases`; sin ella el botón mostrará "Up to date" también en producción. Pendiente de autorización del usuario.
+**Release publicada (2026-07-14):**
+- Assets subidos a `juanhidgo/jtv-releases` release `v2.3.14`: `JTV-Setup-2.3.14.exe`, `JTV-Setup-2.3.14.exe.blockmap`, `JTV-2.3.14.exe`, `latest.yml`. ✅
+
+---
+
+### [2026-07-14] — Fix: selector de idioma roto — BOM UTF-8 en archivos de locale
+
+*   **Commit:** `0daae9b`
+*   **Root cause:** `fs.readFileSync(path, 'utf8')` en `registerUserDataIpc.js` incluía el BOM (`﻿`) en el string retornado. `JSON.parse` fallaba con `Unexpected token '﻿'` → fallback silencioso a inglés → selector de idioma no aplicaba ningún cambio.
+*   **Fix:** Strip del BOM antes de retornar: `content.charCodeAt(0) === 0xFEFF ? content.slice(1) : content`.
+*   **Afectado:** todos los idiomas (en/es/pt/fr/de) — los archivos tienen BOM desde su creación.
+*   **Verificado:** selector de idioma funciona correctamente en dev. ✅
+
+### [2026-07-14] — Disclaimer legal en Settings (Danger Zone)
+
+*   **Commits incluidos en v2.3.14**
+*   **Componentes:** `index.html`, `style.css`, `locales/en|es|pt|fr|de.json`.
+*   **Descripción:** Bloque `.disclaimer-zone` añadido debajo de Danger Zone en la sección Sistema. Borde blanco 25%, fondo semitranslúcido blanco 5%, border-radius 12px. Font-size hereda clamp de `.settings-sect-pane .setting-desc`. Traducciones en los 5 idiomas.
+*   **Verificado en dev.** ✅
