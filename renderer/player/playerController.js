@@ -144,16 +144,16 @@ export function mountRemotePlayer(url) {
             if (!hasStartedPlaying) {
                 hasStartedPlaying = true;
                 nativeApi.logRenderer(`[Player Watchdog] Source started playing. Activating Anti-Black-Screen monitors.`);
-                
+
                 if (silenceCheckInterval) clearInterval(silenceCheckInterval);
                 consecutiveSilenceStart = 0;
                 silenceCheckInterval = setInterval(async () => {
                     const silenceThreshold = window.timeoutsConfig?.watchdogSilence ?? 10000;
                     if (state.failoverInProgress) return;
-                    
+
                     const isAudible = await nativeApi.isCurrentlyAudible();
                     const isMuted = await nativeApi.isAudioMuted();
-                    
+
                     if (isAudible || isMuted) {
                         consecutiveSilenceStart = 0;
                     } else {
@@ -169,9 +169,9 @@ export function mountRemotePlayer(url) {
                         }
                     }
                 }, 2000);
-            }
 
-            signalRestored();
+                signalRestored();
+            }
         }
     });
 

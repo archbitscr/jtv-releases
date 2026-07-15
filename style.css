@@ -1672,14 +1672,6 @@ body[data-module="settings"] #trigger-top {
     opacity: 0;
 }
 
-body.hide-cursor {
-    cursor: none;
-}
-
-body.hide-cursor * {
-    cursor: none !important;
-}
-
 .chip {
     display: flex;
     align-items: center;
@@ -5531,6 +5523,14 @@ body:has(#pbar:not(.hidden)) webview,
 body:has(#pbar:not(.hidden)) #player-container,
 body:has(#side-menu:not(.hidden)) webview,
 body:has(#side-menu:not(.hidden)) #player-container {
+    pointer-events: none !important;
+}
+
+/* When cursor is hidden, disable webview pointer events so the outer document's
+   cursor:none applies over the video area. Mouse movement is still detected by
+   the outer document and will un-hide the cursor normally. */
+body.hide-cursor webview,
+body.hide-cursor #player-container {
     pointer-events: none !important;
 }
 

@@ -140,7 +140,9 @@ export function startCursorTimer() {
     const zappingDelay = (cfg.zappingHUDEnabled && sourceSwitcher && !sourceSwitcher.classList.contains('hidden')) ? (cfg.zappingHUD || 0) : 0;
     const cursorDelay = Math.max(rawCursorDelay, zappingDelay + 100);
     timeouts.set('cursor', () => {
-        if (!state.isHomeActive && mainMenu && mainMenu.classList.contains('hidden') && (!sourceSwitcher || sourceSwitcher.classList.contains('hidden'))) {
+        const menuHidden = !mainMenu || mainMenu.classList.contains('hidden');
+        const pbarHidden = !sourceSwitcher || sourceSwitcher.classList.contains('hidden');
+        if (!state.isHomeActive && menuHidden && pbarHidden) {
             document.body.classList.add('hide-cursor');
         }
     }, cursorDelay);
