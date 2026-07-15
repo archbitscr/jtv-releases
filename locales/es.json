@@ -68,6 +68,8 @@
     "settings.system.danger.title":  "Zona de Peligro",
     "settings.system.danger.desc":  "Elimina todos los favoritos, filtros, ajustes y reinicia la app.",
     "settings.system.danger.btn":  "Restablecer de Fábrica",
+    "settings.system.disclaimer.title":  "Aviso Legal",
+    "settings.system.disclaimer.desc":  "JTV es únicamente una herramienta de agregación de streams. El contenido mostrado se transmite directamente desde fuentes de terceros sobre las que JTV no tiene control ni afiliación. JTV no ofrece ninguna garantía sobre la legalidad, exactitud o disponibilidad del contenido. Los usuarios asumen plena responsabilidad por el uso de esta aplicación.",
     "settings.filters.title":  "Filtros de Canales",
     "settings.filters.desc":  "Selecciona los canales disponibles por idioma y gestiona tus eventos para los canales existentes.",
     "settings.filters.subnav.assignment":  "Asignación",

@@ -68,6 +68,8 @@
     "settings.system.danger.title":  "Danger Zone",
     "settings.system.danger.desc":  "Deletes all favorites, filters, settings and resets the app.",
     "settings.system.danger.btn":  "Factory Reset",
+    "settings.system.disclaimer.title":  "Disclaimer",
+    "settings.system.disclaimer.desc":  "JTV is a stream aggregation tool only. Content displayed is streamed directly from third-party sources over which JTV has no control or affiliation. JTV makes no representations regarding the legality, accuracy, or availability of any content. Users assume full responsibility for their use of this application.",
     "settings.filters.title":  "Channel Filters",
     "settings.filters.desc":  "Select available channels by Language and manage your events for existing channels.",
     "settings.filters.subnav.assignment":  "Assignment",
