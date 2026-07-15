@@ -59,7 +59,11 @@
       "perMachine": true,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
-      "deleteAppDataOnUninstall": false
+      "deleteAppDataOnUninstall": false,
+      "artifactName": "JTV-Installer-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "JTV-Portable-${version}.${ext}"
     },
     "publish": {
       "provider": "github",
