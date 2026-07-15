@@ -4280,8 +4280,8 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 
 /* Disclaimer Zone */
 .disclaimer-zone {
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
     border-radius: 12px;
     padding: 15px !important;
     margin-top: 15px;
@@ -4292,7 +4292,6 @@ body[data-module="live"] .corner-power-zone:hover .corner-power-btn {
 }
 .disclaimer-zone .setting-desc {
     color: rgba(255, 255, 255, 0.45) !important;
-    font-size: 0.78rem;
     line-height: 1.6;
 }
 
