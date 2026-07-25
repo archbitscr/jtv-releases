@@ -840,7 +840,7 @@ Para repos privados, la variable de entorno `GH_TOKEN` debe estar presente al ha
 - `main/ipc/registerIpc.js` — importa y llama `registerUpdaterIpc`.
 - `shared/ipcChannels.json` — 7 canales nuevos: `CHECK_FOR_UPDATES`, `QUIT_AND_INSTALL`, `UPDATE_AVAILABLE`, `DOWNLOAD_PROGRESS`, `UPDATE_DOWNLOADED`, `UPDATE_NOT_AVAILABLE`, `UPDATE_ERROR`.
 - `app-preload.cjs` — expone `checkForUpdates`, `quitAndInstall`, `onUpdateAvailable`, `onDownloadProgress`, `onUpdateDownloaded`, `onUpdateNotAvailable`, `onUpdateError` en `jtvAPI`.
-- `package.json` — sección `publish` con `provider: github`, `owner: juanhidgo`, `repo: jtv-releases`; `electron-updater ^6.8.9` en `dependencies`; versión bumpeada a `2.3.14`.
+- `package.json` — sección `publish` con `provider: github`, `owner: archbitscr`, `repo: jtv-releases`; `electron-updater ^6.8.9` en `dependencies`; versión bumpeada a `2.3.14`.
 - `index.html` — nuevo `setting-item` (App Updates / `#update-check-btn`) como primera opción en `#settings-sect-account`.
 - `locales/en|es|pt|fr|de.json` — 8 claves `settings.system.update.*`.
 - `renderer/ui/eventListeners.js` — máquina de estados del botón (idle → checking → up_to_date / downloading → restart / failed).
@@ -850,7 +850,7 @@ Para repos privados, la variable de entorno `GH_TOKEN` debe estar presente al ha
 - Click "Check for Updates" → transición instantánea a "Up to date" (en dev mode el chequeo devuelve `null`; el null-fix emite `update-not-available`) → botón resetea a "Check for Updates" tras 3 s. ✅
 
 **Release publicada (2026-07-14):**
-- Assets subidos a `juanhidgo/jtv-releases` release `v2.3.14`: `JTV-Setup-2.3.14.exe`, `JTV-Setup-2.3.14.exe.blockmap`, `JTV-2.3.14.exe`, `latest.yml`. ✅
+- Assets subidos a `archbitscr/jtv-releases` release `v2.3.14`: `JTV-Setup-2.3.14.exe`, `JTV-Setup-2.3.14.exe.blockmap`, `JTV-2.3.14.exe`, `latest.yml`. ✅
 
 ---
 

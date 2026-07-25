@@ -91,7 +91,7 @@ JTV.app/
 - **UI:** Interfaz construida con Vanilla CSS (`style.css`), estilo OTT con glassmorphism y acentos neon (`--accent: #00ffcc`).
 - **Escalado Responsivo (Tarea 37):** Se usa fórmula **meseta**: `clamp(MIN, max(clamp(MIN, VW, BASE), calc(BASE + PENDIENTE×(100vw - 2046px))), MAX)` — valor fijo hasta 2046px, crece linealmente hasta MAX en 4K (3840px). Herramienta de calibración: `docs/examples/sizer/component-sizer.html`. Referencias CSS generadas en `docs/examples/sizer/`. Pestañas calibradas: `.pbar-*`, `.tnav-*`, `.corner-*`.
 - **Preloads:** CommonJS obligatorio (`.cjs`) por requisito de Electron.
-- **Distribución:** `electron-builder` genera `JTV-Installer-{version}.exe` (NSIS) y `JTV-Portable-{version}.exe`. Publicación en `juanhidgo/jtv-releases` (GitHub Releases). Auto-update solo soportado en el Installer.
+- **Distribución:** `electron-builder` genera `JTV-Installer-{version}.exe` (NSIS) y `JTV-Portable-{version}.exe`. Publicación en `archbitscr/jtv-releases` (GitHub Releases). Auto-update solo soportado en el Installer.
 
 ## 6. Workflow y Comandos Útiles
 - `npm run dev:app`: Electron + Vite dev server concurrentemente (entorno de verificación principal).
@@ -106,7 +106,7 @@ JTV.app/
 - **Motor de Filtrado Unificado (2026-06-24):** Pipeline única `getFilteredChannelsList()` como fuente de verdad para sidebar y landing.
 - **App 100% Live TV (v2.3.11):** Módulo VOD (películas/series) eliminado completamente. Simplifica el árbol de navegación, el CSS y el estado global.
 - **i18n bundle-first (v2.3.13):** Locale cargado via IPC al arranque; `data-i18n` en HTML; `t()` en JS. 5 idiomas. Apply & Restart para cambio de idioma.
-- **AutoUpdater (v2.3.14):** `electron-updater` con botón manual "Check for Updates". Releases en `juanhidgo/jtv-releases`. En dev mode el chequeo devuelve `null` — se emite `update-not-available` manualmente para no bloquear el botón.
+- **AutoUpdater (v2.3.14):** `electron-updater` con botón manual "Check for Updates". Releases en `archbitscr/jtv-releases`. En dev mode el chequeo devuelve `null` — se emite `update-not-available` manualmente para no bloquear el botón.
 
 ## 8. Arquitectura CSS — Componentes Activos
 
