@@ -67,7 +67,7 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "juanhidgo",
+      "owner": "archbitscr",
       "repo": "jtv-releases"
     }
   },
