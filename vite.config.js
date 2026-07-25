@@ -1,4 +1,7 @@
 import { defineConfig } from 'vite'
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
+const pkg = require('./package.json')
 
 /**
  * Task 23 — strip all dev-only surfaces from the production build.
@@ -108,6 +111,9 @@ function jtvCssInjector() {
 export default defineConfig({
   base: './',
   plugins: [stripDevOnly(), jtvCssInjector()],
+  define: {
+    __APP_VERSION__: JSON.stringify(pkg.version)
+  },
   server: {
     port: 5173
   }

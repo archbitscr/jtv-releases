@@ -551,6 +551,8 @@ window.addEventListener('load', () => {
     initCustomTooltips();
     if (window.lucide) window.lucide.createIcons();
     syncCenterNavWidth();
+    const versionLabel = document.getElementById('settings-version-label');
+    if (versionLabel) versionLabel.textContent = `JTV Version ${__APP_VERSION__}`;
 });
 window.addEventListener('resize', handleResizeDimensions);
 
