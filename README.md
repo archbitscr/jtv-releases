@@ -1,4 +1,4 @@
-# JTV — Live TV Aggregator
+# JTV Live
 
 **JTV** is a free, lightweight desktop application for Windows that aggregates live TV streams from third-party sources into a single, clean interface. No subscriptions. No accounts. No ads.
 
@@ -8,7 +8,7 @@
 
 - 📺 **Live TV** — browse and tune hundreds of live channels organized by language, genre, and event
 - ⭐ **Favorites** — pin your most-watched channels for quick access
-- 🔍 **Filters** — organize channels by language, genre, and live events
+- 🔍 **Searches** — search content and organize channels by language, genre, and live events
 - 🌐 **Multi-language UI** — English, Español, Português, Français, Deutsch
 - 🔄 **Auto-update** — built-in updater checks for new versions automatically
 - ⌨️ **Hotkeys** — customizable keyboard shortcuts for channel zapping, volume, and fullscreen
@@ -19,7 +19,7 @@
 
 ## Installation
 
-1. Go to the [Releases](https://github.com/juanhidgo/jtv-releases/releases/latest) page
+1. Go to the [Releases](https://github.com/archbitscr/jtv-releases/releases/latest) page
 2. Download the version that fits your needs (see below)
 3. Run the file and follow any prompts
 4. Launch **JTV** from the desktop shortcut or Start Menu
@@ -85,7 +85,7 @@ For issues or inquiries: [contact@archbits.xyz](mailto:contact@archbits.xyz)
 ---
 ---
 
-# JTV — Agregador de TV en Vivo
+# JTV en Vivo
 
 **JTV** es una aplicación de escritorio gratuita y ligera para Windows que agrega canales de TV en vivo desde fuentes de terceros en una sola interfaz limpia. Sin suscripciones. Sin cuentas. Sin publicidad.
 
@@ -95,7 +95,7 @@ For issues or inquiries: [contact@archbits.xyz](mailto:contact@archbits.xyz)
 
 - 📺 **TV en Vivo** — explora y sintoniza cientos de canales organizados por idioma, género y evento
 - ⭐ **Favoritos** — guarda tus canales más vistos para acceso rápido
-- 🔍 **Filtros** — organiza canales por idioma, género y eventos en vivo
+- 🔍 **Búsquedas** — busca contenido y organiza canales por idioma, género y eventos en vivo
 - 🌐 **Interfaz multiidioma** — English, Español, Português, Français, Deutsch
 - 🔄 **Actualización automática** — el actualizador integrado busca nuevas versiones automáticamente
 - ⌨️ **Atajos de teclado** — teclas rápidas configurables para zapping, volumen y pantalla completa
@@ -106,7 +106,7 @@ For issues or inquiries: [contact@archbits.xyz](mailto:contact@archbits.xyz)
 
 ## Instalación
 
-1. Ve a la página de [Releases](https://github.com/juanhidgo/jtv-releases/releases/latest)
+1. Ve a la página de [Releases](https://github.com/archbitscr/jtv-releases/releases/latest)
 2. Descarga la versión que se adapte a tus necesidades (ver tabla abajo)
 3. Ejecuta el archivo y sigue las instrucciones
 4. Abre **JTV** desde el acceso directo del escritorio o el menú de Inicio
