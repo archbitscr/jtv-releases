@@ -868,3 +868,30 @@ Para repos privados, la variable de entorno `GH_TOKEN` debe estar presente al ha
 *   **Componentes:** `index.html`, `style.css`, `locales/en|es|pt|fr|de.json`.
 *   **Descripción:** Bloque `.disclaimer-zone` añadido debajo de Danger Zone en la sección Sistema. Borde blanco 25%, fondo semitranslúcido blanco 5%, border-radius 12px. Font-size hereda clamp de `.settings-sect-pane .setting-desc`. Traducciones en los 5 idiomas.
 *   **Verificado en dev.** ✅
+
+---
+
+### [2026-07-25] — Fix: versión dinámica en Settings + dominio dlhd.st — v2.3.16
+
+*   **Root cause:** `index.html` tenía el texto "JTV Version 2.3.14" hardcodeado en un `<div>` estático. Al instalar versiones nuevas vía auto-updater, ese texto nunca se actualizaba.
+*   **Fix (1) — Vite define:** `vite.config.js` ahora importa `package.json` vía `createRequire` e inyecta `__APP_VERSION__` como constante build-time: `define: { __APP_VERSION__: JSON.stringify(pkg.version) }`.
+*   **Fix (2) — HTML + JS:** El `<div>` hardcodeado recibió el `id="settings-version-label"`. `renderer.js` lo actualiza en el evento `window.load`: `versionLabel.textContent = \`JTV Version \${__APP_VERSION__}\``.
+*   **Dominio dlhd.st:** `checkDomain` en `main/network/cloudflareNetworkService.js`, el arreglo `ALLOWED_DOMAINS` en `policyConfig.js` y todas las URLs de fallback incluyen el nuevo TLD `.st`.
+*   **Release publicada:** `archbitscr/jtv-releases` — `JTV-Installer-2.3.16.exe` + `JTV-Portable-2.3.16.exe`. ✅
+
+---
+
+### [2026-07-25] — Fix: failover — 7.ª fuente con channel.path — v2.3.17
+
+*   **Root cause:** Después de agotar los 6 sources (`stream`, `player`, `casting`, `plus`, `watch`, `cast`), el app mostraba "No Signal" aunque el canal estuviera vivo. `channel.path` (`watch.php?id=N`) solo se usaba para indicadores HUD, nunca para streaming.
+*   **Fix:** `renderer/player/failover.js` — al agotar los 6 sources, intenta una 7.ª fuente: `${globalDomain}${channel.path}` (p.ej. `https://dlhd.st/watch.php?id=5001`) con timeout de 20 s. Variable `triedDirectPath` evita bucle infinito. Si también falla, se llama a `scheduleNextCycle`.
+*   **Release publicada:** `archbitscr/jtv-releases` — `JTV-Installer-2.3.17.exe` + `JTV-Portable-2.3.17.exe`. ✅
+
+---
+
+### [2026-07-25] — Fix: anti-hotlinking — Referer correcto para stream-{id}.php — v2.3.18
+
+*   **Root cause:** `main/network/requestPolicy.js` `onBeforeSendHeaders` sobreescribía el header `Referer` a solo `https://dlhd.st/` para todas las requests `stream-*.php`. El servidor (dlhd.st) verifica que el Referer sea `https://dlhd.st/watch.php?id=N` (la watch page del canal). Con el Referer incorrecto respondía `"Access Blocked - Please use official site!"`, bloqueando silenciosamente todos los intentos de reproducción desde el app.
+*   **Fix:** `requestPolicy.js` — al detectar `stream-{id}.php` en la URL, extrae el ID con regex `/stream-(\d+)\.php/` y usa `${activeDomain}watch.php?id=${id}` como Referer en lugar del dominio raíz. Requests sin ID (daddy.php, watch.php, etc.) mantienen el comportamiento anterior.
+*   **Verificado:** `dlhd.st/stream/stream-5001.php` directo en browser → "Access Blocked"; mismo URL con Referer correcto → player carga. Aplica a todos los canales con protección anti-hotlinking.
+*   **Commit:** pendiente build + publicación. ⏳

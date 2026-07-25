@@ -117,7 +117,13 @@ export function attachRequestPolicy(electronSession, context) {
     const originDomain = activeDomain.endsWith('/') ? activeDomain.slice(0, -1) : activeDomain;
 
     if (details.url.includes('stream-') || details.url.includes('daddy') || details.url.includes('watch.php')) {
-      details.requestHeaders['Referer'] = activeDomain;
+      // Use watch page as Referer for stream-{id}.php to pass server anti-hotlinking checks
+      const streamIdMatch = details.url.match(/stream-(\d+)\.php/);
+      if (streamIdMatch) {
+        details.requestHeaders['Referer'] = `${activeDomain}watch.php?id=${streamIdMatch[1]}`;
+      } else {
+        details.requestHeaders['Referer'] = activeDomain;
+      }
       details.requestHeaders['Origin'] = originDomain;
     }
     callback({ cancel: false, requestHeaders: details.requestHeaders });
