@@ -439,7 +439,7 @@ export async function updateHudAutotuneIndicators(path) {
     if (!path) return;
 
     try {
-        const fullUrl = path.startsWith('http') ? path : `${state.globalDomain || 'https://dlhd.pk/'}${path}`;
+        const fullUrl = path.startsWith('http') ? path : `${state.globalDomain || 'https://dlhd.st/'}${path}`;
         const res = await window.jtvAPI.checkChannelStatus(fullUrl);
         
         if (res && res.online) {

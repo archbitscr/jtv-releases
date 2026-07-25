@@ -68,7 +68,7 @@ export async function fetchSchedule(domain) {
 }
 
 export async function checkDomain() {
-  const extensions = ['.pk', '.sx', '.is', '.se', '.to'];
+  const extensions = ['.st', '.pk', '.sx', '.is', '.se', '.to'];
   const base = 'https://dlhd';
   for (const ext of extensions) {
     try {

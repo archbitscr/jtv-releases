@@ -22,7 +22,7 @@ export function createAppContext({ appRootDir }) {
   const devModeAvailable = !app.isPackaged;
   const developerModeEnabled = persisted?.developerModeEnabled !== undefined ? !!persisted.developerModeEnabled : true;
   const diagnosticsEnabled = developerModeEnabled && !!persisted?.diagnosticsEnabled;
-  const globalDomain = persisted?.globalDomain || "https://dlhd.pk/";
+  const globalDomain = persisted?.globalDomain || "https://dlhd.st/";
   const cloudflareProtectionEnabled = persisted?.cloudflareProtectionEnabled !== undefined ? !!persisted.cloudflareProtectionEnabled : false;
 
   const audioState = createAudioState({

@@ -763,7 +763,7 @@ async function runSignalCheck(url, videoDot, videoText, audioDot, audioText) {
     audioText.innerText = 'Checking...';
     
     try {
-        const fullUrl = url.startsWith('http') ? url : `${window.globalDomain || 'https://dlhd.pk/'}${url}`;
+        const fullUrl = url.startsWith('http') ? url : `${window.globalDomain || 'https://dlhd.st/'}${url}`;
         
         // Call the backend IPC to check status
         const res = await window.jtvAPI.checkChannelStatus(fullUrl);

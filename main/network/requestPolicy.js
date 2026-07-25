@@ -113,7 +113,7 @@ export function attachRequestPolicy(electronSession, context) {
   });
 
   electronSession.webRequest.onBeforeSendHeaders((details, callback) => {
-    const activeDomain = context.state.globalDomain || 'https://dlhd.pk/';
+    const activeDomain = context.state.globalDomain || 'https://dlhd.st/';
     const originDomain = activeDomain.endsWith('/') ? activeDomain.slice(0, -1) : activeDomain;
 
     if (details.url.includes('stream-') || details.url.includes('daddy') || details.url.includes('watch.php')) {

@@ -6,7 +6,7 @@ const path = require('path');
 
 async function main() {
   // Scrape channels
-  const domain = 'https://dlhd.pk/';
+  const domain = 'https://dlhd.st/';
   const url = `${domain}24-7-channels.php?t=${Date.now()}`;
   const res = await fetch(url, {
     headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36' }

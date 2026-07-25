@@ -25,7 +25,7 @@ export const state = {
     },
 
     // Settings & API Configuration
-    globalDomain: "https://dlhd.pk/",
+    globalDomain: "https://dlhd.st/",
     apiKey: "",
     apiEndpoint: "",
     autoUpdateDomain: true,
