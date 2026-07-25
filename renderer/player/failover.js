@@ -118,7 +118,7 @@ function scheduleNextCycle(channelId) {
     }, delayMs);
 }
 
-// --- Core cycle: iterate all 6 sources sequentially ---
+// --- Core cycle: iterate all 6 sources + direct path fallback ---
 const SOURCES = ['stream', 'player', 'casting', 'plus', 'watch', 'cast'];
 
 function runFailoverCycle(channelId) {
@@ -134,9 +134,33 @@ function runFailoverCycle(channelId) {
     const nativeApi = window.jtvAPI;
 
     let sourceIndex = 0;
+    let triedDirectPath = false;
 
     function tryNextSource() {
         if (sourceIndex >= SOURCES.length) {
+            // Last resort: try channel.path directly (e.g. watch.php?id=5001)
+            const channel = state.channels?.find(c => c.id === channelId);
+            if (!triedDirectPath && channel?.path) {
+                triedDirectPath = true;
+                const directUrl = (state.globalDomain || 'https://dlhd.st/') + channel.path;
+                nativeApi.logRenderer(`Failover: trying direct path "${directUrl}"`);
+                mountRemotePlayerFn(directUrl);
+                state.failoverTimeoutId = setTimeout(() => {
+                    state.failoverTimeoutId = null;
+                    if (cycleInProgress && !_hardFrozen) {
+                        // All sources including direct path exhausted
+                        cycleInProgress = false;
+                        state.failoverInProgress = false;
+                        state.playerSource = 'stream';
+                        updateSourceSwitcherUIFn('stream');
+                        const playerContainer = document.getElementById('player-container');
+                        if (playerContainer) playerContainer.innerHTML = '';
+                        nativeApi.logRenderer('Failover: all sources exhausted (including direct path).');
+                        scheduleNextCycle(channelId);
+                    }
+                }, 20000);
+                return;
+            }
             // All sources exhausted
             cycleInProgress = false;
             state.failoverInProgress = false;
