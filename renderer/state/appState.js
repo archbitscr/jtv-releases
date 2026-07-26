@@ -87,7 +87,6 @@ export const state = {
         { name: "XXX (18+)", icon: "🔞" }
     ],
     filterEvents: [
-        { name: "FIFA 2026", icon: "🏆" },
         { name: "Formula 1", icon: "🏎️" },
         { name: "UFC", icon: "🤼" },
         { name: "Boxing", icon: "🥊" },
