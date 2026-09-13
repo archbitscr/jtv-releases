@@ -23,7 +23,7 @@ import { renderAll, renderSettingsFilters } from '../render/renderAll.js';
 import { processLogo } from '../utils/domHelpers.js';
 import { renderChannelFiltersManager, removeFilterFromChannel, bindAddFilterToChannel } from '../filters/filterManager.js';
 import { selectAssignerChannelMultiple, renderAssignerChannelsList, renderAssignerEvents, initEventAssigner } from '../filters/filterAssigner.js';
-import { showNoSignalOverlay, triggerFailover, stopNoSignalRetryLoop } from '../player/failover.js';
+import { showNoSignalOverlay, triggerFailover, stopNoSignalRetryLoop, resetFailoverState } from '../player/failover.js';
 import { updateSourceSwitcherUI } from '../player/sourceSwitcher.js';
 import { renderFavoritesGrid, getFilteredLiveChannels } from '../render/favoritesGrid.js';
 // developerModule.js is dev-only: loaded dynamically in renderer.js dev block; called via window.updateDeveloperUI?.()
@@ -1278,14 +1278,18 @@ export function setupEventListeners() {
     const sourceBtns = document.querySelectorAll('.pbar-source-btn');
     sourceBtns.forEach(btn => {
         btn.onclick = () => {
-            if (state.failoverTimeoutId) clearTimeout(state.failoverTimeoutId);
+            if (state.failoverTimeoutId) {
+                clearTimeout(state.failoverTimeoutId);
+                state.failoverTimeoutId = null;
+            }
             state.failoverInProgress = false;
             stopNoSignalRetryLoop();
             showNoSignalOverlay(false);
+            resetFailoverState();
 
             state.playerSource = btn.dataset.source;
             updateSourceSwitcherUI(state.playerSource);
-            const channel = channels.find(c => String(c.id) === String(state.activeChannelId));
+            const channel = state.channels?.find(c => String(c.id) === String(state.activeChannelId));
             if (channel) selectChannel(channel, false);
             saveAppState();
         };

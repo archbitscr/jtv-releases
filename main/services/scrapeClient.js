@@ -1,78 +1,148 @@
+export const CANDIDATE_DOMAINS = [
+  'https://dlhd.st/',
+  'https://dlhd.pk/',
+  'https://dlive.sx/',
+  'https://dlive.to/',
+  'https://dlhd.sx/',
+  'https://dlhd.is/',
+  'https://dlhd.se/',
+  'https://dlhd.to/',
+  'https://dlive.is/',
+  'https://dlive.st/'
+];
+
 export async function fetchChannels(domain) {
-  const url = `${domain}24-7-channels.php`;
-  console.log('Fetching channels from:', url);
-  const fetchUrl = new URL(url);
-  fetchUrl.searchParams.append('t', Date.now().toString());
+  const candidateDomains = [
+    domain,
+    'https://dlhd.st/',
+    'https://dlhd.pk/',
+    'https://dlive.sx/',
+    'https://dlive.to/'
+  ];
+  const uniqueDomains = [...new Set(candidateDomains.filter(Boolean))];
 
-  const response = await fetch(fetchUrl.toString(), {
-    cache: 'no-store',
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-      'Pragma': 'no-cache',
-      'Cache-Control': 'no-cache'
-    }
-  });
+  for (const dom of uniqueDomains) {
+    const formattedDom = dom.endsWith('/') ? dom : `${dom}/`;
+    const url = `${formattedDom}24-7-channels.php`;
+    console.log('[scrapeClient] Fetching channels from:', url);
+    try {
+      const fetchUrl = new URL(url);
+      fetchUrl.searchParams.append('t', Date.now().toString());
 
-  const text = await response.text();
-  const channels = [];
-  const regex = /<a[^>]+href=["']?([^"'>]*watch\.php\?id=([0-9]+))["']?[^>]*>(.*?)<\/a>/gis;
-  let match;
-  while ((match = regex.exec(text)) !== null) {
-    const id = match[2];
-    const content = match[3].replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
-    const name = content.split('ID:')[0].trim();
-    if (name && id) {
-      channels.push({ id, name, path: `watch.php?id=${id}`, favorite: false });
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+      const response = await fetch(fetchUrl.toString(), {
+        cache: 'no-store',
+        signal: controller.signal,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+          'Pragma': 'no-cache',
+          'Cache-Control': 'no-cache'
+        }
+      });
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        console.warn(`[scrapeClient] fetchChannels received HTTP ${response.status} from ${url}`);
+        continue;
+      }
+
+      const text = await response.text();
+      const channels = [];
+      const regex = /<a[^>]+href=["']?([^"'>]*watch\.php\?id=([0-9]+))["']?[^>]*>(.*?)<\/a>/gis;
+      let match;
+      while ((match = regex.exec(text)) !== null) {
+        const id = match[2];
+        const content = match[3].replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+        const name = content.split('ID:')[0].trim();
+        if (name && id) {
+          channels.push({ id, name, path: `watch.php?id=${id}`, favorite: false });
+        }
+      }
+      if (channels.length > 0) {
+        console.log(`[scrapeClient] Successfully scraped ${channels.length} channels from ${formattedDom}`);
+        return channels;
+      }
+    } catch (err) {
+      console.warn(`[scrapeClient] fetchChannels failed on ${url}:`, err.message);
     }
   }
-  console.log(`Scraped ${channels.length} channels.`);
-  return channels;
+  console.error('[scrapeClient] All candidate domains failed for fetchChannels.');
+  return [];
 }
 
 export async function fetchSchedule(domain) {
-  console.log('Fetching schedule from:', domain);
-  const fetchUrl = new URL(domain);
-  fetchUrl.searchParams.append('t', Date.now().toString());
+  const candidateDomains = [
+    domain,
+    'https://dlhd.st/',
+    'https://dlhd.pk/',
+    'https://dlive.sx/',
+    'https://dlive.to/'
+  ];
+  const uniqueDomains = [...new Set(candidateDomains.filter(Boolean))];
 
-  const response = await fetch(fetchUrl.toString(), {
-    cache: 'no-store',
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-      'Pragma': 'no-cache',
-      'Cache-Control': 'no-cache'
-    }
-  });
+  for (const dom of uniqueDomains) {
+    const formattedDom = dom.endsWith('/') ? dom : `${dom}/`;
+    console.log('[scrapeClient] Fetching schedule from:', formattedDom);
+    try {
+      const fetchUrl = new URL(formattedDom);
+      fetchUrl.searchParams.append('t', Date.now().toString());
 
-  const text = await response.text();
-  const schedule = [];
-  const eventRegex = /<div class="schedule__event">.*?<span class="schedule__time"[^>]*>(.*?)<\/span>.*?<span class="schedule__eventTitle">(.*?)<\/span>.*?<div class="schedule__channels">(.*?)<\/div>\s*<\/div>/gis;
-  const idRegex = /watch\.php\?id=([0-9]+)/gi;
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
 
-  let eventMatch;
-  while ((eventMatch = eventRegex.exec(text)) !== null) {
-    const time = eventMatch[1].replace(/<[^>]*>/g, '').trim();
-    const programName = eventMatch[2].replace(/<[^>]*>/g, '').trim();
-    const channelsHtml = eventMatch[3];
+      const response = await fetch(fetchUrl.toString(), {
+        cache: 'no-store',
+        signal: controller.signal,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+          'Pragma': 'no-cache',
+          'Cache-Control': 'no-cache'
+        }
+      });
+      clearTimeout(timeoutId);
 
-    let idMatch;
-    while ((idMatch = idRegex.exec(channelsHtml)) !== null) {
-      const id = idMatch[1];
-      if (id && programName) {
-        schedule.push({ event: programName, time, id });
+      if (!response.ok) {
+        console.warn(`[scrapeClient] fetchSchedule received HTTP ${response.status} from ${formattedDom}`);
+        continue;
       }
+
+      const text = await response.text();
+      const schedule = [];
+      const eventRegex = /<div class="schedule__event">.*?<span class="schedule__time"[^>]*>(.*?)<\/span>.*?<span class="schedule__eventTitle">(.*?)<\/span>.*?<div class="schedule__channels">(.*?)<\/div>\s*<\/div>/gis;
+      const idRegex = /watch\.php\?id=([0-9]+)/gi;
+
+      let eventMatch;
+      while ((eventMatch = eventRegex.exec(text)) !== null) {
+        const time = eventMatch[1].replace(/<[^>]*>/g, '').trim();
+        const programName = eventMatch[2].replace(/<[^>]*>/g, '').trim();
+        const channelsHtml = eventMatch[3];
+
+        let idMatch;
+        while ((idMatch = idRegex.exec(channelsHtml)) !== null) {
+          const id = idMatch[1];
+          if (id && programName) {
+            schedule.push({ event: programName, time, id });
+          }
+        }
+      }
+
+      if (schedule.length > 0) {
+        console.log(`[scrapeClient] Successfully scraped ${schedule.length} schedule entries from ${formattedDom}`);
+        return schedule;
+      }
+    } catch (err) {
+      console.warn(`[scrapeClient] fetchSchedule failed on ${formattedDom}:`, err.message);
     }
   }
-
-  console.log(`Scraped ${schedule.length} schedule entries.`);
-  return schedule;
+  console.error('[scrapeClient] All candidate domains failed for fetchSchedule.');
+  return [];
 }
 
 export async function checkDomain() {
-  const extensions = ['.st', '.pk', '.sx', '.is', '.se', '.to'];
-  const base = 'https://dlhd';
-  for (const ext of extensions) {
+  for (const url of CANDIDATE_DOMAINS) {
     try {
-      const url = base + ext + '/';
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 3000);
       const res = await fetch(url, { method: 'HEAD', signal: controller.signal });

@@ -6,7 +6,16 @@ export function registerAudioIpc({ ipcMain, context }) {
   ipcMain.handle(IPC.GET_AUDIO_LEVELER, () => context.services.audioState.getAudioLevelerEnabled());
   ipcMain.handle(IPC.IS_CURRENTLY_AUDIBLE, (event) => {
     try {
-      return event.sender.isCurrentlyAudible();
+      if (event.sender && !event.sender.isDestroyed() && event.sender.isCurrentlyAudible()) {
+        return true;
+      }
+      return webContents.getAllWebContents().some(wc => {
+        try {
+          return !wc.isDestroyed() && wc.isCurrentlyAudible();
+        } catch (e) {
+          return false;
+        }
+      });
     } catch (e) {
       return false;
     }

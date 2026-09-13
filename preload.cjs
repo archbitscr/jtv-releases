@@ -159,6 +159,11 @@ function disableAdOverlays() {
                     const isPlayerOrWrapper = 
                         el.id.toLowerCase().includes('player') || 
                         el.className.toLowerCase().includes('player') ||
+                        el.id.toLowerCase().includes('jw') ||
+                        el.className.toLowerCase().includes('jw') ||
+                        el.closest('.jwplayer') !== null ||
+                        el.closest('#player') !== null ||
+                        el.closest('.player-container') !== null ||
                         el.id === 'thatframe' ||
                         el.id === 'main-player-wrapper';
                     const isControl = 
@@ -175,11 +180,94 @@ function disableAdOverlays() {
                         el.style.opacity = '0';
                     }
                 }
+            } else if (el.style.display === 'none') {
+                const isSafePlayerEl =
+                    el.tagName === 'VIDEO' ||
+                    el.querySelector('video') !== null ||
+                    el.closest('.jwplayer') !== null ||
+                    el.className.toLowerCase().includes('jw-wrapper') ||
+                    el.className.toLowerCase().includes('jw-media');
+                if (isSafePlayerEl && !el.className.toLowerCase().includes('ad') && !el.id.toLowerCase().includes('ad')) {
+                    el.style.display = '';
+                    el.style.opacity = '';
+                    el.style.pointerEvents = '';
+                }
             }
         });
     } catch (e) {
         console.error("Error in disableAdOverlays:", e);
     }
+}
+
+function nukeAdWidgetsDevToolsStyle() {
+    if (window.location.protocol === 'file:') return;
+    try {
+        const adKeywords = [
+            'harem squad', 'recruit, flirt', 'flirt and dominate', 'build your harem',
+            'harem', 'recruit', 'dominate', 'mature dating', 'meet singles', 'horny',
+            'cam girl', 'fuck now', 'dating site', 'sex game', 'casino', 'betting',
+            'free spins', 'register and get', 'bonus code', 'play now', '18+'
+        ];
+
+        document.querySelectorAll('div, a, section, aside, span, p, iframe, img').forEach(el => {
+            if (!el || !el.parentElement) return;
+            if (el.tagName === 'VIDEO' || el.tagName === 'BODY' || el.tagName === 'HTML') return;
+            if (el.closest('.jw-media') || el.closest('video')) return;
+            if (el.id === 'player' || el.classList.contains('player-container')) return;
+
+            const text = (el.innerText || '').toLowerCase();
+            const alt = (el.getAttribute('alt') || '').toLowerCase();
+            const title = (el.getAttribute('title') || '').toLowerCase();
+            const href = (el.getAttribute('href') || '').toLowerCase();
+            const src = (el.getAttribute('src') || '').toLowerCase();
+
+            const isAdMatch = adKeywords.some(kw =>
+                text.includes(kw) || alt.includes(kw) || title.includes(kw) || href.includes(kw) || src.includes(kw)
+            );
+
+            if (isAdMatch) {
+                let topWidget = el;
+                while (topWidget.parentElement &&
+                       topWidget.parentElement !== document.body &&
+                       topWidget.parentElement.id !== 'player' &&
+                       !topWidget.parentElement.classList.contains('jw-media')) {
+                    const pStyle = window.getComputedStyle(topWidget.parentElement);
+                    if (pStyle.position === 'fixed' || pStyle.position === 'absolute') {
+                        topWidget = topWidget.parentElement;
+                    } else {
+                        break;
+                    }
+                }
+                try {
+                    topWidget.remove();
+                } catch(e) {
+                    topWidget.style.setProperty('display', 'none', 'important');
+                }
+            }
+        });
+
+        // Corner floating overlays
+        document.querySelectorAll('div, a, section, aside').forEach(el => {
+            if (!el || !el.parentElement) return;
+            if (el.tagName === 'VIDEO' || el.id === 'player' || el.classList.contains('player-container')) return;
+            if (el.closest('.jw-media') || el.closest('video')) return;
+
+            const style = window.getComputedStyle(el);
+            if (style.position === 'fixed' || style.position === 'absolute') {
+                const r = el.getBoundingClientRect();
+                const isTopRight = r.right > (window.innerWidth - 380) && r.top < 220 && r.width > 40 && r.height > 20 && r.width < 500 && r.height < 400;
+                if (isTopRight) {
+                    const isPlayerControl = el.closest('.jw-controls') || el.closest('.media-control') || el.closest('.jtv-ui');
+                    if (!isPlayerControl) {
+                        const hasAdContents = el.querySelector('img, a, iframe, svg') !== null || el.tagName === 'A' || el.tagName === 'IFRAME';
+                        if (hasAdContents) {
+                            try { el.remove(); } catch(e) { el.style.setProperty('display', 'none', 'important'); }
+                        }
+                    }
+                }
+            }
+        });
+    } catch(e) {}
 }
 
 // 3. Keep player video element centered inside viewport
@@ -202,6 +290,7 @@ const observer = new MutationObserver((mutations) => {
         injectStyle();
         cleanupHighZIndex();
         disableAdOverlays();
+        nukeAdWidgetsDevToolsStyle();
         scrollVideoIntoView();
         autoClickOK();
         
@@ -219,6 +308,7 @@ window.addEventListener('DOMContentLoaded', () => {
     injectStyle();
     cleanupHighZIndex();
     disableAdOverlays();
+    nukeAdWidgetsDevToolsStyle();
     scrollVideoIntoView();
     autoClickOK();
     observer.observe(document.documentElement, { childList: true, subtree: true });
@@ -228,6 +318,7 @@ window.addEventListener('load', () => {
     injectStyle();
     cleanupHighZIndex();
     disableAdOverlays();
+    nukeAdWidgetsDevToolsStyle();
     scrollVideoIntoView();
     autoClickOK();
 });

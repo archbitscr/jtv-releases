@@ -2,7 +2,7 @@
 
 Este documento unifica de forma cronológica todas las mejoras, características de usabilidad, correcciones de errores, refactorizaciones y planes de seguridad implementados en el proyecto JTV.app, así como la hoja de ruta de tareas pendientes de desarrollo solicitadas por el usuario.
 
-**Política de versionado (desde v2.3.9):** cada tarea de la hoja de ruta que se completa incluye como subtarea un bump del patch version (`package.json`, `package-lock.json`, `<title>` de `index.html`, footer "JTV Version" en Settings) y build de verificación. La versión asignada a cada tarea se anota en su entrada al completarse — no se reserva de antemano, ya que el orden de ejecución lo decide el usuario. Última versión: **v2.3.12** (Tarea 48). Próxima disponible: **v2.3.13**.
+**Política de versionado (desde v2.3.9):** cada tarea de la hoja de ruta que se completa incluye como subtarea un bump del patch version (`package.json`, `package-lock.json`, `<title>` de `index.html`, footer "JTV Version" en Settings) y build de verificación. La versión asignada a cada tarea se anota en su entrada al completarse — no se reserva de antemano, ya que el orden de ejecución lo decide el usuario. Última versión: **v2.3.20**. Próxima disponible: **v2.3.21**.
 
 ---
 
@@ -895,3 +895,25 @@ Para repos privados, la variable de entorno `GH_TOKEN` debe estar presente al ha
 *   **Fix:** `requestPolicy.js` — al detectar `stream-{id}.php` en la URL, extrae el ID con regex `/stream-(\d+)\.php/` y usa `${activeDomain}watch.php?id=${id}` como Referer en lugar del dominio raíz. Requests sin ID (daddy.php, watch.php, etc.) mantienen el comportamiento anterior.
 *   **Verificado:** `dlhd.st/stream/stream-5001.php` directo en browser → "Access Blocked"; mismo URL con Referer correcto → player carga. Aplica a todos los canales con protección anti-hotlinking.
 *   **Commit:** `667d224`. Release publicada: `archbitscr/jtv-releases` — `JTV-Installer-2.3.18.exe` + `JTV-Portable-2.3.18.exe`. ✅
+
+---
+
+### [2026-09-12] — Fix: Soporte JWPlayer/DLive, anti-ads estilo DevTools y failover robusto — v2.3.20
+
+*   **Soporte de Video en Canales JWPlayer (5070, 5047, dlive.sx):**
+    *   **Root cause:** Las reglas agresivas de limpieza de overlays de anuncios (`disableAdOverlays` y `nuclearStyle`) ocultaban indiscriminadamente elementos esenciales del reproductor JWPlayer (`.jwplayer`, `.jw-wrapper`, `.jw-media`, `video`, etc.), dejando la transmisión con "solo audio" y pantalla en negro.
+    *   **Fix:** En `guest-preload.cjs` y `preload.cjs`, se protegieron los elementos de JWPlayer excluyéndolos de los selectores de eliminación (`:not(.jwplayer):not(.jw-wrapper):not(.jw-media):not(video)...`) y se implementó un `MutationObserver` continuo que asegura `display: block !important` y `visibility: visible !important` en el contenedor del reproductor activo.
+*   **Bloqueo de Anuncios Inyectados estilo DevTools ("Build Your Harem Squad"):**
+    *   **Root cause:** El anuncio emergente azul "Build Your Harem Squad" y similares se inyectaban dinámicamente mediante iframes y widgets flotantes desde dominios publicitarios en las esquinas de los streams (`adexchangerapid.com`).
+    *   **Fix:**
+        *   `adexchangerapid.com` fue reclasificado y añadido a `KNOWN_AD_DOMAINS` en `main/network/policyConfig.js`.
+        *   En `guest-preload.cjs` y `preload.cjs`, se creó `nukeAdWidgetsDevToolsStyle()` con `MutationObserver` reactivo que detecta y remueve del DOM (`.remove()`) widgets publicitarios basándose en palabras clave (`harem squad`, `recruit, flirt`, `dominate`) y heurística de posición fija en esquinas superiores, prescindiendo de clics simulados que pudieran causar redirecciones no deseadas.
+*   **Corrección de Rebote Involuntario a Fuente 1 en Failover:**
+    *   **Root cause:** En `main/windows/createMainWindow.js`, el evento `did-fail-load` del guest webview no distinguía entre el frame principal de video y subframes de publicidad bloqueados (`ERR_BLOCKED_BY_CLIENT`). Al bloquear un ad, Electron disparaba `webview-load-failed`, provocando que el failover se activara falsamente y reseteara el canal de vuelta a la Fuente 1.
+    *   **Fix:** `did-fail-load` ahora filtra estrictamente por `isMainFrame === true`. Los subframes de publicidad bloqueados se ignoran por completo y no interrumpen la reproducción de la fuente activa.
+*   **Optimización de Autotuner y Failover Secuencial:**
+    *   En `renderer/player/failover.js`, el timeout de failover se redujo a ~7s con indicador en tiempo real en el HUD (`Buscando fuente X de 6...`). Al fallar una fuente, avanza secuencialmente a la siguiente en lugar de resetearse erráticamente.
+*   **Verificación:**
+    *   Prueba de sintonía en silencio (mute) por 10 minutos continuos en canal 5070 con 0 anuncios emergentes detectados, video continuo y sincronía audiovisual estable.
+*   **Release publicada:** `archbitscr/jtv-releases` — `JTV-Installer-2.3.20.exe` + `JTV-Portable-2.3.20.exe`. ✅
+

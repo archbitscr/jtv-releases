@@ -133,11 +133,13 @@ function runFailoverCycle(channelId) {
     const cfg = window.timeoutsConfig || {};
     const nativeApi = window.jtvAPI;
 
-    let sourceIndex = 0;
+    let currentIdx = SOURCES.indexOf(state.playerSource);
+    let sourceIndex = currentIdx >= 0 ? ((currentIdx + 1) % SOURCES.length) : 0;
+    let attempts = 0;
     let triedDirectPath = false;
 
     function tryNextSource() {
-        if (sourceIndex >= SOURCES.length) {
+        if (attempts >= SOURCES.length) {
             // Last resort: try channel.path directly (e.g. watch.php?id=5001)
             const channel = state.channels?.find(c => c.id === channelId);
             if (!triedDirectPath && channel?.path) {
@@ -174,16 +176,18 @@ function runFailoverCycle(channelId) {
         }
 
         const source = SOURCES[sourceIndex];
-        sourceIndex++;
+        attempts++;
+        sourceIndex = (sourceIndex + 1) % SOURCES.length;
 
         const waitTime = source === 'stream'
             ? (cfg.failoverMainEnabled ? cfg.failoverMain : 4000)
             : (cfg.failoverAltEnabled ? cfg.failoverAlt : 3000);
 
-        nativeApi.logRenderer(`Failover: trying source "${source}" in ${waitTime}ms`);
+        nativeApi.logRenderer(`Failover: trying source "${source}" (attempt ${attempts}/${SOURCES.length}) in ${waitTime}ms`);
 
         state.playerSource = source;
         updateSourceSwitcherUIFn(source);
+        setRetryText(`Buscando fuente ${attempts} de ${SOURCES.length}...`);
 
         const channel = state.channels?.find(c => c.id === channelId);
         if (!channel) {
@@ -199,7 +203,7 @@ function runFailoverCycle(channelId) {
             state.failoverTimeoutId = null;
             // If still in cycle and not frozen, try next source
             if (cycleInProgress && !_hardFrozen) tryNextSource();
-        }, waitTime + 15000); // waitTime to load + 15s for initial load timeout
+        }, waitTime + 7000); // waitTime to load + 7s for initial load timeout
     }
 
     tryNextSource();

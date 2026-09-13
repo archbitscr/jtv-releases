@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { webContents } from 'electron';
 
 async function runAutomationScriptContent(rawContent, context) {
   const win = context.windowManager.getMainWindow();
@@ -108,7 +109,10 @@ export function startDiagnosticsWatchers(context) {
     const win = context.windowManager.getMainWindow();
     if (!win) return;
     try {
-      const audioActive = win.webContents.isCurrentlyAudible();
+      const hostAudible = !win.isDestroyed() && win.webContents.isCurrentlyAudible();
+      const audioActive = hostAudible || webContents.getAllWebContents().some(wc => {
+        try { return !wc.isDestroyed() && wc.isCurrentlyAudible(); } catch (e) { return false; }
+      });
       if (audioActive !== lastAudioActiveState) {
         lastAudioActiveState = audioActive;
         console.log(`[AudioDetector] AUDIO STATUS DETECTED: ${audioActive ? '🔊 SOUND PLAYING (ACTIVE)' : '🔇 SILENCE (MUTED/STOPPED)'}`);

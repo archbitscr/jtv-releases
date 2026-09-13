@@ -25,6 +25,18 @@ export function attachRequestPolicy(electronSession, context) {
         return callback({ cancel: true });
       }
 
+      if (
+        parsedUrl.pathname.includes('/ad.html') ||
+        parsedUrl.pathname.includes('adbanner') ||
+        parsedUrl.pathname.includes('rs4k') ||
+        parsedUrl.pathname.includes('/pop.') ||
+        parsedUrl.pathname.includes('/ad/') ||
+        parsedUrl.pathname.endsWith('/ad.php')
+      ) {
+        console.log(`[AdBlock] Blocked ad path request: ${hostname}${parsedUrl.pathname}`);
+        return callback({ cancel: true });
+      }
+
       // Block service worker scripts from any non-allowed domain
       // (covers romponalis.st/premiumtv/sw.js and similar ad SW injectors)
       if (parsedUrl.pathname.endsWith('/sw.js') || parsedUrl.pathname.endsWith('/service-worker.js')) {
@@ -62,6 +74,9 @@ export function attachRequestPolicy(electronSession, context) {
             pathStr.includes('play.php') ||
             pathStr.includes('/premiumtv/') ||
             pathStr.includes('/embed/') ||
+            pathStr.includes('/strm/') ||
+            pathStr.includes('/stream/') ||
+            pathStr.includes('strm.php') ||
             pathStr.includes('clappr') ||
             pathStr.includes('hls.js') ||
             searchStr.includes('?id=') ||
@@ -70,12 +85,15 @@ export function attachRequestPolicy(electronSession, context) {
             pathStr.includes('bundle-jw.js') ||
             pathStr.includes('p2p-engine.min.js') ||
             pathStr.includes('p2p-engine.js') ||
+            pathStr.includes('p2p-engine-own') ||
+            pathStr.includes('swarmcloud') ||
             pathStr.includes('clappr.min.js') ||
             pathStr.includes('clappr-pip.min.js') ||
             pathStr.includes('hls.min.js') ||
             pathStr === '/ch' ||
             pathStr.startsWith('/ch/') ||
-            pathStr.startsWith('/e/');
+            pathStr.startsWith('/e/') ||
+            pathStr.includes('api/player.php');
 
           if (isPlayerSignature) {
             isAllowed = true;
@@ -95,36 +113,40 @@ export function attachRequestPolicy(electronSession, context) {
     }
   });
 
-  // Inject script-blocking CSP on casting/watch stream pages.
-  // #thatframe (the player iframe) is static HTML rendered server-side by PHP,
-  // so blocking all scripts does NOT break the player.
   electronSession.webRequest.onHeadersReceived((details, callback) => {
-    const url = details.url || '';
-    if (
-      (url.includes('/casting/stream-') || url.includes('/watch/stream-')) &&
-      details.resourceType === 'mainFrame'
-    ) {
-      const headers = { ...details.responseHeaders };
-      headers['content-security-policy'] = ["script-src 'none'"];
-      console.log(`[AdBlock] Injected script-src none CSP on: ${url.slice(0, 80)}`);
-      return callback({ cancel: false, responseHeaders: headers });
-    }
     callback({ cancel: false, responseHeaders: details.responseHeaders });
   });
 
   electronSession.webRequest.onBeforeSendHeaders((details, callback) => {
     const activeDomain = context.state.globalDomain || 'https://dlhd.st/';
-    const originDomain = activeDomain.endsWith('/') ? activeDomain.slice(0, -1) : activeDomain;
+
+    // Dynamically resolve target base domain from request URL if it matches any DaddyLive host
+    let targetBaseDomain = activeDomain;
+    try {
+      const parsed = new URL(details.url);
+      if (parsed.hostname.includes('dlive.') || parsed.hostname.includes('dlhd.') || parsed.hostname.includes('daddylive.')) {
+        targetBaseDomain = `${parsed.protocol}//${parsed.hostname}/`;
+      }
+    } catch (e) {}
+
+    const originDomain = targetBaseDomain.endsWith('/') ? targetBaseDomain.slice(0, -1) : targetBaseDomain;
 
     if (details.url.includes('stream-') || details.url.includes('daddy') || details.url.includes('watch.php')) {
       // Use watch page as Referer for stream-{id}.php to pass server anti-hotlinking checks
       const streamIdMatch = details.url.match(/stream-(\d+)\.php/);
       if (streamIdMatch) {
-        details.requestHeaders['Referer'] = `${activeDomain}watch.php?id=${streamIdMatch[1]}`;
+        details.requestHeaders['Referer'] = `${targetBaseDomain}watch.php?id=${streamIdMatch[1]}`;
       } else {
-        details.requestHeaders['Referer'] = activeDomain;
+        details.requestHeaders['Referer'] = targetBaseDomain;
       }
       details.requestHeaders['Origin'] = originDomain;
+    } else if (details.url.includes('embed.st')) {
+      if (!details.requestHeaders['Referer'] || !details.requestHeaders['Referer'].includes('dlive.')) {
+        details.requestHeaders['Referer'] = `${targetBaseDomain}stream/stream-5070.php`;
+      }
+    } else if (details.url.includes('strmd.st')) {
+      details.requestHeaders['Referer'] = 'https://embed.st/';
+      details.requestHeaders['Origin'] = 'https://embed.st';
     }
     callback({ cancel: false, requestHeaders: details.requestHeaders });
   });

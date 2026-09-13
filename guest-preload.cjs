@@ -1,7 +1,7 @@
 const { ipcRenderer } = require('electron');
 const console = globalThis.console;
 
-let watchdogTimeoutLimit = 2000;
+let watchdogTimeoutLimit = 6000;
 let watchdogTimeoutEnabled = true;
 
 console.log('[Guest Preload] Preload script loaded in frame: ' + window.location.href);
@@ -37,6 +37,7 @@ const nuclearStyle = `
     [class*="carousel-control" i], [class*="btn-navigation" i],
     .media-control, .media-control-layer, .media-control-left-panel, .media-control-right-panel, .media-control-center-panel,
     .media-control-button, .media-control-icon, .media-control-background, .bar-container, .bar-background, .bar-fill-1, .bar-fill-2,
+    #first-click-ads-layer, .delayed-popup-ads-layer,
     div[id^="ys"], div#advert1, div[class*="ad-overlay"], div[class*="pop-overlay"], div[class*="ads-overlay"], div[class*="advert-overlay"],
     div[style*="z-index: 2147483647"], div[style*="z-index:2147483647"],
     div[style*="z-index: 100000000"], div[style*="z-index:100000000"],
@@ -46,6 +47,10 @@ const nuclearStyle = `
     div[style*="z-index:10000"][style*="position:fixed"],
     div[style*="z-index: 10000"][style*="position: absolute"],
     div[style*="z-index:10000"][style*="position:absolute"],
+    .jw-ads, .jw-ad-ui, .jw-ad-container, .jw-ad-plugins, .jw-plugin-ads, .jw-ad-click, .jw-ad-overlay, .jw-preview,
+    iframe#close, iframe[src*="ad.html"], iframe[src*="adbanner"], iframe[src*="rs4k"],
+    #rs4k-adbanner, #adex,
+    a[href*="/ad/"], a[href*="visit.php"],
     iframe[src*="ads"], iframe[src*="/ad"], iframe[src*=".ad"], iframe[src*="-ad"], iframe[src*="track"], iframe[src*="pop"], iframe[src*="histats"], iframe[src*="analytics"] {
         display: none !important;
         visibility: hidden !important;
@@ -90,7 +95,7 @@ const nuclearStyle = `
     }
 
     /* Force video element to escape collapsed layout and occupy full viewport */
-    video {
+    video, .jw-video {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
@@ -101,6 +106,12 @@ const nuclearStyle = `
         background: transparent !important;
         display: block !important;
         visibility: visible !important;
+    }
+
+    .jwplayer, .jw-wrapper, .jw-media {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 `;
 
@@ -121,10 +132,13 @@ function injectStyle() {
 }
 
 function autoClickOK() {
-    const buttons = document.querySelectorAll('button, a, div');
+    const buttons = document.querySelectorAll('button, a, div, span');
     for (const b of buttons) {
         const text = (b.innerText || '').trim().toLowerCase();
-        if (text === 'ok' || text === 'continue' || text === 'i agree' || text === 'close' || text === 'skip ad') {
+        const className = typeof b.className === 'string' ? b.className.toLowerCase() : '';
+        const isSkip = text === 'skip ad' || text === 'skip' || text === 'saltar anuncio' ||
+                       className.includes('jw-skip') || className.includes('skip-ad') || className.includes('videoaduiskippbutton');
+        if (isSkip) {
             try { b.click(); } catch (e) {}
         }
     }
@@ -160,33 +174,152 @@ function disableAdOverlays() {
         const allElements = document.querySelectorAll('body *');
         allElements.forEach(el => {
             const style = window.getComputedStyle(el);
+            const className = typeof el.className === 'string' ? el.className.toLowerCase() : '';
+            const id = typeof el.id === 'string' ? el.id.toLowerCase() : '';
+
+            const isPlayerOrWrapper =
+                el.tagName === 'VIDEO' ||
+                el.tagName === 'IFRAME' ||
+                el.querySelector('video') !== null ||
+                el.closest('video') !== null ||
+                el.closest('.jwplayer') !== null ||
+                el.closest('#player') !== null ||
+                el.closest('.player-container') !== null ||
+                el.closest('#main-player-wrapper') !== null ||
+                id.includes('player') ||
+                className.includes('player') ||
+                id.includes('jw') ||
+                className.includes('jw') ||
+                id === 'thatframe' ||
+                id === 'main-player-wrapper' ||
+                className.includes('clappr') ||
+                id.includes('clappr') ||
+                className.includes('control');
+
             if ((style.position === 'absolute' || style.position === 'fixed') && style.pointerEvents !== 'none') {
                 const rect = el.getBoundingClientRect();
                 const isLarge = rect.width > 150 && rect.height > 150;
                 if (!isLarge) return;
-
-                const className = typeof el.className === 'string' ? el.className.toLowerCase() : '';
-                const id = typeof el.id === 'string' ? el.id.toLowerCase() : '';
-                const isPlayerOrWrapper =
-                    el.tagName === 'VIDEO' ||
-                    el.tagName === 'IFRAME' ||
-                    el.querySelector('video') !== null ||
-                    id.includes('player') ||
-                    className.includes('player') ||
-                    id === 'thatframe' ||
-                    id === 'main-player-wrapper' ||
-                    className.includes('clappr') ||
-                    id.includes('clappr') ||
-                    className.includes('control');
 
                 if (!isPlayerOrWrapper) {
                     el.style.pointerEvents = 'none';
                     el.style.display = 'none';
                     el.style.opacity = '0';
                 }
+            } else if (el.style.display === 'none') {
+                // If it was previously hidden but now holds or is part of a player/video, restore it!
+                const isSafePlayerEl =
+                    el.tagName === 'VIDEO' ||
+                    el.querySelector('video') !== null ||
+                    el.closest('.jwplayer') !== null ||
+                    className.includes('jw-wrapper') ||
+                    className.includes('jw-media');
+                if (isSafePlayerEl && !className.includes('ad') && !id.includes('ad')) {
+                    el.style.display = '';
+                    el.style.opacity = '';
+                    el.style.pointerEvents = '';
+                }
             }
         });
     } catch (e) {}
+}
+
+function nukeAdWidgetsDevToolsStyle() {
+    try {
+        const adKeywords = [
+            'harem squad', 'recruit, flirt', 'flirt and dominate', 'build your harem',
+            'harem', 'recruit', 'dominate', 'mature dating', 'meet singles', 'horny',
+            'cam girl', 'fuck now', 'dating site', 'sex game', 'casino', 'betting',
+            'free spins', 'register and get', 'bonus code', 'play now', '18+'
+        ];
+
+        // 1. Text/Keyword-based target removal
+        const all = document.querySelectorAll('div, a, section, aside, span, p, iframe, img');
+        all.forEach(el => {
+            if (!el || !el.parentElement) return;
+            if (el.tagName === 'VIDEO' || el.tagName === 'BODY' || el.tagName === 'HTML') return;
+            if (el.closest('.jw-media') || el.closest('video')) return;
+            if (el.id === 'player' || el.classList.contains('player-container')) return;
+
+            const text = (el.innerText || '').toLowerCase();
+            const alt = (el.getAttribute('alt') || '').toLowerCase();
+            const title = (el.getAttribute('title') || '').toLowerCase();
+            const href = (el.getAttribute('href') || '').toLowerCase();
+            const src = (el.getAttribute('src') || '').toLowerCase();
+
+            const isAdMatch = adKeywords.some(kw =>
+                text.includes(kw) || alt.includes(kw) || title.includes(kw) || href.includes(kw) || src.includes(kw)
+            );
+
+            if (isAdMatch) {
+                let topWidget = el;
+                while (topWidget.parentElement &&
+                       topWidget.parentElement !== document.body &&
+                       topWidget.parentElement.id !== 'player' &&
+                       !topWidget.parentElement.classList.contains('jw-media')) {
+                    const pStyle = window.getComputedStyle(topWidget.parentElement);
+                    if (pStyle.position === 'fixed' || pStyle.position === 'absolute') {
+                        topWidget = topWidget.parentElement;
+                    } else {
+                        break;
+                    }
+                }
+                console.log('[DevTools Ad Nuker] Nuking ad keyword widget:', topWidget);
+                try {
+                    topWidget.remove();
+                } catch(e) {
+                    topWidget.style.setProperty('display', 'none', 'important');
+                    topWidget.style.setProperty('visibility', 'hidden', 'important');
+                    topWidget.style.setProperty('pointer-events', 'none', 'important');
+                }
+            }
+        });
+
+        // 2. Corner floating overlays (top-right ad pills/cards)
+        document.querySelectorAll('div, a, section, aside').forEach(el => {
+            if (!el || !el.parentElement) return;
+            if (el.tagName === 'VIDEO' || el.id === 'player' || el.classList.contains('player-container')) return;
+            if (el.closest('.jw-media') || el.closest('video')) return;
+
+            const style = window.getComputedStyle(el);
+            if (style.position === 'fixed' || style.position === 'absolute') {
+                const r = el.getBoundingClientRect();
+                const isTopRight = r.right > (window.innerWidth - 380) && r.top < 220 && r.width > 40 && r.height > 20 && r.width < 500 && r.height < 400;
+                if (isTopRight) {
+                    const isPlayerControl = el.closest('.jw-controls') || el.closest('.media-control') || el.closest('.jtv-ui');
+                    if (!isPlayerControl) {
+                        const hasAdContents = el.querySelector('img, a, iframe, svg') !== null || el.tagName === 'A' || el.tagName === 'IFRAME';
+                        if (hasAdContents) {
+                            console.log('[DevTools Ad Nuker] Nuking top-right floating widget:', el);
+                            try { el.remove(); } catch(e) { el.style.setProperty('display', 'none', 'important'); }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 3. Close buttons: remove the enclosing ad container instead of clicking (clicking triggers redirect traps)
+        document.querySelectorAll('div, button, span, svg, a').forEach(el => {
+            if (!el || !el.parentElement) return;
+            const cls = typeof el.className === 'string' ? el.className.toLowerCase() : '';
+            const title = (el.getAttribute('title') || '').toLowerCase();
+            const aria = (el.getAttribute('aria-label') || '').toLowerCase();
+            const text = (el.innerText || '').trim().toLowerCase();
+
+            const isClose = (cls.includes('close') || cls.includes('dismiss') || title.includes('close') || aria.includes('close') || text === '×' || text === '✕') &&
+                            !el.closest('#player-controls') && !el.closest('.jtv-ui') && !el.closest('.jw-controls');
+            if (isClose) {
+                const rect = el.getBoundingClientRect();
+                if (rect.width > 0 && rect.height > 0 && rect.top < 300) {
+                    const topAd = el.closest('div[style*="fixed"], div[style*="absolute"], section, aside') || el.parentElement;
+                    if (topAd && topAd.id !== 'player' && !topAd.classList.contains('jw-media')) {
+                        console.log('[DevTools Ad Nuker] Removing ad container via close button detection:', topAd);
+                        try { topAd.remove(); } catch(e) { topAd.style.display = 'none'; }
+                    }
+                }
+            }
+        });
+    } catch(e) {}
 }
 
 function triggerPlayerHover() {
@@ -205,6 +338,23 @@ function triggerPlayerHover() {
 
 function tryGlobalPlayerUnmute() {
     try {
+        // Auto-click known unmute buttons (e.g. Forgemindly, Clappr overlays)
+        const unmuteBtn = document.getElementById('UnMutePlayer');
+        if (unmuteBtn && unmuteBtn.style.display !== 'none') {
+            try { unmuteBtn.click(); } catch(e) {}
+            if (typeof window.WSUnmute === 'function') {
+                try { window.WSUnmute(); } catch(e) {}
+            }
+        }
+
+        // Disable and bypass first-click ad layers
+        const adLayer = document.getElementById('first-click-ads-layer');
+        if (adLayer) {
+            adLayer.classList.add('is-disabled');
+            adLayer.style.display = 'none';
+            adLayer.style.pointerEvents = 'none';
+        }
+
         const keys = Object.keys(window);
         for (const k of keys) {
             if (k.toLowerCase().includes('player') || k.toLowerCase().includes('clappr') || k.toLowerCase().includes('hls')) {
@@ -213,8 +363,34 @@ function tryGlobalPlayerUnmute() {
                 if (typeof obj.unmute === 'function') obj.unmute();
                 if (typeof obj.setVolume === 'function') obj.setVolume(100);
                 if (typeof obj.volume === 'function') obj.volume(100);
+                if (typeof obj.play === 'function' && typeof obj.isPlaying === 'function' && !obj.isPlaying()) {
+                    try { obj.play(); } catch(e) {}
+                }
             }
         }
+
+        // Clappr / JWPlayer unmute if initialized
+        if (typeof window.jwplayer === 'function') {
+            try {
+                const jw = window.jwplayer();
+                if (jw && typeof jw.setMute === 'function' && jw.getMute()) jw.setMute(false);
+                if (jw && typeof jw.setVolume === 'function' && jw.getVolume() < 50) jw.setVolume(100);
+            } catch(e) {}
+        }
+
+        // Ensure direct video elements start playing and unmute
+        document.querySelectorAll('video').forEach(v => {
+            if (v.paused) {
+                v.play().catch(() => {
+                    v.muted = true;
+                    v.play().catch(() => {});
+                });
+            }
+            if (v.currentTime > 0) {
+                if (v.muted) v.muted = false;
+                if (v.volume < 0.5) v.volume = 1.0;
+            }
+        });
     } catch (e) {}
 }
 
@@ -407,7 +583,7 @@ function reportAndControlVideo() {
                 }
             } else {
                 const durationFrozen = now - video._jtvLastTimeCheckedAt;
-                const limit = (time === 0) ? 8000 : watchdogTimeoutLimit;
+                const limit = (time === 0) ? 16000 : watchdogTimeoutLimit;
                 if (durationFrozen > limit) {
                     console.log(`[VideoWatchdog] Video currentTime frozen at ${time.toFixed(1)}s for ${durationFrozen}ms (limit: ${limit}ms) in frame ${window.location.href}. Sending guest-frozen signal.`);
                     ipcRenderer.sendToHost('guest-frozen');
@@ -503,17 +679,25 @@ function logFrameDetails() {
 }
 
 let lastCenterClick = 0;
+let centerClickCount = 0;
 function autoClickCenter() {
+    // Si este frame contiene iframes (ej. la página que envuelve al reproductor),
+    // NO hacer clics ciegos al centro para no pausar el iframe del reproductor
+    if (document.querySelectorAll('iframe').length > 0) return;
+    if (centerClickCount >= 3) return;
+
     const videos = document.querySelectorAll('video');
+    if (videos.length === 0) return;
     let playing = false;
     videos.forEach(v => {
-        if (!v.paused && !v.ended) playing = true;
+        if (!v.paused && !v.ended && v.currentTime > 0) playing = true;
     });
     if (playing) return;
 
     const now = Date.now();
     if (now - lastCenterClick < 4000) return;
     lastCenterClick = now;
+    centerClickCount++;
 
     try {
         const x = Math.floor(window.innerWidth / 2);
@@ -571,14 +755,16 @@ function autoClickPlayOverlays() {
 
 function killCastPageAds() {
     const url = window.location.href;
-    // Nuclear: in cast.php context, hide EVERYTHING except #thatframe and video
-    if (!url.includes('cast.php')) return;
+    const isPlayerPage = url.includes('cast.php') || url.includes('stream-') || url.includes('stream.php');
+    if (!isPlayerPage) return;
     try {
-        const thatframe = document.getElementById('thatframe');
+        const thatframe = document.getElementById('thatframe') || document.getElementById('playerFrame');
+        if (!thatframe) return;
         document.querySelectorAll('body *').forEach(el => {
             if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE' || el.tagName === 'VIDEO') return;
             if (el === thatframe) return;
-            if (thatframe && thatframe.contains(el)) return;
+            if (thatframe.contains(el) || el.contains(thatframe)) return;
+            if (el.id === 'player' || el.classList.contains('player-container') || el.querySelector('video') !== null) return;
             el.style.cssText = 'display:none!important;visibility:hidden!important;pointer-events:none!important;height:0!important;width:0!important;';
         });
     } catch (e) {}
@@ -594,9 +780,13 @@ function killOrphanFrame() {
         try {
             const videos = document.querySelectorAll('video');
             if (videos.length > 0) return; // has video → legit player frame
+            const iframes = document.querySelectorAll('iframe');
+            if (iframes.length > 0) return; // has nested player frame → container frame, never hide!
             const isPlayerPath = url.includes('premiumtv') || url.includes('clappr') ||
                 url.includes('hls') || url.includes('cast.php') || url.includes('embed') ||
-                url.includes('player') || url.includes('watch') || url.includes('stream');
+                url.includes('player') || url.includes('watch') || url.includes('stream') ||
+                url.includes('nexa') || url.includes('/ch') || url.includes('forgemindly') ||
+                url.includes('xyzstreams') || url.includes('streamx305') || url.includes('embed.st');
             if (isPlayerPath) return;
             console.log(`[AdKill] Orphan frame (no video, no player signature): ${url} — hiding body.`);
             if (document.body) {
@@ -612,7 +802,7 @@ function reportAdCandidates() {
     try {
         const known = [
             'localhost', '127.0.0.1', 'file:', 'devtools:', 'chrome:',
-            'dlhd.', 'daddylive.', 'rabbitstream.', 'jwpcdn.', 'clappr.',
+            'dlhd.', 'dlive.', 'daddylive.', 'rabbitstream.', 'jwpcdn.', 'clappr.',
             'cloudfront.', 'cdnjs.', 'jsdelivr.', 'jquery.', 'unpkg.',
             'fonts.gstatic', 'fonts.googleapis', 'vertex.st', 'embedindia.',
             'megacloud.', 'rapid-cloud.', 'dokicloud.'
@@ -690,6 +880,7 @@ try {
             logFrameDetails();
             killCastPageAds();
             disableAdOverlays();
+            nukeAdWidgetsDevToolsStyle();
             triggerPlayerHover();
             autoClickPlayOverlays();
             autoClickCenter();
@@ -702,6 +893,14 @@ try {
         }
     }, 1000);
     console.log(`[Guest Preload] Main interval set up successfully.`);
+
+    // Fast MutationObserver for instant DOM removal of ads
+    try {
+        const adObserver = new MutationObserver(() => {
+            nukeAdWidgetsDevToolsStyle();
+        });
+        adObserver.observe(document.documentElement, { childList: true, subtree: true });
+    } catch(e) {}
 
     console.log(`[Guest Preload] Setting up sync interval...`);
     setInterval(() => {
@@ -737,7 +936,7 @@ try {
         }).catch((err) => {
             console.error(`[Guest Preload] Sync interval invoke failed:`, err);
         });
-    }, 150);
+    }, 1000);
     console.log(`[Guest Preload] Sync interval set up successfully.`);
 
     console.log(`[Guest Preload] Setting up IPC event listeners...`);

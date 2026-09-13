@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { app } from 'electron';
+import { app, webContents } from 'electron';
 import IPC from '../../shared/ipcChannels.json' with { type: 'json' };
 
 export function registerDiagnosticsIpc({ ipcMain, context }) {
@@ -76,8 +76,15 @@ export function registerDiagnosticsIpc({ ipcMain, context }) {
   });
 
   ipcMain.handle(IPC.GET_AUDIO_STATE, () => {
-    const win = context.windowManager.getMainWindow();
-    return win ? win.webContents.isCurrentlyAudible() : false;
+    try {
+      const win = context.windowManager.getMainWindow();
+      if (win && !win.isDestroyed() && win.webContents.isCurrentlyAudible()) return true;
+      return webContents.getAllWebContents().some(wc => {
+        try { return !wc.isDestroyed() && wc.isCurrentlyAudible(); } catch (e) { return false; }
+      });
+    } catch (e) {
+      return false;
+    }
   });
 
   ipcMain.handle(IPC.REPORT_SPEAKER_COORDS, (_event, coords) => {

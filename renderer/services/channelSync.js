@@ -7,7 +7,15 @@ import { saveAppState } from './stateManager.js';
 export async function updateSchedule() {
     const nativeApi = window.jtvAPI;
     if (!nativeApi) return;
-    const data = await nativeApi.fetchSchedule(state.globalDomain);
+    let data = await nativeApi.fetchSchedule(state.globalDomain);
+    if ((!data || !Array.isArray(data) || data.length === 0 || data.error) && nativeApi.checkDomain) {
+        const fallbackDomain = await nativeApi.checkDomain();
+        if (fallbackDomain && fallbackDomain !== state.globalDomain) {
+            state.globalDomain = fallbackDomain;
+            window.globalDomain = state.globalDomain;
+            data = await nativeApi.fetchSchedule(state.globalDomain);
+        }
+    }
     if (data && !data.error) {
         state.scheduleData = data;
         renderAll();
@@ -34,7 +42,19 @@ export async function syncChannels(silent = false) {
         syncLog(`${t('sync.connecting', '> Connecting to')} ${state.globalDomain}...`);
     }
 
-    const newChannels = await nativeApi.fetchChannels(state.globalDomain);
+    let newChannels = await nativeApi.fetchChannels(state.globalDomain);
+    if ((!newChannels || !Array.isArray(newChannels) || newChannels.length === 0 || newChannels.error) && nativeApi.checkDomain) {
+        if (!silent) syncLog(`> Primary domain unreachable. Searching alternate domains (dlive.sx / dlhd.st / dlhd.pk)...`);
+        const fallbackDomain = await nativeApi.checkDomain();
+        if (fallbackDomain && fallbackDomain !== state.globalDomain) {
+            state.globalDomain = fallbackDomain;
+            window.globalDomain = state.globalDomain;
+            const globalDomainInput = document.getElementById('global-domain-input');
+            if (globalDomainInput) globalDomainInput.value = state.globalDomain;
+            if (!silent) syncLog(`> Switched active domain to ${state.globalDomain}`);
+            newChannels = await nativeApi.fetchChannels(state.globalDomain);
+        }
+    }
     if (newChannels && !newChannels.error) {
         if (!silent) syncLog(`${t('sync.received', '> Received')} ${newChannels.length} ${t('sync.channels', 'channels')}`);
         let updated = 0, added = 0;

@@ -1,4 +1,4 @@
-import { BrowserWindow, app } from 'electron';
+import { BrowserWindow, app, screen } from 'electron';
 import path from 'path';
 import IPC from '../../shared/ipcChannels.json' with { type: 'json' };
 
@@ -7,6 +7,7 @@ export function createMainWindow(context) {
   const guestPreloadPath = path.join(context.__dirname, 'guest-preload.cjs');
 
   const win = new BrowserWindow({
+    title: 'JTV',
     width: 1080,
     height: 720,
     minWidth: 640,
@@ -22,6 +23,7 @@ export function createMainWindow(context) {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
+      nodeIntegrationInSubFrames: true,
       webSecurity: true,
       sandbox: true,
       webviewTag: true,
@@ -61,15 +63,23 @@ export function createMainWindow(context) {
 
   win.once('ready-to-show', () => {
     console.log('[Main] ready-to-show event fired!');
-    win.center();
+    try {
+      const primaryDisplay = screen.getPrimaryDisplay();
+      const workArea = primaryDisplay.workArea;
+      const width = Math.min(1280, Math.round(workArea.width * 0.85));
+      const height = Math.min(800, Math.round(workArea.height * 0.85));
+      const x = Math.round(workArea.x + (workArea.width - width) / 2);
+      const y = Math.round(workArea.y + (workArea.height - height) / 2);
+      win.setBounds({ x, y, width, height });
+    } catch (e) {
+      win.center();
+    }
+    if (win.isMinimized()) win.restore();
     win.show();
     win.focus();
-    try {
-      win.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
-    } catch (e) {
-      console.warn("Failed to set visible on all workspaces:", e.message);
-    }
-    console.log('[Main] win.show() called, visible:', win.isVisible());
+    win.setAlwaysOnTop(true);
+    win.setAlwaysOnTop(false);
+    console.log('[Main] win.show() called on Primary Display, visible:', win.isVisible(), 'bounds:', win.getBounds());
   });
 
   win.on('enter-full-screen', () => {
@@ -154,18 +164,13 @@ export function createMainWindow(context) {
     guestContents.on('did-fail-load', (event, errorCode, errorDescription, validatedURL, isMainFrame) => {
       try {
         if (errorCode === -3) return; // Ignore aborts
-        const lowerUrl = validatedURL.toLowerCase();
-        const isCriticalFrame = isMainFrame || 
-          lowerUrl.includes('daddyhd.php') || 
-          lowerUrl.includes('premiumtv') || 
-          lowerUrl.includes('embed') || 
-          lowerUrl.includes('stream') || 
-          lowerUrl.includes('cast') || 
-          lowerUrl.includes('player') || 
-          lowerUrl.includes('watch.php');
-        
-        if (isCriticalFrame) {
-          console.warn(`[Main Webview Monitor] Fail load error ${errorCode} (${errorDescription}) in frame: ${validatedURL}`);
+        // Error codes from blocked domains or aborted sub-resources must never trigger failover
+        if (errorCode === -20 || errorCode === -105 || errorCode === -106 || errorCode === -102) return;
+
+        // ONLY the top-level main frame failing should trigger channel failover.
+        // Subframes (ad networks, widgets, telemetry, popups) must NEVER abort channel playback!
+        if (isMainFrame) {
+          console.warn(`[Main Webview Monitor] Main frame load failed ${errorCode} (${errorDescription}) in: ${validatedURL}`);
           win.webContents.send('webview-load-failed', { url: validatedURL, errorCode, errorDescription });
         }
       } catch (e) {

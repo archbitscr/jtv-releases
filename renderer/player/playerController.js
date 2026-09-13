@@ -8,6 +8,7 @@ import { triggerFailover, showNoSignalOverlay, resetFailoverState, stopNoSignalR
 let ext = {};
 
 let hasStartedPlaying = false;
+let lastGuestPlayingAt = 0;
 let silenceCheckInterval = null;
 let consecutiveSilenceStart = 0;
 let freezeGraceTimeout = null;
@@ -17,6 +18,7 @@ let initialLoadTimeout = null;
 
 export function resetAntiBlackScreen() {
     hasStartedPlaying = false;
+    lastGuestPlayingAt = 0;
     if (silenceCheckInterval) {
         clearInterval(silenceCheckInterval);
         silenceCheckInterval = null;
@@ -80,6 +82,7 @@ export function mountRemotePlayer(url) {
     webview.setAttribute('partition', 'persist:jtv-playback');
     webview.setAttribute('nodeintegration', 'false');
     webview.setAttribute('contextisolation', 'true');
+    webview.setAttribute('nodeintegrationinsubframes', 'true');
     webview.setAttribute('allowpopups', 'false');
     webview.setAttribute('preload', './guest-preload.cjs');
 
@@ -120,21 +123,32 @@ export function mountRemotePlayer(url) {
                 if (!state.failoverInProgress) triggerFailover();
             } else {
                 if (freezeGraceTimeout) clearTimeout(freezeGraceTimeout);
-                const freezeDelay = (window.timeoutsConfig?.watchdogFreezeEnabled !== false) ? (window.timeoutsConfig?.watchdogFreeze ?? 4000) : 4000;
+                const freezeDelay = (window.timeoutsConfig?.watchdogFreezeEnabled !== false) ? (window.timeoutsConfig?.watchdogFreeze ?? 6000) : 6000;
                 freezeGraceTimeout = setTimeout(async () => {
                     freezeGraceTimeout = null;
                     if (state.failoverInProgress) return;
                     
-                    const isAudible = await nativeApi.isCurrentlyAudible();
-                    if (isAudible) {
-                        nativeApi.logRenderer(`[Player Watchdog] guest-frozen ignored: Audio is still playing (false positive).`);
+                    let isAudible = false;
+                    try {
+                        if (typeof webview.isCurrentlyAudible === 'function' && webview.isCurrentlyAudible()) isAudible = true;
+                    } catch (e) {}
+                    if (!isAudible && nativeApi.isCurrentlyAudible) {
+                        isAudible = await nativeApi.isCurrentlyAudible();
+                    }
+
+                    const isVideoRecentlyPlayed = (Date.now() - lastGuestPlayingAt) < freezeDelay;
+
+                    if (isAudible || isVideoRecentlyPlayed) {
+                        nativeApi.logRenderer(`[Player Watchdog] guest-frozen ignored: Stream active (audio=${isAudible}, videoRecentlyPlayed=${isVideoRecentlyPlayed}).`);
                     } else {
-                        nativeApi.logRenderer(`[Player Watchdog] guest-frozen confirmed: No audio detected. Triggering failover.`);
+                        nativeApi.logRenderer(`[Player Watchdog] guest-frozen confirmed: No audio or video detected. Triggering failover.`);
                         if (!state.failoverInProgress) triggerFailover();
                     }
                 }, freezeDelay);
             }
         } else if (event.channel === 'guest-playing') {
+            lastGuestPlayingAt = Date.now();
+
             if (freezeGraceTimeout) {
                 clearTimeout(freezeGraceTimeout);
                 freezeGraceTimeout = null;
@@ -151,10 +165,18 @@ export function mountRemotePlayer(url) {
                     const silenceThreshold = window.timeoutsConfig?.watchdogSilence ?? 10000;
                     if (state.failoverInProgress) return;
 
-                    const isAudible = await nativeApi.isCurrentlyAudible();
+                    let isAudible = false;
+                    try {
+                        if (typeof webview.isCurrentlyAudible === 'function' && webview.isCurrentlyAudible()) isAudible = true;
+                    } catch (e) {}
+                    if (!isAudible && nativeApi.isCurrentlyAudible) {
+                        isAudible = await nativeApi.isCurrentlyAudible();
+                    }
                     const isMuted = await nativeApi.isAudioMuted();
+                    const isVideoStillAdvancing = (Date.now() - lastGuestPlayingAt) < 6000;
 
-                    if (isAudible || isMuted) {
+                    // Si hay audio, o si el usuario silenció, o si los cuadros de video siguen avanzando normalmente:
+                    if (isAudible || isMuted || isVideoStillAdvancing) {
                         consecutiveSilenceStart = 0;
                     } else {
                         if (consecutiveSilenceStart === 0) {
@@ -162,7 +184,7 @@ export function mountRemotePlayer(url) {
                         } else {
                             const silenceDuration = Date.now() - consecutiveSilenceStart;
                             if (silenceDuration >= silenceThreshold) {
-                                nativeApi.logRenderer(`[Player Watchdog] ${(silenceThreshold / 1000).toFixed(0)}s of sustained silence detected. Triggering failover.`);
+                                nativeApi.logRenderer(`[Player Watchdog] ${(silenceThreshold / 1000).toFixed(0)}s of sustained silence and video stall detected. Triggering failover.`);
                                 resetAntiBlackScreen();
                                 if (!state.failoverInProgress) triggerFailover();
                             }
