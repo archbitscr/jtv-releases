@@ -1,6 +1,6 @@
 {
   "name": "jtv",
-  "version": "2.3.21",
+  "version": "2.3.22",
   "main": "main.js",
   "type": "module",
   "description": "JTV - Your Personal Stream Dashboard",

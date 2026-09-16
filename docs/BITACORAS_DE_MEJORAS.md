@@ -2,7 +2,7 @@
 
 Este documento unifica de forma cronológica todas las mejoras, características de usabilidad, correcciones de errores, refactorizaciones y planes de seguridad implementados en el proyecto JTV.app, así como la hoja de ruta de tareas pendientes de desarrollo solicitadas por el usuario.
 
-**Política de versionado (desde v2.3.9):** cada tarea de la hoja de ruta que se completa incluye como subtarea un bump del patch version (`package.json`, `package-lock.json`, `<title>` de `index.html`, footer "JTV Version" en Settings) y build de verificación. La versión asignada a cada tarea se anota en su entrada al completarse — no se reserva de antemano, ya que el orden de ejecución lo decide el usuario. Última versión: **v2.3.21**. Próxima disponible: **v2.3.22**.
+**Política de versionado (desde v2.3.9):** cada tarea de la hoja de ruta que se completa incluye como subtarea un bump del patch version (`package.json`, `package-lock.json`, `<title>` de `index.html`, footer "JTV Version" en Settings) y build de verificación. La versión asignada a cada tarea se anota en su entrada al completarse — no se reserva de antemano, ya que el orden de ejecución lo decide el usuario. Última versión: **v2.3.22**. Próxima disponible: **v2.3.23**.
 
 ---
 
@@ -919,7 +919,7 @@ Para repos privados, la variable de entorno `GH_TOKEN` debe estar presente al ha
 
 ---
 
-### [2026-09-16] — Ajustes de última hora: favoritos AppData, i18n sintonizador, canales 100-200 y sintonización 169 — v2.3.21
+### [2026-09-16] — Ajustes de última hora: favoritos AppData, i18n sintonizador, canales 100-200 y sintonización 169 — v2.3.22
 
 *   **Restauración de Favoritos en AppData y Datos por Defecto:**
     *   **Problema:** Tras la actualización anterior, los 44 canales favoritos históricos de los usuarios quedaron sin marcar (`favorite: false`) en AppData (`jtv_data.json`) y en `data/defaultChannels.json`.
