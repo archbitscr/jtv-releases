@@ -4,3 +4,4 @@
 - [CSS backup](project_css_backup.md) — temp/style.css has pre-Task 37 default CSS values; use to restore/check originals
 - [Clamp method](feedback_clamp_method.md) — Check HTML type (text vs SVG), calc vw correctly, verify no overriding rules
 - [Bitácora de mejoras](reference_bitacora.md) — docs/BITACORAS_DE_MEJORAS.md, actualizar al completar cada tarea con build+commit
+- [Publicación de releases](workflow_publish_release.md) — electron-builder --publish always + publicar draft vía GitHub API para AutoUpdater
