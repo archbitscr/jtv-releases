@@ -1,4 +1,4 @@
-﻿{
+{
     "loader.init":  "Iniciando base de datos local...",
     "loader.ui":  "Cargando interfaz...",
     "loader.ready":  "Listo.",
@@ -97,6 +97,7 @@
     "player.muted":  "Silenciado",
     "player.no_internet.title":  "Sin Internet",
     "player.searching":  "Buscando fuentes alternativas...",
+    "player.searching_source":  "Buscando fuente {a} de {total}...",
     "player.no_internet.msg":  "Sin conexión a internet. Conéctate para continuar.",
     "player.retry_in":  "Reintentando en {m} minuto...",
     "player.retry_in_plural":  "Reintentando en {m} minutos...",
@@ -218,6 +219,10 @@
     "tooltip.hud.unpin":  "Desfijar HUD",
     "tooltip.autotune.audio":  "Autoajuste de audio",
     "tooltip.autotune.video":  "Autoajuste de video",
+    "autotune.audio.active":  "Autotune Audio: Activo",
+    "autotune.audio.inactive":  "Autotune Audio: Inactivo",
+    "autotune.video.active":  "Autotune Video: Activo",
+    "autotune.video.inactive":  "Autotune Video: Inactivo",
     "tooltip.dev.glass_tuner":  "Sintonizador Glass",
     "tooltip.dev.reset_window":  "Restablecer a 1080x720",
     "tooltip.dev.reload":  "Recargar ventana",

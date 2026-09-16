@@ -451,12 +451,12 @@ export async function updateHudAutotuneIndicators(path) {
     audioIndicator.style.color = 'rgba(255,255,255,0.25)';
     audioIndicator.classList.remove('active');
     audioIndicator.classList.add('inactive');
-    audioIndicator.setAttribute('title', 'Autotune Audio: Inactivo');
+    audioIndicator.setAttribute('title', t('autotune.audio.inactive', 'Autotune Audio: Inactive'));
 
     videoIndicator.style.color = 'rgba(255,255,255,0.25)';
     videoIndicator.classList.remove('active');
     videoIndicator.classList.add('inactive');
-    videoIndicator.setAttribute('title', 'Autotune Video: Inactivo');
+    videoIndicator.setAttribute('title', t('autotune.video.inactive', 'Autotune Video: Inactive'));
 
     if (!path) return;
 
@@ -470,14 +470,14 @@ export async function updateHudAutotuneIndicators(path) {
                 audioIndicator.style.color = 'var(--accent)';
                 audioIndicator.classList.remove('inactive');
                 audioIndicator.classList.add('active');
-                audioIndicator.setAttribute('title', 'Autotune Audio: Activo');
+                audioIndicator.setAttribute('title', t('autotune.audio.active', 'Autotune Audio: Active'));
             }
             // Video
             if (res.video !== false) {
                 videoIndicator.style.color = 'var(--accent)';
                 videoIndicator.classList.remove('inactive');
                 videoIndicator.classList.add('active');
-                videoIndicator.setAttribute('title', 'Autotune Video: Activo');
+                videoIndicator.setAttribute('title', t('autotune.video.active', 'Autotune Video: Active'));
             }
         }
     } catch (e) {

@@ -124,7 +124,7 @@ export function attachRequestPolicy(electronSession, context) {
     let targetBaseDomain = activeDomain;
     try {
       const parsed = new URL(details.url);
-      if (parsed.hostname.includes('dlive.') || parsed.hostname.includes('dlhd.') || parsed.hostname.includes('daddylive.')) {
+      if (parsed.hostname.includes('dlive.') || parsed.hostname.includes('dlhd.') || parsed.hostname.includes('daddylive.') || parsed.hostname.includes('dlstreams.')) {
         targetBaseDomain = `${parsed.protocol}//${parsed.hostname}/`;
       }
     } catch (e) {}

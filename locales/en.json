@@ -1,4 +1,4 @@
-﻿{
+{
     "loader.init":  "Initializing local database...",
     "loader.ui":  "Loading UI/UX...",
     "loader.ready":  "Ready.",
@@ -97,6 +97,7 @@
     "player.muted":  "Muted",
     "player.no_internet.title":  "No Internet",
     "player.searching":  "Searching alternate sources...",
+    "player.searching_source":  "Searching source {a} of {total}...",
     "player.no_internet.msg":  "No internet connection. Connect to continue.",
     "player.retry_in":  "Retrying in {m} minute...",
     "player.retry_in_plural":  "Retrying in {m} minutes...",
@@ -218,6 +219,10 @@
     "tooltip.hud.unpin":  "Unpin HUD",
     "tooltip.autotune.audio":  "Autotune Audio",
     "tooltip.autotune.video":  "Autotune Video",
+    "autotune.audio.active":  "Autotune Audio: Active",
+    "autotune.audio.inactive":  "Autotune Audio: Inactive",
+    "autotune.video.active":  "Autotune Video: Active",
+    "autotune.video.inactive":  "Autotune Video: Inactive",
     "tooltip.dev.glass_tuner":  "Glass Tuner",
     "tooltip.dev.reset_window":  "Reset to 1080x720",
     "tooltip.dev.reload":  "Reload Window",

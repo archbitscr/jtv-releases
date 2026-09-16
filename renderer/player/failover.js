@@ -60,13 +60,13 @@ export function showNoSignalOverlay(show, type = 'signal') {
             audioIndicator.style.color = 'rgba(255,255,255,0.25)';
             audioIndicator.classList.remove('active');
             audioIndicator.classList.add('inactive');
-            audioIndicator.setAttribute('title', 'Autotune Audio: Inactivo');
+            audioIndicator.setAttribute('title', t('autotune.audio.inactive', 'Autotune Audio: Inactive'));
         }
         if (videoIndicator) {
             videoIndicator.style.color = 'rgba(255,255,255,0.25)';
             videoIndicator.classList.remove('active');
             videoIndicator.classList.add('inactive');
-            videoIndicator.setAttribute('title', 'Autotune Video: Inactivo');
+            videoIndicator.setAttribute('title', t('autotune.video.inactive', 'Autotune Video: Inactive'));
         }
     } else {
         overlay.classList.add('hidden');
@@ -128,7 +128,7 @@ function runFailoverCycle(channelId) {
 
     // Show overlay immediately on first cycle
     showNoSignalOverlay(true);
-    setRetryText('Searching alternate sources...');
+    setRetryText(t('player.searching', 'Searching alternate sources...'));
 
     const cfg = window.timeoutsConfig || {};
     const nativeApi = window.jtvAPI;
@@ -187,7 +187,7 @@ function runFailoverCycle(channelId) {
 
         state.playerSource = source;
         updateSourceSwitcherUIFn(source);
-        setRetryText(`Buscando fuente ${attempts} de ${SOURCES.length}...`);
+        setRetryText(t('player.searching_source', 'Searching source {a} of {total}...').replace('{a}', attempts).replace('{total}', SOURCES.length));
 
         const channel = state.channels?.find(c => c.id === channelId);
         if (!channel) {

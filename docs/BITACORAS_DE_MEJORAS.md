@@ -2,7 +2,7 @@
 
 Este documento unifica de forma cronológica todas las mejoras, características de usabilidad, correcciones de errores, refactorizaciones y planes de seguridad implementados en el proyecto JTV.app, así como la hoja de ruta de tareas pendientes de desarrollo solicitadas por el usuario.
 
-**Política de versionado (desde v2.3.9):** cada tarea de la hoja de ruta que se completa incluye como subtarea un bump del patch version (`package.json`, `package-lock.json`, `<title>` de `index.html`, footer "JTV Version" en Settings) y build de verificación. La versión asignada a cada tarea se anota en su entrada al completarse — no se reserva de antemano, ya que el orden de ejecución lo decide el usuario. Última versión: **v2.3.20**. Próxima disponible: **v2.3.21**.
+**Política de versionado (desde v2.3.9):** cada tarea de la hoja de ruta que se completa incluye como subtarea un bump del patch version (`package.json`, `package-lock.json`, `<title>` de `index.html`, footer "JTV Version" en Settings) y build de verificación. La versión asignada a cada tarea se anota en su entrada al completarse — no se reserva de antemano, ya que el orden de ejecución lo decide el usuario. Última versión: **v2.3.21**. Próxima disponible: **v2.3.22**.
 
 ---
 
@@ -916,4 +916,28 @@ Para repos privados, la variable de entorno `GH_TOKEN` debe estar presente al ha
 *   **Verificación:**
     *   Prueba de sintonía en silencio (mute) por 10 minutos continuos en canal 5070 con 0 anuncios emergentes detectados, video continuo y sincronía audiovisual estable.
 *   **Release publicada:** `archbitscr/jtv-releases` — `JTV-Installer-2.3.20.exe` + `JTV-Portable-2.3.20.exe`. ✅
+
+---
+
+### [2026-09-16] — Ajustes de última hora: favoritos AppData, i18n sintonizador, canales 100-200 y sintonización 169 — v2.3.21
+
+*   **Restauración de Favoritos en AppData y Datos por Defecto:**
+    *   **Problema:** Tras la actualización anterior, los 44 canales favoritos históricos de los usuarios quedaron sin marcar (`favorite: false`) en AppData (`jtv_data.json`) y en `data/defaultChannels.json`.
+    *   **Fix:** Restaurados los 44 favoritos en ambos archivos (`jtv_data.json` y `defaultChannels.json`), garantizando la preservación de canales preferidos en el arranque y en zapping por favoritos.
+*   **Traducción e Internacionalización (i18n) del Sintonizador:**
+    *   **Problema:** Indicadores en tiempo real del autotuner y búsqueda de fuentes tenían cadenas estáticas en español (`Buscando fuente X de Y...`, `Autotune Audio: Inactivo/Activo`, `Autotune Video: Inactivo/Activo`), y las etiquetas del modal Glass Tuner estaban en español.
+    *   **Fix:**
+        *   En `renderer/player/failover.js` y `renderer/player/playerController.js`, reemplazadas las cadenas fijas por `t('player.searching_source', ...)`, `t('player.searching', ...)`, `t('autotune.audio.active', ...)`, `t('autotune.audio.inactive', ...)`, `t('autotune.video.active', ...)`, `t('autotune.video.inactive', ...)`.
+        *   Añadidas las claves correspondientes en los 5 idiomas (`locales/{en,es,pt,fr,de}.json`).
+        *   Traducidas las etiquetas de parámetros en `renderer/utils/glassTuner.js` al inglés base.
+*   **Adición de Canales en Rango 100 a 200:**
+    *   **Problema:** Se requería completar el rango de canales entre 100 y 200 sin sobrescribir los canales con nombres predefinidos.
+    *   **Fix:** Se incorporaron 55 canales faltantes (IDs 105..110, 151..161, 163..200) bajo el formato `PPV {id}`, con ruta `watch.php?id={id}` y categorías `['all', 'English']`, completando los 101 canales del rango en `data/defaultChannels.json` y en `jtv_data.json` (total: 1660 canales).
+*   **Habilitación de Red y Sintonización Canal 169:**
+    *   **Problema:** El canal 169 redirige vía HTTP 301 de `dlhd.st` a `dlstreams.st` y luego a `dlive.sx`, cargando `iplayer.is` (con JWPlayer). Los dominios `dlstreams.st` e `iplayer.is` no estaban en la lista permitida de ZeroTrust, lo que bloquearía la reproducción.
+    *   **Fix:**
+        *   Añadidos `dlstreams.st` e `iplayer.is` al arreglo `ALLOWED_DOMAINS` en `main/network/policyConfig.js`.
+        *   Actualizado `requestPolicy.js` para detectar `dlstreams.` en la resolución dinámica de `targetBaseDomain` para cabeceras Referer/Origin.
+    *   **Verificación:** Prueba de sintonización ejecutada exitosamente con `checkChannelStatus` en `dlhd.st`, `dlstreams.st` y `dlive.sx`, confirmando señal activa (`{ online: true, video: true, audio: true }`).
+
 

@@ -70,6 +70,8 @@ export const ALLOWED_DOMAINS = [
   'xyzstreams.st',
   'xyzstreams.blog',
   'streamx305.sbs',
+  'dlstreams.st',
+  'iplayer.is',
   'ajax.googleapis.com',
   'maxcdn.bootstrapcdn.com'
 ];

@@ -8,18 +8,18 @@ const TARGETS = [
 ];
 
 const PARAMS = [
-    { key: 'bgR', label: 'Tinte R', min: 0, max: 255, step: 1, unit: '' },
-    { key: 'bgG', label: 'Tinte G', min: 0, max: 255, step: 1, unit: '' },
-    { key: 'bgB', label: 'Tinte B', min: 0, max: 255, step: 1, unit: '' },
-    { key: 'bgA', label: 'Tinte Opacidad', min: 0, max: 1, step: 0.01, unit: '' },
+    { key: 'bgR', label: 'Tint R', min: 0, max: 255, step: 1, unit: '' },
+    { key: 'bgG', label: 'Tint G', min: 0, max: 255, step: 1, unit: '' },
+    { key: 'bgB', label: 'Tint B', min: 0, max: 255, step: 1, unit: '' },
+    { key: 'bgA', label: 'Tint Opacity', min: 0, max: 1, step: 0.01, unit: '' },
     { key: 'blur', label: 'Blur', min: 0, max: 40, step: 1, unit: 'px' },
-    { key: 'borderR', label: 'Borde R', min: 0, max: 255, step: 1, unit: '' },
-    { key: 'borderG', label: 'Borde G', min: 0, max: 255, step: 1, unit: '' },
-    { key: 'borderB', label: 'Borde B', min: 0, max: 255, step: 1, unit: '' },
-    { key: 'borderA', label: 'Borde Opacidad', min: 0, max: 1, step: 0.01, unit: '' },
-    { key: 'shadowBlur', label: 'Sombra Blur', min: 0, max: 80, step: 1, unit: 'px' },
-    { key: 'shadowSpread', label: 'Sombra Spread', min: 0, max: 40, step: 1, unit: 'px' },
-    { key: 'shadowA', label: 'Sombra Opacidad', min: 0, max: 1, step: 0.01, unit: '' },
+    { key: 'borderR', label: 'Border R', min: 0, max: 255, step: 1, unit: '' },
+    { key: 'borderG', label: 'Border G', min: 0, max: 255, step: 1, unit: '' },
+    { key: 'borderB', label: 'Border B', min: 0, max: 255, step: 1, unit: '' },
+    { key: 'borderA', label: 'Border Opacity', min: 0, max: 1, step: 0.01, unit: '' },
+    { key: 'shadowBlur', label: 'Shadow Blur', min: 0, max: 80, step: 1, unit: 'px' },
+    { key: 'shadowSpread', label: 'Shadow Spread', min: 0, max: 40, step: 1, unit: 'px' },
+    { key: 'shadowA', label: 'Shadow Opacity', min: 0, max: 1, step: 0.01, unit: '' },
     { key: 'insetA', label: 'Inset Glow', min: 0, max: 0.5, step: 0.01, unit: '' },
 ];
 

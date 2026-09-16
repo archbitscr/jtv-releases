@@ -400,7 +400,7 @@
     "id": "60",
     "name": "Sky Sports F1 UK",
     "path": "watch.php?id=60",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -1138,7 +1138,7 @@
     "id": "131",
     "name": "Telemundo",
     "path": "watch.php?id=131",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 2997.471,
     "categories": [
       "all",
@@ -1970,7 +1970,7 @@
     "id": "285",
     "name": "Discovery Velocity CA",
     "path": "watch.php?id=285",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -1983,7 +1983,7 @@
     "id": "286",
     "name": "YTV CA",
     "path": "watch.php?id=286",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 64.14,
     "categories": [
       "all",
@@ -2072,7 +2072,7 @@
     "id": "293",
     "name": "Reelz Channel",
     "path": "watch.php?id=293",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2137,7 +2137,7 @@
     "id": "298",
     "name": "FXX USA",
     "path": "watch.php?id=298",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2200,7 +2200,7 @@
     "id": "303",
     "name": "AMC USA",
     "path": "watch.php?id=303",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 77.453,
     "categories": [
       "all",
@@ -2212,7 +2212,7 @@
     "id": "304",
     "name": "Animal Planet",
     "path": "watch.php?id=304",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 68.197,
     "categories": [
       "all",
@@ -2323,7 +2323,7 @@
     "id": "313",
     "name": "Discovery Channel",
     "path": "watch.php?id=313",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2373,7 +2373,7 @@
     "id": "317",
     "name": "FX USA",
     "path": "watch.php?id=317",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2423,7 +2423,7 @@
     "id": "321",
     "name": "HBO USA",
     "path": "watch.php?id=321",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2510,7 +2510,7 @@
     "id": "328",
     "name": "National Geographic (NGC)",
     "path": "watch.php?id=328",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2575,7 +2575,7 @@
     "id": "333",
     "name": "Showtime USA",
     "path": "watch.php?id=333",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2587,7 +2587,7 @@
     "id": "334",
     "name": "Paramount Network",
     "path": "watch.php?id=334",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2613,7 +2613,7 @@
     "id": "336",
     "name": "TBS USA",
     "path": "watch.php?id=336",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2625,7 +2625,7 @@
     "id": "337",
     "name": "TLC",
     "path": "watch.php?id=337",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2638,7 +2638,7 @@
     "id": "338",
     "name": "TNT USA",
     "path": "watch.php?id=338",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2651,7 +2651,7 @@
     "id": "339",
     "name": "Cartoon Network",
     "path": "watch.php?id=339",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 1495.225,
     "categories": [
       "all",
@@ -2664,7 +2664,7 @@
     "id": "340",
     "name": "Discovery Travel",
     "path": "watch.php?id=340",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -2680,7 +2680,7 @@
     "id": "341",
     "name": "TruTV USA",
     "path": "watch.php?id=341",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -3079,7 +3079,7 @@
     "id": "373",
     "name": "SYFY USA",
     "path": "watch.php?id=373",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -3092,7 +3092,7 @@
     "id": "374",
     "name": "Cinemax USA",
     "path": "watch.php?id=374",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 35.94,
     "categories": [
       "all",
@@ -3178,7 +3178,7 @@
     "id": "381",
     "name": "FX Movie Channel",
     "path": "watch.php?id=381",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -3215,7 +3215,7 @@
     "id": "384",
     "name": "The Food Network",
     "path": "watch.php?id=384",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -5049,7 +5049,7 @@
     "id": "537",
     "name": "DAZN F1 ES",
     "path": "watch.php?id=537",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 132.071,
     "categories": [
       "all",
@@ -5259,7 +5259,7 @@
     "id": "555",
     "name": "Racing Tv UK",
     "path": "watch.php?id=555",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -5882,7 +5882,7 @@
     "id": "607",
     "name": "Rally Tv",
     "path": "watch.php?id=607",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6352,7 +6352,7 @@
     "id": "646",
     "name": "Racer TV USA",
     "path": "watch.php?id=646",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6417,7 +6417,7 @@
     "id": "651",
     "name": "Destination America",
     "path": "watch.php?id=651",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6466,7 +6466,7 @@
     "id": "655",
     "name": "WETV USA",
     "path": "watch.php?id=655",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6517,7 +6517,7 @@
     "id": "659",
     "name": "VICE TV",
     "path": "watch.php?id=659",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6544,7 +6544,7 @@
     "id": "661",
     "name": "Discovery Turbo",
     "path": "watch.php?id=661",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6753,7 +6753,7 @@
     "id": "677",
     "name": "Sky Cinema Action UK",
     "path": "watch.php?id=677",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6766,7 +6766,7 @@
     "id": "678",
     "name": "Sky Cinema Comedy UK",
     "path": "watch.php?id=678",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6805,7 +6805,7 @@
     "id": "681",
     "name": "Sky Cinema Sci-Fi Horror UK",
     "path": "watch.php?id=681",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6866,7 +6866,7 @@
     "id": "686",
     "name": "Sky History",
     "path": "watch.php?id=686",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6904,7 +6904,7 @@
     "id": "689",
     "name": "HBO2 USA",
     "path": "watch.php?id=689",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -6916,7 +6916,7 @@
     "id": "690",
     "name": "HBO Comedy USA",
     "path": "watch.php?id=690",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -7020,7 +7020,7 @@
     "id": "698",
     "name": "TMC Channel USA",
     "path": "watch.php?id=698",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -8134,7 +8134,7 @@
     "id": "791",
     "name": "MGM+ USA / Epix",
     "path": "watch.php?id=791",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 89.398,
     "categories": [
       "all",
@@ -8147,7 +8147,7 @@
     "id": "792",
     "name": "Showtime 2 USA (SHO2) USA",
     "path": "watch.php?id=792",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -8159,7 +8159,7 @@
     "id": "793",
     "name": "Showtime Showcase USA",
     "path": "watch.php?id=793",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -8814,7 +8814,7 @@
     "id": "848",
     "name": "Outdoor Channel USA",
     "path": "watch.php?id=848",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -10296,7 +10296,7 @@
     "id": "975",
     "name": "Starz Encore",
     "path": "watch.php?id=975",
-    "favorite": false,
+    "favorite": true,
     "watchTime": 0,
     "categories": [
       "all",
@@ -18782,6 +18782,611 @@
       "all",
       "English",
       "Sports"
+    ]
+  },
+  {
+    "id": "105",
+    "name": "PPV 105",
+    "path": "watch.php?id=105",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "106",
+    "name": "PPV 106",
+    "path": "watch.php?id=106",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "107",
+    "name": "PPV 107",
+    "path": "watch.php?id=107",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "108",
+    "name": "PPV 108",
+    "path": "watch.php?id=108",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "109",
+    "name": "PPV 109",
+    "path": "watch.php?id=109",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "110",
+    "name": "PPV 110",
+    "path": "watch.php?id=110",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "151",
+    "name": "PPV 151",
+    "path": "watch.php?id=151",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "152",
+    "name": "PPV 152",
+    "path": "watch.php?id=152",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "153",
+    "name": "PPV 153",
+    "path": "watch.php?id=153",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "154",
+    "name": "PPV 154",
+    "path": "watch.php?id=154",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "155",
+    "name": "PPV 155",
+    "path": "watch.php?id=155",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "156",
+    "name": "PPV 156",
+    "path": "watch.php?id=156",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "157",
+    "name": "PPV 157",
+    "path": "watch.php?id=157",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "158",
+    "name": "PPV 158",
+    "path": "watch.php?id=158",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "159",
+    "name": "PPV 159",
+    "path": "watch.php?id=159",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "160",
+    "name": "PPV 160",
+    "path": "watch.php?id=160",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "161",
+    "name": "PPV 161",
+    "path": "watch.php?id=161",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "163",
+    "name": "PPV 163",
+    "path": "watch.php?id=163",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "164",
+    "name": "PPV 164",
+    "path": "watch.php?id=164",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "165",
+    "name": "PPV 165",
+    "path": "watch.php?id=165",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "166",
+    "name": "PPV 166",
+    "path": "watch.php?id=166",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "167",
+    "name": "PPV 167",
+    "path": "watch.php?id=167",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "168",
+    "name": "PPV 168",
+    "path": "watch.php?id=168",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "169",
+    "name": "PPV 169",
+    "path": "watch.php?id=169",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "170",
+    "name": "PPV 170",
+    "path": "watch.php?id=170",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "171",
+    "name": "PPV 171",
+    "path": "watch.php?id=171",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "172",
+    "name": "PPV 172",
+    "path": "watch.php?id=172",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "173",
+    "name": "PPV 173",
+    "path": "watch.php?id=173",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "174",
+    "name": "PPV 174",
+    "path": "watch.php?id=174",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "175",
+    "name": "PPV 175",
+    "path": "watch.php?id=175",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "176",
+    "name": "PPV 176",
+    "path": "watch.php?id=176",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "177",
+    "name": "PPV 177",
+    "path": "watch.php?id=177",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "178",
+    "name": "PPV 178",
+    "path": "watch.php?id=178",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "179",
+    "name": "PPV 179",
+    "path": "watch.php?id=179",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "180",
+    "name": "PPV 180",
+    "path": "watch.php?id=180",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "181",
+    "name": "PPV 181",
+    "path": "watch.php?id=181",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "182",
+    "name": "PPV 182",
+    "path": "watch.php?id=182",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "183",
+    "name": "PPV 183",
+    "path": "watch.php?id=183",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "184",
+    "name": "PPV 184",
+    "path": "watch.php?id=184",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "185",
+    "name": "PPV 185",
+    "path": "watch.php?id=185",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "186",
+    "name": "PPV 186",
+    "path": "watch.php?id=186",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "187",
+    "name": "PPV 187",
+    "path": "watch.php?id=187",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "188",
+    "name": "PPV 188",
+    "path": "watch.php?id=188",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "189",
+    "name": "PPV 189",
+    "path": "watch.php?id=189",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "190",
+    "name": "PPV 190",
+    "path": "watch.php?id=190",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "191",
+    "name": "PPV 191",
+    "path": "watch.php?id=191",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "192",
+    "name": "PPV 192",
+    "path": "watch.php?id=192",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "193",
+    "name": "PPV 193",
+    "path": "watch.php?id=193",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "194",
+    "name": "PPV 194",
+    "path": "watch.php?id=194",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "195",
+    "name": "PPV 195",
+    "path": "watch.php?id=195",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "196",
+    "name": "PPV 196",
+    "path": "watch.php?id=196",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "197",
+    "name": "PPV 197",
+    "path": "watch.php?id=197",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "198",
+    "name": "PPV 198",
+    "path": "watch.php?id=198",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "199",
+    "name": "PPV 199",
+    "path": "watch.php?id=199",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
+    ]
+  },
+  {
+    "id": "200",
+    "name": "PPV 200",
+    "path": "watch.php?id=200",
+    "favorite": false,
+    "watchTime": 0,
+    "categories": [
+      "all",
+      "English"
     ]
   }
 ]
